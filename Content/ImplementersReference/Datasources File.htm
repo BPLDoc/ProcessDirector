@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" /><a name="FileSystemDatasource"></a>
+            <MadCap:keyword term="Datasources" />Windows File System Datasources</h1>
+        <p>Process Director can connect to your network's file system using any accessible UNC. The primary purpose of this Datasource is to enable the use of some of the <a href="../Custom Tasks2/Content Actions Custom Tasks.htm">Content Actions Custom Tasks</a>, specifically:</p>
+        <ul>
+            <li>Import Files from Filesystem</li>
+            <li>Export Files to Filesystem</li>
+        </ul>
+        <p>Each of these Content Actions Custom Tasks require a Windows File System Datasource to be configured prior to use.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/DatasourceFileSystem.png" />
+        </p>
+        <p>To set up the datasource, you need a valid Windows <span class="ControlName">UserID</span>, <span class="ControlName">Password</span>, and <span class="ControlName">Domain </span>name to configure the properties. The <span class="ControlName">UserID </span>and <span class="ControlName">Password </span>should be for a user with adequate permissions to read/write files to the desired file paths in the domain.</p>
+        <p>The <span class="ControlName">File Path</span> property must correspond to a file path authorized in the <a href="../DevelopersGuide/Customization File System.htm#AllowedExportLocations">Allowed Export Locations</a> configured in the custom variables file. There are additional file path properties in the configuration screens for file-based custom tasks. This Custom Task file path should be a <i>continuation</i> of the File Path property specified in the Datasource. For instance, let's say the file Datasource is configured to use the<span class="ControlName"> File Path</span> "C:\docs". If you want the Custom&#160;Task to export a file to "C:\docs\MyProcessDocs", then the File Path property in the custom task would be "\MyProcessDocs". The two <span class="ControlName">File Path</span> properties will be concatenated as "C:\docs\MyProcessDocs".</p>
+        <p>There are some additional considerations you should keep in mind.</p>
+        <ul>
+            <li>The file path you specify must exist when the Datasource is created. Process Director will <b>not</b> create the folder. If the file path does not exist, you will receive the following access error in the format: "Could not access Folder: X:/Folderpath".</li>
+            <li>If you specify a destination folder (ex: 'MyFolder') in a Custom Task that uses the Datasource, it will look within the file path specified in your datasource. So, if you set "C:\MyDSFolder" as the datasource <span class="ControlName">File Path</span>, the Custom Task will look within "C:\MyDSFolder\MyFolder" to perform the operation.</li>
+            <li>If you do not specify user credentials in your Datasource, the system will use the default app pool user that has been configured for IIS at the Process Director web server. Any permissions needed to access any files will need to be granted to this IIS default app pool user (typically called "DefaultAppPool"). In most cases, this default app pool user will probably not have proper permissions to access the file system.</li>
+            <li>If user credentials are used in the Datasource configuration, then the site will need to ensure the DefaultAppPool user has the security policy configured to allow impersonation of other users. The app pool user uses impersonation to connect as the user specified in the Datasource's configuration. Previous versions of IIS defaulted to Impersonation <b>ON</b> for users, but in IIS 7.5, the default was changed to Impersonation <b>OFF</b>.</li>
+            <li>Path names may use spaces, e.g., "C:\Users\username\My Documents".</li>
+        </ul>
+        <h2>SFTP&#160;(SSH&#160;File Transfer) Datasources</h2>
+        <p>In addition to the standard File System datasource, users of Process Director v5.12 and higher can use Secure FTP to access and transfer files as well. This datasource type will enable process director to access a remote file store via secure SSH file transfer.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SFTP.png" />
+        </p>
+        <p>The following properties must be configured for this datasource.</p>
+        <p><b>SFTP&#160;Host:</b> The hostname of the secure FTP server where the files are located. You may optionally specify a port to use for FTP by appending it to the hostname after a colon, e.g., ":22".</p>
+        <p><b>UserID:</b> The User ID of an FTP account that is authorized to access the FTP location.</p>
+        <p><b>Password:</b> The password of the FTP account.</p>
+        <p><b>SSH&#160;Private Key:</b> The hash string of the private key that must be used to access the data securely.</p>
+    </body>
+</html>

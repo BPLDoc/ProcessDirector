@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="3701" MadCap:lastWidth="1226" MadCap:conditions="General.Advanced Training">
+    <head>
+        <link href="../../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 5: Subprocesses and Custom Tasks</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn how to configure a subprocess to run custom tasks.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Configuring Subprocesses</h2>
+        <p>As mentioned previously, subprocess are a convenient way for packaging multiple automated steps into a single Process step on the main Process Timeline. The sample project for this course demonstrates this sort of subprocess. The subprocess used in the sample course copies data between Forms, then converts a Form to PDF format. Let's take a closer look at how this subprocess is configured.</p>
+        <h3>The Parent Process</h3>
+        <p>In the PR/PO Process Timeline contained in the Sample Project, the <span class="ControlName">Generate PO</span> activity is a Process Timeline activity that calls a workflow named <span class="ProcessDirectorObject">Generate PO </span>as a subprocess. The <span class="ProcessDirectorObject">Generate PO</span> process converts an approved Purchase Request into a Purchase Order. In addition to offloading the automated process for generating a Purchase Order into a subprocess, the <span class="ProcessDirectorObject">Generate PO</span> process also demonstrates how a Workflow can be used seamlessly as a subprocess for a Process Timeline.</p>
+        <h4>Parent Step</h4>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/Subprocesses.png" />
+        </p>
+        <p>The <span class="ControlName">Generate PO</span> activity is configured to do three important things. First, and most obviously, the <span class="ControlName">Start Process When Activity Begins</span> property identifies the subprocess to run in this step. Second, the <span class="ControlName">Copy objects from sub-process to this Timeline</span> property ensures that all of the objects that are created in the subprocess will, when the process is complete, be attached to this parent timeline, so that the objects are accessible at need. Third, and finally, the<span class="ControlName"> Copy objects in Timeline Package to Child Process</span> property ensures that all of the objects in this parent process will be copied to the child process. This final property is very important, since the subprocess needs to copy data from the <span class="ProcessDirectorObject">Purchase Request </span>Form into the <span class="ProcessDirectorObject">Purchase Order</span> Form, and this property ensures that the <span class="ProcessDirectorObject">Purchase Request</span> Form is available in the subprocess so that the copy operation can take place.</p>
+        <h4>The Subprocess</h4>
+        <p>The <span class="ProcessDirectorObject">Generate PO</span> process is a Workflow that contains two steps, both of which are Custom Task steps.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/Subprocesses6.png" />
+        </p>
+        <p>The first step runs the <span class="ProcessDirectorObject">Copy Form Data</span> Custom Task, while the second step runs the<span class="ProcessDirectorObject"> Convert to PDF</span> Custom Task. If you click on the <span class="UIElement">Settings </span>button for the Workflow, you can see some important configuration settings for this Workflow. First on the <span class="UIElement">Workflow Option</span>s tab, the <span class="ControlName">Do not show this object in 'Items I Can Run' Knowledge Views</span> property is checked. Checking this property ensures that this subprocess doesn't appear in the<span class="ProcessDirectorObject"> Items I can Run</span> Knowledge View that appears in the default home page workspace for all users. We want to hide this from the users because this process has no purpose if run by itself, and is only run in the context of the parent Process Timeline.</p>
+        <p>Next, on the <span class="UIElement">Advanced Options</span> tab, the <span class="ControlName">Copy objects in Workflow Package to Parent</span> is checked, while the<span class="ControlName"> Only from this group</span> property is set to " CompletedPO". These properties will attach the PO that the process will create to the parent Process Timeline in a group named "CompletedPO" so that we can retrieve it conveniently later in the parent process.</p>
+        <p>We now have a parent and child process configured to share data between the processes. With that completed, let's look at the individual steps in the <span class="ProcessDirectorObject">Generate PO</span> process.</p>
+        <h3>Copy Form Data</h3>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/Subprocesses7.png" />
+        </p>
+        <p>The <span class="ControlName">Step Settings </span>for the <span class="ProcessDirectorObject">Copy Form Data</span> Custom Task allow us to set a container Form from which we are going to copy the data. In this case, we want to copy data from the <span class="ProcessDirectorObject">Purchase Request</span> Form. Clicking the <span class="UIElement">Configuration </span>button will enable us to select the data we want to copy from the <span class="ProcessDirectorObject">Purchase Request</span> Form to the <span class="ProcessDirectorObject">Purchase Order</span> Form by opening the configuration screen for the Custom Task.</p>
+        <p>The first section of the configuration screen contains the <span class="ControlName">Recipient Form</span> properties.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/Subprocesses8.png" />
+        </p>
+        <p>The form we wish to create in the copy process is, of course, our <span class="ProcessDirectorObject">Purchase Order</span> Form. We will add the new instance of the <span class="ProcessDirectorObject">Purchase Order</span> Form as a Workflow reference, and we will create a group for this Form called "CopiedPO", so that we can discriminate it from the completed PO that we will convert to PDF and place in the "CompletedPO" group to attach to the parent Process Timeline.</p>
+        <p>Since we don't have any document attachments to work with, we will skip the <span class="ControlName">Attachments to Copy</span> section, and move straight to the <span class="ControlName">Mapping Configuration </span>section to determine what data to copy between the Forms.</p>
+        <p>In the <span class="ControlName">Mapping Configuration</span> section, we need to determine what fields to copy between the two Forms.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/Subprocesses9.png" />
+        </p>
+        <p>Select the <span class="ControlName">Map to ONLY the following fields</span> radio button to manually create the fields to cop-e between Forms.</p>
+        <p>For each field to map between the Forms in the <span class="ControlName">Mapping Configuration</span> section, click the <span class="UIElement">Add Mapping</span> button to add another field to map. One way to make mapping between Form fields easier is to ensure that the field names in both the source and destination Forms are the same, and the Forms in the sample project are configured in this way. Set the<span class="ControlName"> Destination Form Control</span> field to the name of a field in the destination Form. Ensure the <span class="ControlName">Copy value from Control</span> radio button is selected, then pick "[Same Field as Destination]" from the field dropdown. Repeat this for every field you'd like to copy. If the field names are not the same in the two Forms, then you must pick the appropriate source field from the field dropdown.</p>
+        <p>The <span class="ProcessDirectorObject">Copy Form Data</span> Custom Task is now configured, so click the <span class="UIElement">OK </span>button to save the configuration and close the configuration screen.</p>
+        <h3>Convert to PDF</h3>
+        <p>The PDF custom tasks are used to create PDF files from Forms, and to convert other file types to PDF documents. The following document file types can be converted to PDF:</p>
+        <table style="mc-table-style: url('../../Resources/TableStyles/Simple.css');margin-left: 0;margin-right: auto;" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">DOCUMENT TYPE</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">FILE EXTENSION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Microsoft Word Document</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">.DOC .DOCX</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Microsoft PowerPoint Presentation</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">.PPT .PPTX</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Microsoft Excel Spreadsheet</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">.XLS .XLSX</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Text Files</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">.TXT .CSV</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">Image Files</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">.JPG .GIF .PNG</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>The most common Custom Task to use for PDF conversion is the <span class="ProcessDirectorObject">Convert To PDF</span> Custom Task. This Custom Task converts Forms and other objects to PDF Documents. In the sample project for this course, the <span class="ProcessDirectorObject">Convert to PDF</span> custom task is used to take the new <span class="ProcessDirectorObject">Purchase Order</span> Form that was created in the Copy Form Data Custom Task and convert it to PDF.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/Subprocesses10.png" />
+        </p>
+        <p>In the <span class="ControlName">Step Settings</span> for the Custom Task, the <span class="ControlName">Container Form</span> property is set to the<span class="ProcessDirectorObject"> Purchase Order</span> Form. Click the <span class="UIElement">Configure </span>button to open the configuration screen for the Custom Task.</p>
+        <p>In the configuration screen there are properties in four tables that must be addressed. On the<span class="UIElement"> Item Details</span> tab, select the <span class="ControlName">Workflow References </span>radio button. On the adjacent <span class="UIElement">Advanced </span>tab, set the <span class="ControlName">Limit Items to specific Group</span> property to "CopiedPO", which will limit the PDF conversion to the Form that was previously created in the <span class="ProcessDirectorObject">Copy Form Data</span> Custom Task, which is the only item contained in the "CopiedPO" group.</p>
+        <p>On the <span class="UIElement">Output Object Option</span>s tab, ensure the <span class="ControlName">Workflow </span>radio button is selected, and, in the adjacent <span class="UIElement">Advanced </span>tab, set the <span class="ControlName">Group Name</span> to "CompletedPO". Remember, when we set the properties for the Workflow, we set the "CompletedPO" group objects to be copied back to the parent Process Timeline. Now, we have configured the Custom Task to place the converted PDF file in the "CompletedPO" group so that the group will be populated with the correct object when the group objects are copied back to the parent Process Timeline.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/Subprocesses11.png" />
+        </p>
+        <p>Click the <span class="UIElement">OK </span>button to close the configuration screen and save your changes.</p>
+        <p>With the configuration properly set, the parent timeline, once a Purchase Request has been approved, will call a subprocess and pass the completed <span class="ProcessDirectorObject">Purchase Request </span>Form to the subprocess. The Subprocess will copy the Purchase Request data to a <span class="ProcessDirectorObject">Purchase Order </span>Form, convert the Form to PDF, then attach the completed PO form back to the Parent Process Timeline as a PDF attachment that can be printed out and sent to a Vendor.</p>
+    </body>
+</html>

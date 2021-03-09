@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer" /><a name="_Toc421270081"></a>
+            <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword>Active Directory Custom Variables</h1>
+        <p>You can customize some of the ways in which Process Director interacts with Active Directory by editing the custom variables in this section of the documentation.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ADAuthNoDomain"></a><a href="#ADAuthNoDomain"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>ADAuthNoDomain</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="ADAuthNoDomain">&#160;</MadCap:keyword>Certain Active Directory installations cannot accept a domain as part of the credential validation. This flag can be set to ensure the domain is not passed to the Active Directory validation.</p>
+                <h5>Example</h5>
+                <div class="CodeBase"><span class="ControlName">// Do not use the domain on the credential validation</span>
+                    <br />bp.Vars.ADAuthNoDomain = true;</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ADAuthSettings"></a><a href="#ADAuthSettings"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>ADAuthSettings</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="ADAuthSettings">&#160;</MadCap:keyword>This variable enables you to configure specific authentication settings for each domain for validating users at login. The account used for each domain must have permission to open the Active Directory and validate credentials.</p>
+                <h5>Example</h5>
+                <div class="CodeBase"><span class="ControlName">// Configure specific administrator accounts to use to validate <br />//logins for 2 domains.</span>
+                    <br />bp.Vars.ADAuthSettings.Add(new ADAuthSetting("MY_DOMAIN_1", "AD_Admin",<br />&#160;&#160;&#160;&#160;"pwd1"));<br />bp.Vars.ADAuthSettings.Add(new ADAuthSetting("MY_DOMAIN_2", "AD_Admin",<br />&#160;&#160;&#160;&#160;"pwd2"));</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ADGrouphierarchy"></a><a href="#ADGrouphierarchy"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>ADGrouphierarchy</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="ADGrouphierarchy">&#160;</MadCap:keyword>This variable enables you to configure the type(s) of groups that the user is a member of when using the Active Directory Synch. </p>
+                <h5>Values</h5>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 7rem;" class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>VALUE NAME</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DEFAULT</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>ADGroupHierarchyOptions.AllAuthGroups</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>This will enable adding the user to every security group (even hierarchical) they are a member of.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>ADGroupHierarchyOptions.AllGroups</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>This will enable adding the user to every group (security AND distribution) (even hierarchical) they are a member of.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>ADGroupHierarchyOptions.None</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>setting will only add the users to the groups they are directly a member of.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>Default</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Example</h5>
+                <div class="CodeBase"><span class="ControlName">// The default<br />// This will enable adding the user to every security group <br />//(even hierarchical) they are a member of.</span>
+                    <br />bp.Vars.ADGrouphierarchy = ADGroupHierarchyOptions.AllAuthGroups;<br /><br /><span class="ControlName">// This will enable adding the user to every group (security AND<br />// distribution, even hierarchical) they are a member of.</span><br />bp.Vars.ADGrouphierarchy = ADGroupHierarchyOptions.AllGroups;<br /><br /><span class="ControlName">// This setting will only add the users to the groups they are directly a <br></br>// member of </span><br />bp.Vars.ADGrouphierarchy = ADGroupHierarchyOptions.None;</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AD_NormalOptions"></a><a href="#AD_NormalOptions"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>AD_NormalOptions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Can be used to configure options used in the PrincipalContext to connect to the Active Directory server. See the <a href="http://msdn.microsoft.com/en-us/library/system.directoryservices.accountmanagement.contextoptions(v=VS.90).aspx" target="_blank">Microsoft documentation for ContextOption Enumeration</a> for a description of the options.</p>
+                <h5>Example</h5>
+                <div class="CodeBase"><span class="ControlName">// Set the flags for options for Active Directory</span>
+                    <br />bp.Vars.AD_NormalOptions = <br />&#160;&#160;&#160;&#160;System.DirectoryServices.AccountManagement.ContextOptions.Negotiate | <br />&#160;&#160;&#160;&#160;System.DirectoryServices.AccountManagement.ContextOptions.Signing | <br />&#160;&#160;&#160;&#160;System.DirectoryServices.AccountManagement.ContextOptions.Sealing;</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ADSSLOptions"></a><a href="#ADSSLOptions"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>ADSSLOptions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="ADSSLOptions">&#160;</MadCap:keyword>Can be used to configure options used in the PrincipalContext to connect to the Active Directory server for SSL encrypted sessions. See the <a href="http://msdn.microsoft.com/en-us/library/system.directoryservices.accountmanagement.contextoptions(v=VS.90).aspx" target="_blank">Microsoft documentation for ContextOption Enumeration</a> for a description of the options.</p>
+                <h5>Example</h5>
+                <div class="CodeBase"><span class="ControlName">// Set the flags for SSL options for Active Directory</span>
+                    <br />bp.Vars.AD_SSLOptions = <br />&#160;&#160;&#160;&#160;System.DirectoryServices.AccountManagement.ContextOptions.Negotiate| <br />&#160;&#160;&#160;&#160;System.DirectoryServices.AccountManagement.ContextOptions.SecureSocketLayer;</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="SyncUsersByGroupRecurse"></a><a href="#SyncUsersByGroupRecurse"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>AD_SyncUsersByGroupRecurse</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Can be used to disable group recursion for Active Directory synchronization, if needed. The default value for this variable is "true", and should usually remain so. An issue with Microsoft Windows 2016, however, may cause synchronization to fail when limiting synchronization to a specific user or group. Setting this value to "false" can serve as a workaround for this issue.</p>
+                <h5>Example</h5>
+                <div class="CodeBase"><span class="ControlName">// Disable group recursion for Active Directory synchronization</span>
+                    <br />bp.Vars.AD_SyncUsersByGroupRecurse = false;</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fADSyncAllowManagerOtherOU"></a><a href="#fADSyncAllowManagerOtherOU"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fADSyncAllowManagerOtherOU</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fADSyncAllowManagerOtherOU" />This boolean variable, when set to "true" enables you to sync a manager with a user if the manager is synced from a different OU (AD&#160;Root Path) than the user. The default value of this variable is "false".</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Sync managers from a different OU than the users they manage</span><br />&#160;&#160;&#160;&#160;bp.Vars.fADSyncAllowManagerOtherOU = true;<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fReenableUsersOnSync"></a><a href="#fReenableUsersOnSync"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fReenableUsersOnSync</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fReenableUsersOnSync">&#160;</MadCap:keyword>This integer variable determines what happens to pre-existing disabled users on an AD Sync.&#160; If set, the sync will re-enable these users, but will not if the flag is not set.&#160; The default value of this flag is ‘true’.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fReenableUsersOnSync = false;<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fSyncExtraLog"></a><a href="#fSyncExtraLog"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fSyncExtraLog</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fSyncExtraLog">
+                    </MadCap:keyword>This Boolean variable sets whether to turn on extra, Level 0 logging when a sync is performed. The default value of this variable is False.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fSyncExtraLog = false;<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nMaxUsersToDisableOnSync"></a><a href="#nMaxUsersToDisableOnSync"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxUsersToDisableOnSync</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nMaxUsersToDisableOnSync">
+                    </MadCap:keyword>This integer variable sets the maximum number of users to disable on an Active Directory Synchronization. The default value of this setting is 30.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMaxUsersToDisableOnSync = 30;<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nMaxPercentUsersToDisableOnSync"></a><a href="#nMaxPercentUsersToDisableOnSync"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxPercentUsersToDisableOnSync</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nMaxPercentUsersToDisableOnSync">
+                    </MadCap:keyword>This double variable sets the maximum percentage of users to disable on an Active Directory Synchronization. The default value of this setting is .10, which is 10%.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMaxPercentUsersToDisableOnSync = .10;<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nMinLDAPUsersWithGroupsBeforeDisable"></a><a href="#nMinLDAPUsersWithGroupsBeforeDisable"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMinLDAPUsersWithGroupsBeforeDisable</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nMinLDAPUsersWithGroupsBeforeDisable" />This integer variable sets the minimum number of users that need to have groups before Process Director removes any group memberships during an Active Directory synchronization. The default value of this variable is 10.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMinLDAPUsersWithGroupsBeforeDisable = 10;<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

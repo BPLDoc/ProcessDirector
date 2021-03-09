@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Process Timelines" />
+            <MadCap:concept term="Implementation" /><a name="_Toc421536173"></a>
+            <MadCap:keyword term="Processes;Process Timelines;Process Timeline Activities" />Process Timeline Activity Types</h1>
+        <p>There are a number of different Timeline Activity Types. While there are some broadly-applied, general settings that are applicable to each Activity type, there are also custom configuration settings that are <i>specific</i> to each Activity type, which will be discussed below. For more information on the general Timeline Activity settings, please see the <a href="Process Timeline Activities.htm">Process Timeline Activities topic</a>.</p>
+        <h2><a name="Asynchronous"></a>
+            <MadCap:keyword term="Asynchronous Operations" />Background Operations <a href="#Asynchronous" class="anchor">#</a></h2>
+        <p>Users are assigned a task when they are added to a Process Timeline activity. A context sensitive web page or Form is displayed that is specific to the task type when the user selects the entry in their Task List, or the link in their email notification. Each task type defines a set of functions or actions that can be performed, as well as custom instructions for the participants. The activity’s type can be set using the Activity Type dropdown in the Activity tab of the activity’s properties.</p>
+        <p>
+            <img src="../Resources/Images/Capture186.png" />
+        </p>
+        <p>A Timeline Activity of the Custom Task, Script or Sub-Process types can be configured to run in the background by checking the <span class="ControlName">Run this activity in the background (if unsure, leave this box unchecked)</span> check box  in the <span class="UIElement">Advanced Options</span> tab. Setting the operation to run in the background can be used to prevent a long-running, machine-centric Activity in the Process Timeline from hanging a user session while the processing occurs. The Activity will be run in a different context than the current user that caused the transition of the Activity. Additionally, if you have a <a href="../SystemAdministratorGuide/Load Balancing.htm#_Toc421094547">Rendering Server</a> enabled, the background processing will be conducted by the Rendering Server when the option is checked.</p>
+        <p>
+            <img src="../Resources/Images/Capture83.png" />
+        </p>
+        <p>Please note that, when this option is selected, if the user's task is followed (after one or more intervening "background" tasks) by another task assigned to the same user, the current behavior in which the window remains open and is refreshed with the Form for the subsequent task will no longer be seen. Instead, the user will have to click the appropriate link in their task list or email notification to open the new task.</p>
+        <p> On some systems, when starting a subprocess using the asynchronous option, the system can mark the calling task as complete before the called subprocess completes. This may be especially true if the subprocess contains complex rendering operations. To avoid this, a wait time, in seconds, can be set using the <a href="../DevelopersGuide/Customization File Misc.htm#nAsyncSubProcessWaitSecs" target="_blank" title="nAsyncSubProcessWaitSecs Custom Variable" alt="nAsyncSubProcessWaitSecs Custom Variable">nAsyncSubProcessWaitSecs</a> variable in the Custom Vars file. The default setting for this variable is 5 seconds.</p>
+        <h2><a name="_Toc421536174"></a>Activity Configuration Tabs <a href="#_Toc421536174" class="anchor">#</a></h2>
+        <p>All activities share a few common tabs in their configuration windows.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Activity Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines the type of activity, and possible the instructions and duration of the activity. The duration of the activity can be configured in various time units. Configuration and functionality details for specific activity types are documented for each activity type.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Start When Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines when the activity will run, i.e. what must happen before the activity starts. The activity’s start time can depend on the state of other activities, or via arbitrary conditions. Activity dependencies can be added via the <span class="UIElement">Add Dependency</span> button, and the dependence specified via a dropdown. Arbitrary conditions allowing the activity to start can be configured via the condition builder by click on the <span class="UIElement">Click to create condition...</span> link. </p>
+                <p>Clicking the <span class="ControlName">Recurring Activity</span> check box makes an activity a recurring activity, and enables you to configure the time interval at which the activity repeats. The activity will not recur if the box is unchecked. This option is relevant primarily for activities in which you have set a Start When condition. When an activity is set as a recurring activity, the activity, <i>once completed</i>, will automatically restart again at the time interval specified, until the Start When condition is no longer met. If you make an activity a recurring activity without a Start When condition, it will restart indefinitely, though the system's internal loop checks will eventually cancel the recurrence as an indefinite loop.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Completed When Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines when the activity is completed. The dropdown determines whether the activity is completed when all users have completed the activity or when the first user has completed the activity. Arbitrary conditions for completion can be configured using the condition builder by clicking the <span class="UIElement">Click to create condition...</span> link.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Needed When Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines when the activity is enabled or when it is ignored. Conditions for enabling the activity can be configured using the condition builder by clicking the <span class="UIElement">Click to create condition...</span> link.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Due Date Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines the due date for the activity. The due date can be set in three ways. It can be calculated relative to the start of the activity. Using the dropdown menu, it can be calculated relative to the actual start of the activity, the configured start of the activity, or can be set via other means. The <span class="ControlName">Set due date from form field</span> field enables the determination of the due date from a form field, and the <span class="ControlName">Set due date from system variable</span> field enables the determination of the due date from a system variable.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Notifications Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines when users are notified about the task. Checking the <span class="ControlName">Notify participants when activity starts</span> checkbox will notify the participants when the activity starts using the email template specified in the <span class="ControlName">Using email template</span> field.</p>
+                <p>Additional notifications can be added with the <span class="UIElement">Add Notification</span> button. The occurrence of the notification is specified using the <span class="ControlName">Choose Notification Time</span> dropdown, which allows the creation of a one-time notification or a recurring notification.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Process Timelines_3.png" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Advanced Options Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines whether the activity is required to complete for the parent activity to complete, and whether a late start or finish date in the activity should show as an error in reports. The <span class="UIElement">Advanced Options</span> tab for each activity type may show very different property settings.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536175"></a>User Activity <a href="#_Toc421536175" class="anchor">#</a></h2>
+        <p>The user Activity is any actionable item assigned to a user. If a user Activity has been assigned to a user, a task will appear in the user's Task List. The user must complete the task before it can be removed from the Task List. A user who is assigned a task will be automatically given permission to any object in the Process Timeline package so they may complete the task. Examples of this task can be an approval task or update task.</p>
+        <p>When a Process Timeline Activity is assigned to a user with an invalid UID or user ID, Process Director will immediately stop the process, and place the Process Timeline Activity into an error state. This is also true for anonymous user assignments if the email address is not a valid format (Process Director cannot validate the email address itself, only the format).</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Participants Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Process Timelines_22.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Determines which users are a part of the user task. Users can be added via the <span class="UIElement">Add Participant</span> button, and the participants can be specified via the <span class="ControlName">Participant Type </span>dropdown.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Process Timelines_4.png" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>When multiple users are assigned to a task,  a sub task can be automatically created for each user. You must have a form field that specifies the name of each desired subtask. For instance, you might assign a task called "Approvals" to two users, in sequence. In that case, you would need two form fields, one of which has a default value of "Approval 1", and the other "Approval 2". When the users complete their task, Both the Task Name and Sub Task name will be assigned to each user, so that you can track both the task, and sub tasks for each user, as they are completed.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Due Date Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/Capture134.png" />
+                </p>
+                <p>The standard options for the Due Date tab are described in the <a href="Process Timeline Activities.htm#_Toc421536170">Due Date Tab section</a> of the Timeline Activities Topic. The User activity type also has an additional option specific to the User activity type.</p>
+                <h5>If time limit expires</h5>
+                <p>A dropdown that specifies the actions to take when the Due Date expires. The following options are available.</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: ;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>Option</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>Result</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Take no action</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Lets the activity continue running.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Cancel This Activity</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Cancel the activity and automatically advance to the next activity in the Process Timeline.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Add These Users from Business Rule</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Add users identified in the Business Rule.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Replace existing users with those in Rule</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Add the user from the Business Rule and cancel any running users.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Cancel the entire Timeline</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>Cancel the Process Timeline.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Advanced Options Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/GettingStartedGuide/ActivityAdvancedOptions.png" />
+                </p>
+                <p>The advanced options tab contains miscellaneous options for configuring a user activity. It contains many more configuration options than the generic Advanced Options tab. This is the most common Activity type, and the detailed explanation of the Advanced Options Tab for the User Activity Type is presented in the <a href="Process Timeline Activities.htm#_Toc421536172">Process Timeline Activities topic</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536176"></a>Notify Activity <a href="#_Toc421536176" class="anchor">#</a></h2>
+        <p>The notify task allows you to notify users or groups during a process. Most of the Notify Task options are configured via the generic configuration options for an activity, except for the Options in the <span class="UIElement">Advanced Options</span> tab</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Advanced Options Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/Capture118.png" />
+                </p>
+                <p>There are two Advanced options for Notification activities.</p>
+                <h5>Is Activity required to Complete Parent</h5>
+                <p>This option defaults to true, so that the Parent activity, if any, cannot be completed until this activity is complete. This is, by far, the most common relationship between parent/child activities.</p>
+                <h5>Use Form for Activity</h5>
+                <p>This option enables you to specify a form instance for a particular notify step/activity. This feature is useful when configuring email templates to include information from a form instance other than the default form for that process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536177"></a>Process Activity <a href="#_Toc421536177" class="anchor">#</a></h2>
+        <p>The Process task allows you to specify a process to run. This can be a workflow or Process Timeline.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Process Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Process Timelines_23.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Determines the process that the Activity starts. It also allows objects in the child process to be copied to the parent and vice versa. The objects copied can be limited to a specified group.</p>
+                <h5>Start Process When Activity Begins</h5>
+                <p>You may use the <span class="NamedControl">Object Picker</span> to select a process that will automatically start when the Activity starts. The selected process will run as a child process of the current process, i.e., the process containing this Activity.</p>
+                <h5>Copy Objects in Timeline Package to Parent</h5>
+                <p>Checking this option will copy all objects in the child process to the current process.</p>
+                <h5>Only from this group</h5>
+                <p>You may enter the Group Name. Only objects from the specified group will be copied from the child process.</p>
+                <h5>Copy Objects in Timeline Package to Child Process</h5>
+                <p>Checking this option will copy all objects in the current process to the child process.</p>
+                <h5>Only from this group</h5>
+                <p>You may enter the Group Name. Only objects from the specified group will be copied from the current process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536178"></a>Script Activity <a href="#_Toc421536178" class="anchor">#</a></h2>
+        <p>The Script task supports the ability to call custom script functions. For more information on the custom scripts refer to the Scripting section of this guide.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Script Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Process Timelines_24.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>The script tab determines the script to be run. The script file is determined via contest list object picker. The script parameters are passed to the script as a string.</p>
+                <h5>Script File</h5>
+                <p>You may use the <span class="NamedControl">Object Picker</span> to select a script that will automatically start when the Activity starts. </p>
+                <h5>Script Parameters (optional)</h5>
+                <p>You may enter a parameter string to pass to the selected script.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Advanced Options Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ScriptActivityAdvancedOptions.png" />
+                </p>
+                <h5>Use Form For Activity</h5>
+                <p>In Timeline, if parent activity has "Use Form for Activity" specified with particular form, then all child activities will default to the same form. This property enables a Script Activity in a Timeline to specify a different Form to use a current form for the activity. If this property is not configured, the Process Director will check the parent Timeline activity for a configured Form and, if set, it will use that Form. Otherwise, Process Director will revert to passing the script to the current form instance that is associated with the running process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536179"></a>Custom Task Activity <a href="#_Toc421536179" class="anchor">#</a></h2>
+        <p>This enables you to use a Custom Task as the activity.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Custom Task Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Process Timelines_25.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Specifies the Custom Task(s) to be run for this activity. To add additional Custom Tasks, click the<span class="UIElement"> Add Custom&#160;Task</span> button.</p>
+                <h5>Custom Task</h5>
+                <p>You may use the <span class="NamedControl">Object Picker</span> to select a Custom Task that will automatically run when the Activity starts. </p>
+                <p>For details on how to configure custom tasks, see the <a href="../Custom Tasks2/Custom Tasks.htm">Custom Tasks documentation</a>. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536180"></a>Form Actions Activity <a href="#_Toc421536180" class="anchor">#</a></h2>
+        <p>This task configures which Form will be the default within the process, and allows new forms to be attached.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Form Options Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormActions.png" />
+                </p>
+                <h5>Form Definition</h5>
+                <p>You may use the <span class="NamedControl">Object Picker</span> to select a form definition to be attached to the process. </p>
+                <h5>Set this as the default Form Instance for the Timeline</h5>
+                <p>Checking this option will make the selected Form the default form for this Timeline Instance.</p>
+                <h5>Set the form instance version to 1, this will prevent any default data from being applied to form fields</h5>
+                <p>This option will create the Form instance with a version of 1. Normally the version is set to a special value to indicate that the form has never been saved by a user which prevents it from showing up on Knowledge Views, and also applies the default data to the Form fields. Checking this option will cause the form instance to NOT use default data. </p>
+                <div class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> You should not use this option unless you know that your application specifically requires this behavior.</div>
+                <h5>Add new Form Instance</h5>
+                <p>Specifies the conditions under which a new instance of the form definition is created and then attached to the process.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Process Timelines_6.png" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <h5>Group Name</h5>
+                <p>Assigns a group name to the added form instance.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536181"></a>End Process Activity <a href="#_Toc421536181" class="anchor">#</a></h2>
+        <p>Enables you to terminate the running Process Timeline.</p>
+        <h2><a name="_Toc421536182"></a>Branch Activity <a href="#_Toc421536182" class="anchor">#</a></h2>
+        <p>Enables an activity to jump or branch to another activity in the running Process Timeline. For Process Director v3.49 and above, the use of this Activity type should be replaced, in most cases, by the use of the iteration functionality available in the Parent Activity type.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Branch Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Process Timelines_27.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>The Branch tab determines where the activity goes, as specified by the “Branch Type” dropdown. The Branch can either roll back to the activity on which it depends or start or jump to a new activity. Jumping to a new activity skips all the activities in between; they will not be started this process instance. Starting a new activity allows the steps in between to start as they normally would.</p>
+                <h5>Branch Type</h5>
+                <p>This dropdown control contains the following configuration options:</p>
+                <ul>
+                    <li><b>Rollback:</b> This will branch back to an earlier activity and proceed normally from there. This branch can only be configured to roll back to an activity preceding this activity on the dependency hierarchy. The activity must be dependent on the activity to which this activity rolls back, or it must be dependent on an activity dependent on that activity, and so on. For users of Process Director 5.26 and higher, Timelines can be rolled back to Parent activity types.</li>
+                    <li><b>Start:</b> This will start the defined activity, complete this branch activity, and then continue processing normally from this point.</li>
+                    <li><b>Jump:</b> This will transfer control from this branch activity to the activity we want to jump to, any activity “dependent” on this branch activity will NOT get run.</li>
+                </ul>
+                <h5>Branch to Activity</h5>
+                <p>This dropdown contains a list of available Activities to which you may branch in the Timeline .</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536183"></a>Parent Activity <a href="#_Toc421536183" class="anchor">#</a></h2>
+        <p> Parent activities are containers for other activities, referred to as “Children”. </p>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" title="Important" /> You should not use any other type of activity as a Parent Activity.</div>
+        <p>In Process Director versions 3.45 and higher, additional functionality has been added to Parent activity types: Results Concatenation and Looping.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Results and Result Concatenation</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>By default, the result of a parent activity is set to the result of the child task whose completion resulted in the completion of the parent (this behavior is implemented in Process Director v3.45 and up. In previous versions, the parent never has a result.). Parent activities have the option of setting the result of the Parent activity to a comma-separated list of all the child results. This list will contain only the results from the immediate child activities of the Parent activity; it will not use results from any Parent activities that have been created under the top-level Parent. If the parent is configured to loop, only the results from the final iteration will be included. If the parent contains other parent activities, only the results from the direct children of that parent will be included; the results from the children of "subparents" will not be included.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Looping"></a>Looping Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Parent activities can also be used to create loops within your Process Timeline. When configured this way, the Children are referred to as a “looping segment”, i.e., a segment of your Process Timeline that iterates, or loops. A looping segment will continuously loop through the child activities until a user-defined condition, or set of conditions, is satisfied. </p>
+                <p>
+                    <img src="../Resources/Images/loop.png" alt="Iteration Loop" />
+                </p>
+                <p>Selecting the Parent activity type will display a Looping tab in the designer, from which the iteration conditions can be specified.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/LoopingTab.png" />
+                </p>
+                <p>A parent activity that implements iteration will also display a unique icon in the Process Timeline definition.</p>
+                <p>
+                    <img src="../Resources/Images/Training/Advanced/Iteration.png" />
+                </p>
+                <p>The Looping tab contains three methods for controlling iteration through the child activities, each of which controls some aspect of how the looping segment will work by determining the conditions under which the following actions will occur:</p>
+                <ul style="list-style-type: disc;margin-left: 36pt;">
+                    <li style="list-style-type: disc;">Stop repeating the loop</li>
+                    <li style="list-style-type: disc;">Jump back to the top of the loop</li>
+                    <li style="list-style-type: disc;">Cancel the remaining activities within the segment and stop repeating the loop.</li>
+                </ul>
+                <p>Here’s how these three methods work. </p>
+                <h5>Repeat Loop Until condition is met</h5>
+                <p>Each time Process Director prepares to execute the looping segment, this condition will be evaluated to determine whether or not to do so. If the condition is not met, the looping segment will start again. If the condition is met, however, the loop will not be repeated, and the parent activity will be marked as complete. Any successive activities in the Process Timeline will now be eligible to run.</p>
+                <p>The remaining methods of controlling the loop rely on conditions that are evaluated each time any child activity completes. When the relevant condition is met, execution of the loop will be interrupted.</p>
+                <h5>Jump back to the top of the loop when condition is met</h5>
+                <p>When the specified condition is met, the current loop will be immediately stopped, and the loop will restart with the first child activity.&#160; </p>
+                <h5>Cancel the remainder of the loop when condition is met</h5>
+                <p>When the condition specified by the user is met, the current loop will be immediately stopped, and the parent activity will be marked as complete. Any successive activities in the Timeline will now be eligible to run. </p>
+                <p>It is quite possible that you will need to configure all three methods. As an example, let's consider a simple approval process for a request. Suppose that each level of approval can end in one of three results: Approve, Reject, and Terminate. In this case, we might want to configure the segment as follows:</p>
+                <ul style="list-style-type: disc;margin-left: 36pt;">
+                    <li style="list-style-type: disc;">Stop repeating the loop when all approvers approve the request</li>
+                    <li style="list-style-type: disc;">Exit the segment any time an approver chooses the terminate option</li>
+                    <li style="list-style-type: disc;">Jump back to the top of the segment when any approver chooses the reject option, to give earlier reviewers a chance to make changes.</li>
+                </ul>
+                <p>The first method for controlling the loop relies on a condition that is evaluated when your Process Timeline first runs the parent activity, and then again each time the looping segment completes (that is, each time all of the activities in the loop have completed).</p>
+                <h5>Reason If Other Users Are Canceled/Canceled due to jump</h5>
+                <p>This property gives you the ability to provide an administrative comment that will show up in the Routing Slip for the Timeline if the loop is canceled or restarted and cancels users in parallel activities.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Advanced Options Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/Capture173.png" />
+                </p>
+                <h5>Set Activity result to a list of all children or user results</h5>
+                <p>Selecting this option concatenate the results of all child activities to a comma-separated list of results.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Related SysVars</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The looping functionality is normally predicated on the results of the Child Activities. Specific System Variables have been implemented to make accessing the results of the Child Activities easier.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Process Timelines_29.jpg" style="visibility: visible;" />
+                </p>
+                <p>The Iteration SysVars are available from the Timeline Activity branch of the condition builder's System Variables menu, and consist of:</p>
+                <ul style="list-style-type: disc;margin-left: 36pt;">
+                    <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544616" target="_blank">Any Child Activity Result</a>
+                    </li>
+                    <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544615" target="_blank">All Children Activity Results</a>
+                    </li>
+                    <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544621" target="_blank">Last Child Activity Result</a>
+                    </li>
+                    <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544624" target="_blank">Parent Activity Iterated</a>
+                    </li>
+                    <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#ParentActivityRestarted">Parent Activity Restarted</a>
+                    </li>
+                </ul>
+                <p>Follow the links above to see a detailed explanation of each System Variable.</p>
+                <p>A parent activity that implements iteration will display a unique icon in the Process Timeline definition.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Process Timelines_30.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536184"></a>Wait Activity <a href="#_Toc421536184" class="anchor">#</a></h2>
+        <p>Wait tasks cause the Process Timeline to pause for a specified amount of time, or until a specific condition applies.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Activity Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/Capture133.png" />
+                </p>
+                <h5>Duration of Activity</h5>
+                <p>Enables you to specify the length of time to wait, and/or to set the calculated due date. <i style="font-weight: bold;">Any time-related Wait activity must should have a Duration set.</i> If no Duration is set, the wait activity will automatically complete, unless a condition on the <span class="UIElement">Completed When </span>tab is set.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Completed When Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Capture7.png" />
+                </p>
+                <p>The<span class="UIElement"> Completed When </span>tab enables you to specify condition-based criteria for determining the length of the Wait activity. The following options are available:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 25em;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>Conditional Setting</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>Result</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>When conditions met</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>End the activity when a specified condition set has been met.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>When Sub-Processes Complete</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>End the activity when all running sub-processes complete.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>When Any Result Condition is Met</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>A wait activity can have Results, and each Result can have specific conditions to determine which Result condition will end the task, and should be set as the result of the activity.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Wait for event string to be posted</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">If this option is configured, the activity will wait until that event is posted, usually from an external source or process.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Due Date Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/Capture134.png" />
+                </p>
+                <h5>Due Date is</h5>
+                <p>The Due Date Is property enables you to set the manner in which the due date for the task will be calculated. Four options are available.</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 30em;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>Option</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>Result</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Calculated from the Configured Activity Start</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The due date for the activity will be calculated based on when the activity should be due, based on the configuration of the Timeline Definition's activity durations. </p>
+                                <p><b>EXAMPLE:</b>
+                                </p>
+                                <p>The Timeline definition contains two activities, each of which takes three days to complete, then this setting will calculate the due date for the first activity as three days after the Timeline starts running, and the second activity's due date will be calculated as six days after the Timeline starts. If the first activity takes longer than three days to complete, the due date for the second activity <i>will not be changed. </i>Instead, the duration of the second activity will be shortened to meet the calculated due date on day six. If the first activity takes less than three days, the duration of the second activity will be lengthened to remain due on day six.</p>
+                                <p><i>Activity 2 will always be due on day six.</i>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>No calculated due date</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The system will not calculate a due date for the activity. Without a due date, escalations and notifications that are based on due date conditions will not run.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Calculated from the actual activity start</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The due date for the activity will be calculated based on when the activity actually started, rather than when it is configured to start. An activity that is configured for three days duration will calculate the due date as three days after the activity actually started. </p>
+                                <p style="font-weight: bold;">EXAMPLE (Continued):</p>
+                                <p>Irrespective of the length of the first activity, the second activity's duration will not be changed. The due date will be recalculated to enable the full three days of duration for the activity. </p>
+                                <p><i>Activity 2 will always be due three days after it starts.</i>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Calculated from minimum of Actual or Configured&#160;Activity start</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                                <p>The activity's due date will be calculated by choosing the soonest date between when the activity was configured to end, or the due date calculated from when the activity began. </p>
+                                <p style="font-weight: bold;">EXAMPLE&#160;(Continued):</p>
+                                <p>With this setting, if the first activity takes less than three days to complete, the second activity will become due three days after the activity begins. On the other hand, if the first activity takes longer than three days, the system will shorten the activity duration to ensure it becomes due on day six, as configured in the Timeline definition.</p>
+                                <p style="font-weight: bold;"><span style="font-weight: normal; font-style: italic;">Activity 2 will be due either three days after it begins, or on day six, whichever is soonest.</span>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>If time limit expires</h5>
+                <p>This dropdown shows items specific to this activity type, to determine how the Activity will respond to the expiration of the <span class="ControlName">Duration of Activity </span>property that is set on the <span class="UIElement">Activity </span>tab.</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 18em;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>Option</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>Result</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Take no action</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Let the activity continue running.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Cancel This Activity</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Cancel the activity and automatically advance to the next activity in the Process Timeline.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Cancel the entire Timeline</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Cancel the Process Timeline.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Wait until at least Due Date</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Keep the activity in a wait status until at least the specified due date. This must be set when using the Wait activity to pause for a specified period of time, as determined by the <span class="ControlName">Duration of Activity </span>you set in the Activity tab.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>It is possible to set both a time- and condition-based Wait-activity. The settings you choose on this tab will, however, change the way the activity responds. For example, if you set both a completion condition as well as a <span class="ControlName">Duration</span>, then set the I<span class="ControlName">f Time Limit Expires</span> property to "Wait until at least Due Date", then the activity will NOT end until the <span class="ControlName">Duration </span>expires, even if the condition evaluates as true. </p>
+                <div class="Important">
+                    <img src="../Resources/Images/i2.png" title="Important" alt="Important" /> Setting a <span class="ControlName">Duration </span>AND setting the <span class="ControlName">If time limit expires</span> property to "Wait until at least Due Date", will ALWAYS keep the Timeline activity in a wait status until the <span class="ControlName">Duration </span>time is met.</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="CaseActivity"></a>Case&#160;Activity <a href="#CaseActivity" class="anchor">#</a></h2>
+        <p>The Case activity enables you to perform Case Management actions automatically, without requiring any user interaction. </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Case Options Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Case Activity has a <span class="UIElement">Case Options</span> tab where Case Management operations can be selected.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/CaseActivity2.png" />
+                </p>
+                <h5>Case Definition</h5>
+                <p>An Object Picker that enables you to select the Case definition on which the action will be conducted.</p>
+                <h5>Case Action</h5>
+                <p>The Case Action property consists of a dropdown that identifies the action the activity will take. the available options are:</p>
+                <ul>
+                    <li><b>Take no Case action:</b> No case action will be taken.</li>
+                    <li style="font-weight: bold;">Create a new Case instance: <span style="font-weight: normal;">A new Case Instance will be created for this process, using the selected Case Definition. If this option is selected, the process will automatically be removed from its current case.</span></li>
+                    <li style="font-weight: bold;">Add to an Existing Case Instance: <span style="font-weight: normal;">This option will add the current process as a new item in a specified case instance. If this option is selected, the process will automatically be removed from its current case.</span></li>
+                    <li style="font-weight: bold;">Remove Process from Case Instance: <span style="font-weight: normal;">This option will remove the current process <i>and all attachments</i> from a case instance.</span></li>
+                </ul>
+                <p>If you select either <i>Create a new Case instance</i> or <i>Add to an Existing Case Instance</i> from the <span class="ControlName">Case Action</span> property, the following options will become available:</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/CaseActivity3.png" />
+                </p>
+                <h5>Add Process Attachments to Case</h5>
+                <p>Checking this box will add all attachments to the selected case, unless modified by the <span class="ControlName">Limit objects to these groups</span> property.</p>
+                <h5>Limit objects to these groups</h5>
+                <p>This property will accept a single Group name, or a comma-separated list of Group names to copy only attachments in the specified group(s). Additionally this property enables you to enter <code>"" </code>(double quotation marks) into the property, to return only those objects that have no Group name specified.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/CaseActivity4.png" />
+                </p>
+                <h5>Find Case instance condition</h5>
+                <p>If you select the Add... or Remove... options from the <span class="ControlName">Case Action</span> property, you can identify the specific Case Instance to modify by using the Condition Builder to create a condition set that will return the desired case instance.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Advanced Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/CaseActivityAdvancedTab.png" />
+                </p>
+                <h5>Use Form for Activity</h5>
+                <p>For Process Director v5.1 and higher, this property enables you to choose a specific form definition to use for conditionals using field names. This is useful when you are using multiple form definitions with the process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:conditions="General.Core Training">
+    <head><title>Creating s Sample Form</title>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 1: Form Definitions</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn the basics of creating and editing Process Director forms.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Forms</h2>
+        <p>The <span class="KeyTerms">Form Definition</span> is the Process Director object that identifies all of the properties, fields, events, and conditions that govern the way an Form works. Forms can enable users to input information, present information collected from other sources, control what users participate in the process, and much more. Each Form consists of a number of Process Director controls.</p>
+        <p>A <span class="KeyTerms">control </span>is a user interface object, like a button or text box, that enables you to interact with a Form.  Controls are central to the operation of the Form, because controls enable users to enter or edit information. Many controls, such as text input fields or check boxes, may already be familiar to you.</p>
+        <p>In most cases, a process is initiated when a user fills out and submits an Form. The Form Definition is where where you indicate what process is started when the form is submitted. Forms can, at the user’s discretion, become quite complicated, with multiple processes—or even multiple forms—incorporated into various stages of a process. Users can, therefore, design Forms with an extraordinary degree of flexibility, in order to implement complex processes. We won't be doing a very complicated form for this initial training, but you should be aware that forms are one of the primary, powerful tools for implementing complex intelligent automation applications.</p>
+        <h3>Creating Form Definitions</h3>
+        <p>To create a new Form definition, use the <span class="ControlName">Create New </span>dropdown in the Content List and choose the <span class="ControlName">Form Definition</span> menu item. A user must have Modify permission to the parent folder to create a Form definition. If a user does not have the appropriate permission, the hotlink will not appear.</p>
+        <p>
+            <img src="../../Resources/Images/Training/CreateNew.png" />
+        </p>
+        <p>Once you have selected <span class="UIElement">Form Definition</span> from the Menu, the <span class="ControlName">Create Form </span>dialog box will display. Enter the required name for the form and optionally give it a description.  Finally, click the <span class="UIElement">OK </span>button to create the Form definition. The Form will automatically open in edit mode to display the Online Form Designer.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/eFormDefinitions2.png" />
+        </p>
+        <p>Now that we have a new, blank form, we can begin editing it by adding formatting object like tables, form field controls, and other objects. We are not going to edit the form itself yet, however. Instead, we will open and edit an existing form by adding the controls it needs to function.</p>
+        <h2>Editing Existing Forms</h2>
+        <p>In the sample application provided with this course, there is a subfolder named <span class="ControlName">Student Exercise Folder</span>. Inside this folder is a form that has already been formatted and styled, but contains no controls. This form is named <span class="ControlName">Change of Major Request - Empty</span>. Open this form by clicking on the link in the <span class="ControlName">Name </span>column of the <span class="ProcessDirectorObject">Content List</span>.</p>
+        <p>
+            <img src="../../Resources/Images/Training/FormLink.png" />
+        </p>
+        <p>The form will open to show you the Form Definition. On the left side of the Form Definition, there are a number of tabs that display different configuration options. In this case, since we want to edit the form and add the required controls to it, we need to click on the <span class="UIElement">Edit </span>tab of the Form Definition.</p>
+        <p>
+            <img src="../../Resources/Images/Training/edittab.png" />
+        </p>
+        <p>Once you click on the edit tab, the Online Form designer will display, showing our formatted, empty form. We will not discuss the various formatting or accessibility options that you have at your disposal in Process Director right now, though they will be discussed in a later lesson. For now, we will use our pre-formatted form to add the controls we need to make our application work.</p>
+        <p>
+            <img src="../../Resources/Images/Training/FormattedForm.png" />
+        </p>
+        <h2>Adding Controls to a Form</h2>
+        <p>At the top of the Online Form designer, there are a number of toolbars.&#160;Most of them will be familiar to you if you've used a word processing application, and they control the various formatting options that are available to you. For now, though, we want to concentrate on the bottom toolbar, which contains all of the process Director controls.</p>
+        <p>
+            <img src="../../Resources/Images/Training/FormattedForm1.png" />
+        </p>
+        <p>The most commonly-used controls are displayed in the first 7 icons on the toolbar. The remaining controls are located in the dropdown menus on the bar.</p>
+        <p>To place a control on the page, you first need to move your cursor to the place you'd like the control to appear. For this form, that means you'll need to move your mouse to the table row labeled "Student;" and click in the table cell to the left of the "Student ID:" label.</p>
+        <p>
+            <img src="../../Resources/Images/Training/FormattedForm2.png" />
+        </p>
+        <p>Once the cursor is in the right place, let's add a an <span class="NamedControl">Input </span>control in the cell by clicking on the <span class="NamedControl">Input </span>icon on the toolbar: <img src="../../Resources/Images/Training/FormattedForm6.png" />. Once you've clicked on the icon, the <span class="ControlName">Properties </span>dialog box for the Input control will appear. </p>
+        <p>
+            <img src="../../Resources/Images/Training/FormattedForm9.png" />
+        </p>
+        <p>Every control has its own unique properties that can be configured with the dialog box, but all controls share one important property, the <span class="ControlName">Name </span>property.</p>
+        <p>When you create a control on the Form, Process Director must create a database field to store all of the values that will be stored in that control. This database requirement imposes a a few restrictions on names that are very important to remember. First, all controls on the same form must have unique names. Second, names cannot be more than 64 characters long. Third, and finally, you cannot use any spaces or special characters, other than the underscore (_) or the dash(-) character.</p>
+        <p>For this control, we will give it the name "StudentName". Once we've done so, we can click the <span class="UIElement">OK </span>button, and our settings will be saved, the Properties dialog box will close, and we can see our control places on the page. If we need to make any property changes, we can re-open the <span class="ControlName">Properties </span>dialog box for the control by double-clicking on the control.</p>
+        <p>Now we can continue to add controls. We can click on the table cell to the right of the "Student ID:" label, and add another <span class="NamedControl">Input </span>control. We'll name this control "StudentID", but now let's change the width of the control by setting the <span class="ControlName">Columns </span>property to "7", to make the control seven characters wide. Next, we'll add a another <span class="NamedControl">Input </span>control in the cell next to the "Semester Hours Completed:" label, which we'll name "SemesterHours". We'll also set the <span class="ControlName">Columns </span>property of this control to "3". Now we should have three controls placed on the first row of our table, each of which is appropriately sized.</p>
+        <p>
+            <img src="../../Resources/Images/Training/FormattedForm7.png" />
+        </p>
+        <p>We can now move to the next row of our table. In the cell for the Faculty Advisor's control, let's insert a special control called the <span class="NamedControl">User Picker</span>, by selecting it from the menu labeled <span class="UIElement">Input Controls</span>.</p>
+        <p>
+            <img src="../../Resources/Images/Training/FormattedForm8.png" />
+        </p>
+        <p>The <span class="NamedControl">User Picker</span> control enables you to choose a Process Director user by typing part of the user's name or User ID, and selecting the user that matches what you've typed. Any time you want to select a Process Director user, you should use the <span class="NamedControl">User Picker </span>control. There are a number of different properties available in this control, but for now, all we are going to do is set the name as "FacultyAdvisor", and click the <span class="UIElement">OK </span>button to close and save the properties dialog box.</p>
+        <p>In the next row, which is labeled "Action&#160;Desired:",&#160;we are going to add a <span class="NamedControl">Radio Button List</span> control from the <span class="UIElement">Input Controls</span> menu.</p>
+        <p>
+            <img src="../../Resources/Images/Training/FormattedForm10.png" />
+        </p>
+        <p>The Radio Button List enables you to display a list of selections, of which, only one can be selected. Whatever value you select will be the value saved for the control. There are a number of ways to specify the values you want to display to the user in this control, but for this example, we are going to manually add the items we want.</p>
+        <p>To configure this control, we'll first name it "ActionDesired". Then, in the <span class="ControlName">Items </span>property, we will add three lines of text:</p>
+        <p>NEW PREMAJOR—to declare a new premajor</p>
+        <p>CHANGE FROM PREMAJOR TO MAJOR—for approval to change from premajor to major</p>
+        <p>NEW MAJOR—to declare upper division major</p>
+        <p>
+            <img src="../../Resources/Images/Training/FormattedForm11.png" />
+        </p>
+        <p>While we won't yet see it in the design view, when the form runs, the three items we've placed in the Items properties will appear as radio buttons on the form.</p>
+        <p>
+            <img src="../../Resources/Images/Training/FormattedForm12.png" />
+        </p>
+        <p>In the row labeled "Primary major:", let's add another input control, named "PrimaryMajor". next to that input box, let's type a space, and add a <span class="NamedControl">Checkbox </span>control. The <span class="NamedControl">Checkbox</span> control is a true or false control that is usually used to answer a yes or no question. We can add this control by clicking the <span class="NamedControl">Checkbox </span>icon on the control toolbar: <img src="../../Resources/Images/Training/FormattedForm13.png" />.</p>
+        <p>We'll name this control "MajorChangeApproval", and set the Text property as "Change Approval Required".</p>
+        <p>
+            <img src="../../Resources/Images/Training/FormattedForm14.png" />
+        </p>
+        <p>Once we're done, we can click the OK button to save and close the dialog, and place the control on the page.</p>
+        <p>Our form isn't complete yet, but, for now, let's save the form to ensure we don't lose the changes we've made so far. We can save and close the design view by clicking on the <span class="UIElement">Save and Close Form </span>button on the toolbar: <img src="../../Resources/Images/Training/FormattedForm15.png" />. This will close the Online Form Designer, and return us to the form defintion's properties page.</p>
+        <h2>Summary</h2>
+        <p>In this lesson, we've seen how to create a new form, open an existing form, and adding some form controls to the page. Our form, however, is still not finished. In the student exercise for this lesson, you'll need to add the remaining controls we need to make our form fully functional.</p>
+    </body>
+</html>

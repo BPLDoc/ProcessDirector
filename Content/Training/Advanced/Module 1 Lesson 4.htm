@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="10" MadCap:lastHeight="4870" MadCap:lastWidth="1161" MadCap:conditions="General.Advanced Training">
+    <head>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 4: Adding Knowledge Views to a Form</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn how to add Knowledge View results to a Form.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Knowledge View Control</h2>
+        <p>The <span class="NamedControl">Knowledge View</span> control can be inserted on any Form to display a Knowledge View. The<span class="NamedControl"> Knowledge View</span> control is very useful for displaying information about other processes.</p>
+        <p>In the completed Purchase Request sample project for this training course, there is a Question and Answer subprocess that is incorporated into the Purchase Request sample project. This subprocess is used for participants to ask a question and receive an answer from another user. Because the Q&amp;A process is separate from the main process, the Knowledge View control is a useful way of displaying the conversations in the main Form.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/AddingKviews.png" />
+        </p>
+        <p>The Q&amp;A process is a completely different process from the main sample project, with its own process, Forms, and as displayed above, its own Knowledge Views. Using the <span class="NamedControl">Knowledge View</span> control enables us to display information from the process, and open the<span class="ProcessDirectorObject"> Q&amp;A</span> Form to view it. Additionally, because the <span class="NamedControl">Knowledge View</span> control accepts filter parameters, we can display information in the<span class="NamedControl"> Knowledge View</span> control that is specific to the current user, by filtering the underlying Knowledge Views to display only instances in which the current user was a participant.</p>
+        <p>Let's take a closer look at the Sample project to see how the <span class="NamedControl">Knowledge View</span> controls on the Form,  and their underlying Knowledge Views, are configured.</p>
+        <h3>Configuration</h3>
+        <p>First let's look at the <span class="ProcessDirectorObject">My Outstanding Questions</span> Knowledge View that is located in the <span class="ProcessDirectorObject">Q&amp;A</span> folder of the sample project. The purpose of this Knowledge View is to display unanswered questions that the user has asked about a specific Purchase Request. Opening the definition of the Knowledge View and clicking on the <span class="UIElement">Filter </span>tab shows us the filters that are applied to the Knowledge View.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/AddingKviews1.png" />
+        </p>
+        <p>There are three filters for this Knowledge View:</p>
+        <ol>
+            <li>Show only information from active Q&amp;A processes, i.e., where a question has been asked, but no answer has yet been provided.</li>
+            <li>Show only information from processes that were initiated by the current user, i.e., where the user asked a question to start the Q&amp;A process.</li>
+            <li>Show only records from processes where the Sequence Number of the process matches a Query String named <span class="ControlName">qs_SequenceNumber</span>.</li>
+        </ol>
+        <p>It is the third filter that is important for our configuration setup, because this Query String needs to be provided from the <span class="NamedControl">Knowledge View</span> control on the <span class="ProcessDirectorObject">Purchase Request</span> Form. In the Form template of the <span class="ProcessDirectorObject">Purchase Request</span> Form, the properties dialog box of the <span class="ControlName">KViewMyQuestions </span><span class="NamedControl">Knowledge View</span> control has the settings shown below.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/AddingKviews2.png" />
+        </p>
+        <p>Note that in the<span class="ControlName"> QueryString Parms</span> property, the qs_SequenceNumber value is set to the value of the <span class="ControlName">PRNumber </span>field on the Form. When the Knowledge View runs in the <span class="ProcessDirectorObject">Purchase Request</span> Form, the <span class="NamedControl">Knowledge View</span> control transmits the value of the <span class="ControlName">PRNumber </span>field to the Knowledge View via the<span class="ControlName"> qs_SequenceNumber</span> Query String. In short, the Form uses the Query String to tell the Knowledge View what data to return.</p>
+        <p>A very similar setup is configured between the <span class="ControlName">KViewQuestions </span>Knowledge View control and the <span class="ProcessDirectorObject">Past Q&amp;A Correspondence</span> Knowledge View.</p>
+        <h3>Adding KViews to the Sample Project Form</h3>
+        <p>With the above in mind, let's turn to the working version of our sample project, and recreate the functionality we've just seen.</p>
+        <p>The Q&amp;A sample process has already been built for you, so you don't have to reconstruct it.</p>
+        <p>The Q&amp;A process is located in the Q&amp;A folder of the sample project, and contains the following objects:</p>
+        <ul>
+            <li>
+                <b>Q&amp;A Process Form:</b> This form enables users to ask a question of a selected user.</li>
+            <li>
+                <b>Q&amp;A Email:</b> The email template for Q&amp;A process notifications.</li>
+            <li>
+                <b>Q&amp;A:</b> The workflow for the process.</li>
+            <li>
+                <b>My Outstanding Questions:</b> A Knowledge View that displays the current user's unanswered questions.</li>
+            <li>
+                <b>Past Q&amp;A Correspondence:</b> A Knowledge View that displays all past questions submitted by the current user.</li>
+        </ul>
+        <p>We need to open the <span class="ProcessDirectorObject">Purchase Request</span> eform definition that is located in the <span class="ProcessDirectorObject">Forms </span>folder of the sample project. We need to open the editor to add some new controls to the template.</p>
+        <p>Immediately below the <span class="ControlName">SectionComments </span>section, add a new <span class="NamedControl">Section </span>control. Set the <span class="ControlName">Name </span>of the <span class="NamedControl">Section </span>control to "SectionQuestions", and set the <span class="ControlName">Text </span>property to "Questions about this PR".</p>
+        <p>Now, add a table with two columns and three rows inside the section. In Row 1, column 1, add the text "Ask a Question:". In row 2 of column 1, insert a <span class="NamedControl">Button </span>control and set the <span class="ControlName">Name </span>property to "AskAQuestionButton", and the <span class="ControlName">Text </span>property to "Ask Question". We will configure the button further in the Form definition, after we finish adding the controls to the template.</p>
+        <p>Next, in row 3, column 1 of the table, insert a <span class="NamedControl">Knowledge View</span> control and set the properties shown in the screen shot of the <span class="NamedControl">Knowledge View</span> control's properties dialog for the <span class="ControlName">KViewMyQuestions </span>control displayed above. </p>
+        <p>In row 3, column 2, insert a Knowledge View control and set the properties shown below.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/AddingKviews3.png" />
+        </p>
+        <p>When you are done, save and close the Form template, to check it back in.</p>
+        <p>Once the Form template is checked in, go to the <span class="UIElement">Custom task Event Mapping</span> tab of the <span class="ProcessDirectorObject">Purchase Request</span> Form's definition. Add a <span class="ProcessDirectorObject">Run Process</span> custom task, and set the event for the task to the <span class="UIElement">AskAQuestion </span>button. Click on the <span class="UIElement">Configure </span>button to open the configuration dialog box, and configure the properties to match the samples shown  below.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/AddingKviews4.png" />
+        </p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/AddingKviews5.png" />
+        </p>
+        <p>When you have finished configuring the <span class="ProcessDirectorObject">Run Process</span> Custom Task, click the <span class="UIElement">OK </span>button to close the dialog box and save the configuration. The button is now configured to launch the Q&amp;A process in a separate window when clicked.</p>
+        <p>In our process we don't want to see the Q&amp;A Section until after a new Purchase Request process has started, which means we don't want to see the section when the form is initially filled out by the user. So, on the <span class="UIElement">Form Controls</span> tab of the Form definition, open the field properties for the <span class="ControlName">SectionQuestions </span>control. Set the visbility property as "Field is Hidden When…", then set the condition to "New Form Instance = Yes".</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/AddingKviews6.png" />
+        </p>
+        <p>Click the <span class="UIElement">OK </span>button to close the <span class="ControlName">Form Field Properties</span> dialog box, then update thForm definition to save the configuration changes you just made.</p>
+        <p>You have now finished implementing the Q&amp;A process as a subprocess of the Purchase Request process.</p>
+    </body>
+</html>

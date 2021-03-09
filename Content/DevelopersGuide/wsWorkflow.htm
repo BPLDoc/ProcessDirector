@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer" /><a name="_Toc421270106"></a>wsWorkflow</h1>
+        <p>
+            <MadCap:keyword term="wsWorkflow">&#160;</MadCap:keyword>These web services enable you to manipulate Process Director Workflows programmatically.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowAddToWorkflow"></a><a href="#wsWorkflowAddToWorkflow"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>AddToWorkflow</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="AddToWorkflow">&#160;</MadCap:keyword>This method will add an object to a workflow instance.</p>
+                <h5>Input Parameters</h5>
+                <p><b>WFINSTID:</b> The ID of the Workflow Instance.</p>
+                <p><b>ID:</b> The ID of the object to add.</p>
+                <p><b>Type:</b> ObjectType - The type of object to add.</p>
+                <p><b>Group:</b> The optional group name to add the object into.</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowInstance:</b> The workflow instance which the call ran (or null if an error occurred).</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowAddUsersToStep"></a><a href="#wsWorkflowAddUsersToStep"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>AddUsersToStep</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="AddUsersToStep">&#160;</MadCap:keyword>This method will add user(s) to a specific step instance.</p>
+                <h5>Input Parameters</h5>
+                <p><b>STINSTID:</b> The Workflow Step Instance ID.</p>
+                <p><b>UID:</b> Comma separated list of UIDs to add.</p>
+                <h5>Returns</h5>
+                <p><b>Boolean:</b> True if the operation succeeds.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowAuthenticate"></a><a href="#wsWorkflowAuthenticate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Authenticate</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="Authenticate">&#160;</MadCap:keyword>This method will authenticate webservice requests. Call this method prior to other webservice calls. It will automatically populate the SOAP header with a validation token that enables subsequent webservice calls.</p>
+                <h5>Input Parameters</h5>
+                <p><b>User:</b> The built-in or Windows UserID to use for the context of all calls.</p>
+                <p><b>Password:</b> The password for this UserID.</p>
+                <h5>Returns</h5>
+                <p><b>Boolean:</b> True if the operation succeeds.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AuthenticateJSON"></a><a href="#AuthenticateJSON"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>AuthenticateJSON</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="AuthenticateJSON" />This method will authenticate webservice requests. Call this method prior to other webservice calls. The return is a JSON string with the session ID.</p>
+                <h5>Input parameters</h5>
+                <p><b>User:</b> The built-in or Windows UserID to use for the context of all calls.</p>
+                <p><b>Password</b>: The password for this UserID.</p>
+                <h5>Returns</h5>
+                <p><b>JSON:</b> The Session ID.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Cancel"></a><a href="#Cancel"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Cancel</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="Cancel" />This method will cancel a running Workflow instance.</p>
+                <h5>Input Parameters</h5>
+                <p><b>WFINSTID:</b> The ID of the Workflow Instance</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowInstance:</b> The actual Workflow instance that was canceled, or Null if not found.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowGetWorkflowByWFID"></a><a href="#wsWorkflowGetWorkflowByWFID"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>GetWorkflowByWFID</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="GetWorkflowByWFID">&#160;</MadCap:keyword>This method will get a workflow definition from its WFID.</p>
+                <h5>Input Parameters</h5>
+                <p><b>WFID:</b> The ID of the Workflow Definition</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowDefinition:</b> The actual workflow definition, or null if not found.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowGetWorkflowByWFINSTID"></a><a href="#wsWorkflowGetWorkflowByWFINSTID"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>GetWorkflowByWFINSTID</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="GetWorkflowByWFINSTID">&#160;</MadCap:keyword>This method will get a workflow instance from its WFINSTID.</p>
+                <h5>Input Parameters</h5>
+                <p><b>WFINSTID:</b> The ID of the Workflow Instance.</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowInstance:</b> The actual workflow instance, or null if not found.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowGetWorkflowStepByName"></a><a href="#wsWorkflowGetWorkflowStepByName"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>GetWorkflowStepByName</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="GetWorkflowStepByName">&#160;</MadCap:keyword>This method will return a Workflow Step for a specific workflow instance.</p>
+                <h5>Input Parameters</h5>
+                <p><b>WFINSTID:</b> The Workflow Instance ID.</p>
+                <p><b>StepName:</b> The Workflow Step name to retrieve.</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowStep:</b>&#160; The workflow step, or null if an error occurred.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowGetWorkflowStepBySTID"></a><a href="#wsWorkflowGetWorkflowStepBySTID"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>GetWorkflowStepBySTID</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="GetWorkflowStepBySTID">&#160;</MadCap:keyword>This method will return a Workflow Step for a specific workflow instance.</p>
+                <h5>Input Parameters</h5>
+                <p><b>WFINSTID:</b> The Workflow Instance ID.</p>
+                <p><b>STID:</b> The Workflow Step ID to retrieve.</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowStep:</b> The workflow step, or null if not found.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowInstantiate"></a><a href="#wsWorkflowInstantiate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Instantiate</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="Instantiate">&#160;</MadCap:keyword>This method will instantiate a Workflow Instance from a WFID.</p>
+                <h5>Input Parameters</h5>
+                <p><b>WFID:</b> The ID of the Workflow Definition to instantiate.</p>
+                <p><b>InitiatorUID:</b> The optional UID of the Workflow initiator.</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowInstance:</b> The workflow instance which the call instantiated, or null if an error occurred.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="PostEvent"></a><a href="#PostEvent"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>PostEvent</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="PostEvent">&#160;</MadCap:keyword>This method will post an event to a workflow that is waiting on a Wait step.</p>
+                <h5>Input Parameters</h5>
+                <p><b>WFINSTID:</b> The optional ID of the Workflow Instance to POST.</p>
+                <p><b>EventName:</b> The optional Event Name to post.</p>
+                <h5>Returns</h5>
+                <p><b>Boolean:</b> True if the operation succeeds.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowRemoveUsersFromStep"></a><a href="#wsWorkflowRemoveUsersFromStep"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>RemoveUsersFromStep</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="RemoveUsersFromStep">&#160;</MadCap:keyword>This method will remove user(s) from a specific step instance.</p>
+                <h5>Input Parameters</h5>
+                <p><b>STINSTID:</b> The Workflow Step Instance ID.</p>
+                <p><b>UID:</b> Comma separated list of UIDs to add.</p>
+                <h5>Returns</h5>
+                <p><b>Boolean:</b> True if the operation succeeds.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowRestart"></a><a href="#wsWorkflowRestart"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Restart</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="ReStart">&#160;</MadCap:keyword>This method will restart an existing workflow instance WFINSTID at an optional step STID.</p>
+                <h5>Input Parameters</h5>
+                <p><b>WFINSTID:</b> The ID of the Workflow Instance to restart.</p>
+                <p><b>STID:</b> The STEP ID of the STEP in the workflow definition to restart (optional).</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowInstance:</b> The workflow instance which the call restarted, or null if an error prevents execution of the operation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowRun"></a><a href="#wsWorkflowRun"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Run</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="Run">&#160;</MadCap:keyword>This method will instantiate and run a Workflow Instance from a WFID.</p>
+                <h5>Input Parameters</h5>
+                <p><b>WFID:</b> The ID of the Workflow Definition to run.</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowInstance:</b> The workflow instance which the call ran , or null if an error prevents execution of the operation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowRunWorkflow"></a><a href="#wsWorkflowRunWorkflow"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>RunWorkflow</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="RunWorkflow">&#160;</MadCap:keyword>This method will create and run a new workflow instance and optionally add a workflow object.</p>
+                <h5>Input Parameters</h5>
+                <p><b>PID:</b> The Partition ID or Name.</p>
+                <p><b>PathName:</b> The full path of the workflow definition (e.g. /Workflows/My Workflow).</p>
+                <p><b>ID:</b> The ID of the object to add.</p>
+                <p><b>Type:</b> ObjectType - Place "NotSet" in this field.</p>
+                <p><b>Group:</b> The optional group name to add the object into.</p>
+                <p><b>InitiatorUID:</b> The optional UID of the workflow initiator.</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowInstance:</b> The workflow instance which was created , or null if an error prevents execution of the operation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowRunWorkflowWithForm"></a><a href="#wsWorkflowRunWorkflowWithForm"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>RunWorkflowWithForm</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="RunWorkflowWithForm">&#160;</MadCap:keyword>This method will create a new form instance, a new workflow instance and attach the form.</p>
+                <h5>Input Parameters</h5>
+                <p><b>PID:</b> The Partition ID or Name.</p>
+                <p><b>WorkflowPathName:</b> The full path of the workflow definition (e.g. /Workflows/My Workflow).</p>
+                <p><b>FormPathName:</b> The full path of the form definition (e.g. /Forms/My Form).</p>
+                <p><b>FormValues:</b> The list of name/value pairs to set in the new form instance.</p>
+                <p><b>SkipDefaultValues:</b> Set to true to skip merging default form values the first time the form is viewed.</p>
+                <p><b>Group:</b> The optional group name to add the object into.</p>
+                <p><b>InitiatorUID:</b> The optional UID of the Workflow initiator.</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowInstance:</b> The workflow instance which was created , or null if an error prevents execution of the operation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowSetContextUID"></a><a href="#wsWorkflowSetContextUID"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>SetContextUID</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="SetContextUID">&#160;</MadCap:keyword>This method will set the context UID for all future web service calls. For instance, this UID will be used as the current user for running Knowledge Views, permission checking, etc.</p>
+                <h5>Input Parameters</h5>
+                <p><b>UID:</b> The ID of the user to use for the context of all calls.</p>
+                <h5>Returns</h5>
+                <p><b>Boolean:</b> True if the operation succeeds.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowSetStepDueDate"></a><a href="#wsWorkflowSetStepDueDate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>SetStepDueDate</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="SetStepDueDate">&#160;</MadCap:keyword>This method will set a Due Date for a specific step instance.</p>
+                <h5>Input Parameters</h5>
+                <p><b>STINSTID:</b> The Workflow Step Instance ID.</p>
+                <p><b>dateDue:</b> The Date/Time value to represent the Step's due Date.</p>
+                <h5>Returns</h5>
+                <p><b>Boolean:</b> True if the operation succeeds.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="wsWorkflowwsWorkflowStart"></a><a href="#wsWorkflowwsWorkflowStart"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Start</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="Start">&#160;</MadCap:keyword>This method will start an instantiated Workflow Instance.</p>
+                <h5>Input Parameters</h5>
+                <p><b>WFINSTID:</b> The ID of the Workflow Instance to start.</p>
+                <h5>Returns</h5>
+                <p><b>WorkflowInstance:</b> The actual Workflow Instance.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="10148" MadCap:lastWidth="1103" MadCap:conditions="General.Core Training" style="mc-master-page: url('../../Resources/MasterPages/OtherTopics.flmsp');">
+    <head>
+        <link href="../../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 1: Process Director User Interface</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn the basics of the Process Director user interface.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>User Interface Elements</h2>
+        <p>Process Director’s web interface provides a navigation system at the top of the browser, containing entries that will take users into various components of Process Director. After the initial installation of Process Director you will see a very simple navigation scheme displayed.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/UserInterface.png" />
+        </p>
+        <h3>Workspaces</h3>
+        <p>A <span class="KeyTerms">workspace </span>is a user-defined section of the Process Director interface where related tasks or functions can be grouped. The navigation scheme is separated into two workspaces: the Admin Profile workspace and the User profile workspace.</p>
+        <p>In the default installation, the Admin Profile workspace provides administrative users with buttons that enable the user to navigate to the various user and system administrative functions. The User Profile workspace enables access to the user's task list and standard Knowledge Views.</p>
+        <p>The basic navigation scheme will be expanded through creating new workspaces for different users in the administration section of the Process Director interface. Throughout this guide, you may see screenshots from various installations that have a number of different workspace navigation schemes. The navigation schemes for your particular installation will be quite different once you start implementing the workspaces that are relevant to your processes.</p>
+        <p>All content in Process Director is viewed through the use of Knowledge Views, which define what data in the repository should be displayed. The navigation system also is used to view the Content List, which is available only to users that have been authenticated with the system.  Anonymous users will have access only to specific Knowledge Views, documents and Forms with the appropriate permission.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/UserInterface1.png" />
+        </p>
+        <p>To refresh any of the pages, in the <span class="ProcessDirectorObject">Content List</span> use the refresh   icon on the upper right corner of the navigation browser. Do not use the browser’s default refresh button (e.g., F5 Refresh ), which will return you to the Home Page.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/UserInterface2.png" />
+        </p>
+        <p>Use the properties Icon in the upper right corner of the navigation browser to open the properties page for the current folder.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/UserInterface3.png" />
+        </p>
+        <p>Use the separator icon located in the vertical bar separating the navigation and content portlets to minimize or maximize the navigation portlet.  To restore (redisplay) the navigation bar, click on the same icon.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/UserInterface4.png" />
+        </p>
+        <h3>Menus</h3>
+        <p>When you select a workspace, a menu bar will appear below the workspace that displays the different functions that are accessible in each workspace. Figure 1, above, shows the menu bar that is available in the Admin Profile workspace.</p>
+        <p>Each menu item will, when clicked, direct you to a different screen in the workspace. Each screen may consist of one of the following items:</p>
+        <ul>
+            <li>A pre-defined screen that is an integral part of the Process Director interface.</li>
+            <li>A user-defined Form, Knowledge View, or Report.</li>
+            <li>A user-defined URL.</li>
+            <li>The Content List</li>
+        </ul>
+        <h3>Content List</h3>
+        <p>The Content List displays all of the folders and files that are created in Process Director, or uploaded into Process Director as content. The Content List is a hierarchical list of all Process Director objects. The Content List includes all of the objects created in Process Director, such as Forms, Process Timelines, Knowledge Views, etc. In addition, the Content List can include uploaded files such as Excel spreadsheets used to import data, Word documents used as templates for output documents, and other files that become part of a process definition.</p>
+        <p>The Content List consists of a file structure that is located on the left side of the screen, and a file listing that is displayed on the right side of the screen. Navigation through the Content List is done by clicking on a folder on either side of the screen.</p>
+        <p>Many users think of the Content List as a file system that users can create inside of Process Director, but this isn't really correct. The content list organizes Process Director objects in a logical fashion for users who are browsing through the system, but the actual objects in Process Director are not really organized in the way that the Content List displays.</p>
+        <p>For instance, in a file system, the file name is the key element for identifying a file. Let's say you have a word document named "sample.docx", and you change the name to "NewSample.docx". If you go into Microsoft Word, and try to open the "sample.docx" file from the list of recent files, you will receive a message telling you that the file can't be found. Changing the name of the file changes the identity of the file on your computer, making any references to the old file name invalid.</p>
+        <p>In Process Director, on the other hand, an object's name doesn't affect the identity of the object. Process Director tracks objects by a unique ID that you, as an end user will rarely, if ever, use. The object name is merely an attribute of the object that you can change at will without Process Director losing track of the object. </p>
+        <p>Here's an example that demonstrates how object tracking works in Process Director. In this example, you have a business rule named "My Business Rule" and an Form named "My Form".</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ManagingContent.png">
+            </img>
+        </p>
+        <p>The Form references the Business Rule to determine when to enable the fields on the Form, as shown below.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ManagingContent1.png">
+            </img>
+        </p>
+        <p>Change the name of the Business Rule to "My Original Business Rule".</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ManagingContent2.png">
+            </img>
+        </p>
+        <p>Now, create a new Business Rule named "My Business Rule". This is the same name as the original business rule.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ManagingContent3.png">
+            </img>
+        </p>
+        <p>Note that, even though you have a business rule with the name "My Business Rule", Process Director does not use it as the business rule on the Form. Instead, Process Director has updated the Form definition to show the new name you gave to the original Business Rule. </p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ManagingContent4.png">
+            </img>
+        </p>
+        <p>By the way, you can see the ID that Process Director uses to identify an object by opening the object definition. On an Form, for example, at the bottom of the Form definition screen, you'll see the property for the <span class="ControlName">Form URL</span>, written in a format similar to:</p>
+        <p><code>http://Servername/form.aspx?pid=dc1c51ea-612e-48c0-8cc6-4ff9276cbfc9&amp;formid=aa213c6f-a8aa-454f-a04d-30b56fd2e493</code>
+        </p>
+        <p>The "formid" URL parameter contains the ID that Process Director uses to uniquely identify the Form object, which, in this example, is </p>
+        <p><code>aa213c6f-a8aa-454f-a04d-30b56fd2e493</code>
+        </p>
+        <p>Changing the name of the Form, or any other property, does not change this ID. So, you can identify the Form with a name that is easily readable by humans, while Process Director identifies the Form with this ID, which is easily readable by computers.</p>
+        <h3>Creating Content List Objects</h3>
+        <p>All objects are created from the <span class="ProcessDirectorObject">Content List</span>. A Create New dropdown menu is located at the top right of the <span class="ProcessDirectorObject">Content List</span>. This dropdown menu contains all of the process Director objects you can create. To create a new object, simply select the desired object from the dropdown menu.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/CreateNewDropdown.png" />
+        </p>
+        <p>When you select the desired object, Process Director will immediately display a Create New Object screen, that will display the <span class="ControlName">Name </span>and <span class="ControlName">Description </span>properties for the object.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/NewObjectScreen.png" />
+        </p>
+        <p>The <span class="ControlName">Name </span>property is mandatory, while the <span class="ControlName">Description </span>property is optional. Once you have given the object a <span class="ControlName">Name</span>, you can click the OK button to save the Name and create the new object. If you have configured the <span class="ControlName">Description </span>property, the object's description will appear on the second line of the <span class="ProcessDirectorObject">Content List</span> where the object appears.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/ContentListDescription1.png" />
+        </p>
+        <h4>Content List Object Types</h4>
+        <p>The following <span class="ProcessDirectorObject">Content List</span> objects are available in Process Director.</p>
+        <table style="mc-table-style: url('../../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 85%;" class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p style="text-align: center;">CONTENT LIST OBJECT</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1" style="vertical-align: middle;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #444444;">
+                        <p style="text-align: center;">DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Folder</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The folder is the container for all other Content List objects. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Document/File</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The Content List placeholder for documents that you upload to process director for use as part of a process definition.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Form Definition</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The definition of an electronic form. It stores the Form template, the fields that are created in the template, the user-defined events that are initiated while using the Form, and the validation rules for determining if the information provided in an Form is valid when submitted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Workflow Definition</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A process model that implements the traditional, flowchart-based method of modeling processes.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Knowledge View</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The definition of a view of the process and/or Form data, containing user-defined fields for display in a tabular format.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Business Rule</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The definition for an object that encapsulates a key decision or value used in a business process.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Data Source</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>An object that accesses information found in a database. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Import Objects</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Implements a process to import an XML file containing an exported set of Process Director objects.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>DropDown Object</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The definition of labels and values that will be applied to a dropdown control on an Form.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Timeline Definition</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A process model that implements the patented BP Logix method of implementing a time-based method of modeling processes.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Report</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The definition of a report object that uses the advanced reporting tool. The advanced reporting tool is available to users of cloud-based installations, and on-premise installations that explicitly include the Advanced Reporting module.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Goal</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">The Goal object creates a scheduled evaluation of conditions, and, based on the evaluation, sets a global system state and/or automatically starts a process.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Business Value</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">The Business Value is an object that provides data virtualization for any accessible external data.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Case Definition</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">The Case definition stores the properties/attributes for a Case&#160;Management process. The Properties can be shared across the multiple Forms and processes that might be part of a Case.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Chart</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">The Chart provides a graphical representation for any accessible data.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Dashboard</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">The Dashboard object provides a way to display many different Process Director objects in a single interface.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Organizing Content List Objects</h3>
+        <p>In general, Content List objects are sorted into folders, much like files in your computer's file system. There is no hard and fast method of organizing the folders, except that folders and subfolders should be organized logically. For instance, one possible method of organizing folders is shown below.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/OrganizingContentList.png">
+            </img>
+        </p>
+        <p>In this particular organization scheme, you can see that the folders on the left side of the screen are grouped into business functions such as Audit and Compliance and Document Review &amp; Approval. In the <span class="ProcessDirectorObject">Document Review &amp; Approval</span> folder, you can see the folders are further subdivided into Asset Management and Contract Management. The <span class="ProcessDirectorObject">Asset Management</span> folder is selected, so the Content List on the right side of the example shows all of the objects in the Asset Management folder.</p>
+        <p>The Asset management folder is organized with subfolders to store Business Rules, Forms, KViews (Knowledge Views), etc. The folder also contains the primary Form, entitled <span class="ProcessDirectorObject">Asset Management</span>, for the process.</p>
+        <p>You do not, of course, have to copy this particular method of organization, but you should, as a best practice, define some standard method of organizing your Content List so that all implementers are familiar with how a process should be organized. Another general rule of organization—and implementation in general—is that you should use the fewest number of objects necessary to model and automate your processes.</p>
+        <p>The Content list portlet on the right side of the screen is sortable by column. To sort the items displayed in the Content List, click on the column name. To change the sort from ascending to descending, click on the column name a second time. A small arrow icon will appear next to the column name to show whether you are sorting the column in ascending or descending order.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/OrganizingContentList1.png">
+            </img>
+        </p>
+        <p>Each time you click on the column header, the sorting function will occur automatically.</p>
+        <h3><a name="ManagingObjects"></a>Managing Objects</h3>
+        <p>On the left side of each object in the content list is a check box that can be checked to select one or more objects. When you check one or more of these check boxes, a series of Action Links will appear at the top of the content list that enable you to copy, move, etc. the checked objects.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/OrganizingContentList2.png">
+            </img>
+        </p>
+        <p>The following action links are available.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Move</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking the move link will enable you to move the object, along with its complete configuration, to another location in the Content List. When you click the Move action link, a new set of actions links will appear.</p>
+                <p>
+                    <img src="../../Resources/Images/ImplementersReference/OrganizingContentList3.png">
+                    </img>
+                </p>
+                <p>Simply navigate to the folder into which you'd like to place the object and click the <span class="UIElement">Move Here</span> link to place the moved object into the desired location. Process Director will move the object from its original location to the new location you have selected. You can cancel the move at any time by clicking the <span class="UIElement">Cancel Move</span> link.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Copy</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking the <span class="UIElement">Copy </span>link will copy the basic object definition but <b style="font-style: italic;">not</b> any of the configured custom task event mappings. Just as with the <span class="UIElement">Move </span>link, clicking the <span class="UIElement">Copy </span>link will cause process Director to present you with a new set of Action links.</p>
+                <p>
+                    <img src="../../Resources/Images/ImplementersReference/ContentListOrganizing.png">
+                    </img>
+                </p>
+                <p>Simply navigate to the folder into which you'd like to place the object and click the <span class="UIElement">Copy Here</span> link to place the copied object into the desired location. Process Director will copy the object from its original location and place the copy in the new location you have selected, while leaving the original copy in its place. You can cancel the copy at any time by clicking the <span class="UIElement">Cancel Copy</span> link.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Delete</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>When you click the <span class="UIElement">Delete </span>link, a confirmation dialog box will be displayed to enable you to confirm that you wish to delete the object. Clicking the <span class="UIElement">OK </span>button on the confirmation dialog box will immediately delete the object.</p>
+                <div class="Important">
+                    <img src="../../Resources/Images/i.png" alt="Important" /> When you delete a definition object, like an Form or Process Timeline definition, all of the instances of that object will also be completely removed from the system.</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Export</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking the export link will start the process of exporting the content object. If you have selected a folder to export, all of the folder's contents will be exported, and the folder/subfolder hierarchy will be exported exactly as it appears in the content list. See the <a href="../../ImplementersReference/Importing Exporting Content.htm#_Toc421536092">Importing/Exporting Objects</a> topic for more information about this process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Properties</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking this link will open the properties screen for the selected object.  This option will only appear if a single item is selected in the content list.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Run</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking this link will run the object, i.e., will open an Form for editing, or start a process. This option will only appear if a single item is selected in the content list, and will start a specific action, depending on the object type, as shown below.</p>
+                <table style="mc-table-style: url('../../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 20rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OBJECT&#160;TYPE</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>ACTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Form Definition</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Open a new instance of that form.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Process Definition</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Launch a new instance of that process</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Knowledge View, Dashboard, etc.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>Opens the object in display mode.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Cancel Process</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking this option will cancel a running process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h4><a name="_Toc421536086"></a>Creating Folders</h4>
+        <p>Folders provide a hierarchical structure to content in the database. The system supports folders and sub-folders. Each folder can contain any number of objects or sub-folders. A folder can have any name and may contain an optional description. Folders provide the organizational foundation for your data. They can be used to group related items according to Process Timelines, or structured according to user roles. </p>
+        <p>To create a new folder, use the<span class="ControlName"> Create New</span> dropdown in the content list and choose the <span class="ControlName">Folder </span>menu item. A user must have Modify permission to the parent folder to create a folder.&#160; If a user does not have the appropriate permission, the dropdown will not appear.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/managingContentOrganizing2.png">
+            </img>
+        </p>
+        <h2><a name="_Toc421536087"></a>Managing Documents</h2>
+        <p>Process Director securely stores your documents and files. As an electronic document management system (EDMS), it can store any type of document or file in their native formats. Any file type can be uploaded and managed by the server, including file types such as .PDF, .TXT, .GIF, .JPG, .DOC, .DOCX, .XLS, .XLSX, .PPT, .PPTX, .BMP, .PNG, .ICO, .EPS, .AI, and .TIFF to name a few. Process Director can convert documents or files to a PDF or HTML format; while still maintaining the native file format in the database. Process Director does not provide the document authoring tools; instead it utilizes the native authoring tools you are currently using to create and view your files. The type of document can be viewed by clicking on the item in the content list. The native viewer for the specific document type will be used.</p>
+        <h3><a name="_Toc421536088"></a>Uploading Documents</h3>
+        <p>Documents are added to Process Director database by uploading them from your PC. To add a new document, navigate to the appropriate folder on Process Director where the document should be added. Select the <span class="ControlName">Create New</span> dropdown and choose the<span class="ControlName"> Document / File</span> entry. A user must have Modify permission to the parent folder to add the new document. If a user does not have the appropriate permission, the <span class="ControlName">Create New</span> dropdown will not appear.</p>
+        <p>The optional BP Logix Plug-in makes uploading documents easier and is also needed to have the ability to do a “Check Out and Edit” of the document allowing it to automatically open in the editor specified for that file type. For more information about the BP Logix Plug-in and why you would want to provide this to your users, refer to the chapter named BP Logix Plug-in in this document.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Uploading With the BP Logix Plug-in</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The BP Logix Plug-in makes the process of uploading and/or creating documents easier. When uploading a document with the BP Logix Plug-in installed, a button labeled <span class="UIElement">Check Out and Edit</span> will display which will open the editor associated with that file. </p>
+                <p>
+                    <img src="../../Resources/Images/ImplementersReference/ManagingContentOrganizing.png">
+                    </img>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Uploading Without the Plug-in</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The BP Logix Plug-in is not required to upload documents. You will notice on the following screen that the <span class="UIElement">Check Out and Edit</span> button is not displayed. This will happen when adding a new document without the BP Logix plug-in.</p>
+                <p>
+                    <img src="../../Resources/Images/ImplementersReference/ManagingContentOrganizing1.png">
+                    </img>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536089"></a>Searching For Content</h2>
+        <p>Process Director supports the ability for users to search through the entire database for any object type using a Knowledge View. The list of objects returned that match the search request will be limited to only those that the user has View permission to.</p>
+        <p>Searches may be case sensitive. This is determined by your database in use. If you are using SQL Server, the default is case insensitive. If you are using Oracle, the default is case sensitive.</p>
+        <p>There is an optional search feature called FTS (full-text search). This enables users to search the actual contents of a document for the existence of a word. This support requires SQL Server with FTS enabled. For information on how to enable the full-text indexing on SQL Server, please refer to the <a href="../../SystemAdministratorGuide/Miscellaneous.htm#FullTextSearch">Full-Text Search topic</a> in the Administrator's Guide.</p>
+        <h2><a name="_Toc421536090"></a>Controlling Who Can Create Content</h2>
+        <p>Process Director allows you to control a user’s permission to create content in a folder. It also allows you to determine what type of objects or content can be created. You may only want certain types of users to be able to create objects like workflow definitions and Form definitions. See the <a href="../../ImplementersReference/Permissions.htm">Permissions</a> topic for detailed information on how to set permissions.</p>
+    </body>
+</html>

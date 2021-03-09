@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:conditions="General.Core Training">
+    <head><title>Creating s Sample Form</title>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 3: Configuring a Parent Activity</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn how to configure a Parent activity in a Process Timeline.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Parent Activities</h2>
+        <p>Now that we have a Process Timeline that is associated with our form, it's time to begin configuring the Process Timeline to model our approval process. So, let's open the <span class="ControlName">Change of Student Major</span> Timeline, and double-click Activity 1 to open the <span class="ControlName">Properties </span>dialog box for configuration.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Timelines8.png" />
+        </p>
+        <p>We certainly don't want "Activity 1" to be the name for our activity, so the first thing we need to do is change the <span class="ControlName">Name </span>property to "Approval Loop". Next let's take a look at the <span class="UIElement">Activity </span>tab of the dialog box. If you click on the Activity Type dropdown, you can see that there are a number of activity types listed. For this lesson, we will concentrate on only two types of activity, the Parent Activity, and the User activity, though there are many other activity types. For now, suffice it to say that each activity type has different properties, and will display different configuration tabs in the dialog box. For this first activity, we want to select the <span class="ControlName">Parent </span>activity type. Note that, when you do, the tabs displayed in the dialog box will change to enable you to access the appropriate configuration options for this type of activity.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Timelines9.png" />
+        </p>
+        <p>The Parent activity serves as a container for other activities. All of the activities contained inside a Parent activity are called "Children" or Child activities". In the case of the sample application we're building, the Parent activity will contain all of the User activities that will comprise our approval process as its Children. We're using this activity type because of a special feature found on the <span class="UIElement">Looping </span>tab of the dialog box.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Timelines10.png" />
+        </p>
+        <p>Parent activities can be used to create loops within your Process Timeline. When configured this way, the Children are referred to as a “looping segment”. In other words, a segment of your Process Timeline that iterates, or loops. A looping segment will continuously loop through the child activities until a user-defined condition, or set of conditions, is satisfied.</p>
+        <p>The Looping tab contains three methods for controlling iteration through the child activities, each of which controls some aspect of how the looping segment will work by determining the conditions under which the following actions will occur:</p>
+        <ul>
+            <li>Stop repeating the loop</li>
+            <li>Jump back to the top of the loop</li>
+            <li>Cancel the remaining activities within the segment and stop repeating the loop.</li>
+        </ul>
+        <h3>Creating a Condition</h3>
+        <p>In this particular case, we aren't really concerned with looping over and over, but we do want to exit the approval process if the change request is denied. After all, if the request is denied, there's no need to continue through the approval process. What we want to happen with our process is for the approval process to run once. If the change of major request is granted, the we want to go through all of the required steps in the process. But, if the request is denied in any activity, we want to immediately exit the parent Activity, and end the process.</p>
+        <p>So, of the three property options available to us, we only care about the third property, <span class="ControlName">Cancel the remainder of the loop when condition is met</span>. When you check the box for this property, a <span class="UIElement">Click to create condition...</span> link will appear. This link, when clicked, will open the <span class="ProcessDirectorObject">Condition Builder </span>, which we will use to set a condition that will cause the loop to exit when an approver rejects the request. <span class="KeyTerms">Conditions </span>are true or false statements that are evaluated in order to determine an appropriate response.</p>
+        <p>The <span class="ProcessDirectorObject">Condition Builder</span> that enables you to create conditions to test nearly any value you desire. You will see the <span class="ProcessDirectorObject">Condition Builder</span> in many different places, such as when to make a form field enabled or hidden, or what value to return from a Business Rule. The Condition Builder is usually invoked, as it is in this example, by an action link that is labeled <span class="UIElement">Click to create condition...</span>. Anywhere you see this link, you can open the <span class="ProcessDirectorObject">Condition Builder </span>by clicking on the link.</p>
+        <p>When the Condition Builder has been invoked, you may add a condition by selecting the <span class="UIElement">Add Condition </span>button.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Timelines22.png" />
+        </p>
+        <p>Clicking on the <span class="UIElement">Add Condition</span> button will add a condition row to the Condition builder that we can configure. </p>
+        <p>
+            <img src="../../Resources/Images/Training/Timelines23.png" />
+        </p>
+        <p>In this case, we want to create a condition that will check to see whether the result of any of the child activities we will create contain the word "Deny". If so, we want to exit the loop completely, Since the loop will contain all of our approval User activities, if an approver denies the change, the approval loop will end, and no other approvers will be assigned any tasks.</p>
+        <p>To configure the condition we need to start by clicking the <span class="UIElement">Build </span>button: <img src="../../Resources/Images/Training/Timelines17.png" />. This button open the <span class="ControlName">Choose System Variable</span> dialog box to enable us to select the condition we want to test. From the Menu button in the dialog box, we will select <span class="UIElement">Timeline Activity</span> &gt;&gt; <span class="UIElement">Any Child Activity Result</span>.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Timelines24.png" />
+        </p>
+        <p>Once we have done so, we can click the <span class="UIElement">OK </span>button to save and close the dialog box and return to the <span class="ProcessDirectorObject">Condition Builder</span>. Now, in the <span class="ProcessDirectorObject">Condition Builder</span>, we can see the condition we want to test displayed in the condition box.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Timelines25.png" />
+        </p>
+        <p>Next, we'll select the "Contains" operator from the dropdown, then type "Deny" in the results box. We have now created a condition that will check to see if any of the child activities we will create has a result that contains the word "Deny". If it does, the condition will return "true". Otherwise, it will return "false".</p>
+        <p>
+            <img src="../../Resources/Images/Training/Timelines26.png" />
+        </p>
+        <p>Now that we've configured the condition we want to test, we can click the <span class="UIElement">OK </span>button to close the <span class="ProcessDirectorObject">Condition Builder</span>, and, once we do, we can see our condition is now properly specified in the <span class="ControlName">Cancel the remainder of the loop when condition is met</span> property.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Timelines27.png" />
+        </p>
+        <p>At this point, we've done all the configuration we need to do for the parent activity that will contain our approval loop. So, click the Close button for the Properties dialog box, and update the Timeline by selecting the Update option from the menu button at the top right portion of the screen.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Timelines28.png" />
+        </p>
+        <h2>Summary</h2>
+        <p>In this lesson, we edited our Timeline to create a Parent activity, and set a condition that will govern the operation of our approval loop. Now that we have done so, our next lesson will cover creating and configuring the User activities we will need to model the approval loop for our Change of Major Request.</p>
+    </body>
+</html>

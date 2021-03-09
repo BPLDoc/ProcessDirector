@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="Knowledge Views;Parameters;Knowledge View Parameters;Business Values" />
+            <MadCap:concept term="Implementation" />Knowledge View Parameters</h1>
+        <p>Knowledge Views can be <span class="KeyTerms">parametrized</span>; that is to say, made to return only data that matches a filter value that is passed to the Knowledge View from an external object, like a form or from a URL&#160;Parameter. Indeed, we saw an example of the latter in the <a href="Knowledge View Exporting and Reporting.htm">Knowledge View Exporting and Reporting</a> topic, in the section titled "Passing Filter Values in a URL". In this topic, we will describe the required components for parametrizing a Knowledge View, and how to use a Business Value to call a parametrized Knowledge View, and only return the information that matches the filter we'd like to specify.</p>
+        <h2><a name="Simple"></a>Simple Parametrization <a href="#Simple" class="anchor">#</a></h2>
+        <p>The most common use case for implementing Knowledge View parameters via a Form is through the use of the Knowledge View control. To implement this use case, your Knowledge View must have a parameter filter. For example, we might need to pass a unique number to the Knowledge View to return items that match a specific form or request number. So, we need to pass that unique number through a query string variable. To do so, we'll configure the query string variable in the filter tab of the Knowledge view, to create a query string named "qs_SequenceNumber".</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViewParameter.png" />
+        </p>
+        <p>In the form, once we place the Knowledge View Control on the form, we have to configure the query string in the Knowledge View control's <span class="ControlName">Properties </span>dialog box.</p>
+        <p>In the form, there is a form field called PRNumber that stores a unique request number. We will pass this value to the Knowledge View through the "qs_SequenceNumber" query string by assigning the value of PRNumber form field, using a form field system variable.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViewParameter1.png" />
+        </p>
+        <p>When the form runs, the Knowledge View Control will display only records that are related to the specific request that was created by that form instance.</p>
+        <h3 MadCap:conditions="General.Not Printed">Video Example</h3>
+        <p MadCap:conditions="General.Not Printed">
+            <object MadCap:HTML5Video="true" MadCap:Param_autoplay="false" src="../Resources/Multimedia/kviewparams1.mp4" MadCap:Param_controls="true" MadCap:Param_muted="true" MadCap:Param_loop="true" style="width: 100%;height: auto;border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;">
+            </object>
+        </p>
+        <h2><a name="BV"></a>Parametrization with a Business Value <a href="#BV" class="anchor">#</a></h2>
+        <p>For the purposes of this discussion, we have a simple Knowledge View that returns Form Instances containing some sales data.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViewParms.png" />
+        </p>
+        <p>We want to build a search that uses this knowledge view to return only records for specified customers, so, we need to parametrize the Knowledge view to accept the customer name from an external source, like a form.</p>
+        <p>The first step to parametrizing a Knowledge View is to create the filter parameter you'd like to apply. In the <span class="UIElement">Filter </span>tab of the Knowledge View definition, you need to create a filter that uses a variable to filter the data.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViewParms1.png" />
+        </p>
+        <p>One of the Form Fields in the set of Form Instances we are querying is called CustomerName, and this is the form field upon which we wish to filter. </p>
+        <p>On the left side of the filter condition, add the CustomerName form field, then set the Operator to "Contains". In cases like this, it's a good practice to  use the "Contains" operator so users can a) perform a search using just a part of the customer name, without having to worry about matching the whole name exactly, and b) to return ALL of the records in the Knowledge View if the filter value is blank. On the right side of the condition, set the value to a "Variable". When you do so, a text box will appear that will enable you to enter the variable name you want to create. This name is an arbitrary value, so we are going to name the variable, "Cust". Now that we've set up the variable parameter, we can save and close the Knowledge View.</p>
+        <p>With a Knowledge View that will accept a parameter, we can access filtered data by passing a value to the Knowledge View from another object, using a Query String. A <span class="KeyTerms">Query String</span> is a simple text phrase that passes the parameter value to the Knowledge View, and it's written with a specific syntax:</p>
+        <p><span class="Code">VariableName=Value</span>
+        </p>
+        <p>In the case of our example above, we might have a customer named "Pear Computer". If we wanted to return only sales orders from Pear Computer, therefore, our query string might be:</p>
+        <p><span class="Code">Cust=Pear</span>
+        </p>
+        <p>Of course, in most cases, we won't be able to hard-code in a customer name. Instead, we'll need to pass the customer name via some sort of system variable, based on the value of, say, a form field. So, to do that, let's continue with this sample Knowledge View, and build a more complicated implementation based on it. </p>
+        <p>Let's say that we'd like to create a search form that enables us to enter the customer's name—or, since we're using the Contains operator, the relevant part of a customer's name—and return all the orders from that customer. To build that form, we'll need an input box to serve as the search box into users will enter the name, and an array that contains the rows and fields that the Knowledge View return. Of course, to populate that Array, we'll also need a Business Value that we can bind to the Array to fill out the data.</p>
+        <p>First, let's build the Business Value. We need to create a Business Value that uses our Knowledge View as a data source.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViewParms2.png" />
+        </p>
+        <p>Notice two things about this sample Business Value. First, in the <span class="ControlName">Parameters </span>section of the Business Value, There is a Parameter named "Customer". This is the parameter we will use to pass the customer name  to the Knowledge view. Second, in the <span class="UIElement">Knowledge View Data Source</span> tab, we have specified the Query String to use in the <span class="ControlName">Knowledge View Filter Data</span> property as:</p>
+        <p><code>Cust={PARAM:Customer}</code>
+        </p>
+        <p>This Query String will apply the value of the <span class="ControlName">Customer </span>parameter of the Business Value to the <span class="ControlName">Cust </span>variable we created in the Knowledge View.</p>
+        <p>Finally, of course, we need to create the Business Value Properties that will store the Knowledge View Columns. Once we've done that, our Business Value is complete, so we can save and close it, and create our form, which is pretty simple.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViewParms3.png" />
+        </p>
+        <p>At the top of our form, we have a text box named <span class="ControlName">CustFilter</span>, where we will enter the customer name. Below that, we have the array that will display the rows and fields that will be returned by our Business Value. </p>
+        <p>In the <span class="UIElement">Form Controls</span> Tab of the Form definition, we will make the <span class="ControlName">CustFilter </span>field an Event field, so that the Business Value gets called and changes the data in the Array each time we change the value of the <span class="ControlName">CustFilter </span>field. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViewParms4.png" />
+        </p>
+        <p>As an aside, all of the array's Input controls are disabled from the <span class="UIElement">Form Controls</span> tab as well. Also, the form is set to <span class="ControlName">Show Disabled Fields as Text</span> since we don't want to do any data entry on this form, so we don't need to show the actual Input controls inside the array, just the data they will contain.</p>
+        <p>To bind the array to our Business Value, so that it displays the data we want to see, we need to go to the <span class="UIElement">Set Form Data</span> Tab of the Form definition, and do two things, using the <span class="ControlName">CustFilter </span>event field.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViewParms7.png" />
+        </p>
+        <p>First, every time the <span class="ControlName">CustFilter </span>event fires, we want to empty the array. Otherwise, Process Director will keep appending rows to the array every time we change the <span class="ControlName">CustFilter </span>field. So, the first action that takes place when the <span class="ControlName">CustFilter </span>event fires is to set the value of the Array to a Number, and enter "0" as the number. The value of an array is the number of rows in the array, e.g., an array with a value of "2" will display two rows. By setting the value to 0, we are removing all of the rows in the array, so that the empty array can be refilled with fresh data.</p>
+        <p>The second thing we need to do is to set the values of the array fields to the properties contained in the Business Value. When we do so, the configuration screen will prompt us for the value we want to use as the <span class="ControlName">Customer </span>parameter. In this case, we want to use the <span class="ControlName">CustFilter </span>field to supply the parameter.</p>
+        <p>So, let's take a step back and look at the parametrized architecture we've created.</p>
+        <ol>
+            <li>When we change the value of the <span class="ControlName">CustFilter </span>field in the form, the array will be emptied and the Business Value will be called.</li>
+            <li>When the Business Value is called, the form will pass the value of the <span class="ControlName">CustFilter </span>field to the <span class="ControlName">Customer </span>parameter in the Business Value.</li>
+            <li>The Business Value will pass the value of the <span class="ControlName">Customer </span>parameter, in turn, to the Knowledge View's <span class="ControlName">Cust </span>variable in the Knowledge View Filter. </li>
+            <li>The Knowledge View will create a dataset that is filtered to contain only records where the <span class="ControlName">CustomerName </span>matches the <span class="ControlName">Cust </span>variable's value.</li>
+            <li>The Business Value will fill the form array with the data returned by the Knowledge View.</li>
+        </ol>
+        <p>Assuming that we've configured all of this correctly, we now have a working search form that uses a Business Value and parametrized Knowledge View to display our search data.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViewParms8.png" />
+        </p>
+    </body>
+</html>

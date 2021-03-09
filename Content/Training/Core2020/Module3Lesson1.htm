@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:conditions="General.Core Training">
+    <head>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 1: Introduction to Business Rules</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, we will discuss how to create and use Business Rules.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Business Rules</h2>
+        <p>Process Director incorporates a Business Rules engine that empowers users to rapidly implement more complex business processes. <span class="KeyTerms">Business Rules</span> are reusable objects that evaluate a condition, or a set of conditions, and return a value based on that evaluation. Business Rules commonly return a true or false value, but they can also return a list of users, groups, string values, a single value, or run a custom task. Because Business Rules are reusable, the same Business Rule can be used in many different applications. A Business Rule can be embedded within your Process Timeline or Form to control how it should run and behave in various conditions. For instance, you can show or hide parts of a form, or skip a Timeline activity as not needed, based on the value a Business Rule returns. </p>
+        <p>For example, in our case, we want to build a Business Rule that will help our Process Timeline run properly. We have a Timeline Activity that will enable department approval for a Change of major Request. Not all departments, however, need to approve such a request. We have a <span class="ControlName">Department Approval Required</span> check box on our form that indicates whether or not a department needs to approve the request. If this box is checked, we want the Department Approval activity to run, but if it isn't, we want to skip that activity in our Process Timeline, because it isn't needed.</p>
+        <p>In order to do that, of course, we have to create the Business Rule we want to evaluate to determine whether or not that activity will run.</p>
+        <h2>Creating Business Rules</h2>
+        <p>To create our Business Rule, let's navigate to the <span class="ControlName">Student Exercise</span> folder. We could create our Business Rule here, of course, but, rather than having all of our objects stored in the same folder, we want to impose some organization on our application. While all of the objects in an application should be placed in the same parent folder, it's always a good idea to organize the application to store different supporting objects in their own folders. In a future lesson, we'll cover a number of reasons for doing this, but for now, let's just accept that this organizational method will be useful to us when we have more complex requirements.</p>
+        <p>So, from the <span class="UIElement">Create New...</span> menu, let's select "Folder". This selection will open the <span class="ControlName">New Folder </span>dialog box, enabling us to name the folder "Business Rules". Once we've named the folder, we can click the <span class="ControlName">OK </span>button to save and close the dialog box, and Process Director will automatically place us inside the new <span class="ControlName">Business Rules</span> folder.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Business Rules1.png" />
+        </p>
+        <p>Now that we have the folder to contain our Business Rules, we can, once again, go to the <span class="UIElement">Create New...</span> menu, and this time, we will select "Business Rule". Once again, we will see the Create Business Rule dialog Box. We'll name the Business Rule "Department Approval Required", then click the <span class="UIElement">OK </span>button to save the Business Rule and open the Business Rule definition.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Business Rules2.png" />
+        </p>
+        <p>On the <span class="UIElement">Properties </span>tab of the Business Rule definition, there are two important properties we want to set. </p>
+        <p>First, we need to set the <span class="ControlName">Group in Value Picker</span> property to "Training". Later, when we want to use this business rule, setting this value will create a "Training" menu item in the user interface, which will make it easier to find. We'll discuss this again when we want to use this Business Rule in our Timeline, so, keep it in mind.</p>
+        <p>Next, we need to set the <span class="ControlName">Form Associated with Business Rule (optional)</span> property. Just as we associated the form with the Timeline in the last module to make choosing form fields easier, we need to do the same thing here. This business rule will evaluate a form field value from our <span class="ControlName">Change of Major Request</span> form, so we can use the Object Picker to choose our form by clicking on the <span class="UIElement">Build </span>button (<img src="../../Resources/Images/Training/Timelines17.png" />), then selecting the form from the <span class="UIElement">Choose Form</span> dialog box.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Business Rules3.png" />
+        </p>
+        <p>Selecting the form will set the correct value in the Object Picker. At this point, we want to save our configuration by clicking the <span class="UIElement">Update </span>option on the button menu at the top right corner of the screen.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Business Rules7.png" />
+        </p>
+        <p>Now that we're done with the <span class="UIElement">Properties </span>tab, we can click on the Values tab to configure how we want the Business Rule to work.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Business Rules5.png" />
+        </p>
+        <p>The Returns property determines what value the business rule will return. As mentioned previously, there are a number of different types of value that we can return. In this case, the default property is "Result of Condition". We are going to keep this default value, which will make the Business Rule return "true" or "false", based on the result of the condition we set. This is the most common way to use a Business Rule.</p>
+        <p>All we need to do now is set the <span class="ControlName">Condition </span>we want to evaluate. For this Business Rule, we want the Business Rule to look at our request form, and check to see whether the <span class="ControlName">Department Approval Required</span> field is checked or not.</p>
+        <p>As we saw in the previous module, we can access the <span class="ProcessDirectorObject">Condition Builder</span> by clicking the <span class="UIElement">Click to create condition ...</span> link. In the <span class="ProcessDirectorObject">Condition Builder</span>, click the <span class="UIElement">Add Condition </span>button to create the condition we need to configure.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Business Rules6.png" />
+        </p>
+        <p>By default, the condition is configured to use a form field for the evaluation, which make our job a little easier. All we need to do is click the <span class="UIElement">Build </span>button (<img src="../../Resources/Images/Training/Timelines17.png" />) to open the <span class="ControlName">Choose System Variable</span> dialog box. Because we associated the form with the business rule on the Properties tab, note that the <span class="ControlName">Select Form Field </span>dropdown is already conveniently configured to enable us to choose form fields from our <span class="ControlName">Change of Major Request</span> form.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Business Rules8.png" />
+        </p>
+        <p>We can now choose the Department Approval Required field from the dropdown, then click the <span class="UIElement">OK </span>button to close the dialog box, and return to the <span class="UIElement">Condition Builder</span>.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Business Rules9.png" />
+        </p>
+        <p>Notice that the <span class="ControlName">Operator </span>dropdown has automatically changed to "Checked" as the default value to evaluate. </p>
+        <p>The <span class="ControlName">Operator </span>drodown is dynamic, which means that, depending on the value we select on the left side of the condition, the options in the <span class="ControlName">Operator </span>dropdown will change. Because the Department Approval form field is a <span class="NamedControl">Checkbox</span>, the <span class="ControlName">Operator </span>dropdown gives us the options of:</p>
+        <ul>
+            <li>Checked</li>
+            <li>Not Checked</li>
+            <li>Any Value</li>
+        </ul>
+        <p>If the Form field was a different type of field, we would see different options. For instance, an <span class="NamedControl">Input </span>control would work quite differently.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Business Rules11.png" />
+        </p>
+        <p>For the Semester Hours field, for example, we would see a large number of operators to use to compare the form field on the left side of the condition to some comparison value we would enter on the right side of the condition. If we wanted to create a Business Value that checks to see whether the number of semester hours is greater than 150, we'd use the "&gt;" operator to create the condition "Semester Hours &gt; 150". </p>
+        <p>For the current Business Rule, however, the "Checked" operator happens to be what we want, so we can simply click the <span class="UIElement">OK </span>button to save and close the <span class="ProcessDirectorObject">Condition Builder</span>. When we do, our condition is now set to be evaluated by the Business Rule.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Business Rules10.png" />
+        </p>
+        <p>We are done configuring our Business Rule so we can click the OK menu button to save and close our business Rule. This Business Rule is now ready for use in our Timeline or form.</p>
+        <h2>Summary</h2>
+        <p>In this lesson, we created a Business Rule that we can use to control the operation of our process. In the next lesson, we will take a look at how to apply this Business Rule to our application to change the way it works.</p>
+    </body>
+</html>

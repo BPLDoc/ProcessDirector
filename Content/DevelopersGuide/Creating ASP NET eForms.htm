@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="2" MadCap:lastHeight="3159" MadCap:lastWidth="1200">
+    <head>
+        <title>
+        </title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer" />
+            <a name="_Toc421269946">
+            </a>Creating ASP.NET Forms</h1>
+        <p>
+            <MadCap:keyword term="CREATING ASP.NET EFORMS">
+            </MadCap:keyword>This section will describe how to create and manage a Form, how to set the different variables associated with the Form form fields, and how to implement your custom scripting. You will notice some differences from previous versions such as no more form page refresh, the Forms now utilize AJAX which eliminates the page refresh when using events. Please keep in mind; this is for Form development using ASP.Net. We will not be using the Form builder for this section. </p>
+        <p>For more information about the Form and it’s properties please refer to the Implementers Reference Guide.</p>
+        <h2>
+            <a name="_Toc421269947">
+            </a>Adding a New Form Definition</h2>
+        <p>
+            <MadCap:keyword term="Adding a New eForm Definition">
+            </MadCap:keyword>Process Director can create new eforms as ASCX controls for you. Simply select “Form Definition” from the “Create New” dropdown selection box to open the Create Form screen. </p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/Creating ASP NET eForms.jpg" style="visibility: visible;mso-wrap-style: square;width: 493px;height: 298px;" />
+        </p>
+        <p>You have three options to create the ASCX control from the Create Form screen. You will find the options in the dropdown at the top of the Create Form screen. As a default, this dropdown control already has "Use Empty Word Doc Form" selected. </p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/Creating ASP NET eForms_1.jpg" style="visibility: visible;mso-wrap-style: square;width: 205px;height: 78px;" />
+        </p>
+        <h3>
+            <a name="_Toc421269948">
+            </a>Option 1: Upload Selected Form</h3>
+        <p class="indent1">
+            <MadCap:keyword term="Option 1\: Upload Selected Form">
+            </MadCap:keyword>To create a new Form definition, you will have to create an .ascx page using your development tool. There is one line of code that must be included before you upload your new page. Please copy and paste the following in the first line of your page:</p>
+        <div class="CodeBase">&lt;%@ Control Language="C#" AutoEventWireup="false" Inherits="BPLogix.WorkflowDirector.SDK.bpFormASCX" %&gt;</div>
+        <p>Once you have created your Form you can upload the Form by selecting “Form Definition” from the “Create New” dropdown selection box. You will be presented with a page to browse and select. You will also have the option to provide a definition name and description.</p>
+        <h3>
+            <a name="Option2">
+            </a>Option 2: Use Empty .ASCX Form</h3>
+        <p>If you use this option, Process Director will create an ASCX control that contains only basic code required for the control. The basic code consists only of the document declaration at the top of the page, and a &lt;script&gt; tag that contains the stubs for the common Process Director scripting methods.</p>
+        <p>Once you have created the control, you can use the Check Out and Edit functionality in the Edit tab, and begin working on it in your development environment.</p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/Creating ASP NET eForms_2.jpg" />
+        </p>
+        <h3>
+            <a name="Option3">
+            </a>Option 3: Use Template .ASCX Form</h3>
+        <p>If you use this option, Process Director will create a and ASCX control that contains a sample Form with some controls, formatting styles, and other HTML content, in addition to the page declaration and script stubs.</p>
+        <p>Again, you can edit this form in your development environment after using the Check Out and Edit functionality in the Edit tab.</p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/Creating ASP NET eForms_3.jpg" />
+        </p>
+        <h2>
+            <a name="_Toc421269951">
+            </a>Developing a Form in the .NET environment</h2>
+        <p>
+            <MadCap:keyword term="Developing an eForm in the .NET environment">
+            </MadCap:keyword>There are two ways to develop Forms within Workflow Process Director. The first uses the Form Builder Plugin extension of Microsoft Word documented in the Implementers Reference. The other approach is to develop native ASP.NET forms which is described here.</p>
+        <p>To develop Forms inside Visual Studio, use the fully functional Visual Studio project installed with the product named bpVS.zip. Refer to the sample files eform_*.aspx.</p>
+        <p>This section will provide you the basics of developing your eform in Visual Studio 2008. Developing in this environment requires the knowledge to program in ASP.NET. You will be able to use ASP.NET controls as well as extended controls created by BP Logix.</p>
+        <p>When creating a Form for Process Director, you are actually creating a custom control (.ascx). You create your Form just as if you were creating in the .aspx page. Below you will see the basic structure of the Form.</p>
+        <div class="CodeBase">&lt;%@ Control Language="C#" AutoEventWireup="true" Inherits="BPLogix.WorkflowDirector.SDK.bpFormASCX" %&gt;<br />&lt;script runat="server"&gt;<br /><span class="ControlName">// Add any events here that will be called as part of the Form <br></br>// life-cycle<br></br>// See the Custom Scripting / Form Scripts section for more information</span><br />&lt;/script&gt;</div>
+        <h2>
+            <a name="_Toc421269952">
+            </a>Include Files</h2>
+        <p>
+            <MadCap:keyword term="Include Files">
+            </MadCap:keyword>This enables common functions to be called from other script files. To include a file in your eform use the following syntax:</p>
+        <div class="CodeBase">&lt;!--#include file="~/Custom/MyScripts/script.ascx"--&gt;</div>
+        <p> The .ascx must exist on the server file system and is not controlled by Process Director (via the Content List). A good location for an include file is the /custom/ folder in the Process Director web site installation directory.</p>
+        <h2>
+            <a name="_Toc421269953">
+            </a>Using a .DLL file with Your Scripts</h2>
+        <p>
+            <MadCap:keyword term="Using a .DLL file with Your Scripts">
+            </MadCap:keyword>This is an approach to call code from custom scripts. Developers can make a “normal” .NET .dll and place it into the \Program Files\BP Logix\Workflow Process Director\website\bin folder on the server. Then they can reference the classes in that .dll through any script code in the Process Director application. You can use the GAC, but it is easier to use the bin folder (assuming the code would not be used “outside” of the Process Director environment). DLLs in this folder are accessible only to the Process Director application.</p>
+        <p>In your module placing the public classes into a namespace, such as:</p>
+        <div class="CodeBase">namespace companyname.custom<br />{<br />&#160;&#160;&#160;&#160;public class MyClass()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// … your methods, properties, etc</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;public static void MyFunc()<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}<br />}</div>
+        <p>Then inside a form script call this function using:</p>
+        <div class="CodeBase">companyname.custom.MyClass.MyFunc();</div>
+    </body>
+</html>

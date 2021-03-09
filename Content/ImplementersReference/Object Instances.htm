@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" />Object Instances</h1>
+        <p>So, far, we've talked about Content List objects in terms of object definitions, but now we need to discuss object instances. The purpose of an object definition is to provide a template for how a form looks, and the data it will contain, or what process a Timeline of Workflow will follow. When a user opens a form for submission, or when a process starts, Process Director creates a copy of the object that will be used for that specific form submission, or that specific iteration of the process. Each of these copies are called an <span class="KeyTerms">instance </span>of the form or process. </p>
+        <p>Let's look at a form, for example. The form definition defines what fields will appear on the form, and how the form will look. In other words, the definition specifies they basic structure of all of that form that users will submit. Each individual instance of that form contains all the properties specified for the form, and will also contain all of the data entered into that form for this specific submission. So, each instance of the form contains the data for that specific form submission. Similarly, each instance of a process Timeline contains the basic structure specified in the definition, as well as all of the task start dates, due dates, etc. that occur during that specific run of the process. </p>
+        <p>All Process Director objects that support instances will display those instances in the content list, as child objects of the object definition. For instance, a Form definition will have a node that appears in the Content List when you open the definition, named Form Instances.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Instances.png" />
+        </p>
+        <p>Similarly, A Process Timeline will have two nodes that appear in the content list, Active Timelines (which show all of the Timeline instances that are currently running), and Completed Timelines (which show all of the Timeline instances that have finished).</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Instances1.png" />
+        </p>
+        <p>Object instances have their own properties, which are different than the properties of the object definition. Additionally, each type of instance has a set of properties unique to that instance type, e.g., the properties of a form instance are different than the properties of a Timeline instance. We will describe the Properties of the Form and Timeline instance below.</p>
+        <p>The Object Instances page will display a list of all applicable instances in a knowledge view. Where appropriate, the Knowledge View will contain a Name search filter and <span class="UIElement">Search </span>button to narrow the list of instances to those whose names match the search filter text.</p>
+        <h2><a name="Form"></a>Form Instances <a href="#Form" class="anchor">#</a></h2>
+        <p>When you click on the Form Instances link in the Content List, a list of Form instances will appear.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Instances2.png" />
+        </p>
+        <p>You can use the action buttons above the list of instances to open the form to fill out data by clicking the <span class="UIElement">Fill Out This Form Button</span>, and open the Form definition by clicking the <span class="UIElement">Form Properties </span>button. When you select a check box next to one of the form instances, the action buttons will change.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Instances3.png" />
+        </p>
+        <p>You can delete the instance by clicking on the <span class="UIElement">Delete </span>button. You can export the Form instance by clicking on the <span class="UIElement">Export </span>button. Exporting form instances is rarely done, and the use case for doing so is extremely limited. It's not a feature that you would usually use, but there are some cases where a form can be used to provide configuration data for a process, and you may want to export the instance containing the configuration data from the Development environment to Production. Other than that, though, BP&#160;Logix does not recommend exporting Form instances.</p>
+        <p>Finally, you can view the properties of the Form instance by clicking the <span class="UIElement">Properties </span>button. When you open the properties screen for the Form instance, you will see the tabbed interface common to Process Director objects. The following tabs are available for the Form instance.</p>
+        <h3>Properties Tab</h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ObjectInstances.png" />
+        </p>
+        <p>The <span class="UIElement">Properties </span>tab displays the Form Instance name and Description, along with a <span class="ControlName">Form Properties</span> section that has some basic information about the form instance, when it was created, it's ID, etc. If the instance is associated with a Case definition, the object and all of its children can be removed from the Case instance by clicking the <span class="UIElement">Remove Object and Attachments from Case</span> button. Below that is a <span class="UIElement">View Form</span> button to enable you to view the instance in it's current state, and a <span class="UIElement">View Form Definition</span> button to open the form definition.</p>
+        <p>Below that is a list of all the fields on the form, and the current values stored in each field.</p>
+        <h3>Show Parents Tab</h3>
+        <p>The <span class="UIElement">Show Parents</span> tab displays all of the parent objects, such as running Timelines or Workflows. You can check one of the processes, then click the <span class="UIElement">Properties </span>button to open the <span class="ControlName">Properties </span>screen of the process instance.</p>
+        <h3>Audit Viewer Tab</h3>
+        <p>If the Form definition is configured to audit field changes, the Audit Viewer tab will display all of the field changes that have been made to the form fields, showing the old value, the new value, and the change date and time.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Instances5.png" />
+        </p>
+        <p>The remaining tabs of the Form instance are the common tabs used for all objects, such as Meta Data, Permissions, etc.</p>
+        <h2><a name="Timeline"></a>Timeline Instance <a href="#Timeline" class="anchor">#</a></h2>
+        <p>As mentioned previously, in the Content list, you can view either the running Timeline instances by clicking the<span class="ControlName"> Active Timelines</span> node on the treeview, or you can view Timelines that have finished by clicking the<span class="ControlName"> Completed Timelines </span>node. In the example below, you can see a list of completed Timeline instances.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Instances6.png" />
+        </p>
+        <p>Just as with the Form instances, you can run a new instance of the Timeline by clicking the<span class="UIElement"> Run This Timeline</span> button, or you can open the Timeline definition by clicking the <span class="UIElement">Timeline Properties</span> button.</p>
+        <p>If you select a Timeline instance by checking the box next to the instance name, you see a <span class="UIElement">Delete </span>button to delete the instance, and a <span class="UIElement">Properties </span>button to open the instance properties. A running Process Timeline will have an additional <span class="UIElement">Cancel </span>button that, when clicked, will cancel the running Timeline.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Instances7.png" />
+        </p>
+        <p>Opening the properties of the Timeline instance will display the regular tabbed interface for the instance properties.</p>
+        <h3>Timeline Status Tab</h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ObjectInstances1.png" />
+        </p>
+        <p>You can view the Form associated with the Timeline instance by clicking on the<span class="UIElement"> View Timeline Form </span>button. If the instance is associated with a Case definition, the object and all of its children can be removed from the Case instance by clicking the <span class="UIElement">Remove Object and Attachments from Case</span> button.</p>
+        <p>The remainder of this tab displays the status of the Timeline instance, along with a Routing slip that shows all of the activities that have occurred during the lifetime of the instance.</p>
+        <h3>Administration Tab</h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Instances10.png" />
+        </p>
+        <p>At the top of the <span class="UIElement">Administration </span>tab, there is a series of buttons. </p>
+        <ul>
+            <li>The<span class="UIElement"> View Timeline Form </span>button will open the associated form.</li>
+            <li>The<span class="UIElement"> View Timeline Definition </span>button will open the parent Timeline definition.</li>
+            <li>The<span class="UIElement"> Cancel Timeline </span>button will cancel the running Process Timeline.</li>
+            <li>The<span class="UIElement"> Refresh </span>button will reload the Gantt Chart for the Process Timeline to show its current status.</li>
+        </ul>
+        <p>Each of the Timeline Activities will be displayed in a Gantt chart. Completed activities will be displayed with a green check mark next to the Activity name, while the currently running activities will show a green arrow next to the Activity name. Due dates for each of the activities will be shown by red triangles, which, when moused over, will display the due date information. Each of the bars denoting the Timeline activities will also, when moused over, show the relevant information for the activity.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Instances11.png" />
+        </p>
+        <p>Right-clicking one of the Activity bars will open a pop-up menu that will enable you to view the properties of the activity, cancel it, or restart it.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Instances12.png" />
+        </p>
+        <p>The remainder of the tabs for the Timeline instance are the common tabs available to all objects.</p>
+        <p>For more information about managing Timeline instances, please see the <a href="Process Timeline Managing.htm">Managing Process Timelines</a> topic.</p>
+    </body>
+</html>

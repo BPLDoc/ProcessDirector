@@ -1,0 +1,1334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="CUSTOM TASKS" />
+            <MadCap:concept term="Custom Tasks" /><a name="_Toc421015712"></a>Database Connectors Custom Tasks</h1>
+        <p>Custom tasks in this section perform operations on a live database to Select, Update, Insert, or Delete data. Any operation you specify with these custom tasks will run on the database you select. As such, you should exercise caution using custom tasks that alter the underlying data.</p>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> For security reasons, it is very important that, when using system variables in a SQL statement, you include all of the proper <a href="../SystemVariablesReferenceGuide/Parameters.htm#EncodeTypes">system variable encodings</a> to ensure you protect yourself from possible security issues, like SQL&#160;Injection attacks.</div>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AdvancedFillDropdownFromDB"></a><a href="#AdvancedFillDropdownFromDB"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Advanced Fill Dropdown from DB</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Form Task will automatically fill a dropdown field on the Form with values from an external database using a free-form SQL command. </p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/AdvancedFillDD.png" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>VALUES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Connection</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Manual Connection,<br />[List of Available Connections]</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Allows you to select a preconfigured Data Source object.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>SQL Query</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>SELECT clause from external database.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Field for Dropdown Text</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Required column name from database table to fill dropdown.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>DB Field for Dropdown Value</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Optional dropdown value to use with text.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>If Previous Value Not In List</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Leave value alone<br />Clear the value in the form<br />Add value to the dropdown</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Specify what to do with previous value.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Execute Query only when Dropdown is empty</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Execute Query only when Dropdown is empty.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Execute Query only under this condition</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Execute Query only under this condition.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Dropdown to Fill</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Required dropdown field on form to fill.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>First Entry in Dropdown</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Optional first entry in the dropdown (this is not a value).</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Fill Dropdown Only When Control Changes</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Specify a control that changes to fill the dropdown.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Max number of dropdown entries</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Use “0” for unlimited.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Select value automatically if query returns a single result</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Checking this box will ensure that, if the query only returns a single result, that the result will be automatically selected in the dropdown control.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AdvancedFillDropdownObjectFromDB"></a><a href="#AdvancedFillDropdownObjectFromDB"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Advanced Fill Dropdown Object from DB</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Form Task will automatically fill a dropdown object with values from an external database using a free-form SQL command. </p>
+                <p>
+                    <img src="../Resources/Images/Capture91.png" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>VALUES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Connection</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Manual Connection,<br />[List of Available Connections]</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Allows you to select a preconfigured Data Source object.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>SQL Filter Condition</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>SELECT clause from external database.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Field for Dropdown Text</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Required column name from database table to fill dropdown.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>DB Field for Dropdown Value</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Optional dropdown value to use with text.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Dropdown Object to Fill</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Select the Dropdown object into which the data will be placed.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Add Default Entry in Dropdown</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Optional first entry in the dropdown (this is not a value).</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Fill Dropdown Only When Control Changes</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Specify a control that changes to fill the dropdown.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Max number of dropdown entries</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                                <p>Use “0” for unlimited.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AdvancedFillFieldsFromDB"></a><a href="#AdvancedFillFieldsFromDB"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Advanced Fill Fields from DB</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This custom tasks allows you to fill in a Form's fields either during a process or workflow, or from within the Form itself. Because this is an advanced custom task, you will need to use SQL to request data from the database. Under the “DB Connection” dropdown menu, select the name of the database that you wish to access. Using the “SELECT” SQL command, select the data that you wish to set the field with from the database.</p>
+                <p>
+                    <img src="../Resources/Images/Capture92.png" />
+                </p>
+                <p>
+                    <img src="../Resources/Images/Capture93.png" />
+                </p>
+                <p>Under “Controls to Populate”, you can also select which Database Field you wish to take the information from, as well as which Form Field you can set using that information. Configure the display results to your liking: you can set the number of results returned, the number displayed, etc.</p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Connection</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Manual Connection<br />(List of Available Connections)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Allows you to select a preconfigured Data Source object.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>SQL Command</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>SELECT clause from external database.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Execute Query only under this condition</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Execute Query only under this condition.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Controls to populate</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Database column name and corresponding control to populate</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Message to display if no records are found</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Message to display if no records are found</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Do not clear existing data if no records are found</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Keeps existing field data if no records are returned.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Fill Array with results</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Use with array. Fills array with results returned</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Only return first result</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>If the query returns multiple records, only return the first (control sorting with ORDER BY clauses</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Convert System Variables in results</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>If the query returns system variables, convert them to their values.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="FillDropdownFromDB"></a><a href="#FillDropdownFromDB"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill DropDown from DB</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This custom task allows you to fill a dropdown in a Form with data from a database without having to use SQL. From the “DB Connection” dropdown, select the database that you wish to gather data from. In the “Database Table” dropdown, select the desired table from which you wish to extract data. This dropdown gives you a list of all tables in all databases. The following dropdowns allow you to select specific fields from the database to gather data from.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FillDropdownFromDB.png" />
+                </p>
+                <p>You can also set the conditions under which the Query is executed. Make sure to test your SQL command to make sure it returns results and is properly formatted, if you chose to add a filter. In the Form Details, you can select the dropdown you want filled, as well as other options governing the target dropdown field.</p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Connection</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Manual Connection<br />(List of Available Connections)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Allows you to select a preconfigured Data Source object.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Prepend Schema Name</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>An optional text string to add to the beginning of the database schema name.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Database Table</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Connect to a database table that contains the info</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>DB Field for Dropdown Text</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Select the database column to use as the item name in the dropdown.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Field for Dropdown Value</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Select the database column to use the optional item value.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>SQL Filter Condition</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Specify additional SQL commands like a WHERE or ORDERBY clause.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>If Previous Value Not In List</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Leave value alone<br />Clear the value in the form<br />Add value to the dropdown</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Specify what to do with previous value.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Execute Query only when Dropdown is empty</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Execute Query only when Dropdown is empty.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Execute Query only under this condition</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Execute Query only under this condition.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Use Inline Autocomplete Behavior</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Instead of displaying the control as a traditional dropdown, checking this property will display the dropdown as a Type-Ahead control, enabling you to begin typing a value. As you type, matching values are automatically displayed. This is useful far large dropdowns with many rows of data, enabling you to filter the possible results with a typed value, then select the single value you wish. </p>
+                                <div class="Important">
+                                    <img src="../Resources/Images/i2.png" alt="Note" /> If this property is checked, the Custom Task <b style="font-style: italic;">must</b> be run only on the [View State Init] event for the form.</div>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Dropdown to Fill</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Required dropdown field on form to fill.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Add empty entry to dropdown with this text</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Optional first entry in the dropdown (this is not a value).</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Fill Dropdown Only When Control Changes</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Specify a control that changes to fill the dropdown.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Max number of dropdown entries</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Use “0” for unlimited.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Select value automatically if query returns a single result</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>If only one record is returned from the database, select it automatically.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="FillDropdownObjectsFromDB"></a><a href="#FillDropdownObjectsFromDB"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill DropDown Object from DB</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This custom task enables you to fill a dropdown object  with data from a database without having to use SQL. </p>
+                <p>
+                    <img src="../Resources/Images/Capture90.png" />
+                </p>
+                <p>You can also set the conditions under which the Query is executed. Make sure to test your SQL command to make sure it returns results and is properly formatted, if you chose to add a filter. In the Form Details, you can select the dropdown you want filled, as well as other options governing the target dropdown field.</p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Connection</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Manual Connection<br />(List of Available Connections)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Allows you to select a preconfigured Data Source object.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Prepend Schema Name</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>An optional text string to add to the beginning of the database schema name.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Database Table</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Connect to a database table that contains the info</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>DB Field for Dropdown Text</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Select the database column to use as the item name in the dropdown.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Field for Dropdown Value</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Select the database column to use the optional item value.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Remove Duplicates</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Checking this box removes any duplicate display values from the dropdown list. Uncheck this box to display any duplicates that exist in the database.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>SQL Filter Condition</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Specify additional SQL commands like a WHERE or ORDERBY clause.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>If Previous Value Not In List</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Leave value alone<br />Clear the value in the form<br />Add value to the dropdown</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Specify what to do with previous value.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Execute Query only when Dropdown is empty</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Execute Query only when Dropdown is empty.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Execute Query only under this condition</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Execute Query only under this condition.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Dropdown Object to Fill</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Select the Dropdown object into which the data should be placed.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Add Default entry in Dropdown </p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Optional first entry in the dropdown (this is not a value).</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Max number of dropdown entries</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>Use “0” for unlimited.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="FillFieldsFromDB"></a><a href="#FillFieldsFromDB"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill Fields from DB</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This custom task allows you to set the data in Form fields from a database without the use of SQL. </p>
+                <p>
+                    <img src="../Resources/Images/Capture64.png" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Connection</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Manual Connection<br />(List of Available Connections)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Allows you to select a preconfigured Data Source object. When the manual connection option is chosen, additional configuration fields will appear.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>(Optional) Prepend Schema Name</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Prepend the schema name. This is case sensitive.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Query source tables</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>(List of tables)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>List of database tables from the selected data source. Additional tables can be added by clicking the Add Table button.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Use Alias</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Allows you to rename the tables using an alias. The text box enables you to write the desired alias name.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Remove Duplicate Entries</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Removes duplicates.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Where Filter</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Allows you to select a WHERE clause</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Additional Filter</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>ORDERBY clause from external database.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Execute Query only under this condition</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Execute Query only under this condition.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Controls to populate</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Database column name and corresponding control to populate. Additional controls can be added by clicking the Add Mapping button.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Message to display if no records are found</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Message to display if no records are found.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Fill Array with results</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Use with array. Fills array with results returned.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Max number of results to return</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Use “0” for unlimited.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Only return first result</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>If the query returns multiple records, only return the first (control sorting with ORDER BY clauses</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Convert System Variables in results</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                                <p>If the query returns system variables, convert them to their values.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="SQLCmd"></a><a href="#SQLCmd"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>SQL Command</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Task will execute a custom SQL command on an external database.  This is a very advanced custom task that allows your workflow, Form, or process to submit any kind of SQL query to a database. You can also test the query by clicking the “Execute SQL Command” button, but note that this will actually run the SQL Operation on the live database.</p>
+                <p>
+                    <img src="../Resources/Images/SQLCommand.png" alt="SQL Command" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Connection</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Manual Connection<br />(List of Available Connections)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Allows you to select a preconfigured Data Source object.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Description of command</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Brief description of what the command does.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>SQL Command</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>T-SQL statement to run on the external database.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Execute Query only under this condition</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                                <p>Execute Query only under this condition.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="RuleQuery"></a><a href="#RuleQuery"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Rule Query from DB</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Task will execute a custom SQL command on an external database in the context of a Business Rule.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/RuleQueryfromDB.png" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Connection</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>List of Available Datasources</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Allows you to select a preconfigured Data Source object. </p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>(Optional) Prepend Schema Name</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Prepend the schema name. This is case sensitive.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Query source tables</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>(List of tables)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>List of database tables from the selected data source. Additional tables can be added by clicking the Add Table button.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Use Alias</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>A check box that enables you to rename the tables using an alias. The text box enables you to write the desired alias name.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Add Row Button</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Adds a new row of query source tables</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">DB&#160;Field</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">(List of all available database fields)</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Select the field that contains the desired results.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Return Type</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>String<br />Number<br />Date/Time<br />User<br />Group</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The data type of the query result.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Handling Multiple Results</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Only return first item in result set</p>
+                                <p>Return entire result set ia list</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to return only the first result, or a list of all results found by the query.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">SQL&#160;Condition</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">Enables you to add a SQL&#160;WHERE clause to filter your query results.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AdvRuleQuery"></a><a href="#AdvRuleQuery"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Advanced Rule Query from DB</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Task will execute a custom SQL command on an external database in the context of a Business Rule.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/AdvRuleQueryfromDB.png" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>DB Connection</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>List of Available Datasources</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Allows you to select a preconfigured Data Source object. </p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>SQL&#160;Query</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>A valid SQL&#160;statement to return data from the selected datasource.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Query source tables</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>(List of tables)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>List of database tables from the selected data source. Additional tables can be added by clicking the Add Table button.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">DB&#160;Field</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">(List of all available database fields)</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Select the field that contains the desired results.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Return Type</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>String<br />Number<br />Date/Time<br />User<br />Group</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The data type of the query result.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Handling Multiple Results</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Only return first item in result set</p>
+                                <p>Return entire result set in a list</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Enables you to return only the first result, or a list of all results found by the query.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="FillDrodownObjFromBV"></a><a href="#FillDrodownObjFromBV"><img src="../Resources/Images/link.png" alt="Link" /></a>Fill Dropdown Object from a Business Value</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Timeline custom task will enable you to fill the items in the Dropdown Object from a Business Value.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FillDrodownObjectfromBV.png" />
+                </p>
+                <h3>Configuration Options</h3>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Dropdown Object</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Content Picker</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Enables you to select a dropdown object to fill. </p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Default Entry</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Enter the optional default option you'd like to display.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Maximum Number of Entries</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Enter the optional maximum number of entries to place in the dropdown object.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Business Value</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Content Picker</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Enables you to select a Business Value to use to fill the Dropdown object. </p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Property for DropDown Text</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The field returned by the Business Value that you'd like to display to the user as an option.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Property for DropDown Value</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2" style="font-weight: bold;"><span style="font-weight: normal;">The field returned by the Business Value that you'd like tosave as the field's value.</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

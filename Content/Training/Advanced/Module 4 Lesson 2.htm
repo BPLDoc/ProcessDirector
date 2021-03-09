@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="10" MadCap:lastHeight="3933" MadCap:lastWidth="1161" MadCap:conditions="General.Advanced Training">
+    <head>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 2: Importing Users, Content, and Other Objects</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn the best practices for importing and exporting between development, test, and production systems.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Importing and Exporting Objects</h2>
+        <p>Process Director allows groups of objects (folders, documents, workflow definitions, etc.) to be exported or imported as a single XML file. This is needed when copying an implementation of a process/Process Timeline from a test system to a production server or importing Custom Tasks in to your system. It can also be used to backup entire Process Timelines as you are working on them. To export objects, check off the box next to the names of the files you wish to export, and click the “Export” action.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/ExportLink.png" />
+        </p>
+        <p>To import an XML file, first navigate to the place in the Content List where you want the imported item to appear. Next, select Import Objects from the Create New dropdown located in the upper right portion of the Content List screen. </p>
+        <p>Content items and Meta Data must be exported separately.</p>
+        <h2>Copying Objects</h2>
+        <p>To create a copy of a folder within the content list, first export the folder using the process described above. Doing so will create an XML file containing the exported information.&#160; </p>
+        <p>Next, import the XML file that you just created. When the import screen appears, check the box labeled "Create copy of imported object (this is only supported for exported XML files that contain a single top-most object being exported)". This will import the xml file as a copy of the existing item. If you do not select the checkbox, the import will overwrite the existing item.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/ImportDialog.png" />
+        </p>
+        <p>Please note that this "create copy" feature will only work when importing an XML file that contains either a single folder as a top-level object, or a single content list object. If you wish to import multiple Content List objects, therefore, they must be exported in a folder, not as a collection of individual objects. The exported folder can then be re-imported as a copy.</p>
+        <p>As a quick example, if your original folder is called "vacation request", the XML file you create through export will be called "vacation_request.xml", and the new content list folder you create through importing the XML file will be called "vacation request copy".</p>
+        <h2>Importing / Exporting Users Using Excel</h2>
+        <p>Users in Process Director can be exported to and imported from a Microsoft Excel spreadsheet. To export Process Director’s users to an Excel file, first ensure that you are logged in as an administrator. Navigate to the “User Administration” tab of the “IT Admin” page and click on the “Export Users” link. If you only wish to export specific users, you can select those users by clicking the checkboxes next to their names, and then clicking “Export Users”.</p>
+        <p>
+            <img src="../../Resources/Images/Capture179.png" />
+        </p>
+        <p>The result excel file should contain information about the users on this Process Director installation, and should look like this:</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/Managing Content_24.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>You can also include other columns that contain additional information about the user, such as contact information and information about the user’s role in the company.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/Managing Content_25.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>The Manager field can refer to the Manager user’s User ID, or Process Director’s internal oUID for that user.</p>
+        <p>We can then edit much of the information on the Excel file. We can change the names of the users in the UserName column, or their email addresses in the EmailAddress column. The Culture column specifies which language and time format and number format the user will view, and the TimeZone column specifies the user’s time zone, using <a href="http://technet.microsoft.com/en-us/library/cc749073(v=ws.10).aspx"><span class="Hyperlink">.NET’s list of time zones</span></a>. The column values for some common time zones are as follows:</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li style="list-style-type: disc;">Pacific Standard Time (US and Canada West Coast, GMT-08:00)</li>
+            <li style="list-style-type: disc;">US Eastern Standard Time (United States East Coast, GMT-05:00)</li>
+            <li style="list-style-type: disc;">Greenwich Standard Time (UK, GMT)</li>
+            <li style="list-style-type: disc;">Central Europe Standard Time (Central Europe, GMT+01:00)</li>
+            <li style="list-style-type: disc;">Tokyo Standard Time (Japan, GMT+09:00)</li>
+            <li style="list-style-type: disc;">AUS Eastern Standard Time (Australian East Coast, GMT+10:00)</li>
+        </ul>
+        <p> You also disable the user and specify the date and time of his most recent log in. AuthType determines how the user authenticates, whether it’s through Windows, Process Director, or another method. The Groups column is a comma-separated list of columns to which the group belongs. UserIDs identify the users: they must be unique, as each different UserID specifies a different user.</p>
+        <p>After creating or editing an Excel file, we can import it into Process Director at the same page from which we exported the Excel file. After navigating to the<span class="UIElement"> User Administration</span> tab of the IT Admin page, click on the “Import Users” link.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/ImportUsersDialog.png" />
+        </p>
+        <p>To import users, specify the name of the sheet in the Excel file that contains information about the users. By default, the name of this sheet is “Users”, and an Excel file created by Process Director will store the user data in a sheet called “Users”.</p>
+        <p>Checking the “Create groups as needed during import” checkbox will automatically create groups for any group specified in the Excel file that does not currently exist in Process Director. If this checkbox is checked, and I add a user to a group that doesn’t exist, that group will be created upon import.</p>
+        <p>Checking the “Remove users from groups not listed in import file” checkbox removes users from groups unless it is specified in the file that they belong to that group. So, if in Process Director I have a user, Administrator, belong to groups “admin” and “group2”, and I import a file that just specifies that the Administrator user belongs to the group “admin”, then so long as this checkbox is checked, the user Administrator will be removed from group2 on import. Nothing happens to the group itself, but any user whose membership to that group is not specified in the Excel file will be removed from that group.</p>
+        <h2>Importing Custom Tasks</h2>
+        <p>Custom Tasks may be periodically updated. To ensure proper installation and upgrade of these custom tasks review the following procedures:</p>
+        <p>Do not delete the current Custom Tasks unless you are sure you want to delete them. Deleting custom tasks will remove all custom task event mappings to any objects in the partition. </p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="1">
+            <li>To import custom tasks ensure that you are not inside of the Custom Tasks folder unless they are individual custom tasks.</li>
+        </ol>
+        <p>Navigate to the root of the location of the Custom Tasks folder it should look like the following:</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/CustomtasksFolder.png" />
+        </p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="2">
+            <li>Continue to import the custom tasks by selecting Import Objects from the Create New dropdown. Once you have selected the .xml file to import click Ok. This will import and overwrite the current Custom Tasks. </li>
+        </ol>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/ImportDropdown.png" />
+        </p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="3">
+            <li>Ensure that there are no duplicate Custom Task folders.</li>
+            <li>You have successfully updated your custom tasks.</li>
+        </ol>
+        <p>_____</p>
+        <p><sup>1</sup> GUIDs generated from random numbers are so large that the probability of the same number being generated randomly twice is negligible. Assuming uniform probability for simplicity, the probability of one duplicate would be about 50% if every person on earth owned 600 million GUIDs. (Wikipedia)</p>
+        <p><sup>2</sup> In mathematics and computing, hexadecimal (also base 16, or hex) is a positional numeral system with a radix, or base, of 16. It uses sixteen distinct symbols, most often the symbols 0–9 to represent values zero to nine, and A, B, C, D, E, F (or alternatively a, b, c, d, e, f) to represent values ten to fifteen. (Wikipedia)</p>
+    </body>
+</html>

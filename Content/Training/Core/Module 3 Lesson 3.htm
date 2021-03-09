@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="7533" MadCap:lastWidth="1141" MadCap:conditions="General.Core Training">
+    <head>
+        <link href="../../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 3: Business Values</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn the basics of configuring a Business Value.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Data Virtualization</h2>
+        <p>Process Director enables implementers to retrieve and manipulate  data from external sources, such as HR, ERP, or CRM systems, without requiring implementers "to know technical details about the data, such as how it is formatted or where it is physically located", a technique known as <span class="KeyTerms">Data Virtualization</span>. <i>(Data virtualization, 2015, July 6, In "Wikipedia, The Free Encyclopedia", Retrieved 20:30, August 17, 2015.)</i>  One such method of Data Virtualization, for users of Process Director v3.49 and above, is through the use of Business Values. Using Business Values, Process Director can take data from external systems of record and make it available to implementers for use in managing or directing processes. Business values, therefore, enable you to drive your applications with real-time data. They are updated whenever they are used; that is, each time a form or process references a specific business value, Process Director retrieves the associated external value.</p>
+        <p>At any given moment there may be hundreds, thousands, even millions of processes underway in your organization, each of them depending on business data. For those processes—many of which operate in the form of custom business applications—to succeed, the information they access must be up-to-date and accurate. Such information may be generated in the course of the process itself (for example: the item(s) the customer is ordering), or may be found in the company’s systems of record (for example: the customer’s outstanding invoice(s)). The data stored in the systems of record thus become a vital component of the applications that facilitate all of the organization’s business activities. Such applications are often referred to as systems of engagement, because they enable employees, customers, and others to engage directly in the business at hand.</p>
+        <p>It’s clear, then, that systems of engagement, such as business applications, need a way to exchange information with systems of record. And yet, if your business applications are being built by citizen developers, it may not be easy for those individuals to access and manipulate such data. After all, systems of record, databases, and external data sources (such as web services) are complex: extracting data from them often requires detailed technical knowledge of query mechanisms, APIs, or programming languages.</p>
+        <p>Process Director addresses these issues by separating the details of accessing systems of record from using the resulting data within a business application. As a result, technical experts can configure the appropriate access mechanism once, and implementers can reuse the information provided anywhere at all within the application, without having to know or understand how the information was obtained. An implementer may also, on occasion, create a business value that references only internal data from Process Director, such as a calculation based on a knowledge View. In either case, once configured, a Business Value is universally available to implementers.</p>
+        <p>A fundamental advantage of using a Business Value is that any changes to how the Business Value is derived are transparent—and largely irrelevant—to the implementer. If the organization changes to a different CRM or HR system the Business Value can be reconfigured to use data from the new system without implementers having to make changes to existing processes.</p>
+        <p>A Business Value can extract a single value, or a list of values such as those in a database table. In the context of a Form, for example, a Business Value can be used to fill out a form Array with a recordset from an external database.</p>
+        <h3>Business Value Parameters</h3>
+        <p>An even more powerful way of using Business Values is to use parameters to return values dynamically for use in your processes. Previously, instead of a Business Value, you would need to create a Custom Task step in your process, or Use a custom task in a Form, to return data values to fill fields. As a result, you might have several Custom Tasks, spread out among several projects, all of which were essentially configured exactly the same. Any change to the database schema, would require making changes to every single one of those Custom Tasks, making updates tedious, and costly in terms of time and effort. While there are certainly times that a database Custom Task will still be needed, the Business Value can replace a Custom task in many use cases.</p>
+        <p>Let's take a look at a hypothetical case. We will assume that we have a database table that stores vendor information. We can create a Business Value to provide that information. Let's look at how such a Business value might be configured.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/BusinessValues1.png" />
+        </p>
+        <p>The SQL Command for this Business Value retrieves records for our vendors. If no <span class="ControlName">Vendor</span> parameter is supplied, the command will simply pull every vendor record. If the <span class="ControlName">Vendor</span> parameter is supplied, Business Value will return only a single record. In other words, the same Business Value can return a single or scalar value based on the parameter. For each record returned, the Business Value uses the database columns to create several properties that all contain values extracted from the database</p>
+        <p>Once we have created the Business Value, it's accessible by all other objects in Process Director. None of your business users or other implementers need to know anything about how the data is configured to use the business value, because the Business Value properties are available through the condition builder dropdowns. They merely need to select the properties they want.</p>
+        <p>For instance, let's say there's a Form that has a dropdown control for picking a vendor. Using the Business Value, you can automatically fill some Form fields with the vendor's address and contact information by using the dropdown's value as the <span class="ControlName">Vendor </span>parameter, and passing the parameter to the Business Value.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/BusinessValues2.png" />
+        </p>
+        <p>Once the Business Value exists, implementers no longer need to create a Custom Task to retrieve the data. They no longer need to know or care about the database schema or the SQL syntax to retrieve the data they want. All they need to do is set the Business Value property they want, and in the case of the example above, pass the correct parameter to it. This functionality greatly reduces the level of technical knowledge that business users and implementers need to conduct relatively sophisticated data retrieval operations. With Business Values, technical details about the data, and how to acquire it, is largely irrelevant to implementers. The only person who needs to have any sort of technical knowledge about the database is the creator of the Business Value itself.</p>
+        <p>In addition to retrieving data from an external database, a Business value can also return data from a Knowledge View, or from a REST&#160;web service.</p>
+        <p>When returning data from a Knowledge View, a Business Value  can perform the calculations on Knowledge View Columns that return numeric values:</p>
+        <ul>
+            <li>
+                <b>Column Data:</b>&#160;The actual data in each row.</li>
+            <li>
+                <b>Sum:</b> Returns the sum of all the values in the column.</li>
+            <li>
+                <b>Average:</b> Returns an average of all the values in the column.</li>
+            <li>
+                <b>Min:</b> Returns the lowest value in the column.</li>
+            <li>
+                <b>Max:</b> Returns the highest value in the column.</li>
+            <li>
+                <b>Average (ignore 0 values):</b> After eliminating the rows that contain a value of 0 or null, returns an average of all the remaining values in the column.</li>
+            <li>
+                <b>First:</b> The value in the last row of the column..</li>
+            <li>
+                <b>Last:</b> The value in the First row of the column..</li>
+            <li>
+                <b>Distinct:</b> Only the Distinct values in the column, without any repetitions of the same value.</li>
+        </ul>
+        <p>
+            <img src="../../Resources/Images/Training/Core/BusinessValues5.png" />
+        </p>
+        <p>When returning Values from a REST web service, the Business Value uses XPath to enable you to specify the XML path to the value in the Web Services. For example, let's assume a REST&#160;service returns the following results:</p>
+        <div class="CodeBase">&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br />&#160;&#160;&#160;&#160;-&lt;results&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;-&lt;result&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;zip&gt;92140&lt;/zip&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;city&gt;Mcrd San Diego&lt;/city&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;state&gt;CA&lt;/state&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;/result&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;-&lt;result&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;zip&gt;92101&lt;/zip&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;city&gt;San Diego&lt;/city&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;state&gt;CA&lt;/state&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;/result&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;-&lt;result&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;zip&gt;92102&lt;/zip&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;city&gt;San Diego&lt;/city&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;state&gt;CA&lt;/state&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;/result&gt;</div>
+        <p>The Business Value would use the following configuration to retrieve the results from the REST service.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/BusinessValues3.png" />
+        </p>
+        <h3>Configuring a Business Value</h3>
+        <p>To create a new Business Value, navigate to the folder into which you want to create the value, then select "Business Value" from the <span class="ControlName">Create New</span> dropdown in the upper right corner of the Process Director screen.</p>
+        <p>The Create Business Value screen will appear. Enter a name in the <span class="ControlName">Business Value Name</span> field, then click the <span class="UIElement">OK </span>button to save the new Business Value and open the definition.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/BusinessValues6.png" />
+        </p>
+        <p>In the <span class="UIElement">Properties </span>tab, be sure to set the Group in Value picker property to specify the menu group in which the Business Value will appear in the System Variable dropdown menus. . This property enables you to organize Business Values into logical groups that will display as submenus in the properties dropdown menus that display in the Condition builder and elsewhere. This feature operates in the same way as it does for Business Rules.</p>
+        <p>In the <span class="UIElement">Configure </span>tab of the definition, there is a tabbed section that specifies the different types of Business Value you can create. You can create a SQL, Knowledge View and/or a REST Business Value. In most cases, you will choose a single data source, but you can have multiple values extracted from different data sources. We will address each type of data source individually.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/BusinessValues7.png" />
+        </p>
+        <h4>SQL&#160;Data Source</h4>
+        <p>The<span class="UIElement"> SQL Data Source</span> tab enables you to select a Datasource object that connect to some SQL&#160;data in any SQL-compliant database, e.g., SQL&#160;Server, Oracle, etc. Using that Datasource, you can provide a SQL Command to returning data from the SQL database.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/BusinessValues8.png" />
+        </p>
+        <p>The following properties are configurable:</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Please Choose Data Source</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A Content Picker control that enables you to pick the Datasource from which the data will be extracted.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SQL Command</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enter the SQL command that will select the data to be set as the business value. While the system will accept any valid SQL command, BP Logix very strongly recommends that you limit the use of Business Values to SELECT commands. Updating, deleting, and inserting data should be done separately, through the appropriate Custom Task/Datasource, such as the <span class="ProcessDirectorObject">SQL&#160;Command</span> Custom task.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h4>Knowledge View Data Source</h4>
+        <p>The <span class="UIElement">Knowledge View Data Source</span> tab enables you to select a Knowledge View and apply a filter for returning data from a Knowledge View.</p>
+        <p>All Knowledge View columns are available to the Business Value, including those that are marked not to display in the Knowledge View Definition.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/BusinessValues9.png" />
+        </p>
+        <p>The following properties are configurable:</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Pick KView</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A Content Picker control that enables you to pick the Knowledge View from which the data will be extracted.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Knowledge View Filter Data</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enter the filter parameters in this text box to filter the data returned from the Knowledge View.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Execute Knowledge View under this user context</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A User Picker control that enables you to pick the user under whose permissions the Knowledge View will be run. Since regular users may not have permissions to view the Knowledge view, you must pick a user who has appropriate permissions to run the Knowledge View. This will enable users with a lower permissions level to access the Knowledge View data for the Business value.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h4>REST Data Source</h4>
+        <p>The only configurable property for the REST data source is the <span class="ControlName">REST&#160;URL</span>, which specifies the URL of the REST&#160;service, and any required URL parameters needed to return the desired REST data.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/BusinessValues10.png" />
+        </p>
+        <h4>Properties Section</h4>
+        <p>Once you have selected the appropriate data source for the Business Value from the configuration tabs, you can fill out this section by adding the properties that contain the desired Business Value or Values. Simply click the Add Property button to add a value property. The value property contains a number of fields that must be configured, and different data sources will have different configuration fields displayed, as shown below.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/BusinessValues13.png" />
+        </p>
+        <table style="width: 100%; mc-table-style: url('../../Resources/TableStyles/Simple.css'); margin-left: 0; margin-right: auto;" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 16rem;" />
+            <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">PROPERTY</th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">OPTIONS</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">DESCRIPTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Property Name</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">The property name will appear as the Business Value property when selecting Business Values from the Condition Builder dropdown menus.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Property Type
+
+</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Database Column
+<br />Number of Database Rows
+<br />Knowledge View Column
+<br />Number of Knowledge View Rows
+<br />System Variable
+</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">The type of object from which the value is extracted.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Property Value (SQL)</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Enter the name of the database field into the <span class="NamedControl">Input </span>box.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Property Value (Fields)</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">List of available fields</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">This dropdown control appears when the Knowledge View column Property Type is selected. It will contain a list of Knowledge View columns from which you can select the desired column containing the value.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Property Values (Aggregation)</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">List of available aggregation methods</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">This dropdown control appears when the Knowledge View column Property Type is selected. It will contain a list of aggregation functions (Sum, Average, etc.) that can be performed on the selected field.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Property Value (REST)</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">&#160;</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">Enter the XPath to the XML node that contains the desired data, e.g., "results/result/ZipCodes"</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>The properties returned by the Business Value can be ordered by using the buttons with the Up and Down arrow icons, and deleted by clicking the button with the red "X" icon.</p>
+        <p>Click the <span class="UIElement">OK </span>menu button to save and close the Business Value definition.</p>
+        <p>When a Business Value has been saved, its properties can be accessed in the Condition Builder via the system variable dropdown menu.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/BusinessValues14.png" />
+        </p>
+        <h3>Other Usages</h3>
+        <p>Once a Business Value has been created, it can be selected as a content type from the Content Picker control when creating Form templates. Business Values can also be accessed through a System Variable, using the following syntax:</p>
+        <p>
+            <code>{BUSINESS_VALUE:BusinessValue.Name, $ParameterName=Value}</code>
+        </p>
+        <p>The Business Value will also be correctly returned using the alternate syntax options below:</p>
+        <p>
+            <code>{BV:BusinessValue.Name}</code>
+        </p>
+        <p>
+            <code>{BIZVAL:BusinessValue.Name}</code>
+        </p>
+        <p>
+            <code>{BUSINESSVALUE:BusinessValue.Name}</code>
+        </p>
+    </body>
+</html>

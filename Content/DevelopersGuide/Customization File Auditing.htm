@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer" /><a name="_Toc421270083"></a>
+            <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword>Auditing Custom Variables</h1>
+        <p>You can alter some of the auditing functions of Process Director by editing the custom variables listed in this section.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fAuditFormAPICalls"></a><a href="#fAuditFormAPICalls"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAuditFormAPICalls</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fAuditFormAPICalls">&#160;</MadCap:keyword>This variable, when set to false, prevents Process Director from auditing form field changes made by API calls.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fAuditFormAPICalls = true;<br /><span class="ControlName">&#160;&#160;&#160;&#160;// if set to false, will not audit form field changes made by<br></br>&#160;&#160;&#160;&#160;// API calls</span><br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fAuditFormViews"></a><a href="#fAuditFormViews"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAuditFormViews</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fAuditFormViews" />This variable determines whether Process Director will write an audit log for all form views. This can result in a tremendous amount of audit logging when the value is set to "True". The default for this variable is "False".</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fAuditFormViews = true;<br /><span class="ControlName">&#160;&#160;&#160;&#160;// if set to false, will not store audit logs when a user views<br />&#160;&#160;&#160;&#160;// a Process Director Page. Setting this value to true may cause<br />&#160;&#160;&#160;&#160;// excessive logging and impact system performance.</span><br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fAuditLogFileOnly"></a><a href="#fAuditLogFileOnly"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAuditLogFileOnly</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fAuditLogFileOnly">&#160;</MadCap:keyword>This variable, when set to the default value of "true", stores the Audit log file in the file system only, in the /App_Data/log_archive/ folder. When set to false, the audit log is also stored in the Process Director internal database in addition to the file system.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fAuditLogFileOnly = true;<br /><span class="ControlName">&#160;&#160;&#160;&#160;// if set to false, will allow Process Director to store the<br></br>&#160;&#160;&#160;&#160;// audit log in the internal database, in addition to the log file.</span><br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nAuditLogDays"></a><a href="#nAuditLogDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nAuditLogDays</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nAuditLogDays">&#160;</MadCap:keyword>This variable enables you to control the number of days that Process Director should retain its audit logs. Logs will be archived in the /App_Data/log_archive/ folder. This custom variable is available only with users who have the Compliance edition for on-site installations, or a cloud installation. The default value for this variable is "7".</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nAuditLogDays= 10; <span class="ControlName">// archives logs for ten days</span><br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="sAuditFieldStyle"></a><a href="#sAuditFieldStyle"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sAuditFieldStyle</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nAuditLogDays">&#160;</MadCap:keyword>This string variable enables you to provide custom CSS styling for the appearance of audit fields.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//These are the default CSS styles for audit fields.</span><br />&#160;&#160;&#160;&#160;bp.Vars.sAuditFieldStyle = " background-color:#FFFF99 !important;";<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="sSkipAuditFields"></a><a href="#sSkipAuditFields"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sSkipAuditFields</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nAuditLogDays">&#160;</MadCap:keyword>This string variable enables you to optionally list field manes for fields you wish to skip when auditing. This will also allow you to skip all fields in an array or section.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.sSkipAuditFields = "fieldname1, fieldName2";<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="AuditLogging"></a>Audit Logging Variables</h2>
+        <p>For installations that use the Compliance Edition of Process Director, some audit logging items are sent to the Windows Event Log,  in addition to the audit logging that you can access inside Process Director.  The logging events sent to the Windows Event Log fall into two categories, Informational and Error entries.</p>
+        <h5>Informational Entries</h5>
+        <p>The following audit events are sent as informational entries to the Windows Event Log:</p>
+        <ul>
+            <li>Login</li>
+            <li>SyncStart</li>
+            <li>PasswordChange</li>
+            <li>ReInit</li>
+            <li>DelegateOn</li>
+            <li>DelegateOff</li>
+            <li>ImpersonateOn</li>
+            <li>ImpersonateOff</li>
+            <li>UserDisabled</li>
+            <li>UserEnabled</li>
+            <li>AdminReplaceUser</li>
+            <li>CreateUser</li>
+            <li>DeleteUser</li>
+        </ul>
+        <h5>Error Entries</h5>
+        <p>The following audit events are sent as error entries to the Windows Event Log:</p>
+        <ul>
+            <li>AuthenticateFailed</li>
+            <li>UserLockedOut</li>
+        </ul>
+        <p>Additional Audit log events can be added to the default events by using the EventLogInfoAudits or EventLogErrorAudits custom variable in the Custom Variables file.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="EventLogInfoAudits"></a><a href="#EventLogInfoAudits"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>EventLogInfoAudits</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="EventLogInfoAudits" />This variable enables you to add an event Enum type to the Windows Event Log as an Informational entry.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;Vars.EventLogInfoAudits.Add(AuditType.AuthenticateFailed);<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="EventLogErrorAudits"></a><a href="#EventLogErrorAudits"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>EventLogErrorAudits</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="EventLogErrorAudits" />This variable enables you to add an event Enum type to the Windows Event Log as an Error entry.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;Vars.EventLogErrorAudits.Add(AuditType.UserDisabled);<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

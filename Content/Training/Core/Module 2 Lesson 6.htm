@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="10" MadCap:lastHeight="4113" MadCap:lastWidth="1161" MadCap:conditions="General.Core Training">
+    <head>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 6: Creating an Email Template Form</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn how to create a Form to use as an email template.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Notification Email Templates</h2>
+        <p>Process Director has a generic template for email notifications that can be used in any of your implementation projects. The best practice, however, is to create your own email template, When you create your own email templates, you can customize the template to show information specific to your process, Form fields, corporate branding, etc. You can then specify which email template you wish to use for any notification that your implementation generates.</p>
+        <p>An email template is a Form, just like the <span class="ProcessDirectorObject">Purchase Request Form</span> we just created, and is edited in the Online Form Designer, just like any other Form. One big difference, however, is that Form templates do not use any input control.</p>
+        <p>In this lesson, we will create a simple email template that we will use in the purchase request process we will create in the next module.</p>
+        <h2>Creating the Template</h2>
+        <p>To create the custom email template we will use for our sample project, first navigate through the <span class="ProcessDirectorObject">Content List</span> to the Forms folder you created for the <span class="ProcessDirectorObject">Purchase Request Form</span>. In the Forms folder, Select "Form Definition" from the <span class="ControlName">Create New…</span> dropdown to open the <span class="ControlName">Create Form </span>screen.</p>
+        <p>In the Create Form screen, set the <span class="ControlName">Form Name</span> property to "Notification Email Template".</p>
+        <p>Next, click the <span class="ControlName">Options </span>section bar to open the <span class="ControlName">Options </span>section. Check the<span class="ControlName"> Email Template</span> check box to tell Process Director that this new Form will be used as an email template. Once you have done so, click the <span class="ControlName">OK </span>button to create the Form and open the editor  for the new Form definition.</p>
+        <p>In the editor, at the top of the form, type the title, "PR Approval Process Notification".</p>
+        <p>Hit the [ENTER] key twice to leave a blank line under the title, then select System Variable from the BP Logix Form Controls menu to insert a System Variable control on the page.</p>
+        <h4>The SysVar Control</h4>
+        <p>The <span class="NamedControl">SysVar</span> control enables system variables to be displayed on a Form. The <span class="NamedControl">SysVar</span> control will be replaced by the actual value of the System Variable when the form is displayed to the user. For example, information about the process, the current user, Meta Data, and many other types of information can be displayed on the Form by using the System Variable control. Refer to the <i>System Variables Reference Guide</i> for a list of all the existing System Variables, their available formats and options, and examples of the proper syntax to invoke them.</p>
+        <p>The properties dialog box for the System Variable control has a System Variable property that you can use to manually type the System Variable you wish to display.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/eFormTemplate.png" />
+        </p>
+        <p>You can also manually type the System variable into the Property Box. Enter the following text into the <span class="ControlName">System Variable </span>property box:</p>
+        <p>
+            <code>{EMAIL_USER, Format=Name}</code>
+        </p>
+        <p>Next, enter the text, "Email User", into the <span class="ControlName">Label </span>property box.</p>
+        <p>Click the <span class="ControlName">OK </span>button to close the dialog box and apply the property, then add a semicolon immediately after the <span class="NamedControl">SysVar </span>control, so that it appears like the example below.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/eFormTemplate1.png" />
+        </p>
+        <p>In the context of the email template, Process Director will interpret this System Variable to refer to the task user to whom the email is sent. Using the System Variable in this way enables you to start the email with a salutation containing the user's name.</p>
+        <p>Unlike a system variable for a global object, like the Email User system variable we configured above, a System Variable for a Process Director Object usually identified the Content Object type of the variable we are trying to use. So, in the case of a form field System Variable, the formal syntax for calling the value of a form field would be:</p>
+        <p>
+            <code>{FORM:FieldName}</code>
+        </p>
+        <p>Since form fields are a very, very commonly used System variable type, you can skip the "FORM" identifier, and just enter the colon (:) prior to the field name, like so:</p>
+        <p>
+            <code>{:FieldName}</code>
+        </p>
+        <p>In fact, many Content List object object System Variables have shorthand identifiers. For instance, a Business Value System Variable is formally configured as:</p>
+        <p>
+            <code>{BUSINESS_VALUE:BusinessValueName}</code>
+        </p>
+        <p>But, it can also be called with the alternate syntax:</p>
+        <p>
+            <code>{BV:BusinessValueName}</code>
+        </p>
+        <p>Again, you can refer to the <i>System Variables Reference Guide</i> for learn the alternate syntax to call different types of System Variables.</p>
+        <h3>Completing the Template</h3>
+        <p>Start a new line, and type the text "Please review and approve the PR/PO Approval Request task assignment for Purchase Request #". Immediately after the pound sign (#), insert another <span class="NamedControl">SysVar</span> control. In this case, we want to display the value of a form field for the Form that is associated with the process,  which is the Purchase Request Form. </p>
+        <p>In the properties of the <span class="NamedControl">SysVar</span> control, set the <span class="ControlName">System Variable</span> property to:<br /></p>
+        <p>
+            <code>{:PRNumber}</code>
+        </p>
+        <p>  Set the <span class="ControlName">Label </span>property to "PR&#160;Number", then click the <span class="UIElement">OK </span>button to save and close the dialog box.</p>
+        <p>Next, we need to create a table to display some other System Variable and Form Field controls to provide users with some extra information about the process. First, create a table with two columns and five rows. In the first column, type the following five text values, one value per row:</p>
+        <p>
+            <code>Task:</code>
+        </p>
+        <p>
+            <code>Instructions:</code>
+        </p>
+        <p>
+            <code>Vendor:</code>
+        </p>
+        <p>
+            <code>Total Amount:</code>
+        </p>
+        <p>
+            <code>Link:</code>
+        </p>
+        <p>These text values will serve as the label for the System Variables that we will place in each row. If you like, you can add some styles, like background colors or borders to the table or to the cells in column one.</p>
+        <p>In the second column of the table, place the following <span class="NamedControl">SysVar</span> controls in the first four rows:</p>
+        <ul>
+            <li>
+                <b>Row 1:</b> Set the <span class="ControlName">System Variable</span> property to "{TASK_NAME}" and the <span class="ControlName">Label </span>property to "Task Name". You may type the SysVar Property, or select "Task Name" from the Choose Process SysVar dropdown in the Properties dialog box.</li>
+            <li>
+                <b>Row 2:</b>Set the <span class="ControlName">System Variable</span> property to "{TASK_INSTRUCTIONS}" and the <span class="ControlName">Label </span>property to "Task Instructions". You may type the SysVar Property, or select "Task Instructions" from the Choose Process SysVar dropdown in the Properties dialog box.</li>
+            <li>
+                <b>Row 3:</b>Set the <span class="ControlName">System Variable</span> property to ""{:VendorName}" and the <span class="ControlName">Label </span>property to "Vendor Name".</li>
+            <li>
+                <b>Row 4:</b>Set the <span class="ControlName">System Variable</span> property property to "{:Subtotal}"  and the <span class="ControlName">Label </span>property to "Total Amount".</li>
+        </ul>
+        <p>In the fifth row of the table, insert a <span class="NamedControl">HotLink </span>control. The <span class="NamedControl">HotLink </span>control creates a hyperlink when the Form is displayed in the browser. In this case, we want to provide a link to the Process URL for Process Director Form containing the Purchase Request.</p>
+        <p>In the control's properties dialog box, then set the <span class="ControlName">Name </span>property to "ProcUrl1". Set the <span class="ControlName">Text </span>property to "Click here to view the request." Finally, set the <span class="ControlName">URL </span>property to "{EMAIL_URL}".</p>
+        <p>The {EMAIL_URL} system variable is the Process Director-generated URL to the Form instance for this request.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/eFormTemplate2.png" />
+        </p>
+        <p>Once you've configured the HotLink control, your template should look similar to the example displayed below.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/eFormTemplate3.png" />
+        </p>
+        <p>Leave a blank line below the table, and then insert an <span class="NamedControl">EmailData </span>control. The <span class="NamedControl">EmailData </span>control sets several values for use in your email system, such as the email’s Subject, “From” address, Name, and Priority.</p>
+        <p>In the properties dialog box for the EmailData control, set the <span class="ControlName">Name </span>property to "ApprovalTaskAssigned". Set the <span class="ControlName">Subject </span>property to "Please review and approve {:PRNumber} submitted by {TIMELINE_INITIATOR} on {TIMELINE_START_DATE}".</p>
+        <p>Note that we can use System Variables in the <span class="ControlName">Subject </span>property to display the PR Number, the name of the person who submitted the request, and the date the approval process was started, which is the same as the form submit date.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/eFormTemplate4.png" />
+        </p>
+        <p>Click the <span class="UIElement">OK </span>button to save the configuration changes to the <span class="NamedControl">EmailData </span>control and return to the design page.</p>
+        <p>We're now done with the email template. Save and close the email template, and return to Process Director by clicking the <span class="UIElement">Save and Close Form</span> toolbar button.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/eFormTemplate8.png" />
+        </p>
+    </body>
+</html>

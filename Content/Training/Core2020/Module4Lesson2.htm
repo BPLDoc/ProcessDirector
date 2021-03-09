@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:conditions="General.Core Training">
+    <head>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 2: Knowledge View Columns and Filters</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, we will discuss how to configure the Columns and Filters for a Knowledge View.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>The Columns Tab</h2>
+        <p>If your Knowledge View definition isn’t already open, open it from the <span class="ProcessDirectorObject">Content List</span>, and navigate to the <span class="UIElement">Columns </span>tab.</p>
+        <p>As we saw at the end of the last lesson, the default columns aren’t exactly what we want. We can add new columns on this tab by clicking the Add Column button. You can have as many columns as you need. You can also delete a column by clicking on the X icon on the right side of the column list. You can change the column order by using the Up or Down icons to move the columns to the order you desire.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Kviews13.png" />
+        </p>
+        <p>In our case, however, we don’t need any new columns, but we do need to edit the default columns to show us some more helpful information.</p>
+        <p>Let’s start by editing the <span class="UIElement">Size </span>column. We’ll change the Column name from “Size” to  “Student”. Next we’ll change the <span class="ControlName">Column Data</span> that is displayed by clicking on the Build Button for the Object Picker for that field. When we do, the Choose System Variable Dialog box will open. We want to display the Name of the student who is making the request, so from the dropdown menu in the dialog box, select “Form” then “Form Field”. </p>
+        <p>
+            <img src="../../Resources/Images/Training/Kviews14.png" />
+        </p>
+        <p>When we do, we can now see a dropdown box that lists all of the fields on our Change of Major Request Form. Select the <span class="ControlName">Student Name</span> field, then click the <span class="UIElement">OK </span>button to save our changes. </p>
+        <p>
+            <img src="../../Resources/Images/Training/Kviews15.png" />
+        </p>
+        <p>We can immediately see the change reflected in the object picker.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Kviews16.png" />
+        </p>
+        <p>We can also check our work by clicking on the <span class="ControlName">Update and Run</span> menu item in the button menu at the top right corner of the screen. When our Knowledge View runs, we can now see that name and data displayed in the second column has changed to display the student name.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Kviews17.png" />
+        </p>
+        <p>We can now navigate back to the Knowledge View definition in the <span class="ProcessDirectorObject">Content List</span>, and, following the same procedure we just performed for the <span class="ProcessDirectorObject">Student Name</span> field, we can change the remaining columns to display the form fields for the <span class="ControlName">Desired Major</span>, <span class="ControlName">Department Approval Required</span>, and <span class="ControlName">Semester Hours</span> fields.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Kviews18.png" />
+        </p>
+        <p>Once again, we can run our Knowledge View and see that now we have a Knowledge View that shows us the relevant information we need. </p>
+        <p>
+            <img src="../../Resources/Images/Training/Kviews19.png" />
+        </p>
+        <h2>The Filter Tab</h2>
+        <p>Let’s navigate back to the Knowledge View definition and look at the last tab we need to address, the <span class="UIElement">Filter </span>tab. Navigate to that tab when the Knowledge View definition opens.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Kviews20.png" />
+        </p>
+        <p>The <span class="UIElement">Filter </span>tab gives us another way to further narrow the information returned by the Knowledge View. Right now, the Knowledge View returns all of the form instances for the Change of Major Request form. That’s not what we really want to see, though. As we explained in Lesson 1 of this module, we only want to see the requests that are currently active. We can use the <span class="UIElement">Filter </span>tab to narrow the data returned to only the actively running requests. In this case, that means we need to check the status of the Process Timeline to ensure it’s running.</p>
+        <p>We can click the <span class="UIElement">Add Condition</span> button to add a new condition row to the Filter tab. </p>
+        <p>In the new condition row, click on the Object Picker’s Build button to open the Choose System Variable dialog box. From the dropdown menu, select “Timeline”, then “Timeline Status”. </p>
+        <p>
+            <img src="../../Resources/Images/Training/Kviews21.png" />
+        </p>
+        <p>Once you have done so click the Ok button to close the dialog box. In the Operator dropdown, be sure the equal sign is showing (=), then from the dropdown on the right side of the Operator, select "Active".</p>
+        <p>
+            <img src="../../Resources/Images/Training/Kviews22.png" />
+        </p>
+        <p>We have now created a filter that will check each of our form instances to see if they are associated with an actively running timeline, and will show us only those active requests. Again, we can check our work by clicking on the Update and Run menu item, to see the data. We should only see Form instances for timelines that are not yet complete.</p>
+        <p>Our Knowledge View is now complete…almost. In the next lesson, we’ll look at some other properties to make it more suitable for display to our users. For now, though, we have a Knowledge View that shows us form data from only those Change of Major Requests that are currently running.</p>
+    </body>
+</html>

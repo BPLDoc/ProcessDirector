@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="Installation" />
+            <MadCap:concept term="Installation" /><a name="_Toc421172279"></a>Multi-Instance Installations</h1>
+        <p>The product supports the ability to have multiple instances installed on the same server. Even different versions of the products can be installed. Each instance must be licensed appropriately, and each instance requires its own database. Each instance will run as a separate virtual directory or website under IIS.</p>
+        <p>As a pre-requisite, on the target machine for the multi-instance install, any previous installations of Process Director must be removed BEFORE attempting to perform a multi-instance install. </p>
+        <p>To facilitate the installation of multiple instances, you must contact BP&#160;Logix support by submitting a technical support ticket to request that we send you the multi-instance installation files. There are two required installation files, BP_Multi.exe, and BPLogixMultiInstance.exe.</p>
+        <p>Once you have received the files, the first step is to run the multi-instance preparation application, BP_Multi.exe. This application will prepare the target machine to run the multi-instance installer.</p>
+        <p>Once you have completed running the BP_Multi.exe application, you can then install the multi-instance version of Process Director by running the BPLogixMultiInstance.exe installation program.</p>
+        <p>The Multi-Instance Installer will actually run the Process Director setup program (downloaded separately) for each instance. You can create as many “installation groups” as you want on a server. Each installation group can contain any number of server instances. All instances in a server group must be at the same version and patch level of the software. Each server instance in the installation group will use the same version of Process Director.</p>
+        <p>To configure the Multi-Instance Installer, create a text file for each group of instances. The text file will have this syntax:</p>
+        <div class="CodeBase">GROUP=My Server <br />Group
+            NAME=Instance1
+            <br />PATH=c:\wd1
+<br />          NAME=Instance2
+<br />          PATH=c:\wd2<br />           ...Etc.</div>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>NAME</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>GROUP</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Any&#160; unique name to identify all installations in this multi-instance group</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>NAME</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The unique name of this server instance (e.g. for the Program Group, etc.)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p>PATH</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>The destination path for this instance installation</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Any number of PATH/NAME pairs can be placed in the configuration file. To run the Multi-Instance Installer, use the following syntax:</p>
+        <div class="CodeBase">BPLogixMultiInstance.exe "BP_GROUP=c:\instance.txt" "BP_INSTALL=c:\ProcessDirectorInstall.exe"</div>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>PARAMETER</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>BP_GROUP</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The path to the installation file with the settings for this Multi-Instance installation</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>BP_INSTALL</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>The path to the Process Director setup program</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Notice that the parameters are surrounded by double quotes to handle spaces in the path names. Executing this command will silently execute the Process Director setup program for each instance. After the installation is complete, the installation instances are “normal” installations, which are managed and administered independently, and can even be uninstalled using the Windows Add-Remove Programs. The GROUP and NAME parameters are used to uniquely create the Program Group entries, and the Windows Add-Remove Programs names.</p>
+    </body>
+</html>

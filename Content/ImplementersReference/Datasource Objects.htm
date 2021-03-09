@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536105"></a>
+            <MadCap:keyword term="Datasources" />Datasource Objects</h1>
+        <p>The Datasource object enables you to create a data source that can connect to an external database. The Datasource object can then be used in multiple areas of Process Director. An example use of the Datasource object is with a Database Connector custom task. With a Database Connector custom task you must specify a data source either manually (by entering a connection string) or by using a Datasource object which was created once and used throughout Process Director.</p>
+        <p>Organize data sources in root folders of the partition, separate from any implementation folders, so that implementers don't have to export data sources when the implementation is exported from development to production. Exports and Imports are name-based, and relative folder position-based. Consequently, the root folder containing database sources should be mirrored on development and production servers, so that both the names and relative folder positions are exactly the same in both environments. If the mirroring is correct, implementations will be imported/exported between development and production without losing contact with the data sources.</p>
+        <h2><a name="_Toc421536107"></a>Datasource Object Configuration <a href="#_Toc421536107" class="anchor">#</a></h2>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/DatasourceConfig.png" />
+        </p>
+        <p>The Datasource object will need to be configured to properly use it in Process Director. Configure the following fields:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>Field</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Data Provider</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The database provider string</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Data Connection String</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The database connection string</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p>Database Type</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>The type of database, such as SQL Server, Oracle, etc.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>There are a number of database types that are supported by the Datasource object, which are listed in the Datasource Type dropdown. In addition to supporting the internal Process Director database, the Datasource object also supports a wide variety of other types of data sources :</p>
+        <ul>
+            <li>SQL Server</li>
+            <li>Oracle</li>
+            <li>Access</li>
+            <li>Teradata</li>
+            <li>PostgreSQL Npgsql</li>
+            <li>PostgreSQL Devart</li>
+            <li>MySQL</li>
+            <li>SharePoint</li>
+            <li>Twitter</li>
+            <li>Google Sheets</li>
+            <li>Amazon Database</li>
+            <li>Windows File Path</li>
+            <li>Dropbox</li>
+            <li>OneDrive</li>
+            <li>Facebook</li>
+            <li>Salesforce.Com</li>
+            <li>Box (Box.net)</li>
+            <li>MS Dynamics CRM</li>
+            <li>Azure IoT Hub</li>
+            <li>SFTP&#160;(SSH&#160;File Transfer)</li>
+            <li>Compliance Data Source</li>
+            <li>OAuth</li>
+        </ul>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> When a user attempts to create an Internal Database Datasource, the Datasource Type will default to "Other"  if the user does not have permission to create an Internal Database connection.</div>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> Due to a bug in the newer MySQL .NET drivers, the MySQL 6.9.12 or older driver must be used. This is a bug introduced in the MySQL .NET driver version 6.10 and higher (<a href="https://bugs.mysql.com/bug.php?id=89159" target="_blank">MySQL Bug #89159</a>).</div>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> A license change has occurred. Customers using Datasources for Salesforce or MS Dynamics should contact customer support to enable these features in their license.</div>
+        <p>You may click one of the Provider buttons related to your database to provide an example to use as your configuration or you may use a custom configuration, and provide your own database connection string. For more information on database connection strings please refer to <a href="http://www.connectionstrings.com"><span class="Hyperlink">connectionstrings.com</span></a>.</p>
+        <h3>Compliance Data Source</h3>
+        <p>The Compliance Data Source is available to users of Process Director v5.15 and above. This type is not a database connector, but, instead, provides a secure storage for username and password attributes for use elsewhere. These stored attributes can be accessed via the SDK&#160;API in custom scripts to provide the login information needed to access some external data source. Additionally, the attributes can be accessed in Custom Tasks that require user names and passwords, as well as Business Values to provide required login information.</p>
+        <p>This datasource enables you to store the attributes securely, separate from the Custom Task or Business Value, to help prevent a compromise of the login data, while still enabling designers to incorporate secure logins in Custom Tasks or Business Values without having to know the actual login information.</p>
+        <p>The attributes are <i style="font-weight: bold;">not</i> accessible via system variable, for security reasons.</p>
+        <p>Users of Process Director v5.42 and higher can also add Name/Value pairs to the datasource, for connections that require additional data in the form of keys (names) and values.</p>
+        <h3>OAuth Data Source</h3>
+        <p>The Oauth Data Source provides a generic OAuth connector for data sources that use this authentication method.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/OAuthDatasource1.png" />
+        </p>
+        <p>When using the OAuth data source, you must provide the <span class="ControlName">Client Token</span>, <span class="ControlName">Token Secret</span>, and <span class="ControlName">Access Token</span> for the OAuth authentication. Some OAuth systems enable you to dynamically generate access tokens for each connection, so a property named <span class="ControlName">Use Refresh Token to generate Access Tokens on demand</span> will, when checked, replace the Access Token property with a <span class="ControlName">Refresh Token</span> property, which enables the system to pass the refresh token to the OAuth system to dynamically generate a new access token for each connection instance.</p>
+        <p>Users of Process Director v5.42 and higher can also add Name/Value pairs to the datasource, for connections that require additional data in the form of keys (names) and values.</p>
+        <h3><a name="_Toc421536108"></a>Internal Database Type</h3>
+        <p>Process Director allows you to specify the database type for you Data Connections. The Internal Database type will connect to the database which Process Director is installed. No other options are needed when using the Internal Database type.</p>
+        <h2>
+            <MadCap:keyword term="Caching;Cache;Datasources" />Datasource Caching</h2>
+        <p>Starting with Process Director v3.76, database caching for Datasource objects is implemented on all SQL-type Datasource objects, including Datasources for SQL&#160;Server, Access Oracle, and PostgreSQL. When caching is enabled on a Datasource, Process Director will retrieve the data from the database one time, then store the returned data in memory until the cache expires. Any time the database call is subsequently made, Process Director will first check the cache to see if the cache is still active, and, if so, will return the data from the cache, rather than attempting to retrieve the data from the database. If the cache is expired, Process Director will perform the database call, and reset the cache timeout.</p>
+        <p>When you select one of these data types from the<span class="ControlName"> Datasource Type</span> dropdown, the Caching parameters will appear on the configuration form.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/DatasourceCashing.png" />
+        </p>
+        <p>You can enable caching by checking the <span class="ControlName">Enable Cache</span> check box. </p>
+        <p>You can manually clear the cache, if necessary, by clicking the<span class="UIElement"> Clear Cache </span>button. The <span class="ControlName">Current Cache Entries</span> label always displays the number of items currently in the cache, and clearing the cache should reset the value to "0".</p>
+        <p>You can optionally set the <span class="ControlName">Cache Timeout (seconds)</span> to the number of seconds that you wish the cache to remain active. If you do not set the <span class="ControlName">Cache Timeout</span>, Process Director will automatically time the cache out in around eight hours. The <span class="ControlName">Cache Timeout</span> that you should configure for the Datasource will, of course, depend on how current you need the data to be.</p>
+        <p>When caching is configured, all Business Values and database Custom Tasks that use the Datasource will also use its caching configuration, though you will need to ensure that you are using the latest version of the Custom Tasks. Custom Tasks that were created prior to February, 2016, are <b style="font-style: italic;">not</b> configured to use Datasource caching. </p>
+        <p>Users of Datasource caching should notice significant performance increases for data-heavy Forms.</p>
+        <div class="Important">
+            <img src="../Resources/Images/i2.png" alt="Note" /> As a security enhancement to v5.08 and higher, when exporting a Datasource to XML from the Content List, the Datasource Password will <b style="font-style: italic;">not</b> be exported. You will need to re-enter the password when the Datasource is imported again. As a best practice, <i style="font-weight: bold;">datasources should not be exported between systems</i>, anyway. They virtually always require reconfiguration on the target machine, and it’s easy to wipe out a working datasource pointing at production data and replace it with another pointing at test data that you imported from your test system. Even worse, when you go back and refresh your test systems from production, the same thing can happen in reverse, causing you to corrupt your production data with test data.</div>
+    </body>
+</html>

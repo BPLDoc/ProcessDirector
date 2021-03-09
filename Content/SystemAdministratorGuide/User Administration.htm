@@ -1,0 +1,709 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="System Administration" /><a name="_Toc421094510"></a>User Administration</h1>
+        <p>You can manage users and groups remotely through the web-based Administration Section. You can access this section by navigating to the User Administration tab of the Administration section.</p>
+        <p>Process Director organizes users in the database as follows:</p>
+        <p>+ partitions</p>
+        <p style="text-indent: 0.5in;">+ users</p>
+        <p style="text-indent: 0.5in;">+ groups</p>
+        <p style="text-indent: 1in;">+ users</p>
+        <p>Users or groups can be members of partitions. Users can also belong to multiple groups, allowing for role based administration. </p>
+        <p>The following User IDs will be created on a new Process Director installation. These users have no passwords and have been given full permission to all objects. </p>
+        <ul>
+            <li>Administrator</li>
+            <li>user1</li>
+            <li>user2</li>
+        </ul>
+        <p>The following group is created on a new Process Director installation. The user named Administrator is a member of this group.</p>
+        <ul>
+            <li>admin</li>
+        </ul>
+        <p>Users may fall into one of two primary classes:</p>
+        <ul>
+            <li>Authenticated users  have a named Process Director user account. This account may either be  Built-In or Windows account. All of these users are positively authenticated in the system prior to granting access. Authenticated users may have full access as regular licensed users, or may have intermittent access to the system through an additional licensed component that assigns temporary day passes to the user that expire in, as their name suggests, one day.</li>
+            <li>Unauthenticated users do not have a user account, and their access to the system is governed by a license component that issues a pass to the user that enables them to access the system—either anonymously, or by identifying them via an email address—for a single access instance.</li>
+        </ul>
+        <p>Cloud users that are licensed for <i>any</i> day passes should pre-load/configure all named users who may consume day passes, prior to their use. All that's required is the UserID, authentication mechanism(such as SAML or built-in login, and the license type. This list of temporary users can be entered annually, or loaded using the Excel import feature in the User Administration page. If you use a self-provisioning for new users, then the self-provisioned user will consume day passes unless their user record is updated manually by the administrator. Setting the <a href="../DevelopersGuide/Customization File Administration.htm#DefaultNewUsersToDayPass">DefaultNewUsersToDayPass</a> custom variable will force all new users to be added as day pass users.</p>
+        <h2><a name="_Toc421094511"></a>Adding a New User <a href="#_Toc421094511" class="anchor">#</a></h2>
+        <p>This section describes how to add users to Process Director using the built-in authentication. This is not required for users that are authenticated by Windows, your LDAP server or an external authentication system. For built-in users, a User ID and password must be added to the Process Director database before a login can occur. When a user is configured in the Process Director database, additional information such as the user’s email address and alias can be configured.</p>
+        <p>Within the <span class="ControlName">Users </span>section of the<span class="ControlName"><MadCap:keyword term="System Administration" /> System Administration</span> area, click on the<span class="UIElement"> Create User</span> link. This will prompt you to enter a User ID for the new user. Please Note: This will create a built-in user, not a Windows user.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/User Administration.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <h3><a name="_Toc421094512"></a>Create User</h3>
+        <p>This will add a new user to the Users list. </p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/User Administration_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Enter the user’s <span class="ControlName">User ID</span> and <span class="ControlName">Password</span>. You can force the user to change his password upon login. Click <span class="UIElement">OK</span> when done. After you create the user, you can click on the “Edit” link next to the user’s name and configure it further.</p>
+        <p>The User ID will also serve as the user’s login user name for Process Director. BP Logix highly recommends that administrators ensure that User ID’s are unique to each user. This may not be possible, however, when using SAML authentication for existing users where duplicate user names exist. In this case the SAML authentication must send a unique GUID or identifier for the users. There is a variable in the custom vars file called <a href="../DevelopersGuide/Customization File SAML.htm#fAuthSAMLAllowDuplicateUserIDs">fAuthSAMLAllowDuplicateUserIDs</a> that must be set to “true” to allow this behavior.</p>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> In many cases, Process Director will return a comma-separated list of users. Since the users are identified by UserName, we strongly recommend that your users names do <b style="font-style: italic;">not</b> include commas as part of the user name.</div>
+        <h3><a name="UserProperties"></a>User Properties</h3>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/UserAdmin20160226a1.png" />
+        </p>
+        <p> To set the user’s account properties, click on the <span class="UIElement">Edit </span>hotlink in the user's row of the user list. The<span class="ControlName"> Edit User</span> configuration will display, with the User ID and Password fields already configured. you may configure the remaining user properties.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Email Address</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enter an email address that will be associated with the user in the <span class="ControlName">Email Address</span> field. You can change the password by checking the <span class="ControlName">Change Password</span> box; an input field will appear prompting for a new password. Click <span class="UIElement">OK </span>to save the configuration.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Miscellaneous Account Settings</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Additional check boxes enable you to configure the following settings:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+                    <col style="width: ;" class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">SETTING</th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">User Disabled</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Disables the user account, preventing the user from participating in any tasks, and deleting the user's participation from any existing tasks.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Disable Emails for this User	</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Prevents Process Director emails from being sent to the user.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">User Account Locked</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Locks the account, preventing the user from logging in. (This feature is implemented only for “built-in” user account authentication. It does not apply to LDAP, SAML, or Windows user accounts.)</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Force password change at next login
+</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Force the user to change their password on the next login attempt.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Change Password</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">When checked, a text box will appear that enables you to enter a new password for the user.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Administrative Settings</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This page allows you to grant the user different types of administrative privileges. You can grant users the following privileges by checking off the corresponding checkboxes:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');height: ;width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">ADMIN&#160;TYPE</th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">System Administrator</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The top-level Administrative user, with complete control of the Process Director Installation</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">System Partition Admin</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This user type is not technically a system administrator, and has no access to the IT Admin section of the installation. Users who are designated as system partition administrators, however, have full access to the Content List for the partitions to which they are a member, and have permission to create, edit, and delete all content list objects, irrespective of the Content List permissions that have been set in that Partition.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">System Configuration Admin</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A subset of the System Administrator user with access only to the <span class="UIElement">Configuration </span>tab.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">System User Admin</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A subset of the System Administrator user, with access only to the<span class="UIElement"> User Administration </span>tab.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">System Install Admin</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A subset of the System Administrator user, with access only to the<span class="UIElement"> Installation Settings</span> tab.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">System Troubleshooting Admin</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A subset of the System Administrator user, with access only to the <span class="UIElement">Troubleshooting </span>tab.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">User Impersonation Ability</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">The ability for this user to impersonate other users.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Assign Groups</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can assign the user to Process Director user groups by clicking the <span class="UIElement">Assign Groups</span> button. When you click the button, the <span class="ControlName">Group Selector</span> will open.</p>
+                <p>
+                    <img src="../Resources/Images/Capture75.png" />
+                </p>
+                <p>From the list box on the left, select the user group(s) to which you'd like to assign the user, then click the <img src="../Resources/Images/Capture78.png" /> button, which will move the group names over to the list box on the left.</p>
+                <p>To remove the user from a group, select the group from the list box on the left, then click the <img src="../Resources/Images/Capture77.png" /> button to remove the group.</p>
+                <div class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> When adding users to a group, the <a href="../DevelopersGuide/Customization File Tasks.htm#fStartUsersAddedToGroup">fStartUsersAddedToGroup</a> custom variable determines whether the new user will be assigned to any running tasks that are assigned to that group.</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Time Zone</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This dropdown control enables you to select the user's Time Zone. You can also allow Process Director to set the time zone to Daylight savings time automatically, by checking the <span class="ControlName">Auto DST</span> check box.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Preferred Language / Locale</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can set the appropriate language for the user, or select the default system language, by choosing it from this dropdown. The use of languages other than English will require that Process Director be localized for each additional language.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Picture Image</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A picture of each user can be uploaded to Process Director. The image will appear in the user information box for each user.</p>
+                <p>
+                    <img src="../Resources/Images/Capture74.png" />
+                </p>
+                <p> You may upload the image by clicking on the <span class="UIElement">Browse </span>button to find and select the image. Once the image is selected, clicking the <span class="UIElement">Upload </span>button will upload the signature image to Process Director. Acceptable image formats include GIF, JPG, and PNG images.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Signature Image</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Process Director can imprint an electronic signature in all routing slips for a user. If you have an image of the user's signature, you may upload the image by clicking on the <span class="UIElement">Browse </span>button to find and select the image. Once the image is selected, clicking the <span class="UIElement">Upload </span>button will upload the signature image to Process Director. Acceptable image formats include GIF, JPG, and PNG images.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Delegate all tasks to (User)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This user picker enables you to delegate another user to perform this user's tasks. For more information on user delegation, please see the <a href="User Delegation.htm">User Delegation topic</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Replace this user with (User)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This user picker enables you to replace the current user with a selected user. This is not a delegation. Instead, the current user will be completely replaced by the selected user in all assigned tasks, e.g., any task where the replaced user is specifically identified as the task assignee. </p>
+                <p>This replacement function will <i>not</i> replace the original user in any historical data, however, so an original user who was the timeline/workflow initiator will still be listed as the initiator. Similarly, if the original user is assigned a task via a user picker on a Form field, or from a Business Rule, the Replace user function will NOT replace the original user in those objects, either. For these reasons, we recommend that you immediately disable the account for the original user. When you do so, this will likely result in future tasks with assignments made via Form or Business Rule going into an error state when the original user is assigned if the Form or Business Rule is not also edited when the original user is replaced.</p>
+                <p>The Replace User function is not a panacea for user replacement. All it can do is try to make replacing a user easier than it would otherwise be.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Additional Properties Section</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For User of Process Director v3.78 and higher, additional properties can be set for users. The <span class="ControlName">Additional Properties</span> section contains a number of text boxes to set these properties.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/UserAdminAdditionalProperties.png" />
+                </p>
+                <h5>Available Properties</h5>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');height: ;width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">PROPERTY</th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Title </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's Title.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Description </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for a Description.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Phone </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's phone number.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Manager </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A <span class="NamedControl">UserPicker </span>to choose the user's Manager.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Company </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's Company.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Office </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for the user's Office name.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Department </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's Department.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Business Unit </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for the user's Business Unit.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Legal Entity </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's Business Entity.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Country </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for the user's Country.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Location </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's Location.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Custom String</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for a custom string value.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Custom String 2
+</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for a custom string value.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Custom Number </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for a custom numeric value.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Custom Date</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">A <span class="NamedControl">DatePicker</span> for a custom date value.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="_Toc421094513"></a>User Impersonation</h3>
+        <p>For Cloud installations, or on-premise installations that use the Compliance Edition or Subscription licenses, Process Director allows some users to impersonate other users. Impersonation allows a user to act as another user, seeing and completing the tasks to which he is assigned, leaving his name on routing slips when doing so, etc. Impersonating a user is almost exactly the same as being logged in as that user, except that the impersonation will appear in the audit log. This feature is useful to assist users with problems they are having, or to debug problems you cannot replicate with another user.</p>
+        <p>To grant a user the ability to impersonate other users, navigate to the <span class="ControlName">User Administration</span> tab of the<span class="ControlName"> IT Admin</span> page and click on the user whom you would like to grant the ability. There you will see a checkbox that says <span class="ControlName">User Impersonation Ability?</span>. Check the checkbox.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/User Administration_3.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>To impersonate another user, go to the Impersonate tab of the <span class="ControlName">Troubleshooting </span>page. There you will see a <span class="ControlName">Choose the user you want to impersonate</span> user picker. Select the user whom you would like to impersonate this user, and click the <span class="UIElement">Impersonate User</span> button.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/User Administration_4.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>When impersonating another user, you will use your own credentials to complete tasks that require reauthentication, so you do not need to know the impersonated user's password to complete tasks.</p>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" title="Important!" /> For Process Director v5.13 and higher, a user cannot impersonate anyone who has System Administrator permissions, unless the user also has System Administrator permissions.</div>
+        <h2><a name="_Toc421094523"></a>User Permissions <a href="#_Toc421094523" class="anchor">#</a></h2>
+        <p>Administrators of Cloud installations or on-Premise installations with the Compliance Option will notice an additional <span class="UIElement">User Permissions</span> menu button in the<span class="ControlName"> IT Admin</span> interface.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/User Administration_22.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>The <span class="ControlName">User Permissions</span> section enables you to find users and view a report of permissions that are applicable to that user.</p>
+        <p>The top section of the user permissions screen provides a number of search fields that you can fill out to filter the number of objects returned by the search. The filter criteria will accept all or part of a User ID or User Name, or the GUID of an external user. Once you have entered the filter criteria you desire, click the <span class="UIElement">Search </span>button to see a list of all the objects that match your filter criteria. </p>
+        <h2>
+            <MadCap:keyword term="User References" /><a name="UserReferences"></a>User References <a href="#UserReferences" class="anchor">#</a></h2>
+        <p>For Process Director v5.12 and higher, administrators have the ability to find all references in the system for a particular User from the User References Section.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/UserReferences.png" />
+        </p>
+        <p>To see all of the objects that reference a user, simply select the desired user from the <span class="ControlName">Choose a user to see where they are referenced</span> <span class="NamedControl">User Picker</span>. Once you select the user, the references will automatically be retrieved and listed in a bottom part of the page.</p>
+        <h2>
+            <MadCap:keyword term="Active Directory:AD" /><a name="_Toc421094519"></a>Active Directory Synchronization <a href="#_Toc421094519" class="anchor">#</a></h2>
+        <p>If you are using an LDAP directory (e.g. Microsoft Active Directory) to authenticate your users, their User ID will be automatically added to the Process Director database when they first login. Process Director automatically synchronizes the user and group information when the login occurs. This happens transparently to the user. If you are using Windows Domain security to authenticate users you can still configure Process Director to synchronize user information with your LDAP server. This allows your users to authenticate against the Windows Domain, but still have their email address and user name (Alias) synchronized with the LDAP settings.</p>
+        <p>There are a couple of limitations to using this technique alone. It requires that a user logs into Process Director before it “knows” of that user and the groups the user belongs to. This means that you cannot add users to a workflow step, or specify users in permissions until after that user logs into Process Director. Additionally, users or groups that are changed or removed in LDAP will still exist in the Process Director database.</p>
+        <p>To address these scenarios, there is a user directory synchronization utility that will synchronize your LDAP user information with Process Director (See: <a href="Creating an AD Sync Profile.htm#_Toc421094524" target="_popup">Creating an Active Directory Sync Profile</a>). The synchronization utility will only synchronize attributes such as the name and email address, but will not copy over any passwords. Passwords are only stored on your LDAP server – the LDAP server is responsible for authentication.</p>
+        <h2><a name="Exporting"></a>Exporting/Importing Users <a href="#Exporting" class="anchor">#</a></h2>
+        <p>Users can be exported or imported between systems using Excel files (.XLS, .XLSX or .CSV). To export users, select one or more users from the User List, then click on the <span class="UIElement">Export Users</span> action link. An export box will appear that enables you to specify the name of the Excel file to which the list of selected users will be exported. A default name will be provided, but you can edit the default, at your discretion. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ExportUsers.png" />
+        </p>
+        <p>Once you have done so, click the OK&#160;Button to complete the export and create the Excel file.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ExportUsers1.png" />
+        </p>
+        <p>Once the file has been exported, you can use the Excel file to import the users to another system by transferring the Excel file between the systems, then, in the target system, click the Import Users action link. You will be prompted for the Excel file to import. Once you have selected the import file, all of the users will be imported to the target system.</p>
+        <p>You may wish to edit certain attributes of the Excel file before importing it. When exporting/importing  Built-in users between systems, the PasswordChange column, will, when set to 1", force the user to change the password on their next login. </p>
+        <p>The available columns in the exported Excel file are described below.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 12em;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" style="width: 7em;" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>COLUMN</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DEFAULT VALUE</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>UserID</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>This is required on an import.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>UserName</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>The optional User Display Name.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>EmailAddress</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>The users email address.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Culture</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>This is the optional culture for the user as defined by
+ Windows (e.g. en).</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Domain</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>The optional Windows AD domain for the user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>TimeZone</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>This is the optional time zone identifier for the user
+ as defined by Windows (e.g. Pacific Standard Time).</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Disabled</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>This indicates if the user is disabled. If this is set
+ to “true” or “1” on an import it WILL disable the user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>False</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>AuthType</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>The authentication type for the user. The authentication
+ type cannot be changed on an import. The available types are: Unknown,
+ Built-In, Windows, LDAP, External, SAML, and Header.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Unknown</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>LastLogin</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>This is only available on the user export, it is not
+ used on the import.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Groups</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>A comma separated list of groups this user belongs to. </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Phone</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>The optional phone number of the user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Password</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>This is only an option on the user import, the password
+ is never exported.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Description</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>An optional description for the user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Title</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>The optional title for the user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Office</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>The optional office for the user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Company</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>The optional company name for the user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>BusinessUnit</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>The optional business unit for the user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>LegalEntity</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>The optional legal entity for the user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Department</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>The optional department for the user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Country</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>An optional country for the user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Location</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>This is an optional location string.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>CustomString</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>This can be any string that should be associated with
+ this user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>CustomString2</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>This can be any string that should be associated with
+ this user.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>CustomNumber</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>This can be any numeric value.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>CustomDate</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>This can be any date value.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Manager</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>This is the USERID or UID of the manager record.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>PasswordChange</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>This indicates if the user should be required to change
+ their password on the next login.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>False</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>DayPass</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>This indicates if the user is a “Day Pass” user. </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>False</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">DeleteUser</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p>This is an optional column that will, when set to "DELETE" on a user's row, delete the user from the system.</p>
+                        <div class="Important">
+                            <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix <b>strongly</b> recommends that you disable, rather than delete users, to retain the user's activity history, but this is an available spreadsheet option, if needed.</div>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Only the UserID column is required.</p>
+        <p>When importing an Excel file with users there are a couple options available.</p>
+        <ul>
+            <li>Create groups as needed during import</li>
+            <li>Remove users from groups not listed in import file</li>
+        </ul>
+        <p>The first option will automatically create and groups in  the “Groups” column if they do not exist. The default is to add users to groups that exist, but not to create the groups.  The second option will remove a user from an group that is not listed in their “Groups” column.</p>
+    </body>
+</html>

@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="11065" MadCap:lastWidth="1129" MadCap:conditions="General.Core Training">
+    <head>
+        <link href="../../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 2: Process Director Objects</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn the five basic Process Director objects, and their functions.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Process Director</h2>
+        <p>Process Director is a Business Process Management (BPM) tool. Its main purpose is to model and automate a business process. A <span class="KeyTerms">process </span>is simply a series of actions or steps taken in order to achieve a particular end. Every organization, whether it’s a business, academic institution, or government entity, has processes. Also, some processes are fairly universal, which means nearly every organization uses them.</p>
+        <h3>Process Example</h3>
+        <p>One example of a common process would be an approval process. Most organizations have an approval process for spending money. Usually, the process is started when an individual requests an expenditure of money. That request is then routed to one or more approving officials that must review and approve or reject the request. If the request is approved, the expense is disbursed by cutting a check or generating a purchase order.</p>
+        <p>Without some sort of tool for automating an approval process, the initial requestor usually must fill out a paper form, which much be physically sent to each subsequent person in the approval chain. Once the process is complete, the paper form must usually be stored for some length of time. Physically managing the process can be time consuming. Indeed, moving a piece of paper from place to place for written approval can be time-consuming as well.</p>
+        <h3>Automating Processes</h3>
+        <p>Process Director eliminates the physical management of processes. Instead, Process Director takes over the management of the process by automating it. In the case of the sample approval process outlined above, the initial request is created as an electronic form. Once the form is submitted by the initial requestor, the approval process is implemented by a Process Timeline that identifies the different approval officials, automatically sends the request up the approval chain in the proper order, and tracks the time it takes to complete each step of the process.</p>
+        <p>Automating the process implements two immediate improvements. First, it vastly increases the efficiency of the process itself, by eliminating the physical movement of a request through the approval chain. Second, it simplifies the management of the process by allowing managers to administer the process electronically, rather than trying to physically track the movement of a paper document. A manager can open the process in Process Director, and immediately see what step of the process is being completed, and how long it’s taking for each step of the process to complete. Additionally, since Process Director collates the process data over time, managers can easily identify where time-consuming bottlenecks are occurring, and immediately access a mass of statistical data about the process to identify areas for possible improvement. In other words, managers can manage the process itself, instead of spending valuable time managing each individual instance of the process.</p>
+        <h3>Object Interoperability</h3>
+        <p>Process Director implements process automation by using a number of objects that we will discuss in this lesson, such as Forms, Process Timelines, and Business Rules. All of these objects have a high level of interoperability with each other.</p>
+        <p>The term <span class="KeyTerms">interoperability </span>means the ability to have Process Director objects work together and to depend on each other to perform the right steps in the right sequence, using the correct information. For instance, an Form is required to start a Process Timeline. In turn, different steps in the Process Timeline may require that different information be collected or displayed on the Form. A Business Rule may change which steps are performed in a Process Timeline, or what information appears on an Form. All of the Process Director objects are dependent on each other to properly model and automate a business process.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ObjectInteroperability.png" />
+        </p>
+        <p>Interoperability enables you to create processes with a very high degree of complexity and detail because, as the diagram illustrates, Process Director objects can interact with each other to pass information back and forth in complex ways. For instance, information from an Form field can be used by a process, business rule, or custom task to generate new information that can then be passed back to the Form. While this complexity is extraordinarily useful, it also requires that implementers invest in gaining the breadth of knowledge required to use these complex interactions properly.</p>
+        <p>With this in mind, let’s turn to an overview of the Process Director objects.</p>
+        <h2>Forms</h2>
+        <p>The <span class="KeyTerms">Form</span>, is the primary method of entering process information into Process Director. The Form is composed of two main parts: the Form Definition that describes the properties and events associated with the Form, and the Form template that implements the visual design of the Form. Both the definition and template are stored in Process Director. After the template's design process using Word is complete, Process Director imports the template, parses it to find all of the form fields in the Word template, then adds the form fields to the form definition.</p>
+        <h3>Form Definition</h3>
+        <p>The <span class="KeyTerms">Form Definition</span> is the Process Director object that identifies all of the properties, fields, events, and conditions that govern the way an Form works. In Process Director, the different Form options and properties are organized into a tabbed user interface. Users can navigate to different Form properties by clicking the appropriate tabs.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/eFormDefinitionPropertiesTab.png" />
+        </p>
+        <p>The Form<span class="UIElement"> Properties</span> tab contains all of the general properties for the Form Definition. The <span class="UIElement">Form Controls</span> tab contains a list of all of the Form fields and the field properties for each of them. The <span class="UIElement">Custom Task Event Mapping</span> tab list all of the Process Director custom tasks that are associated with form field events. The <span class="UIElement">Validation Rules</span> tab contains a list of all of the rules that apply to a form to ensure the form information is valid before users are allowed to submit the form. The<span class="UIElement"> Set Form Data</span> tab enables you to change form data to desired values. Finally, the<span class="UIElement"> Fill Dropdowns</span> tab enables you to configure the options that will appear in dropdown and list controls.</p>
+        <p>In most cases, a process is initiated when a user fills out and submits an Form. The Form Definition is where where you indicate what process is started when the form is submitted.</p>
+        <p>Forms can, at the user’s discretion, become quite complicated, with multiple processes—or even multiple forms—incorporated into various stages of a process. Users can, therefore, design Forms with an extraordinary degree of flexibility, in order to implement complex processes.</p>
+        <h3>The Form Template</h3>
+        <p>Process Director includes two different methods for creating an Form template. One method uses Microsoft Word as an editing tool, as well as a BP&#160;Logix plugin that must be installed as an add-in. We refer to this as the Word Form Builder. This is a more complex solution to maintain and configure, and is covered in the Advanced Proficiency Training course. The primary method for creating Form templates  is to use the Online Form Designer that is built into Process Director.</p>
+        <p>When you create an Form Definition, Process Director automatically includes a new, blank template for the Form Definition, and also provides versioning for the template, so you can, for instance, revert to a previous version of the document to eliminate unwanted edits. Process Director also ensures that you can track who checked the template out, and when. Finally, if a template has been checked out, Process Director can prevent anyone else from editing the template until it has been checked in. You check out the Form template automatically whenever you click on the <span class="UIElement">Edit </span>tab of the Form definition to open the Online Form Designer.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/EditTab.png" />
+        </p>
+        <p>Saving the Form template in the Form Designer automatically checks the template back into Process Director. During the check in process, Process Director scans the template to see what fields have been changed, added, or deleted. Once the scanning and updating is complete, you can go to the Form Definition’s Form Controls tab. Once there, you can delete or remap Form Definition fields that have been deleted or changed on the Form template.</p>
+        <h3>Field Properties</h3>
+        <p>As mentioned previously, Process Director will add the controls to the Form Definition as fields. When it does so, it will use the control name you have used in the template design stage. Just as the controls have properties that you access from the template, the fields that Process Director creates have their own set of properties. You can access these properties by navigating to the <span class="UIElement">Form Controls</span> tab of the Form Definition, and double-clicking the control name, or clicking the <span class="UIElement">Edit </span>link that appears in the field’s row. This opens a dialog box to allow you to change such properties as the default value of the field, when it can appear on the form, or when users can enter data into the control.</p>
+        <p>You may also want to make an event occur when a user enters or changes the data in a field. For instance, you can set a field to perform a calculation when a user enters a number into the field. There are a wide variety of custom tasks that can be run when a field event occurs. You can direct these custom tasks to run when a field event occurs by adding them to the Custom Task Event Mapping tab.</p>
+        <h2>Process Timelines</h2>
+        <p>The Process Timeline functionality of Process Director is what sets it apart. Process Director adds the element of time to process management in a way that nothing else does. Instead of traditional flowchart-based workflows, Process Director's Process Timeline uniquely adds scheduling and predictive capabilities to workflow management.</p>
+        <p>The Process Timeline may look familiar to you, because it is presented in Gantt chart format. The <span class="KeyTerms">Gantt chart</span> is a type of chart that places each activity in a process on a single line that is horizontally marked in some increment of time, usually days. Each activity is marked with a bar that whose left end begins at the task's start date, and ends at the task's end date. This type of chart is widely used in project management.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/Process Timelines.png" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Most activities have a dependence on one or more other activities. <span class="KeyTerms">Dependence </span>refers to the requirement that an activity cannot begin until a predecessor activity, or activities, ends. This type of relationship (often referred to by project managers as <span class="KeyTerms">finish-to-start</span>) represents the most fundamental starting condition for any activity.</p>
+        <p>An activity may also be a parent or child activity. A <span class="KeyTerms">parent activity</span> is a container for other, subordinate activities, each of which is referred to as a <span class="KeyTerms">child activity</span>. The child activities begin when the parent activity begins. Once all of the child activities are complete, the parent is complete. Usually, the parent activity has no tasks associated with it. Instead, all of the tasks are associated with the child activities. In the normal course of events, the parent activity merely serves as a convenient method of grouping similar activities.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/Process Timelines_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>In Process Director, it is possible for a parent and child activities to have a much more advanced interaction than described here. These interactions are intended to support more specialized and unusual cases, however, so they will be addressed in more advanced lessons.</p>
+        <p>BP Logix developed the Process Timeline to address the need to measure and predict process execution times.  Process Timeline enables organizations to build robust, executable process models within Process Director. Business users design Process Timelines by answering two questions as they add each step to the process:</p>
+        <ul>
+            <li>What must be complete before this step can begin?</li>
+            <li>How long will this step take to complete?</li>
+        </ul>
+        <p>We refer to these, respectively, as the dependence and duration questions. Each activity will begin as soon as its prerequisites, if any, are complete. The result is a solution with many variable features:</p>
+        <ol>
+            <li>Modeling is greatly simplified. Project owners list each activity, estimate its duration, and then drag-and-drop it onto the activity or activities that must complete before it can begin.</li>
+            <li>As many of the activities as possible will run at the same time, without the need to explicitly configure parallel behavior.</li>
+            <li>The status of the process can be determined at a glance.</li>
+            <li>At any point—even the moment the process is launched—the system can determine which activities, if any, may not be complete by their due date.</li>
+            <li>The system records actual versus predicted execution times each time the process is run, and adjusts its time estimates accordingly.</li>
+        </ol>
+        <h3>Activity Actions</h3>
+        <p>Each activity in the Process Timeline has an Actions column with four icons, each of which enable you to modify one of the activity's properties.</p>
+        <table style="mc-table-style: url('../../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 4rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>ICON</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p style="text-align: center;">ACTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;">
+                        <p style="text-align: center;">
+                            <img src="../../Resources/Images/ImplementersReference/Process Timelines_2.jpg" style="visibility: visible;mso-wrap-style: square;width: 18px;height: 18px;" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Drag to move under another parent: Drag the activity to a parent activity. The activity you drag will become a child of that parent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;">
+                        <p style="text-align: center;">
+                            <img src="../../Resources/Images/ImplementersReference/Process Timelines_3.jpg" style="visibility: visible;mso-wrap-style: square;width: 18px;height: 18px;" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Drag to move order: Change where the activity appears in the Process Timeline. Note: changing the location of the activity does not change the behavior of the Process Timeline, which is strictly governed by the rules of dependence and other activity starting conditions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;">
+                        <p style="text-align: center;">
+                            <img src="../../Resources/Images/ImplementersReference/Process Timelines_4.jpg" style="visibility: visible;mso-wrap-style: square;width: 18px;height: 18px;" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Drag to add a dependence: Drag and drop an activity onto another to make the dragged activity dependent upon the target. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;">
+                        <p style="text-align: center;">
+                            <img src="../../Resources/Images/ImplementersReference/Process Timelines_5.jpg" style="visibility: visible;mso-wrap-style: square;width: 18px;height: 18px;" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Conditions: Click this icon to open the activity's properties on the Needed When tab.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1" style="text-align: center;">
+                        <p style="text-align: center;">
+                            <img src="../../Resources/Images/ImplementersReference/Process Timelines_6.jpg" style="visibility: visible;mso-wrap-style: square;width: 18px;height: 18px;" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>Properties: Click this icon to open the activity's properties on the Start When tab.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Activity Properties</h3>
+        <p>The properties for each activity are presented in a tabbed interface. Each tab groups similar properties together.</p>
+        <table style="mc-table-style: url('../../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 10rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p style="text-align: center;">TAB</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p style="text-align: center;">DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Activity</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This tab enables the user to select the Activity Type, such as a User, Custom Task, Form Action, etc. It also contains other general activity settings.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Activity type</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>This tab will show specific properties that pertain to the Activity Type you select. The tab's label will change to reflect the selected Activity Type.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Start When</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This tab enables you to inspect and modify the dependencies and conditions that determine when the activity will start.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Completed When</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>This tab enables you to inspect and modify the conditions that determine when the activity will complete. Rarely used, as most activities complete organically (such as when a user submits a form, or an automated task completes).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Needed When</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This tab enables you to inspect and modify the conditions that determine if an activity will be run once its start conditions have been met. These conditions will be evaluated once when the activity becomes eligible to start.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Due Date</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>This tab enables you to inspect and modify the due date for the activity, and the actions to take when the activity is not completed by the due date.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Notifications</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This tab enables you to configure who is notified about the activity and when notifications should be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>Advanced Options</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>This tab enables you to configure advanced properties, such as how the activity is assigned to user, what steps to take when a user completes the activity, etc.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Analyzing Timelines</h3>
+        <p>One of the things that makes Process Timelines so useful, is the ability to see how the process performs in the real world, as opposed to the way the Process Timeline was designed. Process Director enables this through the Analyze Timeline function. Since we do not have a working process with historical data to analyze yet, there is little to analyze in our current Process Timeline, but you should be aware of this analysis capability.</p>
+        <p>
+            <img src="../../Resources/Images/GettingStartedGuide/Analyzing Process Timelines.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>In the Timeline definition screen of any Process Timeline, clicking the <span class="UIElement">Analyze Timeline</span> menu option opens the Process Timeline in the analysis view.</p>
+        <p>
+            <img src="../../Resources/Images/GettingStartedGuide/AnalyzingProcessTimelines.png" />
+        </p>
+        <p>Process Director analyzes all previous instances of the Process Timeline. Based on the actual times recorded from those instances, the analysis view projects the expected start dates, end dates, and durations for each activity in the process. The <span class="ProcessDirectorObject">Analyze Timeline</span> view allows you to easily see how the actual performance of the process compares to the configured performance. </p>
+        <p>In the analysis view, the triangles represent the projected start and end dates for each activity in the Process Timeline. These triangles are superimposed over a gray activity bar that indicates the time period during which the activity is configured to occur. </p>
+        <p>Red triangles indicate that the start or end date for an activity is projected to occur later than the activity's configuration indicates. The red triangles can mean that the activity's duration is projected to take longer than configured, but this is not necessarily true. For example, an activity's duration may be projected to take less time than configured, but if the activity is projected to start later than the configuration indicates, the triangles will still be red. Blue triangles indicate that the start or end date will occur approximately when indicated.&#160; Green triangles indicate that the activity's start or end dates are projected to occur before the configuration indicates. The line between the two triangles indicates the projected duration of the activity. </p>
+        <p>A percentage number on the activity bar indicates the percentage of time the activity actually takes to complete, on average, compared to the configured duration. A negative percentage indicates that the average activity duration is shorter than the configured duration. A positive percentage indicates the actual activity duration is, on average, longer than the configured duration.</p>
+        <p>If you move your mouse over the triangles, a tooltip will pop up will appear that displays more statistical information about the activity. The tooltip displays comparisons between actual and configured end dates and durations.</p>
+        <p>
+            <img src="../../Resources/Images/GettingStartedGuide/Analyzing Process Timelines_2.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>So, if we use this information to analyze the Process Timeline shown  above, we can see that the <span class="ProcessDirectorObject">Initial Approval</span> activity takes slightly less than two workdays to complete, on average, which is 61% faster than the activity's configured duration of three workdays. Similarly, the <span class="ProcessDirectorObject">Finance Approval</span> activity has taken, on average, 66% less time than configured. Overall, the average process time for this Process Timeline is two workdays, compared to the configured duration of 5 workdays.</p>
+        <p>The analysis view makes it easy to compare actual process times to configured times. It shows you where bottlenecks or delays are occurring in your processes. Over time, using Analyze Timeline gives you the information you need to identify and solve trouble spots and bottlenecks. </p>
+        <p>You can revert to the Process Timeline's definition view from the analysis view by clicking the Timeline Definition button that is displayed above the Timeline.</p>
+        <p>
+            <img src="../../Resources/Images/GettingStartedGuide/AnalyzingProcessTimelines1.png" />
+        </p>
+        <h2>Business Rules</h2>
+        <p><span class="KeyTerms">Business Rules</span> define some aspect of a business process and control its operation. Business Rules provide a convenient and useful way to encapsulate complicated or frequently used decisions and make them available for use by any process or Form.</p>
+        <h3>Conditions</h3>
+        <p>Business rules generally evaluate a condition or set of conditions, and then return a value based on the results of the evaluation. A <span class="KeyTerms">condition </span>is a true or false statement that is evaluated in order to determine an appropriate response. Based on this evaluation, the rule commonly returns a "Yes" or "No" answer.</p>
+        <p>Other, more complicated, business rules might evaluate a number of conditions and return a number of different values. For example, let's say that you have a sales representative assigned to a particular state, or number of states. The business rule may evaluate a field that contains the state in which a customer lives and return the name of the appropriate sales representative to a Process Timeline. The Process Timeline can then assign an action to the appropriate sales representative. In this example, the Business Rule evaluates a set of fifty-one different conditions (if we include the District of Columbia). Based on the result of that evaluation, the Business Rule will return the name of the sales representative for the customer's home state.</p>
+        <h2>Knowledge Views</h2>
+        <p>To understand how Knowledge Views work, we must first understand what Process Director does with definition objects like Form definitions, Process Timeline definitions, etc. The definition object contains no actual data, but merely defines what data will be stored. For example, the Form definition describes the data fields that the user will fill out to enter data. Similarly, the Process Timeline definition describes when activities will start and end, or when a user task will become due, based on when the process begins.</p>
+        <p>Regular, non-administrative users never interact with any of the definition objects directly. Instead, when a user wants to, say, fill out an Form, The Form definition makes a copy of itself, called an <span class="KeyTerms">instance</span>, that the user will fill with data in the fields specified in the Form definition. This instance object is what actually contains the data entered by the user. If ten different people fill out an Form, Process Director creates an instance for each person, so that there are ten instances of the Form, each of which contains the data filled out by one of the ten users.</p>
+        <p>By the same token, when a user submits an Form that initiates a Process Timeline, a new instance of the Process Timeline definition is created that stores the information about that specific run of the process. The whole purpose of the definition object is to describe the instance objects that are created to interact with the user.</p>
+        <p>Let's take a closer look at an example of the Process Timeline definition and a Process Timeline instance. When the definition is created, we might define a user activity as being due three days after the activity starts. When we create the definition, we obviously don't know when the activity will start. All we know is that, whenever the activity starts, we want the activity to become due in three days. When a user submits the Form that starts the process, Process Director creates an instance of the Process Timeline that contains the actual activity dates for that specific run of the process. So, in our example, if the activity begins on January 1st, the Process Timeline instance that is created will now set the due date for the activity as January 4th.</p>
+        <p>When we search for information in Process Director, we really don't care much about the definition objects, because they don't contain the data. While there are other, more complicated scenarios for using Knowledge Views, we are usually interested in searching through all of the existing instances of an Form or process to find specific data. We might, for instance, want to search for all timeline activities that are due in the next week, or for all Forms that were submitted by a specific person.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/KnowledgeViewConceptual.png" />
+        </p>
+        <p>Knowledge Views display information in a tabular format, much like a spreadsheet. So much so, in fact, that the Knowledge View results can be exported to CSV or Excel format.</p>
+        <p>When constructing a Knowledge View, you select the columns that you wish the Knowledge View to display. The columns can consist of any system variable, such as Form fields, business rule results, Process Timeline values, and much more.</p>
+        <p>You can also choose to see different types of objects in the results. You can search for Forms, Process Timeline instances, business rules, documents, or any other type of Process Director object. You can select any number of object types to return, as well. The ability to return results containing any system variable from any type of Process Director object makes Knowledge Views very powerful.</p>
+        <p>Adding to that power is the filtering capability of Knowledge Views.  Just as you can make a Knowledge View column out of any system variable, you can also filter every column to return only specific results.</p>
+        <h3>Knowledge View Options</h3>
+        <p>Knowledge Views have a large number of properties and advanced properties. The sheer number of options may be daunting at first, but it is the large number of configuration options that makes Knowledge Views so useful. </p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/PropertiesKView.png" />
+        </p>
+        <h4>Properties Tab</h4>
+        <p>The <span class="UIElement">Properties </span>tab enables you to configure the basic properties of the knowledge View, including the other Process Director objects you wish to associate with the Knowledge View. In Process Director, an <span class="KeyTerms">association </span>between objects specifies the default objects you wish to use when choosing object properties. For instance, when you associate a specific Form with a Knowledge View, then any time you choose to display a Form field, the Knowledge View will, by default, display form fields from the Form you have associated with the Knowledge View. If you do not make the association, then if you choose to display a form field, you must select the Form for each individual field you want to display. So, in a case where you are creating a Knowledge View that uses a specific form, making the association in the Properties tab makes choosing fields much easier. The same holds true for associations with a Timeline, Case, etc.</p>
+        <h4>Configure Tab</h4>
+        <p>The <span class="UIElement">Configure </span>tab defines the appearance of the Knowledge View window. The presentation allows the look and feel presented to your users to be changed. The presentation allows various configuration values to be set including where the output should be sent (e.g. browser vs. report vs. chart), the maximum number of items to be returned, and how to display documents.  For a Knowledge View to not appear on a user's Home Page, you must set the <span class="ControlName">Do not show this object in 'Items I Can Run' Knowledge Views</span> checkbox to true. A detailed look at these options will be covered later, in the lesson on Knowledge Views.</p>
+        <h4>Options Tab</h4>
+        <p>The <span class="UIElement">Options </span>tab defines the results that you wish to display in the Knowledge View window when it runs. Providing these options will give the end user additional actions to enhance reporting and provide more control of objects in Process Director. These controls are used throughout the system (e.g. Task List, Content List, etc.). A detailed overview of the advanced options will be covered later, in the lesson on Knowledge Views.</p>
+        <h4>Columns Tab</h4>
+        <p>The Columns tab defines the columns to display in the Knowledge View. The column data can include form fields, process data, Meta Data, or various object properties. The order of the columns can be changed using the up arrow (<img src="../../Resources/Images/Training/Core/KViewColumn.png" />) and down arrow (<img src="../../Resources/Images/Training/Core/KViewColumn1.png" />) to the right of the column. Columns can be removed using the delete (<img src="../../Resources/Images/Training/Core/KViewColumn2.png" />) icon.</p>
+        <p>The sort order can be configured in the Knowledge View; however the end user can override this by clicking on the columns names on the Knowledge View. The sort order is not used when exporting the results to a CSV or an Excel Report, it is only used when the results are displayed in the browser.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/ColumnsKview.png" />
+        </p>
+        <h4>Filter Tab</h4>
+        <p>The <span class="UIElement">Filter </span>tab identifies filter criteria that specifies what objects are available to this Knowledge View. The filter criteria can include form field data, categories, attribute values, or various object properties (e.g. author, document type, published). The filter criteria can identify what document versions to display – the latest document version or only the published version.</p>
+        <p>The end user can optionally be given the ability to override any of the filter values. This allows the field name and the input box to be displayed on the running Knowledge View so the user can input the additional filter information.</p>
+        <h2>Custom Tasks</h2>
+        <p>When using Process Director, there are a number of tasks that need to be done repeatedly. For instance, it is quite common to use information contained in an external database to fill out the options in a dropdown list, such as the name of company departments, or the names of vendors. Process Director encapsulates a number of these useful, often-used functions into objects called Custom Tasks. BP Logix developers periodically update the set of common Custom Tasks, or add new ones.</p>
+        <p>Some of the most common uses for Custom tasks are to use an external database or other system to enter information in an Form, or to convert documents to PDF format, as described below.</p>
+        <h3>Fill Dropdowns</h3>
+        <p>A dropdown control contains a list of options from which users must make a selection. Quite often, an Form needs to display a list of options that come from an external system, such as an ERP or HR system. The Fill Dropdown Custom Tasks enable you to select the system from which the options should come, and automatically fill a dropdown control with the selected options list.</p>
+        <p><b>Fill Dropdown from DB:</b> This Custom Task enables you to use data from an external database to fill the options for a dropdown control.</p>
+        <p><b>Fill Dropdown from Web Service:</b> This Custom Task enables you to use data from a web service to fill the options for a dropdown control.</p>
+        <h3>Fill&#160;Fields</h3>
+        <p>Similar to a Fill Dropdown Custom Task, the Fill Fields Custom task also extracts data from an external system, but uses the data to fill out an Form field to store the data. For instance, if you provide an employee name, you might wish Process Director to enter the employee's department, Employee ID, or phone number automatically. With a Fill Fields Custom Task, Process Director will retrieve the employee information and enter it in the appropriate Form fields, so that the Form submitter won't have to fill out the information manually.</p>
+        <p><b>Fill Fields from DB:</b> This Custom Task enables you to use data from an external database to enter data into an Form control.</p>
+        <p><b>Fill Fields from Web Service:</b> This Custom Task enables you to use data from a web service to enter data into an Form control.</p>
+        <h3>Convert to PDF</h3>
+        <p>It's common to use Process Director to store documents in a variety of formats such as Word documents, Excel spreadsheets, etc. The Convert to PDF Custom Task converts all of these documents to PDF format, so that they can be universally read through the browser.</p>
+    </body>
+</html>

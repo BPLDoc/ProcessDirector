@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>ML and AI Custom Variables</h1>
+        <p>Process Director v5.0 and higher supports custom variables for Machine Learning (ML) and Artificial Intelligence (AI) services. Some of the services are provided by third parties, and require external accounts to access those services, while others are integral to Process Director.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="GoogleSentiment"></a>
+                    <MadCap:keyword term="Google Sentiment;Sentiment" /><a href="#GoogleSentiment"><img src="../Resources/Images/link.png" alt="Link" /></a>Google Sentiment</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Google sentiment service can analyze text submissions for the sentiment the text expresses. Passing a text string to the Google Sentiment service submits it for analysis, and the Service returns a double-precision number that ranges from -1.00 to 1.00. A value of 0 is a neutral sentiment. A negative value indicates negative sentiment, while a positive value indicates a positive sentiment. The closer to -1.00 or 1.00 the return value is, the more intense the sentiment expressed. For instance, a return value of 0.85 is a very positive sentiment.</p>
+                <h5>Required Variables</h5>
+                <p>To configure Process Director for the Google Sentiment service, the custom variables below must be configured:</p>
+                <p style="font-weight: bold;">
+                    <MadCap:keyword term="GoogleSentiment_private_key" /><b>GoogleSentiment_private_key</b>
+                </p>
+                <p>This string variable contains the your private key for the Google Sentiment service. This value is provided to you by Google.</p>
+                <p><b><MadCap:keyword term="GoogleSentiment_client_email" />GoogleSentiment_client_email</b>
+                </p>
+                <p>This string variable contains the email address you used as the client email address for the Google Sentiment service.</p>
+                <h5>Optional Variables</h5>
+                <p style="font-weight: bold;">
+                    <MadCap:keyword term="GoogleSentiment_project_id" /><span style="font-weight: bold;">GoogleSentiment_project_id</span>
+                </p>
+                <p>This string variable contains the Project ID for the Google Sentiment service. This value is provided to you by Google.</p>
+                <p style="font-weight: bold;">
+                    <MadCap:keyword term="GoogleSentiment_client_email" />GoogleSentiment_private_key_id</p>
+                <p>This string variable contains the Private Key ID for the Google Sentiment service. This value is provided to you by Google.</p>
+                <p style="font-weight: bold;">
+                    <MadCap:keyword term="GoogleSentiment_client_email" />GoogleSentiment_client_id</p>
+                <p>This string variable contains the Client ID for the Google Sentiment service. This value is provided to you by Google.</p>
+                <p style="font-weight: bold;">
+                    <MadCap:keyword term="GoogleSentiment_client_email" />GoogleSentiment_client_x509_cert_url</p>
+                <p>This string variable contains the URL you used as the x509 Client Certificate for the Google Sentiment service.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.GoogleSentiment_private_key = @"YourPrivateKey";<br />&#160;&#160;&#160;&#160;bp.Vars.GoogleSentiment_client_email = "email@address.com";<br />&#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;<span class="ControlName">//The following vars are optional:</span><br />&#160;&#160;&#160;&#160;bp.Vars.GoogleSentiment_project_id = "YourProjectID";<br />&#160;&#160;&#160;&#160;bp.Vars.GoogleSentiment_private_key_id = "YourPrivateKeyID";<br />&#160;&#160;&#160;&#160;bp.Vars.GoogleSentiment_client_id = "YourCLientID";<br />&#160;&#160;&#160;&#160;bp.Vars.GoogleSentiment_client_x509_cert_url = "https://YourClientCertURL.com";<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

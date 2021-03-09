@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Installation" /><a name="_Toc421172264"></a>
+            <MadCap:keyword term="Installation;Database" />Database Creation</h1>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" title="Important" />  Please review the <a href="Installation Overview.htm#InstallationProcess" target="_blank">Installation Process</a> section of the documentation to see an overview of the steps required to properly install Process Director.</div>
+        <p>Create a database and optionally a new user. You do not have to create the tables in the database; the product will create the tables as part of the installation/initialization processes. Ensure the user that will access the database has read, write and create table permissions.</p>
+        <h2><a name="_Toc421172265"></a>SQL Server</h2>
+        <p>For SQL Server, ensure the user has db_datareader and db_datawriter, or db_owner, permission to the database. </p>
+        <h2><a name="_Toc421172266"></a>Oracle</h2>
+        <p>Create a user (e.g. named 'bplogix') in the Oracle database with the following privileges:</p>
+        <p><code>Roles: 'CONNECT' and 'RESOURCES'<br></br>System Privileges: 'UNLIMITED TABLESPACE' and 'CREATE ANY VIEW'</code>
+        </p>
+        <p>Example syntax in SQL Plus, where "password" is the actual BP Logix user password:</p>
+        <div class="CodeBase">create user bplogix identified by password;grant connect,resource to bplogix;commit;
+        </div>
+        <h2><a name="_Toc421172267"></a>Database Backups:</h2>
+        <p>You should schedule database backups according to your recovery point objectives (RPO).&#160; Backups of the /website/App_Data/ and the /website/custom/ folder only need to occur after configuration changes are made to Process Director (e.g. custom vars changes, changes to the IT Admin installation settings, etc.).</p>
+        <p>If you are storing document binaries on the file system instead of the database, ensure you are adding that file system folder to your backup plans.</p>
+        <p>If you are do not require data recovery at the point of failure, it is recommend&#160; that you change the recovery mode to “Simple” in the Process Director database. This will allow the database to perform better, but only allows for the recovery of data from the point of the last [differential] backup.</p>
+        <h2><a name="_Toc421172268"></a>Database Maintenance</h2>
+        <p>BP&#160;Logix recommends that you create a database maintenance plan that rebuilds indexes and statistics. This maintenance plan should run weekly and be configured to process all tables in the Process Director databases.</p>
+        <p>There are some additional considerations to address for Microsoft SQL&#160;Server. First, we recommend that you change the database auto growth settings in SQL Server. When an SQL Server data file becomes full, auto grow is triggered based on the auto grow settings of the database. This auto grow function causes the database to pause while the files are extended on disk. This pause in transactions can have a negative impact on performance. Auto grow is designed to be a contingency for <b style="font-style: italic;">unexpected</b> growth.  As a best practice, we recommend that when you create the database initially, that you size the database to account for any expected growth during the lifetime of the SQL instance.  This means setting the initial size of the database as large as you think the database will eventually be, so that it never encounters auto grow.</p>
+        <p>We also recommend that the default SQL Server autogrowth setting be changed from a percentage (e.g. 10%) to a fixed amount, e.g. 200mb, to handle larger databases.</p>
+        <p>Also, if the transaction log file is growing too large, ensure that your backups are including the log files, or change the recovery mode to Simple.</p>
+        <h2><a name="_Toc421172269"></a>Database Connection Strings <a href="#_Toc421172269" class="anchor">#</a></h2>
+        <p>The database connection string is a very important part of the installation as it connects the server to the database. Construct your connection string as you see fit. We have provided some samples below:</p>
+        <h3><a name="_Toc421172270"></a>SQL Server</h3>
+        <p>Process Director supports a Microsoft SQL Server 2005 or higher database.</p>
+        <h4>Provider</h4>
+        <p><code>System.Data.SqlClient</code>
+        </p>
+        <h4>Default connection string</h4>
+        <div class="CodeBase">SQL Server User:Data Source=HOSTNAME;Initial Catalog=DB_NAME;Persist Security Info=True;User ID=USERID;Pwd=PASSWORD</div>
+        <h4>Windows User</h4>
+        <div class="CodeBase">Data Source=HOSTNAME;Initial Catalog=DB_NAME;Persist Security Info=True;Trusted_Connection=Yes</div>
+        <p>Please note: If you are using a Windows user, the user will need to be assigned as the Identity to the Application pool of the IIS website.</p>
+        <h3><a name="_Toc421172271"></a>Oracle</h3>
+        <p>Oracle requires that the DBA create the database (user schema in Oracle). To connect to Oracle the ODP.NET drivers must be installed on the web server where Process Director is located. These are available from Oracle. Process Director supports Oracle 10g or higher. The Oracle 11 ODP.NET drivers can be used with an Oracle 10 database. </p>
+        <h4>Provider</h4>
+        <p>Oracle 10/11: <code>Oracle.DataAccess.Client</code></p>
+        <p>Oracle 12: <code>System.Data.OracleClient</code></p>
+        <h4>Connection string</h4>
+        <div class="CodeBase">Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=HOSTNAME)(PORT=1521)))( CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=DB_NAME)));User Id=USER_SCHEMA;Password=PASSWORD;</div>
+    </body>
+</html>

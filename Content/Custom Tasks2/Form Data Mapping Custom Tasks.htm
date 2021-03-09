@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="CUSTOM TASKS" />
+            <MadCap:concept term="Custom Tasks" /><a name="_Toc421015715"></a>Form Data Mapping Custom Tasks</h1>
+        <p>These custom tasks enable you to set data values in a Form, fill fields from Business Value objects, copy data between two different Form instances, and  to manipulate arrays on forms on a variety of ways. In addition to these custom tasks, some funct++ ions, like setting form data, or filling fields from a Business value, are also provided natively in the  configuration tabs of Form and/or Timeline Definitions, and can be invoked from the definitions directly, instead of being called via a Custom Task.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="CopyFormData"></a><a href="#CopyFormData"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Copy Form Data</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This custom task enables you to copy data from one Form to an instance of another. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/CopyFormData12161.png" />
+                </p>
+                <p>Under the “” field, select the form template that you want to copy the data into. To select the fields you want to add to, click on the “Add Mapping” button and select destination and source form control fields. Alternatively, you can tell the Custom Task to map to all Forms except ones that you specify. This will automatically copy data from the source form to the corresponding fields in the destination form.</p>
+                <p>Other options can be set to specify how the form is displayed and under what groups and instance types it is created. You can specify the group name of the new form, and what kind of reference it will be classified as. You can click on the “Attach Source” checkbox to attach the source form as a reference to the destination form, specifying a new group name for the attachment.</p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Form to Create</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Select the form to which the data should be copied from the picker control.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Add new Instance as</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Child under Form Definition ONLY, Form Reference, Workflow Reference, Timeline Reference</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The object reference to which to attach the new form.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Set Form Version to Zero</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This prevents the new version from being treated like a new form instance, meaning that it will show up in knowledge views and elsewhere.</p>
+                                <div class="Important">
+                                    <img src="../Resources/Images/i.png" alt="Important" /> Default values will not be set for the fields of the new form instance when this option is checked.</div>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Group Name</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The Group Name for the new form.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Attach Source</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Attach the source form as a reference to the new form instance.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Group for Source Form</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The Group Name for the source form.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Attachment Type(s)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Workflow References, Timeline References, Form References</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Attachments to copy to the new form instance.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Attachment Group</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>All, Objects with no Group only, Specify</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Group name of the attachments. Selecting "Specify" will enable you to add the desired group name in the text box.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>(ADD AS PENDING)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Add the attachments as pending process references instead of form references.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Map to ONLY the following fields</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Restrict form field mapping to the field mappings you add by clicking the Add mapping button.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Map to ALL fields EXCEPT the following fields</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Restrict form field mapping to exclude the field mappings you add by clicking the Add mapping button.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Open new Form in same Window</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Replaces the source form in the browser window.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Open new Form in new Window</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Opens the destination form in a new window. For Process Director versions older than v4.55, to enable this option to work as expected in conjunction with the <span class="ControlName">Close source Form after copy</span> property, the <a href="../DevelopersGuide/Customization File Administration.htm#fEnableJSURL">fEnableJSURL</a> Custom Variable must be set to "true".</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Close source Form after copy</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Save source Form before close/open of new Form</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>Save the source form before copying to ensure the most current data is copied.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="FillFromBV"></a><a href="#FillFromBV"><img src="../Resources/Images/link.png" alt="Link" /></a>Fill Fields from Business Value</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For users of Process Director v4.02 and higher, the Fill&#160;Fields from Business Value Custom Task enables you to use a business value to fill Form fields. This CT provides this functionality in addition to the Set Form Data Tab on a Form Definition or Timeline Activity. This Custom Task was largely deprecated in Process Director v4.5 with the addition of the Set Form Data tab to the Form Definition.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/FillFieldsFromBusinessValue1.png" />
+                </p>
+                <p>This Custom task requires the SDK that is delivered with process Director v4.02, and cannot be used with earlier versions.</p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+                    <col style="width: ;" class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Select Business Value</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A <span class="NamedControl">ContentPicker </span>that enables you to choose the Business Value to use to extract the data.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Configure Form Definition</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A <span class="NamedControl">ContentPicker </span>that enables you to optionally set parameters from a different form than the default container Form, if desired. The Custom Task will search for an instance of the selected form in the current process instance, and use the values from that Form.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Parameters</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">An automatically generated list of the parameters required by the business value.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">If the Business Value uses parameters, Process Director will display each parameter for the business value. You can set the parameter using a string value, or select a Form field that will supply the parameter's value.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Field Mappings</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">A list of all the Form fields to map to the business value.</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">To add a field to map to the business value, click the <span class="UIElement">Add Mapping</span> button. Each mapping will consist of a dropdown from which to choose the Business Value property to apply, and a dropdown from which to use the Form field whose value you wish to set. For users of Process Director v4.05 and higher, this Custom Task will fill array columns with a Business Value that returns a recordset.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ManipulateArrayData"></a><a href="#ManipulateArrayData"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Manipulate Array Data</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/ManipulateArray.png" />
+                </p>
+                <p>This Custom Task will perform a variety of useful operations with Form arrays:</p>
+                <ul>
+                    <li>Sort data in arrays.</li>
+                    <li>Remove duplicate rows in an array.</li>
+                    <li>Remove array rows based on conditions</li>
+                    <li>Copy data in an array to fields in another array.</li>
+                </ul>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 35em;" />
+                    <col style="width: ;" class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Select Array</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>List of arrays on the Form</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The array to which to apply the Custom task operations.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+Copy Data From Control</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">List of Form controls</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The Form control from which data should be copied.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Copy To Array Column</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">List of Array columns</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The Array column into which the data should be pasted.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Copy Data to Array By</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Appending<br />Prepending<br />Overwriting</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">How the data will be copied into the array. The data may be prepended by adding a row to the beginning of the array, appended by adding a new row to the end of the array, or overwrite the existing column data in the array.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Sorting</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Click the Add Column button to choose the array column on which to sort.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Sort in Reverse Order</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Checking this checkbox will sort the array in Descending order, rather than Ascending order.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Remove an Array Row If:</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Do Not Remove Any Rows<br />The Row is an Exact Duplicate of a Previous Row<br />Sorted Columns in the Row Match a Previous Row<br />Specified Columns in the Row Match a Previous Row<br />The Row Matches the Following Conditions:</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Select the condition under which duplicate rows should be removed.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Array copy to</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>List of arrays on the Form</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Choose the array to which the array values should be copied from the array you initially selected in the Select Array option.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Conditions on Which to Copy Row</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">Enables you to use the Condition Builder to determine the conditions under which a row will be copied.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>In the <span class="ControlName">Removal </span>section of the configuration screen, if you select the <span class="ControlName">Remove Rows based on Conditions</span> option, an <span class="UIElement">Add Condition</span> button and additional options will appear. Clicking the <span class="UIElement">Add Condition</span> button will add a conditions row that enables you to select an array field, operator, and enter a value to compare, so that you can remove a row based on the condition. Each condition row has a <span class="UIElement">Remove Condition</span> button to enable you to delete the row, if desired. Finally, you may then select whether to remove the row if it meets <i>all</i> of the conditions, or to remove the row if it meets <i>any</i> of the conditions in the list.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/ManipulateArray1.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="SetFormData"></a><a href="#SetFormData"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Set Form Data</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Task will set control data on a Form. Select the Form Fields to receive the data and the Sysvar-enabled string which will determine the data to set. </p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/Form Data Mapping Custom Tasks_1.jpg" style="visibility: visible;mso-wrap-style: square;width: 576px;height: 148px;" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Data Source Form</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Picker control to select a form containing the data source, if any.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Form Control</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The form control to set data (Container Form must be configured)</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Set Data To</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>Data to set to Form Control</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

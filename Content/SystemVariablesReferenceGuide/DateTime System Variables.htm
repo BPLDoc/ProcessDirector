@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="System Variables" />
+            <MadCap:concept term="System Variables" /><a name="_DateTime_System_Variables"></a><a name="_Toc421544456"></a>
+            <MadCap:keyword term="DateTime" />DateTime System Variables</h1>
+        <p>System variables that return a Datetime value will have the universal formatting options specified in the <a href="Parameters.htm#DatetimeSystemVariables">Datetime section</a> of the System Variable parameters topic. System variables that return a Timespan value will have the universal formatting options specified in the <a href="Parameters.htm#TimespanSystemVariables">Timespan section</a> of the System Variable parameters topic.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421544457"></a><a name="CurrentDate"></a><a href="#CurrentDate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Current Date" />Current Date</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/SystemVariablesReferenceGuide/DateTime System Variables.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <h3>Returns</h3>
+                <p>This system variable returns the date (or date component) at the moment the system variable is evaluated.</p>
+                <h3>SysVar Tag</h3>
+                <p><code><MadCap:keyword term="CURR_DATE" />{CURR_DATE}</code>
+                </p>
+                <p><code><MadCap:keyword term="CURR_DATETIME" />{CURR_DATETIME}</code> (for the time as well)</p>
+                <p><code><MadCap:keyword term="CURR_TIME" />{CURR_TIME}</code> (for just the time)</p>
+                <p>You can also return a date component of the current date by using the following syntax:</p>
+                <p><code><MadCap:keyword term="CURR_YEAR" />{CURR_YEAR| CURR_MONTH| CURR_WEEK| CURR_DAYOFYEAR| CURR_DAY| CURR_DAYOFWEEK | CURR_HOUR| CURR_MINUTE} </code>
+                </p>
+                <p>Each component system variable will return the appropriate numeric value when evaluated. For example, if the data is January 1, 2019 the following reruns could be expected:</p>
+                <p>CURR_YEAR: 2019</p>
+                <p>CURR_MONTH: 01</p>
+                <p>CURR_DAYOFYEAR:&#160;01</p>
+                <h3>Modifiers</h3>
+                <p>This system variable can be formatted according to the options available to all datetime system variables.</p>
+                <h3>Optional Tags</h3>
+                <p>The Current Date/Time/Month.Year, etc., will also be correctly returned using the alternate syntax options below:</p>
+                <p><code>{CURRENT_DATE}</code>
+                </p>
+                <p><code><code>{CURRENT_DATETIME}</code></code>
+                </p>
+                <p><code>{CURRENT_TIME}</code>
+                </p>
+                <p>And so forth.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="CurrentGMTOffset"></a>
+                    <MadCap:keyword term="Current GMT&#160;Offset;CURR_GMTOFFSET" /><a href="#CurrentGMTOffset"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Current GMT&#160;Offset</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h3>Returns</h3>
+                <p>This variable returns the offset (in minutes, hours, or seconds) between local time and Greenwich Mean Time (GMT), also known as Coordinated Universal Time (UTC). Process Director stores all times in GMT/UTC, and, in most cases automatically converts GMT/UTC to local time when times and dates are displayed to users. In some cases, Business Values or other data sources that use the raw time value from the Process Director database will display the GMT/UTC time rather than the local time. This variable enables you to determine the time difference between local time and GMT/UTC, in order to perform the appropriate time conversions manually.</p>
+                <h3>SysVar Tag</h3>
+                <p><code>{CURR_GMTOFFSET,format=<b>hours|minutes|seconds</b>}</code>
+                </p>
+                <h3>Modifiers</h3>
+                <p><b>format:</b> The result of this form field SysVar tag can be formatted according to the options available for datetime SysVar tags.</p>
+                <h3>Sample</h3>
+                <p>If you are in Pacific Standard Time Zone, the following syntax will return "-8" in most cases, indicating that the time is 8 hours behind GMT/UTC. Britain and the US enter Daylight Savings Time on slightly different dates, so the value will vary +-1 hour, depending on those dates.</p>
+                <p><code>{CURR_GMTOFFSET,format=<b>hours</b>}</code>
+                </p>
+                <h3>Optional Tags</h3>
+                <p>TheCurrent GTM&#160;Offset will also be correctly returned using the alternate syntax option below:</p>
+                <p><code>{CURRENT_GMTOFFSET,format=<b>hours</b>}</code>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421544458"></a><a name="Date"></a><a href="#Date"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Date" />Date</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h3>Returns</h3>
+                <p>This option allows the user to specify a datetime from a datetime picker. While not technically a system variable, information about a date can be gathered via SysVar tags by referencing a date picker.</p>
+                <h3>SysVar Tag</h3>
+                <p><code>{FORM:<b>someDateTimePicker</b>}</code>
+                </p>
+                <h3>Parameters</h3>
+                <p><b>someDateTimePicker:</b>&#160;The name of a <span class="NamedControl">DateTime Picker</span> control on a form.</p>
+                <h3>Modifiers</h3>
+                <p>The result of this form field SysVar tag can be formatted according to the options available for form field SysVar tags.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421544459"></a><a name="DateDifference"></a><a href="#DateDifference"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Date Difference" />Date Difference</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h3>Returns</h3>
+                <p>This system variable is used <b style="font-style: italic;">for Forms only</b>, to return the difference between two datetimes.</p>
+                <h3>SysVar Tag</h3>
+                <p><code><MadCap:keyword term="DATEDIFF" />{DATEDIFF, DATE1={<b>someDate</b>}, DATE2={<b>someOtherDate</b>}, TYPE=<b>YEARS|MONTHS|DAYS|HOURS|MINUTES|SECONDS|BUSINESS_DAYS|BUSINESS_HOURS|FULLDAYS|FULLMONTHS|FULLYEARS</b>, INCLUDEENDDATE=<b>true|false</b>}</code>
+                </p>
+                <h3>Modifiers</h3>
+                <p><b>DATE1 (Required):</b> The first date to compare.</p>
+                <p><b>DATE2 (Required):</b> The second date to compare.</p>
+                <p><b>TYPE:</b> Using the "Type=" parameter, this system variable can return the difference in years, months, days, minutes, seconds business days, or business hours. </p>
+                <p><b>INCLUDEENDDATE:</b> When using the "IncludeEndDate= " parameter, the value can be true or false. The default is false. If this value is set to true, the system will include the "end date" in the date diff calculation. This will take into account the "business days" parameter and only include the end date if it falls on a business day. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="DateDifferenceEmail"></a><a href="#DateDifferenceEmail"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Date Difference Email" />Date Difference (Email)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h3>Returns</h3>
+                <p>This system variable is used <b style="font-style: italic;">for email templates only</b>, to return the difference between two datetimes.</p>
+                <h3>SysVar Tag</h3>
+                <p><code><MadCap:keyword term="DATEDIFF_SYSVAR" />{DATEDIFF_SYSVAR, DATE1={<b>someDate</b>}, DATE2={<b>someOtherDate</b>}, TYPE=<b>YEARS|MONTHS|DAYS|HOURS|MINUTES|SECONDS|BUSINESS_DAYS|BUSINESS_HOURS|FULLDAYS|FULLMONTHS|FULLYEARS</b>, INCLUDEENDDATE=<b>true|false</b>}</code>
+                </p>
+                <h3>Modifiers</h3>
+                <p><b>DATE1 (Required):</b> The first date to compare.</p>
+                <p><b>DATE2 (Required):</b> The second date to compare.</p>
+                <p><b>TYPE:</b> Using the "Type=" parameter, this system variable can return the difference in years, months, days, minutes, seconds business days, or business hours. </p>
+                <p><b>INCLUDEENDDATE:</b> When using the "IncludeEndDate= " parameter, the value can be true or false. The default is false. If this value is set to true, the system will include the "end date" in the date diff calculation. This will take into account the "business days" parameter and only include the end date if it falls on a business day. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421544460"></a><a name="DaysAgo"></a><a href="#DaysAgo"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Days Ago" />Days Ago</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/SystemVariablesReferenceGuide/DateTime System Variables_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <h3>Returns</h3>
+                <p>This system variable returns a date a specific number of days before the date that this system variable is referenced.</p>
+                <h3>SysVar Tag</h3>
+                <p><code>{CURR_DATE, days=<b>-NumberOfDaysAgo</b>}</code>
+                </p>
+                <h3>Optional Parameters</h3>
+                <p>This system variable can be formatted according to the options available to datetime system variables.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421544461"></a><a name="DaysFromNow"></a><a href="#DaysFromNow"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Days From Now" />Days From Now</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/SystemVariablesReferenceGuide/DateTime System Variables_2.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <h3>Returns</h3>
+                <p>This system variable returns a date a specific number of days after the date that this system variable is referenced.</p>
+                <h3>SysVar Tag</h3>
+                <p><code>{CURR_DATE, days=<b>NumberOfDaysFromNow</b>}</code>
+                </p>
+                <h3>Modifiers</h3>
+                <p><b>days:</b> A number you can use to return the number of days from now.</p>
+                <p>This system variable can be formatted using any of the modifiers available for DateTime system variables.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="IsBusinessDay"></a><a href="#IsBusinessDay"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Is Business Day" />Is Business Day</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h3>Returns</h3>
+                <p>This system variable returns True if the evaluated date is a business day. The default date the variable evaluates is the current date.</p>
+                <h3>SysVar Tag</h3>
+                <p><code><MadCap:keyword term="IS_BUSINESS_DAY" />{IS_BUSINESS_DAY}</code>
+                </p>
+                <p><code>{IS_BUSINESS_DAY, Date=<b>DateTimeValue</b>}</code>
+                </p>
+                <p><code>{IS_BUSINESS_DAY:<b>DateTimeValue</b>}</code>
+                </p>
+                <h3>Modifiers</h3>
+                <p><b>Date:</b> A DateTime value other than the current date, which you wish to be evaluated. Omitting this variable will cause the variable to evaluate the current DateTime. You can omit the modifier by using the syntax <code>{IS_BUSINESS_DAY:<b>DateTimeValue</b>}</code></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="IsBusinessHour"></a><a href="#IsBusinessHour"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Is Business Hour" />Is Business Hour</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h3>Returns</h3>
+                <p>This system variable returns True if the evaluated DateTime value falls within business hours. Since this variable only evaluates times, you must first use the <code>IS_BUSINESS_DAY</code> variable to determine if the date is a business day, prior to using this variable to determine whether the time falls within business hours. So, for a given datetime value, both <code>IS_BUSINESS_DAYS</code> and <code>IS_BUSINESS_HOURS</code> must return true to determine that the DateTime value actually occurs during business hours.</p>
+                <h3>SysVar Tag</h3>
+                <p><code><MadCap:keyword term="IS_BUSINESS_HOUR" />{IS_BUSINESS_HOUR}</code>
+                </p>
+                <p><code>{IS_BUSINESS_HOUR, Date=<b>DateTimeValue</b>}</code>
+                </p>
+                <p><code>{IS_BUSINESS_HOUR:<b>DateTimeValue</b>}</code>
+                </p>
+                <h3>Modifiers</h3>
+                <p><b>Date:</b> A DateTime value other than the current date, which you wish to be evaluated. Omitting this variable will cause the variable to evaluate the current DateTime. You can omit the modifier by using the syntax <code>{IS_BUSINESS_HOUR:<b>DateTimeValue</b>}</code></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="IsBusinessDate"></a><a href="#IsBusinessDate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Is Business Date" />Is Business Date</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h3>Returns</h3>
+                <p>This system variable returns True if the evaluated DateTime value is a business date and time. Unlike <code><code href="#IsBusinessDay">IS_BUSINESS_DAY</code></code> and <a href="#IsBusinessHour"><code>IS_BUSINESS_HOUR</code></a>, this variable evaluates both the date and time.</p>
+                <h3>SysVar Tag</h3>
+                <p><code><MadCap:keyword term="IS_BUSINESS_DATE" />{IS_BUSINESS_DATE}</code>
+                </p>
+                <p><code>{IS_BUSINESS_DATE, Date=<b>DateTimeValue</b>}</code>
+                </p>
+                <p><code>{IS_BUSINESS_DATE:<b>DateTimeValue</b>}</code>
+                </p>
+                <h3>Modifiers</h3>
+                <p><b>Date:</b> A DateTime value other than the current date, which you wish to be evaluated. Omitting this variable will cause the variable to evaluate the current DateTime. You can omit the modifier by using the syntax <code>{IS_BUSINESS_DATE:<b>DateTimeValue</b>}</code></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

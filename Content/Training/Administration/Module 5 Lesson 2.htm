@@ -1,0 +1,562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="4612" MadCap:lastWidth="1187" MadCap:conditions="General.SysAdmin Training">
+    <head>
+        <link href="../../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 2: Logging</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn the basics of reading and sending log files.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Logging and Log Files</h2>
+        <p>For Cloud installations, or On-Premise installations that use the Compliance Option, Process Director provides a number of logging functions, all of which are available through the <span class="ControlName">IT Administration</span> section, in the <span class="ControlName">Troubleshooting </span>section.&#160; Once you've navigated to the troubleshooting section, you can open the log reader by clicking the <span class="UIElement">Logs</span> button located in the upper right portion of the screen.</p>
+        <p>
+            <img src="../../Resources/Images/SystemAdministratorGuide/Logging.png" />
+        </p>
+        <h3>Available Logs</h3>
+        <p>Process Director makes the following logs available:</p>
+        <table style="mc-table-style: url('../../Resources/TableStyles/Simple.css');width: ;" class="TableStyle-Simple" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>LOG FILE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Script Logs</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Records information from scripts when using the bp.logs methods.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Internal logs</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Records internal system status information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Init Logs</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Records when various components of functions are initiated.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Audit Logs</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Records changes made to data or processes.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p>Email Logs</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>Records data about email messages sent from Process Director. (For users of the Compliance edition only.)</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>You can switch between each of these logs by using the dropdown control located above the Log Viewer, at the far left of the screen. To the immediate right of the log type dropdown is a log file dropdown that gives you access to the current log ("Main") and the four most recent backups. Process Director sets a default log file size of 2MB, so that, when the main log reaches 2MB, it is saved as backup 1, and a new empty Main log is started. Process Director saves the old backup 1 log as backup 2, and so on as the changes ripple down through the log backup numbers.</p>
+        <p>To the right of the log file dropdown, you will see check boxes that you can use to select if you wish to see logged errors only, and which logging level you'd like to see. Logging is documented at six different levels, Level 0 through Level 5. Level 0 is the default level for logging.&#160; Each logging level creates logs at an increasingly detailed scale, with Level 5 being the most detailed level, and level 0 being the least detailed. Nearly all debugging you'll need to do on a regular basis can be done using Level 0 or Level 1 logging. On occasion, system problems may require more detailed logging, but you should be aware that higher levels of logging detail can impact system performance. Using higher levels of logging is usually done in conjunction with assistance from BP Logix, and is not usually necessary otherwise.</p>
+        <p>Additionally, for users of the Compliance Edition, Some audit logging is also sent to the Windows Event Log. From the Windows Event Log Viewer, you can configure automated actions, such as email notifications, to occur when certain events are logged. For information on this functionality, and how to edit the events sent to the Windows Event log, please see the Audit Logging Variables section of the Developer's Guide.</p>
+        <h3>Log Events</h3>
+        <p>Some standard events will show up in the log files, based on actions taken by either Process Director users, or by Process Director as processes move through their life cycle.&#160; The table below enumerates and describes these standard log events.</p>
+        <table style="mc-table-style: url('../../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>LOG EVENT</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>APPEARS IN A LOG WHEN</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>NotSet</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Not categorized into the following</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Login</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A user logs in</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Logoff</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A user logs off</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>AuthenticateFailed</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A user types the wrong password when attempting to log in, or to access to admin page without privileges</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>DeleteObject</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A Content List object of is deleted or an object is deleted from an object instance.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>CreateObject</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A Content List object of is created or an object is created from an object instance.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>UpdateObject</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A Content List object of is updated or an object is updated from an object instance.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>MoveObject</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A Content List object of is moved or an object from an object instance is moved.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>PasswordChange</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A user changes the password.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>CreateUser</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A user is created (User Admin).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>DeleteUser</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A user is deleted (User Admin).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>CreateGroup</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A group is created (Group Admin).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>DeleteGroup</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A group is deleted (Group Admin).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>WebService</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A web service is run (Process Director access to Web Service).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>TaskCompleted</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A workflow task is completed by a user.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>TaskReassigned</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A user is reassigned to a workflow task.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>TaskRemoved</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A running task is removed from a running workflow.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Signature</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A user enters data into an eSign signature control on a Form.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>RollbackActivity</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A timeline activity is rolled back.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>CancelActivity</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A timeline activity is cancelled.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>RestartActivity</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A timeline activity is restarted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>RestartTimeline</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A timeline instance is restarted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>SyncStart</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Sync is run/started.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>SyncEnd</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Sync is finished.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>JumpToStep</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A task is moved to non-connected task with a Jump to Step Custom Task.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>CancelStep</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A workflow step is cancelled, e.g. an administrator right clicking on a step and clicking "Cancel".</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>StopWorkflow</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A workflow instance is stopped.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>RestartWorkflow</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A workflow instance is restarted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>UpdateUser</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A user profile is updated (User Admin).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>AddUserToGgroup</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A user is added into a group.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>RemoveUserFromGroup</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A user is removed from a group.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>RemoveObjectFromParent</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Any content object is removed from a parent, e.g. removing an attachment from a workflow.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>DownloadDocument</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A user downloads documents from application.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>ViewFormData</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>When someone accesses form data other than through the normal viewing of a form instance (e.g. through SDK calls).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>PermissionAdded</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A permission is added to a user (User Admin).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>PermissionRemoved</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A permission is removed from a user (User Admin).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>PermissionUpdate</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A user edits and updates an existing permission record.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>PermissionReplicated</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>This occurs when the user clicks on the "Replicate Permissions to Child Objects" button.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>PermissionGiven</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>An application elevates a user's permissions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>PermissionDeniedView</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A user attempts to view object to which the user does not have permission.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>PermissionDeniedDelete</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A user attempts to delete object to which the user does not have permissions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>PermissionDeniedAdmin</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A user attempts to view admin pages to which the user does not have permissions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>ImpersonateOn</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>When impersonate is on (Someone uses impersonate function).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>ImpersonateOff</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>When impersonate is off.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>DelegateOn</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A user sets delegation to other users.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>DelegateOff</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A user ends delegation.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>UserDisabled</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>A user is disabled (User Admin/ Setting).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>UserEnabled</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A disabled user is enabled.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>AdminReplaceUser</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>An administrator uses the "replace user" function.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>AdminPageAccess</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A user directly accesses an admin page from the installation server.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>ImportObjects</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>When an xml file is imported.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>ExportObjects</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>When an xml file is exported.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>FormDataChange</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>When a Form is filled out by a user. This is used when form field auditing is active on a form instance. The log entry shows the changes to all the form fields, including the old values, the new values, and who changed the Form.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>ViewForm</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>Any time a user opens a form instance. The flag fAuditFormViews must be enabled, i.e., set to "True" in the vars file, for this to appear. This may add strongly to the servers load when in use.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Searching the Logs</h3>
+        <p>At the top of the Log Viewer, to the right of the logging levels check boxes, you will see a text box labeled <span class="ControlName">Containing String</span>. If you enter text into this text box, then hit the [ENTER] key, Process Director will search the current log for log entries that match the text you have typed into the text box.</p>
+        <h3>Emailing Logs</h3>
+        <p>On occasion, you may run into issues that you requires assistance from BP Logix to debug. In those cases, a technical support representative may ask you to attach your log files to your technical support ticket.  In this case, there is a button located below the log reader that is labeled <span class="UIElement">Email Logs</span>. Below this button, you will see text boxes into which you can enter email addresses to which to send the logs from your Process Director installation. In addition, there is a text box for you to enter other information you'd like to appear in the text of your email.&#160; If these are filled out correctly, you can click the <span class="UIElement">Email Logs</span> button to send the logs in a zipped file.</p>
+        <p>Enter your email address, and send the logs to yourself. When you receive the email, download the zipped log files to your computer, then attach the zipped log files to your support ticket.</p>
+        <h3>Sending Logs to Support</h3>
+        <p>If you have an active support ticket, you can automatically attach the logs to your tech Support ticket by entering your BP Logix Company ID and the Support Ticket number into the fields provided, then clicking the <span class="UIElement">Email Logs to Support </span>button</p>
+        <h3>Log Markers</h3>
+        <p>At the bottom of the Log Viewer, you will see an <span class="UIElement">Insert Marker </span>button. Clicking this button will insert a marker into the log file. You can fill in the text box next to the "Insert marker" button to include some custom text in the marker. </p>
+        <p>You may find it useful to insert a marker when dealing with logs that contain a lot of information, and which are updated frequently by Process Director. For instance, when testing a function, you might insert a marker with custom text before running the test. The marker makes it easier to return to the log and find where your test started.</p>
+        <p>
+            <img src="../../Resources/Images/SystemAdministratorGuide/Troubleshooting_4.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>The example above demonstrates two markers. The first marker is the default marker that is inserted in the log file when you click the <span class="UIElement">Insert marker</span> button. The second example is a marker where the following custom text has been inserted:</p>
+        <p>
+            <code>This is a test marker for the log file.</code>
+        </p>
+        <h2>Audit Log Storage</h2>
+        <p>In addition to storage in the file system, users of the Compliance edition—which includes cloud-based installations—can have audit logs written into the Process Director internal database for easier access to the logs to view, search, and export audit logs. This functionality is available from within the <span class="ControlName">Troubleshooting </span>section of the administrative console from the <span class="UIElement">Audit Logs</span> button.</p>
+        <p>
+            <img src="../../Resources/Images/SystemAdministratorGuide/AuditLogging.png" />
+        </p>
+        <p>The top portion of the Audit Logs screen provides search fields to find the relevant portions of the log files stored in the database. Below the search fields is a link to export the search data to a CSV file. Exporting the data to CSV format enables users to open the exported data in Excel for further analysis, providing a much easier way to analyze audit logs than the text-based log files. The bottom portion of the screen displays the returned records from the database. Each returned row has an expansion icon (<img src="../../Resources/Images/SystemAdministratorGuide/Troubleshooting_6.jpg" style="visibility: visible;mso-wrap-style: square;width: 8px;height: 12px;" />) that users can click to expand the row to show log file details for that entry.</p>
+        <p>If you allow outside users who do not have Process Director user accounts, such as customers or suppliers, to have access to your processes via anonymous access, you can enable audit logging for anonymous users as well. To turn this feature on, you will need to set the <span class="ControlName">fAuditAnonAccesses</span> variable to "true" in the Custom Variables file.</p>
+    </body>
+</html>

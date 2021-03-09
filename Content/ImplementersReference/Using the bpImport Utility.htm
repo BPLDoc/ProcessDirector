@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536096"></a>
+            <MadCap:keyword term="bpImport;Utilities" />Using the bpImport Utility</h1>
+        <p>Process Director provides a utility for importing or exporting documents automatically between Process Director and file system folders, named "BPImport". The utility does not import/export any content list items other than documents, so Forms, Knowledge Views, etc., are not affected by the bpImport utility.</p>
+        <p>BPImport makes it easy to import documents from a file system when moving from a file based system to Process Director as your document management system. This utility can be run interactively with a dialog prompting for input fields, or scheduled to perform an automatic import on a scheduled basis. The import or export can be run from the machine on which Process Director is installed, or from a remote computer. You must enter credentials for a user that has full permissions to the folder in which to import/export.  </p>
+        <p>The executable file, bpImport.exe, is located in the c:\Program Files\BP Logix\Process Director\ directory by default. You can copy this utility to any computer that has Internet Explorer 6 or higher installed. Simply execute bpImport.exe to launch the dialog, and press “Start” to begin the import/export process. The status of the import is displayed on the dialog.</p>
+        <p>Cloud customers can download the utility from the Downloads section of the BP&#160;Logix support site at <a href="https://support.bplogix.net/" target="_blank">https://support.bplogix.net</a>.</p>
+        <p>The bpImport utility has a tabbed interface, and the fields in the interface are generally the same whether you wish to import or export documents.</p>
+        <h2><a name="_Toc421536097"></a>Connection Tab <a href="#_Toc421536097" class="anchor">#</a></h2>
+        <p>The connection tab creates the connection between Process Director and your file system.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Using the bpImport Utility.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Process Director URL</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The complete URL to the server running Process Director.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>User ID</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The User ID to use for the import routine. This user must be a system administrator. This User ID is designated as the document owner for the new documents.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Password</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The password to use for the import routine. This user must be a system administrator.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Minimum delay between each import</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Specifies an optional amount of time in milliseconds to delay between each file imported/exported. The default is no delay. This is only needed if you want to give the server time to respond to other requests when many documents are being imported at once.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Partition (Name or ID)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enter the Partition name or ID to use when importing. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Optional starting folder in Process Director</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Specifies the starting folder in the Process Director database. If this field is not specified, new documents will be stored in the root folder.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Local file system path containing the documents for import (Shown when importing)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Specifies the starting location to the documents to be imported. This can specify a network path, or a file system path. The utility will import all files in the folder, and will traverse through all subdirectories as well. The relative folder structure will be maintained in Process Director.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Local file system path to which the documents will be exported (Shown when exporting)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The file path on the local computer into which all of the exported files will be placed.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Import/Export</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Radio buttons to select whether you wish to import documents into Process Director, or export documents from Process Director.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536098"></a>Filter Tab <a href="#_Toc421536098" class="anchor">#</a></h2>
+        <p>The Filter tab enables you to specify the criteria for the documents you'd like to import/export.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/bpImportFilterTab20160322.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Matching criteria of documents to import/export</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Specifies a filter that is matched against the file name before it is imported/exported. This can be used, for example, to only import documents that have a .pdf extension. If this field is not specified, all documents will be imported.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Maximum # of documents to import/export</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Specify an optional maximum number of documents to import/export.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Maximum Size</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Specify an optional maximum number of bytes for a document. Documents larger than this number of bytes on the local file system will be skipped. (Note: a kilobyte is 1,024 bytes, a megabyte is 1,048,576 bytes, and a gigabyte is 1,073,741,924 bytes.)</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Minimum File Age</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to specify the number of seconds since the file was created. Documents newer than the number of seconds specified will be excluded from processing.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Sort Files By</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option enables you to determine the order in which files are imported/exported. You can select from one of the following options:</p>
+                <ul>
+                    <li>Name</li>
+                    <li>Time Created</li>
+                    <li>Time Last modified</li>
+                </ul>
+                <p>The default order is alphabetical sorting by name.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Sort In</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can set the import to sort in Ascending or descending order.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536099"></a>Options Tab (Import) <a href="#_Toc421536099" class="anchor">#</a></h2>
+        <p>When the Import radio button is selected, the Options tab enables you to specify some additional options when importing.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Using the bpImport Utility_2.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Allow associated Meta Data .XML files for setting categories</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If this is selected it will attempt to find matching file names with “.XML” appended to the name. These files contain XML Meta Data that can be used to set categories and attributes of the document in Process Director. Refer to the section below regarding the format of the XML file. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Overwrite existing files</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If selected, this will overwrite existing files on the Process Director server. This option is unchecked by default.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Delete documents from file system/Content List after successful import/Export</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If selected, this option will remove files from your file system after they are imported, or from the Content List after they are exported. Files will be deleted only after they are successfully imported into the Process Director database. This option can be used, for instance, to create a drop folder for documents to automatically be imported based on a schedule. Users and/or applications can drop documents into a file system folder, and the scheduled import utility will import and remove them from the folder.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Disable "Delete" confirmation dialog</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If selected, there will be no confirmation dialog for every file that is deleted. If this option is not selected, you will be prompted before every file is removed.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536100"></a>Options Tab (Export) <a href="#_Toc421536100" class="anchor">#</a></h2>
+        <p>When the Export radio button is selected, the Options tab enables you to specify some additional options when exporting.</p>
+        <p>When exporting items from the Content List, the folder structure of the Content List will be replicated in the local file system during the export.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Using the bpImport Utility_3.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Overwrite existing files</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If selected, this will overwrite existing files on the file system. This option is selected by default.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Delete documents from content list after successful Export</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If selected, this option will remove files from the Content List in Process Director after they are exported. Files will be deleted only after they are successfully exported into the file system. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Disable "Delete" confirmation dialog</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If selected, there will be no confirmation dialog for every file that is deleted. If this option is not selected, you will be prompted by Process Director before every file is removed.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="Scheduling"></a>Scheduling File Imports (Smart Folders) <a href="#Scheduling" class="anchor">#</a></h2>
+        <p>You may want to automatically schedule the import allowing for Smart Folders. This allows users to drop documents in a folder on a file system and have it automatically imported in to Process Director with the same folder structure used on the file system. This can automatically start a workflow for each new document added. To facilitate this you will schedule the non-interactive import command using the command line options. The import GUI has a button called “Save Parameters” which is used to save all of the current settings in the dialog into popup dialog for copying to the clipboard or save as a batch file. The command line options will specify the fields documented above. Here is the list of command line options available, and the mappings to the dialog fields:</p>
+        <h4>Properties</h4>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>Parameter Name</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>Alternate Name</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>directory PATH</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Import files from PATH</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>-d</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>delay NUMBER</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Delay each import by NUMBER milliseconds</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>delete</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Delete files after successful import</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>folder PATH&#160;&#160; </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Import files into Process Director folder at PATH</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>-f</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>filter FILTER</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Limit import to only files of types in FILTER (comma-separated extensions)</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>partition NAME&#160;&#160;&#160; </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Import into partition NAME</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>-i</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>maxnum NUMBER&#160;&#160;&#160; </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Limit the number of files to import to NUMBER</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>-m</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>metadata</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Include metadata with import files (in corresponding XML files)</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>no-gui&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Run in non-interactive mode (required for scheduling)</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>-n</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>overwrite</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Overwrite files on import with the same name already in Process Director</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>password PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Connect to Process Director as user with password PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>-p</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>user USERNAME</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Connect to Process Director as USER</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>-u</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>webserviceurl URL</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Connect to Process Director at URL</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>-w</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Log PATH</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Folder path into which log files will be written</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">-l </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Running in non-interactive mode requires the following arguments:</p>
+        <div class="CodeBase"><code>-n, --webserviceurl, --partition, --user, --password, --directory</code>
+        </div>
+        <h6>Example</h6>
+        <p>To run the import utility and delete files after a successful import:</p>
+        <div class="CodeBase">bpImport.exe -w "http://hostname/" -u "user1" -p "" -i "Test Partition" -d "C:\Windows\Temp" -n –delete</div>
+        <p>To run the import utility with Meta Data and a 50ms delay after every import:</p>
+        <div class="CodeBase">bpImport.exe -n -w "http://hostname/" -u "user1" -p "" -i "Partition" -d "C:\Windows\Temp" --metadata --delay 50</div>
+        <p>When running the import utility non-interactive from a command line or scheduler, any errors will be written to a file named bpU.log in the Logs directory where the bpImport.exe exists. </p>
+        <h2><a name="Optional"></a>Optional&#160;Meta Data XML&#160;Files <a href="#Optional" class="anchor">#</a></h2>
+        <p>The import utility can include meta data with each of the files being uploaded to Process Director. This meta data can set the categories and attributes for the document on the server. This occurs if the option is selected to allow associated meta data files on the import dialog. If this option is selected the import utility will attempt to find matching file names with “.XML” appended to the name. For example, if the import utility finds a file named mydoc.pdf, it will attempt to locate the mydoc.pdf.xml file for the meta data. The meta data XML file must be of a certain format to be recognized as valid meta data. The XML file must contain the following structure and tags.</p>
+        <div class="CodeBase">&lt;META_DATA&gt;<br />&#160;&#160;&#160;&#160;&lt;INPUT_META_DATA&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_NAME&gt;external_attribute_name&lt;/META_NAME&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_VALUE&gt;attribute_value&lt;/META_VALUE&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;/INPUT_META_DATA&gt;<br />&#160;&#160;&#160;&#160;&lt;INPUT_META_DATA&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_NAME&gt;external_attribute_name_2&lt;/META_NAME&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_VALUE&gt;attribute value 2&lt;/META_VALUE&gt;<br />&#160;&#160;&#160;&#160;&lt;/INPUT_META_DATA&gt;<br />&lt;/META_DATA&gt;</div>
+        <p>The &lt;META_NAME&gt; must match an External Name in a category attribute for the document to be assigned to that category. If a matching External Name is not found in the category tree the meta data is discarded after the upload completes.</p>
+        <p>For example, assume you have a category named Operations that contains a subcategory named Quality with an attribute name of ActionManager. You can assign this entire category tree (i.e. Operations.Quality) to the imported document by using a matching External Name in the ActionManager attribute. If the external name in the ActionManager attribute is set to “manager_name”, the XML for the imported document would look as follows:</p>
+        <div class="CodeBase">&lt;META_DATA&gt;<br />&#160;&#160;&#160;&#160;&lt;INPUT_META_DATA&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_NAME&gt;manager_name&lt;/META_NAME&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_VALUE&gt;John Smith&lt;/META_VALUE&gt;<br />&#160;&#160;&#160;&#160;&lt;/INPUT_META_DATA&gt;<br />&lt;/META_DATA&gt;</div>
+        <p>To set values for checkboxes, the values YES and NO correspond to a checked state and an unchecked state, respectively.</p>
+        <p>Date values vary based on locale: if you’re in the USA, use mm/dd/yyyy. If you’re elsewhere, use dd/mm/yyyy.</p>
+    </body>
+</html>

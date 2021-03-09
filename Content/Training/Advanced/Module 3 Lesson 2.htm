@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="10" MadCap:lastHeight="4473" MadCap:lastWidth="1161" MadCap:conditions="General.Advanced Training">
+    <head>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 2: The Case Definition</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn the basic configuration settings for a Case Definition.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Configuration</h2>
+        <p>The Case definition specifies all of the properties for a Case. The Case properties create a shared data context that is passed between all of the processes, Forms, and Knowledge Views that are used in the case. Some changes have been applied to the Case definition for v4.02, in order to use the new Dashboard object, rather than a Workspace, to display the Case folder for a Case instance.</p>
+        <h3>Configuration Tab</h3>
+        <p>
+            <img src="../../Resources/Images/SystemAdministratorGuide/CaseConfigTab.png" />
+        </p>
+        <p>The <span class="UIElement">Configuration </span>tab contains the following properties.</p>
+        <h4>Case</h4>
+        <p>The name of the Case.</p>
+        <h4>Icon</h4>
+        <p>The Icon that will be displayed for each Case instance. Clicking on the default icon will open the <span class="ControlName">Icon Chooser </span>dialog box to select the desired icon for the case.</p>
+        <h4>Case Instance Name</h4>
+        <p>The naming format for each case instance that is created. The Instance name can include System Variables, as shown in the example below:</p>
+        <p>
+            <code>Claim {CASE:Claim Number} for Policy #{CASE:Policy Number} Submitted on {CASE:Claim Date}</code>
+        </p>
+        <p>In this example, the instance name includes three of the Case property system variables to create a uniqie name for each instance.</p>
+        <h4>Case Description</h4>
+        <p>A brief description of the Case's purpose.</p>
+        <h4>Audit property data changes</h4>
+        <p>Checking this box will create an audit trail for each change to any of the case properties, enabling all changes to be tracked.</p>
+        <h4>Create Case Instances for existing Form Instances</h4>
+        <p>If you click this button, Process Director will find any form definitions that point to this case definition or properties in this case definition. It will create the appropriate case instances and add all the appropriate objects to the case instance. It will search through all form instances, the workflows associated with the form instance, and all those attachments. You can then select the Instance for which to create a new case.</p>
+        <h3>Properties Tab</h3>
+        <p>The <span class="UIElement">Properties </span>tab contains the list of case properties that create the data context for the case. To add a property, simply click the <span class="UIElement">Add Property</span> button. When you do so, a property row will appear with the following columns to configure.</p>
+        <p>
+            <img src="../../Resources/Images/SystemAdministratorGuide/CasePropertiesTab.png" />
+        </p>
+        <h4>Case Properties Section</h4>
+        <h5>Name</h5>
+        <p>The name of the property that will appear in the dropdown menus for field values and in the Choose System variable dialog box.</p>
+        <h4>Friendly Name</h4>
+        <p>A friendly name you can use, if needed, that will display in the user interface instead of the Name. This is a useful feature if the case property names are too technical or confusing.</p>
+        <h4>Description</h4>
+        <p>A description of the property's purpose.</p>
+        <h4>Data Type</h4>
+        <p>The property's data type. The default data type is Text, and the following data types are available:</p>
+        <ul>
+            <li>Text</li>
+            <li>Number</li>
+            <li>Date</li>
+            <li>Date/Time</li>
+            <li>Yes/No</li>
+            <li>User</li>
+        </ul>
+        <h4>Default Value</h4>
+        <p>The value of the property that will be applied automatically when a new instance is created.</p>
+        <h4>Encrypt</h4>
+        <p>A check box that, when checked, will encrypt the value for storage in the database. This is useful for storing sensitive information.</p>
+        <h4>Unique</h4>
+        <p>The value will not be repeated, and will be unique to the case instance, i.e., no two case instances will have this same value for the property.</p>
+        <h4>Order and Delete Icons</h4>
+        <p>The order in which the properties appear in the Case definition is the same order in which they will appear in all System variable dropdown menus. You can change the order by clicking on the up or down arrows for the property's row. Properties can be deleted by clicking the red "X" icon.</p>
+        <h4>Dashboards Section</h4>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/CasePropertiesDashboards.png" />
+        </p>
+        <p>The <span class="ControlName">Dashboards </span>Section enables you to choose a Dashboard object to use to display the case folder. The dashboard should contain Knowledge Views, Charts, reports, or other objects related to the Case definition. When the dashboard is opened in the context of a Case, only results that are applicable to the selected case instance will be displayed in the Dashboard. For information about how to configure a Dashboard, please see the <a href="../../ImplementersReference/Dashboards.htm" title="Dashboards topic" alt="Dashboards topic">Dashboards</a> topic.</p>
+        <h2 MadCap:conditions="General.All Hidden">Creating a SQL&#160;View</h2>
+        <p MadCap:conditions="General.All Hidden">Sometimes, you might wish to access the stored data about a case definition more easily. So, just as with a Form, Process Director enables you to create SQL views based on case definitions. Each Case Definition has a <span class="UIElement">Form Data SQL&#160;View</span> tab.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/CaseDefinition.png" />
+        </p>
+        <p MadCap:conditions="General.All Hidden">In the <span class="ControlName">Fields to use in View</span> section at the top of the screen, and the current SQL&#160;statement based on those fields below. By default, all fields are selected. You can can uncheck any undesired fields to deselect them. <span class="UIElement">Select All</span> and <span class="UIElement">Select None</span> buttons are provided for your convenience, as well. After you have chosen the fields you desire for the view, click the <span class="UIElement">Re-generate View </span>button to create the new SQL&#160;statement for your desired view. Additionally, you can edit the SQL statement manually.</p>
+        <p MadCap:conditions="General.All Hidden">Once the correct SQL statement has been generated, click the <span class="UIElement">Create View</span> button to create the view in your Process Director database.</p>
+        <p MadCap:conditions="General.All Hidden">If you wish to delete the view, click the <span class="UIElement">Remove View</span> button, which will delete the view from the process Director database.</p>
+        <h2>Case Definition Super Search</h2>
+        <p>In the <span class="ProcessDirectorObject">Condition Builder</span>, the <span class="ControlName">System Variable</span> dropdown includes an <span class="ControlName">Any&#160;Case Property</span> option that will enable a search across all case properties in a Case definition for a specified value.</p>
+        <p>
+            <img src="../../Resources/Images/ImplementersReference/AnyCaseProperty.png" alt="Any Case Property" />
+        </p>
+    </body>
+</html>

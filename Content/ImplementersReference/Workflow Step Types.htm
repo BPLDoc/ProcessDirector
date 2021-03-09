@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Workflows" />
+            <MadCap:concept term="Implementation" /><a name="_Toc421536128"></a>
+            <MadCap:keyword term="Processes;Workflows;Workflow Steps" />Workflow Step Task Types</h1>
+        <p>Users are assigned a task when they are added to a Workflow step. A context sensitive web page or Form is displayed that is specific to the task type when the user selects the entry in their Task List, or the link in their email notification. Each task type defines a set of functions or actions that can be performed, as well as custom instructions for the participants. </p>
+        <div class="Important">
+            <img src="../Resources/Images/i2.png" alt="Note" /> If your process includes tasks for unauthenticated users, please refer to the documentation on <a href="Managing Users.htm#_Toc421536078">Anonymous Users</a> for special concerns that may apply to some settings.</div>
+        <p>The Workflow engine embedded within Process Director supports the following tasks:</p>
+        <h2><a name="_Toc421536129"></a>User Task <a href="#_Toc421536129" class="anchor">#</a></h2>
+        <p>The user task is any actionable item assigned to a user. If a user task has been assigned to a user, a Task will appear in their Task List. They must complete the task before it can be removed from the task list. A user who is assigned a task will be automatically given permission to any object in the Workflow package so they may complete the task. Examples of this task can be an approval task or update task.</p>
+        <p>When a Workflow Step is assigned to a user with an invalid UID or user ID, Process Director will immediately stop the process, and place the Workflow Step into an error state. This is also true for anonymous user assignments if the email address is not a valid format (Process Director cannot validate the email address itself, only the format).</p>
+        <h3>Participants Tab</h3>
+        <p>A user step in the Workflow can have participants assigned to it. Some Workflow steps can run without any users (e.g. Form Actions, Parallel Tasks, Sub Workflow, etc.).</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_18.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Assign</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A user step can assign participants by user, group, From Form Field, Business Rule Value, and the Workflow Initiator. Any number of users can be assigned to a task.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Workflow2_19.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Due Date</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Each step in the Workflow can have unique time limit/due date options. Process Director runs as a virtual directory in IIS and processes all time related events like due dates when activity is present on the system (e.g. a login). To force this activity checking more often, you can schedule a command in the bputil.exe utility.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Workflow2_20.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Task is Due Within</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This specifies a due date for this step. The step due date is optional. If a step does not complete by the due date specified it can automatically transition to the next step in the Workflow. The due date can also be used to prioritize items in a user’s Task List.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Workflow2_21.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Set Due Date to Form Field</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This will allow the user to specify a due date on the form using a Date Picker for that step in the Workflow process</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>If Time Limit Expires</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If the time limit (due date) passes before this step is complete these are the actions that can be taken. </p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Take no action</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This lets the step continue running.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Cancel the Step</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>This will cancel the step and automatically advance to the next step in the Workflow.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Cancel the entire Workflow</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This will immediately cancel the Workflow.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Add These Users from Business Rule</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>This will add users identified in the Business Rule.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Replace with These Users from Business Rule</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This will add the user from the Business Rule and cancel any running users.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Jump to Workflow Step</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                                <p>This will cancel the step and automatically jump to the step Name that is specified</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Workflow2_22.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3>Notifications Tab</h3>
+        <p>Each step in the Workflow can have unique notification options. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_23.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Notify Participants When Step Starts</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This will allow the Workflow to notify all users that have been assigned from the Participants tab.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Notify</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This will allow you to select a user or users from various places in the Workflow and form to notify in that current step. Once you have made your selection you will have to select from the Choose Notification Time. You have up to three selections to notify.</p>
+                <p>You can tell the step how to determine what users to notify with the following options:</p>
+                <h6>Notification Time</h6>
+                <ul style="list-style-type: disc;margin-left: 36pt;">
+                    <li style="list-style-type: disc;">When step starts.</li>
+                    <li style="list-style-type: disc;">When step completes.</li>
+                    <li style="list-style-type: disc;">When users complete: You can choose specific users or groups whom you wish to complete the task prior to notification.</li>
+                    <li style="list-style-type: disc;">When step is past due date.</li>
+                </ul>
+                <p>You may also choose various reminder times, to send notifications a varying number of days before or after a task is due. Sending these reminders are useful for creating escalation notifications, or notifying managers that tasks are slipping past due dates.</p>
+                <h6>Notify Type</h6>
+                <ul style="list-style-type: disc;margin-left: 36pt;">
+                    <li style="list-style-type: disc;">All Active Users in Step: this will send a notification to all users who have yet to complete a user step</li>
+                    <li style="list-style-type: disc;">All Users in Step: this will notify all the users involved in this User step.</li>
+                    <li style="list-style-type: disc;">Users: this allows you to select specific users to notify.</li>
+                    <li style="list-style-type: disc;">Groups: this will notify all users in a specific group.</li>
+                    <li style="list-style-type: disc;">Business Rule Value: this will notify the user result of a Business Rule.</li>
+                    <li style="list-style-type: disc;">Workflow Initiator: this will notify the initiator of this Workflow instance.</li>
+                    <li style="list-style-type: disc;">From Form Field: this will notify a User specified by a form on the container Form.</li>
+                    <li style="list-style-type: disc;">External Users: this will send a notification to a specified email address.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Using Email Template</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This is an optional email template to use when sending email notifications to users in this step. If this is not specified, the default email template will be used that is shipped with Process Director. For more information on email templates refer to the section named Using Email Templates in this guide. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="AdvancedOptions"></a>Advanced Options Tab</h3>
+        <p>Depending on the task type for the step different options will be available. Some of these options will appear under the Advanced Options tab, others will appear under a tab that is unique to the task type.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/UserTask.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Use Form in this Step</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This will allow you to specify a Form to use in this step. This controls the form displayed when a user opens their Task List.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Step is Complete When</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This will allow you to select when the step is complete. You can choose when “All Users Have Completed”, “First User Completes Task”, or “When any branch condition is met”.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Restart Users</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option determines how participants are assigned to the step when it must be restarted. This is particularly relevant when an implementer changes the participants assigned to an activity in the Workflow definition. An existing instance may have been created when different participants were configured to participate in the task. This option enables you to determine how to handle user assignments when the configured users have changed.</p>
+                <p>It is also important to note that the term "restart" is used for both:</p>
+                <ul>
+                    <li>Cases in which a running task is restarted while the task is still running, and</li>
+                    <li>Cases in which a task has already been completed, but must be re-run, as in an iterative process, or as a result of a change to some condition.</li>
+                </ul>
+                <p>In either case, the <span class="ControlName">Restart Users</span> options you select will be applied.</p>
+                <p>The following options are available:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Start only configured task participants</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This option will assign the task to the currently configured users, irrespective of which users may have been previously assigned to the activity.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Start configured and users all previously run in this task.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>By choosing this option, you ensure that both the currently configured users, as well as any users who were previously assigned the task, are assigned the task.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Start only users that previously completed this task</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This option will assign the task only to users who completed the task when it was previously run for this instance. Those users will be re-assigned the task irrespective of whoever is currently configured for task assignment in the Workflow definition.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Start from last completed user</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>If multiple users are assigned to the activity instance, this option will re-assign the activity to the last user who completed it when it was initially run.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Start users that did not complete previously</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>If multiple users are assigned to the activity instance, this option will assign the task to users who did not previously complete it. For instance, if the activity uses a round-robin assignment, the activity will be assigned to one of the users who were not assigned it on the initial run.&#160; </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Restart all users when</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option enabled you to define a condition, or set of conditions under which all users in this task will be reassigned.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>After a user completes this task</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option determines how a user's tasks are displayed when a user is assigned two sequential tasks in a process. The default in Process Director is to automatically show the user's next task if it is in the current process. </p>
+                <p>For example, if a user completes a task in a Form, and is also assigned the next task in the sequence, once the user clicks the OK or other task completion button on the Form, the Form will not close, but will simply redisplay itself to allow the user to complete the next task in the sequence. For various reasons, you may wish to override this behavior, in which case the Form will close once the first task has been completed, and the user will have to re-open the Form to complete the next task in the sequence.</p>
+                <p>You have the following options for configuring the behavior of Process Director:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Automatically show user's next task if it is in this process</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This is the default behavior, and will automatically redisplay the Form once the user completes the first task in the sequence.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Automatically show user's next task if it is for this step in a different process</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>This selection will automatically show the user's next task if the user is assigned a task in another process. For instance, if the current task starts a subprocess, and the user is assigned a task in the subprocess, the subprocess task will automatically be displayed.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Do not show the user's next task</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>Once a user completes the task, the Form will close, and the user must reopen the Form from the task list to begin performing the next task.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Re-authenticate users</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This indicates that the participants must re-enter their User ID and password when attempting to complete their task. This is provided for regulatory compliance when an electronic signature is required for non-repudiation. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Prompt for Signature Comments</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This indicates that the participants will receive a prompt to provide signature comments when the task is completed. The prompt will appear as a dialog box when the user attempts to complete the task in the Form without providing signature comments.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Allow task to be completed from email</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this box will allow users to complete a task by responding to the email notification sent by the user step.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Allow Task Sharing</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this option will enable task sharing through the <a href="../SystemAdministratorGuide/User Delegation.htm#SharedDelegation">Shared Delegation</a> feature. If this option is not checked, this task will not be available for Shared Delegation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Assign users to this task</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option enables you to select how wish to assign a task when multiple users are associated with the same task. You have the following options:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>All in parallel</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>All users will be assigned the task at the same time, and will complete their actions at the same time as the other users.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>All in series</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Each user will be assigned the task individually, and each user must complete the assigned action before the task is assigned to the next user. The process will continue until all users have completed their actions.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>One (Round Robin)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Only one user will be assigned the task each time an instance of the Timeline is run. Each time an instance is run, a different user will be assigned the task until all users have been assigned an instance of the process. This will divide the assignments equally among all assigned users.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>One (fewest tasks in this process)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Only one user will be assigned the task each time an instance of the Timeline is run. Process Director will assign the task to the user who has the fewest number of active tasks pending in this process. This method assigns the task to the user who has the smallest workload in this process.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>One (fewest tasks overall)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>Only one user will be assigned the task each time an instance of the Timeline is run. Process Director will assign the task to the user who has the fewest number of active tasks in their task list. This method assigns the task to the user who has the smallest overall workload.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Enable email invitations</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>By checking this box, a user will be able to invite another user to a task be forwarding the notification email to him. The receiver of the forwarded email will then be able to follow a link and accept or decline the invitation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Require at least one user to be assigned</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Depending on how the task assignment is configured, it's possible that no users will be assigned to the task. For instance, if a task restarts after all users have completed their assignment, and the assignment is set to "Start users that did not complete previously" there will be no available user to which the task can be re-assigned. Checking this option will assign the task to one of the previously completed users.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Assign task to first user to accept</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This satisfies a scenario in which multiple users are configured for the task, but only one user is required to complete the task. This option will notify all of the step users that a task is pending, and then assign the task to the first user who accepts it.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Allow anonymous users to be assigned tasks by email address</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this option will enable anonymous users to complete a task based on the user's email address. This is a required option when using the <a href="../SystemVariablesReferenceGuide/Email System Variables.htm#EmailAnonTaskList" target="_blank">Email Anonymous Task List</a> system variable. In the vast majority of use cases, however, the email address will be taken from a Form field identified on the Participants tab.</p>
+                <div class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> Access to Process Director for unauthenticated or anonymous users is enabled by an optionally licensed component.</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Switch the user in Case Folder View when opening this task</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If this task is part of a Case Management application, checking the property will automatically display the Case Folder view when the user opens the task.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Color</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This field contains an optional color of this step. This can be used by the Workflow builder to document help visualize the Workflow process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536130"></a>Decision Task <a href="#_Toc421536130" class="anchor">#</a></h2>
+        <p>The Decision Step is used to take a single branch coming out of this step. Assign conditions on the actual branches (use right-click Properties on the actual branches). Only a single branch can be taken. You can designate a single branch to be the default if (Default Branch property of the branch) the conditions of multiple branches could evaluate to true.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_25.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <h2><a name="_Toc421536131"></a>Form Actions <a href="#_Toc421536131" class="anchor">#</a></h2>
+        <p>The Form Options task allows the Workflow package to control which Form will be the default when multiple forms are contained within the Workflow and allows new forms to be attached. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_26.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <h2><a name="_Toc421536132"></a>Parallel Tasks <a href="#_Toc421536132" class="anchor">#</a></h2>
+        <p>This allows you to run your steps in parallel. The Parallel Task Step will start all branches coming out of this step at once. You can optionally add conditions to any branches. The Wait step can be used to wait for all parallel branches to complete.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_27.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <h2><a name="_Toc421536133"></a>Process <a href="#_Toc421536133" class="anchor">#</a></h2>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_28.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>The Process step requires that a Workflow or Process Timeline definition be configured. The configured process will be started as a subprocess (child process) of the main (parent) Workflow. A subprocess can consist of a Workflow or a Process Timeline. You may copy objects from the parent process to the child process and vice versa.</p>
+        <p>When a subprocess contains an End Process step, it will return the name of the End Process step as a result for the parent Process activity. Process Timelines and Workflows use the End Process function differently, so the results can be slightly different depending on the type of subprocess that is called by the Process step.</p>
+        <h3>Workflow </h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_29.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>In the example above, the Workflow End Process step is named completed.&#160; If this Workflow runs as a subprocess, then, when the process reaches this step and completes, the name "Complete" will be passed to the parent Workflow as the result of the Process step that started the sub-process.</p>
+        <p>Workflows do NOT automatically end when an End process step is reached. Workflows end when all of the required steps in a Workflow have completed. This enables you to have two Workflow paths running concurrently, or in parallel, each of which may have its own End Process step. If a Workflow contains two parallel paths that each have a different End Process step, then, when the subprocess completes, it will return a comma-separated string containing the names of BOTH end process steps. In the parent Workflow, the returned string will then be set as the result of the Process step that started the subprocess.</p>
+        <h3>Timeline</h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_30.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Unlike the End Process step in the Workflow, the End Process activity in a Process Timeline stops the running of the Process Timeline immediately. As such, the End process activity can only run once in a Process Timeline. So, if you have parallel activities running in a Process Timeline, all of the parallel steps must complete before the End Process activity is reached.  Process Timelines with multiple End Process activities will need to have conditions set on each End Process activity to ensure that only one of the End Process Activities runs. When the subprocess completes, the name of the End Process activity that was run will be returned to the parent process as the result of the Process step that started the subprocess.</p>
+        <h2><a name="_Toc421536134"></a>Comment <a href="#_Toc421536134" class="anchor">#</a></h2>
+        <p>This task type is only for documenting the Workflow. It allows text to be entered that can be used to describe the Workflow process.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_31.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <h2><a name="_Toc421536135"></a>Script <a href="#_Toc421536135" class="anchor">#</a></h2>
+        <p>The Script task supports the ability to call custom script functions. For more information on the custom scripts refer to the Scripting section of this guide.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ScriptStepAdvancedOptions.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Script Options Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h5>Script File</h5>
+                <p>You may use the <span class="NamedControl">Object Picker</span> to select a script that will automatically start when the Activity starts. </p>
+                <h5>Script Parameters (optional)</h5>
+                <p>You may enter a parameter string to pass to the selected script.</p>
+                <h5>Use Form In this Step</h5>
+                <p>This property enables a Script Step in a Workflow to specify a different Form to use a current form for the activity. If this property is not configured,  Process Director will revert to passing the script to the current form instance that is associated with the running process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536136"></a>Meta Data <a href="#_Toc421536136" class="anchor">#</a></h2>
+        <p>The purpose of this task is to assign Meta Data to the Workflow objects. The Meta Data is extracted from the default form instance, and can be applied to all Workflow objects, or to objects in a specific group.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_33.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <h2><a name="_Toc421536137"></a>Wait <a href="#_Toc421536137" class="anchor">#</a></h2>
+        <p>This task will wait for certain conditions before completing (e.g. Parallel Tasks to complete, Sub-Workflows to complete, etc.). This can also be used for Workflow synchronization to synchronize events between different processes.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_34.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>For the wait step to be satisfied these conditions must be true: </p>
+        <ul>
+            <li>If Wait for Parallel Steps to Complete is checked, all parallel tasks complete.</li>
+            <li>If Wait for Sub Processes to Complete is checked, all child sub-processes (or a specific sub-process) must be complete.</li>
+            <li>If Wait for event string to be posted is checked it will wait until that event is posted (from an external source or process).<br /><i>Or</i><br />The Stop Waiting When Any Branch Condition Is Met is checked, and the condition on any branch leaving the wait task is satisfied (note: if no conditions are specified on the branch, this will cause the wait task to complete immediately).<br /><i>Or</i><br />If the Set maximum date to wait from form field occurs before the wait event is satisfied the step will be canceled and it will automatically advance to the next step in the Workflow.<br /><i>Or</i><br />If the time the step has waited exceeded the result of the value specified in the Set maximum date to wait from system variable field, the step will be canceled and the Workflow will automatically advance to the next step.</li>
+        </ul>
+        <h2><a name="Custom"></a>Custom Task <a href="#Custom" class="anchor">#</a></h2>
+        <p>Process Director Custom tasks can be used as a Workflow step. The different types of custom tasks appear on the left side of the Workflow definition screen, below the Built-In Tasks.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/WFCustomTasks1.png" />
+        </p>
+        <p>Clicking on a Custom task Type will display the Custom tasks of that type at the top of the sidebar. In the example below, the sidebar displays the Process Custom Tasks.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/WFCustomTasks2.png" />
+        </p>
+        <p>Simply drag the Custom task onto the flowchart, just as you would any Built-In Task. Open the properties of the Custom Task, and use the <span class="UIElement">Custom Task Options</span> tab to configure the task. On the <span class="UIElement">Custom Task Options</span> tab, click the <span class="UIElement">Configure </span>button to open the configuration screen for the task. Each custom task will have a specific configuration screen. For details on the configuration settings for a Custom task, please refer to the <a href="../Custom Tasks2/Custom Tasks.htm" target="_blank">Custom Tasks Reference Guide</a>.</p>
+    </body>
+</html>

@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="Implementations" />
+            <MadCap:concept term="Getting Started" /><a name="_Toc421709757"></a>Designing the Form Template</h1>
+        <p>Let’s begin by logging into Process Director with a user account that has access to the Content List. If the Content List doesn’t appear automatically when you log in, then click on the <span class="UIElement">Content List</span> button at the top of the Process Director screen. Once the content list appears, navigate into the <span class="ProcessDirectorObject">My Project </span>folder that is located in the <span class="ProcessDirectorObject">Default Partition </span>folder. This folder is where we will begin creating the objects for the sample process.</p>
+        <p>In the <span class="ProcessDirectorObject">My Project </span>folder, select “Form Definition” from the <span class="ControlName">Create New…</span> dropdown that is located on the upper right of the Process Director screen. The <span class="ProcessDirectorObject">Create </span><span class="ProcessDirectorObject">Form</span> screen will open.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 26: Create Form Screen</p>
+        <p>Select "Use online Form Designer" from the dropdown menu. In nearly every case, the Online Form Designer is the best choice for creating form templates.</p>
+        <p>Name the Form by putting the title in the <span class="ControlName">Form Name</span> textbox. For the new sample project, since the original objects already exist in the parent folder, we will name the new Form “Travel Expenses Request”. Now, type in a short description of the form in the <span class="ControlName">Description</span> textbox. Click the <span class="UIElement">OK</span> button to create the new Form definition. The <span class="ProcessDirectorObject">Edit</span> screen for the new <span class="ControlName">Travel Expenses Request</span> Form will appear automatically.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform1.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 27: Form Editing Screen</p>
+        <p>We will be adding controls to the page via the Form Controls toolbars located at the bottom of the toolstrip at the top of the screen. Refer to the <a href="../ImplementersReference/eForm Online Controls.htm">Online Form Designer Controls topic</a> of the product documentation for detailed explanations of the available controls.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform2.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 28: Form Controls Toolstrips</p>
+        <p>When the blank document appears, start by entering a title for the Form at the top of the page. Once you’ve done that, hit the [ENTER] key to start a new paragraph. We are now ready to begin adding Form controls.</p>
+        <p>As you follow the instructions below, be sure to save your work frequently, just as you would if you were composing any other lengthy document.</p>
+        <p>We need to add the first section to the form. To insert the section header, select the <span class="UIElement">Section </span>tool (<img src="../Resources/Images/GettingStartedGuide/DesigningEform3.png" />)from the toolstrip. This will present the <span class="NamedControl">Section </span>control's property dialog box.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform4.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 29: <span class="NamedControl">Section</span> Control Properties</p>
+        <p>Set the <span class="ControlName">Name</span> property to "UserInformationSection", and the <span class="ControlName">Text</span> property to "User Information". Once you have done so, click the OK button to close the dialog and insert the section control on the page.</p>
+        <p>With the Section in place the cursor inside the section to begin adding content. Begin adding section content by creating a table that consists of two columns and five rows. In the first column of the table, type in the following five values in the five rows, as row headers:</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li style="list-style-type: disc;">Submitter</li>
+            <li style="list-style-type: disc;">Submission Date</li>
+            <li style="list-style-type: disc;">Sequence Number</li>
+            <li style="list-style-type: disc;">Initial Approver</li>
+            <li style="list-style-type: disc;">Charge Number</li>
+        </ul>
+        <p>Place your cursor in column two of the first row, and insert a <span class="NamedControl">UserPicker</span> control into the cell. The User Picker can be found in the <span class="UIElement">Input Controls</span> toolstrip menu. Change the <span class="ControlName">Name</span> property to “Employee”.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform5.png" />
+        </p>
+        <p class="CompanyInformation1"><a name="_Ref389141331"></a>Figure 30: User Picker <span class="ControlName">Properties</span> Dialog Box</p>
+        <p>In the second row of the table, insert a <span class="NamedControl">Date Field </span>control. Set the <span class="ControlName">Name</span> property to “SubmissionDate” and the <span class="ControlName">Picker Type</span> property to “Date”.</p>
+        <p>Place an <span class="NamedControl">Input </span>control in the third row. Set the <span class="ControlName">Name</span> property to “SequenceNumber".</p>
+        <p>Later, we will use the Form Definition to automatically display the Form submitter’s name, date and sequence number as default values.</p>
+        <p>Insert a <span class="NamedControl">User Picker </span>control in the fourth row and set the <span class="ControlName">Name</span> property to “Approver”.</p>
+        <p>Add a <span class="NamedControl">Dropdown</span> control to the fifth row and set the <span class="ControlName">Name</span> property to “ChargeNumber”.</p>
+        <p>You can also add some additional configuration to your table, if desired, by changing the cell widths or background colors, or any other formatting you'd like to try.</p>
+        <p>At this point, your Form should look something like this:</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform7.png" />
+        </p>
+        <p class="CompanyInformation1"><a name="_Ref396727951"></a>Figure 31: Sample Form <span class="ControlName">User Information</span> Section - Design View</p>
+        <p>Let’s move to the next section of the form, which contains the information about expenses.</p>
+        <p>Go to the blank line under the <span class="NamedControl">Section End</span> that you just placed on the page, and add a new section control. Set the <span class="ControlName">Name</span> property to “ExpensesSection” and the <span class="ControlName">Text</span> property to “Expenses”. Be sure the <span class="ControlName">Can Collapse?</span> and <span class="ControlName">Expanded</span> check boxes are checked. </p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform8.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 32: <span class="ControlName">Expenses Section</span> Properties</p>
+        <p>Place your cursor inside the <span class="NamedControl">Section</span>, and insert a table with six columns and three rows. In the original sample form, there are background colors and text colors applied to the table cells. You may wish to experiment with styling the table’s colors as well. </p>
+        <p>In the first row of the table, type in the column labels, which are:</p>
+        <ul style="list-style-type: disc;margin-left: 38pt;">
+            <li style="list-style-type: disc;">Expense Date</li>
+            <li style="list-style-type: disc;">Air Fare</li>
+            <li style="list-style-type: disc;">Lodging</li>
+            <li style="list-style-type: disc;">Car Rental</li>
+            <li style="list-style-type: disc;">Daily Amounts</li>
+        </ul>
+        <p>The last column of the table will not have a label.</p>
+        <p>In the second row of the table, we are going to create an array. The Array controls are all located in a dropdown menu on the toolstrip that is labeled <span class="UIElement">Arrays</span>.</p>
+        <p>Place your cursor in the first column of row two, and add an <span class="NamedControl">Array Start</span> control. Set the <span class="ControlName">Name</span> property to “ExpensesList”. </p>
+        <p>We have now created the start of our array. Every control we place in the table from this point on will become part of the array until we notify Process Director that the array is complete by placing an <span class="NamedControl">Array End</span> control (in the rightmost column).</p>
+        <p>The cursor should now appear immediately to the right of the <span class="NamedControl">Array Start</span> control, in the first column of row two. Without moving the cursor, add a <span class="NamedControl">Date Field </span>control and set the <span class="ControlName">Name</span> to “ExpenseDate” and the <span class="ControlName">Picker Type</span> to “Date”.</p>
+        <p>Place the cursor in column two of row two, and insert an <span class="NamedControl">Input</span> control. Set the <span class="ControlName">Name</span> property to “AirFare” and the <span class="ControlName">Columns</span> property to “10”. Since we don't need the control to be as large as the default size of 30 characters, setting the <span class="ControlName">Columns</span> property will make the input control smaller than the default. Doing so provide adequate space for the data that will be entered into the control, but take up less unneeded space than the default control size.</p>
+        <p>Repeat the previous step by adding <span class="NamedControl">Input</span> controls to columns three and four of the table row, setting the <span class="ControlName">Name</span> properties to “Lodging” and “CarRental” respectively, to match the labels in the column headers. Set the <span class="ControlName">Columns</span> property to “10” for both of the input controls.</p>
+        <p>In column five of the row, add a <span class="NamedControl">Calculation</span> control to add up all of the expense items on the row. Set the <span class="ControlName">Name</span> property to “DailyAmountTotal”. </p>
+        <p>Next, we will need to set the actual calculation that will be used in the <span class="ControlName">DailyAmountTotal</span> field. To create the calculation, we must use Process Director system variables.</p>
+        <p>Process Director enables you to do calculations, and access system data or Form field values through the use of these <span class="KeyTerms">system variables</span>, which are also called "sysvars" for short. A system variable is simply an object that holds a value, and which can be accessed from anywhere within Process Director. System variables are always identified by placing the sysvar’s name inside curly brackets ({}). </p>
+        <p>The value of any field on a Form can also be accessed by referring to the field name as a sysvar. Form field variables can be written formally as {Form:FieldName}. It is not necessary to use the full, formal syntax for form fields, however, as Process Director assumes that a system variable beginning with "{:" is a form field variable. So, the Form field called <span class="ControlName">Airfare</span> can be addressed as a sysvar by using the syntax {:Airfare}.</p>
+        <p>One common use of sysvars is to perform calculations on forms through the use of <span class="NamedControl">Calculation</span> controls. The <span class="ControlName">DailyAmountTotal</span> calculates the total amount of daily expenses. The <span class="ControlName">Airf</span><span class="ControlName">are</span>, <span class="ControlName">Lodging</span>, and <span class="ControlName">CarRental</span> fields contain numerical amounts, which means that we can do math on the values they store.</p>
+        <p> In the <span class="ControlName">Formula</span> property, we have to add in a mathematical formula that tells the control what calculations we want it to do. Enter the following mathematical formula into the Formula property box:</p><code>{:AirFare} + {:Lodging} + {:CarRental}</code>
+        <p>Let’s translate what this formula means. The curly braces (“{}”) tell Process Director that this is a sysvar value. The “:” prefix means that the sysvar represents a field on the Form. The form field names (AirFare, Lodging, and CarRental) tell Process Director that these are the form fields that will supply the values for the variables. </p>
+        <p>Let’s say that, when filling out the form, we place the following values in these fields:</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li style="list-style-type: disc;"><span class="ControlName">AirFare</span>: $1,000</li>
+            <li style="list-style-type: disc;"><span class="ControlName">Lodging</span>: $100</li>
+            <li style="list-style-type: disc;"><span class="ControlName">CarRental</span>: $50</li>
+        </ul>
+        <p>In the <span class="ControlName">DailyAmountTotal</span> calculation field, Process Director will replace the formula {:AirFare} + {:Lodging} + {:CarRental} with the formula 1000 + 100 + 50, and display the calculated value “1150”.</p>
+        <p>Now, place your cursor in the sixth column of the row. Sometimes, we have to delete an array element that we don’t need, or that was mistakenly added. We are going to add a control that does this for us. Insert a <span class="NamedControl">Remove Row Inside Array</span> control. The control will appear at the cursor location as a button with a red “X” icon. Even though Process Director will take care of this control’s functionality, we still need to name it, so open the properties dialog box and set the <span class="ControlName">Name</span> property to "RemoveExpenseRow".</p>
+        <p>These are all the controls we need in the array, so now let’s close the array by adding an <span class="NamedControl">Array End</span> control immediately to the left of the <span class="NamedControl">Remove Row Inside Array</span> control. The <span class="NamedControl">Array End</span> control has no user-specified properties.</p>
+        <p>Now, let’s move to the third row of the table. Place your cursor in column one, and add an <span class="NamedControl">Add Row to Array</span> control. The expense form is structured to list the expenses for each day of travel, and the <span class="NamedControl">Add Row to Array</span> control will be the button that enables us to add a new row to the array for every day.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform9.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 33: <span class="NamedControl">Add Row</span> <span class="ControlName">Properties</span> dialog box</p>
+        <p>Set the <span class="ControlName">Name</span> to “AddExpenseRow”, and the <span class="ControlName">Text</span> to “Add Expense”. When we placed the <span class="NamedControl">Array Start</span> control on the Form, we named it “ExpensesList”. We need to ensure that the <span class="NamedControl">Add Row</span> control works for that specific array, so set the <span class="ControlName">ArrayName</span> property to “ExpensesList" to link the Add Row control to the <span class="ControlName">ExpensesList</span> array. Once you’re done, click the <span class="UIElement">OK</span> button to close the dialog box.</p>
+        <p>Move to the fourth column in the row and type the words, “Total Expenses:” into the table cell. </p>
+        <p>Now, place the cursor in column five. In the array, we added a <span class="ControlName">DailyAmountTotal</span> <span class="NamedControl">Calculation</span> control to calculate the total of each day’s expenses. Now, we are going to add a <span class="NamedControl">Sum</span> control that adds up the value of all the <span class="ControlName">DailyAmountTotal</span> controls that are contained in the array. Set the <span class="ControlName">Name</span> property to “ExpensesTotal”. Now, we need to tell it which column in the array that we want summed, so, in the <span class="ControlName">Column</span> property, type “DailyAmountTotal”. Now, the control will automatically calculate a sum for all of the <span class="ControlName">DailyAmountTotal</span> controls in the array, no matter how many we add.</p>
+        <p>This finishes the process of building the table controls. Now that this section of the form is complete. It should look something like this:</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform10.png" />
+        </p>
+        <p class="CompanyInformation1"><a name="_Ref391288038"></a>Figure 34: <span class="ControlName">Expenses</span> Section Design View</p>
+        <p>Move to the next blank line. Once again, add a <span class="NamedControl">Section</span> control to the Form, then change the <span class="ControlName">Name</span> property to “ConditionalJustification” and the <span class="ControlName">Text</span> property to “Amount Requires Justification”.</p>
+        <p>Place your cursor inside the <span class="NamedControl">Section</span> control, and type "Reason for Travel". Move to the next line and add a <span class="NamedControl">Dropdown</span> control. Change the <span class="ControlName">Name</span> property to “ReasonForTravel”.</p>
+        <p>Add a new line and type "Comments:". In the next blank line, add an <span class="NamedControl">Input</span> control. Set the <span class="ControlName">Name</span> property to “Justification", the <span class="ControlName">Columns</span> property to “70”, and the <span class="ControlName">Rows</span> property to “8”. Setting the <span class="ControlName">Rows</span> property will create a multi-line textbox automatically.</p>
+        <p>This completes this section of the form. It should look similar to this:</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform11.png" />
+        </p>
+        <p class="CompanyInformation1"><a name="_Ref389141365"></a>Figure 35: Sample Form <span class="ControlName">Conditional Justification</span> Section</p>
+        <p>Later, we will configure the Form to hide this section unless the total amount of the travel request exceeds $1,000.</p>
+        <p>Move to the next blank line and add a new <span class="NamedControl">Section</span> control. Set the <span class="ControlName">Name</span> property to “SupportingDocsSection” and the <span class="ControlName">Text</span> property to “Supporting Documentation”.</p>
+        <p>Below the Section control, add an <span class="NamedControl">Attach Objects</span> control, which is a special type of button control on the page that will allow users to attach files to the Form. Open the <span class="ControlName">Properties</span> dialog box and set the properties as follows:</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li style="list-style-type: disc;"><span class="ControlName">Name</span>: AttachDoc</li>
+            <li style="list-style-type: disc;"><span class="ControlName">Text</span>: Add Document</li>
+            <li style="list-style-type: disc;"><span class="ControlName">Attach Type</span>: Process</li>
+            <li style="list-style-type: disc;"><span class="ControlName">Object Type</span>: Document</li>
+        </ul>
+        <p>The figure below shows the correct properties for the <span class="NamedControl">Attach Objects</span> Control.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform13.png" />
+        </p>
+        <p class="CompanyInformation1"><a name="_Ref389141393"></a>Figure 36: <span class="NamedControl">Attach Objects</span> Properties</p>
+        <p>Once you’ve set the properties, go to the next blank line and add a <span class="NamedControl">Show Attached Objects</span> control to display any attachments that users attach to the document. Set the <span class="ControlName">Name</span> property to "AttachedDocuments". While we aren't going to change any of the other default properties, you should notice that this is a rich control, with many options to show, edit, and apply versioning to attached documents. </p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform14.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 37: <span class="ControlName">Show Attached Objects</span> Properties Dialog Box</p>
+        <p>This section is finished, and should look something like this:</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform15.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 38: Sample Form <span class="ControlName">Supporting Documentation</span> Section</p>
+        <p>Now we need to add another <span class="NamedControl">Section</span> control to the Form. Set the <span class="ControlName">Name</span> property to “ApprovalCommentsSection” and the <span class="ControlName">Text</span> property to “Approval Section”.</p>
+        <p>In the <span class="NamedControl">Section</span> control, type “Approving Official's Comments (Required for Disapproval)”. Below that, add a <span class="NamedControl">Signature Comments</span> control, which is a type of input control that is used by Process Director to record comments from participants in an approval process. One the control is on the form, set the <span class="ControlName">Name</span> property to “ApprovalComments”. </p>
+        <p>When you are finished, the Section should look similar to this:</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform16.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 39: Sample Form <span class="ControlName">Approval Comments</span> Section</p>
+        <p>We’re almost done designing the Form template. We need to add one final section to hold the <span class="NamedControl">Routing Slip</span>. The <span class="NamedControl">Routing Slip</span> is very useful to any process, because it enables you to see what the status of the process is at a glance. The <span class="NamedControl">Routing Slip</span> will not appear on the form until the process has been started, so the user who initially fills out the form won’t see it.</p>
+        <p>Add a <span class="NamedControl">Section</span> control and set the <span class="ControlName">Name</span> property to “Routing” and the <span class="ControlName">Text</span> property to “Routing Slip.” Below it, add the <span class="NamedControl">Routing Slip</span> control. We don’t need to set any properties for this walk-through, but the <span class="NamedControl">Routing Slip</span> is highly configurable, to ensure you can show all the routing information you need for your process.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/DesigningEform17.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 40: Sample Form <span class="ControlName">Routing Slip</span> Section</p>
+        <p>The design phase of the Form template is now complete, so you can save and close the Form template by clicking the <span class="UIElement">Save and Close</span> tool (<img src="../Resources/Images/GettingStartedGuide/DesigningEform18.png" />) on the toolstrip.</p>
+        <p>Process Director will process your Form template and store it as part of the Form Definition. We can now edit the Form Definition to add some functionality to it.</p>
+    </body>
+</html>

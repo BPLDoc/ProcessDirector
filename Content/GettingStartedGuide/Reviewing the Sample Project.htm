@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="Implementations" /><a name="_Toc421709747"></a>Reviewing the Sample Project</h1>
+        <p>
+            <MadCap:concept term="Getting Started" />The sample project that this document addresses can be found in the folder named "BP Logix Getting Started Sample Project", which is located in the root of your BP Logix Trial installation's Default Partition. The project has been designed to be as simple as possible, while still demonstrating some of the most commonly used—and useful—Process Director features.</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li style="list-style-type: disc;">Creating Forms</li>
+            <li style="list-style-type: disc;">Creating Process Timelines</li>
+            <li style="list-style-type: disc;">Creating business rules</li>
+            <li style="list-style-type: disc;">Creating arrays (repeating lists)</li>
+            <li style="list-style-type: disc;">Creating Form calculations and sums</li>
+            <li style="list-style-type: disc;">Filling a dropdown list from a database</li>
+            <li style="list-style-type: disc;">Assigning users to a task</li>
+            <li style="list-style-type: disc;">Conditionally displaying form sections</li>
+            <li style="list-style-type: disc;">Attaching documents to a form</li>
+            <li style="list-style-type: disc;">Creating conditional approval tasks</li>
+            <li style="list-style-type: disc;">Configuring user notifications</li>
+            <li style="list-style-type: disc;">Searching for objects</li>
+        </ul>
+        <p>These are all tasks that you will need perform on a regular basis, so the sample project has been designed to help you learn how to use them, and introduce you to how easy it is to do complex things with Process Director.</p>
+        <p>Process Director uses <span class="KeyTerms">Process Timelines</span> and <span class="KeyTerms">Workflows</span> created by users to model a business process. Process Director implements and completes these modeled processes by collecting user-supplied information from electronic forms, or <span class="KeyTerms">Forms</span>. External documents, such as spreadsheets or word processing documents, can also be attached to the processes. As each process is performed, Process Director sends email notifications to users to notify them of process tasks that must be completed. Finally, users can view or search for ongoing or completed process instances, as well as all of the objects associated with those instances, by using Knowledge Views.</p>
+        <p>
+            <img src="../Resources/Images/Capture18.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 1: Process Director Overview</p>
+        <p>In short, Process Director: </p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="1">
+            <li>Models business processes, </li>
+            <li>Tracks user and process activities, such as approvals, </li>
+            <li>Stores and tracks uploaded documents, and</li>
+            <li>Provides process owners the tools track the progress or history of every process. </li>
+        </ol>
+        <p>All of these features enable Process Director to provide full automation, auditability, and tracking of your business processes.</p>
+        <h2><a name="_Toc421709748"></a>Process Overview</h2>
+        <p>The sample project demonstrates a notional travel reimbursement request process, a common requirement for many organizations. In this process, an employee submits a travel request that a manager then approves. If the request amount is less than $1,000, the travel request can be funded without additional review. If the amount exceeds $1,000, the request must first be sent to the Finance group for additional approval.</p>
+        <p>In our sample project, this process begins with a user filling out a travel request form. The requestor selects an initial approver, and enters the expenses incurred during travel. The requestor submits the form, which starts the approval process by sending an email notification to the approver specified on the form. The notification lets the manager know that a task is waiting for her action. She opens the form using a link in the notification (or by visiting her <span class="KeyTerms">task list</span>), and indicates her approval by clicking on the appropriate button. If the request exceeds $1,000, it is routed to the Finance Group for additional approval. When the approvals are complete, Process Director notifies the employee that his request has been approved (or rejected).</p>
+        <p>This sort of approval process probably sounds familiar to you, since it’s a very common type of workflow. Process Director excels at managing this sort of process—indeed, it’s at the core of Process Director’s functionality. Process Director manages these processes automatically, making them more efficient. Increased efficiency saves your organization the time and money that would otherwise be required to manually oversee the process.</p>
+        <p>So, let’s look at the details of how to design and implement the process in Process Director.</p>
+        <h2><a name="_Toc421709749"></a>Project Objects</h2>
+        <p>The sample project is comprised of a number of objects. To view these objects, login to your Process Director trial site. You are now logged in as one of the pre-configured Trial users. Once Process Director is open, navigate to the sample project by clicking on the <span class="UIElement">Getting Started</span> button in the upper left corner of the screen to open the home page of the <span class="ProcessDirectorObject">Getting Started</span> workspace. </p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reviewing the Sample Project.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 2: <span class="ProcessDirectorObject">Getting Started</span> Workspace</p>
+        <p>Finally, click on the <span class="UIElement">Travel Expenses Request Form</span> button in the menu bar at the top of the screen to open Form.</p>
+        <h2><a name="_Toc421709750"></a>Filling Out the Form</h2>
+        <p>Initially, you’ll see three different sections on the Form. There is a fourth section, but it will not appear until the total amount of the travel request exceeds $1,000.&#160; The first section of the form is labeled “User Information”, and one of the first things you’ll notice is that most of the fields are already filled out.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reviewing the Sample Project_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 3: Sample Form <span class="ControlName">User Information</span> Section</p>
+        <p>Process Director can pre-fill a Form with many types of information.&#160; In this case, Process Director knows that you are the individual filling out the form, knows the current date, and generates and assigns a sequence or serial number for your request. Knowing these things enables Process Director to fill in most of the <span class="ControlName">User Information</span> section for you. As an aside, Process Director can also extract information from databases, SharePoint, ERP or CRM systems, etc., and place that data into your form.</p>
+        <p>The <span class="ControlName">Initial Approver</span> field is a Process Director UserPicker control that enables you to choose the user who will provide the first level of approval for your travel request. Select the box, and a dropdown will appear with a text box, into which you can start typing a user's name.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/reviewing.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 4: User Picker Type Ahead</p>
+        <p>Typing into the text box automatically displays a list of users whose names match what you have typed.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/reviewing1.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 5:&#160;Type Ahead in Action</p>
+        <p>Select the user who will be the initial approver, then click the OK button to complete your choice. The user’s name will appear in the text portion of the UserPicker Control. For the purpose of this walk-through, select “Barb Stanley” as the <span class="ControlName">Initial Approver</span>.</p>
+        <p>Next, there is a <span class="ControlName">Charge Number</span> dropdown.&#160; This dropdown control was built to extract data from a database to fill the control. The list of charge numbers you see is generated from a table in the Process Director internal database. When we rebuild the project, we’ll get into more detail about how the list of charge numbers was imported into the database. For now, select a charge number from the dropdown control.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reviewing the Sample Project_4.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1"><a name="_Ref391641245"></a>Figure 6: Sample Form <span class="ControlName">Expenses</span> Section</p>
+        <p>The <span class="ControlName">Expenses</span> section enables you to fill in daily expense amounts for the travel request. Process Director enables you to build repeating lists on the fly when filling out a form. If you click the <span class="UIElement">Add Expense</span> button, a new row with all the expense elements will be added to the table. Clicking on the <span class="UIElement">Delete</span> button at the end of each row will delete that row from the table. </p>
+        <p>The first column in each row displays a Process Director <span class="NamedControl">DatePicker</span> field. Click on the calendar Icon to select a date from the drop-down calendar that appears. Then, fill out the remainder of the first row with the data that appear in Figure 7. As you do so, the Form will automatically calculate the total cost of the expenses in each row, as well as calculating the <span class="ControlName">Total Expenses</span> amount of the request.</p>
+        <p>When you have completed filling out the first row, click the <span class="UIElement">Add Expense</span> button to add a new row. Continue filling out the table as shown in <a href="#_Ref391641245">Figure 6: Sample Form Expenses Section</a>. Once the <span class="ControlName">Total Expenses</span> amount exceeds $1,000, a new section, labeled “Amount Requires Justification” appears on the Form.&#160; For our process, expense amounts over $1,000 require justification. If the total expense amount is less than $1,000, the justification section is not needed, so Process Director doesn't display it.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reviewing the Sample Project_5.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 7: Sample Form <span class="NamedControl">Amount Requires Justification</span> Section</p>
+        <p>In this section of the form, select a reason from the <span class="ControlName">Reason for Travel</span> <span class="UIElement">dropdown</span>. This dropdown is filled from the <span class="ProcessDirectorObject">Reason for Travel</span> Dropdown object in the <span class="ProcessDirectorObject">BP Logix Getting Started Sample Project</span><span class="ProcessDirectorObject"> folder</span>. The <span class="ProcessDirectorObject">Dropdown</span> object is another method that Process Director provides for you to fill—and maintain—dropdown items. Again, we will look at this in more detail when we rebuild the project in the next section.</p>
+        <p>Now, type in some justification text in the <span class="ControlName">Comments</span> <span class="UIElement">textbox</span>.</p>
+        <p>The final section of the Form is the <span class="ControlName">Supporting Documentation</span> section, which enables you to attach files to the request. If you click on the <span class="UIElement">Add Document</span> button, the standard file dialog box will appear, and you can browse through your file system to find a document to attach.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reviewing the Sample Project_6.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 8: Sample Form <span class="ControlName">Supporting Documentation</span> Section</p>
+        <p>Once you have filled out the form completely, click the <span class="UIElement">OK</span> button to save and submit it.</p>
+        <h2><a name="_Toc421709751"></a>Walking Through the Process Timeline</h2>
+        <p>Once the form has been submitted, Process Director begins to run the <span class="ProcessDirectorObject">Travel Expense Approval Process Timeline</span>. This Process Timeline controls the approval process for the travel request you just created.</p>
+        <p>The first Process Timeline activity is the <span class="ProcessDirectorObject">Initial </span><span class="ProcessDirectorObject">Approval</span> activity, which is assigned to the person you selected as the initial approver when you filled out the form. To run through that step, log out of Process Director, then log back in as the approver you selected. Assuming you selected Barb Stanley as the initial approver, use the user name “Barb” with the password "password1", to log back in.</p>
+        <p>When you log in, The Getting Started workspace's home page will show a Task List pane the upper left section of the screen. There will be a task in the list that says “Travel Expenses Request FormSubmitted On…” Click on this task, and the Form will open, showing the request.</p>
+        <p>There will also be two new sections on the Form. The first new section is the <span class="ControlName">Approval Comments</span> section.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reviewing the Sample Project_7.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 9: Sample Form <span class="ControlName">Approval Comments</span> Section</p>
+        <p>The Process Timeline is set up to require comments in this section if you disapprove the request. For the walk-through, we want to see the whole process work all the way through to the finish, so we are going to approve the request at this stage.</p>
+        <p>Before we do so, take a look at the final section of the form, which is the <span class="ControlName">Routing Slip</span> section.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/reviewing3.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 10: Sample Form Routing Slip Section</p>
+        <p>The routing slip gives you a way to visually track where you are in the request’s approval process. Perhaps more importantly, it shows you where you’ve been: who has taken action in the process, what actions they took, and any comments they added along the way. In this case, we can see the date the originator submitted the initial request. We also see that the request is currently assigned to Barb Stanley. </p>
+        <p>Let’s move the request along by clicking the <span class="UIElement">Approved</span> button at the bottom of the form to close and save the request, and initiate the next activity on the Process Timeline. In this case, since the amount was over $1,000, the request will be sent to all the members of the Finance group.&#160; </p>
+        <p>We need to log back in as a member of the finance group. So, log out of Process Director again, and log back in as David Henry by using the user name “david” with the password "password1".</p>
+        <p>Since David Henry is a member of the Finance group, the <span class="NamedControl">Task List</span> pane of David’s home page will show the request task is waiting. Click on the task to open the form.</p>
+        <p>As before, the “Approval Comments” and “Routing Slip” sections are displayed on the form, but now the routing slip has changed to reflect Barb Stanley’s approval.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/reviewing4.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 11: Sample Form Routing Slip for <span class="ProcessDirectorObject">Finance Approval</span></p>
+        <p>Notice that we see all participants' approvals and signatures. As an aside, each user can have a signature file associated with their account to display a physical signature. Describing that process goes beyond the scope of this walk-through, but now you know the capability exists.</p>
+        <p>At this stage, every person in the Finance Group has this task showing in their task list. Only one member of that group actually needs to work on this task, so the Process Timeline activity will assign it to the first member of the Finance Group that accepts it by opening the form and clicking the <span class="UIElement">Accept Task</span> button. Click on <span class="NamedControl">Accept Task</span> and note that the routing slip changes to show that David has this request as an active task, while the other members of the Finance group are no longer required.</p>
+        <p>Now you can click on the <span class="UIElement">Approved</span> button to approve the travel request. That task having been completed, the final step of the Process Timeline notifies the initial submitter that the travel request has been approved. At this point, the travel request process is complete.</p>
+        <p>Let’s take a look at the finished request, to see the routing slip one last time. Log out of the system, then log back in as yourself. Once you've logged in, click on the <span class="UIElement">My </span><span class="UIElement">Expense Requests</span> button at the top of the Process Director screen to open the knowledge view that shows all of your travel requests. </p>
+        <p>Now click on the Travel Request you just completed to open the Form. When you scroll down to the <span class="ControlName">Routing Slip</span> section, you can see how the routing slip looks in its final form.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/reviewing5.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 12: Sample Form Final Routing Slip</p>
+        <p>The completed routing slip shows us everyone who participated in the process, when they participated, and what the final disposition was. It is automatically created within every process, and can be viewed using the process administration interface, or, as is the case in our sample, directly on the form. The routing slip provides a clear, auditable history of the process that can be retrieved and examined for any number of reasons, including audits, process improvement reviews, etc.</p>
+    </body>
+</html>

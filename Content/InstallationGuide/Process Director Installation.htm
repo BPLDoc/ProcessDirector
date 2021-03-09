@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:conditions="General.All Hidden">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="Installation" />
+            <MadCap:concept term="Installation" /><a name="_Toc421172254"></a>Process Director Installation – v3.25 and Below</h1>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" title="Important" />  Please review the <a href="Installation Overview.htm#InstallationProcess" target="_blank">Installation Process</a> section of the documentation to see an overview of the steps required to properly install Process Director.</div>
+        <p>Ensure the latest Windows Updates are installed. </p>
+        <h2><a name="_Toc421172255"></a>Installing on Windows Server <a href="#_Toc421172255" class="anchor">#</a></h2>
+        <p>To install Process Director on Windows Server 2008/2012/2016, exit all applications and follow these steps:</p>
+        <ol>
+            <li>Download the Process Director install program from the BP Logix web site and save it to your hard drive.  The download URL page is located at: <a href="http://support.bplogix.net/download/" target="_blank"><span class="Hyperlink">http://support.bplogix.net/download/</span></a></li>
+            <li>Run the install program that you downloaded.</li>
+            <li>Follow the instructions on the screen and complete the installation program. This will install the product in the location you specify.</li>
+        </ol>
+        <h5>First Time Installations Only</h5>
+        <ol MadCap:continue="true">
+            <li>Create a website in IIS.</li>
+            <li>Create the Process Director database in SQL Server or Oracle.</li>
+            <li>Navigate to the Process Director administration screens to configure the database connect string. This is located at: <a href="http://localhost/admin/db.aspx"><span class="Hyperlink">http://localhost/admin/db.aspx</span></a> (where localhost can be replaced with the server where Process Director is installed).</li>
+            <li>Enter your license key in the product administration screens.</li>
+        </ol>
+        <h3><a name="_Toc421172256"></a>IIS Web Site Creation <a href="#_Toc421172256" class="anchor">#</a></h3>
+        <p>Process Director runs as a web site in Windows IIS. To create a new web site in IIS for Process Director, use all of the all defaults provided by IIS. Point your website to the “website” folder located in the following directory (where Process Director is installed):</p>
+        <p>“C:\Program Files\BP Logix\Process Director\website\”</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Process Director Installation.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;" />
+        </p>
+        <p>This is the default install location of Process Director. This may be different if you selected a folder other than the default.</p>
+        <p>Please note that creating a Virtual Directory will not work using IIS 7. You must either convert the Virtual Directory to an Application or add an Application.</p>
+        <p>After the web site is created, ensure these settings are configured in IIS:</p>
+        <ol>
+            <li>Ensure “Anonymous” and “Integrated Windows Authentication” is turned on in the IIS Authentication properties.</li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Process Director Installation_1.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;" />
+        </p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Process Director Installation_2.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;" />
+        </p>
+        <ol MadCap:continue="true">
+            <li>Ensure that “.NET Framework v2.0.50727” is selected version in the Application Pool for the website </li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Process Director Installation_3.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;" />
+        </p>
+    </body>
+</html>

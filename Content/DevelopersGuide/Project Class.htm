@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2439" MadCap:lastWidth="1059" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer" />
+            <a name="_Toc421270001">
+            </a>Project (Timeline) Class</h1>
+        <p>
+            <MadCap:keyword term="Project (Timeline) Class" />This class defines a timeline object (definition or instance).</p>
+        <p>When developing Form scripts or Timeline scripts, you are automatically given an instance of the current timeline with the CurrentProject variable.</p>
+        <p>This object extends the Process class, which, in turn, extends the ContentObject class. Thus all properties and methods from the Process and ContentObject classes are available in the Project class, in addition to those below.</p>
+        <h2>
+            <a name="_Toc421270002">
+            </a>Properties</h2>
+        <p>
+            <b>PRID:</b> The ID of the timeline definition.</p>
+        <p>
+            <b>PRINSTID:</b> The ID of the timeline instance.</p>
+        <h2>
+            <a name="_Toc421270003">
+            </a>
+            <MadCap:keyword term="Methods" />Methods</h2>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <a name="AddToProject">
+                    </a>
+                    <a href="#AddToProject">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>AddToProject</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="AddToProject" />This method attaches an object to the process instance.</p>
+                <h4>Parameters</h4>
+                <p>
+                    <b>ContentObject pObj:</b> The content object to be attached to the project.</p>
+                <p>
+                    <b>String pGroup (optional):</b> The group name to use for the object.</p>
+                <p>
+                    <b>String pID:</b> The ID of the object to attach.</p>
+                <p>
+                    <b>ObjectType pType (optional):</b> The ObjectType of the attached object.</p>
+                <p>
+                    <b>String pGroup (optional):</b> The group name to use for the object.</p>
+                <h4>Returns</h4>
+                <p>
+                    <b>Boolean:</b> True if the operation succeeds.</p>
+                <h4>Example</h4>
+                <div class="CodeBase">bool success = someProject.AddToProject(SomeContentObject, “group”);</div>
+                <p>This method also has an overloaded method that can be called via the following parameters</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <a name="GetActivityByName">
+                    </a>
+                    <a href="#GetActivityByName">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>GetActivityByName</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="GetActivityByName" />This method returns a ProjectActivity object given the name of the activity.</p>
+                <h4>Parameters</h4>
+                <p>
+                    <b>String pActivity:</b> Name of the requested activity.</p>
+                <h4>Returns</h4>
+                <p>
+                    <b>ProjectActivity:</b> The requested project activity.</p>
+                <h4>Example</h4>
+                <div class="CodeBase">var someActivity = someProject.GetActivityByName(“activity name”);</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <a name="GetProjectByPRID">
+                    </a>
+                    <a href="#GetProjectByPRID">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>GetProjectByPRID</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="GetProjectByPRID" />This method returns a project object given the project’s ID.</p>
+                <h4>Parameters</h4>
+                <p>
+                    <b>bp BP (only necessary if this is a static call):</b> The bp environment.</p>
+                <p>
+                    <b>String PRID:</b> The ID of the timeline definition.</p>
+                <h4>Example</h4>
+                <div class="CodeBase">var someProject = Project.GetProjectByPRID(bp, “1234”<br /><span class="ControlName">/* OR */</span><br />var someProject = anotherProject.GetProjectByPRID(“1234”);</div>
+                <h4>Returns</h4>
+                <p>
+                    <b>Project:</b> The project object with the specified ID.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <a name="GetProjectByPRINSTID">
+                    </a>
+                    <a href="#GetProjectByPRINSTID">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>GetProjectByPRINSTID</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="GetProjectByPRINSTID" />This method returns a project object given the project instance’s ID.</p>
+                <h4>Parameters</h4>
+                <p>
+                    <b>String PRINSTID:</b> The ID of the requested project instance.</p>
+                <h4>Returns</h4>
+                <p>
+                    <b>Project:</b> The project object whose instance ID matches the one requested.</p>
+                <h4>Example</h4>
+                <div class="CodeBase">var someProject = anotherProject.GetProjectByPRINSTID(bp, 1234);</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <a name="PostEvent">
+                    </a>
+                    <a href="#PostEvent">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>PostEvent (static method)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="PostEvent (static method)" />This method posts an event to the specified project instance.</p>
+                <h4>Parameters</h4>
+                <p>
+                    <b>bp BP:</b> The bp environment.</p>
+                <p>
+                    <b>String PRINSTID:</b> ID of the project instance to post an event to.</p>
+                <p>
+                    <b>String EventName:</b> Name of the event to post.</p>
+                <h4>Returns</h4>
+                <p>
+                    <b>Boolean:</b> True if the operation succeeds.</p>
+                <h4>Example</h4>
+                <div class="CodeBase">bool success = Project.PostEvent(bp, “1234”, “name”);</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <a name="Rollback">
+                    </a>
+                    <a href="#Rollback">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>Rollback</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="Rollback" />This method rolls a process back to a specified activity name.</p>
+                <h4>Parameters</h4>
+                <p>
+                    <b>bp BP:</b> The bp environment.</p>
+                <p>
+                    <b>String ActivityName:</b> The activity name to which to roll back the process.</p>
+                <h4>Returns</h4>
+                <p>
+                    <b>Boolean:</b> True if the operation succeeds.</p>
+                <h4>Example</h4>
+                <div class="CodeBase">bool success = Project.Rollback(bp, “Activity Name”);</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

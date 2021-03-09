@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="1996" MadCap:lastWidth="1226" MadCap:conditions="General.Advanced Training">
+    <head>
+        <link href="../../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 3: Timeline Branching</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn the basics of timeline branching.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>What is branching</h2>
+        <p><span class="KeyTerms">Branching </span>is a function that enables an activity to jump or branch to another activity in the running Process Timeline.</p>
+        <p>Unlike a traditional, flow-chart based workflow, the Process Timeline creates a critical path for a process by setting up a dependence hierarchy where completing Activity 1 starts Activity 2, completing Activity 2 starts Activity 3 and so on. In the normal course of events, a process is expected to run through the critical path to completion. Some processes, however, may need to skip some activities, or return to an earlier activity under certain conditions. While this need may be relatively rare, the Branching functionality enables you to meet this need when it arises.</p>
+        <p>There are three ways of branching to another timeline activity:</p>
+        <ul>
+            <li>Rollback: This will branch back to an earlier activity and proceed normally from there. This type of Branching can only be configured to roll back to a preceding activity in the dependence hierarchy. The rollback activity must be a direct successor to the activity to which it rolls back.</li>
+            <li>Start: This will start the defined activity, complete this branch activity, and continue processing normally. In other words, the Process Timeline will continue along the original path, as well as starting a new path from the activity that was started.</li>
+            <li>Jump: This will transfer control from this branch activity to the activity we want to jump to, any activity “dependent” on this branch activity will NOT get run. In other words, the original critical path will stop processing at the branch point, and continue from the activity to which you jumped, without performing any of the intervening tasks.</li>
+        </ul>
+        <h2>Branching vs. Iteration</h2>
+        <p>In Process Director, Branching is an older function that was implemented in earlier versions of the product. Since the introduction of Iteration, most of the use cases for Branching no longer apply. Iteration, however, does not eliminate Branching entirely, and, indeed, Branching can be a useful part of iteration.</p>
+        <p>For example, in a normal Iteration, it's very easy to set the looping condition to return a request to the initial submitter if anyone in the approval chain requests resubmittal, or to cancel the loop when any approver cancels the process. But, let's say that our approval process is a bit more complicated, like the example below:</p>
+        <table style="width: 100%; mc-table-style: url('../../Resources/TableStyles/Simple.css'); margin-left: 0; margin-right: auto;" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 200px;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">APPROVER</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">APPROVAL&#160;OPTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Supervisor</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Approve, Deny, Cancel</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Manager</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Approve, Deny, Cancel</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Director</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Approve, Deny, Cancel</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Vice President</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">Approve, Deny, Cancel, Return to Director</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Notice that the Vice President has an additional approval option that can't be easily handled by Iteration, which is to send the request back a single step to the Director for further review. To handle this additional approval option, we can use a Rollback branch to send the request back to the Director when the Vice President selects that option.</p>
+        <h2>Creating a Rollback</h2>
+        <p>The Sample Project for this training course implements a rollback within the approval iteration loop that operates in a fashion similar to the example given above. In the sample project, the <span class="ControlName">VP Approval</span> activity is followed by a Branch activity named <span class="ControlName">Return to Manager</span>, which rolls back the process to the <span class="ControlName">Manager Approval</span> activity under the appropriate conditions.</p>
+        <p>The <span class="ControlName">Approvals </span>loop is already configured to start from the beginning, at the<span class="ControlName"> Initiator Resubmittal</span> activity, when any approver selects the<span class="ControlName"> Request Resubmittal</span> result. All approvers have that result configured, along with <span class="ControlName">Approve </span>and <span class="ControlName">Deny</span>.</p>
+        <p>In the <span class="UIElement">Results </span>tab of the <span class="ControlName">VP Approval</span> activity, the activity has four possible results. In addition to the results available for other users, the VP also has a <span class="ControlName">Return to Manager </span>result.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/Branching.png" />
+        </p>
+        <p>The<span class="ControlName"> Return to Manager</span> activity occurs after, and is dependent on, the <span class="ControlName">VP Approval</span> activity. In the <span class="UIElement">Branch </span>tab of the <span class="ControlName">Return to Manager</span> activity, the branch is configured to Rollback to the <span class="ControlName">Manager Approval </span>activity.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/Branching1.png" />
+        </p>
+        <p>Finally, the <span class="UIElement">Needed When</span> tab of the <span class="ControlName">Return to Manager</span> activity has a condition set so that the Rollback only runs when the result of the <span class="ControlName">VP Approval</span> activity contains the word "Return".</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/Branching2.png" />
+        </p>
+        <p>If the VP chooses any result other than <span class="ControlName">Return to Manager</span>, the <span class="ControlName">Approvals </span>loop will process the result and restart, continue, or exit the loop, as appropriate. Otherwise, the Rollback will be called, and the process will be rolled back to the <span class="ControlName">Manager Approval</span> activity.</p>
+    </body>
+</html>

@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" /><a name="KViewExporting"></a>
+            <MadCap:keyword term="Knowledge Views" />Knowledge View Exporting and Reporting</h1>
+        <p>A Knowledge View is a collection of related objects based on categorization or other criteria. They can be made available to either authenticated or anonymous users depending on the permissions. Also, there is a variety of ways to access, filter, or export/report on knowledge View information.</p>
+        <h2><a name="_Toc421536232"></a>Knowledge View URLs for External Access <a href="#_Toc421536232" class="anchor">#</a></h2>
+        <p> A Knowledge View is represented by a URL that can be displayed outside of the BP Logix environment. The URL for a Knowledge View can be sent in an email, displayed in a web portal, or added to an existing web site. The URL for an individual Knowledge View is as follows:</p>
+        <div class="CodeBase">http://server_name/kv.aspx?ext=1&amp;id=NN</div>
+        <p>Where server_name is the hostname of BP Logix and NN is the internal ID displayed in the Knowledge View definition you want to use (e.g. KVID=ea1f7d30-2c44-4971-ac8a-4654ae2521ff). </p>
+        <p>An additional URL parameter, "gkview", can be used to enable a Global Knowledge View to be displayed using the Knowledge View name instead of the ID, but it can only be used to return global knowledge views that are Task Lists, e.g. <code>kv.aspx?gkview=Task List</code>.</p>
+        <p>For user of Process Director v5.37 and higher, a URL&#160;Parameter, "canceltext", can be used on a task list URL and that will display the configured text in an alert box when a user clicks on the <span class="UIElement">Cancel </span>button on the form.</p>
+        <div class="CodeBase">http://server_name/kv.aspx?canceltext="You clicked the Cancel button."</div>
+        <p>&#160;</p>
+        <h3><a name="_Toc421536233"></a>Passing Filter Values in the URL <a href="#_Toc421536233" class="anchor">#</a></h3>
+        <p>The Knowledge View can be opened using a URL that is placed on a web site. If the Knowledge View is configured with Filter, you can pass this filter information to the Knowledge View on the URL. Simply set the desired filter result as a variable, then enter the variable name you'd like to use in the URL parameter like the example below: </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViewVars.png" />
+        </p>
+        <p>Alternatively, you can use a String for the filter, and use the syntax <code>{VAR:Var1, modifier=ModifierValue}</code> to use additional formatters/modifiers for the variable.</p>
+        <p>Once the variables have been configured, you can pass the desired values via the URL parameters using this syntax with the query string parameters:</p>
+        <div class="CodeBase">http://server_name/kv.aspx?ext=1&amp;id=NN&amp;<span style="background-color: #ffd700;">var1=abd</span>&amp;<span style="background-color: #ffd700;">var2=123</span></div>
+        <p>This configuration uses the Variable object in the same way as <a href="eForms.htm#eForm">Form Definition URLs</a>.</p>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> Sometimes, variables must be passed through multiple objects before reaching a Knowledge View, or other object. For instance, you may have a Form that calls a Chart, which, in turn, calls a Knowledge View via a drill-down. The data on the Form is passed to the Chart via a variable that is accessed using the normal <code>{VAR:ParmName}</code> syntax. However, when the chart does a drill-down to a Knowledge View, the Knowledge View does <b>not</b> have access to the original <code>{VAR:ParmName}</code> variable. Instead you need to append two underscores and the number "2" (__2) to the variable name, e.g. <code>{VAR:ParmName__2}</code>. When you do so, Process Director treats the "<code>{VAR:ParmName__2}</code>" in the in the Knowledge View as a pointer to the original value for <code>{VAR:ParmName}</code>, so that the proper value is automatically available to the knowledge view.</div>
+        <h2><a name="_Toc421536234"></a>Knowledge View Formatting <a href="#_Toc421536234" class="anchor">#</a></h2>
+        <p>Each Knowledge View can implement a different look and feel by using the<span class="ControlName"> HTML Code</span> property in the <span class="UIElement">Options </span>tab of the Knowledge View definition. This property allows HTML formatting to be applied to the top of the running Knowledge View. The Knowledge View window can also be framed in HTML frames and use a custom style sheet (CSS).  You can also display the knowledge view in a form by using the <span class="NamedControl">Knowledge View</span> control.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/HTMLCode.png" />
+        </p>
+        <h2><a name="_Toc421536235"></a>Running <MadCap:keyword term="Processes" />Processes on Knowledge View Results <a href="#_Toc421536235" class="anchor">#</a></h2>
+        <p>Workflows can be run on the results of Knowledge View using two different approaches. One approach will automatically run a process on every item returned, the other approach allows a user to click on a special column to run a process on the selected item.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421536236"></a>Approach 1: Run a Process on all the results </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <div class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> For Process Director v4.04 and above, you can select either a Workflow or Process Timeline to run on each row. Earlier versions of Process Director <i>only allow you to run a Workflow</i> on each row of the Knowledge View.</div>
+                <p>In the <span class="ControlName">Details </span>section of the Knowledge View's <span class="UIElement">Options </span>tab, set the <span class="ControlName">Knowledge View Results</span> property dropdown to "Run a Process". </p>
+                <p>Once you have set the<span class="ControlName"> Knowledge View Results</span> property, click the <span class="UIElement">Update </span>button to save the configuration. When you do so, a new option will appear in the top portion of the options tab, named <span class="ControlName">Select workflow to run on each object (optional)</span>. Use the <span class="NamedControl">ObjectPicker </span>for this option to select the Workflow that you want to start for each item returned by the Knowledge View, then click the <span class="UIElement">Update </span>button to save your configuration.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/KViewRunWorkflow2.png" />
+                </p>
+                <p>Now, when you run the Knowledge View, Process Director will display a confirmation message, with a link to click if you wish to run the Workflows.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/KViewRunWorkflow3.png" />
+                </p>
+                <div class="Important">
+                    <img src="../Resources/Images/i2.png" /> If you schedule this Knowledge View to run automatically, be sure to put the "dorun=1" URL&#160;parameter in the Knowledge View URL, as described in the <i>Scheduling a Knowledge View</i> section below.</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421536237"></a>Approach 2: Run a process on certain items </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To allow a user to  run a process on specific items in the Knowledge View results, add a column to the Knowledge View, and set the <span class="ControlName">Column Data </span>to  <span class="state">"Run Process" </span>in the <span class="ControlName">Choose System Variable</span> dialog box.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Knowledge Views_20.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>A dropdown will appear in the <span class="ControlName">Choose System Variable</span> dialog box, from which you can choose the process to start.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/KViewRunWorkflow5.png" />
+                </p>
+                <p>Choose the process you'd like to start, then click the <span class="UIElement">OK </span>button to close the <span class="ControlName">Choose System Variable</span> dialog box and save your configuration changes.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/KViewRunWorkflow6.png" />
+                </p>
+                <p>Now, when the Knowledge View executes, the results will display a "Run" column that shows an icon on each row that, when clicked, will launch the specified process using the Knowledge View result from that row.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/KViewRunWorkflow8.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536238"></a>Scheduling a Knowledge View [to run Workflows, or to export data] <a href="#_Toc421536238" class="anchor">#</a></h2>
+        <p>Knowledge Views can be used to run a process on each of the objects returned by the filter criteria (licensed with the Reporting Component). This can be used, for example, to archive or delete forms or documents that match a certain criteria. Or it can be used to schedule a document review for documents that meet certain criteria. The criteria can be any Knowledge View filter criteria including last updated time, creation date, or any form field data. The actual workflow run on each object can perform any action or task.</p>
+        <p>Knowledge Views can also be used to export results into Excel, CSV, or PDF format. By scheduling this type of Knowledge View, a report will automatically be generated and can be written to a specific path on the server. This folder, for example, can be monitored by the BP Logix import utility, to automatically run a process on the reports. This Workflow can, for example, automatically distribute the report to a pre-defined group of users.</p>
+        <p>These Knowledge Views can be run manually, or scheduled to perform an automatic actions. To schedule these Knowledge Views, a web page is run. </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Manual Knowledge View</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Knowledge views can be viewed or exported via URL from any web browser, using the kv.aspx page contained in Process Director. Below is a sample URL to the kv.aspx page: </p>
+                <div class="CodeBase">http://localhost/kv.aspx?id=KVID&amp;dorun=1&amp;bpUserID=USERID&amp;bpPassword=PASSWORD&amp;exportname=EXPORTNAME</div>
+                <p>The kv.aspx page can be used to:</p>
+                <ul>
+                    <li>View a Knowledge View.</li>
+                    <li>Export a Knowledge View to a CSV or Excel file on your local machine's file system.</li>
+                    <li>Export a Knowledge View to a CSV or Excel file in the Content List of the Process Director server.</li>
+                </ul>
+                <p>The kv.aspx command can take the following parameters as part of the QueryString in the URL:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>URL PARAMETER</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>id</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The KVID of the Knowledge View to run.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>dorun</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>This optional parameter is used only when the Knowledge View runs a Workflow or Process Timeline. Specify "1" to run the command immediately without a prompt.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>exportname</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This is parameter is required only when exporting the Knowledge View to a CSV or Excel file, or to the Content List. When exporting to the file system on a local machine, this parameter takes the desired local file path and file name of the exported file, e.g., "C:\filename.csv". When exporting to the Content List in Process Director, this parameter takes only the desired file name, e.g., "filename.csv".</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>BPUserID</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>This optional parameter is used only when the Knowledge View runs a Workflow or Process Timeline. The parameter takes a Process Director user ID with permission to run the Knowledge View.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>bpPassword</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This optional parameter is used only when the Knowledge View runs a Workflow or Process Timeline. The parameter takes the Process Director password for the user passed in the <i>userid</i> parameter.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">contentfolderpath</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This is an optional parameter used only when exporting the Knowledge View to a CSV or Excel file in the Content List. The parameter takes the Content List folder path to the Content List folder where the file will be stored, e.g., "/folder1/folder2". The <i>contentparentid</i> parameter can be used in lieu of this parameter if the Folder ID of the destination folder is known.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">contentparentid</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">This is an optional parameter used only when exporting the Knowledge View to a CSV or Excel file in the Content List. The parameter takes the Folder ID of the desired destination folder. If the Folder ID is not known, the <i>contentfolderpath</i> parameter can be used, instead.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>For example, the URL to run a Knowledge View which runs a workflow on each result would be:</p>
+                <div class="CodeBase">http://localhost/kv.aspx?id=KVID&amp;dorun=1&amp;bpUserID=USERID&amp;bpPassword=PASSWORD</div>
+                <p>The URL to run a Knowledge View which writes the results into an XLS file (the KView must be defined to Export the results to Excel):</p>
+                <div class="CodeBase">http://localhost/kv.aspx?id=KVID&amp;bpUserID=USERID&amp;bpPassword=PASSWORD&amp;exportname=c:\test.xls</div>
+                <p>The URL to run a Knowledge View which writes the results into a PDF file (the KView must be defined to Export the results to Excel):</p>
+                <div class="CodeBase">http://localhost/kv.aspx?id=KVID&amp;bpUserID=USERID&amp;bpPassword=PASSWORD&amp;exportname=c:\test.pdf</div>
+                <p>The URL to run a Knowledge View which writes the results into a CSV file (the KView must be defined to Export the results to CSV):</p>
+                <div class="CodeBase">http://localhost/kv.aspx?id=KVID&amp;bpUserID=USERID&amp;bpPassword=PASSWORD&amp;exportname=c:\test.csv</div>
+                <div class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> When exporting to a Windows file location, you cannot export files via the <span class="ControlName">exportname </span>URL&#160;parameter to any folder that is not specifically listed in the <a href="../DevelopersGuide/Customization File System.htm#AllowedExportLocations">AllowedExportLocations</a> custom variable. Attempts to export to a non-allowed location will fail.</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Scheduled Knowledge View</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You may want to automatically schedule the Knowledge View to run at regular intervals (for example, every night at midnight). To do this, use the Microsoft Windows Scheduled Tasks utility. This utility enables you to schedule and test commands executed on a regular basis. </p>
+                <p>Do not schedule IEXPLORE.EXE because the web browser will never close. Rather, use the bputil.exe command to run the web page. For example, enter this command in the “Run” dialog box to schedule the synchronization:</p>
+                <div class="CodeBase">"PATH\bputil.exe" SU "http://localhost/kv.aspx?id=KVID&amp;dorun=1&amp;bpUserID=USERID&amp;bpPassword=PASSWORD"</div>
+                <p>Where PATH is the installation directory for Process Director (e.g. c:\Program Files\BP Logix\Process Director\). Enter the appropriate credentials in the Windows Scheduler when prompted</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> Each of the above methods use the bpUserID and bpPassword parameters. Be advised that using the bpUserID or bpPassword parameter requires sending the User ID and Password in clear text, so be mindful of the security implications of transmitting these values.</div>
+        <h2><a name="_Toc421536239"></a>Knowledge View Reporting / Exporting <a href="#_Toc421536239" class="anchor">#</a></h2>
+        <p>The default behavior of a Knowledge View is to display the result list in the browser. For more detailed analysis, though, you may need to export the Knowledge View into a more accessible format, so, Knowledge View results can be exported to a CSV file (which can be opened by Excel). If you have the Office Integration component, you can export directly to Excel, and use Excel templates to modify or style the exported file.</p>
+        <p>When exporting to either CSV or Excel, exported Date/Time fields will contain both the date and the time.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421536240"></a>Exporting the Results to a CSV File</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To export the results to a CSV file select the <span class="ControlName">Show Export to CSV Icon</span> check box in the Knowledge View definition's <span class="UIElement">Options </span>tab. Doing so will display an export icon at the upper right corner of the Knowledge View. This option is selected by default when a new Knowledge View is created.</p>
+                <p>
+                    <img src="../Resources/Images/export to csv.png" alt="Export to CSV Icon" />
+                </p>
+                <p>There are two options when exporting the results to a CSV file. First you can set the <span class="ControlName">Knowledge View Results</span> property to "Displayed in Grid", which is the default option. Second, you can set the <span class="ControlName">Knowledge View Results</span> property to "Exported to CSV", which will automatically save the data to a file on your local computer. </p>
+                <p>If you want to prompt the user for additional filter data on this Knowledge View when running the report, choose the option "Displayed in Grid" to allow the user to click on the icon to export the results after the filter data is entered.</p>
+                <p>
+                    <img src="../Resources/Images/kview results property.png" alt="Knowledge View Results Property" />
+                </p>
+                <p>Additionally, selecting the <span class="ControlName">Export all Form Fields to CSV</span> option will export all form data, regardless of what is defined on the columns. When this option is selected, all form fields will be exported after the defined columns. This will also cause the default display options for the columns to export only (only the first column will appear on the screen). </p>
+                <p>
+                    <img src="../Resources/Images/export form fields to csv.png" alt="Export Form Fields to CSV Property" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421536241"></a>Running an <MadCap:keyword term="Excel" />Excel Report on the Results</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The results of the Knowledge View can also be streamed to an Excel Report Template and have a report run automatically. This will result in Excel opening and running a report based on the data just retrieved from the server.</p>
+                <h5>Configure the Knowledge View to Reference the XLS Template</h5>
+                <p>For users of Process Director installations containing the Office Integration component, the results of a Knowledge View can also be streamed to an Excel Report Template to run a report automatically. This will result in Excel opening and running a report based on the data just retrieved from the server.</p>
+                <p>To allow the exporting of Knowledge View result to an Excel file, check the <span class="ControlName">Show Export to Excel Icon</span> checkbox in the <span class="UIElement">Configure </span>tab of the Knowledge View definition, then click the <span class="UIElement">Update </span>button to see more Excel options on the <span class="UIElement">Properties </span>tab of the definition. These additional properties will not appear on the <span class="UIElement">Properties </span>tab, unless one of the export to Excel options is set on the <span class="UIElement">Configure </span>tab and the definition is updated.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ExcelExport.png" />
+                </p>
+                <p>Before a Knowledge View can be exported to an Excel file, an Excel template file located inside the content list must be linked to the knowledge view. To link to an Excel template file, set the <span class="ControlName">Select Excel Template</span> field in the knowledge view options.</p>
+                <p>Knowledge Views can immediately export their results to an Excel file when opened. To activate this option, select the “Export to Excel” option in the <span class="ControlName">Knowledge View Results</span> dropdown in the Knowledge View properties.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Knowledge Views_22.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Please refer to the topic on <a href="Knowledge View Definitions.htm">configuring knowledge views</a> to configure the use of the <span class="ControlName">Selected Destination Folder...</span> and <span class="ControlName">Export File Name...</span> properties to use when exporting the Excel file to the Content List.</p>
+                <p>If the “Displayed in Grid” option is selected, then the Knowledge View results will display in the browser, along with an icon button giving the user the option to export the results to an Excel file.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421536242"></a>Excel Template File</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Excel Template Report file defines how the data in a Knowledge View will be displayed in an Excel report.</p>
+                <h5>Format the Columns in Excel</h5>
+                <p>Apply formatting to the columns in the Template Excel file such as date/time and number formatting, using the Format Cells command in Excel.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Knowledge Views_23.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <h5>Smart Markers</h5>
+                <p>In the template XLS document, you will place Smart Markers where you want the results of the Knowledge View to be imported. The smart markers take this format:</p>
+                <p><code>&amp;=BP.col1</code>
+                </p>
+                <p><code>&amp;=BP.col2</code>
+                </p>
+                <p>Where col1 and col2 are the names of the Knowledge View columns. For example, the image below defines 3 columns in a template XLS sheet. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Knowledge Views_24.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>These columns will be filled with the corresponding columns (Contract Date, Customer, Customer Type) in the Knowledge View. The Column Names defined in the Smart Markers must match exactly the columns defined in the Knowledge View. All column names in the template file should add BP. to the variable.</p>
+                <p>You can also place formulas in columns using the following syntax:</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Knowledge Views_25.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <h5>Define an Excel Range</h5>
+                <p>If you define a range in the Excel template that includes the header columns, and the template columns, the range will automatically be expanded as results are inserted into the spreadsheet.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Knowledge Views_26.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <h5>Define XLS Pivot Table / Formulas</h5>
+                <p>The XLS/XLSX template file can contain Pivot tables or Excel formulas that can be automatically run against the data. Create the Pivot Table against a RANGE name that encompasses the template and header column. When the Knowledge View is run, it will stream (export) the results into the RANGE specified. The number of rows will be expanded automatically to accommodate the number of records returned from the Knowledge View. </p>
+                <p>To automatically run a Pivot Table, ensure that the option is selected in Excel that indicates the Pivot Table Report should run when loaded (i.e. Refresh on open). </p>
+                <p>Also, when using a Pivot table, ensure that the XLS file you upload in to the Content List was saved with the Pivot Table Graph as the sheet that is displayed. When the XLS file is saved, it will open with the same sheet displayed. </p>
+                <h5>Special XLS Columns</h5>
+                <p>You can include special columns in the Excel output range which will automatically be filled in when the report is delivered to the user. You do not need to include these columns in the Knowledge View Definition.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Knowledge Views_27.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">COLUMN</th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>BP_KV_NAME</code>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The Name of the Knowledge View Definition.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><code>BP_KV_DESC</code>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The Description of the Knowledge View Definition.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>BP_ROW_SECOND</code>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The value of the "second line" configured for this Knowledge View of the current row. This can be used like any other column name.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><code>BP_FILTER_1</code>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The value of the first filter criteria (if any) in the Knowledge View Definition</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>BP_FILTER_2</code>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The value of the second filter criteria (if any) in the Knowledge View Definition, etc.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><code>BP_KV_CURR_USER</code>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The name of the current user</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>BP_KV_CURR_USER_EMAIL</code>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The email of the current user</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2"><code>BP_KV_CURR_DATETIME</code>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                                <p>The datetime this excel file was generated</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Excel Formulas</h5>
+                <p>Formulas must be formatted according to a specific syntax when create an excel report template.</p>
+                <p>The characters “&amp;=&amp;=” must precede any formula. The excel report template equation for “1 + 1” would then be as follows:</p>
+                <p><code>&amp;=&amp;=1+1</code>
+                </p>
+                <p>The character sequence “{r}” represents the current row number. To display the current row number in a cell, one would use the following formula:</p>
+                <p><code>&amp;=&amp;={r}</code>
+                </p>
+                <p>One can also access rows other than that which a cell belongs to. For example, the access the previous row, one could put the following formula into a cell:</p>
+                <p><code>&amp;=&amp;={-1}</code>
+                </p>
+                <p>To return the value of a specific cell, you would use the format “Column_Name{Row_Number}”.&#160; So, to display the value of column B in this row, one would use the following formula:</p>
+                <p><code>&amp;=&amp;=A{-1}</code>
+                </p>
+                <p>The string (numeric) after a formula will convert the value into a number. So, if you were to want to display this column as a number, you would use this formula:</p>
+                <p><code>&amp;=BP.MyColumn(numeric)</code>
+                </p>
+                <p>These components can be combined in any way to create a formula. For example, if I wanted to add one to the product of the previous row number and the value of column b in this row, I could use this formula:</p>
+                <p><code>&amp;=&amp;={-1} * B{r} + 1</code>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

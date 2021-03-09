@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536318"></a>
+            <MadCap:keyword term="Condition Builder" />Condition Builder</h1>
+        <p>Process Director includes a Condition Builder that enables you to create conditions to test nearly any value you desire. You will see the Condition Builder in many different places, such as when to make a form field enabled or hidden, or what value to return from a Business Rule. The Condition Builder is usually invoked by an action link that is labeled "Click to create condition...". Anywhere you see this link, you can open the Condition Builder by clicking on it.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ConditionBuilder1.png" />
+        </p>
+        <p>Adding a condition to a specific option makes it easy to set a value or perform an action based on your preference. Conditions are true or false statements that are evaluated in order to determine an appropriate response.  </p>
+        <h2><a name="_Toc421536319"></a>Adding a Condition <a href="#_Toc421536319" class="anchor">#</a></h2>
+        <p>When the Condition Builder has been invoked, you may add a condition by selecting the <span class="UIElement">Add Condition</span> button .</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ConditionBuilder.png" />
+        </p>
+        <p>Once you click the <span class="UIElement">Add Condition</span> button, the first conditions row will appear, and the first control in the row (we refer to this as the “left hand side” of the condition) is a <span class="NamedControl">Picker </span>control that will display the text, “Form Field” in most contexts. You will use this <span class="NamedControl">Picker </span>control to set the  variable that you will evaluate for the condition. The middle control is a selector that enables you to pick the method for comparing the system variable to a desired value. We refer to this as the operator. Finally, there is, for most variable types, a third field, which is the desired value to which you wish to compare the system variable. We refer to this as the Right hand side" of the condition.</p>
+        <p>Not all system variables will have a desired, or right hand side value. For instance, boolean variables only return true or false. As such, they are not compared to a desired value, merely evaluated to determine if they are true or false.</p>
+        <h3><a name="SystemVariable"></a>System Variable <a href="#SystemVariable" class="anchor">#</a></h3>
+        <p>Click the Picker Control’s <span class="UIElement">Build </span>button to reveal the <span class="ControlName">Choose System Variable</span> dialog box. This dialog box contains all of the system variables that are available for evaluation.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SysVarMenu.png" />
+        </p>
+        <p>All of the system variables are organized in a dropdown menu that divides the system variables into a number of categories, as shown above. Use the dropdown menu to select the appropriate system variable. Once you have selected the system variable, click the <span class="UIElement">OK </span>button to close the dialog box and set the system variable in the condition row. Please see the <a href="../SystemVariablesReferenceGuide/System Variables.htm">System Variables Reference Guide</a> for a description of all the possible system variables that may appear in the dropdown. This dropdown menu is context-sensitive, so, depending on where you are using the Condition Builder, different options will appear that are relevant to the selection or filtering operation you are conducting.</p>
+        <div class="Important">
+            <img src="../Resources/Images/i2.png" alt="Note" /> For process Director v5.32 and higher, the Condition Builder will not, when evaluating form fields, include fields that have no value, like Embedded Sections, or labels.</div>
+        <h3>
+            <MadCap:keyword term="Operator" /><a name="Operator"></a>Operator <a href="#Operator" class="anchor">#</a></h3>
+        <p>Once the variable has been selected, you must choose an operator for the variable, i.e., the method we will use to compare the variable to the desired value. A number of operators are available, and the type of available operators will depend on the type of system variable you select. A Boolean system variable, for instance, will only allow you to select whether the variable is true or false, while a string variable will provide a much wider array of choices. </p>
+        <p>
+            <img src="../Resources/Images/Capture34.png" />
+        </p>
+        <p>In general, the following operators are available:</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>= (Equals)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This operator requires that the system variable and the desired value match exactly.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>&lt;&gt; (Does Not Equal)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This operator requires that the system variable and the desired value do not match.</p>
+                <p>A search for fields that are NOT empty can be performed using this operator with the syntax :</p>
+                <p><span class="Code">Value &lt;&gt; ""</span>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>&lt; (Less Than)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This operator requires that the value of the system variable be less than that of the desired value.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>&lt;= (Less Than or Equal To)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This operator requires that the value of the system variable be less than or equal to that of the desired value.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>&gt; (Greater Than)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This operator requires that the value of the system variable be greater than that of the desired value.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>&gt;= (Greater Than or Equal To)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This operator requires that the value of the system variable be greater than or equal to that of the desired value.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>In</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option is primarily designed to match a value to a list of values. For instance, of the left side of the condition contains a user, and the right side of the condition contains user group, this operator will determine if the user is contained in the group. Similarly, if the value on the left is  a string and the value on the right is a comma-separated list of values, the In operator means “in that list”. If the value is determined to be in the list of values, this operator will return "true"</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Not In</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option is also primarily designed to match a value to a list of values, though, in this case, it returns "true" if the value is not in the list.</p>
+                <div class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" />A User filter on a knowledge view will now support "user IN/NOT (group or user list)". If it is a "user IN group list", the filter will return True if the user is in ANY of the groups. If you have a "user NOT IN group list" filter, then the filter will return true if the user is NOT IN ANY of the groups.</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Contains</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The string value of the System Variable is contained in the string value of the desired value. For instance, a desired value of "Rejected" would contain a system variable with the string value of "Reject".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Does Not Contain</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The string value of the System Variable is not contained in the string value of the desired value. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Matches</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This operator works similarly to the Contains operator, but supports the ability to use AND and OR operators in the filter string. The filter string can also contain double quotes to force the search on that entire character string. If there is no operator between strings, or a ",", these will be treated as "AND". Additionally, the Matches operator supports a Regular Expression (REGEX) value for the desired value.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>No Earlier Than</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This operator is applicable only to date/time values. In enables you to specify the lower bound of a date range.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>No Later Than</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This operator is applicable only to date/time values. In enables you to specify the upper bound of a date range.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="FullText"></a>
+            <MadCap:keyword term="full text;Operators;Full-text search" />Full-Text Search Operators <a href="#FullText" class="anchor">#</a></h3>
+        <p>For Process Director v5.21 and higher, full text search operators enable you to use nonspecific or "fuzzy" search terms to return a larger set of potential matches for a search term. Please remember that full-text searching can be resource-intensive, may take a long time, and may return an unexpectedly large set of search results, depending on the precision of your search terms. There is a custom variable, <a href="../DevelopersGuide/Customization File Misc.htm#fCONTAINSUseValueSearchOnly">fCONTAINSUseValueSearchOnly</a>, that can speed up full-text searching, though at the cost of some search accuracy.</p>
+        <p>To implement full-text searching, you must enable it on your system by performing the following process:</p>
+        <ul>
+            <li>While in <a href="Debug Mode.htm">debug mode</a>, click the command in the troubleshooting page to create the index and catalog. There is another link to see status, and another to turn off full-text searching. Turning on this feature may take a while to complete on existing databases.<br /><img src="../Resources/Images/ImplementersReference/FullText.png" /></li>
+        </ul>
+        <p>There are some restrictions that you must keep in mind when using full-text search operations.</p>
+        <ul>
+            <li>Partial word searches must start with the beginning of the word.</li>
+            <li>Some words may not be found if they contain special characters that the database considers to be a "stop word". For instance a word that contains a number may be ignored, even though it otherwise matches the search term. What constitutes a "stop word" depends on the system settings of your database, so Oracle and SQL&#160;Server may operate differently.</li>
+        </ul>
+        <div class="Important">You can turn the stoplist off on SQL Server by using the following SQL&#160;Command in the SQL&#160;Server Management Console:<br /><code>ALTER FULLTEXT INDEX ON tblFormData SET STOPLIST = OFF</code><br /><br />To turn the stoplist ON with the default of "system" use this SQL command:<br /><code>ALTER FULLTEXT INDEX ON tblFormData SET STOPLIST = SYSTEM</code></div>
+        <p>Once full-text searching is enabled, the following operators will be come available when appropriate.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Starts With</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This full text search operator enables you to find text strings that begin with the specified search term. For instance, a Starts With search for "ham" will return "hammer", "hamfisted", "Hamlet", "Hamilton", hamburger, etc.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Contains (Lexical)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This full text search operator enables you to perform a search of text that returns terms that are lexically similar terms to the search term. For instance, a search for "check" will return items that contain the lexical matches such as "Checks", "Checked", "Checking", "Checker", etc.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="Desired"></a>Desired or Comparison Value <a href="#Desired" class="anchor">#</a></h3>
+        <p>Once the operator has been selected, you must provide the desired value on the right hand side of the Condition Row, to which the System Variable will be compared. The desired value can be derived from Process Director, or manually entered by the user. A dropdown menu is available to select the type of desired value. Different data types will present different items in the dropdown menu, each of which is appropriate to the data type you are comparing.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/stringdatatypecomparisondropdown.png" />
+        </p>
+        <p>Depending on which item you select from the dropdown menu, the appropriate selection or input method, if necessary, will be displayed in the condition builder to enable you to enter the appropriate comparison value. For instance, if you select a "String" as the desired comparison value, a text box will be provided into which you can type the string value you desire.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Condition2.png" />
+        </p>
+        <p>In the example above, the condition requires that the value of the <span class="ControlName">Text1 </span>form field equal the desired string value, "Approved".</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Managing Conditions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Once a condition has been created, you may remove a condition by selecting the red “x” next to the condition to be removed. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Conditions.png" />
+                </p>
+                <p>You may also select the green arrow icon to insert a new condition to be included in that condition.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Condition.png" />
+                </p>
+                <p>You may also select the <span class="UIElement">Add Condition</span> button to insert another condition but to use it as an OR condition.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Condition1.png" />
+                </p>
+                <p>Once you have set your conditions for your option you can save it by clicking the <span class="UIElement">OK</span> or the <span class="UIElement">Update</span> buttons.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="ArrayConditions"></a>Using Arrays in Form Validation Conditions <a href="#ArrayConditions" class="anchor">#</a></h2>
+        <p>Validation filter conditions that use Array fields on a Form can be complex, and may not work in the way you expect, because various filter conditions operate differently, depending on whether you are trying to filter based on a single (scalar) value or an array (column) value, and whether the value is used on the left or right side of the operator in the <span class="ControlName">Condition Builder</span>. The various condition scenarios are described in the table below.</p>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" style="width: ;" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">LEFT&#160;SIDE</th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">RIGHT&#160;SIDE</th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>COMPARISON&#160;BEHAVIOR</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>EXAMPLE</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;">Scalar</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Scalar</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Simple comparison of the two values. <p>For instance, if you wanted to search a Form Field named favoriteColor for the color Blue, the comparison would be:</p><table style="width: 400px;"><col style="width: 140px;" /><col style="width: 90px;" /><col /><tbody><tr><td style="font-weight: bold;">Form Field</td><td style="font-weight: bold;">Operator</td><td style="font-weight: bold;">Value (String)</td></tr><tr><td>favoriteColor</td><td>=</td><td>"Blue"</td></tr></tbody></table><p>If the favoriteColor field contains the value "Blue" the condition will return "true".</p></td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Field1="Value"</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;">Column</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Scalar</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>The column value on the left side of the operator is returned as a comma-separated list, and the condition will evaluate to see if the scalar value on the right side is contained in the list. This condition will return "true" if the scalar value matches the condition for any row in the array column.</p>
+                        <p>For instance, let's assume we have an array column named primaryColors, containing the following values:</p>
+                        <p>Row [1]: red</p>
+                        <p>Row [2]: blue</p>
+                        <p>Row [3]: yellow</p>
+                        <p>Any of the following comparisons will return "true":</p>
+                        <table style="width: 525px;">
+                            <col style="width: 226px;" />
+                            <col style="width: 90px;" />
+                            <col />
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: bold;">Form Field (Array Column)</td>
+                                    <td style="font-weight: bold;">Operator</td>
+                                    <td style="font-weight: bold;">Value (String)</td>
+                                </tr>
+                                <tr>
+                                    <td>primaryColors</td>
+                                    <td>=</td>
+                                    <td>"red"</td>
+                                </tr>
+                                <tr>
+                                    <td><b>OR</b>
+                                    </td>
+                                    <td>&#160;</td>
+                                    <td>&#160;</td>
+                                </tr>
+                                <tr>
+                                    <td>primaryColors</td>
+                                    <td>=</td>
+                                    <td>"blue"</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold;">OR</td>
+                                    <td>&#160;</td>
+                                    <td>&#160;</td>
+                                </tr>
+                                <tr>
+                                    <td>primaryColors</td>
+                                    <td>=</td>
+                                    <td>"yellow"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Column1=Field1</p>
+                        <p>Column1&lt;=Field1</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;">Scalar</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Column</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>The column value on the right side of the operator is returned as a comma-separated list, and the condition will evaluate to see if the scalar value on the left side is contained in the list. This condition will return 'true" if a matching value is found.</p>
+                        <p>For instance, let's assume we have an array column named primaryColors, containing the following values:</p>
+                        <p>Row [1]: red</p>
+                        <p>Row [2]: blue</p>
+                        <p>Row [3]: yellow</p>
+                        <p>Any of the following comparisons will return "true":</p>
+                        <table style="width: 525px;">
+                            <col style="width: 226px;" />
+                            <col style="width: 90px;" />
+                            <col />
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: bold;">Form Field (Array Column)</td>
+                                    <td style="font-weight: bold;">Operator</td>
+                                    <td style="font-weight: bold;">Value (String)</td>
+                                </tr>
+                                <tr>
+                                    <td>"red"</td>
+                                    <td>IN</td>
+                                    <td>primaryColors</td>
+                                </tr>
+                                <tr>
+                                    <td><b>OR</b>
+                                    </td>
+                                    <td>&#160;</td>
+                                    <td>&#160;</td>
+                                </tr>
+                                <tr>
+                                    <td>"blue"</td>
+                                    <td>IN</td>
+                                    <td>primaryColors</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold;">OR</td>
+                                    <td>&#160;</td>
+                                    <td>&#160;</td>
+                                </tr>
+                                <tr>
+                                    <td>"yellow"</td>
+                                    <td>IN</td>
+                                    <td>primaryColors</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Field1 IN Column1</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2" style="text-align: center;">Column</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Column</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>Each row in the column is compared with the corresponding column in the same row. This condition will return "true" if any row comparison matches the operator.</p>
+                        <p>For instance, let's assume we have two array columns, primaryColors and berryColors, containing the following values:</p>
+                        <p><b>Array column “primaryColors”</b>
+                        </p>
+                        <p>Row [1]: red</p>
+                        <p>Row [2]: blue</p>
+                        <p>Row [3]: yellow</p>
+                        <p><b>Array column “berryColors”</b>
+                        </p>
+                        <p>Row [1]: red</p>
+                        <p>Row [2]: black</p>
+                        <p>Row [3]: blue</p>
+                        <p>The comparison condition would be:</p>
+                        <table style="width: 400px;">
+                            <col style="width: 227px;" />
+                            <col style="width: 89px;" />
+                            <col style="width: 211px;" />
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: bold;">Form Field (Array Column)</td>
+                                    <td style="font-weight: bold;">Operator</td>
+                                    <td style="font-weight: bold;">Form Field (Array Column)</td>
+                                </tr>
+                                <tr>
+                                    <td>primaryColors</td>
+                                    <td>=</td>
+                                    <td>berryColors</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Since Row[1] matches the condition, the condition will return true.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">Column1=Column2</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2><a name="ClientValidation"></a>Client Validation <a href="#ClientValidation" class="anchor">#</a></h2>
+        <p>In Process Director v5.1 and higher, a client side validation function allows conditional processing on form fields to occur in the client browser without having to make the form fields into event fields, and reposting the form when the fields change.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ClientValidation.png" />
+        </p>
+        <p>These conditions are used to control the display/hidden “when”, enabled/disabled “when”, and required/not required “when” settings in the properties displayed from the <span class="UIElement">Form Controls </span>tab of the form definition..</p>
+        <p>When this client side condition flag is enabled, system variables will only be evaluated once on the server when the page is displayed or an event occurs. Form fields, however, will always use to most current form data on the visible form when evaluating the condition, because the evaluation will take place in the client browser, and will <b style="font-style: italic;">not</b> require the form to be reposted to the server to evaluate the form fields.</p>
+        <p>By default, the traditional server-side evaluation method will be the default evaluation method for conditions, unless you specifically choose to use client validation.</p>
+        <p>As of Process Director v5.1, only the following control types can be used for client-side conditional processing, both for Showing/Hiding and for the querying of live data:</p>
+        <ul>
+            <li>Input/Text</li>
+            <li>Checkbox</li>
+            <li>Date</li>
+            <li>Dropdown</li>
+            <li>Buttons</li>
+            <li>Sections</li>
+        </ul>
+    </body>
+</html>

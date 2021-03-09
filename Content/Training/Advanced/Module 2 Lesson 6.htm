@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="3921" MadCap:lastWidth="1187" MadCap:conditions="General.Advanced Training">
+    <head>
+        <link href="../../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 6: Starting Processes from an Array</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn the configuration options for the Run Process Custom Task that enables you to use each row in an array to start a process or subprocess.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Run Process Custom Task</h2>
+        <p>This custom task enables you to launch a new process. You can either specify the process within the custom task configuration, or have the process specified by a form field or an array of form fields. The Launch Data tab allows you to specify a form control that will specify the process to be launched. Alternatively, you can specify the process to be launched right in that tab.</p>
+        <h3>Launch Data/New Form/Attachments Tabs</h3>
+        <p>These tabs enable you to configure how the Process will be launched for each row in the array.</p>
+        <p>
+            <img src="../../Resources/Images/Custom Tasks2/RunProcessBasicTabs.png" />
+        </p>
+        <p>The<span class="ControlName"> Launch Process</span> property allows you to use a Picker control to choose the process to launch, or to choose a Form Control that identifies the property from the container Form. If you choose to use a Form field to specify the process, then when the <span class="ControlName">Run Process</span> Custom Task is launched from a Form, the launching Form is assumed to be the container Form that contains the array. When the Custom Task is launched from a process, you should set the Container Form in the Custom Task tab of the Process Timeline activity.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Advanced/RunProcess.png" />
+        </p>
+        <p>The<span class="ControlName"> New Form</span> property of the<span class="UIElement"> New Form </span>tab is an object picker control from which you can select the new form to attach to the process. Multiple forms can be added by clicking the Add Mapping button.</p>
+        <table style="mc-table-style: url('../../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 244px;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 228px;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: ;" class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>OPTION</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>ATTRIBUTES</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p style="font-weight: bold;">LAUNCH DATA TAB</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Launch Process</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Picker control to choose the process to launch.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>
+                            <b>NEW FORM TAB</b>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>New Form</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Picker control to select the new form to attach to the process. Multiple forms can be added by clicking the Add Mapping button.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p style="font-weight: bold;">ATTACHMENTS TAB</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Reference Type(s)</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p style="text-align: left;">None<br />Workflow References<br />Timeline References<br />Form References</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The reference types for new attachments associated with this process.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">Attach Items To</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">Newly Launched Process<br />New Form</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">This selection is available only when the Reference Type(s) field is set to a value other than "None". It enables you to attach items to either the new process or the new Form.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Array Binding Tab</h3>
+        <p>The <span class="UIElement">Array Binding</span> tab is where you specify the array to bind to the Custom Task to start a new process for each of the rows in the array.</p>
+        <p>The <span class="ControlName">Array Field</span> property is a dropdown control that contains a list of the arrays in the container Form.  Process Director will launch a process for each row in the selected array.</p>
+        <p>The <span class="ControlName">For each row, launch new Process only under the following condition </span>property enables you to set the conditions for starting a process for each row in the array that meets the conditions you specify. When this option is checked, a list of fields, list of operators, and a text box appear to allow you to set a condition that must apply for each row in the array before that row initiates the process.</p>
+        <p>
+            <img src="../../Resources/Images/Custom Tasks2/Process Custom Tasks_4.jpg" style="visibility: visible;mso-wrap-style: square;width: 557px;height: 516px;" />
+        </p>
+        <table style="mc-table-style: url('../../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 244px;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 228px;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: ;" class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>OPTION</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>ATTRIBUTES</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Array Field</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>List of Form arrays</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Launch a process for each row in an array</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>For each row, launch new Process only under the following condition.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>When checked, a list of fields, list of operators, and a text box appear to allow you to set a condition that must apply for each row in the array before that row initiates the process.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Advanced Tabs</h3>
+        <p>
+            <img src="../../Resources/Images/Capture73.png" />
+        </p>
+        <p>The <span class="UIElement">Advanced </span>tab provides a number of options for how to handle the processes that are launched from the arrays, ad described in the Ad</p>
+        <table style="mc-table-style: url('../../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 244px;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 228px;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: ;" class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>OPTION</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>ATTRIBUTES</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p style="font-weight: bold;">ALL ADVANCED TABS</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Launch as Sub-Process of Current Process</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Launch Process as Current User (instead of Object Creator)</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Save current Form data before starting Process</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Saves the form data before the process is initiated. Using this option on a new form instance that has not yet started a workflow will save the Form, but will not start the default workflow for that Form.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>After Process Starts</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>List of form handling options</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Determines what should happen with the parent Form after the process started by the custom task is initiated.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>After Successful Launch</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>List of actions</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Enables you to make changes to form fields to reflect the start of the process.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Copy the data from all fields which the Source Form and the New Form share (all Fields with the same name)</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Copies form data to the new form.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Save new forms when they are created (WARNING: this will prevent default data from being set for those forms)</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to automatically save a form instance after the Run Process Custom Task creates it. Use with care: this option is disabled by default, as enabling it will prevent default data from being set on that form instance.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Set Form as Default Form Instance for Process</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Group name for the new Form in the new Process</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Sets a group name for the new form.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Attach new Form to parent Process</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Group name for the new Form in the parent Process</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Sets a group name for the new form.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Attach source Form to new Process</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Group name for the source Form in the new Process</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Sets a group name for the source form.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Item Type</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>All, Documents, Forms</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Types of attachments</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>Group Name</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p style="text-align: left;">All, Objects with no Group only</p>
+                        <p>Specify</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>Group name for attachments, optionally limiting which are attached by group.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

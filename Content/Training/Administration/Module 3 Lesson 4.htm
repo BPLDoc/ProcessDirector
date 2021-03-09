@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="10" MadCap:lastHeight="3377" MadCap:lastWidth="1161" MadCap:conditions="General.SysAdmin Training">
+    <head>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 4: User Synchronization and Permissions</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn the basics of Active Directory user synchronization and object permissions.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>User Directory Synchronization</h2>
+        <p>If you are using an LDAP directory (e.g. Microsoft Active Directory) to authenticate your users, their User ID will be automatically added to the Process Director database when they first login. Process Director automatically synchronizes the user and group information when the login occurs. This happens transparently to the user. If you are using Windows Domain security to authenticate users you can still configure Process Director to synchronize user information with your LDAP server. This enables your users to authenticate against the Windows Domain, but still have their email address and user name (Alias) synchronized with the LDAP settings.</p>
+        <p>There are a couple of limitations to using this technique alone. It requires that a user logs into Process Director before it “knows” of that user and the groups the user belongs to. This means that you cannot add users to a workflow step, or specify users in permissions until after that user logs into Process Director. Additionally, users or groups that are changed or removed in LDAP will still exist in the Process Director database.</p>
+        <p>To address these scenarios, there is a user directory synchronization utility that will synchronize your LDAP user information with Process Director. The synchronization utility will only synchronize attributes such as the name and email address, but will not copy over any passwords. Passwords are only stored on your LDAP server – the LDAP server is responsible for authentication.</p>
+        <h2>Creating an Active Directory Synch Profile</h2>
+        <p>This utility can be run manually, or scheduled to perform an automatic synchronization. To perform the synchronization, navigate to User Administration <span style="font-family: Wingdings;">à</span> User Directory Synchronization. Each sync configuration is a profile. You can create many profiles to sync specified users or groups of users. These profiles will be saved to the database so you may run them at any time. You may also create a profile by selecting the Create AD Sync Profile link. </p>
+        <p>
+            <img src="../../Resources/Images/Capture60.png" />
+        </p>
+        <p>Each profile will, after running display when the synchronization was last performed, and the result of the synchronization.</p>
+        <p>Configure the profile by selecting the appropriate values for the settings displayed. Ensure that you have selected OK to save the settings to the profile.</p>
+        <p>
+            <img src="../../Resources/Images/Capture210.png" />
+        </p>
+        <h3>Manual Execution of an Active Directory Sync Profile</h3>
+        <p>To execute a profile, navigate to the User Directory Synchronization page and select the Run command from the profile you would like to run. This will display the AD Sync Run page. The AD Sync Run page displays the profile configuration with the option of changing your settings for that run instance.</p>
+        <p>If the synchronization occurs successfully, you will see the number of users and groups that were synchronized. </p>
+        <h3>Scheduled Execution of an Active Directory Sync Profile</h3>
+        <p>To automatically schedule the profile to run at regular intervals (for example, every night at midnight) use the Microsoft Windows Scheduled Tasks utility. This utility enables you to schedule and test commands executed on a regular basis. </p>
+        <p>Do not schedule IEXPLORE.EXE because the web browser will never close. Rather, use the bputil.exe command to run the web page.&#160; Process Director has created this path for you. Navigate the AD Sync Run Page and copy and paste the URL under Directory Connection to the Windows Scheduler. </p>
+        <p>
+            <p>
+                <img src="../../Resources/Images/Capture211.png" />
+            </p>
+        </p>
+        <p>For example, enter this command in the “Run” dialog box to schedule the synchronization:</p>
+        <div class="CodeBase">"PATH\bputil.exe" SU "http://localhost/WD/admin/ad_sync.aspx?ads=Profile_Name"</div>
+        <p>where PATH is the installation directory for Process Director (e.g. c:\Program Files\BP Logix\Process Director\). Enter the appropriate credentials in the Windows Scheduler when prompted. Use the “Schedule” tab to set the times to run the command. Consult the Microsoft help for more information on this utility.</p>
+        <div class="Important">
+            <img src="../../Resources/Images/i.png" alt="Important" /> You must enclose the URL to ad_sync.asp in double quotes.</div>
+        <h4>User Synchronization</h4>
+        <p>AD users will be created in the Process Director database when synchronization is performed and when the user logs in. The user ID, display name, email address and organization hierarchy will be kept in sync. If a user is renamed in AD it will be reflected in the Process Director database during a login or a synchronization operation. If a user is deleted in AD, the user will be disabled in the Process Director database. It is recommend that the user ID be left as disabled instead of deleting it so that the user history is maintained (e.g. workflows they participated in, documents they modified, etc.).</p>
+        <h4>Group Synchronization</h4>
+        <p>The integration will synchronize the AD groups. These will be created as groups in Process Director. When using AD groups, if you delete or rename groups in AD they will be removed from the Process Director database. When renaming an AD group, you should rename it in the Process Director User Administration Group section first. This is not required for AD users.</p>
+        <h2>Object Permissions</h2>
+        <p>Administrators of Subscription, Cloud, or on-Premise installations with the Compliance Option will notice an additional <span class="UIElement">Object Permissions</span> menu button in the IT Admin Interface. Process Director provides a searchable report of all object permissions, called the <span class="ProcessDirectorObject">Permissions Report</span>. The <span class="ProcessDirectorObject">Permissions Report </span>can be accessed by clicking the<span class="ProcessDirectorObject"> Object Perms </span>button in the Configuration section of the IT Admin area.</p>
+        <p>
+            <img src="../../Resources/Images/SystemAdministratorGuide/Object permissions.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>The<span class="UIElement"><span class="ControlName">Object Permissions</span></span> section enables you to find specific objects and view a report of permissions that are applicable to that object.</p>
+        <p>In the top portion of the Permissions Report screen, there are five filter fields you can use to create relatively specific searches to return a list of only those permissions that interest you. You can filter the object permissions by:
+</p>
+        <ul>
+            <li>Partition</li>
+            <li>Folder</li>
+            <li>Object Name</li>
+            <li>Object Type</li>
+            <li>	User
+</li>
+        </ul>
+        <p>Entering a value in any or all of the filter fields, then clicking the <span class="UIElement">Search </span>button, will ensure that the <span class="ProcessDirectorObject">Permissions Report</span> displays only object permissions that match the entered values. You can clear all of your search filters and start from scratch with a new search by clicking the <span class="UIElement">Clear Filter</span> button.
+</p>
+        <p>Each object displayed in the search results identifies the object, folder path, grant type, and a column for each of the permissions.</p>
+        <p>
+            <img src="../../Resources/Images/SystemAdministratorGuide/Object permissions_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>The <span class="ControlName">Permissions Report </span>can be exported to a comma-separated text file that is viewable in Excel by clicking the link labeled, <span class="UIElement">Export Permission Data to CSV</span>.</p>
+    </body>
+</html>

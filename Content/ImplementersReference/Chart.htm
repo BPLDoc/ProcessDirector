@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Charts" />Charts</h1>
+        <p>Users of Process Director v4.0 and above have access to the Chart object. The Chart object displays a graphical representation of values from Knowledge Views and Business Values to enable easier dashboarding—from either the Process Director interface, or in Forms—without needing the more advanced capabilities of the Advanced Reporting component. </p>
+        <h2><a name="Configuring"></a>Configuring a Chart <a href="#Configuring" class="anchor">#</a></h2>
+        <p>Obviously, a chart can show many different types of data, and the data can be quite complex. For the purposes of this documentation topic, we will use a simple Business Value that returns two columns of data, a Symbol column that contains the stock symbols for a number of companies, and a Quantity column, with the number of shares of each stock in the portfolio.</p>
+        <p>Just as with any other Process Director object, to create a new chart, select "Chart" from the <span class="ControlName">Create New... </span>dropdown located in the upper right corner of the Process Director interface. The<span class="ControlName"> New Chart </span>screen will appear, enabling you to enter the <span class="ControlName">Chart Name</span> for your new chart. When you click the <span class="UIElement">OK </span>button, the new Chart object will be created, with the name you have entered. The Chart's options screen will then be displayed, and you can enter a fuller explanation of your chart's purpose in the <span class="ControlName">Description </span>field.</p>
+        <p>The remainder of the options screen consists of several tabs, each of which enable you to configure different aspects of the chart.</p>
+        <h2><a name="Properties"></a>Properties Tab <a href="#Properties" class="anchor">#</a></h2>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ChartProperties1.png" />
+        </p>
+        <p>The <span class="ControlName">Chart Options</span> section is where you will set the overall configuration of your chart.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Chart Title</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This is the name that will appear in the Chart's Title area. The Chart's title can use System Variables, which Process Director will parse to display properly.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Chart2.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Chart&#160;Type</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can select the type of chart you wish to display from this dropdown control. The available Chart types are:</p>
+                <ul>
+                    <li>Area</li>
+                    <li>Bar</li>
+                    <li>Column</li>
+                    <li>Pie</li>
+                    <li>Donut</li>
+                    <li>Line</li>
+                    <li>Linear Gauge</li>
+                    <li>Radial Gauge</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Show Legend</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this box will display the chart legend.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Chart3.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Show Category Axis Labels</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this box will display labels for the category axis.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Chart4.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Show Value Axis Labels</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this box will display labels for the value axis.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Chart5.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Select a Content List Background Image for this Chart</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can select an image from the content list that will display as the background image for the chart.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Select a background image from this list for this chart (optional)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option enables you to select an image from a dropdown control that contains a number of stock background images, and will use that image as a background image for the Form.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/BackgroundImage1.png" />
+                </p>
+                <p>Next to the image dropdown, an additional Background Image Sizing dropdown enables you to specify how the background image will appear on the form. The following options are available:</p>
+                <ul>
+                    <li>Cover: The image will expand to fill the entire page background.</li>
+                    <li>Center:&#160;The image will appear in its actual size, centered on the page vertically and horizontally.</li>
+                    <li>Tile: The image will appear in its actual size, aligned to the top left of the window, and will tile vertically and horizontally.</li>
+                    <li>Tile X: The image will appear in its actual size, aligned to the top left of the window, and will tile along the X-axis only.</li>
+                    <li>Tile X: The image will appear in its actual size, aligned to the top left of the window, and will tile along the Y-axis only.</li>
+                </ul>
+                <p>Finally, an <span class="ControlName">Opacity Level</span> property enables you to set the opacity percentage by setting a value from 0 to 100. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/OpacityLevelChart.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Additional Body CSS Styling</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can apply CSS styles to the chart to control the visual properties of the chart's body, such as background colors, etc.<br /></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="Options"></a>Options Tab <a href="#Options" class="anchor">#</a></h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/OptionsChart.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Style</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can select a large number of different visual color styles for your chart from this dropdown.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Autosize</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can set the autosize options for your chart so that it displays properly in different viewports that display in different sizes. The available options are:</p>
+                <ul>
+                    <li>Height and Width</li>
+                    <li>Height Only</li>
+                    <li>Width Only</li>
+                    <li>Fixed Size</li>
+                </ul>
+                <p>If you choose "Fixed Size", <span class="ControlName">Width </span>and <span class="ControlName">Height </span>settings controls will appear that enable you to set a specific height and width, either as a percentage of the viewport size, or in a fixed number of pixels.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Automatic refresh (seconds)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You may enter the number of seconds you'd like to pass before the chart auto-refreshes with the most recent data. The default value for this setting is '0". When the automatic refresh is set to "0", the chart will not auto-refresh.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Do not show this object in 'Items I Can Run' Knowledge Views</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this option will hide the Chart from the <span class="ProcessDirectorObject">Items I can Run</span> Knowledge View.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="ChartDS"></a>Chart Data Source Tab <a href="#ChartDS" class="anchor">#</a></h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/DataSourceChart.png" />
+        </p>
+        <p>This section of the options screen enables you to specify the data source for your chart. You may choose either a Knowledge View or a Business Value as the data source.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Select Data Source</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This <span class="NamedControl">ObjectPicker </span>enables you to browse through the Content List to select the data source object for the Chart. You can choose either a Business Value or a Knowledge View as the data source for the Chart.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Group By Field</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Once you have selected a data source, this dropdown control will display all of the columns in the data source. Selecting a column will set that column as the X-Axis of the chart, and will group all of the Chart's Y-Axis values by the column value that you select here.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Group Interval</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If the chart column is date-based, you can set the time interval you'd like to use to add an additional grouping by date. The available options are:</p>
+                <ul>
+                    <li>None</li>
+                    <li>Minute</li>
+                    <li>Hour</li>
+                    <li>Day</li>
+                    <li>Day of Week</li>
+                    <li>Week</li>
+                    <li>Month</li>
+                    <li>Year</li>
+                    <li>Quarter</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="ChartSeries"></a>Chart Series Tab <a href="#ChartSeries" class="anchor">#</a></h3>
+        <p>You can add multiple data series to a chart by clicking the <span class="UIElement">Add Series</span> button for every data series you'd like to add. The series entries can be orders by clicking the up/down arrows on the right side of the tab, and a series can be deleted by clicking the red "X" icon.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SeriesChart.png" />
+        </p>
+        <p>This section enables you to set the properties of the Chart's values. This section is where you configure the Y-Axes for the chart. You can have multiple series and generate combination charts.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Data Source Field</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The field that contains the Chart's data. This Field is selected from a dropdown control. A condition can also be set to show the series under whatever evaluable condition the user desires.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Chart Type</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Chart Type setting will only be displayed when the  Line, Area, or Column <span class="ControlName">Chart Types</span> are selected in the<span class="ControlName"> Chart Options</span> section. If you choose the Column, Line, or Area chart types in the <span class="ControlName">Chart Options</span> section, then you may choose either  Column, Line, or Area as the Chart Type for your chart. You can, therefore, have multiple Y-Axes, in which case you might wish to display each Y-Axis differently. For example, you might wish to have one series display as a column, and a second series display as a line, in order to create a combination chart.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Aggregate</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can aggregate the values in the Y-Axis by using one of the following mathematical aggregation functions:</p>
+                <ul>
+                    <li><b>None:</b>&#160;No aggregation will be applied.</li>
+                    <li><b>Count:</b>&#160;The number of records that match a given Group value.</li>
+                    <li><b>Sum:</b>&#160;The sum of all records that match the Group value.</li>
+                    <li><b>Average:</b> The average value of all records that match the Group value.</li>
+                    <li><b>Min:</b> The lowest value contained in all records that match the Group value.</li>
+                    <li><b>Max:</b> The highest value contained in all records that match the Group value.</li>
+                    <li><b>Average Exclude 0:</b> The average value of all records that match the Group value, excluding those records that have a zero value from the calculation.</li>
+                    <li><b>First:</b> The first value contained in all records that match the Group value.</li>
+                    <li><b>Last:</b> The last value contained in all records that match the Group value.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Series Name</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can enter a name for the chart series, which will appear as the title of the series in the Chart Legend.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Chart24.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Series Filter</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can click the Condition builder link to create a condition to use to filter the data series.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Custom Color</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can select a Custom color to display for the series by selecting the custom color from a color selector.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Axis</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This dropdown enables you to set the Value as the primary or a secondary Y-Axis.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Stack Type</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This setting enables you to set the stack type for stacked bar and column charts. The available stack types are:</p>
+                <ul>
+                    <li>None</li>
+                    <li>Normal</li>
+                    <li>100%</li>
+                </ul>
+                <p>When a stack type other than "None" is selected, the <span class="ControlName">Group Name</span> text box will appear, enabling you to label each group type in the stack.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Missing Values</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For certain types of chart, such as line charts, this dropdown control provides options on how you'd like the chart to display missing values in the data. The following choices are available:</p>
+                <ul>
+                    <li><b>None:</b> The missing data is not displayed in the chart, and the chart series skips the display of these data points so that the remaining data points are displayed seamlessly without a gap in the data.</li>
+                    <li><b>Gap:</b>&#160;Display a gap in the chart where the missing data should be.</li>
+                    <li><b>Zero:</b>&#160;Display the missing data as having a value of 0.</li>
+                    <li><b>Interpolate:</b> Missing data will be displayed as having a value that is the median between the prior and subsequent data points.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Marker</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For certain types of chart, such as line charts, , this option enables you to select the shape of the marker denoting each data point.  The options for the marker are:</p>
+                <ul>
+                    <li>Circle</li>
+                    <li>Cross</li>
+                    <li>Square</li>
+                    <li>Triangle</li>
+                </ul>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ChartSeriesMarker.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Show Value Labels</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this box will display a value label for each data item.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Chart8.png" />
+                </p>
+                <p> When this setting is checked, a Value Label Template text box appears that enables you to define how the label should appear. The template requires the use of chart syntax to display the values you wish to display. The values are denoted by Chart keywords. The following Keywords are available:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-left-style: solid;border-left-width: 2px;border-left-color: #666666;border-right-style: solid;border-right-width: 2px;border-right-color: #666666;border-top-style: solid;border-top-width: 2px;border-top-color: #666666;border-bottom-style: solid;border-bottom-width: 2px;border-bottom-color: #666666;margin-left: 0;margin-right: auto;" class="TableStyle-Simple" cellspacing="0">
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">KEYWORD</th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">DESCRIPTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">value</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Returns the point value</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">category</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Returns the category name - X Axis value for grouped items.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">series.name</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Returns the name of the series - X Axis value for non-grouped items.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">percentage</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Displays the percentage as a decimal between 0 and 1 – Applies to Pie, Donut and Stacked charts only. </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Keywords must be surrounded with pound (#) symbols and prefaced with an equal (=) sign:</p>
+                <p><code>#=value#</code>
+                </p>
+                <p>Keywords can be combined with other keywords and non-keyword text to create labels:</p>
+                <p><code>#=value# #=category#(s)</code>
+                </p>
+                <p><code>#=series.name# -- #=value#</code>
+                </p>
+                <p>Use \n to create a line break in your label</p>
+                <p><code>#=series.name#: \n #=value#</code>
+                </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ValueLabelTemplate.png" />
+                </p>
+                <p>Numbers contained in the series label can use Telerik's <a href="http://docs.telerik.com/kendo-ui/framework/globalization/numberformatting" target="_blank">Kendo Formatting extensions</a> to specify the number's format. Some examples of the syntax might be:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-left-style: solid;border-left-width: 2px;border-left-color: #666666;border-right-style: solid;border-right-width: 2px;border-right-color: #666666;border-top-style: solid;border-top-width: 2px;border-top-color: #666666;border-bottom-style: solid;border-bottom-width: 2px;border-bottom-color: #666666;margin-left: 0;margin-right: auto;" class="TableStyle-Simple" cellspacing="0">
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: ;" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">FORMAT</th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">DESCRIPTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>#=value.format("N3")#</code>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Produces a number with 3 decimal places</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><code>#=value.format("C0")#</code>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Produces a currency value with 0 decimal places</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1"><code>#=kendo.format(\'{0:p2}\',percentage)#</code>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">Formats the percentage value as a percentage with 2 decimal places</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Available Formats</h3>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-left-style: solid;border-left-width: 2px;border-left-color: #666666;border-right-style: solid;border-right-width: 2px;border-right-color: #666666;border-top-style: solid;border-top-width: 2px;border-top-color: #666666;border-bottom-style: solid;border-bottom-width: 2px;border-bottom-color: #666666;margin-left: 0;margin-right: auto;" class="TableStyle-Simple" cellspacing="0">
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: ;" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">FORMAT</th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">DESCRIPTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">N</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Number (e.g. the number 10500 will be formatted as 10,500.00).</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">C</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Currency (e.g. the number 10500 will be formatted as $10,500.00) note: Process Director automatically formats all values stored as currency using the "C" identifier.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">P</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Percentage (e.g. the number 10500 will be formatted as 1,050,000.00% because 1 is equal to 100%)</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">E</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Exponential (e.g. the number 10500 will be formatted as 1.05e+4)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Conditional Logic</h3>
+                <p>You can use if statements to apply label values conditionally with the following syntax:</p>
+                <p><code>#if (condition) {# expression #} else {# expression #}#</code>
+                </p>
+                <h5>Example</h5>
+                <p><code># if ( value == "0" ){# No Hours #} else {# #=value# Hours #}#</code>
+                </p>
+                <p>If the value is "0" the label displays "No Hours"; otherwise, the value displays as "X&#160;Hours", where X is the number of hours.</p>
+                <h3>Other Documentation</h3>
+                <p>For more information about Kendo UI Templates, see <a href="http://docs.telerik.com/kendo-ui/framework/templates/overview" target="_blank">Telerik's documentation on the Kendo UI</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Show Tooltip</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can display a tooltip that will appear when users mouse over the chart. If you select this option, the <span class="ControlName">Tooltip Template </span>text box will appear, into which you can enter the template for the tooltip's text, just as you did with<span class="ControlName"> Value Labels</span>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead><a name="Drill"></a>
+                <MadCap:dropDownHotspot>Drill down target</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can set a drill down target that will appear when you click on the data series. You can choose to show the drill down data in a content object such as a Knowledge View, or at a custom URL. If you choose a Content Object for the drill-down data, the Content Picker will appear to enable you to select the desired object. Similarly, if you choose a custom URL, a text box will appear, into which you can type the URL for the Drill down target. For users of Process Director v5.26 or higher, the drilldown URL can contain system variables, which will be parsed and replaced by the appropriate text at run-time.</p>
+                <p>Additionally, you can direct where the drill down object will appear by selecting it from th<span class="ControlName">e Drill down opens</span> dropdown that offers the following options:</p>
+                <ul>
+                    <li><b>Popup:</b> A popup window will display the drill down object.</li>
+                    <li><b>Replace:</b> The current chart will be replaced in its location by the drilldown object.</li>
+                    <li><b>Above:</b> A split screen will appear, displaying the drill down object above the original chart.</li>
+                    <li><b>Below:</b> A split screen will appear, displaying the drill down object below the original chart.</li>
+                    <li><b>Left:</b> A split screen will appear, displaying the drill down object to the left of the original chart.</li>
+                    <li><b>Right:</b> A split screen will appear, displaying the drill down object to the right of the original chart.</li>
+                    <li><b>Portlet 1:</b> If the original chart appears in a workspace portlet, the object in Portlet 1 will be replaced by the drill down object.</li>
+                    <li><b>Portlet 2:</b> If the original chart appears in a workspace portlet, the object in Portlet 2 will be replaced by the drill down object.</li>
+                    <li><b>Portlet 3:</b> If the original chart appears in a workspace portlet, the object in Portlet 3 will be replaced by the drill down object.</li>
+                    <li><b>Portlet 4:</b> If the original chart appears in a workspace portlet, the object in Portlet 4 will be replaced by the drill down object.</li>
+                </ul>
+                <div class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> If you select a portlet that doesn't exist in the workspace, the drill down object will appear in a popup window.</div>
+                <p>When using the Chart in a Dashboard instead of a Workspace, the "portlet" selections above can also be used to open a Dashboard portlet as the target by configuring the <span class="ControlName">Name </span>property of the Dashboard portlet to match the portlet you select in the <span class="ControlName">Drill down target </span>property of the chart series. For example, if you select the "Portlet 1" selection from the <span class="ControlName">Drill down Target</span> dropdown, you can change the <span class="ControlName">Name</span> property of another Dashboard portlet to "Portlet 1"and the renamed portlet will be used as the dropdown target for the chart series.</p>
+                <p>When using the drill-down feature of a chart series, the Chart object can pass a series of variables to the drill-down object. For example, you may want to use a Knowledge View as a Drill-Down object, so that when you click on a chart's data series, Process Director opens a Knowledge View containing a logical view of the series data. In order for this to work properly, you must pass the appropriate variables to the Knowledge View's to filter the data. The Chart, therefore, passes the following variables to drill-down objects.</p>
+                <p><b>bpcCategory:</b> The Category of a Data Series, taken from the Group By field, if any.</p>
+                <p><b>bpcSeriesType:</b> The Series Type of a chart Data Series, i.e., Bar Column, Pie, etc.</p>
+                <p><b>bpcSeriesName:</b> The Series Name of a chart Data Series. This will be the name of the series from the <span class="ControlName">Series Name</span> property if you have given the series a name, or the field name of the series if you have not entered a <span class="ControlName">Series Name</span>. This is the value that is displayed in the Chart's Legend for the series.</p>
+                <p><b>bpcValue:</b> The value of the Data Series.</p>
+                <p><b>bpcPercentage:</b> The percentage value of the Data Series in decimal format. This variable is only available with Pie, Doughnut and 100% Stacked charts.</p>
+                <div class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> Sometimes, variables must be passed through multiple objects before reaching a Knowledge View, or other object. For instance, you may have a Form that calls a Chart, which, in turn, calls a Knowledge View via a drill-down. The data on the Form is passed to the Chart via a variable that is accessed using the normal <code>{VAR:ParmName}</code> syntax. However, when the chart does a drill-down to a Knowledge View, the Knowledge View does <b>not</b> have access to the original <code>{VAR:ParmName}</code> variable. Instead you need to append two underscores and the number "2" (__2) to the variable name, e.g. <code>{VAR:ParmName__2}</code>. When you do so, Process Director treats the "<code>{VAR:ParmName__2}</code>" in the in the Knowledge View as a pointer to the original value for <code>{VAR:ParmName}</code>, so that the proper value is automatically available to the knowledge view.</div>
+                <h5>Drill-down Variables Implementation Example</h5>
+                <p>Let's assume that we want to use a Knowledge View as the data source for our charts. Any of the variables listed above can be used directly in the <span class="UIElement">Filter </span>tab of a Knowledge View as variables. Here's a simple example:</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ChartVariables.png" />
+                </p>
+                <p>The Chart will pass the variable values automatically, and a simple Knowledge View will return the correct data based on the filters that get passed via the variables.</p>
+                <p>But, now let's look at a more complex scenario. For this next example, let's assume we have a Knowledge View that returns some information about a fleet of vehicles. As part of this information, the Knowledge View has a <span class="ControlName">Mileage </span>column for each vehicle the Business Value returns. This <span class="ControlName">Mileage</span> column gets its data from a Business Value that returns the mileage for a specific vehicle. The Business Value has two parameters, the Location and the Vehicle, from which it determines what vehicle to use to return that vehicle's mileage to the Knowledge View column. The underlying Business Value for the <span class="ControlName">Mileage </span>column might be configured like this:</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/SampleChartKView.png" />
+                </p>
+                <p>So, how do we make this return the proper data to the Knowledge view's <span class="ControlName">Mileage </span>column?</p>
+                <p>In the <span class="UIElement">Columns </span>tab of the Knowledge View, when you configure the Business Value to use for the <span class="ControlName">Mileage </span>column, you can use a Chart Variable as one of the Business Value's parameters, as shown below.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ChartKViewSample.png" />
+                </p>
+                <p>The Chart will pass the <span class="ControlName">bpcSeriesName </span>variable to the Knowledge View, which will, in turn, pass it along to the underlying Business Value as a parameter, so that the mileage for the specified vehicle is returned from the Business Value to populate the <span class="ControlName">Mileage </span>column.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>You can add additional series from your data source by clicking the <span class="UIElement">Add Series</span> button.</p>
+        <h3><a name="Ranges"></a>Chart Ranges Tab <a href="#Ranges" class="anchor">#</a></h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/RangesChart.png" />
+        </p>
+        <p>This configuration section enables you to modify the chart display to add different colors to specified ranges of the chart's background.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Chart10.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Axis</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to set the range on the primary or secondary axis.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Start Value</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The value that begins the range.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>End Value </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Value that ends the range</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Color</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to set the color for the range.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>Additional ranges can be added by clicking the <span class="UIElement">Add Range</span> button. The range entries can be orders by clicking the up/down arrows on the right side of the tab, and a range can be deleted by clicking the red "X" icon.</p>
+    </body>
+</html>

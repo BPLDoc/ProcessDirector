@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Forms" />
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="eForm Controls;eForms;Controls;Online Form Designer" />Array Controls</h1>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/AdditionalControls8.png" />
+        </p>
+        <p>The Form builder supports creating lists of input fields. An “array” tag can be used to surround a group of information or input fields on the Form. This allows the information to be repeated dynamically when the Form is displayed to the user. This can be used when a form has a list of items. </p>
+        <h3 MadCap:conditions="General.Not Printed">Video Example</h3>
+        <p MadCap:conditions="General.Not Printed">
+            <object MadCap:HTML5Video="true" title="Array Example" MadCap:Param_autoplay="false" src="../Resources/Multimedia/Arrays1.mp4" MadCap:Param_controls="true" MadCap:Param_muted="true" MadCap:Param_loop="true" style="width: 100%;height: auto;border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;">
+            </object>
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead><a name="Array2"></a>
+                <MadCap:dropDownHotspot><a name="Array"></a><a href="#Array"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Array Start/End (Repeating Rows)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The array control allows rows of items to be dynamically increased or decreased using an array tag. Using the array controls, you will notice that red brackets mark the beginning and end of each array. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_82.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>In general, Arrays are used in conjunction with table rows, with the Array Start control placed as the very first item in the first column of the table, and the Array End control placed as the very last item in the last column of the table. Each Array Start control requires a corresponding Array End control to close the array. All of the controls placed between the Array Start and Array End controls comprise the array row.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_83.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Double-clicking the Array Start control will open the <span class="ControlName">Properties </span>dialog box, in which you can configure the settings for the array. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsArrays.png" />
+                </p>
+                <p>An array has a <span class="ControlName">Value </span>property, which is the number of rows in the array. An array with a value of "2", therefore, will display two rows. The default value for an array is "0", which means that, as a default, an array will not display any rows when a Form first opens.  It is common, however, to want the first row of the array to appear on the Form when it opens, which means that the default value of the array needs to be set to "1". Setting the value for an array is done in the <span class="UIElement">Form Controls</span> tab of the Form definition by configuring the field properties for the array. In the <span class="ControlName">Form Field Properties</span> dialog box for the array, set the <span class="ControlName">Default Value</span> property to a number with the value of "1".</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ArrayFieldProperties.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AddRemoveArrayRows"></a><a href="#AddRemoveArrayRows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Add/Remove Row Controls</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can allow the user to manually add or remove a row from an array by adding the <span class="NamedControl">Add Row to Array</span>,<span class="NamedControl"> Remove Row from Inside Array</span>, and <span class="ControlName"><span class="NamedControl">Remove Row from Array</span> </span>controls to your Form. </p>
+                <p>When placing these controls on the page, the <span class="NamedControl">Add Row to Array</span> and <span class="NamedControl">Remove Row From Array</span> controls should be placed outside of the array controls. Each of these controls has an <span class="ControlName">Array Name</span> property, into which you must enter the name of the array to which you wish to add or remove rows. Both controls will add/remove the <b style="font-style: italic;">last</b> row from the array.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsArrays1.png" />
+                </p>
+                <p>The<span class="NamedControl"> Remove Row from Inside Array</span> control should be placed inside the array controls, so that it will appear on each row of the array. When a user clicks this control, the row corresponding to the button will be removed from the array, unlike the <span class="NamedControl">Remove Row From Array</span> control, which always removes the last row from the array.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ArrayMoveRows"></a><a href="#ArrayMoveRows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Move Row Up/Down</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Move Rows controls should be placed inside the array controls so that you can use them to move the row up or down in the array.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ArraySum"></a><a href="#ArraySum"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Sum</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The sum control displays the sum of all of the elements in a column of the array.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_7.png" style="visibility: visible;mso-wrap-style: square;width: 23px;height: 22px;" />
+                </p>
+                <p>To configure a sum control, open up the properties window by double clicking on the control inside the Form builder.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsArrays2.png" />
+                </p>
+                <p>In the “Column” field, enter the name of the control in the column you would like to sum.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="SortArray"></a><a href="#SortArray"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Sort Array</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Sort Array control gives the user a button to sort the array alphabetically. The array can be sorted by three columns, in order of preference. This means that, if two elements in the primary column are the same, that those rows will be sorted according to the secondary column, and so on.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_85.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>To configure the Sort Array control, open the properties window by double clicking the control.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsArrays3.png" />
+                </p>
+                <p>The <span class="UIElement">Sort </span>tab allows you to configure how the control sorts. You can define the text of the control button, its name, and the columns it uses as keys to sort the array. You can also have the control sort the array in descending order.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsArrays4.png" />
+                </p>
+                <p>The <span class="UIElement">Button Properties</span> tab allows you to configure the button for the Sort Array control. You can provide the URL of an image to use for the button, and style it via CSS. Upon clicking the button, you can ask the user to confirm that he wants to sort the array. You can also specify a JavaScript function to be run when the user clicks on the button. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ArrayRowNumber"></a><a href="#ArrayRowNumber"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Row Number</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Row Number control simply displays the row number (starting with row #1).</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Array Conditions and Validation</h2>
+        <p>Array fields can be used in validation conditions, but you should be aware that complex conditions may not return the results you expect, because Process Director will evaluate each element of a complex condition separately. For instance, let's say that you have two columns in an array that contain the following values.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 20rem;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 10rem;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 10rem;" class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">COLUMN&#160;1</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">COLUMN&#160;2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">3</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">ABC</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">1</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">DEF</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>If you set a complex condition, such as, Column 1 = "3" AND Column 2 = "DEF", the condition will return "True", even though the values you're looking for do not exist in the same row.</p>
+        <p>A more comprehensive look at array conditions is presented in the <a href="Condition Builder.htm#ArrayConditions">Using Arrays in Conditions</a> section of the Condition Builder topic.</p>
+        <h2 MadCap:conditions="General.All Hidden">Responsive Support</h2>
+        <p MadCap:conditions="General.All Hidden">Starting with Process Director v3.78, for better appearance in smaller viewports, especially on mobile devices, you can use the<a href="eForm Control Tags.htm#ArrayColumn"><span class="NamedControl">ArrayColumn </span>form tag</a> to indicate the columns in an array. </p>
+    </body>
+</html>

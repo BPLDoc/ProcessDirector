@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="1821" MadCap:lastWidth="1178">
+    <head>
+        <title>
+        </title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer" />
+            <a name="_Toc421269939">
+            </a>Installing the BP Logix Visual Studio Plug-in</h1>
+        <p>
+            <MadCap:keyword term="Visual Studio;plugin">
+            </MadCap:keyword>The BP Logix Visual Studio Plug-in integrates with Microsoft Visual Studio. It provides the ability to drag and drop Process Director Controls onto your eforms. The easiest way to take advantage of the BP Logix Visual Studio Plug-in, use the fully functional Visual Studio project installed with the product named bpVS.zip. This project already has the plug-in installed and Intellisense enabled.</p>
+        <p>The following is a list of the features that are available to you in the plug-in.</p>
+        <p>Drag and Drop Control Editing. The plug-in adds an extension to the Visual Studio Toolbox giving you a list of all controls that are available to you in the Process Director library. </p>
+        <ul>
+            <li>Control Properties.&#160; Properties can now be set in the Properties box of the selected control.</li>
+            <li>Intellisense.&#160; All controls support full Intellisense to make the parameters easier to configure while in the Source View.</li>
+            <li>Compile. Visual Studio will highlight compile errors.</li>
+        </ul>
+        <p>To enable this plug-in click on the menu item at the top named Vew &gt; Toolbox. Once the toolbox is open right click in an open area and select “Add Tab”. Name the tab “Process Director”.&#160; Ensure the new tab is selected and right-click on the tab and select Choose Items from the list.</p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/Installing the BP Logix Visual.png" style="visibility: visible;mso-wrap-style: square;width: 189px;height: 251px;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;" />
+        </p>
+        <p>A dialog box will display, select the Browse button under the .Net Framework Components tab. The browse dialog box will appear. If you have Process Director installed, you will find the DLL at “C:\Program Files\BP Logix\Process Director\”. If you only have the plugin installed, you can find the DLL at “C:\Program Files\BP Logix\Plugin\bpVS\Bin”. Once you have navigated to that folder, select “BPLogix.bpVSPlugin.dll” </p>
+        <p>Then click Open and Ok. Restart your Visual Studio application for the complete changes to take effect. </p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/Installing the BP Logix Visual_1.png" style="visibility: visible;mso-wrap-style: square;width: 332px;height: 242px;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;" />
+        </p>
+        <p>After Visual Studio restarts, the plugin will populate the controls in the tab you created. You can now drag and drop the controls on the form in design mode or split mode only. You will also be able to use the BP Logix Intellisense. By typing your code you will start to see Process Director Controls, classes, etc. show in the list provided from the Intellisense. </p>
+        <p>To enable the Intellisense inside Visual Studio, you should create a stand-alone ASP.NET Web Application, and then add the BPLogix.bpVSPlugin.dll to the Bin directory of the project. To create new Forms or scripts, use Add New Item-&gt;Web User Control to create a new .ascx file. Do not place code in separate file. For Forms, you can switch into Design or Split view to drag and drop controls onto the visual form. You made need to build the application to enable the Intellisense. Ensure all Forms and script files have this line at the top of the file: </p>
+        <div class="CodeBase">&lt;%@ Control Language="C#" AutoEventWireup="false"<br />&#160;&#160;&#160;&#160;Inherits="BPLogix.WorkflowDirector.SDK.bpFormASCX" %&gt;</div>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/Installing the BP Logix Visual_2.png" style="visibility: visible;mso-wrap-style: square;width: 224px;height: 177px;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;" />
+        </p>
+        <p>Additionally, you can add the following registry key to set the location where the Plugin downloads temporary files (such as scripts and Forms) by setting the DocFolder property:</p>
+        <p>
+            <code>HKEY_LOCAL_MACHINE\SOFTWARE\BP Logix\Plugin\DocFolder</code>
+        </p>
+        <p>Or on a 64-bit operating system:</p>
+        <p>
+            <code>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\BP Logix\Plugin\DocFolder</code>
+        </p>
+        <p>If you set this to a folder that is in your stand-alone Web Application, then you can use Check Out and Edit for Forms and scripts. When the files are opened in Visual Studio, they will gain the benefit of Intellisense and compile-time error checking.</p>
+    </body>
+</html>

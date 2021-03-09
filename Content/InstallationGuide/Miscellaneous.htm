@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="Installation" />Miscellaneous Installation Notes</h1>
+        <h2><a name="Network"></a>Network Service Account <a href="#Network" class="anchor">#</a></h2>
+        <p>One Windows Server 2003 and higher, ASP.NET apps run by default using the Network Service account. When Process Director needs to access applications like mail (e.g. \InetPub\mailroot\Pickup), the Network Service account needs to be given permission to those resources. The account can be changed in the Application Pool configuration.</p>
+        <h2><a name="Port"></a>Port 80 <a href="#Port" class="anchor">#</a></h2>
+        <p>Process Director uses the HTTP port 80 for all client-to-server communications. If Process Director is behind a firewall, ensure your firewall is configured to allow incoming TCP requests to port 80 to Process Director.  You may also use Network Address Translation (NAT) on Process Director connections, if desired. To configure Process Director to use another port, first configure the new port number in the Microsoft Internet Service Manager. Process Director must also be configured to communicate using this new port number. This is configured in the Interface URL field in the online Administration section. For example to use port 8000 for Process Director, configure the online Administration Interface URL field in the installation tab to a value such as this (where your.external-host.com is your valid Internet domain name or IP address):</p>
+        <p><code>http://your.external-host.com:8000/</code>
+        </p>
+        <h2><a name="WebDAV"></a>WebDAV <a href="#WebDAV" class="anchor">#</a></h2>
+        <p>WebDAV is not enabled by default in Process Director. For some functions, such as making Process Director compatible with Acrobat PDF annotations, WebDAV Authoring must be enabled in IIS. The WebDAV Redirector must be installed for Windows Server 2008, Windows Server 2008 R2, or Windows Server 2012. (The WebDAV Redirector is already installed on Windows Vista, Windows 7, and Windows 8.) To install the WebDAV Redirector, refer to Microsoft's <a href="http://www.iis.net/learn/install/installing-publishing-technologies/installing-and-configuring-webdav-on-iis#006" target="_blank">WebDAV&#160;Installation documentation</a>.</p>
+        <p>When using SQL Server Express 2008 and the SQL Server Management Studio you have to connect to the server name: servername\SQLEXPRESS.</p>
+        <h2><a name="IIS"></a>IIS and .NET <a href="#IIS" class="anchor">#</a></h2>
+        <p>During the product install, if a user installs .NET before installing IIS this will cause IIS not to use .NET. Commonly, this failure to register will result in a HTTP Error 500.19 – Internal Server Error page being displayed when trying to access a Process Director URL. Resolving the issue will require the use of the Microsoft <a href="https://msdn.microsoft.com/en-us/library/k6h9cz8h.aspx" target="_blank">ASP.NET IIS Registration Tool</a>.</p>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" /> The HTTP Error 500.19 will also occur if "ASP.NET 4.5" is not installed as a Server Role, in which case the registration command has no effect and will not resolve the issue. Ensure that the ASP.NET&#160;4.5 Server Role is installed via the server manager prior to attempting the registration command. For Windows 2012 Server, this server role is disabled by default. See the <a href="Process Director Installation_1.htm#_Toc421172260">Windows 2012 Server section of this document</a> for instructions on how to configure the server roles properly.</div>
+        <p>The following Registration tool commands are the most commonly used to register .NET with IIS:</p>
+        <p><code>aspnet_regiis –u</code>: Run in the v2.0.50727 folder if this is the current version of the Framework that you're running.</p>
+        <p><code>aspnet_regiis –i</code>: Run in the v4.0.30319 folder if this is the current version of the Framework that you're running.</p>
+        <p>You can find more information on these commands from the registration tool link above.</p>
+        <p>You will have to run the commands in the following dotnet folders:</p>
+        <p><b>ASP.NET v3.5:</b><code> %windir%\Microsoft.NET\Framework\v2.0.50727</code>
+        </p>
+        <p><b>ASP.NET v4.5:</b> <code>%windir%\Microsoft.NET\Framework\v4.0.30319</code></p>
+        <h2><a name="Advanced"></a>Advanced Reporting and Windows 10 <a href="#Advanced" class="anchor">#</a></h2>
+        <p>When running Windows 10 Professional, the Advanced Reporting Component does not run properly when the IIS Application Pool is running with the Identity is set as ApplicationPoolIdentity. For the Reporting Component to work, the IIS&#160;Application pool must be running under the Network Service identity. The Identity can be changed in the Advanced Settings for the Application Pool.</p>
+        <h2><a name="SQL"></a>SQL&#160;Server Transparent Data Encryption (TDE) <a href="#SQL" class="anchor">#</a></h2>
+        <p>Process Director is compatible with TDE on SQL Server Enterprise editions of Microsoft SQL&#160;Server 2008 R2 and higher. For more information on TDE, please see <a href="https://msdn.microsoft.com/en-us/library/bb934049(v=sql.100).aspx">Microsoft's TDE documentation in MSDN.</a></p>
+    </body>
+</html>

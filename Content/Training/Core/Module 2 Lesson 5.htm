@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="14512" MadCap:lastWidth="1245" MadCap:conditions="General.Core Training">
+    <head>
+        <link href="../../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 5: Configuring the Sample Form</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn how to configure the Form definition for the training sample project.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Filling Dropdown Controls</h2>
+        <p>In this lesson, we will configure the Form we created in Lesson 3 of this module. We are missing an element we need to configure the form properly, however, so we will need to build it prior to configuring the Form.</p>
+        <p>In the <span class="ControlName">Properties </span>dialog box of the <span class="NamedControl">Dropdown </span>Form control, there is an <span class="ControlName">Items </span>property. You can add the dropdown items manually in this property box by adding one item per line. In the example shown below, each item uses the format "ItemName:Value". In other words, the text to the left of the colon (:) will appear as the text of the control's dropdown list, while the text to the right of the colon will be saved as the value of the control. Using the colon and adding a separate value is optional. If you only enter the item name without a colon and item value, the item name will automatically be saved as the value. This method of item entry is best used for a small list of unique items that will not be used in other forms.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm.png" />
+        </p>
+        <p>If you wish to fill the list of dropdown items from a database table, you can use the <span class="UIElement">Fill Dropdowns</span> tab of the Form Definition, which enables you to choose the database table, the field to display as the item text, and, optionally, the field to use as the saved value. We will discuss this tab in more detail in a future lesson.</p>
+        <p>Finally, you can use a Dropdown Object to save and store dropdown Items. This is best used for manually-created lists that can be re-used in other forms. For instance, a list of states might be a common candidate for a Dropdown Object, and, indeed, we will create that dropdown list for the sample Form we are using in this lesson.</p>
+        <h3>Creating a Dropdown Object</h3>
+        <p>Navigate to the root folder of your training project, and create new folder by selecting "Folder" from the<span class="UIElement"> Create New… </span>dropdown located at the upper right of the Process Director screen. Name the new folder "Resources".</p>
+        <p>In the <span class="ProcessDirectorObject">Resources </span>folder, create a Dropdown Object by selecting it from the <span class="UIElement">Create new… </span>dropdown, naming it "Departments", and clicking the <span class="UIElement">OK </span>button to create it. When the Dropdown has been created, click on the Items tab to configure the dropdown items.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm1.png" />
+        </p>
+        <p>Check the checkbox marked, <span class="ControlName">Add null/blank entry at top of the DropDown with Text:</span> and add the text "[Select One]" in the text box. This will add a placeholder to display the text in the dropdown control when it first loads.</p>
+        <p>Now, we can begin adding items to the dropdown list by clicking the <span class="UIElement">Add Dropdown Entry</span> button, which adds a new line item to the list.</p>
+        <p>In the Display Text textbox that appears on the screen, you can now type in the text that will appear in the dropdown control. You also have the option of setting a value to save if the value is different from the display text. In the case of this Dropdown Object, we will not need a value, so we will only be filling out the Display Text fields. Create seven entries in the dropdown, and place the following values in the Display Text field:</p>
+        <ul>
+            <li>Accounting</li>
+            <li>AP</li>
+            <li>Facilities</li>
+            <li>Finance</li>
+            <li>HR</li>
+            <li>IT</li>
+            <li>Procurement</li>
+        </ul>
+        <p>When you are done, the <span class="UIElement">Items </span>tab should look like the example below:</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm2.png" />
+        </p>
+        <p>It is best to enter items in a Dropdown Object alphabetically, to make items easier for users to find when making a selection. If you get the item order wrong, you can move items up and down to change the order by using the up or down arrow buttons. You can remove an item from the list by clicking the button marked with the red "X".</p>
+        <p>Once you have entered the items, click the <span class="UIElement">OK </span>button to save and close the Dropdown Object. We will configure the <span class="ControlName">Department </span><span class="NamedControl">Dropdown </span>control to use this Dropdown object as the source of the dropdown options a little later in this lesson.</p>
+        <p>In the Skill Exercise for this lesson, you will create an additional Dropdown Object to store the names and values of US states to fill the <span class="ControlName">VendorState </span>dropdown you created on the Form during the Skill Exercise in Lesson 3 of this module.</p>
+        <h2>Configuring the Form Definition</h2>
+        <p>Now, let's return to the Form we created in Lesson 3 of this module, and begin configuring the Form definition. In the Form definition, there are four configuration tabs we will work with. We will start with the Form <span class="UIElement">Properties </span>tab.</p>
+        <h3>Properties Tab</h3>
+        <p>One important option to address is what the name of each Form instance will be named when users submit their purchase requests, which is configured in the <span class="ControlName">Instantiated Form Name</span> property. You'll notice that there is already a generic name for the Form, but the generic name usually doesn't give us enough information, as users, to really know which form instance is which. So, it's a best practice to give the Instantiated Form Name property a custom format that makes it a bit easier for us to look over a list of form instances, and tell which instance we might like to open. In this case, we'll use this as the naming format:</p>
+        <p>
+            <code>{FORM_DEF_NAME} #{:PRNumber}, Submitter: {TIMELINE_INITIATOR}, Vendor: {:VendorName}</code>
+        </p>
+        <p>With this format, each instance of the Form will show us the PR Number, Submitter, and vendor for the PR.</p>
+        <p>Another good practice is to disable Form fields when data entry is not required, in order to prevent unwanted or inadvertent changes from being made as the form proceeds through its approval process. To do this, we'll change the <span class="ControlName">Form Fields are Enabled by Default</span> dropdown to "Form fields are enabled only when…" When we make this change, we can set the conditions under which the form field is enabled by using Process Director's <span class="ProcessDirectorObject">Condition Builder</span>.</p>
+        <h4>Using the Condition Builder</h4>
+        <p>A <span class="KeyTerms">condition </span>refers to an existing state of some data or activity. Conditions are usually true or false statements that are evaluated in order to determine an appropriate response. On this Form, we only want the fields to be editable when a new form instance is created, so that only the request initiator can edit the form. The <span class="ProcessDirectorObject">Condition Builder</span> enables us to set a condition to test whether the Form instance is a new instance.</p>
+        <p>Click on the <span class="UIElement">Click to create condition…</span> link to open the <span class="ControlName">Conditions For</span> dialog box, where we will add the condition that must apply to enable the Form's controls.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm3.png" />
+        </p>
+        <p>Click the <span class="UIElement">Add Condition</span> button to add a condition section to the dialog box. The first control in the condition is a picker control that will most likely have “Form Field” displayed in the textbox portion of the control. </p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm4.png" />
+        </p>
+        <p>We need to change this, so click on the picker control’s <span class="UIElement">Build </span>button to open the <span class="ControlName">Choose System Variable</span> dialog box.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm6.png" />
+        </p>
+        <p>At the top of the dialog box is a dropdown menu that is labeled “Form Field”. Click on this dropdown menu and select the <span class="UIElement">Form &gt;&gt; New Form Instance? </span>menu item. This will instruct Process Director to check if the form is being created for the first time. Click the <span class="UIElement">OK </span>button to close the Choose System Variable dialog box, which will return you to the conditions dialog box for the control.</p>
+        <p>The picker control for the condition should now be labeled “New Form Instance?”.  Set the remainder of the condition to “=” and “Yes” using the dropdown controls, so that the final condition looks like the condition shown below.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm7.png" />
+        </p>
+        <p>We only have one condition to apply to this property, so we are done setting conditions for the current property, but it is possible to apply multiple conditions at any time. When using multiple conditions, there are two types of conditions to choose from: [OR] conditions and [AND] conditions. [OR] conditions evaluate to true if any condition is met. [AND] conditions only evaluate to true only if all conditions are met.</p>
+        <p>You can add an [AND] condition by clicking the <span class="UIElement">Insert an [AND] Condition </span>button located on the left side of an existing condition.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm8.png" />
+        </p>
+        <p>You can insert an [OR] condition by clicking the <span class="UIElement">Add Condition</span> button.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm9.png" />
+        </p>
+        <p>Since we do not, in this case, need to set any additional conditions, click the <span class="UIElement">OK </span>button to close the dialog box to return to the Form definition. The Form <span class="UIElement">Properties </span>tab should now look similar to the example below.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm10.png" />
+        </p>
+        <h4>Options Section</h4>
+        <p>If the <span class="ControlName">Options </span>section of the <span class="UIElement">Properties </span>tab is not open, click on the section control to open it. A variety of options are displayed in this section as check boxes.</p>
+        <table style="width: 100%; mc-table-style: url('../../Resources/TableStyles/Simple.css'); margin-left: 0; margin-right: auto;" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 30rem;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">OPTION</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">DESCRIPTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Display validation errors with alert boxes</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">The default display method for Process Director to display validation errors is to show warning banners at the top and bottom of the Form page. Checking this option will display validation errors in an alert box.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Do not show this object in 'Items I Can Run' Knowledge Views</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Checking this option will remove the Form from Process Director's standard<span class="ProcessDirectorObject"> Items I Can Run</span> knowledge view.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Use Visual Basic for scripts (leave unchecked for C#)</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">This option enables the use of Visual Basic.NET as a scripting language, rather than C#, which is the default language.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Audit Form field changes</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Checking this option will enable the storage of history on all Form field changes.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Enable Form Locking</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables the form to be locked when a user edits the form, preventing other users from performing any edits until the original user closes the form.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Display warning if user Cancels form changes</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables a confirmation box to prevent inadvertent canceling of changes to the form.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Show disabled fields as text</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Rather than displaying disabled controls as grayed-out control objects, checking this option will display only the text stored in Form fields. The controls will not be displayed.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Show only the first validation error (instead of all)</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">If there are multiple validation errors, checking this option will display only the first validation error, rather than multiple errors.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">Hide disabled buttons</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">Checking the options will prevent any disabled buttons from being displayed to Form users.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Of all the options listed above, we only need to check the <span class="ControlName">Show disabled fields as text</span> option. As a best practice, disabled fields should be shown as text, absent a compelling reason to show the actual disabled control.</p>
+        <h3>Form&#160;Controls Tab</h3>
+        <p>The <span class="UIElement">Form Controls</span> tab is where all changes to Form field properties are made. Just as every Form control has a properties dialog box that can be displayed in the editor, every Form field created from those controls has a properties dialog box that is accessed from the <span class="UIElement">Form Options</span> tab.</p>
+        <p>As mentioned previously, you can open the properties dialog box for each field by clicking on either the <span class="UIElement">Edit </span>link or the field name.</p>
+        <p>The first field to edit is the <span class="ControlName">ArrayItems </span>field. Array fields, like most fields, have a value, which is the number of rows in the array. As a default, when the Form is opened, there are no rows, which means the value of the array is "0". A best practice is to ensure that, if an array has to contain at least one row for the form to be valid, that at least one row is displayed on the page when the Form is opened. To display the first row of an array, the default value must be set to "1".</p>
+        <p>Open the properties dialog box for the ArrayItems field, and change the default value type to "Number" by selecting it from the dropdown menu, then typing "1" in the text box that appears adjacent to the menu.</p>
+        <p>Change the <span class="ControlName">Set Required Options</span> dropdown to "Field is Required". Since there can be no valid purchase request that lists no items to purchase, we want to ensure that the fields in this array are filled out.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm11.png" />
+        </p>
+        <p>Click the <span class="UIElement">OK </span>button to close the dialog box.</p>
+        <p>Now, even though you've made the change in the dialog box, Process Director does not save this configuration change until you save the Form definition by clicking the <span class="UIElement">OK </span>or one of the <span class="UIElement">Update </span>options at the top right of the screen. You'll want to do this frequently, to ensure that you don't lose your configuration changes if something untoward happens.</p>
+        <p>Notice that, now that we've made some configuration changes to the ArrayItems Field, some new icons are now displayed in the <span class="ControlName">Properties </span>column of the <span class="UIElement">Form Controls </span>tab. These icons denote various changes to the field properties, and you can quickly see the changes by placing your mouse cursor over the icons, which will cause a tooltip to display, showing you a brief text description.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm12.png" />
+        </p>
+        <p>Now we'll turn our attention to the <span class="ControlName">Department </span>dropdown. In the last section, we configured the Dropdown object that will fill the options for this control, and now we need to associate that Dropdown object with the field. Open the <span class="ControlName">Properties </span>dialog box for the Department field. <span class="NamedControl">Dropdown </span>controls have a property named <span class="ControlName">Link to DropDown object</span> that is used to specify the dropdown object that will provide the appropriate options for the control, when the form runs.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/DropdownProperties.png" />
+        </p>
+        <p>Click on the <span class="UIElement">Build </span>button adjacent to this property's <span class="NamedControl">Object Picker</span>, to open the <span class="ControlName">Choose Dropdown</span> dialog box. In the dialog box, navigate to the <span class="ControlName">Resources </span>folder and click on the <span class="ControlName">Departments </span>Dropdown object we created earlier. When you do so, the dialog box will close, and the <span class="ControlName">Departments </span>dropdown will be associated with the <span class="ControlName">Department </span>field. Click the <span class="UIElement">OK </span>button to close the <span class="ControlName">Properties </span>dialog box for the <span class="ControlName">Department </span>field. When we run the form, we will now see all of the appropriate options displayed in the dropdown portion of the control.</p>
+        <p>The next field to edit is the <span class="ControlName">CommentLog </span>field. Open the <span class="ControlName">Properties </span>dialog box for the CommentLog field. The first property we want to change is the <span class="ControlName">Friendly Name</span> property. By default, Process Director will display the actual field name for fields that are displayed as columns in Knowledge Views. Of course, since field names cannot use spaces or special characters, or may have other naming convention oddities, we may want to display a more understandable name for the field when it is displayed for users.  In this case, enter the text "Comment Log" in the <span class="ControlName">Friendly Name</span> property.</p>
+        <p>Next, we want to make a change to how this field is displayed on the form. If you'll remember, we set the default options for the Form to disable the form fields after the form is submitted, to prevent later users from altering the purchase request. At the same time, we want to ensure that process users have the ability to make comments about the request, which cannot be done if the <span class="ControlName">CommentLog </span>field is hidden or disabled.</p>
+        <p>In effect, we have a conflict between disabling the form fields, and still allowing users to make additions to the comment log. If you'll remember from Lesson 2 of Module 2, you learned that Forms are containers for controls, and that some controls, such as Section controls, are, in turn, containers for controls as well. Process Director resolves conflicts between enable/disable rules by ensuring that the enabled/disabled condition of the control at the lowest level of the document hierarchy wins.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/sections.png" />
+        </p>
+        <p>So, in the normal course of events, if a <span class="NamedControl">Section </span>control is set as disabled, all of the individual controls in the section will automatically be disabled as well. But, if a <span class="NamedControl">Section </span>control is set as disabled, and an <span class="NamedControl">Input </span>control inside the section is set as enabled, the <span class="NamedControl">Input </span>control will win that conflict, and will be enabled, even though the parent <span class="NamedControl">Section </span>control is set as disabled. All of the other individual controls in the section will be disabled, but the control with the conflicting rule will be enabled. The rule at the lowest level of the document hierarchy always wins.</p>
+        <p>In the case of the <span class="ControlName">CommentLog </span>field, set the<span class="ControlName"> Set Enabled Options</span> to "Field is Enabled", and the <span class="ControlName">Set Visibility Options</span> to "Field is Visible". Now, even though all of the remaining form fields are disabled, the comment log will be enabled, allowing users to make comments at any point in the process. Click the <span class="UIElement">OK </span>button to close the Properties dialog box.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm13.png" />
+        </p>
+        <p>We can follow the same procedure we just used to set properties for the previous two fields to set some properties in the remainder of the Form fields.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>UnitPrice</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">Friendly Name</span> property to "Unit Price".</p>
+                <p>Set the <span class="ControlName">Data Type</span> property to "Currency".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>PRNumber</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">Friendly Name</span> property to "PR Number".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Quantity</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the<span class="ControlName"> Event Field</span> property to checked. Many Form fields can be event fields. An Event Field is a field that, when a user exits the field after editing it, will cause a Process Director event to fire. The event is then often used to start a Custom Task. In the case of the <span class="ProcessDirectorObject">Purchase Request Form</span>, firing the event will cause the <span class="NamedControl">Calculation </span>control to recalculate the cost of the items contained in the array.</p>
+                <p>Set the <span class="ControlName">ToolTip </span>property to "Enter the quantity of items to be purchased." Tool tips appear when you move your mouse over a control. The best practice for tool tip usage is to provide simple instructions for filling out the field.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SectionApproverComments</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">Set Readonly Options</span> property to "Field is Enabled When…", then use the <span class="ProcessDirectorObject">Condition Builder </span>to create the condition, "New Form Instance? = No".</p>
+                <p>Set the <span class="ControlName">Set Display Options</span> property to "Field is Visible When…", then use the <span class="ProcessDirectorObject">Condition Builder</span> to create the condition, "New Form Instance? = No".</p>
+                <p>Setting these two options will hide and disable the approver's comments when the form is initially created, and no approver comments are needed.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SectionItems</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">Set Readonly Options</span> property to "Field is Enabled When…", then use the<span class="ProcessDirectorObject"> Condition Builder</span> to create the condition, "New Form Instance? = Yes". We want to disable this section during the approval process so that the purchase items can't be changed after the PR is submitted.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SectionRouting</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">Set Display Options</span> property to "Field is Hidden When…", then use the <span class="ProcessDirectorObject">Condition Builder </span>to create the condition, "New Form Instance? = Yes". We want to hide the routing slip initially, as it is not needed before the process is initiated.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SectionVendor</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">Set Display Options</span> property to "Field is Hidden When…", then use the <span class="ProcessDirectorObject">Condition Builder </span>to create the condition, "New Form Instance? = No". This section will be disabled once the PR is submitted, as we do not want process participants to change it.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SKU</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">ToolTip </span>property to "Enter the SKU for this item".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SubmitDate</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">Friendly Name</span> property to "Submit Date".</p>
+                <p>Set the <span class="ControlName">Default Value </span>property to "Form Submit Date".</p>
+                <p>Set the<span class="ControlName"> Set Readonly Options</span> property to "Field is Disabled". This is an autogenerated date, so there is no reason for this field to be enabled.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Submitter</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">Default Value</span> property to "Form Submit User".</p>
+                <p>Set the <span class="ControlName">Set Readonly Options</span> property to "Field is Disabled". This is an autogenerated user field, so there is no reason for this field to be enabled.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>UnitPrice</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">Event Field </span>property to Checked. Once again, we want to ensure that a change to this field recalculates the ItemPrice value.</p>
+                <p>Set the <span class="ControlName">ToolTip </span>property to "Enter the price for 1 unit of the Item".</p>
+                <p>Set the <span class="ControlName">Friendly Nam</span>e property to "Unit Price".</p>
+                <p>Set the <span class="ControlName">Data Type</span> property to "Currency".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>VendorAddress1</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">ToolTip </span>property to "Enter the first line of  Vendor's address".</p>
+                <p>Set the Friendly Name property to "Vendor Address First Line".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>VendorAddress2</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the ToolTip property to "Enter the second line of  Vendor's address, if applicable".</p>
+                <p>Set the <span class="ControlName">Friendly Nam</span>e property to "Vendor Address Second Line".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>VendorCity</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">ToolTip </span>property to "Enter the Vendor's city".</p>
+                <p>Set the <span class="ControlName">Friendly Nam</span>e property to "Vendor City".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>VendorContact</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">ToolTip </span>property to "Enter the name of the POC for the Vendor".</p>
+                <p>Set the <span class="ControlName">Friendly Nam</span>e property to "Vendor Contact".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>VendorName</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">ToolTip </span>property to "Enter the name of the Vendor".</p>
+                <p>Set the Friendly Name property to "Vendor Name".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>VendorState</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">ToolTip </span>property to "Enter the abbreviation for the Vendor's state or province".</p>
+                <p>Set the <span class="ControlName">Friendly Nam</span>e property to "Vendor State".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>VendorZip</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Set the <span class="ControlName">ToolTip </span>property to "Enter the Vendor's Zip Code".</p>
+                <p>Set the <span class="ControlName">Friendly Nam</span>e property property to "Vendor Zip".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>Once you have set the properties described above, click the <span class="UIElement">OK </span>or <span class="UIElement">Update </span>menu items to save your changes to the Form definition.</p>
+        <h3>Custom Task Event Mapping Tab</h3>
+        <p>Process Director supports the ability to package unique business logic in Custom Tasks that can be mapped to Form events (e.g. buttons) or used in processes as tasks. This allows custom logic to be developed once with the scripting interfaces and re-used across many Form definitions and Process Timeline definitions without any additional scripting. BP Logix has created a basic package of Custom Tasks that can be imported into your Process Director installation.</p>
+        <p>Prior to Process Director v3.82, this tab was most often used to set the value of form fields using the <span class="ProcessDirectorObject">Set Form Data</span> Custom task, or to fill dropdown options from a database using one of the<span class="ProcessDirectorObject"> Fill Dropdowns</span> custom tasks. Both of those functions have now been given dedicated tabs on the Form definition. As a result, Custom Tasks are now used for more complex operations that go beyond the scope of this training course. We will, however, briefly cover how to add and configure a custom task, and map it to an event.</p>
+        <p>At the top of the <span class="UIElement">Custom Task Event Mapping</span> tab, there is an <span class="NamedControl">Object Picker </span>control you can use to select the Custom Task you desire. Clicking the <span class="NamedControl">Object Picker</span>'s build button will open a dialog box that lists the Custom Tasks installed on your instance of Process Director.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm15.png" />
+        </p>
+        <p>The <span class="ControlName">Choose Custom Task</span> dialog box lists the Custom tasks organized by the task type. You can search for the custom task you want by expanding the node for each task type, then clicking on the desired Custom Task.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm16.png" />
+        </p>
+        <p>When you select the Custom Task, the <span class="ControlName">Choose Custom Task</span> dialog box will close and the name of the Custom Task will appear in the text box of the <span class="NamedControl">Object Picker</span>. Click the <span class="UIElement">Add Custom Task</span> button to add the Custom Task to the Form. For the purpose of this demonstration, we will choose the Show Alert Custom task displayed above.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm17.png" />
+        </p>
+        <p>When you click the <span class="UIElement">Add Custom Task</span> button, the Custom Task Event Mapping tab will now display a new line containing the Custom Task to be configured.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm18.png" />
+        </p>
+        <p>From the dropdown in the <span class="ControlName">Event Name</span> column, select the event on which you'd like to run the Custom Task. The event dropdown will display all of the built-in process director events in square brackets, while all of the Form control events you created will be displayed in plain text.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm19.png" />
+        </p>
+        <p>In the <span class="ControlName">Custom Form Task</span> column, there is an Input box you can use to enter a brief description of the Custom Task's purpose.</p>
+        <p>Next, we need to configure the Custom Task by clicking on the <span class="UIElement">Configure </span>button to open the configuration dialog box for the  Custom Task. Each Custom task has a unique configuration dialog box. You must configure all of the required options for each Custom task to ensure that the Custom Task works properly. Once you have configured the properties for the custom task, click the <span class="UIElement">OK </span>button to save the settings and close the dialog box.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm20.png" />
+        </p>
+        <p>Note that, at the bottom of the dialog box for each Custom Task, there is a Custom Task Version listed. BP&#160;Logix updates Custom Tasks on a regular basis, so you will need to check the BP&#160;Logix support web site on a regular basis to see if a new Custom task package has been released. The new releases usually offer new functionality to the Custom Tasks.</p>
+        <p>Custom tasks run in the top-to-bottom order in which they appear on this tab, i.e., if you have four tasks that run on the [Display] event, they will run in the order shown on this tab. You can change the order by clicking on the up or down arrow buttons, and you can delete a task completes by clicking on the button marked with the large red "X".</p>
+        <p>Finally, you can set additional conditions to evaluate before the Custom Tasks run by clicking on the <span class="ProcessDirectorObject">Condition Builder</span> link. If you create a condition, the Custom Task will only run when that condition evaluates as True.</p>
+        <h3>Set Form Data Tab</h3>
+        <p>The <span class="UIElement">Set&#160;Form Data</span> tab enables you to set the value of a form field when a specified even occurs. In the case of our sample form, we want to set the value of the Purchase Request number. To set the form data for our desired field, first select the [View State Init] event from the <span class="ControlName">Select Event</span> dropdown, then click the<span class="UIElement"> Add Action </span>button. A new <span class="ControlName">[View State Init]</span> section will appear on the page.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm21.png" />
+        </p>
+        <p>From the <span class="ControlName">Select Form Field</span> dropdown, select the PRNumber field.&#160;Next, click on the <span class="UIElement">Build </span>button for the <span class="NamedControl">Object Picker</span> to open the <span class="ControlName">Choose System Variable</span> dialog box.</p>
+        <p>We want to set a text value for this field, so, from the dropdown menu in the <span class="ControlName">Choose System Variable</span> dialog box, select the <span class="UIElement">Value &gt;&gt;&#160;String </span>menu items. The Dialog box will change to show an <span class="NamedControl">Input </span>box to hold the value we want to display.</p>
+        <p>Yype the following value into the <span class="NamedControl">Input </span>box:</p>
+        <p>
+            <code>PR{SEQ_NUM:PR, digits=4}</code>
+        </p>
+        <p>Process Director has a System Variable for Sequence Numbers (<code>SEQ_NUM</code>) that generates a unique, incrementing number for every object created by the system. There are, in fact, a large number of System Variables in process Director, and you can see the full list by perusing the System Variables Reference Guide. All System variables in process Director are identified by placing them in curly brackets (<code>{}</code>). Any time process Director sees curly brackets, the system will attempt to parse the text inside the brackets as a System Variable. As a result, you should keep in mind that curly brackets are special, reserved characters in Process Director, so you generally shouldn't use them unless you are trying to address a System Variable.</p>
+        <p>In the case of our sample Form, we have used the Sequence Number system variable to create purchase request numbers, and we have specified a specific format for the PR Number. So, let's look at the value we've just typed into the the <span class="NamedControl">Input </span>box. First, to identify the sequence number as a purchase request number, we started with the prefix "PR". Every PR Number generated by the system will now start with the letters "PR". You can generate unique sequence numbers for different types of objects by assigning each object a unique group name. In the case of the SEQ_NUM variable we've just used, we have assigned a group name called "PR" by adding it after the colon (<code>SEQ_NUM:PR</code>). Next, we've specified the number of digits the sequence number will generate (<code>digits=4</code>).</p>
+        <p>As a result of the formatting we've used for the PR Number, the first PR number generated by the system will be "PR0001".</p>
+        <p>Click the <span class="UIElement">OK </span>button at the bottom of the <span class="ControlName">Choose System Variable</span> dialog box to save your configuration changes and close the dialog box.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringTheSampleeForm22.png" />
+        </p>
+        <p>There are, by the way, some other actions we could take for setting the Form data. There is a link to the Condition Builder to impose an additional condition that will determine when the form field is set. We could also move the Set Form Data action to a different event. We will not go through those function at this point, as we have now completed the configuration changes that we need to make to the <span class="ProcessDirectorObject">Purchase Request Form</span>.</p>
+    </body>
+</html>

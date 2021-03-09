@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536082"></a>
+            <MadCap:keyword term="Content List" />Managing Content</h1>
+        <p>Process Director is a content management system that provides control, security and management of your digital data. This chapter provides the essentials for managing objects in the database. All data, including documents, is typically stored in the database<MadCap:popup><MadCap:popupHead>*</MadCap:popupHead><MadCap:popupBody>Process Director also provides file-based document storage as an alternative to database storage. Consult your system administrator regarding setup at your site.</MadCap:popupBody></MadCap:popup>, which provides easier administration, higher security, distributed/remote database support, and a standard backup mechanism. </p>
+        <p>Process Director provides a database to securely store content objects. These objects include Folders, Documents, Files, Forms, etc. This chapter will provide an overview of folders, documents, and files. For information on Workflows, Forms or Knowledge View, refer to the respective chapters in this document.</p>
+        <p>All content is viewed through the use of Knowledge Views. A Knowledge View defines what data in the repository should be displayed.&#160; It is also used to view the Content List.</p>
+        <p>To view content in the Process Director database, click on the <span class="UIElement">Content List</span> entry button in your profile.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Managing Content.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <h2><a name="_Toc421536083"></a>Content List <a href="#_Toc421536083" class="anchor">#</a></h2>
+        <p>The Content List displays all of the folders and files that are created in Process Director, or uploaded into Process Director as content. The Content List is a hierarchical list of all Process Director objects. The Content List includes all of the objects created in Process Director, such as Forms, Process Timelines, Knowledge Views, etc. In addition, the Content List can include uploaded files such as Excel spreadsheets used to import data, Word documents used as templates for output documents, and other files that become part of a process definition.</p>
+        <p>The Content List consists of a file structure that is located on the left side of the screen, and a file listing that is displayed on the right side of the screen. Navigation through the Content List is done by clicking on a folder on either side of the screen.</p>
+        <p>Many users think of the Content List as a file system that users can create inside of Process Director, but this isn't really correct. The content list organizes Process Director objects in a logical fashion for users who are browsing through the system, but the actual objects in Process Director are not really organized in the way that the Content List displays.</p>
+        <p>For instance, in a file system, the file name is the key element for identifying a file. Let's say you have a word document named "sample.docx", and you change the name to "NewSample.docx". If you go into Microsoft Word, and try to open the "sample.docx" file from the list of recent files, you will receive a message telling you that the file can't be found. Changing the name of the file changes the identity of the file on your computer, making any references to the old file name invalid.</p>
+        <p>In Process Director, on the other hand, an object's name doesn't affect the identity of the object. Process Director tracks objects by a unique ID that you, as an end user will rarely, if ever, use. The object name is merely an attribute of the object that you can change at will without Process Director losing track of the object. Here's an example that demonstrates how object tracking works in Process Director.</p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="1">
+            <li>In this example, you have a business rule named "My Business Rule" and a Form named "My Form".</li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/Training/Core/ManagingContent.png" />
+        </p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="2">
+            <li>The Form references the Business Rule to determine when to enable the fields on the Form, as shown below.</li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/Training/Core/ManagingContent1.png" />
+        </p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="3">
+            <li>Change the name of the Business Rule to "My Original Business Rule".</li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/Training/Core/ManagingContent2.png" />
+        </p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="4">
+            <li>Now, create a new Business Rule named "My Business Rule". This is the same name as the original business rule.</li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/Training/Core/ManagingContent3.png" />
+        </p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="5">
+            <li>Note that, even though you have a business rule with the name "My Business Rule", Process Director does not use it as the business rule on the Form. Instead, Process Director has updated the Form definition to show the new name you gave to the original Business Rule. </li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/Training/Core/ManagingContent4.png" />
+        </p>
+        <p>By the way, you can see the ID that Process Director uses to identify an object by opening the object definition. On a Form, for example, at the bottom of the Form definition screen, you'll see the property for the <span class="ControlName">Form URL</span>, written in a format similar to:</p>
+        <p><code>http://Servername/form.aspx?pid=dc1c51ea-612e-48c0-8cc6-4ff9276cbfc9&amp;formid=aa213c6f-a8aa-454f-a04d-30b56fd2e493</code>
+        </p>
+        <p>The "formid" URL parameter contains the ID that Process Director uses to uniquely identify the Form object, which, in this example, is </p>
+        <p><code>aa213c6f-a8aa-454f-a04d-30b56fd2e493</code>
+        </p>
+        <p>Changing the name of the Form, or any other property, does not change this ID. So, you can identify the Form with a name that is easily readable by humans, while Process Director identifies the Form with this ID, which is easily readable by computers.</p>
+        <h4>Creating Content List Objects</h4>
+        <p>All objects are created from the <span class="ProcessDirectorObject">Content List</span>. A Create New dropdown menu is located at the top right of the <span class="ProcessDirectorObject">Content List</span>. This dropdown menu contains all of the process Director objects you can create. To create a new object, simply select the desired object from the dropdown menu.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/CreateNewDropdown.png" />
+        </p>
+        <p>When you select the desired object, Process Director will immediately display a Create New Object screen, that will display the <span class="ControlName">Name </span>and <span class="ControlName">Description </span>properties for the object.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/NewObjectScreen.png" />
+        </p>
+        <p>The <span class="ControlName">Name </span>property is mandatory, while the <span class="ControlName">Description </span>property is optional. Once you have given the object a <span class="ControlName">Name</span>, you can click the OK button to save the Name and create the new object. If you have configured the <span class="ControlName">Description </span>property, the object's description will appear on the second line of the <span class="ProcessDirectorObject">Content List</span> where the object appears.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ContentListDescription1.png" />
+        </p>
+        <h4>Content List Object Types</h4>
+        <p>The following <span class="ProcessDirectorObject">Content List</span> objects are available in Process Director.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>CONTENT LIST OBJECT</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Folder</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The folder is the container for all other Content List objects. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Document/File</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The Content List placeholder for documents that you upload to process director for use as part of a process definition.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Form Definition</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The definition of an electronic form. It stores the Form template, the fields that are created in the template, the user-defined events that are initiated while using the Form, and the validation rules for determining if the information provided in a Form is valid when submitted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Workflow Definition</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A process model that implements the traditional, flowchart-based method of modeling processes.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Knowledge View</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The definition of a view of the process and/or Form data, containing user-defined fields for display in a tabular format.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Business Rule</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The definition for an object that encapsulates a key decision or value used in a business process.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Data Source</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>An object that accesses information found in a database. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Import Objects</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Implements a process to import an XML file containing an exported set of Process Director objects.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>DropDown Object</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The definition of labels and values that will be applied to a dropdown control on a Form.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Timeline Definition</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>A process model that implements the patented BP Logix method of implementing a time-based method of modeling processes.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Report</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The definition of a report object that uses the advanced reporting tool. The advanced reporting tool is available to users of cloud-based installations, and on-premise installations that explicitly include the Advanced Reporting module.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Goal</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">The Goal object creates a scheduled evaluation of conditions, and, based on the evaluation, sets a global system state and/or automatically starts a process.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Business Value</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">The Business Value is an object that provides data virtualization for any accessible external data.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Case Definition</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">The Case definition stores the properties/attributes for a Case&#160;Management process. The Properties can be shared across the multiple Forms and processes that might be part of a Case.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Chart</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">The Chart provides a graphical representation for any accessible data.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Dashboard</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">The Dashboard object provides a way to display many different Process Director objects in a single interface.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

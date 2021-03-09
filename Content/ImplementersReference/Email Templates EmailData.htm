@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1752" MadCap:lastWidth="1239">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" />Using Multiple <MadCap:keyword term="EmailData" />Email Data Controls in a Template</h1>
+        <p>When you create an email notification template, you are not limited to creating one template for each notification. Instead, you can use that same template for many different notifications by using multiple <span class="NamedControl">Email Data </span>controls in each template. It's quite possible to use one template for all notifications associated with a process.</p>
+        <p>The keys to using a single template for multiple notification are:</p>
+        <ol>
+            <li>Divide the email template into different sections, each of which has its own Email Data control, and</li>
+            <li>Determine the conditions under which only one <span class="NamedControl">Email Data</span> template is visible for each notification.</li>
+        </ol>
+        <p>Process Director includes a type of section control called the <span class="NamedControl">Embedded Section</span>. Unlike the <span class="NamedControl">Section </span>control, the<span class="NamedControl"> Embedded Section </span>is hidden from the user. The trait makes it useful for creating multiple sections on a Form that may be hidden or displayed as necessary. Section controls are all container or parent controls that house individual Form controls or other content. If a section control is hidden, all of the child controls in the section are hidden as well.</p>
+        <p>By placing an <span class="NamedControl">Email Data</span> control and other relevant content in each section, you can hide all of the sections except the one containing the necessary content for each notification.</p>
+        <h2>
+            <a name="DeterminingVisibility">
+            </a>Determining <MadCap:keyword term="Section" />Section <MadCap:keyword term="Visibility" />Visibility</h2>
+        <p>The most important part of making a multiple-notification email template work properly is ensuring that you can create a set of conditions that results in only one valid <span class="NamedControl">Email Data</span> control being active for every notification.</p>
+        <p>
+            <img src="../Resources/Images/multiple notification email template.png" />
+        </p>
+        <p>Obviously, different processes may require different conditions to be applied to the <span class="ControlName">Visibility </span>property of each section. One place to start, however, is setting the section to become visible based on the Running Activity Name.</p>
+        <p>
+            <img src="../Resources/Images/visibility condition.png" />
+        </p>
+        <p>In the case of the example above, the<span class="NamedControl"> Embedded Section</span> control has the <span class="ControlName">Visibility </span>property set in the <span class="UIElement">Form Controls</span> tab of the Form definition, so that the section is visible when the Running Activity name is "PR Assignment Notification", and is otherwise hidden. With this setting, the section, and the <span class="NamedControl">EmailData </span>control it contains will only be visible when the notification is sent from the "PR Assignment Notification" task.</p>
+        <p>Other conditions might be applied for various circumstances, such as when the email is sent to a particular type of participant (like a manager), or when a Due Date has been reached. The important thing to remember is to ensure that only one section, with one <span class="NamedControl">EmailData </span>control, is visible at any given time the notification is sent.</p>
+        <p>You always have the choice, of course, to use a single email template for a notification, rather than using a single template with multiple <span class="NamedControl">EmailData </span>controls. So, the question is, when should you use a particular method?</p>
+        <p>First, if it is not possible to derive a set of conditions that ensure only one <span class="NamedControl">EmailData </span>control is visible at a given time, a separate notification template will be necessary. Second, you may also have a special template for notifying managers of an event, and you may wish to have a completely separate template for making this managerial notification. In those cases, a single template isn't desirable.</p>
+    </body>
+</html>

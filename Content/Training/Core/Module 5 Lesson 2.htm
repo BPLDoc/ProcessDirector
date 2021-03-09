@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="4174" MadCap:lastWidth="1185" MadCap:conditions="General.Core Training">
+    <head>
+        <link href="../../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 2: Creating the Sample Knowledge Views</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn how to recreate the Knowledge Views in the training sample project.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Creating a Sample Knowledge View</h2>
+        <p>In the <span class="ProcessDirectorObject">Training </span>folder, create a new folder named "KViews". Once you have created this folder, navigate to it, and, once inside the <span class="ProcessDirectorObject">KViews </span>folder, select “Knowledge View” from the <span class="ControlName">Create New…</span> dropdown that is located on the upper right of the Process Director screen. The <span class="ControlName">Create Knowledge View</span> screen will open.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/CreatingSampleKView.png" />
+        </p>
+        <p>In the <span class="ControlName">Knowledge View Name</span> box, type "My PR Requests", then click the <span class="UIElement">OK </span>button to create the Knowledge View, and open the Knowledge View definition screen.</p>
+        <p>We are going to create a Knowledge View that will display some form fields from the PR requests, and only display instances of the Form that you have personally submitted.</p>
+        <h3>Properties Tab</h3>
+        <p>
+            <img src="../../Resources/Images/Training/Core/CreatingSampleKView1.png" />
+        </p>
+        <p>In the <span class="UIElement">Properties </span>tab, we need set the Form that we want to associate with this Knowledge View to the <span class="ProcessDirectorObject">Purchase Request Form</span> we created earlier. Click on the <span class="UIElement">Build </span>button for the <span class="ControlName">Forms Associated with Knowledge View</span><span class="NamedControl">Object Picker </span>control to open the <span class="ControlName">Choose Form</span> dialog box.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/CreatingSampleKView2.png" />
+        </p>
+        <p>Navigate through the treeview to find the <span class="ProcessDirectorObject">Purchase Request</span> Form and click on it to select the Form and close the dialog box. The selected Form's name will appear in the text box of the <span class="ControlName">Forms Associated with Knowledge View</span><span class="NamedControl">Object Picker </span>control. When you are finished, click the <span class="UIElement">Update </span>menu item to save the change you just made.</p>
+        <h3>Options Tab</h3>
+        <p>
+            <img src="../../Resources/Images/Training/Core/CreatingSampleKView3.png" />
+        </p>
+        <p>In the <span class="UIElement">Options</span> tab, we want to restrict both what types of object will be displayed in the Knowledge View, and what we will be allowed to do with the displayed objects. All we want to see are the Form instances of the Purchase Request, and the only action we want to take is to open the Form. To accomplish this, we are going to uncheck most of the check boxes in this tab, and ensure that the only check boxes that are checked are those illustrated in the figure above. When you are finished, click the <span class="UIElement">Update </span>menu item to save the changes you just made.</p>
+        <h3>Columns Tab</h3>
+        <p>
+            <img src="../../Resources/Images/Training/Core/CreatingSampleKView4.png" />
+        </p>
+        <p>Process Director adds a number of default columns to a Knowledge View when it is created. In the case of the current Knowledge View, we don't want to use any of the default columns. So they will need to be edited. In fact, there are five default columns, but we are only going to use four columns in this Knowledge View. Each of the four columns will display a Form field from the Purchase Request Form.</p>
+        <p>So, let's begin by deleting one of the default columns by clicking on the delete icon (<img src="../../Resources/Images/Training/Core/CreatingSampleKView5.png" />) on the right side of one of the default columns. There should be four remaining default columns listed.</p>
+        <p>Change the <span class="ControlName">Column Name</span> of the first column to "PR Number". In the <span class="ControlName">Columns Data</span> field, click on the <span class="UIElement">Build </span>button to open the <span class="ProcessDirectorObject">Choose System Variable</span> dialog box. In the <span class="ProcessDirectorObject">Choose System Variable</span> dialog box, select "Form Field" from the dropdown menu.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/CreatingSampleKView6.png" />
+        </p>
+        <p>Once you select the Form Field system variable, a dropdown control will appear that lists all of the form fields in the Purchase Request Form. Select the PR Number field from the dropdown, then click the OK button to close the dialog box.</p>
+        <p>You can repeat this process for the remaining three fields, which should be configured to display the columns shown below. </p>
+        <table style="mc-table-style: url('../../Resources/TableStyles/Simple.css');margin-left: 0;margin-right: auto;" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 10rem;" />
+            <col class="TableStyle-Simple-Column-Column1" style="width: 10rem;" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Column Name</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">Form Field</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">PR Number</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">PR Number</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Vendor</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Vendor Name</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Submission Date</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Submit Date</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Amount</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">Subtotal</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Filter Tab</h3>
+        <p>
+            <img src="../../Resources/Images/Training/Core/CreatingSampleKView7.png" />
+        </p>
+        <p>The <span class="UIElement">Filter </span>tab is where you determine which records will be displayed in the Knowledge View. In the case of the current Knowledge View, we want to display only those purchase requests that were submitted by the current user.</p>
+        <p>Click the <span class="UIElement">Add Condition</span> button to create a filter condition for the Knowledge View. For this filter condition, click on the <span class="NamedControl">Object Picker</span> to open the <span class="ProcessDirectorObject">Choose System Variable</span> dialog box, from which you should select the<span class="ControlName"> Form Submit User</span>.</p>
+        <p>Click the <span class="UIElement">OK </span>button to save your selection and return to the <span class="UIElement">Filter </span>tab. Ensure that the operator is set to "=", and the comparison value is set to "Current User".</p>
+        <p>When you are done, click the <span class="UIElement">OK </span>button to save the Knowledge View.</p>
+    </body>
+</html>

@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="10" MadCap:lastHeight="4471" MadCap:lastWidth="1077" MadCap:conditions="General.Core Training">
+    <head>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 4: Configuring Forms</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn how to configure Form definitions and form fields.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Field Properties</h2>
+        <p>As mentioned previously, once you check in the Form template to the Form definition, all of the controls that you place on the Form are used to create data fields in the Form definition. You can see all of these fields by clicking on the <span class="UIElement">Form Controls</span> tab of the Form definition.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringeForms.png" />
+        </p>
+        <p>Each control shown in the list of controls has its own set of properties in the Form definition, just as they do in the Form template. The properties in the Form definition are different, however. Where the control properties in the Form template mainly govern aspects of the control itself, the properties in the Form definition mainly govern the data contained in the control, such as its default values, whether it can be seen or edited, and more.</p>
+        <p>You can display the properties by clicking on the <span class="UIElement">Edit </span>link associated with the control, or by clicking the name of the control.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringeForms1.png" />
+        </p>
+        <p>Every different type of control has specific properties that are only relevant to that type of control. For instance, <span class="NamedControl">Section </span>controls have a <span class="ControlName">Text </span>property that other controls do not. Most controls, however, have a common set of properties that are listed below.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Event Field</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If checked off, this form field will trigger an event when the user interacts with it. Events can be used to update the form by triggering custom tasks or custom form scripts.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Synchronize Field Within Process</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If checked, this field will synchronize values with all other form fields that have the same names but are on different Forms in the same Process.  When the value of a synced form field is updated, the value will be synchronized with all other form fields with the same names in the Process, whether or not those form fields are also marked as synchronized. However, if a form field’s value is updated and that form field is not marked as a synchronized field, it will not update the values of other fields with the same names in the process, even if those fields are marked as synchronized. For this reason, it is best to ensure, if possible, that the field is editable only on one form, and is display-only on the other Forms in the process. If multiple Forms set the same field to be synchronized, it is possible that two users will overwrite each other's values.</p>
+                <p>If a column in an array is marked as synchronized, the number of rows and the content of that column will be synced with all other arrays in the process containing a column of the same name. This means that adding and removing rows in an array with a synced column will also add and remove rows in other arrays in the process with columns of the same name. Because synchronized array fields are so powerful, caution is recommended when using synchronized fields with arrays. Instead, we recommend alternatives, like the Copy Form Data custom task.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>ToolTip</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>When moused over, the form field will display the text entered into this text box as a tooltip.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Friendly Name</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The friendly name is the name for the field that you wish to display in a more natural format for Knowledge View columns, validation error messages, or other uses. Because field names have some restrictions on spaces and special characters, they may not be formatted in normal English. A simple example might be a field for a user's first name, which might have the field name, "FirstName". For display purposes, you might wish the field to be displayed as "First Name".  The Friendly Name property enables you to use normal English terms when the field's name is displayed in Process Director.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Link to Dropdown Object</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This allows you to fill a Dropdown field with the content from a dropdown object. You can link multiple dropdowns to dropdown objects, which allows you to reuse dropdown objects in multiple forms.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Data Type</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../../Resources/Images/Training/Core/ConfiguringeForms2.png" />
+                </p>
+                <p>Setting the data type will force the form field to accept only data formatted as the appropriate type. The Data Type can be any of the following:</p>
+                <p><b>Text:</b> this option allows for arbitrary text to be entered into the form field</p>
+                <p class="indent1">Examples: “foo”, “bar”</p>
+                <p><b>Number:</b> this option ensures that the form field contains a number (either with or without a decimal)</p>
+                <p class="indent1">Examples: “10”, “9.75”</p>
+                <p><b>Date:</b> this option ensures that the field contains a date. Dates must be in a format that can be interpreted by .NET.</p>
+                <p><b>Date/Time:</b> this option ensures that the field contains a date and time. DateTimes must be in a format that can be interpreted by .NET.</p>
+                <p><b>Time:</b> this option ensures that the field contains a time. Times must be in a format that can be interpreted by .NET.</p>
+                <p><b>Currency:</b> this option ensures that the contents of the field can be interpreted as an amount of currency</p>
+                <p class="indent1">Examples: “22”, “22.32”</p>
+                <p><b>Integer Only:</b> this option ensures that the field contains an integer. It also allows you to specify a minimum and maximum value that the integer can be.</p>
+                <p class="indent1">Examples: “1”, “394221”</p>
+                <p><b>Email Address:</b> this option ensures that the field contains an email address. As a user warning, email addresses should not have any trailing spaces, or they will be rejected as invalid.</p>
+                <p><b>SSN:</b> This option ensures that the field contains an American Social Security Number, with or without dashes.</p>
+                <p class="indent1">Examples: “123456789”, “123-45-6789”</p>
+                <p><b>Phone Number:</b> This option ensures that the field contains a phone number. Most formats people usually use to type phone numbers will be accepted.</p>
+                <p class="indent1">Examples: “(123) 456-7890”, “+1 123-456-7890”, “123-4FO-OBAR x 4321”</p>
+                <p><b>ZIP Code:</b> This option ensures that the field contains an American ZIP Code. The ZIP code can contain only five digits or all nine digits.</p>
+                <p class="indent1">Examples: “12345”, “12345-6789”, “123456789”</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Default value</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../../Resources/Images/Training/Core/ConfiguringeForms3.png" />
+                </p>
+                <p>You can specify the default value of a form field. The Default Value dropdown allows you to select from a list of common default values, like Process Instance Names or the results of Business Rules. You can also specify the default be set to a custom value or result from a System Variable Tag.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Link to Attribute</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option is relevant to using the Meta Data functionality in Process Director, which will be discussed in a later lesson. This option links the field to a Meta Data attribute.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Set Readonly Options</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option gives you the ability to Enable or Disable a form control including the sections and collapsible sections. You may also Enable or Disable based on a condition using the Condition Builder dialog box.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Set Display Options</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option gives you the ability to Show or Hide a form control including the sections and collapsible sections. You may also Show or Hide based on a condition using the Condition Builder.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Set Required Options</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option gives you the ability to set the form control as required or not required including the sections and collapsible sections. You may also set the form control as required or not required based on a condition using the Condition Builder.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Saving Form Definition Changes</h2>
+        <p>Form definition changes are saved using the actions dropdown menu that appears in the upper right corner of the Form definition.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringeForms4.png" />
+        </p>
+        <p>The following options for saving your changes are available:</p>
+        <ul>
+            <li>Clicking the <span class="UIElement">OK </span>button will save and close the Form definition.</li>
+            <li>Clicking the <span class="UIElement">Update and Run</span> menu item will save your changes and immediately run the Form for submission.</li>
+            <li>Clicking the <span class="UIElement">Update and Test</span> menu item will save your changes and immediately run the Form in Test mode. In Test mode, if you attempt to submit the Form, you will be directed to a test page that displays the values you entered into the Form fields.</li>
+            <li>Clicking the <span class="UIElement">Update</span> menu item will save your changes, without closing the definition.</li>
+            <li>Clicking the <span class="UIElement">Discard Changes and Close</span> menu item will abandon any changes you have made, and close the Form definition without saving.</li>
+        </ul>
+    </body>
+</html>

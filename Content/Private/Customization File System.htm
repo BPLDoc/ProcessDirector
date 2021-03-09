@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:searchable="False" MadCap:conditions="Supplementary.All Docs" style="mc-master-page: url('../Resources/MasterPages/Supplementary.flmsp');">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>System Custom Variables</h1>
+        <p>This section covers various System items and settings.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fDebugInsertLockData"></a><a href="#fDebugInsertLockData"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDebugInsertLockData</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fDebugInsertLockData" />This variable when set to "true", will let the system automatically execute a SQL command when a database timeout occurs on an UPDATE command. The default value for this variable is "false". </p>
+                <p>When set to true, the default SQL that is executed will insert records into a table named TEMP_LOCK_LIST and this table needs to exist prior to setting the variable to "true". You can create this table in the process Director installation by running this SQL command: </p>
+                <p><code>CREATE TABLE TEMP_LOCK_LIST (SPID int, BLOCKED int, BATCH nvarchar(max))</code>
+                </p>
+                <p>Once this table exists, this variable will insert records in to the table when locks are found. You can use the table to pull out any lock conditions via SQL&#160;query.</p>
+                <h5>Example</h5>
+                <div>
+                    <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fDebugInsertLockData = true;<br />}</div>
+                </div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fEnableReOpenOnError"></a><a href="#fEnableReOpenOnError"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fEnableReOpenOnError</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fEnableReOpenOnError" />This variable when set to "true", will reopen the Database in the event of an activity going into an error from something like a Custom Task.</p>
+                <h5>Example</h5>
+                <div>
+                    <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fEnableReOpenOnError = true;<br />}</div>
+                </div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nTimelineUnwindLoopCount"></a><a href="#nTimelineUnwindLoopCount"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nTimelineUnwindLoopCount</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nTimelineUnwindLoopCount" />This variable enables you to change the number of times the system will allow a process instance activity check to start processing from the top again. The default is 10 times.</p>
+                <h5>Example</h5>
+                <div>
+                    <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Allow 15 restarts</span><br />&#160;&#160;&#160;&#160;bp.Vars.nTimelineUnwindLoopCount = 15;<br />}</div>
+                </div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

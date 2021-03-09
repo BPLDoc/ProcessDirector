@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Workflows" /><a name="_Toc421536116"></a>
+            <MadCap:keyword term="Processes;Workflows" />Creating Workflow Definitions</h1>
+        <p>Workflow definitions can be created and modified by the business users. Use the Content List entry in the Process Director navigation bar to view the content list screen. You must have Modify permission in the folder you are viewing to be able to create a new Workflow definition. Use the Create New menu item and select Workflow Definition from the list.</p>
+        <p>Workflow definitions can be stored anywhere in the content list, under any folder structure.</p>
+        <h2><a name="_Toc421536117"></a>Workflow Settings <a href="#_Toc421536117" class="anchor">#</a></h2>
+        <p>To configure the Workflow definition settings, click on the Settings icon in when viewing the Workflow definition. This will display a dialog that allows the Workflow information to be set.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/WorkflowSettings.png" />
+        </p>
+        <h3><a name="_Toc421536118"></a>Workflow Name and Description</h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_4.jpg" style="visibility: visible;mso-wrap-style: square;max-width: 100%;" />
+        </p>
+        <p>The Workflow definition name and description are important because this is what a user will see when selecting a Workflow to run. The description should describe why and when this Workflow definition should be run. </p>
+        <h3><a name="_Toc421536119"></a>Workflow Options</h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_5.jpg" style="visibility: visible;mso-wrap-style: square;max-width: 100%;max-height: auto;" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Priority</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Workflow priority is used to show participants the importance. The higher priority items are displayed first in a user’s Task List. The Workflow priority can be overridden by the user that is starting the Workflow.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>After a user submits a form which runs this process</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>In some cases, a user may be assigned to two or more activities in a row. The default behavior for Process Director is to immediately display the Form to the user to perform the second task once the first task is completed. This may be confusing, as the user generally expects the Form to close when a task is completed. This property enables you to change the default behavior so that, if a user is assigned to two activities in a row, the Form will not immediately reload to complete the second task. To perform the second task, the user will have to manually re-open the form from the task list.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Remove Workflow instance after Workflow completes</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>When a Workflow is started it is stored under the Workflow definition in the content list. Completed Workflows will remain there until deleted or moved. If a completed Workflow is not needed for reporting or auditing, you can have them removed automatically when they complete. To automatically delete completed Workflows set the Remove inactive Workflow after it completes flag.</p>
+                <p>To delete a Workflow instance manually, click on the Workflow definition in the content list. From there, two options should appear under the Workflow in the content list: Active Workflows and Completed Workflows. Click on Completed Workflows, select the Workflow you want to delete, and click on the “Delete” action.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Do not show this object in 'Items I Can Run' Knowledge Views</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this option prevents users from accessing the Workflow from the 'Items I Can Run' Knowledge Views.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Workflow Icon</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A custom icon can also be configured for this Workflow definition. This icon will be displayed for all running Workflows for this definition (e.g. task list, Content List, Knowledge View, etc.). To change the icon used for this Workflow definition, click on the <img src="../Resources/Images/ImplementersReference/ImplementersReference_1.jpg" style="visibility: visible;mso-wrap-style: square;width: 16px;height: 16px;max-width: 100%;max-height: auto;" /> icon.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="_Toc421536120"></a>Advanced Options</h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_6.jpg" style="visibility: visible;mso-wrap-style: square;max-width: 100%;max-height: auto;" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Instantiated Workflow Names</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This field contains an optional name that should be used when a Workflow is started (i.e. instantiated). The default name of a running Workflow is the same name as the Workflow definition. This name can contain system variables using the {sysvar} tag. This allows the running Workflow names to contain more meaningful information (e.g. PR Review – started by {CURR_USER}). The running Workflow name is re-evaluated after each Workflow step completes allowing variable data (e.g. Forms field values) to be used to construct the name. Refer to the section named System Variables in this document for more information.</p>
+                <p>When using an instantiated Workflow name, a user will not be able to override the name when starting a Workflow against an object.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Form Associated with Workflow</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can optionally link a Workflow to a specific Form definition in the Content List. When this is configured you can choose a form field from a dropdown list of all fields in that form instead of choosing a form then a form field.</p>
+                <p>To do this, click on Settings, then on the Advanced Options tab in the window that appears. User the Pick List [. . .] button to select the Form you want associated with the Workflow.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/WorkflowDefaultForm.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Default Email Template in this Workflow</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This is an optional default email template to use when sending email notifications to users in a step.&#160; If an email template is not specified in a step, this default email template will be used.&#160; If no default email template is assigned, the system default email template will be used that was shipped with Process Director. For more information on email templates refer to the section named Using Email Templates in this document. Email Templates are stored in the Content List as a Form uploaded as an Email Template Form.</p>
+                <p>To set an email template, click on “Settings” then go to the Advanced Options tab in the Window that appears. Use the Pick List [. . .] button, then select the email template you want to use. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/WorkflowDefaultEmail1.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Copy Objects in Workflow Package to Parent</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If checked, this option will copy objects in this Workflow package to the package’s parent. You can optionally limit the objects copied by group. The parent process may be either a Workflow or a Process Timeline.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Copy Objects from Parent Process to this Workflow</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If checked, this option will copy objects from this Workflow’s parent process to this Workflow. You can optionally limit the objects copied by group. The parent process may be either a Workflow or a Process Timeline.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="_Toc421536121"></a>Workflow Steps <a href="#_Toc421536121" class="anchor">#</a></h2>
+        <p>A Workflow is made up of a series of steps. Each step in a Workflow identifies the task to be performed and the users that should perform the task. Steps are run from the beginning (start step) and follow the branches (route). Steps can be easily added, moved and deleted from a Workflow definition and the route or path is defined using branches between steps.</p>
+        <p>
+            <img style="max-width: 100%;max-height: auto;" src="../Resources/Images/Capture142.png" />
+        </p>
+        <h3><a name="_Toc421536122"></a>Workflow Task Toolbar</h3>
+        <p>The Workflow builder has a toolbar displayed on the left side of the screen. This contains all of the Workflow tasks available to you. Each task type identifies the type of Workflow function to be performed for this step and provides the participating users with different capabilities. Tasks are grouped in the toolbars (e.g. Built-In Tasks). To view tasks in the different groups click on the group name (e.g. Other Tasks). To use a task, click on the icon, drag it to the right and drop it on the Workflow palette.</p>
+        <p>
+            <img style="max-width: 100%;max-height: auto;" src="../Resources/Images/Capture144.png" />
+        </p>
+        <p>The built-in Workflow tasks are in the Built-in Tasks groups in the toolbar. If any custom tasks are installed, they will appear as new groups in the toolbar. The group names are the folder names where the custom task is installed in the Content List.</p>
+        <h3><a name="_Toc421536123"></a>Branch Steps (the route)</h3>
+        <p>To define the route that the Workflow will take, you must connect the steps. This is done by using the Branch in the Built-in Tasks group. To branch two steps together, click on the Branch in the toolbar. Then click on a step in the Workflow and drag it to the step you want to branch to, lifting the mouse over that step. This will draw a line between the two steps showing the direction of the flow. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_11.jpg" style="visibility: visible;mso-wrap-style: square;max-width: 100%;max-height: auto;" />
+        </p>
+        <p>To delete the line (branch), right click on the handle in the line (displayed as a circle in the middle of the line), then select "Delete" from the pop-up menu.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_12.jpg" style="visibility: visible;mso-wrap-style: square;max-width: 100%;max-height: auto;" />
+        </p>
+        <p>When using the Branch task you can branch from a step to multiple steps which allow you more flexibility with your process.&#160; Each branch that is created has branch settings. Right click on the handle in the line and select Properties.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_13.jpg" style="visibility: visible;mso-wrap-style: square;max-width: 100%;max-height: auto;" />
+        </p>
+        <h3><a name="_Toc421536124"></a>Branch Settings</h3>
+        <p>Branches in a Workflow can have the following information associated with them.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_14.jpg" style="visibility: visible;mso-wrap-style: square;max-width: 100%;max-height: auto;" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Branch Name</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The first field on this dialog identifies the name of the branch. This information is important for the users because it is used to display a button on the Form with the branch name as the label. This will determine the route the user will take in the Workflow process. The button will only display during the step the branch is connected from. For example: The image below displays the branch name as Reject which will display a button, labeled “Reject”, on the Form in the Form Approval step.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Workflow2_15.jpg" style="visibility: visible;mso-wrap-style: square;max-width: 100%;max-height: auto;" />
+                </p>
+                <p>You can leave this field blank to display the default button “Complete Task”.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Branch Description</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This field contains an optional description of this task. This can be used by the builder of the Workflow to document what this branch is used for and why it is here. The end-users will not see this field. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="_Toc421536125"></a>Branch Conditions</h3>
+        <p>A branch in the Workflow can have conditions assigned to it. This provides the flexibility to conditionally route a Workflow based on information from the Workflow process (Form, references, user, etc.).</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>% of participants that choose this branch</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can specify the percentage of participants you want to have clicking on this button before continuing on in the process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot># of participants that choose this branch</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can specify the number of participants you want to have clicking on this button before continuing on in the process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Take this branch when</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can build a condition to be met in order for the Workflow process to continue on this branch. Refer to the Condition Builder section of this guide.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Default Branch</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can specify the default branch to take if no condition or multiple conditions are met.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="_Toc421536126"></a>Branch Options</h3>
+        <p>Each branch has its own options. You can configure them by clicking on the Options tab.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_16.jpg" style="visibility: visible;mso-wrap-style: square;max-width: 100%;max-height: auto;" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Assign users from previous step</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This will give you the following options to assign users from the previous step:</p>
+                <ul style="list-style-type: disc;margin-left: 36pt;">
+                    <li>Never</li>
+                    <li>Always</li>
+                    <li>Users that have completed their task</li>
+                    <li>Users that selected this branch (button)</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Color</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The “Color” option sets the color of the branch graphic displayed in the Workflow. The “Button Order on Form” option tells the Form in what order to draw the buttons, from left to right. The “Button Icon on Form” option changes the icon displayed on the Form button.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Button order on Form</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Specify the button order by number that controls the order of the buttons displayed on the form. A button order of -1 will prevent the button from being displayed on the form. This can be used when a condition is associated with the branch (e.g. based on the value of a form field) but you do not want the button to be displayed to the user on the form.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Button Icon on Form</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>You can insert an icon on your button which will display before the button label.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Signature Comments Required</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Check this box to require the user to enter comments upon completion of task. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Allow this branch to be completed from the users Task List</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Check this box to allow users to complete the task from their task list screen, without having to open the Form associated with the Workflow. When the user completes a task from the task list, Process Director will display a small popup that indicates the task completion is in progress. Additionally, if the branch selected is configured to require completion comments, Process Director will prompt the user for the comments before completing that task.</p>
+                <p>The size of the prompt and confirmation dialogs will not usually need to be changed, however, if, for some reason the size does need to be changed, there are custom variables available to change the width and height of the dialogs: nTaskCompleteDialogWidth, nTaskCompleteDialogHeight, nTaskCompletePromptDialogWidth, and nTaskCompletePromptDialogHeight. Documentation for these four custom variables can be found in the <a href="../DevelopersGuide/Customization File Misc.htm">Miscellaneous Custom Variables</a> topic of the Developer's Guide.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Skip Validation on Form when Selected</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Check this box to specify that a given branch will cause validation to be skipped. The feature is especially useful for steps/activities that include an option for the user to abandon or reject a form, which the user should be able to accomplish without, for example, filling in all required fields.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Optional list of strings for email complete</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If this branch can be completed by email, users can complete it by replying to the task assignment email with a specific string. This text box is used to set the list of response strings the user can enter into the reply email. For example, if this is a rejection branch, you might enter the list of allowable responses as "Reject, Disapprove, Disapproved, No, Rejection". If the user enters any of these words into the reply email, the task will be rejected. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="_Toc421536127"></a>Built-in Task Settings</h3>
+        <p>These settings are included in all task types. To configure a step in the Workflow, right click on the step and choose the Properties menu item, or double click on the icon.&#160; All steps in a Workflow definition will have the following information associated with them.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_17.jpg" style="visibility: visible;mso-wrap-style: square;max-width: 100%;max-height: auto;" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Step Name</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The first field on this dialog identifies the name of the step. This information is important for the users and the Workflow owners because it is used to determine what step the Workflow is currently running on, and what function is being performed. This is also displayed on the routing slip to show where the process is currently running.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Description</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This field contains an optional description of this task. This can be used by the Workflow builder to document what this step is used for and why it is here. The end-users will not see this field.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Instructions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This contains instructions for the users telling them how to perform the task assigned to them. This information will be contained in the email sent to the users, it will be displayed on their task list, and it is displayed in the Process Timeline Package.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Color</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This field contains an optional color of this step. This can be used by the Workflow builder to document help visualize the Workflow process.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

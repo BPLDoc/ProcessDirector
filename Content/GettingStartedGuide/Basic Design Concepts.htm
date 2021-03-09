@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="Implementations" />
+            <MadCap:concept term="Getting Started" /><a name="_Toc421709753"></a>Basic Design Concepts</h1>
+        <p>The sample project is comprised of several Process Director objects.</p>
+        <p><span class="KeyTerms">Business rules</span> define some aspect of a business process and control its operation. Business Rules provide a convenient and useful way to encapsulate complicated or frequently used decisions and make them available for use by any process or Form.</p>
+        <p>Business rules generally evaluate a condition or set of conditions, and then return a value based on the results of the evaluation. A <span class="KeyTerms">condition</span> refers to an existing state of some data or activity. For instance, in the <span class="ProcessDirectorObject">BP Logix Getting Started Sample Project</span>, there is a Business Rule called <span class="ProcessDirectorObject">Is Finance Approval Needed?</span> The condition this rule evaluates is whether the total amount contained in the <span class="ControlName">ExpensesTotal</span> field of the <span class="ProcessDirectorObject">Travel Expense Request</span> Form is greater than $1,000. Based on this evaluation, the rule returns a "Yes" or "No" answer. If the answer is "Yes", the Process Timeline will send the request to the Finance department to approve the amount. This example demonstrates a simple use of a Business Rule that the Process Timeline uses to determine the path a process must take.</p>
+        <p>Other, more complicated, business rules might evaluate a number of conditions and return a number of different values. For example, let's say that you have a sales representative assigned to a particular state, or number of states. The business rule may evaluate a field that contains the state in which a customer lives and return the name of the appropriate sales representative to a Process Timeline. The Process Timeline can then assign an action to the appropriate sales representative. In this example, the Business Rule evaluates a set of fifty-one different conditions (if we include the District of Columbia). Based on the result of that evaluation, the Business Rule will return the name of the sales representative for the customer's home state.</p>
+        <p><span class="KeyTerms">Forms</span> are electronic forms that serve as the container for the data that is used in your workflow. Forms can enable users to input information, present information collected from other sources, control what users participate in the workflow, and much more. Each Form consists of a number of Process Director controls. </p>
+        <p>A <span class="KeyTerms">control</span> is a user interface object, like a button or text box, that enables you to interact with a Form.  Controls are central to the operation of the Form, because controls enable users to enter or edit information. Many controls, such as text input fields or checkboxes, may already be familiar to you. </p>
+        <p>You will use the Online Form Designer to design Form templates. Most of the activity of designing a Form consists of placing Process Director controls on a template page. Process Director will convert your templates into an appropriate format for viewing in a web browser, while retaining your design and formatting conventions.</p>
+        <p>
+            <img src="../Resources/Images/Capture5.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 13: Some Common Controls</p>
+        <p>When you place a control on a Form page, Process Director also creates a data field that is bound to that control. Process Director uses this data field to store the value that users enter into the control when they submit the Form. As an example, there may be a textbox control named <span class="ControlName">FirstName</span> in a Form. When you enter a name into the control and submit the Form, it is saved to the <span class="ControlName">FirstName</span> field in Process Director. Because the form control and the form field are so tightly bound, we will use the terms ‘form control’ and ‘form field’ interchangeably.</p>
+        <p>
+            <img src="../Resources/Images/Capture6.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 14: Process Director Converts Control Values to Data</p>
+        <p>There are also other controls, like the <span class="NamedControl">Section</span> control, that determine how information is grouped or displayed by serving as a container for other controls. An Form is essentially a container for controls, and the section control is, in turn, a container for other controls. </p>
+        <p>
+            <img src="../Resources/Images/Capture7.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 15:&#160; Sample Control Container Hierarchy in Forms</p>
+        <p>The <span class="KeyTerms">Process Timeline</span> is an exclusive feature of Process Director that adds the element of time to business process management. Instead of modeling a business process with a traditional flowchart, the Process Timeline is structured much like a Gantt chart, enabling you to include start and stop times, due dates, dependencies, and other time-based elements to your business process models. As a result, the Process Timeline enables you to easily identify the critical paths in each business process that you model.</p>
+        <p><span class="KeyTerms">Knowledge Views</span> are the primary method used to retrieve information from Process Director. Knowledge views enable the user to find running processes, historical data, Form instances, or many other types of data, and display information about them in a tabular format. The data produced by the Knowledge View can also be exported to files or other database systems.</p>
+    </body>
+</html>

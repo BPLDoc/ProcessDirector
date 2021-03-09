@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation;Workflows" /><a name="_Toc421536111"></a>
+            <MadCap:keyword term="Processes;Workflows" />Workflow</h1>
+        <p>Workflow is the automation of a business process in which documents, information or tasks are passed from one participant(s) to another for action. A workflow is made up of many functions and activities such as a review process, task lists, notifications, alerts/triggers, reminders, context sensitive tasks, an approval process, status/tracking, due dates and reporting.</p>
+        <h2><a name="_Toc421536112"></a>What is a Workflow Definition?</h2>
+        <p>Workflow definitions in Process Director are a series of logical steps, each with a specific task and assigned participants. The workflow defines the path or route that a Form or document must take. Each step in the workflow path defines the task type, the participants, and the rules that govern how the workflow will advance or transition to the next step.</p>
+        <h3><a name="_Toc421536113"></a>Users vs. Groups</h3>
+        <p>Users and/or groups can be assigned to a step in a workflow. When a workflow definition is run, the group will be expanded and all users that are members of the specified groups will be added to the appropriate workflow steps. The Process Director workflow engine supports parallel and serial reviews. To set up a parallel review process, add multiple users or groups to the same workflow step.</p>
+        <p>
+            <img src="../Resources/Images/Capture145.png" />
+        </p>
+        <p> To establish a serial review process, add each user or group to a separate step. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Generally a review will be a combination of a parallel and serial process.</p>
+        <h3><a name="_Toc421536114"></a>Task Email Notifications</h3>
+        <p>As a workflow advances to a step, the assigned users are automatically notified using your corporate email system. A custom email can be sent that provides users with special instructions that are relevant to this specific task. </p>
+        <h3><a name="_Toc421536115"></a>Due Date Management</h3>
+        <p>Due date management functions allow due dates to be set for the entire workflow, as well as for each step in a workflow. Periodic email reminders can be automatically sent to users that have not completed their task. When a due date expires for a step the due date escalation rules determine if the system should automatically advance the workflow to the next step, notify another user, start a new workflow process or jump to another step within the workflow.</p>
+        <p>
+            <img src="../Resources/Images/Capture147.png" />
+        </p>
+        <h3><a name="Asynchronous"></a>Asynchronous Operation</h3>
+        <p>A Workflow step of the Custom Task, Script or Sub-Process types can be configured to run asynchronously/offline by checking the check box labeled "Run this step offline (asynchronously)" in the Advanced Options tab. Setting the operation to run asynchronously can be used to prevent a long-running, machine-centric task in the Workflow from hanging a user session while the processing occurs. The step will be run in a different context than the current user that caused the transition of the step. Additionally, if you have a <a href="../SystemAdministratorGuide/Load Balancing.htm#_Toc421094547">Rendering Server</a> enabled, the asynchronous processing will be conducted by the Rendering Server when the asynchronous option is checked.</p>
+        <p>
+            <img src="../Resources/Images/Capture20.png" />
+        </p>
+        <p>Please note that, when this option is selected, if the user's task is followed (after one or more intervening "background" tasks) by another task assigned to the same user, the current behavior in which the window remains open and is refreshed with the Form for the subsequent task will no longer be seen. Instead, the user will have to click the appropriate link in their task list or email notification to open the new task.</p>
+        <p> On some systems, when starting a subprocess using the asynchronous option, the system can mark the calling task as complete before the called subprocess completes. This may be especially true if the subprocess contains complex rendering operations. To avoid this, a wait time, in seconds, can be set using the <a href="../DevelopersGuide/Customization File Misc.htm#nAsyncSubProcessWaitSecs" target="_blank" title="nAsyncSubProcessWaitSecs Custom Variable" alt="nAsyncSubProcessWaitSecs Custom Variable">nAsyncSubProcessWaitSecs</a> variable in the Custom Vars file. The default setting for this variable is 5 seconds.</p>
+    </body>
+</html>

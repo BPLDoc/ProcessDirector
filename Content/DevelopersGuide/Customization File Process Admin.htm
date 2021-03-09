@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer" />
+            <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword><a name="_Toc421270087"></a>Process Administration Custom Variables</h1>
+        <p>You have the option to alter who may use some Process Director functions by restricting their use to Process Administrators. The custom variables in this section define which actions can be restricted to process administrators.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fDisableAsyncWorkflow"></a>
+                    <MadCap:keyword term="fDisableAsyncWorkflow" /><a href="#fDisableAsyncWorkflow"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDisableAsyncWorkflow</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This boolean variable, when set to true, will disable any asynchronous process step/activities in a process definition. The default value is false. This setting is primarily for use in development systems.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fDisableAsyncWorkflow = true; <span class="ControlName">//Disable async processes</span><br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fInternalDSPadminOnly"></a>
+                    <MadCap:keyword term="fInternalDSPadminOnly" /><a href="#fInternalDSPadminOnly"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fInternalDSPadminOnly</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This boolean variable sets whether only Process Administrators are allowed to configure internal datasources. The default value is true.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fInternalDSPadminOnly = true; <span class="ControlName">//only P-Admins can config</span><br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fInternalUserDSPadminOnly"></a>
+                    <MadCap:keyword term="fInternalUserDSPadminOnly" /><a href="#fInternalUserDSPadminOnly"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fInternalUserDSPadminOnly</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This boolean variable sets whether only Process Administrators are allowed ro configure internal user datasources. The default value is true.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fInternalUserDSPadminOnly = true; <span class="ControlName">//only P-Admins can config</span><br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fNewSkipPendingLogic"></a>
+                    <MadCap:keyword term="fNewSkipPendingLogic" /><a href="#fNewSkipPendingLogic"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fNewSkipPendingLogic</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For Process Director v5.36 and higher, the logic for evaluating the <a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#ActivityResult">Activity Result system variable</a> was changed to skip activity instances that were marked as not needed. This can cause an issue for customers that used the system variable that on conditions to control looping <b style="font-style: italic;">when using the legacy Branch activity type</b>, instead of the Looping conditions on a Parent activity type. Setting this variable to "false" disables the new logic.
+ The default value for this variable is "true".</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fNewSkipPendingLogic = false; <span class="ControlName">//Use the old Activity Result logic for Branch activities</span><br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fReportViewsPadminOnly"></a>
+                    <MadCap:keyword term="fReportViewsPadminOnly" /><a href="#fReportViewsPadminOnly"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fReportViewsPadminOnly</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This boolean variable sets whether only Process Administrators are allowed ro configure views in reports. The default value is true.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fReportViewsPadminOnly = true; <span class="ControlName">//only P-Admins can config</span><br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fScriptsPadminOnly"></a>
+                    <MadCap:keyword term="fScriptsPadminOnly" /><a href="#fScriptsPadminOnly"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fScriptsPadminOnly</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This boolean variable sets whether only Process Administrators are allowed ro configure scripts in Forms, Workflows and Knowledge Views. The default value is false.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fScriptsPadminOnly = false; <span class="ControlName">//Anyone can config</span><br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fShowPredictedDates"></a>
+                    <MadCap:keyword term="fShowPredictedDates" /><a href="#fScriptsPadminOnly"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fShowPredictedDates</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This boolean variable sets whether to hide the predicted start/end dates from the routing slip. The default value is false.</p>
+                <h5>Example</h5>
+                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Hide predicted dates on the Routing Slip</span><br />&#160;&#160;&#160;&#160;bp.Vars.fShowPredictedDates = false;<br />}</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="System Administration" />
+            <MadCap:concept term="System Administration" />User Delegation</h1>
+        <p>Process Director features two methods of delegating tasks. Standard Delegation enables you to assign all tasks from a delegator to a specified delegate, automatically assigning the tasks to the delegate while the delegation is active. Shared Delegation enables you to share tasks, by enabling the delegate to complete tasks that are assigned to the delegator on an optional basis. Using Standard Delegation always assigns all tasks to the delegate, while Shared Delegation enables the delegate to view and complete tasks on an <i>ad hoc</i> basis.</p>
+        <h2><a name="_Toc421094520"></a>Standard Delegation <a href="#_Toc421094520" class="anchor">#</a></h2>
+        <p>Tasks assigned to one user can be delegated to another user. When using standard delegation, all of the delegated tasks will be assigned directly to the delegated user until such time as the delegation is revoked. There are three primary ways in which delegation can be assigned, two of which are performed at the administrative level. The remaining delegation method can be performed by users by modifying their own profiles, and we will address this method first.</p>
+        <p>When a user delegates to another that is already running in the same step/activity, the original user is canceled and the other user is left running. When undelegating, there is an option that will allow the original canceled user to be restarted if that step/activity is still running. To enable this option, set the <a href="../DevelopersGuide/Customization File Tasks.htm#fEnableUndelegationRestart"><MadCap:keyword term="fEnableUndelegationRestart" />fEnableUndelegationRestart custom variable</a> to "true". If this option is not set, then the delegated user's task will be canceled, but the original user's task <i>will not be restarted</i>, and the task will be canceled for both users.</p>
+        <p>For Process Director v4.03 and higher, the system will prevent users from delegating tasks to a user who is already delegating tasks to them. In other words, if User A is delegating tasks to User B, User B will be prevented from delegating tasks to User A. This loop checking only prevents a direct delegation loop between two users, and will not prevent indirect delegation loops that involve three or more persons.</p>
+        <p>For Process Director v5.26, delegation was extended to enable a disabled user to still delegate to another user. This will better handle implementations where a disabled user is listed in a form field that is being used to assign to a task.  The task will have the delegate assigned to it so it can continue.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421094521"></a>Delegation by the user</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Users may delegate their own tasks to another user by modifying their user profile via the following procedure.</p>
+                <p>First, open the user information box by clicking the user menu icon located at the top left corner of the Process Director interface.</p>
+                <p>
+                    <img src="../Resources/Images/Capture190.png" />
+                </p>
+                <p>When you click the icon, the user information box will appear.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/User Administration_8.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Once the user Information box appears, click the <span class="UIElement">Edit Profile</span> button to open your <span class="ControlName">User Profile</span> screen. On the <span class="ControlName">User Profile</span> screen, there is a delegation picker displayed.</p>
+                <p>
+                    <img src="../Resources/Images/Training/Administrator/Delegation4.png" />
+                </p>
+                <p>Select the <span class="NamedControl">User Picker</span> to open the type ahead box and begin typing a user name to expand the type ahead dropdown containing the list of matching users. Select a user to which to delegate by choosing the user from the type ahead dropdown. You can use the arrow keys to scroll the selection cursor up and down, then press the [ENTER] key to make your selection, or you can select the user with your mouse.</p>
+                <p>
+                    <img src="../Resources/Images/Training/Administrator/Delegation5.png" />
+                </p>
+                <p>Once the user list type ahead has closed, the selected user will now appear in the delegation user picker. Confirm the delegation by clicking the <span class="UIElement">Delegate User</span> button.</p>
+                <p>
+                    <img src="../Resources/Images/Training/Administrator/Delegation6.png" />
+                </p>
+                <p>A confirmation dialog box will appear to ask you to confirm the delegation.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/User Administration_13.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Click the <span class="UIElement">OK </span>button to confirm the delegation. The dialog box will close, the delegation will take effect. </p>
+                <p>
+                    <img src="../Resources/Images/Training/Administrator/Delegation8.png" />
+                </p>
+                <p>You can end the delegation by clicking the <span class="UIElement">Turn Off Delegation</span> button. Again, a dialog box will appear that asks you to confirm that you wish to turn off the delegation. Click the <span class="UIElement">OK </span>button to turn off delegation to the previously selected user.</p>
+                <p>When you have made the appropriate delegation decision, click the <span class="UIElement">OK </span>button at the bottom right of the <span class="ControlName">User Profile</span> screen to close it.</p>
+                <div class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> The Standard Delegation functionality can be removed from the user profile page by setting the <a href="../DevelopersGuide/Customization File Administration.htm#fTurnOffDelegation">fTurnOffDelegation</a> Custom Variable to "true" in the Custom Vars file.</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421094522"></a>Delegation by Administrators</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Administrators can perform delegation on behalf of users by making the delegation change in the <span class="ControlName">Edit User</span> screen for a specific user, or in the <span class="ControlName">User Administration</span> section's Delegation Screen.</p>
+                <h4>Edit User Screen</h4>
+                <p>From the <span class="ControlName">Users </span>section of the <span class="ControlName">User Administration</span> area, open the <span class="ControlName">Edit User</span> screen of the user for which you wish to perform delegation. There is a <span class="NamedControl">User Picker</span> labeled <span class="ControlName">Delegate all tasks to (User)</span>.</p>
+                <img src="../Resources/Images/Training/Administrator/Delegation.png" />
+                <p>Select the <span class="NamedControl">User Picker</span> to open the type ahead box and begin typing a user name to expand the type ahead dropdown containing the list of matching users. Select a user to which to delegate by choosing the user from the type ahead dropdown. You can use the arrow keys to scroll the selection cursor up and down, then press the [ENTER] key to make your selection, or you can select the user with your mouse.</p>
+                <p>
+                    <img src="../Resources/Images/Training/Administrator/Delegation1.png" />
+                </p>
+                <p>Once the user list type ahead has closed, the selected user will now appear in the delegation user picker. Confirm the delegation by clicking the <span class="UIElement">Delegate Tasks to User</span> button.</p>
+                <p>
+                    <img src="../Resources/Images/Training/Administrator/Delegation2.png" />
+                </p>
+                <p>A confirmation dialog box will appear to ask you to confirm the delegation.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/User Administration_13.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Click the <span class="UIElement">OK </span>button to confirm the delegation. The dialog box will close, the delegation will take effect. </p>
+                <p>You can end the delegation by clicking the <span class="UIElement">Turn Off Delegation</span> button. Again, a dialog box will appear that asks you to confirm that you wish to turn off the delegation. Click the <span class="UIElement">OK </span>button to turn off delegation to the previously selected user.</p>
+                <p>
+                    <img src="../Resources/Images/Training/Administrator/Delegation3.png" />
+                </p>
+                <p>When you have made the appropriate delegation decision, click the <span class="UIElement">OK </span>button at the bottom right of  the <span class="ControlName">Edit User</span> screen to close it.</p>
+                <h4>Delegation Screen</h4>
+                <p>In the delegation section of the <span class="ControlName">User Administration</span> area, you can set or remove multiple delegations. The screen also displays the currently active delegations in the <span class="UIElement">User Delegations</span> section of the page, as displayed in the example below.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/Delegation.png" />
+                </p>
+                <h5>Setting Delegation</h5>
+                <p>Use the <span class="NamedControl">User Pickers</span> to select the from whom the tasks should be delegated, and the user to whom tasks should be delegated.</p>
+                <p>Once you have set both users for the delegation, click the<span class="UIElement"> Add Delegation</span> button to create the delegation.</p>
+                <p>
+                    <img src="../Resources/Images/Training/Administrator/Delegation10.png" />
+                </p>
+                <p>The delegation will be created immediately, and will appear in the delegation list at the bottom of the <span class="ControlName">Delegation </span>screen, and a message will appear notifying you that the delegation has been successfully created.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/Delegation1.png" />
+                </p>
+                <h5>Removing Delegation</h5>
+                <p>To remove a delegation, simply click the delete icon (<img src="../Resources/Images/SystemAdministratorGuide/User Administration_21.jpg" style="visibility: visible;mso-wrap-style: square;width: 16px;height: 15px;" />) next to the delegation you wish to remove. The delegation will be canceled and a message will appear that notifies you that the delegation has been removed.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="SharedDelegation"></a>Shared Delegation <a href="#SharedDelegation" class="anchor">#</a></h2>
+        <p>In addition to the standard delegation described above, users of Process Director v5.12 and higher can also implement shared delegation. Unlike standard delegation, shared delegation enables specified users to complete tasks for the delegator, but does not automatically assign tasks to the delegate. Instead, shared delegation gives the delegate access to the delegator's tasks, so that the delegate can complete them, if necessary or desired.</p>
+        <p>Delegates can be selected by the user, or by an administrator, using the procedures described below.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="SharedUser"></a>Delegation by the user</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Users may share their own tasks to another user by modifying their user profile via the following procedure.</p>
+                <p>First, open the user information box by clicking the user menu icon located at the top left corner of the Process Director interface.</p>
+                <p>
+                    <img src="../Resources/Images/Capture190.png" />
+                </p>
+                <p>When you click the icon, the user information box will appear.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/User Administration_8.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Once the user Information box appears, click the <span class="UIElement">Edit Profile</span> button to open your <span class="ControlName">User Profile</span> screen. On the <span class="ControlName">User Profile</span> screen, there is a <span class="ControlName">Share my tasks with these users</span> <span class="NamedControl">User Picker </span>displayed.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/Delegation3.png" />
+                </p>
+                <p>Select the <span class="NamedControl">User Picker</span> to open the type ahead box and begin typing a user name to expand the type ahead dropdown containing the list of matching users. Select a user to which to delegate by choosing the user from the type ahead dropdown. You can use the arrow keys to scroll the selection cursor up and down, then press the [ENTER] key to make your selection, or you can select the user with your mouse.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/Delegation2.png" />
+                </p>
+                <p>Once the user list type ahead has closed, the selected user will now appear in the delegation user picker, and tasks will be shared once the profile is saved.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/Delegation5.png" />
+                </p>
+                <p>You can end the delegation by clicking the "X" icon that appears next to the delegates name, or clear ALL delegates by clicking the "X" icon that appears on the right side of the user picker.</p>
+                <p>When you have made the appropriate delegation decision, click the <span class="UIElement">OK </span>button at the bottom right of the <span class="ControlName">User Profile</span> screen to save and close the user profile.</p>
+                <div class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> The Shared Delegation functionality can be removed from the user profile page by setting the <a href="../DevelopersGuide/Customization File Administration.htm#fTurnOffSharedDelegation">fTurnOffSharedDelegation</a> Custom Variable to "true" in the Custom Vars file.</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="SharedAdmin"></a>Delegation by Administrators</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>In the delegation section of the <span class="ControlName">User Administration</span> area, you can set or remove multiple shared delegations. The screen also displays the currently active shared delegations in the <span class="UIElement">Shared User Delegations</span> section of the page, as displayed in the example below.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/Delegation6.png" />
+                </p>
+                <h5>Setting Delegation</h5>
+                <p>Use the <span class="NamedControl">User Pickers</span> to select the from whom the tasks should be shared, and the user to whom tasks should be shared.</p>
+                <p>Once you have set both users for the delegation, click the<span class="UIElement"> Enable Shared Delegation</span> button to create the delegation.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/Delegation7.png" />
+                </p>
+                <p>The delegation will be created immediately, and will appear in the delegation list at the bottom of the <span class="ControlName">Delegation </span>screen, and a message will appear notifying you that the delegation has been successfully created.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/Delegation8.png" />
+                </p>
+                <h5>Removing Delegation</h5>
+                <p>To remove a delegation, simply click the delete icon (<img src="../Resources/Images/SystemAdministratorGuide/User Administration_21.jpg" style="visibility: visible;mso-wrap-style: square;width: 16px;height: 15px;" />) next to the delegation you wish to remove. The delegation will be canceled and a message will appear that notifies you that the delegation has been removed.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3>Selecting Tasks for Delegation</h3>
+        <p>In order to enable a delegate to retrieve and complete shared tasks, the tasks must be specifically designated as shared tasks. On the <span class="UIElement">Advanced </span>tab of both the <a href="../ImplementersReference/Process Timeline Activities.htm#AdvancedOptions">User Timeline Activity</a> and the <a href="../ImplementersReference/Workflow Step Types.htm#AdvancedOptions">User Workflow Step</a>, there is an <span class="ControlName">Allow Task Sharing</span> property check box. This property check box must be checked or the task will not be shared with the delegate. This property enables you to implement task sharing on a per-task basis, which the default method for task sharing in the system. </p>
+        <p>You can, however, universally implement task sharing by setting the <MadCap:keyword term="fSharedDelegationAllProcesses" /><a href="../DevelopersGuide/Customization File Administration.htm#fSharedDelegationAllProcesses">fSharedDelegationAllProcesses</a> Custom Variable to "true". Conversely, you can completely disable task sharing by <a href="../DevelopersGuide/Customization File.htm#SharedDelegation">adding the appropriate disabling subroutine</a> to the Custom Vars file.</p>
+        <h3>Viewing Shared Delegations</h3>
+        <p>Since tasks don't automatically get assigned to delegates when they are shared, the delegate must have a method to view the shared tasks that are available for completion. You must, therefore, provide a Task List Knowledge View to the delegates that applies a specific Filter to enable the delegates to view the shared tasks. On the <span class="UIElement">Filter </span>tab of the Knowledge View, you must use the Task &gt;&gt;&#160;Tasks for User system variable as the filter. This variable can also be accessed via the <a href="../SystemVariablesReferenceGuide/Process Task System Variables.htm#TaskUser">Task User</a> system variable.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/Delegation9.png" />
+        </p>
+        <p>When the Knowledge View runs, this filter will display a dropdown to enable the delegate to choose the delegator for whom the tasks should be viewed. The dropdown will only show users who have active tasks that have been delegated to the current user.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/Delegation11.png" />
+        </p>
+        <p>You can use the dropdown to select the desired delegator, then click the <span class="UIElement">Search </span>button to retrieve the tasks for that delegator. Once the tasks appear, the user can choose the tasks to complete, just as would be done in a normal task list.</p>
+        <p>For Process Director v5.26 and higher, Shared Delegation also supports delegation to unauthenticated users. This enables tasks assigned to anonymous users to appear in the task user dropdown in the Knowledge View filter, when the current user is the shared delegate owner in that activity.</p>
+    </body>
+</html>

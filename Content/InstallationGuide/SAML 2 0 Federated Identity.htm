@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Installation" /><a name="_Toc421172286"></a>
+            <MadCap:keyword term="Installation;SAML" />SAML 2.0 (Federated Identity) Support</h1>
+        <p>Process Director supports SAML-based authentication for web single sign-on (SSO).&#160; SAML is an XML-based framework for communicating user authentication, entitlement, and attribute information. </p>
+        <p>Process Director accepts SAML 2.0 assertions regarding the identity, attributes, and entitlements of a user, from a federated Identity Provider (e.g. OpenAM or the open source version of OpenSSO).</p>
+        <p>The basic SSO model is shown in following diagram. A user authenticates at the identity provider and is subsequently appropriately recognized (and given corresponding access or service) at the service provider (Process Director).</p>
+        <p>&#160;</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/SAML 2 0 Federated Identity.png" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <h2><a name="_Toc421172287"></a>Authentication Options <a href="#_Toc421172287" class="anchor">#</a></h2>
+        <p>Process Director supports federated authentication. Federated authentication does not validate the user's actual password on Process Director. Instead, Process Director receives a SAML assertion in an HTTP POST request. The SAML assertion has a limited validity period, contains a unique identifier, and can be digitally signed. If the assertion is still within its validity period, has an identifier that has not been used before, and has a valid signature from a trusted identity provider, the user is granted access. If the assertion fails for any reason, the user is informed that their credentials are invalid.</p>
+        <h2><a name="_Toc421172288"></a>Implementation Details <a href="#_Toc421172288" class="anchor">#</a></h2>
+        <p>The transaction from an identity provider (IP) to Process Director is called a SAML assertion. Process Director assumes that all data contained in the assertion from the identity provider is valid. The structure of the SAML assertion is defined by an XML schema that is specified by the OASIS SAML standard and contains header information, the subject and statements about the subject in the form of attributes and conditions such as a start and logout URL. The SAML assertions will contain a Federated ID from the identity provider; this must be mapped to a user in Process Director (see below for more information on this mapping). </p>
+        <p>There is an online SAML&#160;tool that will assist you in creating the XML metadata file that can be consumed by your IP. This tool is located at <a href="https://www.samltool.com/sp_metadata.php" target="_blank">https://www.samltool.com/sp_metadata.php</a>.</p>
+        <p>Web browser SSO is SAML's most widely used feature and is typically used in conjunction with the HTTP POST binding and authentication request protocol. There are two important use cases for SAML: Identity Provider Initiated Login, where a user starts directly at their identity provider, logs in, and is then redirected to a landing page at the service provider; and Service Provider Initiated Login, where a user starts by clicking a link to the service provider (e.g. bookmark, email link, etc) and is temporarily redirected to the identity provider for authentication, then returned to the link they initially requested. </p>
+        <p>Process Director supports Service Provider Initiated Logins, where a user starts by clicking a link to a Process Director object (e.g. home page, Form, etc) and is temporarily redirected to the identity provider for authentication, then returned to the link within Process Director they initially requested. </p>
+        <h2><a name="_Toc421172289"></a>Process Director Configuration Settings <a href="#_Toc421172289" class="anchor">#</a></h2>
+        <p>The user authentication configuration options support the SAML SSO configuration. The SAML configuration information includes:</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li style="list-style-type: disc;">SAML Issuer</li>
+            <li style="list-style-type: disc;">SAML Provider Name</li>
+            <li style="list-style-type: disc;">SAML IP Certificate</li>
+            <li style="list-style-type: disc;">SAML URL</li>
+            <li style="list-style-type: disc;">SAML Logoff Page</li>
+            <li style="list-style-type: disc;">SAML Request Type</li>
+            <li style="list-style-type: disc;">SAML Response Type</li>
+        </ul>
+        <p>For Process Director, these are the possible ACS URL configurations:</p>
+        <ul>
+            <li>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=&amp;reauth=&amp;f=</li>
+            <li>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=1&amp;reauth=&amp;f=</li>
+            <li>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=4&amp;reauth=&amp;f=</li>
+        </ul>
+        <p>If using re-authentication as part of the electronic signatures these additional URLs are needed:</p>
+        <ul>
+            <li>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=&amp;reauth=1&amp;f=</li>
+            <li>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=1&amp;reauth=1&amp;f=</li>
+            <li>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=4&amp;reauth=1&amp;f=</li>
+        </ul>
+        <p>Additional information is configured to establish the trust relationship with the identity provider. This configuration specifies what element in the SAML assertion identifies the user, and how that user ID will be mapped to the Process Director users.</p>
+        <h2><a name="_Toc421172290"></a>User Mappings <a href="#_Toc421172290" class="anchor">#</a></h2>
+        <p>When setting up SAML authentication, you will establish an association between the identity provider and Process Director, forming a federation. When configuring the identity provider, you must determine the unique identifier that will be passed to Process Director as part of the assertion. This is what will uniquely identify the user to Process Director.</p>
+        <p>This value must be unique for all users in Process Director. Process Director also must be able to determine if this user is held by that part of company's identity infrastructure (e.g. AD, LDAP server) synchronized to the server. If so, then all needed information about the user will already be known.</p>
+        <p>If the user is not found, it can be automatically be created in the Process Director database. If there is any information contained in the SAML assertion that indicates the source of this user (e.g. from an AD server), Process Director can use that information to populate the users email address and user name. If that information does not exist, this user information will have to be entered from within the Process Director administrative interfaces.</p>
+        <p>When SAML integration is enabled, any request to a protected page or login to Process Director will automatically be redirected to the SAML Identity Provider. To use built-in or Windows authentication while SAML support is enabled, add the URL parameter skipsaml=1 to the login.aspx page. When this parameter is present, SAML integration will not be used for that login.</p>
+        <h2><a name="_Toc421172291"></a>Configuration <a href="#_Toc421172291" class="anchor">#</a></h2>
+        <p>To configure SAML support, the following variables can be configured in the Process Director custom vars file at /custom/vars.cs.ascx, in the PreSetSystemVars section. Attribute names can be configured using the Form Name or the Friendly Name.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>VARIABLE NAME</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>SAML_Enable</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Is SAML integration enabled?</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>SAML_URL</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>URL of SAML Identity Provider</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>SAML_Request_Type</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>SAMLReqType.HTTPRedirect (default)</p>
+                        <p>SAMLReqType.HTTPPost</p>
+                        <p>SAMLReqType.HTTPArtifact</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>SAML_Response_Type</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>SAMLRespType.HTTPPost (default)</p>
+                        <p>SAMLRespType.HTTPArtifact</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>SAML_Artifact_URL</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional Identity Provider artifact URL</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>SAML_My_PFX</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional path to local PFX file to sign SAML requests</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>SAML_My_PFXPassword</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional password of local PFX file to sign SAML requests</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>SAML_My_Certificate</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional path to Process Director public certificate file (.cer)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>SAML_IP_Certificate</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional path of Identity Provider public certificate file to validate entire SAML response (.cer)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>SAML_IP_AssertionCertificate</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional path of Identity Provider public certificate file to validate assertions in SAML response (.cer)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>SAML_Attrib_GUID</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional name of attribute containing User GUID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>SAML_Attrib_UserID</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Required name of attribute containing User UserID. It will match with an existing user in the system using the EXTERNAL GUID attribute first (if configured), and the userID attribute next.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>SAML_Attrib_UserName</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional name of attribute containing User UserName</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>SAML_Attrib_Email</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional name of attribute containing User Email</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>SAML_Attrib_Groups</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional name of attribute containing User Groups</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>SAML_Attrib_CustomString</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional name of attribute containing the custom string to store in user record</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>SAML_Attrib_CustomNumber</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional name of attribute containing the custom number to store in user record</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>SAML_Attrib_CustomDate</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional name of attribute containing the custom date/time to store in user record</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p>CustomLogoffPage</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>Optional URL to navigate to after logoff</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>A sample configuration in the custom vars file might look as follows:</p>
+        <div class="CodeBase"><span class="ControlName">// Called BEFORE database initialized</span>
+            <br />public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Enable = true;<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_IP_Certificate = @"C:\Program Files\BP Logix\cert.cer";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_URL =<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"https://adfs.company.com/adfs/ls/idpinitiatedsignon.aspx?logintoRP=<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;https%3a%2f%2fcloud.bplogix.net";<br />&#160;&#160;&#160;&#160;bp.Vars.CustomLogoffPage = "https://signin.company.com/";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Request_Type = SAMLReqType.HTTPRedirect;<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Response_Type = SAMLRespType.HTTPPost;<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Issuer = "https://cloud.bplogix.net";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_ProviderName = "https://cloud.bplogix.net";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_GUID = "SAM-Account-Name";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserID = "SAM-Account-Name";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserName = "DisplayName";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Email = "Email";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Groups = "Groups";<br />}
+        </div>
+    </body>
+</html>

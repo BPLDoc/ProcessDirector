@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536188"></a>
+            <MadCap:keyword term="Email Templates" />Creating and Customizing Email Templates</h1>
+        <p>You can create an email template by using creating a new Form definition within Process Director.  Ensure that you check the box that says "Email Template" when the Create Form screen opens. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EmailTemplatesCreating.png" />
+        </p>
+        <p>You can also use a custom ASCX file for your email template, just like you can when creating a regular Form definition. Simply select the option you desire from the dropdown marked "Online Form Designer". In nearly all use cases, the default choice of the Online Form Designer is the simplest option, but you have the option to use the Word Form builder (assuming you have met the appropriate technical requirements) or to create a custom ASCX control on .NET&#160;using Visual Studio (assuming you have this license option).</p>
+        <p>Your email template is now stored in the <span class="ProcessDirectorObject">Content List</span>. You can edit the template by selecting the template to edit and then select the Edit tab.&#160; You can make changes to your template in your preferred editor.</p>
+        <h2><a name="_Toc421536189"></a>Email Variables <a href="#_Toc421536189" class="anchor">#</a></h2>
+        <p>Variable substitutions are performed when an email file is processed for a workflow request. System variables can be added to the email using the {varname} keyword. This entire keyword will be substituted with the system variable for the corresponding varname. To see the complete list of system variables (i.e. varname) refer to the chapter on Forms, in the section named System Variables. Not all system variables are available for every event that generates an email.</p>
+        <p>The Subject, FromEmail, MailPriority, FromDisplay, SendAsAttachment, GroupName and CancelEmail are contained in each email file as property of a built-in control called EmailData. </p>
+        <h2><a name="_Toc421536190"></a>
+            <MadCap:keyword term="EmailData" />EmailData Control <a href="#_Toc421536190" class="anchor">#</a></h2>
+        <p>The Email Data object enables you to customize various aspects of notification emails such as the email subject, reply-to addresses, etc. Inserting the Email Data control produces this object in your Form:</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Email Templates.png" style="visibility: visible;mso-wrap-style: square;width: 73px;height: 69px;" alt="Untitled-2.png" />
+        </p>
+        <p>By double-clicking on it, you can open its properties dialog box , shown below, to edit its properties. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EmailData.png" alt="EmailData Control" />
+        </p>
+        <p>For information about this control's properties, please see the <a href="eForm Online Controls Other.htm#EmailData">EmailData Control</a> topic.</p>
+        <p>You can add multiple EmailData controls to an email template. Use the condition builder to optionally show and hide these by going to the control in the Form properties page and setting a condition on each EmailData tag created. Each tag has a unique ID. </p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/EmailTemplatesCreating.png" />
+        </p>
+        <p>Once you have multiple Email Data objects on the email template, you’ll need to set up conditional visibility of the objects. On the Forms Controls tab of the email template file, you can set conditions of what email data or email sections should be used like this:</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EmailTemplatesCreating2.png" />
+        </p>
+        <p>This Email Data object will be visible when the email type is “Task Assigned”. There is more about these Email types in the next section, “Email Template Conditional Processing”, below. One more thing to note: when multiple Email Data objects’ conditional statements will evaluate as “true”, then PD will work through the separate Email Data objects&#160; in order, and information in properties input boxes will be replaced by non-blank properties boxes of the next Email Data object. If any of the “Cancel Email” boxes are checked in any displayed Email Data objects, the email will not be sent.</p>
+        <p>There is one email type that is sent when a user's task is completed due to a condition that completes the task without the user's involvement. For example, a task may assigned to a group of users, but be set to complete when the first user in the assigned group completes the task. In this case, the default behavior is for all users to receive the task completion email. Essentially, for any function that causes a user to be marked as "Not Required", all assigned users will receive email notifications that the task is complete. If you do not want this behavior, add an <span class="NamedControl">EmailData </span>tag or control to the email template with the "Cancel Email" option set to True. Be sure to place that Email Data control in a section that is visible when the email type is "not needed".</p>
+        <h5>ASPX Format</h5>
+        <p><code>&lt;bpx:EmailData ID="StepStarted" runat="server" Subject="…subject line…" MailPriority="High" <br />&#160;&#160;&#160;&#160;FromEmail="{CREATE_USER, format=email}" FromDisplay="{CREATE_USER}" SendAsAttachment="True"<br />&#160;&#160;&#160;&#160;GroupName="Resume" CancelEmail="True"&gt;<br />&lt;/bpx:EmailData&gt;</code>
+        </p>
+        <h2><a name="_Toc421536191"></a>Email Template Conditional Processing <a href="#_Toc421536191" class="anchor">#</a></h2>
+        <p>The email templates can optionally contain Section tags that can control what portions of the email should be displayed under different conditions (e.g. value of a form field).&#160; You can optionally display any control that has an ID which will display in the list of controls on the Form properties page. Conditional processing allows you to display a type of email to use such as the reminder email type. You can conditionally display controls based on the type of email. The following email types are available in Process Director:</p>
+        <ul>
+            <li>Task Assigned</li>
+            <li>Reminder Email</li>
+            <li>Task Timeout</li>
+            <li>Task&#160;Cancelled</li>
+            <li>Step Started</li>
+            <li>Step Stopped</li>
+        </ul>
+        <p>Refer to the chapter on Form Definitions for more information on conditional processing. To test email templates that contain Form tags, upload the email template to Process Director as a Form but marked as an Email Template to have the built-in parser validate the use of your Form tags. This will only allow the email template to be validated; it will not be a valid Form.</p>
+        <h2><a name="_Toc421536192"></a>Task Links in an Email <a href="#_Toc421536192" class="anchor">#</a></h2>
+        <p>The email templates can optionally contain links that allow the user to complete their task. This system tag will add the task URL to the link tag in the HTML email allowing the user to click on it to open in the browser and complete their task.</p>
+        <p>In the Online Form Designer:</p>
+        <p><code>{EMAIL_URL}</code>
+        </p>
+        <p>In .ascx:</p>
+        <p><code>&lt;bpx:HTML ID="emailLink" runat="server" HTMLString="&lt;a href='{EMAIL_URL}'&gt;Click here to view the workflow&lt;/a&gt;"&gt;<br />&lt;/bpx:HTML&gt;</code>
+        </p>
+        <p>This system tag will return the URL that can be placed within an &lt;A&gt; tag on the HTML email.</p>
+        <h2><a name="_Toc421536193"></a>Complete Links in an Email <a href="#_Toc421536193" class="anchor">#</a></h2>
+        <p>Email templates can contain links that allow the user to complete their task without having to view a Form.</p>
+        <p><code>{EMAIL_RESULT_LINKS, comments=1, confirm=1, separator="&amp;lt;br&gt;", icon=1}</code>
+        </p>
+        <p>This system tag will return the possible branches to take. It creates an HTML link with the URLs for all of the possible branches in a Workflow or results in a Process Timeline activity assigned to the user.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>ARGUMENT</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>TYPE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DEFINITION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>comments</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>true/false(default value)</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The user is prompted to comment if true</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Confirm</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>true(default value)/false</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The user is required to confirm the task has been completed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Separator</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>HTML tags&#160; </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>characters to separate the list of links </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>Icon</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>true(default)/false</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>Optional icons/images from the workflow branches appear next to each of the links. </p>
+                        <p>NOTE: Process Timeline results do not have image icons.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h5>Example</h5>
+        <p>Possible Branches to Take:</p>
+        <p><code>{EMAIL_RESULT_LINKS,comments=1,confirm=1,separator="&amp;lt;br&gt;",icon=1}</code><code>{Email_result_list}</code>
+        </p>
+        <p>This system tag will return a comma separated list of all of the possible results from the current branch in a Workflow or a result in a Process Timeline activity assigned to the user. This tag is useful for reply options the recipient must use. The next process may be scanning to match text in the sent Email.</p>
+        <h5>Example</h5>
+        <p>Please enter one of these keywords in responding to this Email: {Email_result_list}</p>
+        <p><code>{EmailCompleteLink, text=Approve, comments=1, confirm=1, action=Approve}</code>
+        </p>
+        <p>This System Tag is a link to a web page allowing their user to complete their task. </p>
+        <p>Each EmailCompleteLink System Tag with its arguments corresponds to one branch in a Workflow or a result in a Process Timeline activity. Remember to name this Email as the “Default Email template” in the Workflow or Process Timeline activity. </p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>ARGUMENT</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>TYPE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DEFINITION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>string</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>text to display on the link (e.g. Approve, Resubmit, Reject)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Comments</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>true/false(default value)</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The user is prompted to comment if true</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Confirm</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>true(default value)/false</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The user is required to confirm the task has been completed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>Action</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>string</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>The Workflow branch name or the Process Timeline activity result (e.g.  Approve, Resubmit, Reject)</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h5>Example</h5>
+        <p><code>{EmailCompleteLink,text=APPROVE, comments=true, confirm=true, action=APPROVED}</code>
+        </p>
+        <p><code>{EmailCompleteLink,text=RESUBMIT, comments=true, confirm=true, action=RESUBMIT}</code>
+        </p>
+        <p><code>{EMAIL_COMPLETE_URL, action=Approve, comments=1, confirm=1}</code>
+        </p>
+        <p>This system tag will return the URL that can be placed within an &lt;A&gt; tag on the HTML email.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>ARGUMENT</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>TYPE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DEFINITION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>string</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>text to display on the link (e.g. Approve, Resubmit, Reject)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Comments</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>true/false(default value)</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The user is prompted to comment if true</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Confirm</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>true(default value)/false</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The user is required to confirm the task has been completed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>Action</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>string</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>The Workflow branch name or the Process Timeline activity result (e.g.  Approve, Resubmit, Reject)</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2><a name="_Toc421536194"></a>URL Access to the Process Instance <a href="#_Toc421536194" class="anchor">#</a></h2>
+        <h4>Workflow (wd.aspx)</h4>
+        <h5>Description</h5>
+        <p>This URL can be used for in Workflow emails. It is used to construct a hotlink back to the originating workflow.</p>
+        <h5>Parameters</h5>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>PARAMETER NAME</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p>forminstid</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>The ID of the form instance to display.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h5>Examples</h5>
+        <p>This example will create a hotlink in an ASCX Email template which points back to the workflow Form</p>
+        <p><code>&lt;bpx:HTML runat="server" HTMLString="&lt;a href='{INTERFACE_URL}wd.aspx?forminstid={FORM_INSTANCE_ID}'&gt;</code>
+        </p>
+        <p><code>&#160;&#160;&#160;Click Here to View the Form Instance&lt;/a&gt;"&gt;</code>
+        </p>
+        <p><code>&lt;/bpx:HTML&gt;</code>
+        </p>
+        <h4>Process Timeline (pd.aspx)</h4>
+        <h5>Description</h5>
+        <p>This URL can be used for in Process Timeline emails. It is used to construct a hotlink back to the originating Process Timeline.</p>
+        <h5>Parameters</h5>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>PARAMETER NAME</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p>forminstid</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>The ID of the form instance to display.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h5>Examples</h5>
+        <p>This example will create a hotlink in an ASCX Email template which points back to the Process Timeline&#160; Form</p>
+        <p><code>&lt;bpx:HTML runat="server" HTMLString="&lt;a href='{INTERFACE_URL}pd.aspx?forminstid={FORM_INSTANCE_ID}'&gt;<br /></code>
+        </p>
+        <p class="indent1"><code>Click Here to View the Form Instance&lt;/a&gt;"&gt;</code>
+        </p>
+        <p><code>&lt;/bpx:HTML&gt;</code>
+        </p>
+    </body>
+</html>

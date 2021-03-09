@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="4829" MadCap:lastWidth="1141" MadCap:conditions="General.Core Training">
+    <head>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 2: Configuring Timeline Activities</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn how to configure the generic Timeline Activity settings that are common to all activity types.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Creating Process Timeline Activities</h2>
+        <p>In any Timeline definition, a list of <span class="ControlName">Actions </span>links appears above the Gantt Chart for the Process Timeline definition.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringProcessTimelineActivites.png" />
+        </p>
+        <p>Click on the <span class="UIElement">Create Activity</span> link to create a new Process Timeline Activity. As a default, the newly created activity will be named "Activity 1". You can change the activity name by double-clicking on the activity name to open the configuration screen, and changing the <span class="ControlName">Name </span>property.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringProcessTimelineActivites1.png" />
+        </p>
+        <p>Each activity is displayed as a separate row on the Gantt Chart interface.</p>
+        <h3>Configuring the Activity</h3>
+        <p>A Process Timeline is made up of a series of activities. Each activity in a Process Timeline identifies the task to be performed and the users who should perform the task. Activities can be easily added, moved and deleted from a Process Timeline Definition.</p>
+        <h4>Process Timeline Activity Types</h4>
+        <p>Each Timeline Activity falls into one of a number of different types. Each activity type defines a set of functions or actions that can be performed as part of that activity. The activity type can is set using the<span class="ControlName"> Activity Type</span> dropdown in the <span class="UIElement">Activity </span>tab of the activity’s properties. When you set an activity type, the icon displayed in the <span class="ControlName">Type </span>column of the Gantt Chart changes to display the icon for the selected activity type.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringProcessTimelineActivites2.png" />
+        </p>
+        <p>Additionally, when you select an activity type, the second tab of the activity's configuration will change to display a configuration tab or tabs that present configuration options that are specific to the selected activity type. For instance, if you select the User activity type, two tabs, <span class="UIElement">Participants </span>and <span class="UIElement">Results</span>, will appear.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringProcessTimelineActivites4.png" />
+        </p>
+        <p>Conversely, if you select the Notify activity type, the <span class="UIElement">Participants </span>and <span class="UIElement">Results</span> tabs will disappear, as those configuration options are not relevant to Notify activities.</p>
+        <p>
+            <img src="../../Resources/Images/Training/Core/ConfiguringProcessTimelineActivites5.png" /> </p>
+        <p>The Process Timeline engine embedded within Process Director supports the following activity types:</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>User</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The user task is any actionable item assigned to a user. If a user task has been assigned to a user, a Task will appear in their Task List. They must complete the task before it can be removed from the task list. A user who is assigned a task will be automatically given permission to any object in the Process Timeline package so they may complete the task. Examples of this activity type can be an approval task or update task.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Notify</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The notify task allows you to notify users or groups during a process. The Notify Task options are configured via the generic configuration options for an activity. See the “Activity Configuration Tabs” documentation for details on the generic configuration options.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Process</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Process task allows you to specify a process to run, usually as a subprocess (also called a child process). This subprocess can be a either a Workflow or Process Timeline. This activity type has a <span class="UIElement">Process </span>tab that enables you to configure  the process that the activity starts. It also allows objects in the subprocess to be copied to the calling process (also called the parent process) and vice versa. The objects copied can be limited to a specified group.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Script</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Script task supports the ability to call custom script functions. The <span class="UIElement">Script </span>tab determines the script to be run. The script file is determined via content list <span class="NamedControl">Object Picker</span>. The script parameters are passed to the script as a string.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Custom Task</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This allows you to use a custom task as the activity. For instance, you might convert a Form to PDF, or run a database command using a Custom task. The <span class="UIElement">Custom Task</span> tab specifies the custom tasks to be run for this activity. For details on how to configure custom tasks, see the Custom Tasks documentation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Form Actions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This task configures which Form will be the default within the process, and allows new forms to be attached. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Branch</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This allows an activity to jump or branch to another activity in the running Process Timeline.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Parent</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Parent tasks perform two functions.&#160;</p>
+                <p>First, they enable you to organize tasks into groups by serving as a container for other activities, becoming parents for other tasks. Child tasks adopt the due date properties and dependencies of their parent tasks.</p>
+                <p>Second, the Parent task enables you to invoke iterative looping on a segment of the Process Timeline. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>End Process</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The <span class="UIElement">End Process</span> activity will immediately stop the process. While it is generally not necessary, there are some circumstances where you might want to stop a process immediately when a certain condition applies. Otherwise, a Process Timeline ends automatically when the last activity completes.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Wait</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Wait tasks cause the Process Timeline to pause for a specified amount of time, or when a specific condition applies, configurable in the <span class="UIElement">Results </span>tab.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Case</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Case activity type enables you to take specific actions in the context of a Case Management process. The <span class="UIElement">Case Options</span> tab enables you to configure these case management activities.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h4>Activity Settings</h4>
+        <p>Timeline activities are configured through a series of properties tabs, and, as mentioned, different activity types will display one or two tabs that are specific to that activity type. In addition, a number of tabs are common to all activity types.&#160;</p>
+        <p>The lone exception to the tabbed interface for activity settings is the <span class="ControlName">Activity Name</span> property, which identifies the name of the activity. The name entered into this field will be used everywhere in Process Director's user interface to specify the activity. The remainder of the settings are configured in the tabbed interface, and will discuss each of the different tabs that are available below.</p>
+        <h2>
+            <a name="_Toc421536174">
+            </a>Activity Configuration Tabs</h2>
+        <p>All activities share a few common tabs in their configuration windows.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Activity Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The <span class="UIElement">Activity </span>tab defines the basic setting for each activity. Some settings shown on this tab will change depending on the selected activity type. For example, a notify activity has no duration setting since notifications are not a time-based task. User tasks, conversely, must have a duration, because you must set the expected time it will take a user to complete the task. In general, however, the following settings are available on the <span class="UIElement">Activity </span>tab.</p>
+                <h5>Activity Type</h5>
+                <p>This dropdown contains activity type to be used for the current activity, as described above.</p>
+                <h5>Description</h5>
+                <p>This field contains an optional description of this activity. This can be used by the Process Timeline builder to document what this activity is used for and why it is here. The end-users will not see this field.</p>
+                <h5>Instructions</h5>
+                <p>This contains instructions for the users telling them how to perform the task assigned to them. This information can be contained in the email sent to the users through the use of the <a href="../../SystemVariablesReferenceGuide/Process Task System Variables.htm#TaskInstructions">Task Instructions</a> system variable. It will also be displayed on their task list, and it is displayed in the Process Timeline Package.</p>
+                <h5>Color</h5>
+                <p>This field contains an optional color of this activity. Color coding can be used by the Process Timeline builder to help visualize the Process Timeline process.</p>
+                <h5>Duration of activity</h5>
+                <p>This field contains an option to set the duration of the activity. Duration can be set in varying lengths of time, from minutes to months by entering the number of length units in the text box, then selecting the length unit (Hours, days, etc.) from the dropdown. The default option is to set the length in Business Days, which will exclude weekends, as well as any desired holidays, which you can specify in the Custom Variables file, though this is advanced topic that will not be discussed here.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Start When Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines when the activity will run, i.e. what must happen before the activity starts. The activity’s start time can depend on the state of other activities, or via arbitrary conditions. Activity dependencies can be added via the <span class="UIElement">Add Dependency</span> button, and the dependence specified via a dropdown. Arbitrary conditions allowing the activity to start can be configured via the condition builder by click on the <span class="UIElement">Click to create condition...</span> link. </p>
+                <p>Clicking the <span class="ControlName">Recurring Activity</span> check box allows you to configure the time interval at which the activity repeats. The activity will not recur if the box is unchecked.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Completed When Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines when the activity is completed. The dropdown determines whether the activity is completed when all users have completed the activity or when the first user has completed the activity. Arbitrary conditions for completion can be configured using the condition builder by clicking the <span class="UIElement">Click to create condition...</span> link.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Needed When Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines when the activity is enabled or when it is ignored. Conditions for enabling the activity can be configured using the condition builder by clicking the <span class="UIElement">Click to create condition...</span> link.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Due Date Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines the due date for the activity. The due date can be set in three ways. It can be calculated relative to the start of the activity. Using the dropdown menu, it can be calculated relative to the actual start of the activity, the configured start of the activity, or can be set via other means. The <span class="ControlName">Set due date from form field</span> field enables the determination of the due date from a form field, and the <span class="ControlName">Set due date from system variable</span> field enables the determination of the due date from a system variable.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Notifications Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines when users are notified about the task. Checking the <span class="ControlName">Notify participants when activity starts</span> checkbox will notify the participants when the activity starts using the email template specified in the <span class="ControlName">Using email template</span> field.</p>
+                <p>Additional notifications can be added with the <span class="UIElement">Add Notification</span> button. The occurrence of the notification is specified using the <span class="ControlName">Choose Notification Time</span> dropdown, which allows the creation of a one-time notification or a recurring notification.</p>
+                <p>
+                    <img src="../../Resources/Images/ImplementersReference/Process Timelines_3.png" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Advanced Options Tab</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines whether the activity is required to complete for the parent activity to complete, and whether a late start or finish date in the activity should show as an error in reports. The <span class="UIElement">Advanced Options</span> tab for each activity type may show very different property settings.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

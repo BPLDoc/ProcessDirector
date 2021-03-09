@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="10" MadCap:lastHeight="5389" MadCap:lastWidth="1165" MadCap:conditions="General.SysAdmin Training">
+    <head>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 1: Securing Process Director</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn the basic methods for improving the security of your Process Director installation. </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Overview</h2>
+        <p>Like any system that is exposed publicly, whether it's to the Internet or to a corporate intranet, security should be a primary administrative concern. There are a number of security practices that can be implemented to protect a Process Director installation from unauthorized access. This especially important for systems that may contain sensitive data such as Personally Identifiable Information (PII) or data that is covered under HIPAA.</p>
+        <p>Process Director includes a number of features and settings that assist you with tightening security to the product. To properly secure your Process Director installation, consider implementing the practices below.</p>
+        <h2>Cross Site Scripting Protection</h2>
+        <p>For users of Internet Explorer, Chrome, or Safari, Process Director  implements cross-site scripting protection by implementing the XSS filter in the HTTP header, with the setting:</p>
+        <p><code>X-XSS-Protection: 1; mode=block</code>
+        </p>
+        <p>When the browser detects a cross-scripting attempt, it will stop rendering the page completely, rather than attempting to sanitize the attack and render the page.</p>
+        <div class="Important">
+            <img src="../../Resources/Images/i.png" alt="Important" /> The Firefox browser does <b>not</b> support cross-site scripting protection via the XSS filter.</div>
+        <p>Cross-Site Request Forgery (CSRF) protection is enabled by setting the <span class="ControlName">fEnableReferrerProtection </span>custom variable. When set to "true," this variable enables Process Director to screen for CSRF by ensuring that the HTTP Referrer header is valid.</p>
+        <h2>Properties Settings</h2>
+        <p>On the Properties page of the Installation Settings section of the IT Admin area, there are four properties to which you should pay special attention.</p>
+        <h4>Interface URL</h4>
+        <p>Consider configuring your Process Director installation to use SSL. SSL encrypts all data moving between the client and the server. To do so, you will need to acquire an SSL certificate for the server, and configure the certificate via IIS. Once you have properly configured SSL, you can set the Interface URL setting to use the HTTPS URL for your Process Director installation, preventing anyone from capturing clear-text data being sent in transit to or from your Process Director installation.</p>
+        <h4>Local IP Addresses</h4>
+        <p>The Local IP Addresses setting enables you to add a comma separated list of IP addresses that have permission to access the IT Administrative section of Process Director as if they were a local user. Ensure that this setting only includes IP addresses from which you want to grant full administrative permissions without authentication. </p>
+        <p>By default, this setting is empty, which only allows localhost users to access the IT administration section of the product without authenticating (e.g. http://localhost/admin/). Adding additional IP addresses widens the range of users who might be granted unrestricted administrative access, thus reducing security. </p>
+        <p>If Process Director is running behind a firewall, additional care should be taken setting this value. If you add the IP address of the firewall, this effectively treats all access through the firewall as a local access.</p>
+        <h4>Web Service Enabled</h4>
+        <p>If you do not need to make any calls to Process Director's web services, this property should be set to its default value of "False". The web service API calls can be used to enable administrative functionality, so if the web services are not needed, they should be turned off completely. If you do require web services to run, then you should restrict access to the web services to only the IP addresses that requires access to them by setting the Web Service Restrictions setting appropriately, as described below.</p>
+        <h4>Web Service Restrictions</h4>
+        <p>This property contains a comma-separated list of IP Addresses, and will restrict access to web services to only the IP Addresses entered. Leaving this field blank will allow universal access to web services with authentication.</p>
+        <p>Ensure that you are restricting web service calls only to IP addresses to which you want to give full administrative permission. Again, web service API calls can enable administrative functionality, so access should be restricted to only those trusted servers. To lock the system down more securely than the default, set this value to 127.0.0.1, which will allow only local access to the Web Services API, which is useful if you have no other server applications that use Web Services.</p>
+        <h2>Custom Variable Settings</h2>
+        <p> When using Cloud installations or on-Premise installations with the Compliance Edition, Process Director will keep an external audit trail of all activity. There are configuration options that should understand so that the settings you are using are implemented by design, rather than simply using the product defaults. </p>
+        <p>These values are configured in the /custom/vars.cs.asmx file in the PreSetSystemVars() function. Detailed information on how to set custom variables, with the appropriate syntax, are available in the Developer's Guide.</p>
+        <h3>Auditing Variables</h3>
+        <h4>fAuditLogFileOnly</h4>
+        <p>This variable determines whether Process Director will write audit log information only to the text log files. The variable defaults to "True", meaning that it will not write any audit logging information to the Process Director database. Setting this variable to "False" will cause the audit data to be written to the Process Director database, in addition to the log files.</p>
+        <h4>nArchiveLogDays</h4>
+        <p>This variable sets the number of days to keep the zipped audit log files. The default value is 30 days. Log files are stored in the /website/App_Data/logs_archive/ folder. Any log files older than the number of days specified by this setting will be deleted.</p>
+        <h4>nAuditLogDays </h4>
+        <p>This is the number of days to keep the audit log data in the Process Director database. The default value is 30 days.  Any audit data older than the specified value will be removed from the database.</p>
+        <h4>fAuditFormAPICalls </h4>
+        <p>This variable determines whether Process Director will write an audit log for changes made by API’s. The default value is "True", which means that Process Director will log an audit record of API calls resulting in a change to form data. While we generally recommend that this value remain set to the default value of "True", please note that this setting can have an effect on server performance for applications rapidly performing large numbers of API-based form field changes.</p>
+        <h4>fAuditFormViews </h4>
+        <p>This variable determines whether Process Director will write an audit log for all form views. This can result in a tremendous amount of audit logging when the value is set to "True". The default for this variable is "False". </p>
+        <h4>User Authentication Variables</h4>
+        <p>If you are using built-in user authentication with Cloud installations or on-Premise installations where you have to ensure that your processes meet regulatory compliance, BP Logix recommends that you use the password enforcement options. This will require that any user passwords conform to the enforcement options.</p>
+        <h4>PwdStrength</h4>
+        <p>This variable controls password complexity. It should be configured to use at least PasswordStrength.Medium. The default value for this variable is PasswordStrength.None. See the documentation topic for the <span class="ControlName">PwdStrenth </span>custom variable for more information.</p>
+        <h3>Testing Variables</h3>
+        <h4>fTestMode</h4>
+        <p>This variable sets the Process Director installation to Test Mode when set to "True", and will allow a user to login as any other user without a password. The default value for this variable is "False". Ensure that this custom variable is always set to "False" in your production system. The variable should also be set to "False" on your development and test systems, except for those times when it is explicitly needed, after which, it should be set back to "False".</p>
+        <h2>User Settings</h2>
+        <p>Users can be given administrative privileges in the User Administration section of the IT Admin area. There are some privileges that are very sensitive, and so should be used very sparingly, and only with an understanding of the capabilities these settings will give the user. Also, remember that these privileges can be given indirectly by granting them to a group to which the user is also a member.</p>
+        <p>On production systems, the best practice is to give no administrative rights to any “normal” user. Instead, build in a privileged user identity for each administrator, to which they should explicitly log in for the purpose of executing administrative tasks, and for no other reason.</p>
+        <h4>System Administrator</h4>
+        <p>This permissions setting gives the user access to the functions in the IT Admin area. With this privilege, a user can give any user any type of permission. Essentially, this permissions setting gives full control of the Process Director installation to the user, or any other user they choose to designate.</p>
+        <h4>System Partition Admin</h4>
+        <p>This permissions setting gives the user full permission to every object in the Content List of the partition for which administrator access is granted. All other permissions settings in the Content List of the specified partition are ignored for this user. </p>
+        <h4>User Impersonation Ability</h4>
+        <p>This permissions setting allows a user to impersonate any other user and take on their complete identity and privileges. Once a user is given the ability to impersonate another user, the user could impersonate a system administrator and exercise complete control over the system. For this reason, administrators should be extremely careful about who is granted user impersonation permission.</p>
+        <h2>User Permissions Page</h2>
+        <p>Administrators of Cloud installations or on-Premise installations with the Compliance Edition will notice an additional User Perms menu button in the User Administration section of the IT Admin Interface. This button displays the User Permissions page.</p>
+        <p>
+            <img src="../../Resources/Images/SystemAdministratorGuide/Securing Process Director.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>The User Permissions section enables you to find users and view a report of permissions that are applicable to that user.</p>
+        <p>The top section of the user permissions screen provides a number of search fields that you can fill out to filter the users returned by the permissions search. The filter criteria will accept all or part of a User ID or User Name, or the GUID of an external user. Once you have entered the filter criteria you desire, click the Search button to see a list of all the users that match your filter criteria, as well as the permissions granted to the users.</p>
+        <p>The User permissions page is very useful for manually auditing the permissions granted to any user.</p>
+        <h2>Built-In User Authentication Options</h2>
+        <p>When using Cloud installations or on-Premise installations with the Compliance Edition, there are several callout points in the /custom/vars.cs.asmx file that allow you to control access to the system, password changes, etc. </p>
+        <p>More detail on these functions can be found in the Developer's Guide.</p>
+        <h4>CanLogin() </h4>
+        <p>This function is called when a user attempts to login, and can be used to reject a login, to redirect the user to another page, or to limit certain users to specific IP addresses.</p>
+        <h4>LoginComplete() </h4>
+        <p>This function is called when the login is successful.</p>
+        <h4>ForgotPassword() </h4>
+        <p>This function is called when the user clicks on the “I forgot my password” link on the login page. This is only for built-in users.</p>
+        <h4>ValidatePassword() </h4>
+        <p>This function is called when a user attempts to set or change their password, allowing for custom complexity requirements.</p>
+        <h2>Audit Log Monitoring</h2>
+        <p>When using Cloud installations or on-Premise installations with the Compliance Edition, and when storing audit logs in the database, you can search for various events. In the Troubleshooting section of the IT Admin area there is an Audit Logs button that opens a search function that allows you to find specific audit log types. BP Logix recommends that you periodically check audit logs for certain privilege changes to ensure that these privileges are the ones expected on the production system.</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li style="list-style-type: disc;">AdminPageAccess</li>
+            <li style="list-style-type: disc;">PermissionAdded</li>
+            <li style="list-style-type: disc;">PermissionRemoved</li>
+            <li style="list-style-type: disc;">PermissionUpdated</li>
+            <li style="list-style-type: disc;">PermissionReplicated</li>
+            <li style="list-style-type: disc;">UpdateUser</li>
+            <li style="list-style-type: disc;">AdminPageAccess</li>
+            <li style="list-style-type: disc;">ImpersonateOn</li>
+        </ul>
+        <h2>Content List Permissions </h2>
+        <p>When setting up permissions in the Content List on a production system you want to grant only the minimum permissions required. For instance, users do not need to be explicitly given View or Modify permission to form instances to participate in a workflow task. The system will automatically grant them the appropriate level of permission on the form instance to complete a task that is assigned to them. When the user completes the task, the configured permissions are then used for that form instance.</p>
+        <p>Permissions should not generally be configured on individual objects in the Content List, except in special cases that require that level of granularity. Normally, permissions should only be configured at the folder level. Preparation and thought is necessary during the initial implementation to ensure that you structure the objects across folders based on object types and how permissions will be established. </p>
+        <p>For example, do not create a folder that contains all Knowledge Views and Reports and then configure the permissions on each individual object to identify who is able to run it.&#160; Instead create multiple folders and group the objects by the type of access required. For instance, you might create an “Admin Knowledge Views” folder that only administrators can access, and a “Knowledge Views” folder than can be accessed by other end users. Segregating the access by folder will assist in the deployment of new objects from a non-production system to your production system, because:</p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="1">
+            <li>Imported objects inherit the permission of the parent folder into which objects are being imported, and </li>
+            <li>Permissions are not carried across in the XML export.</li>
+        </ol>
+        <p>Your production system should not grant delete permission to any users. Instead, have a limited set of partition administrator users, as partition administrators can perform functions in a Content List regardless of its configured permissions. Users should only login with these partition administrator user IDs when performing specific administrative functions, like deleting objects or importing XML files from a non-production system.</p>
+        <h2>Data Encryption</h2>
+        <p>When using Cloud installations or on-Premise installations with the Compliance Edition, you have the option to encrypt fields using the Form Field Properties settings of a Form definition.</p>
+        <p>
+            <img src="../../Resources/Images/SystemAdministratorGuide/Securing Process Director_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Checking the Encrypted Field check box will cause Process Director to save the field value in an encrypted format in the database. You may wish to consider this for fields that contain passwords, PII, HIPAA, or other sensitive data. Keep in mind, however, that you may not be able to search for data stored in encrypted form.</p>
+        <h3>SQL Server Transparent Data Encryption (TDE)</h3>
+        <p>Process Director is compatible with TDE on SQL Server Enterprise editions of Microsoft SQL Server 2008 R2 and higher.</p>
+    </body>
+</html>

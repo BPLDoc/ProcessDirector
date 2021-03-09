@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Importing Data</h1>
+        <p>It's a very common requirement to use some internal data in Process Director. For on-premise installations, this simply requires creating the appropriate Datasource that points to the internal data's repository, whether it's a CRM or ERP system, or some other SQL&#160;Server or Oracle database. For Cloud installations, however, this can be more difficult, as it can for organizations that do not wish to have even an on-premise installation of Process Director to access the data directly.</p>
+        <p>Since Cloud installations are on the public Internet and most organization's have firewalls that prevent their internal data from being accessed from outside the network boundary, access to internal data is a bit more difficult. Moreover, most organizations are unwilling to open a hole in their firewall to enable a Cloud installation to access data from inside the boundary. So, for Cloud Customers, the data must be pushed to the Cloud Installation. For Process Director, the preferred method of sending data is via an Excel file, or series of files. Happily, importing the data is relatively straightforward.</p>
+        <p>First, create Excel exports of your internal data. You can do this one time, or on a scheduled basis. When you do so, send the Excel files to a desired export folder. These files will need to be imported into Process Director, so be mindful of the technical requirements for <a href="Datasources Excel.htm">Excel Datasources</a>.</p>
+        <p>Next, in your Process Director installation, create a destination folder that will store the Excel files in the Content List. While you're at it, you should also create the Internal User Database Datasource that will be used to import the Excel files into tables in the Internal User Database.</p>
+        <p>Now, you can use the <a href="Using the bpImport Utility.htm">bpImport utility</a> to transfer your Excel files from your file system, to the destination folder in your Process Director Installation. You can do this manually for the first import, but it's also useful to set up the Window's Schedule Utility to import the files on a scheduled basis by calling the bpImport utility to send the files on the schedule you desire. The bpImport utility enables you to save the import configuration as a command that you can paste into the Windows Schedule Utility to run on schedule. For on-premise installation, the bpImport utility is available in your installation folder for Process Director. Otherwise, contact us, and we'll be happy to provide you with a copy. The bpImport utility can be run on any machine, so you do not need Process Director installed locally for it to work.</p>
+        <p>Once you've imported the files the first time, you'll need to configure the Excel files to import the data into the Internal User Database, using the Datasource you configured previously. Again, see the <a href="Datasources Excel.htm">Excel Datasources</a> topic for the details of how to configure this. If you're going to import the files on a scheduled basis, be sure to select the <span class="ControlName">Automatically import this Excel file after every check-in or import </span>property so that, every time the import runs, the data automatically gets re-imported.</p>
+        <p>Once you're done, you should have the following actions taking place on a manual or scheduled basis:</p>
+        <ol>
+            <li>The data gets exported from the data repository to an Excel file or files, with the files stored in a specified file system folder.</li>
+            <li>The bpImport utility runs to transfer your Excel files from the specified file location to the specified destination folder in the Process Director Content List.</li>
+            <li>When properly configured, every time the old Excel files are replaced in the Content List by the newly imported files, the Excel data will be automatically imported into the Internal User Database.</li>
+        </ol>
+        <p>Once the data is imported, it's immediately available for use in Process Director, via datasources that use the Internal User database to access the data.</p>
+        <p>Obviously, you'll need to consider how fresh the data needs to be, in order to set up the appropriate schedule for the data import, as the data will only be as current as the most recent import.</p>
+    </body>
+</html>

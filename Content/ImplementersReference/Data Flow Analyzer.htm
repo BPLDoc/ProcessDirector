@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Data Flow Analyzer" />Data Flow Analyzer</h1>
+        <p>Administrators and implementers using Process Director v4.53 and higher have access to a general data viewer called the Data Flow Analyzer (DFA). The DFA enables you to track the data being used by Business Values, Knowledge Views, Business Rules, etc., so that you can see how the system retrieves data, and what data is retrieved by a particular object. The DFA assists administrators and implementers in testing and troubleshooting data calls made by Process Director objects.</p>
+        <h3 MadCap:conditions="General.Not Printed">Video Example</h3>
+        <p MadCap:conditions="General.Not Printed">
+            <object MadCap:HTML5Video="true" title="Data Flow analyzer" MadCap:Param_autoplay="false" src="../Resources/Multimedia/DataAnalyzer1.mp4" MadCap:Param_controls="true" MadCap:Param_muted="true" MadCap:Param_loop="true" style="width: 100%;height: auto;border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;">
+            </object>
+        </p>
+        <p>By default, access to the DFA is exposed to Administrators via a navigation button in the Admin User workspace. Administrators can, at their discretion, add the DFA access button to other workspaces, such as those used by process implementers and testers. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/dfa.png" />
+        </p>
+        <p>Clicking the <span class="UIElement">Data Flow Analyzer</span> button will open the DFA in a new browser window.</p>
+        <p>To configure the DFA, click on the <span class="UIElement">Menu </span>Icon in the DFA screen. To refresh the traces, click on the <span class="UIElement">Refresh </span>icon in the upper right corner of the DFA window.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/dfa2.png" />
+        </p>
+        <p>Clicking the <span class="UIElement">Menu </span>icon opens the configuration menu for the DFA. Administrators can view data flows for </p>
+        <ol>
+            <li>All of the users in the Partition, </li>
+            <li>For selected users, or </li>
+            <li>For themselves. </li>
+        </ol>
+        <p>Non-administrative users can only track the data flows that they initiate, i.e. data flows for the Current User.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/dfa1.png" />
+        </p>
+        <p>Clicking the <span class="UIElement">Clear All Traces</span> button will erase all of the currently visible tracking information, while clicking the <span class="UIElement">Turn Tracing Off</span> button will stop all data tracking.</p>
+        <p>The DFA operates automatically. Any time you run an object that is tracked by the DFA, a Trace for that object will appear in the DFA window after you refresh the window by clicking the <span class="UIElement">Refresh </span>icon. In the example below, clicking the <span class="UIElement">Test Query</span> button in a Business Value will result in a trace diagram similar to this:</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/dfa5.png" />
+        </p>
+        <p>The trace appears as a tree that starts at the top with the <span class="ProcessDirectorObject">Traces in Partition</span> object. the second level of the tree consists of all users who are being traced. In this example, only one user is being traced. At the next level of the tree, the individual objects that have been traced will appear. Each traced object will then have an <span class="ControlName">Execution </span>box below it that displays the name, execution time, and a <span class="UIElement">Click to Zoom</span> link to display the details about the trace. In this case, we want to look at the business value that we tested, so if we click the <span class="UIElement">Click to Zoom</span> link for the<span class="ProcessDirectorObject"> Training - Vendors</span> Business Value, the DFA will zoom to that node, and display the Business Value that was called by the form. We can exit the zoom by clicking the<span class="UIElement"> Return to Main</span> button. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/dfa6.png" />
+        </p>
+        <p>We can also view the details of the <span class="ProcessDirectorObject">Training - Vendors</span> Business Value by clicking on the <span class="ControlName">Training - Vendors </span>node.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/dfa8.png" />
+        </p>
+        <p>On this details screen, we can see the SQL&#160;Command that generated the query, the Parameters, if any, that were used by the Business Value, and a table containing the records that were returned by the Business Value.</p>
+        <p>The more complex the object, the more complex the trace will be in the DFA. For instance, let's say that we start the DFA, and open a Dashboard that contains several Charts.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/dfa9.png" />
+        </p>
+        <p>When we generate this Dashboard, the charts, with all of their underlying Business Values also run, which results in a trace stack that looks like this:</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/dfa10.png" />
+        </p>
+        <p>Each chart in the tree had a node, below the user node. Additionally, each chart has an execution node that points to the underlying Business Value, and you can zoom into each execution node to see the Business Value and the data it returns, just as we did in the first example above.</p>
+        <p>The Trace stack grows dynamically, so each time you perform another data operation, more traces are added. Similarly, if you choose to trace the entire system as an administrator, and choose to trace all users, you're trace stack can become very large, very quickly on a busy system. In the example below, we can see the stack trace generated by just three users in a few minutes.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/dfa11.png" />
+        </p>
+        <p>You can zoom in or out of the trace, enabling you to view close-ups of different sections of the trace stack, by using the scroll wheel on your mouse, or by clicking the [CTRL] + [+] or [CTRL + [-] keys on the keyboard. If you're zoomed in, you can use the horizontal and vertical scroll bars of the browser windows to move around and view different areas of the tree in your Trace stack.</p>
+    </body>
+</html>

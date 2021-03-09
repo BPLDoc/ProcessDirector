@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="Installation" />
+            <MadCap:concept term="Installation" /><a name="_Toc421172263"></a>Installation Completion</h1>
+        <h2>User Setup</h2>
+        <p>On completion of the installation procedure, the Process Director will have added several items to the Windows program group. Unless you change the directory during the installation, the Process Director will be installed in the C:\Program Files\BP Logix\Process Director\ directory. The following components are also installed or configured as part of the installation program:</p>
+        <ul>
+            <li>Sample users, groups, partitions and permissions are added to the database for a new installation</li>
+            <li>Available sample users: Administrator, user1, user2</li>
+        </ul>
+        <h2>Active Directory&#160;Synchronization</h2>
+        <p>
+            <MadCap:concept term="Active Directory" />Once installed, http://doc-staging.bplogix.com/content/home.htm can synchronize with <MadCap:keyword term="Active Directory" />Active Directory to import all of the Active Directory users into Process Director. To see more about Active Directory synchronization, see the topics on <a href="../SystemAdministratorGuide/User Administration.htm#_Toc421094519">User Directory Synchronization</a> and <a href="../SystemAdministratorGuide/Creating an AD Sync Profile.htm#_Toc421094524">Creating an Active Directory Sync Profile</a>.</p>
+        <h2>NTLM Configuration</h2>
+        <p>Process Director accepts Windows Authentication using NTLM. The default configuration for Internet Information&#160;Services (IIS 7) is to enable anonymous authentication only, however, so you will need to configure IIS to use NTLM by using the following procedure.</p>
+        <p>Open the IIS&#160;Manager and select the Process Director Web site from the tree view on the left side of the screen. Once you have done so, double click on the Authentication icon.</p>
+        <p>
+            <img src="../Resources/Images/Capture149.png" />
+        </p>
+        <p>On the Authentication page, select Windows Authentication, then click Enable in the actions pane to use Windows authentication.</p>
+        <p>
+            <img src="../Resources/Images/Capture150.png" />
+        </p>
+        <h2>Web Garden Is Not Supported</h2>
+        <p>Occasionally, server administrators will configure Internet Information Server to run as a web garden.  By default, an IIS application pool will run in a single process on the server. Servers configured as a web garden allow an IIS application pool to run on multiple processes, usually as part of a load balancing scheme. When this is done, w3wp.exe, will serve requests made to that single application pool by distributing the requests to multiple processes. Setting up a web garden is accomplished by setting the Maximum Worker Processes property of the application pool to allow 2 or more process to run under the application pool.</p>
+        <p>This configuration is not supported by Process Director, as it is not possible to synchronize the processes, causing the application to lose the current state of Process Director objects. You should ensure that the application pool for the Process Director Installation is configured to set the Maximum Worker Processes property to "1". To check this setting, Open the IIS Manager and click the Application Pools item in the treeview on the left side of the window. From the application pools list, open the Advanced Settings of the application pool of the process Director installation.</p>
+        <p>
+            <img src="../Resources/Images/iis1.png" />
+        </p>
+        <p>In the Advanced Settings dialog box, ensure that the Maximum Worker Processes setting is set to "1".</p>
+        <p>
+            <img src="../Resources/Images/Capture38.png" />
+        </p>
+    </body>
+</html>

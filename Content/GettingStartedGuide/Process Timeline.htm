@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="Implementations" />
+            <MadCap:concept term="Getting Started" /><a name="_Toc421709760"></a>The Process Timeline</h1>
+        <p>The Process Timeline functionality of Process Director is what sets it apart. Process Director adds the element of time to business process management in a way that nothing else does. Instead of traditional flowchart-based workflows, Process Director's Process Timeline uniquely adds scheduling and predictive capabilities to workflow management.</p>
+        <p>The Process Timeline may look familiar to you, because it is presented in Gantt chart format. The <span class="KeyTerms">Gantt chart</span> is a type of chart that places each activity in a process on a single line that is horizontally marked in some increment of time, usually days. Each activity is marked with a bar that whose left end begins at the task's start date, and ends at the task's end date. This type of chart is widely used in project management.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_12.png" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 83: Generic Gantt Chart</p>
+        <p>Process Director uses this generic Gantt chart format for the Process Timeline, and adds additional functionality for use in modeling and managing business processes. BP Logix developed the Process Timeline to address the need to measure and predict process execution times.&#160; Process Timeline enables organizations to build robust, executable process models within Process Director. Business users design Process Timelines by answering two questions as they add each step to the process:</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li style="list-style-type: disc;">What conditions must be met before this step can begin?</li>
+            <li style="list-style-type: disc;">How long will this step take to complete?</li>
+        </ul>
+        <p>We refer to these, respectively, as the dependence and duration questions. Each activity will begin as soon as its prerequisites, if any, are complete. The result is a solution with many valuable features:</p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="1">
+            <li>Modeling is greatly simplified. Project owners list each activity, estimate its duration, and then drag-and-drop it onto the activity or activities that must complete before it can begin.</li>
+            <li>As many of the activities as possible will run at the same time, without the need to explicitly configure parallel behavior.</li>
+            <li>The status of the process can be determined at a glance.</li>
+            <li>At any point—even the moment the process is launched—the system can determine which future activities, if any, may not be complete by their due date.</li>
+            <li>The system records actual versus predicted execution times each time the process is run, and adjusts its time estimates accordingly.</li>
+        </ol>
+        <p>Most activities have a dependence on one or more other activities. <span class="KeyTerms">Dependence</span> refers to the requirement that an activity cannot begin until a predecessor activity, or activities, ends. This type of relationship (often referred to by project managers as <span class="KeyTerms">finish-to-start</span>) represents the most fundamental starting condition for any activity.</p>
+        <p>Below is the Process Timeline for the <span class="ProcessDirectorObject">BP Logix Getting Started Sample Project</span>. It consists of three tasks, or activities.&#160; The Timeline column of the Process Timeline shows the number of days planned for each activity. <span class="ProcessDirectorObject">Initial Approval</span> is scheduled to take three workdays, <span class="ProcessDirectorObject">Finance Approval</span> is expected to take two workdays, and the <span class="ProcessDirectorObject">Submitter's </span><span class="ProcessDirectorObject">Notification</span> will take 0 workdays, as it is an automated process that will be performed by Process Director. The <span class="ProcessDirectorObject">Finance Approval</span> activity is dependent on the <span class="ProcessDirectorObject">Initial Approval</span>. The <span class="ProcessDirectorObject">Submitter's Notification</span>, in turn, is dependent on <span class="ProcessDirectorObject">Finance Approval</span>.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/ProcessTimeline.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 84: <span class="ProcessDirectorObject">Travel Expense Approval Process Timeline</span><![CDATA[  ]]></p>
+        <p>An activity may also be a parent or child activity. A <span class="KeyTerms">parent</span> activity is a container for other, subordinate activities, each of which is referred to as a <span class="KeyTerms">child</span> activity. Child activities have an implied dependence on their parent, so, absent any additional conditions, the child activities begin when the parent activity begins. Once all of the child activities are complete, the parent is complete. </p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_55.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 85: Sample Parent/Child Activities</p>
+        <p>In Process Director, it is possible for a parent and child activities to have a much more advanced interaction than described here. These interactions are intended to support more specialized and unusual cases, however, so they will be addressed in more advanced lessons. </p>
+        <p>Each activity in the Process Timeline has an <span class="ControlName">Actions</span> column with four icons, each of which enable you to modify one of the activity's properties.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>ICON</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>ACTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>
+                            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_56.jpg" style="visibility: visible;mso-wrap-style: square;width: 18px;height: 18px;" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Drag to move under another parent: Drag the activity to a parent activity. The activity you drag will become a child of that parent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>
+                            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_57.jpg" style="visibility: visible;mso-wrap-style: square;width: 18px;height: 18px;" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Drag to move order: Change where the activity appears in the Process Timeline. Note: changing the location of the activity does not change the behavior of the Process Timeline, which is strictly governed by the rules of dependence and other activity starting conditions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>
+                            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_58.jpg" style="visibility: visible;mso-wrap-style: square;width: 18px;height: 18px;" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Drag to add a dependence: Drag and drop an activity onto another to make the dragged activity dependent upon the target. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>
+                            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_59.jpg" style="visibility: visible;mso-wrap-style: square;width: 18px;height: 18px;" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Conditions: Click this icon to open the activity's properties on the Needed When tab.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p>
+                            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_60.jpg" style="visibility: visible;mso-wrap-style: square;width: 18px;height: 18px;" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>Properties: Click this icon to open the activity's properties on the Start When tab.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>The properties for each activity are presented in a tabbed interface. Each tab groups similar properties together.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>TAB</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Activity</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This tab enables the user to select the Activity Type, such as a User, Custom Task, Form Action, etc. It also contains other general activity settings.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Activity type</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>This tab will show specific properties that pertain to the Activity Type you select. The tab's label will change to reflect the selected Activity Type.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Start When</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This tab enables you to inspect and modify the dependencies and conditions that determine when the activity will start.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Completed When</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>This tab enables you to inspect and modify the conditions that determine when the activity will complete. Rarely used, as most activities complete organically (such as when a user submits a form, or an automated task completes).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Needed When</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This tab enables you to inspect and modify the conditions that determine if an activity will be run once its start conditions have been met. These conditions will be evaluated once when the activity becomes eligible to start.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Due Date</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>This tab enables you to inspect and modify the due date for the activity, and the actions to take when the activity is not completed by the due date.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Notifications</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This tab enables you to configure who is notified about the activity and when notifications should be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>Advanced Options</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>This tab enables you to configure advanced properties, such as how the activity is assigned to user, what steps to take when a user completes the activity, etc.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3><a name="_Toc421709761"></a>Travel Expense Approval Process Timeline</h3>
+        <p>The sample project Process Timeline is relatively simple, and consists of only three steps—one of which is conditional.&#160; The first step is for the initial approval of the travel request that the Form encapsulates. The second step is the approval of the Finance group, if the amount is over $1,000. The final step notifies the requestor whether the travel request has been approved. It’s worthwhile to note that the initial action—the employee filling out the form and submitting it for approval—isn’t represented as an activity within the Process Timeline. Rather, submitting the form is the action that triggers the Process Timeline to begin. So although we would normally think of that form submission as being part of the workflow, the Process Timeline itself begins at the point at which the form has already been completed and submitted.</p>
+        <p>To recreate this process, navigate to the <span class="ProcessDirectorObject">BP Logix Getting Started Sample Project</span> folder, and select “Process Timeline Definition” from the <span class="ControlName">Create New…</span> dropdown in the upper right portion of the screen to open the <span class="ProcessDirectorObject">Create Process Timeline Definition</span> screen. In this screen, type “My Request Approvals” in the <span class="ControlName">Process Timeline Name</span> textbox, then fill out a brief description in the <span class="ControlName">Description</span> textbox. Click the <span class="UIElement">OK</span> button to open the configuration screen for the new Process Timeline.</p>
+        <p>The configuration screen will display a blank Process Timeline. Let’s start by configuring Process Director to set the "My Travel Expense Request" Form as the default Form for this Process Timeline. Just as was the case when we were configuring the business rule, specifying the Form to associate with this Process Timeline will make it easier for us to select Form fields as we’re configuring the Process Timeline. Above the Process Timeline diagram is a hidden <span class="ControlName">Options</span> section that has a gray background. Open this section by clicking the “+” box next to the text that says “Options”. The options section of the screen will open.</p>
+        <p>In the <span class="ControlName">Options</span> section, there is a picker control labeled “Form for Process Timeline (will attach Form instance if needed)”. Click the <span class="UIElement">Build</span> button for this picker control to open the dialog box that enables you to choose the Form. From this dialog box, select the Form definition you just created. The dialog box will close, and the name of the Form will appear in the picker control. Click “Update” to save this change. </p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_61.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 90: Process Timeline Options</p>
+        <h4>Initial Approval Activity</h4>
+        <p>We’re ready to configure the Process Timeline. Add the first step to the Process Timeline by clicking the link labeled “Create Activity" to add a blank activity named “Activity 1” to the Process Timeline. Double-click on the “Activity 1” text, and the configuration dialog box for the activity will open.</p>
+        <p>In the <span class="ControlName">Name</span> textbox, rename the activity “Initial Approval”. On the <span class="UIElement">Activity</span> tab, select “User” from the <span class="ControlName">Activity Type</span> dropdown. Selecting a <span class="ControlName">User</span> activity tells Process Director that this activity will be assigned to a user for completion. Let’s give the user a reasonable amount of time to approve the request by setting the <span class="ControlName">Duration of Activity</span> to 3 business days.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_62.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 91: <span class="ProcessDirectorObject">Initial Approval</span> <span class="UIElement">Activity</span> Tab</p>
+        <p>In the <span class="UIElement">Participants</span> tab, Process Director has by default assigned this activity to the Process Timeline Initiator, which is the person who initially fills out the form. Instead, we want to assign the activity to the initial approver we selected on the Form. </p>
+        <p>From the dropdown labeled, "Timeline Initiator", select “From Form Field”. This selection will add two new picker controls to the row. Click the unlabeled picker control that is placed immediately to the right of the dropdown control to open the <span class="ProcessDirectorObject">Choose Form Field </span>dialog box. We want to assign this task to the Initial Approver the user selected in the Form, so, from the <span class="ControlName">Form Field</span> dropdown control, select “Approver” See how easy that was? That’s because the Process Timeline already knew which Form definition we are using, so it was able to offer us a list of just the fields on that Form. Click the <span class="UIElement">OK</span> button to close the dialog box. Then click the Update button, continuing to practice the good habit of saving our work as we go.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_63.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 92: <span class="ProcessDirectorObject">Initial Approval</span> <span class="UIElement">Participants</span> Tab</p>
+        <p>Next, we must set the possible results for this activity. Each result we configure will appear as a button on the form when the user (in this case, the approver specified in the <span class="ControlName">Approver</span> field) is viewing the form while engaged in this activity. In the <span class="UIElement">Results</span> tab, click on the <span class="UIElement">Add Result</span> button. A blank result header will appear below the button, labeled "Activity Result". Click on the <span class="ControlName">Activity Result</span> header to open the result details section. In the <span class="ControlName">Result Name</span> text box, type "Approved" to rename the result to <span class="ControlName">Approved</span> when the Process Timeline is saved. Repeat these steps to add another result, and name the second result "Denied".</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_64.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 93: <span class="ProcessDirectorObject">Initial Approval</span> <span class="UIElement">Results</span> Tab</p>
+        <p>Click the Process Timeline's <span class="UIElement">Update</span> button to save your changes and close the properties dialog box for the <span class="ProcessDirectorObject">Initial Approval</span> activity.</p>
+        <h4>Finance Approval Activity</h4>
+        <p>Once the <span class="ProcessDirectorObject">Initial Approval</span> activity is complete, the form will be routed to the Finance group, but only if the amount exceeds $1,000. Click the “Create Activity” link to add a new activity to the Process Timeline. Double-click the activity name to open the configuration screen for the activity.</p>
+        <p>Once again, this will be a user activity. Rename the activity “Finance Approval”. In the <span class="UIElement">Activity</span> tab, set the <span class="ControlName">Activity Type</span> to “User”, and set the <span class="ControlName">Duration of Activity</span> to 2 business days.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_65.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 94: <span class="ProcessDirectorObject">Finance Approval</span> <span class="UIElement">Activity</span> Tab</p>
+        <p>Recall that the <span class="ProcessDirectorObject">Initial Approval</span> activity was assigned to the specific user identified in the <span class="ControlName">Approver</span> form field. The <span class="ProcessDirectorObject">Finance Approval</span> activity, however, will be assigned to the whole Finance group. When the activity begins, every user in that group will receive a notification, and any one of them may actually complete the task. Sometimes this type of task assignment is called a “group work queue”. As an aside, groups can be taken from your organization’s user directory (such as Active Directory or LDAP), or configured directly within Process Director.</p>
+        <p>In the <span class="UIElement">Participants</span> tab, remove the “Process Timeline Initiator” participant, then click the <span class="UIElement">Add Participant</span> button. From the <span class="ControlName">Choose Participant Type</span> dropdown, select “Groups” to add a picker control to the row. Click the picker’s <span class="UIElement">Build</span> button to open the <span class="ControlName">Group Chooser</span> dialog box. In the <span class="ControlName">Group Chooser</span> dialog box, select the <span class="ControlName">Finance</span> group, then click the <span class="UIElement">OK</span> button to close the dialog box.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_66.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 95: <span class="ProcessDirectorObject">Finance Approval</span> <span class="UIElement">Participants</span> Tab</p>
+        <p>Just as we did for the <span class="ProcessDirectorObject">Initial Approval</span> activity, we need to set the possible results for the <span class="ProcessDirectorObject">Finance Approval</span> activity, as well. In the <span class="UIElement">Results</span> tab, click on the <span class="UIElement">Add Result</span> button. A blank result header will appear below the button, labeled "Activity Result". Click on the <span class="ControlName">Activity Result</span> header to open the result details section. In the <span class="ControlName">Result Name</span> text box, type "Approved" to rename the result to <span class="ControlName">Approved</span> when the Process Timeline is saved. Repeat these steps to add another result, and name the second result "Denied".</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_67.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 96: <span class="ProcessDirectorObject">Finance Approval</span> <span class="UIElement">Results</span> Tab</p>
+        <p>In the <span class="UIElement">Completed When</span> tab, set the dropdown labeled “All Users Have Completed Activity” to “First user Completes Activity”. We are going to assign this task to a group, and as soon as one member of the group approves or rejects the request, we want to end the task for everyone.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_68.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 97: <span class="ProcessDirectorObject">Finance Approval</span> <span class="UIElement">Completed When</span> Tab</p>
+        <p>To make this activity fully functional, we will need a business rule to run to determine whether or this activity is actually needed. We already know that we don't want this activity to run unless the total request amount is greater than $1,000. We will need to implement this rule-based decision on the <span class="UIElement">Needed When</span> tab. We have not, however, created that Business Rule that implements this logic yet, so for now we will continue creating the Process Timeline, and return to the <span class="UIElement">Needed When</span> tab of the <span class="ProcessDirectorObject">Finance Approval</span> activity after the Business Rule is created.</p>
+        <p>In the <span class="UIElement">Advanced Options</span> tab, check the checkbox labeled “Assign task to first user to accept”. We are assigning this task to the whole Finance group, not to a specific individual. We don't, however, want everyone in the Finance group to perform the task. Once a member of the Finance group accepts the task, we want the task assigned only to the person who accepts it.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_69.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 98: <span class="ProcessDirectorObject">Finance Approval</span> <span class="UIElement">Advanced Options</span> Tab</p>
+        <p>Click the <span class="UIElement">Close</span> button. </p>
+        <p>Since we want this activity to start after the <span class="ProcessDirectorObject">Initial Approval</span> activity is complete, we need to configure a dependence on the <span class="ProcessDirectorObject">Finance Approval</span> activity. </p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_70.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 99: Dragging an Activity to Set Dependency</p>
+        <p>Click and hold the wishbone-shaped Add Depends On icon, and drag the <span class="ProcessDirectorObject">Finance Approval</span> activity onto the <span class="ProcessDirectorObject">Initial Approval</span> activity. Now, the <span class="ProcessDirectorObject">Finance Approval</span> activity depends on the <span class="ProcessDirectorObject">Initial Approval</span> activity, meaning that the former won’t start until the latter is complete. You can verify that this dependence has been created properly by clicking on the blue bar associated with the <span class="ProcessDirectorObject">Finance</span><span class="ProcessDirectorObject"> Approval</span> activity. You’ll see the <span class="ProcessDirectorObject">Finance Approval</span> activity highlighted, illustrating the dependence relationship.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_71.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 100: Finance Approval Activity Dependency</p>
+        <p>Another way to verify that the dependence was successfully created is to visit the Start When tab in the properties for the <span class="ProcessDirectorObject">Finance Approval</span> activity. The dependence on the <span class="ProcessDirectorObject">Finance Approval</span> activity is indicated there.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_72.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 101: <span class="ProcessDirectorObject">Finance Approval</span> <span class="UIElement">Start When</span> Tab</p>
+        <p>Click <span class="UIElement">Close</span>, and then click the Process Timeline's <span class="UIElement">Update</span> button to save your changes and close the properties dialog box.</p>
+        <h4>Submitter's Notification Activity</h4>
+        <p>Click the <span class="ControlName">Create Activity</span> link again to add another activity. Double-click on the new activity’s name to open its configuration screen. In the configuration screen, change the <span class="ControlName">Name</span> property to “Submitter's Notification”. Then, in the <span class="UIElement">Activity</span> tab, change the <span class="ControlName">Activity Type</span> to “Notify”.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_73.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 102: <span class="ProcessDirectorObject">Submitter's Notification</span> <span class="UIElement">Activity</span> Tab</p>
+        <p>Now, click on the Notifications tab. We want to set this activity to notify the Timeline initiator when the process is complete. Click the <span class="UIElement">Add Notification</span> button to add a person for the activity to notify. Clicking this button causes a new set of controls to appear, enabling you to configure the notification. From the dropdown labeled "Choose Notify Type", select "Timeline Initiator".</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_74.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 103: Submitter's Notification <span class="UIElement">Notifications</span> Tab</p>
+        <p>Click the <span class="UIElement">Close</span> button to close the configuration screen. Look at the Process Timeline Gantt chart and notice that, as things stand, the <span class="ProcessDirectorObject">Submitter's Notification</span> activity will start at the beginning of the process, in parallel with the <span class="ProcessDirectorObject">Initial Approval</span> activity. </p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_75.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 104: Process Timeline Before Adding Notification Dependency</p>
+        <p>Of course, we want the <span class="ProcessDirectorObject">Submitter's Notification</span> activity to run only after the other approvals have completed, so we’ll make it dependent on the <span class="ProcessDirectorObject">Finance Approval</span> activity. Use the same technique we used earlier: click and hold the wishbone-shaped Add Depends On icon for the <span class="ProcessDirectorObject">Submitter's Notification</span> activity, and drag and drop it onto the <span class="ProcessDirectorObject">Finance Approval</span> activity. Note how the Gantt chart now reflects the correct ordering of the activities.</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_76.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p class="CompanyInformation1">Figure 105: Process Timeline After Adding Notification Dependency</p>
+        <p>To further understand how dependence works, click the blue bar on the <span class="ProcessDirectorObject">Finance Approval</span> activity as you did earlier. Now note that there are two highlighted activities: the <span class="ProcessDirectorObject">Initial</span><span class="ProcessDirectorObject"> Approval</span> activity is highlighted in green, indicating that it is a predecessor to the <span class="ProcessDirectorObject">Finance Approval</span> activity (that is, the <span class="ProcessDirectorObject">Finance Approval</span> activity depends on the <span class="ProcessDirectorObject">Initial</span><span class="ProcessDirectorObject"> Approval</span> activity). The <span class="ProcessDirectorObject">Submitter's Notification</span> activity is highlighted in red, indicating that it is a successor to the <span class="ProcessDirectorObject">Finance Approval</span> activity (the <span class="ProcessDirectorObject">Submitter's Notification</span> activity depends on the <span class="ProcessDirectorObject">Finance Approval</span> activity).</p>
+        <p>
+            <img src="../Resources/Images/GettingStartedGuide/ProcessTimeline1.png" />
+        </p>
+        <p class="CompanyInformation1">Figure 106: Timeline Dependencies</p>
+        <p>Click the <span class="UIElement">OK</span> button above the Process Timeline chart to save all the changes you’ve made to the Process Timeline, and return you to the list of objects for the <span class="ProcessDirectorObject">My</span> <span class="ProcessDirectorObject">Project</span> folder.</p>
+    </body>
+</html>

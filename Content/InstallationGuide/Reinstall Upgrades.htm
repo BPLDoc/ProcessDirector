@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Installation" /><a name="_Toc421172273"></a>
+            <MadCap:keyword term="Installation;Upgrade" />Reinstall/Upgrades/Moving Hosts</h1>
+        <p>The Process Director can be reinstalled or upgraded with no loss of data. Any database table updates are automatically performed after the install completes.</p>
+        <h2><a name="_Toc421172274"></a>Rolling Back to a Previous Installation <a href="#_Toc421172274" class="anchor">#</a></h2>
+        <p>After installing a new Process Director patch, you can roll back to the previous version by uninstalling Process Director and then reinstalling the previous version. However, some patches involve changes to Process Director’s database. If a patch has changed the database, new database columns, indices, and tables will need to be removed, and the tblSettings columns “nDBVersion” and “nDBVersionPrev” will need to be reset. If you are reverting to a patch that involves database changes, <a href="https://support.bplogix.net/" target="_blank">contact technical support</a> for instructions on reconfiguring the database.</p>
+        <h2><a name="_Toc421172275"></a>Uninstalling <a href="#_Toc421172275" class="anchor">#</a></h2>
+        <p>You may uninstall Process Director by using the Add or Remove Programs in the Control Panel:</p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="1">
+            <p>Click on the Start button on the Windows taskbar.</p>
+            <p>Select the Settings <span style="font-family: Wingdings;">à</span> Control Panel</p>
+            <p>Click on the “Add or Remove Programs” icon.</p>
+            <p>Select Process Director and click Remove</p>
+        </ol>
+        <p>The un-install program will NOT remove the Process Director database or the website or virtual directory. </p>
+        <h2><a name="_Toc421172276"></a>Upgrading to a New Version <a href="#_Toc421172276" class="anchor">#</a></h2>
+        <p>The upgrade process for installing new versions of Process Director is very straightforward. Essentially, simply downloading and installing the new version will automatically upgrade your existing version of Process Director, and carry over all of your settings and licensing information. If you are upgrading to Process Director v3.41 or higher from an earlier version, however, you will have to take the additional step of setting the Application Pool to use ASP.NET 4.5.</p>
+        <p>To begin the upgrade process, log into to <a href="http://support.bplogix.net/" target="_blank"><span class="Hyperlink">http://support.bplogix.net</span></a> and navigate to the Downloads page.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Download the installation file for the new version by clicking on the link labeled "Download Process Director Install program vX". Assuming that you are using Internet Explorer as your browser, you will receive a Download dialog, from which you will need to click the Save button to download the installation file to your local machine. Do not run the installation file from support.bplogix.net.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Once the installation file has downloaded, a dialog box will appear notifying you that the download has completed. You can now run the installation file by clicking the Run button.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_2.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>The installation will begin unpacking the installation files.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_3.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Once the installation files are unpacked and verified, if you are installing v3.4X or above, you will receive a warning notifying you that you must change the application pool settings in IIS to use ASP.NET v4.5.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_4.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <div class="Important">
+            <img src="../Resources/Images/i2.png" alt="Note" title="Note" /> Process Director v4.57 and higher requires the .NET&#160;Framework v4.6. Process Director v5.X requires the .NET&#160;Framework v4.7.</div>
+        <p>Once you accept the warning by clicking the OK button, the Installation Wizard will appear.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_5.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Click the Next button to show the next pane of the Wizard, which displays the License Agreement for Process Director. To continue the wizard, you must accept the terms of the license agreement by checking the acceptance check box.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_6.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Click the Next button again to display the installation location for Process Director. The destination folder cannot be changed for upgrades, so there is nothing for you to do in this pane of the wizard, except click the Next button.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_7.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>The installation is now ready to begin. Click the Start button to begin the installation. The Wizard will display a progress pane while the installation proceeds.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_8.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Once the installation is done, the Wizard will display a notification pane.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_9.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>Click the Finish button to close the wizard. After a few seconds, a dialog box will appear to set the base URL for the Process Director installation. By default, this will be the existing URL of the installation, so, you should not have to change the URL. Click the OK button to close and save the URL.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_10.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>The Installation is now complete, but, if you are upgrading to v3.4X or above from an earlier version, Process Director will not work until you reconfigure the Application pool in IIS. If you try to open Process Director at this point, you will receive an error message, most likely "HTTP Error 500.19 - Internal Server Error".</p>
+        <p>Open the Internet Information Service (IIS) Manager.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_11.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>In the Connections pane of the IIS Manager, click on Application pools to display the application pools for IIS in the center pane. Find the application pool you have assigned to Process Director, right-click on it, and select Basic Settings from the popup menu. The basic settings dialog box will open.</p>
+        <p>Change the .NET CLR Version dropdown to .NET CLR Version v.4.0.XXXXXX (the precise version will be slightly different depending on the environment, but it should be at least v4.0.30319). Be sure that the Start application pool immediately check box is checked. Click the <span class="UIElement">OK </span>button to save your changes.</p>
+        <p>
+            <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_12.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>This should complete the upgrade process for Process Director.</p>
+        <h2><a name="NewHost"></a>Moving Process Director to a New Host <a href="#NewHost" class="anchor">#</a></h2>
+        <p>The Process Director installation can be moved to another Windows host. This may be required due to an upgrade to your hardware or copying the system to a test server. To perform the move, follow the instructions below.</p>
+        <ol>
+            <li> Copy the Process Director database from the other system to the new server.</li>
+            <li>Install Process Director on the new server.</li>
+            <li>Copy these folders from the old server to the new server:</li>
+        </ol>
+        <p class="indent1">\Program Files\BP Logix\Process Director\website\custom\</p>
+        <p class="indent1">\Program Files\BP Logix\Process Director\website\App_Data\</p>
+        <ol MadCap:continue="true">
+            <li>Set the Interface URL.</li>
+        </ol>
+        <p class="indent1">After Process Director is activated with the copy of the database from the other system, Navigate to the installation tab in the Administration section and ensure the Interface URL in the Installation Settings are pointing to the new server (if any values were configured).</p>
+        <ol MadCap:continue="true">
+            <li>Rerun the registration process</li>
+        </ol>
+        <p class="indent1">Rerun the registration process on the new server by navigating to the Licensing tab under Installation of the Administration section and enter the serial number sent to you.</p>
+        <ol MadCap:continue="true">
+            <li>Recreate the appropriate database connection strings on the new server.</li>
+        </ol>
+    </body>
+</html>

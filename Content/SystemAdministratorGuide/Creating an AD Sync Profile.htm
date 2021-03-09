@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="System Administration" />
+            <MadCap:concept term="Active Directory;System Administration" /><a name="_Toc421094524"></a>Creating an <MadCap:keyword term="Active Directory" />Active Directory Sync Profile</h1>
+        <p>This utility can be run manually, or scheduled to perform an automatic synchronization. To perform the synchronization, navigate to User Administration <span style="font-family: Wingdings;">à</span> User Directory Synchronization. Each sync configuration is a profile. You can create many profiles to sync specified users or groups of users. These profiles will be saved to the database so you may run them at any time. You may also create a profile by selecting the Create AD Sync Profile link. </p>
+        <p>
+            <img src="../Resources/Images/Capture60.png" />
+        </p>
+        <p>Each profile will, after running display when the synchronization was last performed, and the result of the synchronization.</p>
+        <p>Configure the profile by selecting the appropriate values for the settings displayed. Ensure that you have selected OK to save the settings to the profile.</p>
+        <p>
+            <img src="../Resources/Images/Capture210.png" />
+        </p>
+        <h2><a name="Synchronization"></a>Synchronization Profile Properties <a href="#Synchronization" class="anchor">#</a></h2>
+        <p>The following properties are configurable in the Active Directory Sync Profile.</p>
+        <p><b>Sync Name:</b> The name of the profile that will appear in the list of available profiles on the User Directory Synchronization page.</p>
+        <p><b>Description:</b> An optional, brief description of the profile's purpose.</p>
+        <p><b>AD&#160;Domain:</b> The Active Directory Domain with which you wish to synchronize.</p>
+        <p><b>AD&#160;Username:</b> The Active Directory User name that has permissions to pull data from the domain with which you wish to synchronize.</p>
+        <p><b>Password:</b> The password associated with the <span class="ControlName">AD&#160;Username</span>.</p>
+        <p><b>Phone...Custom Number:</b> A list of fields that can be mapped to Active Directory fields to store the relevant data contained in Active Directory.</p>
+        <p><b>Secure:</b> This option causes the synchronization to use a secure connection (SSL).</p>
+        <p><b>Test Connection&#160;Settings:</b> This button, when clicked, will make a test connection to the specified AD&#160;Domain to ensure the connection works properly.</p>
+        <p><b>Sync Objects:</b> A series of check boxes that enable you to choose which object types to sync.</p>
+        <p><b>Limit Users to Group:</b> This optional value will limit the users to sync to only the users within the specified group.</p>
+        <p><b>Limit Groups to Group:</b> This optional value will limit the groups to sync to only the groups within the specified group.</p>
+        <p><b>Add Objects to Partitions:</b> This optional dropdown value lists the partitions that exist on the installation, and enables you to specify the partition to which to add the synchronization objects.</p>
+        <p><b>Add Users to Groups:</b> This optional value specifies to which Process Director groups to add the synchronization users.</p>
+        <p><b>Do Not Disable:</b> This option indicates that the synchronization will add new objects from an AD Sync, but will NOT disable already existing users or groups which the sync does not find.</p>
+        <p><b>Remove Users From Groups:</b> This option indicates that the synchronization will remove users from groups in Process Director when they are removed from the AD group.</p>
+        <p><b>Add as Day Pass Users:</b> This option indicates that the synchronized users should be added as licensed day pass users. This option is only relevant to installations licensed for user passes.</p>
+        <p><b>Debug Mode:</b> This option runs the synchronization in "Debug Mode" - providing more verbose logging.</p>
+        <p><b>Test Mode:</b> This option causes the synchronization to fetch all the object to synchronize without adding them to Process Director.</p>
+        <p><b>Interactively Run This Sync Profile:</b> Clicking this button will manually run the Synchronization. By default, the Sync will run in Test Mode, so you will need to be sure to uncheck the <span class="ControlName">Test Mode</span> property to run an actual sync.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421094525"></a>Manual Execution of an Active Directory Sync Profile</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To execute a profile, navigate to the User Directory Synchronization page and select the Run command from the profile you would like to run. This will display the AD Sync Run page. The AD Sync Run page displays the profile configuration with the option of changing your settings for that run instance.</p>
+                <p>If the synchronization occurs successfully, you will see the number of users and groups that were synchronized. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="_Toc421094526"></a>Scheduled Execution of an Active Directory Sync Profile</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To automatically schedule the profile to run at regular intervals (for example, every night at midnight) use the Microsoft Windows Scheduled Tasks utility. This utility enables you to schedule and test commands executed on a regular basis. </p>
+                <p>Do not schedule IEXPLORE.EXE because the web browser will never close. Rather, use the bputil.exe command to run the web page.&#160; Process Director has created this path for you. Navigate the AD Sync Run Page and copy and paste the URL under Directory Connection to the Windows Scheduler. </p>
+                <p>
+                    <p>
+                        <img src="../Resources/Images/Capture211.png" />
+                    </p>
+                </p>
+                <p>For example, enter this command in the “Run” dialog box to schedule the synchronization:</p>
+                <div class="CodeBase">"PATH\bputil.exe" SU "http://localhost/WD/admin/ad_sync.aspx?ads=Profile_Name"</div>
+                <p>where PATH is the installation directory for Process Director (e.g. c:\Program Files\BP Logix\Process Director\). Enter the appropriate credentials in the Windows Scheduler when prompted. Use the “Schedule” tab to set the times to run the command. Consult the Microsoft help for more information on this utility.</p>
+                <div class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> You must enclose the URL to ad_sync.asp in double quotes.</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h5>User Synchronization</h5>
+        <p>AD users will be created in the Process Director database when synchronization is performed and when the user logs in. The user ID, display name, email address and organization hierarchy will be kept in sync. If a user is renamed in AD it will be reflected in the Process Director database during a login or a synchronization operation. If a user is deleted in AD, the user will be disabled in the Process Director database. It is recommend that the user ID be left as disabled instead of deleting it so that the user history is maintained (e.g. processes they participated in, documents they modified, etc.).</p>
+        <h5>Group Synchronization</h5>
+        <p>The integration will synchronize the AD groups. These will be created as groups in Process Director. When using AD groups, if you delete or rename groups in AD they will be removed from the Process Director database. When renaming an AD group, you should rename it in the Process Director User Administration Group section first. This is not required for AD users.</p>
+        <p>For more information on User or Group synchronization, please see the topic on <a href="User Administration.htm#_Toc421094519" title="User Directory Syncronization" alt="User Directory Syncronization">User Directory Synchronization</a>.</p>
+        <h2><a name="SyncLogHistory"></a>Active Directory Synchronization Log <a href="#SyncLogHistory" class="anchor">#</a></h2>
+        <p>Installations that use the Auditing component have access to a Synchronization log that is saved to the database when an Active Directory synchronization is run. The link to this page is available from the <span class="UIElement">Import History</span> action link at the top of the User Directory Synchronization page.</p>
+        <p>
+            <img src="../Resources/Images/Training/Administrator/SyncLog.png" />
+        </p>
+        <p>This link opens a searchable log page to view all of the log events generated during a synchronization. </p>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> Please be aware that larger organizations may have—depending on the size and frequency of the synchronizations—a huge number of log entries, which can return a massive amount of data and degrade system performance. The number of records returned, however, can be restricted by setting the <a href="../DevelopersGuide/Customization File Administration.htm#nMaxADSyncLogEvents">nMaxADSyncLogEvents</a> and <a href="../DevelopersGuide/Customization File Administration.htm#fKeepADSyncInfoLogs">fKeepADSyncInfoLogs</a> custom variables.</div>
+        <p>
+            <img src="../Resources/Images/Training/Administrator/SyncLog1.png" />
+        </p>
+        <p>A number of filters are available on the page to assist you with searching for specific entries.</p>
+        <ul>
+            <li><b>From/To:</b> You can perform a search only for log entries that occurred between specified dates. An additional <span class="UIElement">Filter </span>button provides you with appropriate date conditions to apply to the From/To criterion.</li>
+            <li><b>Object Name:</b>&#160;You can search for entries that have specific text in the object name, such as a username.</li>
+            <li><b>Messages:</b> You can search for entries that have specific text in the log Message.</li>
+            <li style="font-weight: normal;"><b>Message Type:</b> You can search for specific message types by selecting the appropriate message type from the dropdown control. Available message types are All, Info, Warning, and Error.</li>
+        </ul>
+        <p style="font-weight: normal;">When you configure the options, clicking the <span class="UIElement">Refresh </span>button will reload the log files that match your conditions. An <span class="UIElement">Export to CSV </span>button is also available to export the log results to a CSV file that can be opened in Microsoft Excel.</p>
+        <p style="font-weight: normal;">You can return to the AD&#160;Synchronization page by clicking the <span class="UIElement">User Directory Sync Profiles</span> action link.</p>
+        <h2><a name="Issues"></a>Synchronization Issues <a href="#Issues" class="anchor">#</a></h2>
+        <p>When a user is managed via an Active Directory Synchronization, some extra information about the user is available at the bottom of the user's account profile.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/Capture1.png" />
+        </p>
+        <p>The Object ID is the user's internal UID in Process Director. The External GUID is the user's SID in Active Directory, which is copied over to Process Director, and placed in the sExternalGuid field of the record in tblUser for this user, and links the user's Process Director ID to the Active Directory ID for this user. Finally, the Sync Profile is the ID of the Synchronization Profile that is used to synchronize this user.</p>
+        <p>When a user is synchronized, once, they are permanently associated with a specific Active Directory account and Sync Profile.</p>
+        <p>This association can be lost under some circumstances:</p>
+        <ul>
+            <li>The user leaves the organization, and is removed from AD. The user will be disabled, but not deleted, on the next AD&#160;Sync. If the user returns to the organization, and a new AD account is created, then the user will appear as a NEW user in Process Director, and the existing account will not be reassociated.</li>
+            <li>Similarly, If you move the user to a different AD Sync profile, the same thing will happen, because Process Director will assume that the user in the new AD Sync profile is a different user. Again, a new account will be created, and the old account disabled.</li>
+        </ul>
+        <p>In such cases you may want to reassociate the same Process Director user with the changed AD Account, so that you can maintain continuity with the Process Director user's different profiles or AD&#160;Accounts.</p>
+        <p>In such cases, the solution we would recommend is creating an admin form that allows a user ID and new AD GUID or Profile ID to be entered and have it update the tblUser database table. This form would  update the Process Director sExternalGUID and/or oADID fields in the table tblUser within the Process Director database for the affected user.  The form can save the original GUIDs from tblUser in the form instance, just in case there was a mistake made. Also, that would provide an audit trail of changes. You can then delete the new user from Process Director.</p>
+        <div class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> This is an advanced solution, so you should use due caution in implementing it. We <i style="font-weight: bold;">very strongly</i> advise you to contact us for Direct Assistance in creating this solution unless you are absolutely sure you know how to implement it.</div>
+    </body>
+</html>

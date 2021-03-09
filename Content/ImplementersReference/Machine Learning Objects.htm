@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation;Machine Learning;Artificial Intelligence" />
+            <MadCap:keyword term="Machine Learning;Artificial Intelligence" />Machine Learning (ML) Definition</h1>
+        <p>Users of Process Director v5.0 and higher have access to the Machine Learning, or ML,&#160;definition object. The ML&#160;Definition enables you to use Process Director's Artificial Intelligence capabilities to review a dataset, and make predictions based on the state of that dataset. Process Director has long used Machine Learning/Artificial Intelligence (ML/AI) to learn how Timelines work in the real world, and make predictions about when tasks will run in the current instance, based on the ML/AI analysis. For instance, this AI capability is how Process Director can predict when a task will be late. With the ML&#160;Definition, you can use the same capability to make predictions on any desired data, using a number of different statistical and analytic functions. The ML&#160;Definition object is globally available in Process Director, just like a Business Value, and can analyze data from both inside of and/or external to Process Director.</p>
+        <p>Keep in mind that this help topic is not designed to teach you what statistical models are, or provide a lesson on how ML/AI works. It is, rather, intended to assist you in familiarizing yourself with the Process Director object itself. Just like with a SQL&#160;Business value, where many users will not have the experience that enables them to construct SQL&#160;statements, the ML&#160;Definition assumes some basic familiarity with statistical functions, e.g, regression analysis, SVM, etc., to use effectively.</p>
+        <p>To create an ML&#160;Definition, simply select <span class="ControlName">ML&#160;Definition</span> from the <span class="UIElement">Create New...</span> dropdown menu located in the upper right corner of the Content List.</p>
+        <p>
+            <img src="../Resources/Images/Custom Tasks2/MLDefinition.png" />
+        </p>
+        <h2><a name="Properties"></a>Properties Tab <a href="#Properties" class="anchor">#</a></h2>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/MLDefinition1.png" />
+        </p>
+        <p>The Properties tab contains the basic configuration and publication options for the object.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Icon</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Icon Property enables you to use the Icon Chooser to pick the Desired Icon for the object.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Machine Learning (ML)&#160;Definition&#160;Name</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Name of the object you wish to display in the Content List.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Machine Learning Object Description</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A brief description of the ML&#160;Definition's purpose. This is mainly for administrative purposes, and any data entered here will appear on the second line of the content list entry for this object.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>This Machine Learning Definition will be used in a Timeline Definition for predicting durations.</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property, when checked, tells Process Director that this ML object will be used to make time-based, predictive analyses for the completion of Timeline Activities.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>ML&#160;is currently Active/NOT&#160;Active</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Selecting the <span class="ControlName">Active </span>radio button will expose the ML&#160;Definition to the dropdown menu used in the <span class="ControlName">Choose System Variable</span> dialog box. Setting the definition to <span class="ControlName">NOT Active</span> will deactivate the definition, and it will not be available for use in&#160;process Director until it is set to <span class="ControlName">Active</span>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Group in Value Picker</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A text field that sets the menu category in which the ML&#160;Definition will appear in the  in the <span class="ControlName">Choose System Variable</span> dialog box.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="Data"></a>Data Set Tab <a href="#Data" class="anchor">#</a></h2>
+        <p>The <span class="UIElement">Data Set</span> tab enables you to choose the dataset that will be used for the ML&#160;Analysis. You can select any of the following data sources, and each selected data source will change the user interface to reflect the type of dataset you choose.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SQL&#160;Data Source</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/MLDefinition2.png" />
+                </p>
+                <p>The SQL&#160;Data Source can extract data from any accessible SQL-based data source supported by Process Director. </p>
+                <p><b>Data Set Type:</b>&#160;You can use any existing SQL&#160;Dastasource object to access the data, then write the appropriate SQL&#160;Command to extract only the data you'd like to use for your analysis. Simply select the Datasource object that connects to your database, using the <span class="NamedControl">Object Picker</span>. You can click the <span class="UIElement">Test Connection</span> button to ensure you are connecting to the database specified in the Datasource object.</p>
+                <p><b>SQL&#160;Command:</b>&#160;Write the desired SQL&#160;Command into the Text Box. Once you have written your SQL&#160;query, you can use the <span class="UIElement">Test Query</span> button to ensure that the SQL&#160;Command returns data.</p>
+                <p><b>Select Table to Inspect Columns:</b><span class="ControlName" style="font-weight: bold;"> </span>To assist you, the <span class="ControlName">Select Table to Inspect Columns</span> dropdown will automatically be filled with all of the table names of the tables that are accessible from the Datasource object you have selected. When you select a table name from the dropdown, a list of the fields in the selected will be displayed.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Form Data Source</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/MLDefinition3.png" />
+                </p>
+                <p>The Form Data Source enables you to use the existing instances of any Form Definition to use for the ML&#160;analysis. Using the <span class="ControlName">Select the Form Definition to be used for this ML data set</span> <span class="NamedControl">Object Picker</span>, select the form definition that contains the instances you wish to use. Once you do so, a list of form fields from that form definition will appear. Using the check boxes adjacent to each field, you can choose the specific form fields you wish to include in your ML analysis. Additionally, you can choose all form fields by clicking the <span class="UIElement">Select All </span>button, or no form fields by clicking the <span class="UIElement">Select None</span> button.</p>
+                <p>In most cases, you probably won't want all of the form fields included in your analysis. For instance, many forms have common fields like names or telephone numbers that probably don't contribute much to an ML analysis. Conversely, unchecking all the form fields leaves you with nothing to analyze. You'll need to select only the form fields that have relevance to your analysis.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Knowledge View Data Source</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/MLDefinition4.png" />
+                </p>
+                <p>Any existing Knowledge View can be sued as a data source for your ML&#160;Analysis.</p>
+                <p><b>Choose Knowledge View:</b> Select the Knowledge View you wish to use by choosing it from the <span class="NamedControl">Object Picker</span>.</p>
+                <p><b>Knowledge View Filter Data:</b> If your Knowledge View uses any filter variables, you can enter the appropriate filter statements in this text box, using a new line for each desired filter statement.</p>
+                <p><b>Execute Knowledge View under this user context:</b> Using the <span class="NamedControl">User Picker</span>, select a user that has run and view permission for the Knowledge View. Since ML&#160;Definitions, Like Business Values, are global, the user who runs the ML&#160;definition may not have permissions to access the underlying Knowledge View. Selecting a user with the appropriate permission to run the Knowledge View will run it in that user's context. You must also provide a <span class="ControlName">Password </span>for the user, once selected.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>REST&#160;Data Source</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/MLDefinition5.png" />
+                </p>
+                <p>Any accessible REST web service can be used to provide analysis data. Simply enter the URL for the REST web service, along with any required URL&#160;parameters, into the <span class="ControlName">REST&#160;URL</span> text box. You may use system variables as URL&#160;Parameters.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Azure IoT Hub</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/MLDefinition6.png" />
+                </p>
+                <p>Users of Microsoft Azure's IoT&#160;Hub service can access their IoT Hub directly through Process Director. Use the <span class="ControlName">Please Choose Data Source</span> <span class="NamedControl">Object Picker</span> to select the Datasource object that connects to your hub.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="Transformation"></a>Transformation Tab <a href="#Transformation" class="anchor">#</a></h2>
+        <p>Once your dataset has been selected from the <span class="UIElement">Data Set</span> tab, you may find it necessary to apply some changes to your data, or to ignore part of the data that you think isn't relevant to the decision or prediction that you'd like the ML&#160;Definition to make. This process of altering or ignoring some data in the dataset is called <span class="KeyTerms">transformation</span>, and conducting those transformations is the purpose of the <span class="UIElement">Transformation </span>tab.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/MLDefinition7.png" />
+        </p>
+        <p>To add a Transformation, click the <span class="UIElement">Add Transformation</span> button, which will make a transformation row appear on the page. Click the button again to add additional rows. </p>
+        <p>The transformation row initially has two properties to set:</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Condition</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The <span class="ControlName">Condition </span>enables you to identify a specific data criterion to look for to determine whether the data in that row should be transformed. The <span class="ControlName">Condition </span>is much like the "WHERE" clause of a SQL&#160;statement, and, in fact, uses a SQL-like syntax to determine what data row to look for to apply the transformation. The <span class="ControlName">Condition </span>is specified by using two values, separated by some kind of operator in the middle. The Left-side value is the data field you'd like to look for, and the right side of the <span class="ControlName">Condition </span>is the value you are trying to match in that field, e.g.:</p>
+                <p><code>FieldName = 'FieldValue'</code>
+                </p>
+                <p>You can use all of the expected operators such as &lt;, &gt;, =, etc. when creating your <span class="ControlName">Condition</span>. Text or date values need to be identified with single quotes, while number values need no identifiers. For instance, let's say you want to look for the data record that has the Primary Key ID of 10. Your <span class="ControlName">Condition </span>could be written as:</p>
+                <p><code>id = 10</code>
+                </p>
+                <p>Conversely, if you were looking for data from a specific date, your <span class="ControlName">Condition </span>might be written as:</p>
+                <p><code>StartDate = '5/15/2018'</code>
+                </p>
+                <p>You can also use the AND and OR keywords to create a complex <span class="ControlName">Condition </span>that uses multiple search criteria, such as</p>
+                <p><code>StartDate = '5/15/2018' AND&#160;Category = 'C'</code>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Transformation Type</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>There are two options for conducting the transformation. The first is <span class="ControlName">Ignore Row</span>. If you choose this option, the data will be removed from the dataset. The second option, however, is to <span class="ControlName">Set Column to Value</span> which enables you to actually change the existing data in some way. If you select this option, some new property selections will also appear.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/MLDefinition8.png" />
+                </p>
+                <p>In the new column that is labeled, <span class="ControlName">[Select Column]</span>, you can choose the column whose value you wish to change. </p>
+                <p>In the <span class="ControlName">[Select Operation]</span> column, you can choose the type of change you'd like to make. The following options are available:</p>
+                <ul>
+                    <li>Median - Change the value to the Median of all values in this data column.</li>
+                    <li>Average - Change the value to the Average of all values in this data column.</li>
+                    <li>Minimum - Change the value to the smallest value of all values in this data column.</li>
+                    <li>Maximum - Change the value to the largest value of all values in this data column.</li>
+                    <li>Least Common - Change the value to the least common, i.e., the value with the fewest number of instances of all values in this data column.</li>
+                    <li>Most Common - Change the value to the most common, i.e., the value with the largest number of instances of all values in this data column.</li>
+                    <li>Text Value - A value you can specify. When you select this option, a text box appears to enable you to enter the desired value.</li>
+                    <li>Upper Case - Changes the case of all text to upper case.</li>
+                    <li>Lower Case - Changes the case of all text to lower case.</li>
+                </ul>
+                <p>Once you have added all of the desired transformations, you can view the resulting data by clicking the <span class="UIElement">Show Transformed Data Set</span> button, to display a data window showing you the transformed data.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/MLDefinition9.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="Training"></a>Training Tab <a href="#Training" class="anchor">#</a></h2>
+        <p>Once you have selected and transformed your dataset, Process Director needs to train itself on the data to apply the type of analysis or prediction you want to apply. The <span class="UIElement">Training </span>tab is where you conduct this training.</p>
+        <p>
+            <img src="../Resources/Images/Custom Tasks2/MLDefinition1.png" />
+        </p>
+        <p>The <span class="UIElement">Training </span>tab is divided into two sections. The top section is where you configure the <span class="ControlName">Prediction Feature</span>. The purpose of ML/AI is to analyze data and make predictions based on that analysis, much like the Process Timeline, based on past instances of a Timeline definition, can predict whether a future activity is likely to be late.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Predicted Column</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property sets the data column or form field, depending on the data type you're using, that will store the value that will be set as a result of a prediction.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Predicted Column Type</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property sets the desired data type of the column or form field to store the value that will be set as a result of a prediction. Your options are:</p>
+                <ul>
+                    <li>Text</li>
+                    <li>Number</li>
+                    <li>Yes/No</li>
+                    <li>Date</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Machine Learning Algorithm</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This is the mathematical or statical method that Process Director will use to make the prediction. You have the following options:</p>
+                <ul>
+                    <li><i>No Machine Learning:</i>&#160;No Algorithm will be applied.</li>
+                    <li><i>MLA&#160;Classifier Multinomial Logistic Regression:</i> Multinomial logistic regression using Newton’s method as its optimization algorithm.</li>
+                    <li><i>MLA&#160;Classifier Linear SVM:</i> A support vector machine implementing a L2-regularized L2-loss support vector regression (SVR) learning algorithm that operates in the primal form of the optimization problem.</li>
+                    <li><i>MLA&#160;Classifier Naive Bayes:</i> A naive Bayes classifier is a simple probabilistic classifier based on applying Bayes' theorem with strong (naive) independence assumptions.</li>
+                    <li><i>MLA&#160;Classifier C45:</i> Uses the C4.5 algorithm to train a decision tree. Each branch in the tree attempts to split on the feature that maximizes the amount of information gain.</li>
+                    <li><i>MLA&#160;Regressor Least Squares:</i> A simple linear regression is able to fit a line relating the input variables to the output variables in which the mean-squared-error between the line and the actual output points is minimum.</li>
+                    <li><i>MLA&#160;Regressor Logistic Regression:</i> Logistic regression is used for prediction of the probability of occurrence of an event by fitting data to a logistic curve.</li>
+                    <li><i>MLA&#160;Regressor Linear SVM:</i> A Support Vector Machine trained on a learning algorithm specifically crafted for linear machines only. It utilizes an L2-regularized, L1 or L2-loss coordinate descent learning algorithm for optimizing the dual form of learning.</li>
+                    <li><i>MLA&#160;Regressor Fan Chen Lin SVM:</i> This class implements the same optimization method found in LibSVM. It can be used to solve quadratic programming problems where the quadratic matrix Q may be too large to fit in memory.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Validate Using</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property specifies the data validation method to use for training on the dataset. The available methodologies are:</p>
+                <ul>
+                    <li><i>Training Error:</i>&#160;Derived by calculating the classification error of a model on the same data the model was trained on, producing a numerical estimate of the difference in predicted and original responses.</li>
+                    <li><i>5-Fold Cross Validation:</i> The data is divided into 5 subsets, and the ML&#160;object repeats a holdout validation on each subset, using 1 subset as the test/validation set, and the other 4 sets collected into a training set.</li>
+                    <li>10-Fold Cross Validation: The data is divided into 10 subsets, and the ML&#160;Object repeats a holdout validation on each subset, using 1 subset as the test/validation set, and the other 9 sets collected into a training set.</li>
+                    <li><i>Leave-One-Out Cross Validation:</i> One point of the training data is used as the validation set, while all of the remaining data points are used as the training set.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>The <span class="ControlName">Input Features</span> section enables you to select the fields from your dataset that you'd like to analyze to create the prediction. Different fields will have different levels of effectiveness in the analysis. It may be difficult for you to know which fields will provide the best predictive result. You can do sample training on a field or collection of fields to enable Process Director to help you find the most effective fields to analyze by clicking the <span class="UIElement">Train </span>button.</p>
+        <p>For each available field, a graphical representation of the field's data is displayed. You can select a field to train on by checking the box next to the field, then fort each selected field, choose the type of data analysis you wish to perform during the training. For numerical columns, you can perform Categorical, Numerical, or Exponential analyses, while, for text fields, you can conduct Categorical or "Bag of Words" analyses.</p>
+        <p>
+            <img src="../Resources/Images/Custom Tasks2/MLDefinition2.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Training the ML&#160;Definition</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For this example, we have a set of form instances that contain data from our sales process. Along with data about the prospective customer and sales rep, we also have form data that tells us whether the sale closed, how many product demos we did, and other information. Based on the data from our existing sales form instances, we want to make a prediction about whether a sale is likely to close. By selecting a field or fields, then clicking the Train button, Process Director will analyze our data and give us some indication of how effective the selected data will be in a prediction about whether a sale will close.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/MLDefinition3.png" />
+                </p>
+                <p>As previously mentioned, not all fields are good candidates for prediction. Take a look at the result below, when we select and train for a prediction based on the title of the customer's point of contact:</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/MLDefinition4.png" />
+                </p>
+                <p>This field doesn't give us much confidence in the predicted result, i.e., whether a sale will close. This uncertainty arises from;<br /></p>
+                <ul>
+                    <li>The fact that the Title has too few common values. Every Customer rep may have a completely different title.</li>
+                    <li>The point of contact may not have any decision-making power. They may just be the person through whom communication passes.</li>
+                </ul>
+                <p>So we need a better field or fields. Let's try some different fields. What about the customer department that is making the sales inquiry? Are some departments more historically likely than others to buy our product? Let's see:</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/Capture1.png" />
+                </p>
+                <p>The confidence in the predictive value of this field is much better, but still not great. Let's add some more fields to the Department:<img src="../Resources/Images/Custom Tasks2/MLDefinition7.png" /></p>
+                <p>Now, that we've added the additional fields, we can train again to see how predictive our data looks now.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/MLDefinition5.png" />
+                </p>
+                <p>It looks like we've found a set of values that have some fairly good predictive powers. We can use these values to test our prediction, by clicking the <span class="UIElement">Test Predict</span> button to open a prediction test screen.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/MLDefinition14.png" />
+                </p>
+                <p>Using these test values, we can see that there appears to be a 99% probability that the sale will close (Result: 1).</p>
+                <p>We are now ready to Schedule and/or Publish our ML&#160;Definition. </p>
+                <h4>ML&#160;Object Suggestions</h4>
+                <p>The ML&#160;Definition has an additional feature to help you analyze your data. When you click the button labeled <span class="UIElement">Suggest Input Features and Algorithm</span>, The ML&#160;object will analyze all of the data—and, be aware, depending on how much data you have, this might take some time—and provide some suggestion about what data in your dataset might be the most predictive.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/MLDefinition8.png" />
+                </p>
+                <p>You can click the <span class="UIElement">Select </span>button next to the data column and regression method you'd like to use, and The ML&#160;Object will be updated with your selection.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="Visualize"></a>Visualize Tab <a href="#Visualize" class="anchor">#</a></h2>
+        <p>The visualize table enables you to select from your data columns and your predicted column to visualize the data set in graphical form. Once you have selected your data, click the <span class="UIElement">Visualize </span>button to see the data representation.</p>
+        <p>
+            <img src="../Resources/Images/Custom Tasks2/MLDefinition9.png" />
+        </p>
+        <h2><a name="Schedule"></a>Schedule Tab <a href="#Schedule" class="anchor">#</a></h2>
+        <p>You can manually publish your ML&#160;definition, using the current data, by selecting <span class="UIElement">Publish </span>from the actions menu in the upper right corner of the ML&#160;Definition. This will make the ML&#160;Definition available, but only the currently existing data will be used for all future analyses/predictions. In order to update the and retrain the ML&#160;definition on a continuing basis, so that new data is included in the ML&#160;Definition, we need to go to the Schedule tab to configure how often we want to retrain and republish the ML&#160;Definition.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/MLDefinition15.png" />
+        </p>
+        <p>The first item to configure is to turn on scheduled training and publishing. Change the Dropdown value from <span class="ControlName">No Automatic Training &amp; Publishing</span> to <span class="ControlName">Train &amp;&#160;Publish on a Schedule</span>. When you do so, scheduling controls will appear that enable you to specify the training and publishing schedule.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Repeat Every</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p style="font-weight: normal;">You can simply set the retraining to repeat every <b>N</b> days, weeks, months, hours, etc. No further configuration is required. Once you manually publish the first time, the desired repetitions will occur at the specified interval.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Repeat Interval Starts At</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The optional date and time to begin scheduling training and publishing. To select a date, click the Calendar icon located to the left of the text box control to open a calender you can use to select the date.</p>
+                <p>
+                    <img src="../Resources/Images/Capture227.png" MadCap:mediastyle="@media print { max-width: 6in; }" style="width: auto;height: auto;" />
+                </p>
+                <p>Similarly, to  select a time, click the Clock icon located to the left of the text box control to open a time selector you can use to select the time.</p>
+                <p>
+                    <img src="../Resources/Images/Capture228.png" style="width: auto;height: auto;max-width: 6in;" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Scheduler Period End</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The optional date and time to end scheduling training and publishing. The Configuration method is the same as the <span class="ControlName">Repeat Interval Starts At</span> property.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Days of Lead Time</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Sometimes, you want to begin an action prior to the due date. For example, a month-end report may need to be submitted on the first day of each month, covering the activities of the prior month. If we assume this report takes a couple of days to compile and generate, we might want to have a lead time of 2 days. In this case, the publishing and training will be evaluated two days early, so you have adequate lead time to generate the report.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Limit to Business Hours Only</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Check the box to publish and train only during Business Hours.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:conditions="General.Core Training">
+    <head><title>Creating s Sample Form</title>
+        <link href="../../Resources/Stylesheets/TrainingHandbook.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Lesson 5: Completing the Process Timeline</h1>
+        <table style="width: 100%;border-top-style: solid;border-top-width: 2px;border-bottom-style: solid;border-bottom-width: 2px;margin-left: 0;margin-right: auto;">
+            <col style="width: 150px;" />
+            <col style="width: 200px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td style="text-align: center;vertical-align: middle;">
+                        <img src="../../Resources/Images/traininglesson.png" alt="Lesson" style="height: auto;width: 140px;" />
+                    </td>
+                    <td style="text-align: center;vertical-align: middle;"><b style="font-style: italic;">Lesson Contents</b>
+                    </td>
+                    <td style="vertical-align: middle;text-align: left;">In this Lesson, you will learn how to configure User activities in a Process Timeline.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Review</h2>
+        <p>In the last lesson, we identified the process we are trying to model. So far, we've built the Parent activity that contains our Approval Loop, we've added five child activities, and we've configured the first Child activity, the Faculty Advisor's approval. Now we can complete our Process Timeline to model our process.</p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete1.png" />
+        </p>
+        <p>First, Let's configure the activities, then, once we're done, we'll set up the dependencies that will make our process model run in the order we want.</p>
+        <h2>Configuring the Activities</h2>
+        <p>Open Activity 1.2 by double-clicking on the Activity text, or clicking on the <span class="ControlName">Properties </span>icon: <img src="../../Resources/Images/Training/Timelines31.png" />.</p>
+        <p>Once the <span class="ControlName">Properties </span>dialog box opens, we will set the name as "Department Approval", then change the duration in the Activity tab to 3 Business Days. In the <span class="UIElement">Participants </span>tab, for now, we'll keep it set to Timeline Initiator, so we can watch it run when we test it. We'd normally set this to a specific group or user, but for now, we'll leave it alone. Finally, in the Results tab, we'll once again set the Approve and Deny results, and set the order just as we did before, with Approve set at 1 and Deny set at 2. Once we're done, we'll go ahead and click the <span class="UIElement">Close </span>button to close the <span class="ControlName">Properties </span>dialog box, and Update the Process Timeline.</p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete2.png" />
+        </p>
+        <p>For Activity 1.3, let's open the Properties dialog, and change the name to "Dean's Office Approval" and, once again, set the Duration to 3 Business Days, and configure the results for Approve and Deny, just as we did in the previous activities. Once again, close the Properties Dialog and update the timeline.</p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete3.png" />
+        </p>
+        <p>Finally, we can configure Activity 1.4 to name it "Registrar Change", set the duration to 1 Business Day, but this time, we'll set the Result to a single result, which we'll name "Advisor Assigned". Now we can close the Properties dialog box and update the Timeline again.</p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete4.png" />
+        </p>
+        <p>Now that all of our individual activities are configured, we'll set the dependencies to govern when the activities will run.</p>
+        <h2>Setting Dependencies</h2>
+        <p>We want both the Department Approval and the Dean's Office approval to run in parallel. So we are going to make both activities dependent upon the Faculty Advisor Approval activity. To do this, we can simply drag and drop the Department Approval and Dean's Office Approval Activities to the Faculty advisor Approval activity by using the <span class="ControlName">Depends On</span> icon: <img src="../../Resources/Images/Training/Timelines11.png" />. Once we';ve done so, the Process Timeline is configured so that both activities will begin and run in parallel as soon as the faculty advisor approval step completes.</p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete5.png" />
+        </p>
+        <p>Setting the dependency on the Registrar change step will be a little different. We do not want this step to begin until both the Department Approval and Dean's Office Approval steps are complete. This requirement means that the Registrar change step needs two dependencies. So, we can't really drag and drop this dependency like we did on the other activities. To make this dependency work, we need to open the <span class="ControlName">Properties </span>dialog box of the Registrar Change activity and navigate to the <span class="UIElement">Start When</span> tab.</p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete6.png" />
+        </p>
+        <p>The Start When tab provides a way of assigning more complex dependencies. Click the <span class="UIElement">Add Dependence</span> button twice to add the two depndencies we need.</p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete7.png" />
+        </p>
+        <p>For the first dependence, click the dropdown menu that currently says "None" and select Department Approval from the dropdown menu.</p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete8.png" />
+        </p>
+        <p>Now, repeat this for the second dependence, this time selecting the Dean's Office Approval option.</p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete9.png" />
+        </p>
+        <p>Close the <span class="ControlName">Properties </span>dialog box, and <span class="UIElement">Update </span>the Timeline. We have no ensured that the Registrar Change activity cannot begin until both of its predecessor activities are finished. </p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete10.png" />
+        </p>
+        <p>We can actually check these dependencies in the Gatt chart by simply clicking on the bar for the Registrar Change activity. When we do, we can see that the Registrar Change activity is highlighted in gray, while the two predecessor activities are highlighted in green.</p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete11.png" />
+        </p>
+        <p>You can always click on any Gantt Chart bar to see the predecessors and successors for any activity. The predecessor activities will always be highlighted in green, while the successor activities are highlighted in red. For instance, when we click on the Department approval activity, we can see that the predecessor activity is the Faculty Advisor approval, while the successor activity is the Registrar Change activity.</p>
+        <p>
+            <img src="../../Resources/Images/Training/TimelineComplete12.png" />
+        </p>
+        <p>We can use this method to quickly check to see the status of any activity's dependencies. At this point, everything should be complete for now, so we can save and close the Process Timeline.</p>
+        <h2>Summary</h2>
+        <p>In this lesson, we completed our Process Timeline and set the dependencies of all of the individual Timeline Activities. Our Process Timeline and form are mostly complete.</p>
+    </body>
+</html>
