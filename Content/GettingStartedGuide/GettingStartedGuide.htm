@@ -6,15 +6,82 @@
     <body>
         <h1>
             <MadCap:keyword term="Implementations" />
-            <MadCap:concept term="Getting Started" /><a name="_Toc421709746"></a>Getting Started Guide Introduction</h1>
-        <p>The Getting Started Guide is not a reference document. Instead it is designed as a brief, self-service training course to explain some of the basic concepts of Process Director, and to recreate a small project implementation. In this document, the following subjects will be covered:</p>
-        <ul>
-            <li>Review an existing sample project and submit a Form to start a simple approval process.</li>
-            <li>A step-by-step guide to reconstructing the sample project, which includes key conceptual explanations.</li>
-            <li>A brief overview of how to analyze running processes.</li>
-            <li>An introduction to Knowledge Views and step-by-step instruction in creating one.</li>
-        </ul>
-        <p>This introductory course is mainly designed for users who need the minimal knowledge necessary to work effectively with process Director during a Trial Period.</p>
-        <p MadCap:conditions="General.Not Printed"><a href="http://doc.bplogix.com/PDFGettingStarted.pdf" target="_blank">Click here</a> for a PDF version of this document.</p>
+            <MadCap:concept term="Getting Started" /><a name="_Toc421709746"></a>Getting Started Guide</h1>
+        <p>The Getting Started Guide is designed to provide an outline of the steps needed to create a Process Director application, giving you links to the specific section of the documentation that address the specifics of configuration for each step. Following this outline should help you get started building Process Director Applications.</p>
+        <h2>Building an Application</h2>
+        <ol>
+            <li>
+                <p>The first thing you need to do is create the folder where your application will reside. To see how to create your application folder, please see the topic on <a href="../ImplementersReference/Managing Content Creating.htm">Creating Content List Objects</a>.</p>
+            </li>
+            <li>
+                <p>Once the folder is created, you can begin creating objects such as Forms and Process Timelines inside the folder. The process for creating objects was linked in the Step 1. We recommend that all application objects be stored in the application folder, to make importing and exporting your application easier. To see how we recommend your application be organized, please see the topic on <a href="../ImplementersReference/Importing Exporting Content.htm">Importing/Exporting Content</a>.</p>
+            </li>
+            <li>
+                <p>You can create your form inside the application folder, using the same process in Step 1. When you initially create the form, the form will automatically open in design view, using the Online Form Designer. Please see the <a href="../ImplementersReference/eForm Online Builder.htm">Online Form Designer</a> topic to familiarize yourself with the basics of the online form designer.</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>
+                        <p>You'll need to add controls to the form to store your data. Process Director has many controls. The <a href="../ImplementersReference/eForm Online Controls Basic.htm">Basic Form Controls</a> topic covers the most common Process Director form controls. All of the remaining controls can be viewed from the <a href="../ImplementersReference/eForm Online Controls Additional.htm">Additional Controls</a> topic. These topics explain all of the different options that are available to you for configuring the controls.</p>
+                    </li>
+                    <li>
+                        <p>Once you've added controls to your form, you can close and save the designer. Once you do so, there are additional configuration options available to you in the Form definition. You can see all of the available options at the <a href="../ImplementersReference/eForm Definition Properties.htm">Form Definition Properties</a> topic, but you may want to pay particular attention to the section on the <a href="../ImplementersReference/eForm Definition Properties.htm#FormControlsTab">additional properties for form controls</a>. </p>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <p>With your initial form fields configured, you can now create the Process Timeline for your application. Again, you can follow the link in Step 1 to see how to create an object. Please see the <a href="../ImplementersReference/Process Timelines.htm">Process Timelines</a> topic to learn the basic concepts behind the Process Timeline.</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>
+                        <p>Process Timelines consist of a number of activities that specify how to perform each step of your process. The Process Timeline has no activities when you first create it, but you can add as many activities as you like by clicking the<span class="UIElement"> Create Activity</span> link in the Timeline definition. The <a href="../ImplementersReference/Process Timeline Activities.htm">Process Timeline Activities</a> topic covers the basics of configuring a Timeline Activity. More detailed information about specific activity types can be found in the <a href="../ImplementersReference/Process Timeline Activity Types.htm">Process Timeline Activity Types</a> topic.</p>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <p>Now that you have a Form and a Process Timeline, the two objects will need to be linked. You'll usually need to link both objects.</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>
+                        <p>You can link the Form to the Timeline from the <a href="../ImplementersReference/eForm Definition Properties.htm#eFormPropertiesTab">Properties Tab</a> of the Form definition, using the <span class="ControlName">Automatically start this process after Form is submitted</span> and <span class="ControlName">Timelines Associated with Form </span>properties.</p>
+                    </li>
+                    <li>
+                        <p>You can link the Process Timeline to the Form from the <a href="../ImplementersReference/Process Timeline Options.htm#_Toc421536159">Options Section</a> of the Process Timeline Definition, using the <span class="ControlName">Form for Process Timeline</span> property.</p>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <p>You may want to set up some Business Rules to make decisions about how the Form or Process Timeline will work. Please see the <a href="../ImplementersReference/Business Rules.htm">Business Rules</a> topic to learn about creating and configuring Business Rules.</p>
+            </li>
+            <li>
+                <p>If your application needs to access data from some external database, you can create a <span class="NamedControl">Datasource </span>to link to the external data, then, using that Datasource link, create a <span class="NamedControl">Business Value </span>to retrieve data from the database. The <a href="../ImplementersReference/Datasource Objects.htm">Datasource Objects</a> topic describes the basics of <span class="NamedControl">Datasources</span>, while the <a href="../ImplementersReference/Business Values.htm">Business Values</a> topic discusses the different methods available for retrieving data from other sources.</p>
+            </li>
+            <li>
+                <p>Often, when you use external data from Step 7, you need to use that data to set the value of a form field, or to fill a dropdown control's options with a list of items from a database.</p>
+                <ol>
+                    <li>
+                        <p>The <a href="../ImplementersReference/eForm Definition Properties.htm#Set">Set Form Data</a> tab of the Form definition is where you'd configure your form to set the value of a form field.</p>
+                    </li>
+                    <li>
+                        <p>The <a href="../ImplementersReference/eForm Definition Properties.htm#FillDropdowns">Fill Dropdowns</a> tab of the Form Definition is where you'd configure the data to be used to fill the list of options available in a Dropdown control.</p>
+                        <ol style="list-style-type: lower-roman;">
+                            <li>
+                                <p>Also, you can make static lists to fill dropdowns. Please see the <a href="../ImplementersReference/Dropdown List Content Objects.htm">Dropdown List</a> topic to learn how to make your own lists for this purpose.</p>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <p>When you create a Process Timeline, Process Director sends a variety of email notifications to users. By default, there's an email notification template built into Process Director, but it's a very generic template and not very useful. You should build your own custom email templates to inform your users of information specific to the tasks you want them to perform. The <a href="../ImplementersReference/Email Templates Creating.htm">Creating and Customizing Email Templates</a> topic describes the basics of creating custom Email Templates.</p>
+            </li>
+            <li>
+                <p>Your application will need some way of getting information out of Process Director. You may want to see how many active instances of your application are running, or run a search for specific instances. The Knowledge View object enables you to run simple reports and searches for your application's data. </p>
+                <ol>
+                    <li>
+                        <p>You can learn more about Knowledge Views and how they work from the <a href="../ImplementersReference/Knowledge Views.htm">Knowledge Views</a> topic. </p>
+                    </li>
+                    <li>
+                        <p>The <a href="../ImplementersReference/Knowledge View Definitions.htm">Knowledge View Definitions</a> topic describes the configuration options you can use to create your own reports or searches for information from Process Director.</p>
+                    </li>
+                </ol>
+            </li>
+        </ol>
     </body>
 </html>

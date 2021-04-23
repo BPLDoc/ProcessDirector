@@ -7,25 +7,22 @@
     <body>
         <h1>
             <MadCap:keyword term="Implementations" />
-            <MadCap:concept term="Getting Started" /><a name="_Toc421709759"></a>Modifying the Form Definition</h1>
-        <p>In addition to the template for your Form, the Form Definition contains many other properties. In the Form definition, you can choose what processes will run when the Form is submitted, how disabled or required fields will look, and much more. These properties can be found on the <span class="UIElement">Form Options</span> tab of the <span class="ControlName">Properties</span> section of the Form definition.</p>
+            <MadCap:concept term="Getting Started" /><a name="_Toc421709759"></a>Form Definitions</h1>
+        <p>In addition to the Online Form Designer, the Form Definition contains many other properties. In the Form definition, you can choose what processes will run when the Form is submitted, how disabled or required fields will look, and much more. These properties can be found on the <span class="UIElement">Form Options</span> tab of the <span class="ControlName">Properties</span> section of the Form definition.</p>
         <p>
             <img src="../Resources/Images/GettingStartedGuide/ModifyingTheEformDefinition.png" />
         </p>
-        <p class="CompanyInformation1">Figure 42: Travel Expenses Request Form Properties</p>
         <p>Typically, a process begins when a user opens a form, fills it out, and submits it. Process Director uses the “Automatically start this process after Form is submitted” property to determine which Process Timeline or Workflow to launch.&#160; In the case of the <span class="ProcessDirectorObject">Travel Expenses Request </span>Form in the sample project, submitting the form immediately starts the approval process that is modeled in the <span class="ProcessDirectorObject">Travel Expense Approval Process Timeline</span>. </p>
-        <h4>Form Controls and Fields</h4>
+        <h2>Form Controls and Fields</h2>
         <p>As mentioned in the last section, the Form Definition also converts all of the controls that you placed on the Form template into data fields to store the information that users enter into the form. Each of these data fields are mapped to their respective form controls. Just as the form controls have a set of properties that you can access in the Online Form Designer, the data fields have properties of their own that are accessed through the Form Definition. Many of the data field properties determine how the form controls will operate when the form is running. So, from the user's point of view, the terms "data field" and "control" are largely interchangeable, because the data field is so closely identified with the control.</p>
         <p>
             <img src="../Resources/Images/Capture12.png" />
         </p>
-        <p class="CompanyInformation1">Figure 43: Controls, Fields, and Field properties</p>
         <p>There are two main types of controls/data fields: those that store data, and those that do not. Data entry controls like text boxes, check boxes, or dropdowns usually accept data input from the user, and that data is stored in data fields by Process Director. Container controls like sections or arrays do not store or accept data from users, but determine the look and feel or operation of the form. These two different types of fields may have very different properties, but there are a number of field properties that most form fields have in common.</p>
         <p>The first common property is the <span class="ControlName">ToolTip</span>. The ToolTip property identifies the text that will appear in a callout box whenever the cursor is hovered over a control on the form.</p>
         <p>
             <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_21.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p class="CompanyInformation1">Figure 44: ToolTip</p>
         <p>The <span class="ControlName">Friendly Name</span> property is very useful for replacing field names, which cannot use special characters or spaces, into more easily readable names when they are displayed in Knowledge Views or in other areas of Process Director. For instance, you might have a field named "SubmissionDate". When this field is displayed, you would probably prefer that it be displayed as "Submission Date" or "Date Submitted". Using the Friendly Name property allows you to ensure that field names always display is a more readable form when presented to users.</p>
         <p>The <span class="ControlName">Readonly</span> property sets whether the control is enabled or disabled on the form. A disabled control cannot be edited by the user, although the value may still be displayed. You can set conditions on this property to enable or disable this control when the desired conditions are met.</p>
         <p>The <span class="ControlName">Hidden</span> property determines whether or not the control is displayed on the Form. Again, conditions can be set on this property to determine when the control is hidden or displayed.</p>
@@ -34,43 +31,33 @@
         <p>
             <img src="../Resources/Images/Capture14.png" />
         </p>
-        <p class="CompanyInformation1">Figure 45: Inheritance</p>
         <p>For example, if the <span class="ControlName">Required</span> property of a Section control is set to "True", then inheritance ensures that all of the controls contained in that section will be required. You can override this, however, by explicitly setting the <span class="ControlName">Required</span> property of a control inside the section to "False". If there is conflict between the <span class="ControlName">Required</span> property of a container control, and the controls contained inside it, the control property at the lowest level wins, and overrides the inheritance.</p>
         <p>Fields that accept and store user input have a couple of properties in common that you will regularly use.</p>
         <p>The <span class="ControlName">Default Value</span> property enables you to apply a specific value for a control in the absence of user input. The default value can consist of a value that you enter, or one of a number of values derived from system information in Process Director. As you can see from the example below, the <span class="ControlName">Default Value</span> property can be set to a value derived from a process, a form, a Business Rule, and much more. The Default Value is set exactly once, when the form is first opened.</p>
         <p>
             <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_22.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p class="CompanyInformation1">Figure 46: Default Value Choices</p>
         <p>Another important property to understand is the <span class="ControlName">Event Field</span> property, which can be set to "True" or "False" via a checkbox. If the <span class="ControlName">Event Field</span> property is set to "True", then an event will be fired every time the field is edited. An <span class="KeyTerms">event</span> is a trigger that can be used to cause Process Director to take other actions. Setting the <span class="ControlName">Event Field</span> property to "true" enables Process Director to detect when a change has been made to the field, and then respond as you direct. A common use of the Event Field property is to detect a change to the value of an event field, then show or hide a second field based on the event field's value.</p>
-        <h4>Event Mapping</h4>
+        <h2>Event Mapping</h2>
         <p>The method that Process Director uses to detect and respond to events is called "Event Mapping", and, indeed, <span class="UIElement">Event Mapping</span> is a tab in the <span class="ControlName">Properties</span> section of the Form definition. In the <span class="UIElement">Event Mapping</span> tab, events are mapped to Custom Tasks that are executed when triggered by those events. A <span class="KeyTerms">Custom Task</span> is a reusable, packaged script containing business logic or other programming functionality. Custom Tasks can be created by software developers to perform a couple of important things. First, Custom Tasks can be used to implement business functions that are unique to your environment. Custom Tasks can also implement common functions that can be used across multiple Forms and processes. Process Director includes several standard Custom Tasks performing common operations such as exporting form data to Word documents or PDF file, setting values in a form, extracting data from SharePoint, and much more.</p>
         <p>
             <img src="../Resources/Images/Capture15.png" />
         </p>
-        <p class="CompanyInformation1">Figure 48: Event Mapping</p>
         <p>Event mapping enables you to select a Custom Task to run when a form event occurs, then map that Custom task to a specific form event. Every Form has a set of default form events that are displayed in the <span class="ControlName">Event Name</span> dropdown set off by square brackets ([]). On the <span class="UIElement">Custom T</span><span class="UIElement">ask Event Mapping</span> tab of the Form definition, you will see the dropdown control named <span class="ControlName">Event Name</span> once you add a Custom task to the Form.</p>
         <p>
             <img src="../Resources/Images/GettingStartedGuide/ModifyingTheEformDefinition1.png" />
         </p>
-        <p class="CompanyInformation1">Figure 47: <span class="UIElement">Custom Task Event Mapping</span> Tab</p>
         <p>The <span class="ControlName">View State Init </span>event is triggered when a Form is opened (or refreshed). This event is useful for pre-populating some of the form fields with values that you do not need the form's user to edit. For instance, you may have a Date control that you want to populate with the current date when the form is opened, or a User Picker control that you want to populate with the identity of the current user.</p>
         <p>The <span class="ControlName">Form Completed</span> event is useful to run a Custom task after the user has clicked the submit button on a form. This event runs after the form is no longer visible to the user, so it's a good event to use for form or data housekeeping just before the form is submitted to the system.</p>
-        <p>When you set the <span class="ControlName">Event Field</span> property of a field to "True", the field's name appears in the list of events you can map. Selecting the field name from the events dropdown enables you to map a Custom task to that event. An example of the <span class="ControlName">Event Name</span> dropdown, showing both the default and custom events for the Travel Expenses Request Form, is shown in <a href="#_Ref389057782">Figure 49: Events Dropdown</a>, below.</p>
+        <p>When you set the <span class="ControlName">Event Field</span> property of a field to "True", the field's name appears in the list of events you can map. Selecting the field name from the events dropdown enables you to map a Custom task to that event. An example of the <span class="ControlName">Event Name</span> dropdown, showing both the default and custom events for a sample form, is shown below.</p>
         <p>
             <img src="../Resources/Images/GettingStartedGuide/Reconstructing the Sample_24.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p class="CompanyInformation1"><a name="_Ref389057782"></a>Figure 49: Events Dropdown</p>
-        <h4>Conditions</h4>
-        <p><span class="KeyTerms">Conditions</span> are true or false statements that are evaluated in order to determine an appropriate response. In the <span class="ProcessDirectorObject">Travel Expenses Request</span> Form in the sample project, for example, there is a condition that determines whether the user must enter a justification for the expense, based on whether the total expense amount exceeds $1,000. The condition that must be evaluated for this is:</p><code>ExpensesTotal &gt; 1000</code>
-        <p>If this condition evaluates to "true" then the Justification Section is made visible on the Form.</p>
-        <h4>Dropdown Objects</h4>
+        <h2>Dropdown Objects</h2>
         <p>Dropdown lists aren’t very useful if they’re empty; normally, they have to be filled with a list of values. For dynamic lists, a dropdown list can be filled from a database, so the list will include items retrieved using a database query structured for that purpose. For static lists, Process Director provides you with the Dropdown Object. The Dropdown Object is a convenient way to pre-fill dropdown lists with static data, like the months of the year. Using the Dropdown Object, you can create dropdown list values, and re-use the Dropdown Object for any of your Forms. Changes to a given Dropdown Objects are automatically applied everywhere that Dropdown Object is used. Using Dropdown objects makes managing dropdown values much simpler, because you don’t have to edit all of the individual forms.</p>
-        <p>The sample project uses a Dropdown object to populate the “Reasons for Travel” field in the sample Form. You can access this Dropdown object from the <span class="ProcessDirectorObject">BP Logix Getting Started Sample Project</span> folder of the sample project by clicking the <span class="ProcessDirectorObject">ReasonForTravel</span> object.</p>
         <p>
             <img src="../Resources/Images/GettingStartedGuide/ModifyingTheEformDefinition2.png" />
         </p>
-        <p class="CompanyInformation1">Figure 50: <span class="ControlName">Reason for Travel</span> Dropdown Object</p>
         <p>The Dropdown object is relatively simple, which makes it easy to create. A Dropdown control is simply a static list of names and optional values. The <span class="ControlName">Dropdown</span><span class="ControlName"> Name</span> is the text that will appear in a dropdown control that uses the Dropdown object as its source. The <span class="ControlName">Dropdown Value</span> is an optional value you can provide if you want the dropdown control's value to be something different than the text that is displayed to the user. Take a look at the example below:</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
             <thead>
@@ -110,14 +97,9 @@
                 </tr>
             </tbody>
         </table>
-        <p class="CompanyInformation1">Table 1: Sample Dropdown Values</p>
         <p>You may want to store the Product Code as the <span class="ControlName">Dropdown Value</span> so that you know exactly which product has been selected in the dropdown control. Displaying the Product Name to the user, however, is going to make selecting the right product much simpler. In a case like this, you would enter the Product Name as the <span class="ControlName">Dropdown</span><span class="ControlName"> Name</span> and the Product Code as the <span class="ControlName">Dropdown</span><span class="ControlName"> Value</span> when creating the dropdown object. Process Director will store the Product Code, but users will see the Product Name in the dropdown control.</p>
-        <h4>The Big Picture</h4>
+        <h2>The Big Picture</h2>
         <p>The Form Definition is a rich object. So far, we've looked at each individual piece of the Form Definition. When you put all of the individual components together, you can see that  the Form Definition is a complicated container that binds together a large portion of Process Director's functionality.</p>
-        <p>
-            <img src="../Resources/Images/Capture16.png" />
-        </p>
-        <p class="CompanyInformation1">Figure 51: Form Definition Components</p>
-        <p>The Form Definition brings together the Form template, the data fields and their properties, conditions, and custom tasks to make a powerful object that controls the lion's share of the user's interaction with Process Director. The Form Definition determines when and how different portions of the user interface will be exposed to your users. Much of your time building processes in Process Director, therefore, will be taken up with configuring the Form definition.</p>
+        <p>The Form Definition brings together the Form's design, the data fields and their properties, conditions, and custom tasks to make a powerful object that controls the lion's share of the user's interaction with Process Director. The Form Definition determines when and how different portions of the user interface will be exposed to your users. Much of your time building processes in Process Director, therefore, will be taken up with configuring the Form definition.</p>
     </body>
 </html>
