@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Forms;Online Form Designer" />
+            <MadCap:concept term="Implementation" /><a name="Pickers"></a>Actions Controls</h1>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ActionsControls4.png" />
+        </p>
+        <p>The controls in this section include the various Picker controls that enable users to pick various Process Director objects from the Form.</p>
+        <p>All Picker controls incorporate type-ahead selection rather than selecting from a pup-up list, dropdown, or Listbox control. You can begin to type the name of a user, group, etc., and Process Director will display a dropdown that matches the value you type into the Picker control.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/PickerTypeAhead.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ButtonArea"></a><a href="#ButtonArea"><img src="../Resources/Images/link.png" alt="Link" /></a> Button Area</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Button Area enables you to specify where the result buttons will appear on the Form page, allowing the user to submit the Form. By default, result buttons always appear at the very bottom of the page, if no Button Area control exists. With a Button Area control, you can specify the location where the result buttons will appear.</p>
+                <p>We recommend as a best practice that, when creating a Form that uses a Routing slip, you place the Routing Slip at the very bottom of the page, with a Button Area control above the Routing slip. This will enable users to complete the Form without having to scroll to the bottom of the Routing Slip.</p>
+                <p>There are number of tabs for this controls <span class="ControlName">Properties </span>dialog, to enable you to individually configure each of the standard buttons that display on forms.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ButtonArea.png" />
+                </p>
+                <p>In addition to setting the <span class="ControlName">Name </span>of the control, just as you do with other controls, you have the ability to set the HTML tag that will contain the button area, such as an HTML&#160;DIV or SPAN tag by setting the <span class="ControlName">Wrapper Tag</span> property with the name of the tag, e.g. "div".</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/OKButton.png" />
+                </p>
+                <p>The <span class="UIElement">OK&#160;Button</span>, <span class="UIElement">Cancel Button</span>, and<span class="ControlName"> <span class="UIElement">Accept Button</span></span> tabs have similar properties for configuring each of the button types. The <span class="UIElement">OK </span>and <span class="UIElement">Cancel </span>buttons are standard buttons that appear on all forms. If the “Assign task to first user to accept” checkbox is checked on a Form instance’s step or activity definition, the button area will first display an <span class="UIElement">Accept Task</span> button enabling the user to accept the task, in addition to the standard form buttons. Task completion buttons will not be displayed until the users accepts the task.</p>
+                <p>For Process Director v5.25 and higher, the <span class="UIElement">OK&#160;</span>button will be presented as a <span class="UIElement">Submit </span>button for new form instances. Both the OK and Submit <span class="ControlName">Text </span>and <span class="ControlName">Confirm Text </span>properties are configurable. If a <span class="NamedControl">Button Area </span>control has no <span class="ControlName">Submit Text</span> property configured, the control will fall back to the <span class="ControlName">OK&#160;Text</span> property.</p>
+                <p><b>[Button] Text:</b> The text that will appear on the button.</p>
+                <p><b>[Button] Confirm Text:</b> The text that will appear to confirm the  button selection when the button is clicked.</p>
+                <p><b>Icon Number:</b> The ID number of any icon that you'd like to appear as a button icon.</p>
+                <p><b>Color:</b> The text color for the button.</p>
+                <p><b>Back Color:</b> The background color of the button.</p>
+                <p><b>Image URL:</b> If you'd like to use an image, instead of an icon (or text) you can enter the URL of the image to display on the button.</p>
+                <p><b>Show [Button] Button:</b> This checkbox enables you to show or hide the button on the Form.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ButtonArea2.png" />
+                </p>
+                <p>On the <span class="UIElement">Complete Buttons </span>tab, you have a <span class="ControlName">Complete Confirm Text</span> property that enables you to set the confirmation text when a task completion button is clicked. You also have a <span class="ControlName">Show Task Complete buttons</span> property to show or hide the completion buttons.</p>
+                <p>The <span class="NamedControl">Button Area </span>control also automatically incorporates <span class="NamedControl">Form Info String </span>and<span class="NamedControl"> Form Error String</span> controls, which enables the appropriate form information to display adjacent to the button area when applicable. You can override where the form error text displays, however, by manually placing a <span class="NamedControl">Form Error String</span> control in the desired location on the Form.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="PrintButton"></a><a href="#PrintButton"><img src="../Resources/Images/link.png" alt="Link" /></a> Print Form Button</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsActions4.png" />
+                </p>
+                <p>The<span class="ControlName"> Print Button</span> control is a regular print button that will print the Form when clicked.</p>
+                <p>The <span class="ControlName">Text </span>property configures the text label you'd like to appear on the button.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="SaveButton"></a><a href="#SaveButton"><img src="../Resources/Images/link.png" alt="Link" /></a> Save Button</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The<span class="ControlName"> Save Button</span> control saves the Form without submitting it so that it can be edited and submitted at a later time.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsActions5.png" />
+                </p>
+                <p>The <span class="ControlName">Text </span>property configures the text label you'd like to appear on the button.</p>
+                <p>Checking the<span class="ControlName"> Close Form after saving</span> property will close the Form, while keeping it unchecked will save the Form without closing it.</p>
+                <p>By default, the <span class="NamedControl">Save Form</span> button is not visible on new form instances. If you want users to be able to save the form on new form instances you must both:</p>
+                <ol>
+                    <li> Select the <span class="ControlName">Close Form After Saving</span> property. Form instances cannot be created in the database until the form is submitted to the server. So the button cannot appear on new form instances unless the form is submitted on save. If you do not select this property, the <span class="NamedControl">Save Form</span> button will not appear.</li>
+                    <li>In the field properties for the control, on the <span class="UIElement">Form Controls</span> tab of the form definition, you must set a visibility condition to make the control visible when New Form Instance? = Yes.<br /><img src="../Resources/Images/ImplementersReference/SaveForm.png" /></li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Cancel"></a><a href="#Cancel"><img src="../Resources/Images/link.png" alt="Link" /></a> Cancel Form/Workflow/Timeline</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Cancel Process button <b style="font-style: italic;">immediately</b> cancels the operation of a Form or process. The cancellation cannot be rescinded.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsActions7.png" />
+                </p>
+                <p>Additionally, you can delete the Timeline, Workflow, and/or Form instance after the cancellation is processed.</p>
+                <div class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> There is no "Undo" feature for this action!</div>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ManageProcessUsers"></a><a href="#ManageProcessUsers"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Manage Process Users" />Manage Process Users</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This control enables a user to delegate tasks to other users, remove users from tasks, and perform other process management functions without going to the process’ administrator’s page.</p>
+                <p>The “Manage Users” tab of the properties window for this control allows you to set the name, button text, and group name for the Manage Users control. You can also specify what features the Form user is allowed to access. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsActions6.png" />
+                </p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>PROPERTY</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Name</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The name of the control</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Text</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Replaces the default text on the control's button.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Group Name</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The name of Process Director user groups from which the users will be displayed. This is useful to restrict the users that can be selected. The Group(s) can be specified as a group name or a system variable that returns a group name.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Step Name/Activity Name</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The name of the step or activity, in which you wish the control to appear. If left blank, the control will appear in all steps/activities. You can enter multiple activity names, separated by commas.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Add Users</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Checking this property will enable the user to add new users to a task.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Cancel Users</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Checking this property will enable the user to cancel users in a task.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Start Pending Users Only</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Checking this property will enable the user to start any pending task users.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Complete Users</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Checking this property will enable the user to complete the user task.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Reassign Users</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Checking this property will enable the user to reassign users to a task.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Remove Users</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Checking this property will enable the user to remove users from a task.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Restart Users</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">Checking this property will enable the user to restart the task users.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>The Button Properties tab allows you to configure the URL of the button image and the style of the button, as well as the behavior upon clicking the button. These property are the standard button formatting properties that appear in the <span class="UIElement">Button Properties</span> tab of the <a href="#Button">Button control</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Invite"></a><a href="#Invite"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Invite" />Invite</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The invite control allows a user to invite other users in Process Director to a task. The inviter can select to add the invitees to perform the task with the inviter, or to reassign the task from the inviter to the invitee.</p>
+                <p>The properties tab contains a number of options to configure the Form control.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsActions8.png" />
+                </p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>PROPERTY</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Name</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The name of the control</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Text</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Replaces the default text on the picker's button ("…").</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Picker Type</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Determines whether the user picker will show as a pop-up dialog box, or a dropdown control.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Only user in groups</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The name of Process Director user groups from which the users will be displayed. This is useful to restrict the users that can be selected.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Ignore users in group</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The name of Process Director user groups from which the users will not be displayed.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Dropdown Prompt</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>A brief prompt message that will appear in the dropdown, if the Dropdown picker type is selected.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>HTML Height</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The desired height of the control in pixels.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>HTML Width</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The desired width of the control in pixels.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Cancel Inviting User?</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Checking this box will remove the task from the user's task list when others are invited.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Allow multiple users to be selected?</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Allows more than one user to be invited.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Reassign the inviter?</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>Reassigns the task to the inviter.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>When using the system variable syntax for this control, the system variable will return all of the formatting options for a <a href="../SystemVariablesReferenceGuide/User System Variables.htm">user system variable</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Button"></a><a href="#Button"><img src="../Resources/Images/link.png" alt="Link" /></a> Button Control</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The button control places a configurable button control on the Form. The actions associated with the button control can be set in the Form Definition's <span class="UIElement">Custom Task Event Mapping</span>, <span class="UIElement">Set Form Data</span> or <span class="UIElement">Fill Dropdowns</span> tab. There are two tabs that can be configured to specify the properties of the control</p>
+                <h3>Button Tab</h3>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsActions9.png" />
+                </p>
+                <p>&#160;</p>
+                <p>The <span class="ControlName">Name </span>property specifies the name of the control.</p>
+                <p>The <span class="ControlName">Text </span>property configures the text label you'd like to appear on the button.</p>
+                <h3>Button Properties Tab</h3>
+                <p>This tab enables you to configure additional properties for the Attach button.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Button.png" />
+                </p>
+                <h5>Image URL</h5>
+                <p>The button can be displayed as an image by providing an accessible image URL to display instead of a standard button. This property will override other button properties below, e.g., Back Color.</p>
+                <h5>Icon Number</h5>
+                <p>You can select an Icon to display on the button from the <span class="ControlName">Icon Chooser</span> dialog box.</p>
+                <h5>Color</h5>
+                <p>You can select the text color to display on the button from the <span class="ControlName">Color Chooser</span> dialog box.</p>
+                <h5>Color</h5>
+                <p>You can select the background color to display on the button from the <span class="ControlName">Color Chooser</span> dialog box.</p>
+                <h5>Confirm Text</h5>
+                <p>You can specify confirmation text that will appear as a confirmation dialog box when the button is clicked.</p>
+                <h5>onClientClick</h5>
+                <p>You can specify client-side JavaScript to run on the button's onClientClick event.</p>
+                <h5> Alt Tag</h5>
+                <p>You can specify an ALT tag property for accessibility purposes.</p>
+                <h5>Accessibility Key</h5>
+                <p>You can specify the accessibility keys a user can press to activate the button, for accessibility purposes.</p>
+                <h5>onClientClick</h5>
+                <p>You can specify client-side JavaScript to run on the button's onClientClick event.</p>
+                <h5>Use Small Image?</h5>
+                <p>If you supply an image URL, the image can be displayed as an icon for the button by checking this property.</p>
+                <h5>Use Image as entire button?</h5>
+                <p>You can use the image as the displayed button, rather than displaying a traditional button on the form.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="EmailCompleteLink"></a><a href="#EmailCompleteLink"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Email Complete Link;EmailCompleteLink" />Email Complete Link</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This control provides a completion link for users to click in an Email Template so that they can complete their assigned task.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/EmailCompleteLink.png" />
+                </p>
+                <p>The<span class="ControlName"> Link Text </span>property enables you to specify the text that will appear for the link, so that the user does not simply see the complicated URL that sends them to Process Director to complete their task.</p>
+                <p>The <span class="ControlName">Action </span>property enables you to specify the task action you want the user to perform. This action MUST match a result specified in the <span class="UIElement">Results </span>tab of the Timeline definition, or a Branch in the Workflow definition.</p>
+                <p>For more information on this control, see the section of this documentation entitled <a href="Email Templates Completion.htm">Complete Links in an Email</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Reauth"></a><a href="#Reauth"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Reauthenticate;Reauth;Re-Authenticate" />Re-Authenticate</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For any Timeline activity or Workflow Task where the "Re-Authenticate when a user completes the task" option is checked, Process Director will add a user login to the Form. The Re-Authenticate control enables you to choose the location where you'd like the login box to appear on the Form, rather than allowing Process Director to insert it into the default location.</p>
+                <p>There are no configurable properties, other than the Name, for this control.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Captcha"></a><a href="#Captcha"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Captcha" />Captcha</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Captcha control enables you to verify that a human submitted the form by placing a control that cannot be manipulated by robots or scripts on a form. The Captcha requires that the person enter an alphanumeric code that appears in an image that is generated by the control. If the image does not match the text entered by the user, the form cannot be submitted. When the form is displayed, and the user cannot decipher the Captcha image, the user can regenerate a new image by clicking the <span class="UIElement">Generate New Image</span> link.</p>
+                <div class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> To enable the Captcha functionality, you must set the Captcha field as <b>required</b> in the field's properties on the <span class="UIElement">Form Controls</span> tab of the Form Definition. When you do so, the user must enter text that matches the text displayed in the Captcha image, or the form will not validate and submit.</div>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Captcha.png" />
+                </p>
+                <p>The <span class="ControlName">Prompt </span>property enables you to specify the prompt text to instruct the user how to fill out the Captcha. </p>
+                <p>The <span class="ControlName">Text Color</span> property specifies the text color to be used for the text in the Captcha image, while the <span class="ControlName">Background Color</span> specifies the background color of the image. You can use any HTML&#160;named color or HTML&#160;hexadecimal color representation for these values.</p>
+                <p>The <span class="ControlName">Difficulty </span>property specifies how easy the Captcha image will be to decipher. The following properties are available, along with a sample image of how each level of difficulty is represented in the Captcha.</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>DIFFICULTY</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>Example</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">None</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <img src="../Resources/Images/ImplementersReference/CaptchaNone.png" />
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Low</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <img src="../Resources/Images/ImplementersReference/CaptchaLow.png" />
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Medium</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <img src="../Resources/Images/ImplementersReference/CaptchaMedium.png" />
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">High</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <img src="../Resources/Images/ImplementersReference/CaptchaHigh.png" />
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Extreme</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <img src="../Resources/Images/ImplementersReference/CaptchaExtreme.png" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

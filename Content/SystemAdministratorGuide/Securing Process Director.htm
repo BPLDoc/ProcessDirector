@@ -1,32 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head>
-        <title>
-        </title>
+    <head><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:keyword term="System Administration" />
-            <MadCap:concept term="System Administration" />
-            <a name="_Toc421094548">
-            </a>Securing Process Director </h1>
+            <MadCap:concept term="System Administration" /><a name="_Toc421094548"></a>Securing Process Director </h1>
         <p>Like any system that is exposed publicly, whether it's to the Internet or to a corporate intranet, security should be a primary administrative concern. There are a number of security practices that can be implemented to protect a Process Director installation from unauthorized access. This especially important for systems that may contain sensitive data such as Personally Identifiable Information (PII) or data that is covered under HIPAA.</p>
         <p>Process Director includes a number of features and settings that assist you with tightening security to the product. To properly secure your Process Director installation, consider implementing the practices below.</p>
-        <h2>
-            <a name="XSS">
-            </a>Cross Site Scripting Protection <a href="#XSS" class="anchor">#</a></h2>
+        <h2><a name="XSS"></a>Cross Site Scripting Protection <a href="#XSS" class="anchor">#</a></h2>
         <p>For users of Internet Explorer, Chrome, or Safari, Process Director v3.54 and higher implements cross-site scripting protection by implementing the XSS filter in the HTTP header, with the setting:</p>
-        <p>
-            <code>X-XSS-Protection: 1; mode=block</code>
+        <p><code>X-XSS-Protection: 1; mode=block</code>
         </p>
         <p>When the browser detects a cross-scripting attempt, it will stop rendering the page completely, rather than attempting to sanitize the attack and render the page.</p>
         <div class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> The Firefox browser does <b>not</b> support cross-site scripting protection via the XSS filter.</div>
         <p>Starting with Process Director v3.78,  Cross-Site Request Forgery (CSRF) protection is enabled by setting the <a href="../DevelopersGuide/Customization File Misc.htm#fEnableReferrerProtection">fEnableReferrerProtection custom variable</a>. When set to "true," this variable enables Process Director to screen for CSRF by ensuring that the HTTP Referrer header is valid.</p>
-        <h2>
-            <a name="_Toc421094549">
-            </a>Properties Settings <a href="#_Toc421094549" class="anchor">#</a></h2>
+        <h2><a name="HSTS"></a>HTTP Strict Transport Security <a href="#HSTS" class="anchor">#</a></h2>
+        <p>For Process Director v4.54 and higher, HTTP Strict Transport Security (HSTS) has been implemented to protect against "man in the middle" attackes, like protocol downgrade or cookie hijacking attacks. The HSTS setting is sent to the browser via an HTTPS response header field named "Strict-Transport-Security", and specifies a time period during which the browser can only access the server via a secure transport layer.</p>
+        <h2><a name="_Toc421094549"></a>Properties Settings <a href="#_Toc421094549" class="anchor">#</a></h2>
         <p>On the Properties page of the Installation Settings section of the IT Admin area, there are two properties to which you should pay special attention.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -64,9 +57,7 @@
                 <p>Ensure that you are restricting web service calls only to IP addresses to which you want to give full administrative permission. Again, web service API calls can enable administrative functionality, so access should be restricted to only those trusted servers. To lock the system down more securely than the default, set this value to 127.0.0.1, which will allow only local access to the Web Services API, which is useful if you have no other server applications that use Web Services.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421094550">
-            </a>Custom Variable Settings <a href="#_Toc421094550" class="anchor">#</a></h2>
+        <h2><a name="_Toc421094550"></a>Custom Variable Settings <a href="#_Toc421094550" class="anchor">#</a></h2>
         <p> When using Cloud installations or on-Premise installations with the Compliance Edition, Process Director will keep an external audit trail of all activity. There are configuration options that should understand so that the settings you are using are implemented by design, rather than simply using the product defaults. </p>
         <p>These values are configured in the /custom/vars.cs.asmx file in the PreSetSystemVars() function. Detailed information on how to set custom variables, with the appropriate syntax, are available in the Developer's Guide.</p>
         <h4>Auditing Variables</h4>
@@ -129,9 +120,7 @@
                 <p>This variable sets the Process Director installation to Test Mode when set to "True", and will allow a user to login as any other user without a password. The default value for this variable is "False". Ensure that this custom variable is always set to "False" in your production system. The variable should also be set to "False" on your development and test systems, except for those times when it is explicitly needed, after which, it should be set back to "False".</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421094551">
-            </a>User Settings <a href="#_Toc421094551" class="anchor">#</a></h2>
+        <h2><a name="_Toc421094551"></a>User Settings <a href="#_Toc421094551" class="anchor">#</a></h2>
         <p>Users can be given administrative privileges in the User Administration section of the IT Admin area. There are some privileges that are very sensitive, and so should be used very sparingly, and only with an understanding of the capabilities these settings will give the user. Also, remember that these privileges can be given indirectly by granting them to a group to which the user is also a member.</p>
         <p>On production systems, the best practice is to give no administrative rights to any “normal” user. Instead, build in a privileged user identity for each administrator, to which they should explicitly log in for the purpose of executing administrative tasks, and for no other reason.</p>
         <MadCap:dropDown>
@@ -158,9 +147,7 @@
                 <p>This permissions setting allows a user to impersonate any other user and take on their complete identity and privileges. Administrators should be extremely careful about who is granted user impersonation permission, though Process Director v5.13 and higher prevents non-administrators from assuming any administrative permissions via impersonation.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421094552">
-            </a>User Permissions Page <a href="#_Toc421094552" class="anchor">#</a></h2>
+        <h2><a name="_Toc421094552"></a>User Permissions Page <a href="#_Toc421094552" class="anchor">#</a></h2>
         <p>Administrators of Cloud installations or on-Premise installations with the Compliance Edition will notice an additional User Perms menu button in the User Administration section of the IT Admin Interface. This button displays the User Permissions page.</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/Securing Process Director.jpg" style="visibility: visible;mso-wrap-style: square;" />
@@ -168,9 +155,7 @@
         <p>The User Permissions section enables you to find users and view a report of permissions that are applicable to that user.</p>
         <p>The top section of the user permissions screen provides a number of search fields that you can fill out to filter the users returned by the permissions search. The filter criteria will accept all or part of a User ID or User Name, or the GUID of an external user. Once you have entered the filter criteria you desire, click the Search button to see a list of all the users that match your filter criteria, as well as the permissions granted to the users.</p>
         <p>The User permissions page is very useful for manually auditing the permissions granted to any user.</p>
-        <h2>
-            <a name="_Toc421094553">
-            </a>Built-In User Authentication Options <a href="#_Toc421094553" class="anchor">#</a></h2>
+        <h2><a name="_Toc421094553"></a>Built-In User Authentication Options <a href="#_Toc421094553" class="anchor">#</a></h2>
         <p>When using Cloud installations or on-Premise installations with the Compliance Edition, there are several callout points in the /custom/vars.cs.asmx file that allow you to control access to the system, password changes, etc. </p>
         <p>More detail on these functions can be found in the Developer's Guide.</p>
         <MadCap:dropDown>
@@ -205,9 +190,7 @@
                 <p>This function is called when a user attempts to set or change their password, allowing for custom complexity requirements.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421094554">
-            </a>Audit Log Monitoring <a href="#_Toc421094554" class="anchor">#</a></h2>
+        <h2><a name="_Toc421094554"></a>Audit Log Monitoring <a href="#_Toc421094554" class="anchor">#</a></h2>
         <p>When using Cloud installations or on-Premise installations with the Compliance Edition, and when storing audit logs in the database, you can search for various events. In the Troubleshooting section of the IT Admin area there is an Audit Logs button that opens a search function that allows you to find specific audit log types. BP Logix recommends that you periodically check audit logs for certain privilege changes to ensure that these privileges are the ones expected on the production system.</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
             <li style="list-style-type: disc;">AdminPageAccess</li>
@@ -219,9 +202,7 @@
             <li style="list-style-type: disc;">AdminPageAccess</li>
             <li style="list-style-type: disc;">ImpersonateOn</li>
         </ul>
-        <h2>
-            <a name="_Toc421094555">
-            </a>Content List Permissions <a href="#_Toc421094555" class="anchor">#</a></h2>
+        <h2><a name="_Toc421094555"></a>Content List Permissions <a href="#_Toc421094555" class="anchor">#</a></h2>
         <p>When setting up permissions in the Content List on a production system you want to grant only the minimum permissions required. For instance, users do not need to be explicitly given View or Modify permission to form instances to participate in a workflow task. The system will automatically grant them the appropriate level of permission on the form instance to complete a task that is assigned to them. When the user completes the task, the configured permissions are then used for that form instance.</p>
         <p>Permissions should not generally be configured on individual objects in the Content List, except in special cases that require that level of granularity. Normally, permissions should only be configured at the folder level. Preparation and thought is necessary during the initial implementation to ensure that you structure the objects across folders based on object types and how permissions will be established. </p>
         <p>For example, do not create a folder that contains all Knowledge Views and Reports and then configure the permissions on each individual object to identify who is able to run it.&#160; Instead create multiple folders and group the objects by the type of access required. For instance, you might create an “Admin Knowledge Views” folder that only administrators can access, and a “Knowledge Views” folder than can be accessed by other end users. Segregating the access by folder will assist in the deployment of new objects from a non-production system to your production system, because:</p>
@@ -230,21 +211,16 @@
             <li>Permissions are not carried across in the XML export.</li>
         </ol>
         <p>Your production system should not grant delete permission to any users. Instead, have a limited set of partition administrator users, as partition administrators can perform functions in a Content List regardless of its configured permissions. Users should only login with these partition administrator user IDs when performing specific administrative functions, like deleting objects or importing XML files from a non-production system.</p>
-        <h2>
-            <a name="_Toc421094556">
-            </a>Data Encryption <a href="#_Toc421094556" class="anchor">#</a></h2>
+        <h2><a name="_Toc421094556"></a>Data Encryption <a href="#_Toc421094556" class="anchor">#</a></h2>
         <p>When using Cloud installations or on-Premise installations with the Compliance Edition, you have the option to encrypt fields using the Form Field Properties settings of a Form definition.</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/Securing Process Director_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
         <p>Checking the Encrypted Field check box will cause Process Director to save the field value in an encrypted format in the database. You may wish to consider this for fields that contain passwords, PII, HIPAA, or other sensitive data. Keep in mind, however, that you may not be able to search for data stored in encrypted form.</p>
-        <h2>
-            <a name="TLS">
-            </a>TLS <a href="#TLS" class="anchor">#</a></h2>
+        <h2><a name="TLS"></a>TLS <a href="#TLS" class="anchor">#</a></h2>
         <p>By default, the BP Logix form plugin defaults to using TLS 1.0, but it can use TLS 1.1 and TLS 1.2 when configured to do so. If a Process Director web site is requires a certain level of TLS to connect, the older versions of TLS have to be disabled where the BP Logix plugin is installed. </p>
         <p>To do this open the windows registry and create a “DWORD (32-bit) Value” named “SecurityProtocol” in this path key:</p>
-        <p>
-            <code>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\BP Logix\Plugin]</code>
+        <p><code>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\BP Logix\Plugin]</code>
         </p>
         <p>Set the value to <code>00000f00 </code>(3840 decimal) to disable TLS 1.0</p>
         <p>Set the value to <code>00000c00 </code>(3072 decimal) to disable both TLS 1.0 and TLS 1.1</p>

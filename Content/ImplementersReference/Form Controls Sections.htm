@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Forms" />
+            <MadCap:concept term="Implementation" /><a name="_Toc421536210"></a>
+            <MadCap:keyword term="Section" />Sections (Word Form Builder)</h1>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/The radio button input controls_69.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>A <span class="NamedControl">Section</span> control is a type of control that you use to organize, show, or hide controls on a form. A section actually consists of two separate controls: the <span class="NamedControl">Section </span>and <span class="NamedControl">Section End</span>. Every <span class="NamedControl">Section </span>control must have a <span class="NamedControl">Section End</span>. Every control that is placed between the <span class="NamedControl">Section</span> and <span class="NamedControl">Section End</span> controls become part of that section. You can also nest sections, meaning that you can place a section inside of a section.</p>
+        <p>
+            <img src="../Resources/Images/Capture4.jpg" />
+        </p>
+        <p>There are two kinds of sections: normal sections and embedded sections. Embedded sections are used to gather various controls on a Form into one group, making it easier to set properties common throughout the group. Embedded sections are not visible to the user. Normal Sections are visible to the user, and are collapsible and expandable.</p>
+        <p>All section controls automatically include HTML anchors using the syntax: </p>
+        <p><code>&lt;a name="SECTIONNAME"&gt;&lt;/a&gt;</code>
+        </p>
+        <p>The anchor has the same name as that of the Section control.&#160; Form designers can give their users the ability to scroll down to any section by providing a link (using the Hotlink control) with the URL:</p>
+        <p><code>#SECTIONNAME</code>
+        </p>
+        <p>Simply replace "SECTIONNAME" with the actual name of the Section control. You may find the ability to link to document sections useful when designing long forms.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Section"></a><a href="#Section"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Section / Section End</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Sections with Titles will look like this on your word document:</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_70.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>In the section’s properties, you can edit the name of the section, the title of the section (which is visible to the user), whether the section can be collapsed or expanded, whether it is expanded by default or not, and the image URLs for the collapse / expand buttons.&#160; The default images are just “+” and “-“ buttons.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_71.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Checking the “Floating?” checkbox will make the section, when expanded, display on top of other sections.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_72.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <h5>Expanding/Contracting Sections</h5>
+                <p>In addition to the regular field settings for visibility or enabling the control, Sections can also expand or collapse. The Section control's Value property determines whether control is expanded or collapsed. Setting the value to "1" will collapse the section, while setting the value to "0" will expand the section. The default value is "0". </p>
+                <p>You can set the value in the Form control's at design time by either:</p>
+                <ol style="list-style-type: decimal;margin-left: 36pt;" start="1">
+                    <li>Checking or unchecking the "Expanded?" property's check box in the Section control's Properties dialog box in the Form template, or</li>
+                    <li>Setting the Default Value property in for the Form field's properties dialog box in the Form Controls Tab of the Form Definition.</li>
+                </ol>
+                <p>You can also set the value at run time by using the Set Form Data Custom Task in the Custom task Event Mapping Tab of the Form Definition to change the Value based on some condition you desire.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="EmbeddedSection"></a><a href="#EmbeddedSection"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Embedded Section" />Embedded Section / Embedded Section End</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Embedded Sections are somewhat simpler. They’re represented in Microsoft Word as large square brackets, though they’re invisible to the Form’s user.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_73.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>You can edit the section’s name in the properties tab for the section.</p>
+                <p>Embedded sections are useful for conditionally showing and hiding items on a Form. For instance, you can use embedded sections to surround a table row you would like to hide, and set the conditions under which it should be hidden by configuring the Form properties on Process Director.</p>
+                <p>The embedded sections will appear in MS Word as large black brackets. You should place the Embedded Section control at the end of the row before the row that you want to hide, and place the Embedded Section End control at the end of the row you want to hide.</p>
+                <p>
+                    <img src="../Resources/Images/embedded row.png" />
+                </p>
+                <p>Upload the Form to Process Director, and then navigate to the Form in the content list. Go to the <span class="UIElement">Form Controls</span> tab. Find the section surrounding the row that you want to hide, and click on the <span class="UIElement">Edit </span>link. In the <span class="ControlName">Set Visibility Options</span> dropdown, select either “Field is Hidden When” or “Field is Visible When”, and use the condition builder by clicking the <span class="UIElement">Click to Create Condition</span> link to set the conditions under which the row will be hidden.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ClientSection"></a><a href="#ClientSection"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="Client Section" />Client Section/Client Section End</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_74.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>The Client Section control is generated through JavaScript in the browser client, unlike the normal Section control, which is rendered as a server control through ASP.NET. Because the client control is generated on the client, the control can be expanded or contracted without having to perform a postback of the form to the server. The Client Section control, therefore, provides faster performance than the regular Section control. On the other hand, the Client Section control cannot trigger any rules or logic, nor can it support any visibility or enable/disable rules like a regular Section control.</p>
+                <p>The Control Picker does not have a visual placeholder, and is placed on the page in Process Director's markup language as:</p>
+                <p><code>{ClientSection:client_section2, Text=xyz, InitialExpand=Yes|No, ExpandDefault=Yes|No}<br />&#160;&#160;&#160;&#160;This is content for the Client Section<br />{ClientSectionEnd}</code>
+                </p>
+                <p>The Client Section control has three attributes:</p>
+                <ul style="list-style-type: disc;margin-left: 36pt;">
+                    <li style="list-style-type: disc;">Text: The text that appears in the title bar of the section.</li>
+                    <li style="list-style-type: disc;">InitialExpand: Determines whether the control is displayed in expanded mode when initially displayed. Setting this attribute overrides the ExpandDefault attribute. To allow the ExpandDefault to determine whether the section is expanded, do not set this attribute.</li>
+                    <li style="list-style-type: disc;">ExpandDefault: Determines whether the section will be expanded by default. This will determine the initial state of the control when the form is opened for the first time in a browser session. After the initial display, the Client Section's expanded state is stored in a session cookie. If the form is opened again during the same browser session, the Client Section's expanded state will be controlled by the session cookie. In other words, if the Client Section was not expanded when the form was last closed, it will not be expanded if the form is re-opened during the same browser section.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="TabStrip"></a><a href="#TabStrip"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="TabStrip;TabStripContent" />Tab Strip</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_75.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Tab strips allow you to separate form content into different tabs, thus conserving space. Each tab can be viewed individually. To declare the start of a tab strip, use the Tab Strip control.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_76.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p> The properties window allows you to configure the number, text, and IDs of tabs.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_77.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Everything inside the Tab Strip control must be part of a tab. To declare the start of a tab, use the Tab Content Control.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_78.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>Form content goes between the Tab Content and Tab Content End controls. The Tab Content and Tab End controls define the start and end of a tab. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/The radio button input controls_79.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                </p>
+                <p>The ID of the TabStrip Content control, configured in the properties, must match the ID of one of the tabs defined in the Tab Strip properties.</p>
+                <div class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> IDs are case sensitive, so the case must match between the IDs in the <span class="NamedControl">TabStrip </span>and <span class="NamedControl">TabStripContent </span>controls.</div>
+                <p>
+                    <img src="../Resources/Images/Capture166.png" />
+                </p>
+                <p><span class="NamedControl">TabStrip </span>and <span class="NamedControl">TabStrip Content</span> controls are both ended with an "End" control, just as sections are.</p>
+                <p>If a <span class="NamedControl">Tabstrip</span>'s first tab is hidden, the Form will select the first visible tabby default. You can set the focus to a specific tab in the <span class="NamedControl">TabStrip </span>control by setting the value of the <span class="NamedControl">TabStrip </span>to the ID of the tab you want to display.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>
