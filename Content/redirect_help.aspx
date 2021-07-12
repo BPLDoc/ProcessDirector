@@ -28,331 +28,331 @@
 		{
 		//Word Form Controls =====================================================================================================================
 			case "INPUT":
-				r("implementersreference/eform_controls.htm#InputControl");
+				r("implementersreference/form_controls.htm#InputControl");
 				break;
 			case "CHECKBOX":
-				r("implementersreference/eform_controls.htm#CheckBox");
+				r("implementersreference/form_controls.htm#CheckBox");
 				break;
 			case "DROPDOWN":
-				r("implementersreference/eform_controls.htm#DropDown");
+				r("implementersreference/form_controls.htm#DropDown");
 				break;
 			case "RADIO":
-				r("implementersreference/eform_controls.htm#Radio");
+				r("implementersreference/form_controls.htm#Radio");
 				break;
 			case "DATE":
-				r("implementersreference/eform_controls.htm#DropDown");
+				r("implementersreference/form_controls.htm#DropDown");
 				break;
 			case "LISTBOX":
-				r("implementersreference/eform_controls.htm#DateField");
+				r("implementersreference/form_controls.htm#DateField");
 				break;
 			case "SECTION":
-				r("implementersreference/eform_controls.htm#Section");
+				r("implementersreference/form_controls.htm#Section");
 				break;
 			case "SECTIONEND":
-				r("implementersreference/eform_controls.htm#Section");
+				r("implementersreference/form_controls.htm#Section");
 				break;
 			case "ROUTINGSLIP":
-				r("implementersreference/eform_controls.htm#RoutingSlip");
+				r("implementersreference/form_controls.htm#RoutingSlip");
 				break;
 			case "ARRAY":
-				r("implementersreference/eform_controls.htm#Array");
+				r("implementersreference/form_controls.htm#Array");
 				break;
 			case "ARRAYEND":
-				r("implementersreference/eform_controls.htm#Array");
+				r("implementersreference/form_controls.htm#Array");
 				break;
 			case "ARRAYREMOVEROW":
-				r("implementersreference/eform_controls.htm#ArrayMoveRows");
+				r("implementersreference/form_controls.htm#ArrayMoveRows");
 				break;
 			case "ARRAYMOVEUP":
-				r("implementersreference/eform_controls.htm#ArrayMoveRows");
+				r("implementersreference/form_controls.htm#ArrayMoveRows");
 				break;
 			case "ARRAYMOVEDOWN":
-				r("implementersreference/eform_controls.htm#ArrayMoveRows");
+				r("implementersreference/form_controls.htm#ArrayMoveRows");
 				break;
 			case "ADDROW":
-				r("implementersreference/eform_controls.htm#AddRemoveArrayRows");
+				r("implementersreference/form_controls.htm#AddRemoveArrayRows");
 				break;
 			case "REMOVEROW":
-				r("implementersreference/eform_controls.htm#AddRemoveArrayRows");
+				r("implementersreference/form_controls.htm#AddRemoveArrayRows");
 				break;
 			case "SUM":
-				r("implementersreference/eform_controls.htm#ArraySum");
+				r("implementersreference/form_controls.htm#ArraySum");
 				break;
 			case "BUTTON":
-				r("implementersreference/eform_controls.htm#Button");
+				r("implementersreference/form_controls.htm#Button");
 				break;
 			case "BUTTONAREA":
-				r("implementersreference/eform_controls.htm#Button");
+				r("implementersreference/form_controls.htm#Button");
 				break;
 			case "PRINT":
-				r("implementersreference/eform_controls.htm#Button");
+				r("implementersreference/form_controls.htm#Button");
 				break;
 			case "SAVE":
-				r("implementersreference/eform_controls.htm#Button");
+				r("implementersreference/form_controls.htm#Button");
 				break;
 			case "USERPICKER":
-				r("implementersreference/eform_controls.htm#UserGroupPicker");
+				r("implementersreference/form_controls.htm#UserGroupPicker");
 				break;
 			case "GROUPPICKER":
-				r("implementersreference/eform_controls.htm#UserGroupPicker");
+				r("implementersreference/form_controls.htm#UserGroupPicker");
 				break;
 			case "CONTENTPICKER":
-				r("implementersreference/eform_controls.htm#ContentPicker");
+				r("implementersreference/form_controls.htm#ContentPicker");
 				break;
 			case "EMAILDATA":
-				r("implementersreference/eform_controls.htm#EmailData");
+				r("implementersreference/form_controls.htm#EmailData");
 				break;
 			case "HOTLINK":
-				r("implementersreference/eform_controls.htm#Hotlink");
+				r("implementersreference/form_controls.htm#Hotlink");
 				break;
 			case "CALCULATE":
-				r("implementersreference/eform_controls.htm#Calculation");
+				r("implementersreference/form_controls.htm#Calculation");
 				break;
 			case "COMMENTLOG":
-				r("implementersreference/eform_controls.htm#CommentLog");
+				r("implementersreference/form_controls.htm#CommentLog");
 				break;
 			case "SIGNATURECOMMENTS":
-				r("implementersreference/eform_controls.htm#SignatureComments");
+				r("implementersreference/form_controls.htm#SignatureComments");
 				break;
 			case "HTML":
-				r("implementersreference/eform_controls.htm#HTML");
+				r("implementersreference/form_controls.htm#HTML");
 				break;
 			case "ATTACH":
-				r("implementersreference/eform_controls.htm#Attachobjects");
+				r("implementersreference/form_controls.htm#Attachobjects");
 				break;
 			case "SHOWATTACH":
-				r("implementersreference/eform_controls.htm#ShowAttachedObjects");
+				r("implementersreference/form_controls.htm#ShowAttachedObjects");
 				break;
 			case "ATTACHKVIEW":
-				r("implementersreference/eform_control_tags.htm#_Toc421536275");
+				r("implementersreference/form_control_tags.htm#_Toc421536275");
 				break;
 			case "SHOWATTACHKVIEW":
-				r("implementersreference/eform_control_tags.htm#_Toc421536311");
+				r("implementersreference/form_control_tags.htm#_Toc421536311");
 				break;
 			case "TABSTRIP":
-				r("implementersreference/eform_control_tags.htm#TabStrip");
+				r("implementersreference/form_control_tags.htm#TabStrip");
 				break;
 			case "TABSTRIPEND":
-				r("implementersreference/eform_control_tags.htm#TabStrip");
+				r("implementersreference/form_control_tags.htm#TabStrip");
 				break;
 			case "TABCONTENT":
-				r("implementersreference/eform_control_tags.htm#TabStrip");
+				r("implementersreference/form_control_tags.htm#TabStrip");
 				break;
 			case "TABCONTENTEND":
-				r("implementersreference/eform_control_tags.htm#TabStrip");
+				r("implementersreference/form_control_tags.htm#TabStrip");
 				break;
 			case "FORMATTING":
-				r("implementersreference/eform_controls.htm#InputControl");
+				r("implementersreference/form_controls.htm#InputControl");
 				break;
 
 		//OFD Form Controls =====================================================================================================================
 		//Basic Controls
 			case "OFDINPUT":
-				r("implementersreference/eform_online_controls_basic.htm#InputControl");
+				r("implementersreference/form_online_controls_basic.htm#InputControl");
 				break;
 			case "OFDCHECKBOX":
-				r("implementersreference/eform_online_controls_basic.htm#CheckBox");
+				r("implementersreference/form_online_controls_basic.htm#CheckBox");
 				break;
 			case "OFDDATE":
-				r("implementersreference/eform_online_controls_basic.htm#DateField");
+				r("implementersreference/form_online_controls_basic.htm#DateField");
 				break;
 			case "OFDDROPDOWN":
-				r("implementersreference/eform_online_controls_basic.htm#DropDown");
+				r("implementersreference/form_online_controls_basic.htm#DropDown");
 				break;
 			case "OFDRADIO":
-				r("implementersreference/eform_online_controls_basic.htm#Radio");
+				r("implementersreference/form_online_controls_basic.htm#Radio");
 				break;
 			case "OFDSECTION":
-				r("implementersreference/eform_online_controls_basic.htm#Section");
+				r("implementersreference/form_online_controls_basic.htm#Section");
 				break;
 			case "OFDSWITCH":
-				r("implementersreference/eform_online_controls_basic.htm#Switch");
+				r("implementersreference/form_online_controls_basic.htm#Switch");
 				break;
 
 		//Input Controls
 			case "OFDSIGCOMMENTS":
-				r("implementersreference/eform_online_controls_input.htm#SignatureComments");
+				r("implementersreference/form_online_controls_input.htm#SignatureComments");
 				break;
 			case "OFDSIGNATURE":
-				r("implementersreference/eform_online_controls_input.htm#SignatureControl");
+				r("implementersreference/form_online_controls_input.htm#SignatureControl");
 				break;
 			case "OFDCOMMENTLOG":
-				r("implementersreference/eform_online_controls_input.htm#CommentLog");
+				r("implementersreference/form_online_controls_input.htm#CommentLog");
 				break;
 			case "OFDLISTBOX":
-				r("implementersreference/eform_online_controls_input.htm#ListBox");
+				r("implementersreference/form_online_controls_input.htm#ListBox");
 				break;
 			case "OFDRADIOLIST":
-				r("implementersreference/eform_online_controls_input.htm#RadioButtonList");
+				r("implementersreference/form_online_controls_input.htm#RadioButtonList");
 				break;
 			case "OFDSLIDER":
-				r("implementersreference/eform_online_controls_input.htm#Slider");
+				r("implementersreference/form_online_controls_input.htm#Slider");
 				break;
 			case "OFDRATING":
-				r("implementersreference/eform_online_controls_input.htm#Rating");
+				r("implementersreference/form_online_controls_input.htm#Rating");
 				break;
 			case "OFDUSERPICK":
-				r("implementersreference/eform_online_controls_input.htm#UserPicker");
+				r("implementersreference/form_online_controls_input.htm#UserPicker");
 				break;
 			case "OFGROUPPICK":
-				r("implementersreference/eform_online_controls_input.htm#GroupPicker");
+				r("implementersreference/form_online_controls_input.htm#GroupPicker");
 				break;
 
 		//Other Input Controls
 			case "OFDCONTENTPICK":
-				r("implementersreference/eform_online_controls_other_input.htm#ContentPicker");
+				r("implementersreference/form_online_controls_other_input.htm#ContentPicker");
 				break;
 			case "OFDCATEGORYPICK":
-				r("implementersreference/eform_online_controls_other_input.htm#CategoryPicker");
+				r("implementersreference/form_online_controls_other_input.htm#CategoryPicker");
 				break;
 			case "OFDATTERIBUTEPICK":
-				r("implementersreference/eform_online_controls_other_input.htm#AttributePicker");
+				r("implementersreference/form_online_controls_other_input.htm#AttributePicker");
 				break;
 			case "OFDDATASOURCEPICK":
-				r("implementersreference/eform_online_controls_other_input.htm#DatasourcePicker");
+				r("implementersreference/form_online_controls_other_input.htm#DatasourcePicker");
 				break;
 			case "OFDCONTROLPICK":
-				r("implementersreference/eform_online_controls_other_input.htm#ControlPicker");
+				r("implementersreference/form_online_controls_other_input.htm#ControlPicker");
 				break;
 			case "OFDTOPAZ":
-				r("implementersreference/eform_online_controls_other_input.htm#TopazSignatureControl");
+				r("implementersreference/form_online_controls_other_input.htm#TopazSignatureControl");
 				break;
 			case "OFDJOURNAL":
-				r("implementersreference/eform_online_controls_other_input.htm#ActivityLog");
+				r("implementersreference/form_online_controls_other_input.htm#ActivityLog");
 				break;
 
 		//Actions Controls
 			case "OFDBUTTONAREA":
-				r("implementersreference/eform_online_controls_actions.htm#ButtonArea");
+				r("implementersreference/form_online_controls_actions.htm#ButtonArea");
 				break;
 			case "OFDPRINT":
-				r("implementersreference/eform_online_controls_actions.htm#PrintButton");
+				r("implementersreference/form_online_controls_actions.htm#PrintButton");
 				break;
 			case "OFDSAVE":
-				r("implementersreference/eform_online_controls_actions.htm#SaveButton");
+				r("implementersreference/form_online_controls_actions.htm#SaveButton");
 				break;
 			case "OFDCANCEL":
-				r("implementersreference/eform_online_controls_actions.htm#Cancel");
+				r("implementersreference/form_online_controls_actions.htm#Cancel");
 				break;
 			case "OFDMANAGEUSERS":
-				r("implementersreference/eform_online_controls_actions.htm#ManageProcessUsers");
+				r("implementersreference/form_online_controls_actions.htm#ManageProcessUsers");
 				break;
 			case "OFDINVITE":
-				r("implementersreference/eform_online_controls_actions.htm#Invite");
+				r("implementersreference/form_online_controls_actions.htm#Invite");
 				break;
 			case "OFDBUTTON":
-				r("implementersreference/eform_online_controls_actions.htm#Button");
+				r("implementersreference/form_online_controls_actions.htm#Button");
 				break;
 			case "OFDREAUTH":
-				r("implementersreference/eform_online_controls_actions.htm#Reauth");
+				r("implementersreference/form_online_controls_actions.htm#Reauth");
 				break;
 			case "OFDCAPTCHA":
-				r("implementersreference/eform_online_controls_actions.htm#Captcha");
+				r("implementersreference/form_online_controls_actions.htm#Captcha");
 				break;
 			case "OFDEMAILCOMPLETE":
-				r("implementersreference/eform_online_controls_actions.htm#EmailCompleteLink");
+				r("implementersreference/form_online_controls_actions.htm#EmailCompleteLink");
 				break;
 
 
 		//Other Controls
 			case "OFDSYSVAR":
-				r("implementersreference/eform_online_controls_other.htm#Sysvar");
+				r("implementersreference/form_online_controls_other.htm#Sysvar");
 				break;
 			case "OFDLABEL":
-				r("implementersreference/eform_online_controls_other.htm#LabelControl");
+				r("implementersreference/form_online_controls_other.htm#LabelControl");
 				break;
 			case "OFDROUTINGSLIP":
-				r("implementersreference/eform_online_controls_other.htm#RoutingSlip");
+				r("implementersreference/form_online_controls_other.htm#RoutingSlip");
 				break;
 			case "OFDHTML":
-				r("implementersreference/eform_online_controls_other.htm#HTMLCode");
+				r("implementersreference/form_online_controls_other.htm#HTMLCode");
 				break;
 			case "OFDKVIEW":
-				r("implementersreference/eform_online_controls_other.htm#KnowledgeViewControls");
+				r("implementersreference/form_online_controls_other.htm#KnowledgeViewControls");
 				break;
 			case "OFDHOTLINK":
-				r("implementersreference/eform_online_controls_other.htm#Hotlink");
+				r("implementersreference/form_online_controls_other.htm#Hotlink");
 				break;
 			case "OFDIMAGE":
-				r("implementersreference/eform_online_controls_other.htm#ImageControl");
+				r("implementersreference/form_online_controls_other.htm#ImageControl");
 				break;
 			case "OFDCALC":
-				r("implementersreference/eform_online_controls_other.htm#Calculation");
+				r("implementersreference/form_online_controls_other.htm#Calculation");
 				break;
 			case "OFDDATEDIFF":
-				r("implementersreference/eform_online_controls_other.htm#DateDifference");
+				r("implementersreference/form_online_controls_other.htm#DateDifference");
 				break;
 			case "OFDLOCKFORM":
-				r("implementersreference/eform_online_controls_other.htm#LockFormControl");
+				r("implementersreference/form_online_controls_other.htm#LockFormControl");
 				break;
 			case "OFDSCHEDULER":
-				r("implementersreference/eform_online_controls_other.htm#Scheduler");
+				r("implementersreference/form_online_controls_other.htm#Scheduler");
 				break;
 			case "OFDAUDIT":
-				r("implementersreference/eform_online_controls_other.htm#AuditButton");
+				r("implementersreference/form_online_controls_other.htm#AuditButton");
 				break;
 			case "OFDSHOWREPORT":
-				r("implementersreference/eform_online_controls_other.htm#ShowReportControl");
+				r("implementersreference/form_online_controls_other.htm#ShowReportControl");
 				break;
 			case "OFDEMAILDATA":
-				r("implementersreference/eform_online_controls_other.htm#EmailData");
+				r("implementersreference/form_online_controls_other.htm#EmailData");
 				break;
 			case "OFDTOOLTIP":
-				r("implementersreference/eform_online_controls_other.htm#Tooltip");
+				r("implementersreference/form_online_controls_other.htm#Tooltip");
 				break;
 				case "OFDICON":
-				r("implementersreference/eform_online_controls_other.htm#Icon");
+				r("implementersreference/form_online_controls_other.htm#Icon");
 				break;
 		
 		//Layout Controls
 			case "OFDEMBEDDEDSECTION":
-				r("implementersreference/eform_online_controls_layout.htm#EmbeddedSection");
+				r("implementersreference/form_online_controls_layout.htm#EmbeddedSection");
 				break;
 			case "OFDTABSTRIP":
-				r("implementersreference/eform_online_controls_layout.htm#TabStrip");
+				r("implementersreference/form_online_controls_layout.htm#TabStrip");
 				break;
 			case "OFDCOMMENT":
-				r("implementersreference/eform_online_controls_layout.htm#Comment");
+				r("implementersreference/form_online_controls_layout.htm#Comment");
 				break;
 			case "OFDFORMERRORSTRING":
-				r("implementersreference/eform_online_controls_layout.htm#FormErrorStringLocation");
+				r("implementersreference/form_online_controls_layout.htm#FormErrorStringLocation");
 				break;
 			case "OFDFORMINFOSTRING":
-				r("implementersreference/eform_online_controls_layout.htm#FormInfoStringLocation");
+				r("implementersreference/form_online_controls_layout.htm#FormInfoStringLocation");
 				break;
 
 		//Array Controls
 			case "OFDARRAY":
-				r("implementersreference/eform_online_controls_arrays.htm#Array");
+				r("implementersreference/form_online_controls_arrays.htm#Array");
 				break;
 			case "OFDADDREMOVEROWS":
-				r("implementersreference/eform_online_controls_arrays.htm#AddRemoveArrayRows");
+				r("implementersreference/form_online_controls_arrays.htm#AddRemoveArrayRows");
 				break;
 			case "OFDMOVEROWS":
-				r("implementersreference/eform_online_controls_arrays.htm#ArrayMoveRows");
+				r("implementersreference/form_online_controls_arrays.htm#ArrayMoveRows");
 				break;
 			case "OFDSUM":
-				r("implementersreference/eform_online_controls_arrays.htm#ArraySum");
+				r("implementersreference/form_online_controls_arrays.htm#ArraySum");
 				break;
 			case "OFDSORT":
-				r("implementersreference/eform_online_controls_arrays.htm#SortArray");
+				r("implementersreference/form_online_controls_arrays.htm#SortArray");
 				break;
 			case "OFDROWNUM":
-				r("implementersreference/eform_online_controls_arrays.htm#ArrayRowNumber");
+				r("implementersreference/form_online_controls_arrays.htm#ArrayRowNumber");
 				break;
 
 		//Attachment Controls
 			case "OFDATTACH":
-				r("implementersreference/eform_online_controls_attachments.htm#AttachObjects");
+				r("implementersreference/form_online_controls_attachments.htm#AttachObjects");
 				break;
 			case "OFDSHOWATTACH":
-				r("implementersreference/eform_online_controls_attachments.htm#ShowAttachedObjects");
+				r("implementersreference/form_online_controls_attachments.htm#ShowAttachedObjects");
 				break;
 			case "OFDATTACHKV":
-				r("implementersreference/eform_online_controls_attachments.htm#AttachObjectsKV");
+				r("implementersreference/form_online_controls_attachments.htm#AttachObjectsKV");
 				break;
 			case "OFDSHOWATTACHKV":
-				r("implementersreference/eform_online_controls_attachments.htm#ShowAttachObjectsKV");
+				r("implementersreference/form_online_controls_attachments.htm#ShowAttachObjectsKV");
 				break;
 
 
@@ -379,16 +379,16 @@
 				r("systemvariablesreferenceguide/systemvariablesreferenceguide.htm");
 				break;
 			case "LABEL":
-				r("implementersreference/eform_controls.htm#LabelControl");
+				r("implementersreference/form_controls.htm#LabelControl");
 				break;
 			case "KVIEW":
 				r("implementersreference/knowledge_views.htm");
 				break;
 			case "COMMENT":
-				r("implementersreference/eform_controls.htm#CommentLog");
+				r("implementersreference/form_controls.htm#CommentLog");
 				break;
 			case "COMMENTEND":
-				r("implementersreference/eform_controls.htm#CommentLog");
+				r("implementersreference/form_controls.htm#CommentLog");
 				break;
             case "MANAGEUSERS":
 				r("implementersreference/process_timeline_packages.htm#_Toc421536185");
