@@ -39,7 +39,12 @@
         <div class="CodeBase">SQL Server User:Data Source=HOSTNAME;Initial Catalog=DB_NAME;Persist Security Info=True;User ID=USERID;Pwd=PASSWORD</div>
         <h4>Windows User</h4>
         <div class="CodeBase">Data Source=HOSTNAME;Initial Catalog=DB_NAME;Persist Security Info=True;Trusted_Connection=Yes</div>
-        <p>Please note: If you are using a Windows user, the user will need to be assigned as the Identity to the Application pool of the IIS website.</p>
+        <p>Please note: If you are using a Windows user, the user will need to be assigned as the Identity to the Application pool of the IIS website. The Default Application Pool User ID is called “IIS APPPOOL\{app pool name}”.  It is a virtual user so it will not appear in permissions dialogs when seeing a list of users, but it can be typed in.</p>
+        <p>This may be needed for customers that are using windows authentication to access their SQL Server, or are trying to access a file system (e.g. using the Export Items Custom Task) and do not have permissions. You can try adding permissions for the virtual user or you can change the application pool identity (user).  Here are some helpful links:</p>
+        <p><a href="https://docs.microsoft.com/en-us/iis/manage/configuring-security/application-pool-identities#securing-resources" alt="Securing Resources" title="Securing Resources">Microsoft:&#160;Securing Resources</a>
+        </p>
+        <p><a href="https://serverfault.com/questions/81165/how-to-assign-permissions-to-applicationpoolidentity-account" title="How to assign permissions to ApplicationPoolIdentity account" alt="How to assign permissions to ApplicationPoolIdentity account">ServerFault: How to assign permissions to ApplicationPoolIdentity account</a>
+        </p>
         <h3><a name="_Toc421172271"></a>Oracle</h3>
         <p>Oracle requires that the DBA create the database (user schema in Oracle). To connect to Oracle the ODP.NET drivers must be installed on the web server where Process Director is located. These are available from Oracle. Process Director supports Oracle 10g or higher. The Oracle 11 ODP.NET drivers can be used with an Oracle 10 database. </p>
         <h4>Provider</h4>
