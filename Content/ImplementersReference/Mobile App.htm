@@ -5,11 +5,12 @@
     </head>
     <body>
         <h1>BP Logix Mobile Application</h1>
-        <p>The BP&#160;Logix Mobile Application Component is a separately-licensed component for Process Director installations that use the Cloud or on-premise Subscription licensing model. The Mobile App Component enables you to send Process Director forms to a mobile server that implement offline form creation. The Mobile App component provides access to the following features.</p>
+        <p>The BP&#160;Logix Mobile Application Component is a separately-licensed component for Process Director installations that use the Cloud or on-premise Subscription licensing model. The Mobile App Component enables you to use a mobile application that supports both online and offline form submission on phones, tablets, and other mobile devices. Forms can be filled out by mobile users even when the user has no internet connectivity on the mobile device, and the mobile application will sync Form instances with the mobile merver when internet connectivity is restored. Forms submitted via the mobile application are stored on the mobile merver until they are imported into Process Director. </p>
+        <p>The Mobile App component provides access to the following features.</p>
         <ul>
-            <li>Additions to the Form Definition that enable the export of the Form Definition to an Excel file.</li>
-            <li>A mobile server into which: <ul><li>The Excel file can be imported, and the form converted to a mobile-specific format.</li><li>Datasources can be imported and use to fill dropdowns, set form data, etc.</li></ul></li>
-            <li>A Mobile Application that can be downloaded from the <a href="https://play.google.com/store/apps/details?id=com.bplogix.bplogix" target="_blank">Google Play Store</a> or <a href="https://apps.apple.com/us/app/bp-logix/id1568075600" target="_blank">Apple App Store</a>, which can be used to fill forms offline.</li>
+            <li>Additions to the Form definition that enable the export of the Form definition to an Excel file.</li>
+            <li>A mobile server into which: <ul><li>The Excel file can be imported, and the form converted to a mobile-specific format, and</li><li>Datasources can be imported and used to fill dropdowns, set form data, etc.</li></ul></li>
+            <li>A Mobile Application that can be downloaded from the <a href="https://play.google.com/store/apps/details?id=com.bplogix.bplogix" target="_blank">Google Play Store</a> or <a href="https://apps.apple.com/us/app/bp-logix/id1568075600" target="_blank">Apple App Store</a>, which can be used to fill forms offline from Process Director, even if the user has no Internet connectivity.</li>
         </ul>
         <p>Once the license for the Mobile App Component is purchased, administrators will be provided with a login to access the Mobile Server at https://mobile.bplogix.com. Additionally, mobile component custom variables will be provided for on-premise customers, or set by BP&#160;Logix for Cloud customers. These custom variables must be configured in the Custom&#160;Variable file prior to using the component, and are documented in the <a href="../DevelopersGuide/Customization File Mobile.htm" target="_blank">Mobile Application Custom Variables</a> topic of the Developer's Guide.</p>
         <h2><a name="ImpForm"></a>Importing a Form into the Mobile App Component <a href="#ImpForm" class="anchor">#</a></h2>
@@ -18,17 +19,18 @@
             <img src="../Resources/Images/ImplementersReference/mobile01.png" />
         </p>
         <p>Clicking this link will create a new Excel spreadsheet that will be automatically downloaded to your local machine.</p>
-        <p>Using a web browser navigate to the URL&#160;assigned as the mobile server URL for your installation, e.g., "https://mobile.bplogix.com".</p>
-        <p>The User interface for the BP&#160;Logix Mobile Server has a navigation menu on the left side of the screen, and displays the configuration page for the selected menu item on the right side of the screen. Please note that the menu items available to you on the left side of the screen may not display all of the items shown in the screenshots for this topic, based on your level of access to the Mobile Server.</p>
+        <p>Using a web browser, navigate to the URL&#160;assigned as the mobile server URL for your installation, e.g., "https://mobile.bplogix.com".</p>
+        <p>The user interface for the BP&#160;Logix Mobile Server has a navigation menu on the left side of the screen, and displays the configuration page for the selected menu item on the right side of the screen. Please note that the menu items available to you on the left side of the screen may not display all of the items shown in the screenshots for this topic, based on your level of access to the Mobile Server.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile.png" />
         </p>
-        <p>On the mobile server, each Form that you import from Process Director will be called a "Screen ". To create a new screen, or to see a list of existing screens, click on the <span class="UIElement">Apps </span>menu, then click the <span class="UIElement">Screens </span>submenu to display all of the form screens that exist on the mobile server.</p>
-        <p>To import an Excel File for a new Screen, you must first create a new, blank screen by clicking the <span class="UIElement">Add New</span> button at the top right corner of the screen. Clicking this button will open the <span class="ControlName">Create New Screen</span> dialog box.</p>
+        <p>On the mobile server, each Form that you import from Process Director will be called a "Screen ". To create a new Screen, or to see a list of existing Screens, click on the <span class="UIElement">Apps </span>menu, then click the <span class="UIElement">Screens </span>submenu to display all of the form Screens that exist on the mobile server.</p>
+        <p>To import an Excel File for a new Screen, you must first create a new, blank Screen by clicking the <span class="UIElement">Add New</span> button at the top right corner of the screen. Clicking this button will open the <span class="ControlName">Create New Screen</span> dialog box.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile1.png" />
         </p>
-        <p>On the left side of the dialog box, keep the default setting of <span class="ControlName">Data Entry Form</span>. On the right side, enter a <span class="ControlName">Name </span>for the new form. This name will be temporary if you are importing a form, since the Form Name will be overwritten when the Excel File is imported. Next, select an Icon to use as the screen icon for the form from the <span class="ControlName">Icon to Display</span> dropdown. Finally, if you wish to associate the new Screen with a Data Source, for instance, to fill s set of dropdown options, select the Data Source from the <span class="ControlName">Data Source</span> dropdown. We will discuss importing data sources elsewhere in this topic. Once you've configured the placeholder for your Form Click the <span class="UIElement">Create </span>button to create the placeholder Screen. The new Screen will be created, and the Design view for the new screen will appear. For this example, we have named the Screen, "Placeholder Screen".</p>
+        <p>On the left side of the dialog box, keep the default setting of <span class="ControlName">Data Entry Form</span>. On the right side, enter a <span class="ControlName">Name </span>for the new form. This name will be temporary if you are importing a form, since the Form's <span class="ControlName">Name </span>will be overwritten when the Excel File is imported. Next, select an icon to use as the Screen icon  from the <span class="ControlName">Icon to Display</span> dropdown. Finally, if you wish to associate the new Screen with a Data Source (for instance, to fill a set of dropdown options), select the Data Source from the <span class="ControlName">Data Source</span> dropdown. We will discuss importing data sources elsewhere in this topic. </p>
+        <p>Once you've configured the placeholder for your Form, click the <span class="UIElement">Create </span>button to create the placeholder Screen. The new Screen will be created, and the Design view for the new screen will appear. For this example, we have named the Screen, "Placeholder Screen".</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile2.png" />
         </p>
@@ -37,16 +39,16 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile4.png" />
         </p>
-        <p>In the dialog box, ensure that both the <span class="ControlName">Replace All Existing Fields </span>and <span class="ControlName">Replace Settings</span> properties are checked. The  <span class="ControlName">Replace All Existing Fields </span>property is checked by default, but you must manually check the <span class="ControlName">Replace Settings</span> property. Next, click the button labeled, <span class="ControlName">Click or drag of file onto this area to start upload</span>. You can drag and drop files onto this button, or simply click the button and navigate to the Excel file using the <span class="ControlName">Open </span>dialog box.</p>
+        <p>In the dialog box, ensure that both the <span class="ControlName">Replace All Existing Fields </span>and <span class="ControlName">Replace Settings</span> properties are checked. The  <span class="ControlName">Replace All Existing Fields </span>property is checked by default, but you must manually check the <span class="ControlName">Replace Settings</span> property. Next, click the button labeled, <span class="ControlName">Click or drag a file onto this area to start upload</span>. You can drag and drop files onto this button, or simply click the button and navigate to the Excel file using the <span class="ControlName">Open </span>dialog box.</p>
         <p>Once the Excel file is selected, the mobile server will automatically import the Excel file, overwrite the existing settings for the Screen with the settings contains in the Excel file, and import the Form fields to the mobile Screen.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile5.png" />
         </p>
-        <p>You now need to save the new screen by clicking the <span class="UIElement">Save </span>button. The Save button will be hidden behind the notification banner that appears at the top of the page to notify you that the import was successful. You must close the banner to access the <span class="UIElement">Save </span>button.</p>
+        <p>You now need to save the new Screen by clicking the <span class="UIElement">Save </span>button. The Save button will be hidden behind the notification banner that appears at the top of the page to notify you that the import was successful. You must close the banner to access the <span class="UIElement">Save </span>button.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile6.png" />
         </p>
-        <p>Once the form is saved, you may, optionally, edit the Screen to change fonts, colors, apply data sources to fill dropdowns, etc. Once the Screen has been edited to your satisfaction, you can click the <span class="UIElement">Save </span>button to save your changes.</p>
+        <p>Once the form is saved, you may, optionally, edit the Screen to change fonts, colors, apply data sources to fill dropdowns, etc. Editing options for any selected item on the screen are configuring via the properties that appear in the column on the right side of the window. Once the Screen has been edited to your satisfaction, you can click the <span class="UIElement">Save </span>button to save your changes.</p>
         <p>When you are ready to make the form available to users of the Mobile Application, click the <span class="UIElement">Publish </span>button. The <span class="ControlName">Move Test Entries To Trash?</span> dialog box will appear. You can publish a form multiple times to test and edit the form. This dialog box gives you the opportunity to send any existing Form entries to the trash bin.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile7.png" />
@@ -57,7 +59,7 @@
         </p>
         <p>Now that the form has been published, users of the mobile application will be able to access it.</p>
         <h2><a name="MobileApp"></a>Mobile Application <a href="#MobileApp" class="anchor">#</a></h2>
-        <p>The BP&#160;Logix Mobile Application is available for both Android and iOS mobile devices. When a new Screen is published,  screen will be synchronized to  the mobile device of every user. This synchronization will occur the first time the user opens the mobile device in a place where they have connectivity to the Mobile Server. Assuming a user has mobile connectivity, the synchronization occurs when the mobile app is opened on the user's device. The amount of time it will take to synchronize depends on the amount of data that must be transferred.</p>
+        <p>The BP&#160;Logix Mobile Application is available for both Android and iOS mobile devices. When a new Screen is published,  it will be synchronized to  the mobile device of every user. This synchronization will occur the first time the user opens the mobile device in a place where they have connectivity to the Mobile Server. Assuming a user has mobile connectivity, the synchronization occurs when the mobile app is opened on the user's device. The amount of time it will take to synchronize depends on the amount of data that must be transferred.</p>
         <p>When synchronization is complete, the new Screen will be available to the user's Mobile App.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile11.png" />
@@ -66,7 +68,7 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile12.png" />
         </p>
-        <p>You will initially be shown a title page for the screen. You can advance forwards and backwards through the pages by swiping right or left, respectively. You can also press the arrows that appear at the top corners of the page. Swiping left will advance to the form page, enabling you to fill out the Form.</p>
+        <p>You will initially be shown a title page for the screen. You can advance forwards and backwards through the pages by swiping right or left, respectively. You can also press the arrows that appear at the top corners of the page. Swiping left will advance to the Form page, enabling you to fill out the Form.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile13.png" />
         </p>
@@ -74,17 +76,17 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile15.png" />
         </p>
-        <p>If your mobile device has Internet connectivity, the submitted form will be instantly synchronized to the server. Otherwise, the synchronization will occur the next time the Mobile Application is running in an area where the mobile device has internet connectivity. The form submission will be stored on the mobile device, if the device is offline.</p>
+        <p>If your mobile device has Internet connectivity, the submitted form will be instantly synchronized to the server. Otherwise, the synchronization will occur the next time the Mobile Application is running in an area where the mobile device has internet connectivity. The form submission will be stored on the mobile device, if the device is offline, until such time as Internet connectivity is restored.</p>
         <h2><a name="ImpInsts"></a>Importing Form Instances Back into Process Director <a href="#ImpInsts" class="anchor">#</a></h2>
         <p>The Mobile Server will store all form submissions it receives. You can see all stored Form submissions on the mobile server by selecting the <span class="UIElement">Data Entries</span> menu, then selecting the <span class="UIElement">Feed View </span>submenu.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile16.png" />
         </p>
         <p>These form instances will remain stored on the Mobile Server until they are imported into Process Director.</p>
-        <p>In Process Director, a new Custom Task, the<span class="ProcessDirectorObject"> Mobile Form Import CT</span>, will import all of the Form instances from the Mobile Server to Process Director, where they will appear as normal form instances. The Custom Task can be run manually or automatically, and requires no user configuration. Instead, the Custom Task uses the Configuration settings that are contained in the Custom Variables folder.</p>
+        <p>In Process Director, a new Custom Task,<span class="ProcessDirectorObject"> Mobile Form Import</span>, will import all of the Form instances from the Mobile Server to Process Director, where they will appear as normal form instances. The Custom Task can be run manually or automatically, and requires no user configuration. Instead, the Custom Task uses the Configuration settings that are contained in the Custom Variables folder.</p>
         <p>BP&#160;Logix recommends that you configure the Custom task as the only activity that runs in a Process Timeline, then create a Goal object that runs on a scheduled basis, and calls the Process Timeline every time the Goal runs. This will automatically import all form instances on the schedule you configure.</p>
         <h2><a name="ImpDS"></a>Importing Data Sources <a href="#ImpDS" class="anchor">#</a></h2>
-        <p>External data that you wish to use in a Screen muse be imported to the Mobile Server as a Data Source. The easiest method for importing this data is to import it via an Excel spreadsheet. In this example, we'll import a simple Excel spreadsheet to use to fill a Dropdown control on the Webinar Mobile Form Demo Screen we imported in the previous sections, above.</p>
+        <p>External data that you wish to use in a Screen muse be imported to the Mobile Server as a Data Source. The easiest method for importing this data is to import it via an Excel spreadsheet. In this example, we'll import a simple Excel spreadsheet to use to fill a <span class="NamedControl">Dropdown </span>control on the Webinar Mobile Form Demo Screen we imported in the previous sections, above.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile18.png" />
         </p>
@@ -100,10 +102,10 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile20.png" />
         </p>
-        <p>You can add rows manually to the data source, but in most cases, you will want to import data, as we do in this example.  Imported data sources must meet some required constraints to be imported:</p>
+        <p>You can add rows manually to the data source, but in most cases, you will want to import data, as we will in this example.  Imported data sources must meet some required constraints to be imported:</p>
         <ul>
-            <li>The Imported data must be in Excel (XLSX) or Comma-separated text (CSV) format.</li>
-            <li>The first row of your file is assumed to be the data source headers and the rest are just rows.</li>
+            <li>The Imported data must be in Excel (XLSX) or Comma-Separated Text (CSV) format.</li>
+            <li>The first row of your file is assumed to be the data source's column headers and the rest are assumed to be data rows.</li>
             <li>The file must contain at least one row (excluding the header row) and two columns.</li>
             <li>The first column in all rows must be populated with unique values.</li>
         </ul>
@@ -121,11 +123,11 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile24.png" />
         </p>
-        <p>Selecting the <span class="UIElement">design </span>option will open the screen in design view. Since we have already published this form, we will need to click the <span class="UIElement">New Version</span> button to create a new version of this form that we can edit. Once we do so, the form will open as a fully editable screen.</p>
+        <p>Selecting the <span class="UIElement">design </span>option will open the screen in design view. Since we have already published this form, we will need to click the <span class="UIElement">New Version</span> button to create a new version of this form that we can edit. Once we do so, the Screen will open in a fully editable format.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile25.png" />
         </p>
-        <p>This Screen contains a <span class="NamedControl">Dropdown </span>control named <span class="UIElement">Item Dropdown</span>. Clicking the control will select it, and will display editing options for this control on the right side of the screen. We can scroll down though the editing option until we reach the section labeled, <span class="ControlName">Answer Choices</span>. We can apply our new data source to fill this <span class="NamedControl">Dropdown </span>control, using the following procedure.</p>
+        <p>This Screen contains a <span class="NamedControl">Dropdown </span>control named <span class="UIElement">Item Dropdown</span>. Clicking the control will select it, and will display editing options for this control on the right side of the screen. We can scroll down though the editing options until we reach the section labeled, <span class="ControlName">Answer Choices</span>. We can apply our new data source to fill this <span class="NamedControl">Dropdown </span>control, using the following procedure.</p>
         <ol>
             <li>Select the <span class="ControlName">Data Source</span> radio button to indicate the options will be taken from a data source.</li>
             <li>From the data source dropdown, select the data source to use for the options, which, in this case, is the "Sample Dropdown Data" data source we just created.</li>
