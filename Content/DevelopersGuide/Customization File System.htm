@@ -65,7 +65,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="fAllowRetrievePassword">&#160;</MadCap:keyword>This variable enables you to control whether built-in users can retrieve their passwords if they are forgotten. If set to true, a prompt will appear on the login page.</p>
+                    <MadCap:keyword term="fAllowRetrievePassword">&#160;</MadCap:keyword>This variable enables you to control whether built-in users can retrieve their passwords if they are forgotten. If set to true, a prompt will appear on the login page. Development systems that use the <a href="#TestUserEmailAddress">TestUserEmailAddress</a> will not send password reset request email to the TesUserEmailAddress, but will, instead, send them to the requesting user.</p>
                 <h5>Example</h5>
                 <div>
                     <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fAllowRetrievePassword = true;<br />}</div>
@@ -227,7 +227,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="TestUserEmailAddress">&#160;</MadCap:keyword>This variable enables you to route all process emails (task list emails, notifications, etc.) to a single email address. This system variable does not require a database connection.&#160; Use this setting with caution. It should only be used on non-production systems to test process and Forms. </p>
+                    <MadCap:keyword term="TestUserEmailAddress">&#160;</MadCap:keyword>This variable enables you to route all process emails (task list emails, notifications, etc.) to a single email address. This system variable does not require a database connection.&#160; Use this setting with caution. It should only be used on non-production systems to test process and Forms. If your installation is configured to enable users to retrieve forgotten passwords, via the <a href="#fAllowRetrievePassword">fAllowRetrievePassword</a> custom variable, the TestUserEmailAddress will not receive password reset request emails.</p>
                 <h5>Example</h5>
                 <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = true;<br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmailAddress = "demo@bplogix.com";<br />}</div>
             </MadCap:dropDownBody>
