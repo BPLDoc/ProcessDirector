@@ -427,6 +427,9 @@
 			case "CTRUNREPORT":
 				r("custom_tasks2/content_actions_custom_tasks.htm#RunReport");
 				break;
+			case "CTCREATEQRCODE":
+				r("custom_tasks2/content_actions_custom_tasks.htm#QRCode");
+				break;
 				
 		//Database Connectors
 			case "CTADVANCEDFILLDROPDOWNFROMDB":
