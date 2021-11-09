@@ -557,8 +557,11 @@
 			case "CTSIGNPDF":
 				r("custom_tasks2/pdf_custom_tasks.htm#SignPDF");
 				break;
-			case "CTPDFANNOTATIONMERGE":
+				case "CTPDFANNOTATIONMERGE":
 				r("custom_tasks2/pdf_custom_tasks.htm#PDFAnnotationMerge");
+				break;
+			case "CTFILLFIELDSFROMPDF":
+				r("custom_tasks2/pdf_custom_tasks.htm#FillFieldsFromPDF");
 				break;
 
 		//Process

@@ -372,6 +372,106 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="FillFieldsFromPDF"></a><a href="#FillFieldsFromPDF"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill Fields From PDF</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Task will extract values from PDF form fields in an attached PDF form to fill form fields with that data, for installations running Process Director v5.44.500 or higher. </p>
+                <div class="important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> A template file containing a blank version of the PDF form must reside in the Content List to enable field mapping between the attachment and the Form.</div>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromPDF.png" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3"><b>Output PDF Section</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Source File Parent Type</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Form<br />Process</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The reference type of the PDF Form attachment. The attachment may be either a Form or Process attachment.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Group Name</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The optional group name of the attachment group containing the PDF file.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Template File</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>A Content List Picker that enables you to select the Template PDF file. This file will be used to identify the PDF&#160;form fields that should be used to extract data.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Refresh PDF&#160;Field List</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This button will, when clicked, refresh the PDF field list from the template file to enable field mappings between the PDF and Form fields.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3"><b>Custom&#160;Mappings Section</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Automatically populate PDF fields with Form Controls of the same name</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This checkbox will, when checked, automatically map fields with the same names in both the PDF attachment and Form.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">PDF Field</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Dropdown list of PDF&#160;form fields</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to select a specific PDF form field for mapping.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Form&#160;Control</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Dropdown list of Form fields</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to select a specific Form field for mapping.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Add Row</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">This button will add additional field mapping rows.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="MakePDFRendition"></a><a href="#MakePDFRendition"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Make PDF Rendition of Documents</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
