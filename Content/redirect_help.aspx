@@ -520,6 +520,12 @@
 				r("custom_tasks2/form_data_mapping_custom_tasks.htm#FillFromBV");
 				break;
 
+		//IoT
+			case "CTSENDIOTMESSAGE":
+				r("custom_tasks2/iot_custom_tasks.htm#SendMessage");
+				break;
+
+
 		//Meta Data
 			case "CTCOPYMETADATA":
 				r("custom_tasks2/meta_data_custom_tasks.htm#CopyMetaData");
