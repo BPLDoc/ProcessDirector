@@ -487,20 +487,13 @@
         </p>
         <h2><a name="Tables"></a>Use of Tables <a href="#Tables" class="anchor">#</a></h2>
         <p>While there are several ways to organize controls on a page, many users, especially those not familiar with HTML/CSS, will choose to use a table to provide the layout of the form page. In most cases, this is not an issue. Process Director will automatically refactor tables to display responsively as the width of the user's viewport changes. On screens with narrow widths, tables will be refactored to display in a single column. This responsiveness change happens automatically, and requires no special configuration.</p>
-        <p>This practice may, however, create an accessibility issue for <i><b>some</b> </i>form designs. In general, BP&#160;Logix recommends that Forms be created in sections, using the section control, with tables placed inside the sections. </p>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/FormTables.png" />
-        </p>
-        <p>In this example, the Form container and the Section control are parsed by the browser prior to the table being parsed. This is the desired behavior.</p>
-        <p>Some Form designers may, however, create an outer container table, and place the Form controls inside this container table. This type of design may lead to an accessibility problem.</p>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/FormTables1.png" />
-        </p>
-        <p>In this example, the container table markup &amp; structure may be parsed by the browser before the Form field content, and some rows may be announced as 'table row blank' to the user, because the Form container has not yet been parsed. This issue can result in screen readers being unable to convey the table contents correctly to users of screen reader software/devices for the disabled.</p>
-        <p>To fix this, you must set the table as a "presentation" table to change its role from being parsed as a data table to merely serving as a layout container. To do this, click the <span class="UIElement">Source </span>button on the top toolbar to open the page HTML&#160;source. Find the TABLE tag in the HTML, and add the attribute <code>role="presentation"</code> to the HTML tag.</p>
+        <p>This use of tables may, however, create an accessibility issue. For tables inserted manually into a Form, the container table markup &amp; structure may be parsed by the browser before the Form field content, and some rows may be announced as 'table row blank' to the user, because the Form container has not yet been parsed. This issue can result in screen readers being unable to convey the table contents correctly to users of screen reader software/devices for the disabled.</p>
+        <p>To fix this, you must set the table as a "presentation" table to change its role from being parsed as a data table to merely serving as a layout container. To do this, click the <span class="UIElement">Source </span>button on the top toolbar to open the Form's HTML&#160;source. Find the TABLE tag in the HTML source, and add the attribute, <code>role="presentation"</code>, to the HTML tag.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/FormTables3.png" />
         </p>
-        <p>Once you've done so, click the <span class="UIElement">Source </span>button again to return to the visual designer, then save the Form. This should resolve the accessibility issues that might arise from this specific Form design. Again, this is usually an issue only with forms that use an outer table as a layout table for the form.</p>
+        <p>Once you've done so, click the <span class="UIElement">Source </span>button again to return to the visual designer, then save the Form. This should resolve the accessibility issues that might arise from the table. </p>
+        <p>As the form designer, you must test tables for accessibility, and add the "presentation" role to tables where appropriate.</p>
+        <p>Process Director, in some cases, also inserts tables automatically, to control the layout of some controls. Process Director automatically adds the appropriate "role" attribute for tables it inserts into forms.</p>
     </body>
 </html>
