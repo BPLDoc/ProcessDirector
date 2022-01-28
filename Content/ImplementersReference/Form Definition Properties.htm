@@ -9,19 +9,20 @@
             <MadCap:concept term="eForms" />
             <MadCap:concept term="Implementation" /><a name="_Toc421536205"></a>
             <MadCap:keyword term="eForm Definition" />Form Definition Properties</h1>
-        <p>Once you have made your changes, you may also set specific options for the form and form fields. As well as providing a Form definition name and an Instantiated Form Name.&#160; Use the Form properties page to display these options.</p>
-        <p>The properties of the Form definition are configured via a series of tabs arrayed across the Form Definition screen. Each of these tabs is discussed below.</p>
+        <p>Once you have made your changes, you may also set specific options for the form and form fields, as well as configuring the <span class="ControlName">Form Name</span>, <span class="ControlName">Description</span>, <span class="ControlName">Instantiated Form Name</span> and other form properties.&#160; Use the Form properties page to display these options.</p>
+        <p>The properties of the Form definition are configured via a series of tabs arrayed vertically along the left side of the Form Definition screen. Each of these tabs is discussed below.</p>
         <h2><a name="eFormPropertiesTab"></a>Properties Tab <a href="#eFormPropertiesTab" class="anchor">#</a></h2>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/FormPropertiesOptions.png" />
         </p>
-        <p>The <span class="UIElement">Properties</span> tab enables you to change the default behavior of the form. The options include the ability to change default styles and how to handle validation errors. Associating processes with Forms allows the Form to reference steps and other information in that process. “Default Styles” control the stylized borders and colors around Form controls depending on the controls’ statuses (enabled, required, disabled, or error).</p>
+        <p>The <span class="UIElement">Properties</span> tab enables you to change the default behavior of the form. We will discuss all of the existing properties, but keep in mind that some properties are only visible to installations that have the appropriate licensing. If your license does not cover a property, such as the auditing or scripting properties, you will not see them in the product UI.</p>
+        <p>The options on this tab include the ability to change default styles and how to handle validation errors. Associating processes with Forms allows the Form to reference steps and other information in that process. The <span class="ControlName">Default Styles</span> control the stylized borders and colors around Form controls, depending on the controls’ status (enabled, required, disabled, or error).</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Instantiated Form Name</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The Instantiated Form Name field determines the name of each Form instance. One should usually use System Variables here so that the Form’s instance’s name is relevant to the specific instance.</p>
+                <p>The <span class="ControlName">Instantiated Form Name</span> property determines the name that will be given to each Form instance. One should usually use System Variables here, so that the Form’s instance’s name is relevant to the specific instance. As a best practice, every form should be given an <span class="ControlName">Instantiated Form Name</span> that is unique to that instance, for easier searching in Knowledge Views.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -36,7 +37,7 @@
                     <li><b>Form Fields are enabled only when...:</b>	All form fields are enabled only when a user-defined condition applies. Selecting this option enables you to define a condition or set of conditions that, when true, enable the form fields.</li>
                     <li><b>Form Fields are disabled only when...:</b>	All form fields are disabled only when a user-defined condition applies. Selecting this option enables you to define a condition or set of conditions that, when true, disable the form fields.</li>
                 </ul>
-                <p>These form level-settings can be overridden in the properties for individual controls. For example, if you select "Form Fields are disabled by default", but set an individual control to be enabled, the control setting will override the Form option setting you choose here. The general rule to remember when setting an enable or visibility option is that the setting at the lowest level always wins.</p>
+                <p>These form level-settings can be overridden in the properties for individual controls. For example, if you select "Form Fields are disabled by default", but set an individual control to be enabled, the control setting will override the Form option setting you choose here. The general rule to remember when setting an enabling option is that the setting at the lowest level always wins.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -44,7 +45,7 @@
                 <MadCap:dropDownHotspot>Entire form is read-only when</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Form definitions can be configured as "read-only". Selecting this option enables you to define a condition or set of conditions that, when true, will cause the form will act as though the user does not have modify permission on the form (whether or not that would otherwise be the case). An open form in "read-only" state will not trigger form locking. Unlike the option to enable form fields, this option overrides any "enabled" settings at the control level. A read-only form cannot be edited, irrespective of the enabled/disabled settings that might be set elsewhere.</p>
+                <p>Form definitions can be configured as "read-only". Selecting this option enables you to define a condition or set of conditions that, when true, will cause the form will act as though the user does not have modify permission on the form (whether or not that would otherwise be the case). An open form in "read-only" state will not trigger form locking. Unlike the option to enable form fields, this option overrides any "enabled" settings at the control level. The data contained in a read-only form cannot be edited, irrespective of the enabled/disabled settings that might be set elsewhere.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -52,7 +53,7 @@
                 <MadCap:dropDownHotspot>Automatically start this process after Form is submitted</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The primary method for starting a process in Process Director is to call the process from a Form when the Form is submitted. This option defines the process that will be started, and the picker control allows you to choose either a Workflow or Process Timeline. Once you have selected the process you desire, then every time a new instance of the Form is submitted, the selected process will start, and the Form and its data will be attached to that process.</p>
+                <p>The primary method for starting a process in Process Director is to call the process from a Form when the Form is submitted. This option defines the process that will be started, and the <span class="NamedControl">Object Picker</span> control allows you to choose either a Workflow or Process Timeline. Once you have selected the process you desire, then every time a new instance of the Form is submitted, the selected process will start, and the Form and its data will be attached to that process.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -60,7 +61,7 @@
                 <MadCap:dropDownHotspot>Workflows Associated with Form (optional) / Timelines Associated with Form (optional)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>You have the ability to associate multiple Workflows or Process Timelines to Form, so that data can be passed between those associated processes and the Form. The process you choose in the "Automatically start this process…" option will also be automatically associated here.</p>
+                <p>You have the ability to associate multiple Workflows or Process Timelines to a Form, so that data can be passed between those associated processes and the Form. </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -68,7 +69,7 @@
                 <MadCap:dropDownHotspot>Default Groupname for Form Instances</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>You can set a custom Group Name for each instance of the Form. This enables you to group Forms by department, process type, etc. When a process is started that automatically adds a Form, it will use the Default Groupname configured on the form definition.</p>
+                <p>You can set a custom Group Name for each instance of the Form. This enables you to group Forms by department, process type, etc. When a process is started that automatically adds a Form, it will use the <span class="ControlName">Default Groupname...</span> property configured on the Form definition.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -76,7 +77,7 @@
                 <MadCap:dropDownHotspot>Form Script (optional)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>You may associate a custom script with a Form to perform specialized, programmatic functions.</p>
+                <p>You may associate a custom script with a Form to perform specialized, programmatic functions. This feature requires the SDK license.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -136,7 +137,7 @@
                 <MadCap:dropDownHotspot>Display validation errors with alert boxes</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The default method of displaying validation errors on a Form is to display a text message at the top of the Form. Selecting this option also causes the validation error to appear in an alert dialog box.</p>
+                <p>The default method of displaying validation errors on a Form is to display a text message at the top and bottom of the Form, which will appear as a yellow error banner. Selecting this option also causes the validation error to appear in an alert dialog box.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -144,7 +145,7 @@
                 <MadCap:dropDownHotspot>Do not show this object in 'Items I Can Run' Knowledge Views</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Selecting this option removes the Form from the Items I can Run Knowledge View that usually appears on the home page of a workspace.</p>
+                <p>Selecting this option removes the Form from the <span class="ProcessDirectorObject">Items I can Run</span> Global Knowledge View.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -152,7 +153,7 @@
                 <MadCap:dropDownHotspot>Use Visual Basic for scripts (leave unchecked for C#)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The default programming language for scripts in Process Director is the C# language. Selecting this option enables the use of Visual Basic as a scripting language for this Form.</p>
+                <p>The default programming language for scripts in Process Director is the C# programming language. Selecting this option enables the use of Visual Basic.NET as a scripting language for this Form.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -160,7 +161,7 @@
                 <MadCap:dropDownHotspot>Audit Form field changes</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Users of Cloud Installations or on-premise installations with the Compliance Option have the ability to maintain a record of every change made to Form fields during the process. Selecting this option enables the field-level auditing for the Form. This auditing information can be reviewed in the properties of the Form Instance, by viewing the <a href="User Interface.htm#Audit"><span class="UIElement">Audit Viewer</span> tab</a>. Fully-detailed auditing information can also be accessed in the Audit logs, or, if configured for use, the IT&#160;Admin section's <a href="../SystemAdministratorGuide/Troubleshooting.htm#_Toc421094539">Audit Logs page</a>.</p>
+                <p>Users of Cloud Installations, on-premise installation with the Subscription license, or on-premise installations with the Compliance Option, have the ability to maintain a record of every change made to Form fields during the process. Selecting this option enables field-level auditing for the Form. This auditing information can be reviewed in the properties of the Form Instance, by viewing the <a href="User Interface.htm#Audit"><span class="UIElement">Audit Viewer</span> tab</a>. Fully-detailed auditing information can also be accessed in the Audit logs, or, if configured for use, the IT&#160;Admin section's <a href="../SystemAdministratorGuide/Troubleshooting.htm#_Toc421094539">Audit Logs page</a>.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
