@@ -12,24 +12,28 @@
             <img src="../Resources/Images/Training/Advanced/AdditionalControls1.png" />
         </p>
         <p>
-            <MadCap:concept term="Online Form Designer" />The documentation for the Input, Checkbox, DatePicker, Dropdown, RadioButton, and Switch controls can be found in the <a href="Form Online Controls Basic.htm">Basic Controls</a> topic. The following additional controls are available from the <span class="UIElement">Input Controls</span> menu dropdown in the online Form Designer.</p>
+            <MadCap:concept term="Online Form Designer" />The documentation for the <span class="NamedControl">Input</span>, <span class="NamedControl">Checkbox</span>, <span class="NamedControl">Date Picker</span>, <span class="NamedControl">Dropdown</span>, <span class="NamedControl">Radio Button</span>, and <span class="NamedControl">Switch </span>controls can be found in the <a href="Form Online Controls Basic.htm">Basic Controls</a> topic. The following additional controls are available from the <span class="UIElement">Input Controls</span> menu dropdown in the online Form Designer.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="SignatureComments"></a><a href="#SignatureComments"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="Signature Comments" />Signature Comments</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Signature Comments are fields that prompt the end user to enter a comment before he can complete the Form. Signature Comments are not necessarily required for completion, even when the control is added.</p>
+                <p>This field enables task participants to enter task comments when completing their tasks.  Signature comments are not required for task completion, by default. </p>
+                <p><span class="NamedControl">Signature Comments</span> have a major difference from other Form controls. They are <b>not</b> stored as Form data, and are thus not technically Form fields. Instead, comments placed in this control are saved as part of the Timeline Activity instance for which they are made. As such, they cannot be displayed or retrieved via the use of Form System Variables. They can only be displayed via the <a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#ActivityUsersComplete">Activity Users Complete</a> system variable, using the <code>format=comments</code> modifier, e.g., <code>{ACTIVITY_USERS_COMPLETE:<b>ActivityName</b>, format=comments}</code>. Comments are also displayed in the <span class="NamedControl">Routing Slip </span>for the Form, and in the Timeline Instance properties for the Timeline Instance.</p>
+                <p>Similarly, setting this control as required is performed on the <span class="UIElement">Results </span>tab of the Timeline Activity, and is set individually for each configured Activity Result. So, for a given Timeline Activity, signature comments may be required for one result, and not required for other results.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/SignatureComments.png" />
                 </p>
-                <p><b>Text:</b> The default text to display in the comments box.</p>
-                <p><b>Rows:</b> Sets the height of the control.</p>
-                <p><b>Columns:</b> Sets the width of the control.</p>
-                <p><b>Style:</b> CSS&#160;Style commands to apply to the control.</p>
-                <p><b>Allow Initiator Comments:</b> When checked the control will accept signature comments from the initiator/submitter. </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> In order to enable the initiator to enter comments, you must set the visibility properties for the control to display to the initiator by applying the visibility condition, "New Form Instance = True". <b>By default, this control is hidden in new form instances.</b></div>
+                <p><span class="ControlName">Text</span>: The default text to display in the comments box.</p>
+                <p><span class="ControlName">Rows</span>: Sets the height of the control.</p>
+                <p><span class="ControlName">Columns</span>: Sets the width of the control.</p>
+                <p><span class="ControlName">Style</span>: CSS&#160;Style commands to apply to the control.</p>
+                <p><span class="ControlName">Allow Initiator Comments</span>: When checked the control will accept signature comments from the initiator/submitter. </p>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> In order to enable the initiator to enter comments, you must set the visibility properties for the control to display to the initiator by applying the visibility condition, "New Form Instance = True". <b>By default, this control is hidden in new form instances.</b></div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -38,21 +42,27 @@
                     <MadCap:keyword term="Signatures" />Signature Control</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The signature control allows the user to draw his signature on a Form using a mouse or stylus. In the signature properties, you can configure the name of the control, the prompt for the control, the color of the signature, the color of the background, and the width of the electronic pen.</p>
+                <p>The signature control allows the user to draw a signature on a Form using a mouse or stylus.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_64.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>The ESIGN Act of 2000 guarantees that a signature stored via this control is legally binding: according to the act, “a contract … cannot be denied legal effect, validity, or enforceability solely because an electronic signature or electronic record was used in its formation.” (ESIGN Act Section 106(2)) </p>
+                <p>The ESIGN Act of 2000 guarantees that a signature stored via this control is legally binding:</p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/SigControl.png" />
+                    <blockquote>[A] contract…cannot be denied legal effect, validity, or enforceability solely because an electronic signature or electronic record was used in its formation. [ESIGN Act Section 106(2)]</blockquote>
+                </p>
+                <p> The following properties are configurable:</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/SignatureControl.png" />
                 </p>
                 <p>The <span class="ControlName">Prompt </span>property enables you to configure a prompt message displayed to the user prior to signing.</p>
                 <p>The <span class="ControlName">Height </span>and <span class="ControlName">Width </span>properties enable you change the size of the <span class="NamedControl">Signature </span>control by specifying the size in pixels. The <span class="NamedControl">Signature </span>control does, however, have a minimum size of 350x100 pixels, and it cannot be sized smaller than the minimum size.</p>
                 <p>The <span class="ControlName">Color </span>property sets the color of the pen graphic, while the <span class="ControlName">Background Color</span> property sets that background color of the signature area.</p>
                 <p>Finally, the <span class="ControlName">Pen Width </span>property sets the thickness, in points, of the pen graphic's lines when drawing the signature with a mouse.</p>
                 <p>In the Form Definition's Form Control's Tab, this control has <span class="ControlName">Min </span>and <span class="ControlName">Max </span>properties that you can use to specify the minimum and/or maximum size of the signature, measured in points, that are required to validate the signature field.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> Process Director will disable the signature control after any save (including OK and save and close). To change the default behavior, you can add a simple entry to the "Set Form Data" tab for the form, that sets the signature control value to an empty string, with the condition that the control is empty on the display.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> Process Director will disable the signature control after any save (including submission, save, and save and close). To change the default behavior, you can add a simple entry to the "Set Form Data" tab for the form, that sets the signature control value to an empty string, with the condition that the control is empty on the display.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -61,7 +71,11 @@
                     <MadCap:keyword term="Comment Log" />Comment Log</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>A comment log is a Form control where users of the Form can add text of any sort, which will be displayed to all subsequent users of the Form. Comment logs every user comment and the time the comment was entered.</p>
+                <p>This control enables users to add text of any sort, which will be displayed to all subsequent users of the Form. The control displays every user comment and the time the comment was entered.</p>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i.png" alt="Important" /> This control is a legacy control which remains in the product primarily for backward compatibility purposes. The <span class="NamedControl">Journal </span>control is the recommended control for collecting user comments, as it enables threaded comments, and support other features, such as Milestones, that cannot be replicated by the <span class="NamedControl">Comment Log</span>.</div>
+                </p>
                 <p>In this control’s properties, you can configure the Comment Log’s group name, the control name, the default text, and the width of the log.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsActions1.png" />
@@ -74,15 +88,19 @@
                     <MadCap:keyword term="ListBox" />ListBox</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Selecting this menu item inserts a form control that will display a multi-line list input control where the cursor is located. The form control looks as follows:</p>
+                <p>This control is a multi-line list input control.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_11.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>The ListBox control contains a list of checkboxes in a scrollable frame, where multiple checkboxes may or may not be selected. You can configure the name of the control, as well as its content, height, width, and formatting in its properties window. The height and width must beset using CSS syntax (e.g. 20px, 10%, 3em, etc.)</p>
+                <p>The ListBox control contains a list of checkboxes in a scrollable frame, where multiple checkboxes may or may not be selected. </p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsInput.png" />
                 </p>
-                <p>The contents of a ListBox can also be set using a <a href="Dropdown List Content Objects.htm"><span class="Hyperlink">dropdown object</span></a>.</p>
+                <p>The following properties are configurable:</p>
+                <p><span class="ControlName">Name</span>: The name of the control</p>
+                <p><span class="ControlName">Text</span>: The values that will be displayed in the control. Like the Dropdown control, each line constitutes a different display item. Separate display strings and values can also be set, using the syntax <code>Display String:Value</code>. Just like the <span class="NamedControl">Dropdown </span>control, setting the <span class="ControlName">Text </span>property is <b>not recommended</b> in most cases. The contents of a <span class="NamedControl">List Box </span>should usually be set using a <a href="Dropdown List Content Objects.htm"><span class="Hyperlink">Dropdown Object</span></a> or <a href="Business Values.htm">Business Value</a>.</p>
+                <p><span class="ControlName">HTML&#160;Height</span>/<span class="ControlName">Width</span>: The height and width of the control, using HTML measurements, e.g., "300px" or "20%".</p>
+                <p><span class="ControlName">Support Multiple Selections</span>: When checked, enables users to select more than one item in the list. The value of the control will, if this property is enabled, be returned as a comma-separated list of values.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -91,11 +109,11 @@
                     <MadCap:keyword term="Radio Button List" />Radio Button List</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The Radio Button List control returns a single value from a list of radio buttons.</p>
+                <p>The control returns a single value from a list of radio buttons.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsInput1.png" />
                 </p>
-                <p>The <span class="ControlName">Items </span>property enables you to add items to the RadioButtonList by placing one item in each line in the <span class="ControlName">Items </span>input box. Items can also be added to a Radio List from a <a href="Dropdown List Content Objects.htm">Dropdown Object</a>.</p>
+                <p>The <span class="ControlName">Items </span>property enables you to add items to the RadioButtonList by placing one item in each line in the <span class="ControlName">Items </span>input box. Items can also be added to a Radio List from a <a href="Dropdown List Content Objects.htm"><span class="Hyperlink">Dropdown Object</span></a> or <a href="Business Values.htm">Business Value</a>.</p>
                 <p>The <span class="ControlName">List Direction </span>property enables you to select whether you wish the radio buttons to be arrayed horizontally across the page, or vertically in a single column. </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -114,8 +132,10 @@
                     <img src="../Resources/Images/ImplementersReference/SliderProperties2.png" />
                 </p>
                 <p>Remember that if you change the <span class="ControlName">Width </span>of the slider, using as percentage width, e.g., "100%" will cause the slider to size itself to the width of it's containing object, such as a table cell. If the <span class="NamedControl">Slider </span>is placed in a narrow table cell, then the slider may be much smaller than you expect. Using a pixel width, on the other hand, will set the <span class="NamedControl">Slider</span>'s width to a fixed width. If you do not set the <span class="ControlName">Width</span>, the <span class="NamedControl">Slider </span>will appear with its default width, in pixels. So, it's probably best not to set the <span class="ControlName">Width</span>, unless you need the <span class="NamedControl">Slider </span>to appear with a specific size, and then use a width in pixels, e.g., "250px" for the <span class="ControlName">Width </span>setting.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> The <span class="ControlName">Show Ticks </span>property <b style="font-style: italic;">cannot</b> be used for <span class="NamedControl">Slider </span>controls that use <span class="ControlName">Slider Items</span>.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> The <span class="ControlName">Show Ticks </span>property <b style="font-style: italic;">cannot</b> be used for <span class="NamedControl">Slider </span>controls that use <span class="ControlName">Slider Items</span>.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -124,11 +144,11 @@
                     <MadCap:keyword term="Rating" />Rating</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The Rating control allows the user to set a rating out of a possible number of stars.</p>
+                <p>This control enables  users to set a rating out of a possible number of stars.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_15.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>The properties window for the Rating control allows you to configure the name of the rating control, the maximum number of stars, and whether the user can select half stars or not.</p>
+                <p>The properties window for the control enables you to configure the <span class="ControlName">Name </span>of the rating control, the maximum <span class="ControlName">Number of Stars</span>, and, via the <span class="ControlName">Support Half Selection</span> property, whether the user can select half stars.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsInput3.png" />
                 </p>
@@ -140,17 +160,20 @@
                     <MadCap:keyword term="User Picker;Group Picker" />User Picker</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The User Picker enables the Form user to select Process Director users. </p>
+                <p>This control enables the Form user to select Process Director users. </p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsInput4.png" />
                 </p>
-                <p>The User Picker’s options allow you to configure filter data as well as display data. The pickers can be displayed in the Form as dropdowns, pop-ups, etc.</p>
-                <p>You can specify that only users in certain groups show up in the user picker by specifying a comma-separated list of groups in the “Only users in groups” field. If you type “AND” into the “Groups AND / OR” field, then only users belonging to all the specified groups will appear as options in the user picker controller. If you type “OR”, then users belonging to any of the specified groups will appear as options in the user picker control.</p>
-                <p>The “dropdown prompt” is the text that is shown before an option has been selected in the dropdown. Common values might be “&lt;Select User&gt;” or “&lt;Select Group&gt;”</p>
-                <p>The user picker will not list users who are members of groups specified in the “Ignore users in group” field, and the user picker will only list users returned by the Business Rule specified in the “Only users in rule” field (if that field is set).</p>
-                <p>User picker controls display the names of users, but the actual value stored in the User Picker is the UID of the user, which is the GUID value that is used as the primary identifier for the user in Process Director. When setting the value of the user picker via a Set Form Data action, you should use the UID or the UserID as the value to set this type of field. </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> For users of Process Director v5.31 and higher, you can set the field's default value by using the UserID.</div>
+                <p>The <span class="NamedControl">User Picker</span>’s properties enable you to configure filters for the users you wish to display, which will restict the choices available to the user. The control can be displayed in the Form as a dropdowns, pop-up, etc., but by default, the  control displays as a type-ahead dropdown. The default option is the recommended method of display.</p>
+                <p>You can specify that only users in certain groups show up in the user picker by specifying a comma-separated list of groups in the <span class="ControlName">Only users in groups</span> property . If you type “AND” into the <span class="ControlName">Groups AND / OR</span> property, then only users belonging to <b>all</b> the specified groups will appear as optionsin the control. If you type “OR”, then users belonging to <b>any</b> of the specified groups will appear as options in the  control.</p>
+                <p>The <span class="ControlName">DropDown Prompt</span> is the text that is shown before an option has been selected in the dropdown, e.g., “&lt;Select User&gt;”.</p>
+                <p>The control will not list users who are members of groups specified in the <span class="ControlName">Ignore users in group</span> property, if configured.</p>
+                <p>The control will only list users returned by the Business Rule specified in the <span class="ControlName">Only users in rule</span> property, if configured.</p>
+                <p>User picker controls display the names of users, but the actual value stored in the User Picker is the UID of the user, which is the GUID value that is used as the primary identifier for the user in Process Director. When setting the value of the user picker via a Set Form Data action, you should use the UID or the UserID as the value to set the field value. </p>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> For users of Process Director v5.31 and higher, you can set the field's default value by using the UserID. Previous versions require the UID to be set as the value.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -159,13 +182,14 @@
                     <MadCap:keyword term="Group Picker" />Group Picker</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The Group Picker enables the Form user to select Process Director Groups. </p>
+                <p>This control enables the Form user to select Process Director Groups. </p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsInput5.png" />
                 </p>
-                <p> The pickers can be displayed in the Form as dropdowns, pop-ups, etc.</p>
-                <p>The “dropdown prompt” is the text that is shown before an option has been selected in the dropdown. Common values might be “&lt;Select User&gt;” or “&lt;Select Group&gt;”</p>
-                <p>You can configure the Picker to allow the user to select multiple groups by clicking the check box that is labeled to enable this.</p>
+                <p> Similar to the <span class="ControlName">User Picker</span>, the Group Picker can be displayed in the Form as a dropdown, pop-up, etc., via the<span class="ControlName"> Picker Type </span>property, but the default--and preferred-- setting is the type-aherad dropdown mode.</p>
+                <p>The <span class="ControlName">DropDown Prompt</span> is the text that is shown before an option has been selected in the dropdown, e.g., “&lt;Select Group&gt;”.</p>
+                <p>The <span class="ControlName">HTML&#160;Height</span>/<span class="ControlName">Width</span> properties set the height and width of the control, using HTML measurements, e.g., "300px" or "20%".</p>
+                <p>You can configure the Picker to enable the user to select multiple groups by clicking the <span class="ControlName">Allow multiple groups to be selected?</span> check box. When checked, this property will cause the control to return the selected values in a comma-separated list.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>
