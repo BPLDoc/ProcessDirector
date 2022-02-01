@@ -7,9 +7,9 @@
         <h1>
             <MadCap:concept term="Implementation" /><a name="Goals"></a>
             <MadCap:keyword term="Goals" />Goals</h1>
-        <p>Goals are used to set a global state, or to perform actions on a global state change. A Goal returns a value, or set of values, based on conditions that the Goal regularly evaluates on a schedule that is specified in the Goal definition. For instance, you can set a Goal to execute daily, hourly, every five minutes, etc., and set a global system state or value when the execution occurs. </p>
+        <p>Goals are used to set a global state in the Process Director system, and to perform actions when a global state change occurs. A Goal returns a value, or set of values, based on conditions that the Goal regularly evaluates, on a schedule that is specified in the Goal definition. For instance, you can set a Goal to execute daily, hourly, etc., and set a global system state  when the execution occurs. </p>
         <p>Goals incorporate two completely distinct components: execution and examination. <span class="KeyTerms">Execution </span>occurs when the Goal evaluates the conditions and sets the state or value that results from the evaluation. <span class="KeyTerms">Examination </span>occurs when a another Process Director object references the Goal to retrieve the value that was set during the execution. Referencing a Goal (the examination) will always produce the result from the last time that Goal was executed. The Goal will return a null string if it has never evaluated, otherwise the examination will always produce the value resulting from the most recent execution.</p>
-        <p>Scheduled execution makes the Goal uniquely suited for evaluating conditions that are processor-intensive. Unlike a system variable that is executed when referenced (e.g., when called from a Form or Process Timeline), Goals are only executed on their configured schedule. So, you can schedule a processor intensive Goal execution at a time when usage is low. When another object references the Goal, the Goal does <i>not</i> re-execute. It merely sends the value that was set during the last scheduled execution. Many different processes, therefore, may use the same Goal without placing a strain on the server, because the Goal will only execute when scheduled.</p>
+        <p>Scheduled execution makes the Goal uniquely suited for evaluating conditions that are processor-intensive. Unlike a system variable that is executed when referenced (e.g., when called from a Form or Process Timeline), Goals are only executed on their configured schedule. So, you can schedule a processor-intensive Goal execution at a time when usage is low. When another object references the Goal, the Goal does <i>not</i> re-execute. It merely sends the value that was set during the last scheduled execution. Many different processes, therefore, may use the same Goal without placing a strain on the server, because the Goal will only execute when scheduled.</p>
         <p>Goals also can initiate actions, either explicitly, or implicitly. If a Goal changes state after a scheduled execution, the Goal can initiate a process or a run a Knowledge View automatically when the state changes, which we refer to as an <span class="KeyTerms">explicit action</span>. Alternatively, a running Timeline instance may use a Goal's value to determine which Activities to run, or which users to assign to an activity, which we refer to as an <span class="KeyTerms">implicit action</span>.</p>
         <p>Let's examine a scenario in which a Goal might be useful. Imagine a call center that takes customer support requests. This customer center normally takes 50 or fewer callers per hour. If the number of calls per hour exceed 50 calls, you might want to assign additional users to take support calls. If there are more than 75 calls per hour, you might wish to notify managers of heavy call volume. In this scenario, you could create a Goal that checks the number of calls per hour every fifteen minutes. When then Goal evaluates, it sets a status of "Green" when there are 50 calls or less per hour, "Yellow" when there are 50-75 calls per hour, and "Red" when there are more than 75 calls per hour. In the Goal, you could also automatically start a new process that sends notifications to managers if the system status changes to "Red". In your process, you could add additional users to whom to assign tasks when the status is "Yellow" or "Red". In this example, using a Goal both alters how your process is performed and starts a new process when conditions require it.</p>
         <p>
@@ -17,12 +17,13 @@
         </p>
         <p>The ability to start a process based on a Goal, along with the ability to schedule Goal evaluation, enables Process Director to schedule processes without having to use the Windows Scheduler.</p>
         <p>In addition, results for a Goal can be evaluated from a <a href="Business Values.htm" target="_blank">Business Value</a>, giving you the ability to schedule processes based on information from your outside CRM, ERP, or other systems. For example, you can use a Business Value to return any unprocessed Invoices or POs from your ERP system. The Goal can evaluate the Business Value at a desired interval, and, if there are unprocessed items, automatically start the PO or Invoice workflow to process the items. Moreover, you can return any required data to update your ERP system during the processing or after the processing is complete. In effect, simply entering a new invoice and PO into the ERP system would automatically start the PO&#160;or Invoice process—and ultimately update your external ERP system—when the Goal is evaluated. In this example, you would no longer need to manually start the process by filling out and submitting a Form.</p>
-        <div class="Important">
-            <img src="../Resources/Images/i2.png" /> Combined with the access to external data available through the <a href="Business Values.htm" target="_blank">Business Value</a> feature, Process Director is a powerful process automation system, enabling automatic process initialization in response to changes to external systems.</div>
+        <p><span class="Emphasis">Combined with the access to external data available through the </span><span href="Business Values.htm" target="_blank" class="Emphasis">Business Value</span><span class="Emphasis"> feature, Process Director is a powerful process automation system, enabling automatic process initialization in response to changes to external systems.
+</span><![CDATA[        ]]></p>
         <h2><a name="Properties"></a>Properties Tab <a href="#Properties" class="anchor">#</a></h2>
         <p>
             <img src="../Resources/Images/ImplementersReference/Goal1.png" />
         </p>
+        <p>The following properties can be configured in the <span class="UIElement">Properties </span>tab of a Goal definition.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Name</MadCap:dropDownHotspot>
@@ -36,7 +37,7 @@
                 <MadCap:dropDownHotspot>Icon</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Click the Icon to open the Icon Chooser and pick the desired Icon for the Goal.</p>
+                <p>Click the Icon to open the <span class="ProcessDirectorObject">Icon Chooser</span> and pick the desired Icon for the Goal.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -60,26 +61,28 @@
                 <MadCap:dropDownHotspot>Goal is Active/NOT Active</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Radio button group to enable or disable a Goal's scheduled evaluation. Disabled goals will not be evaluated on the configured schedule until they are enabled.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> The Active/Inactive designation only refers to the frequency of execution. Any object that references the Goal will return the Goal's current value, irrespective of whether the Goal is active or not.</div>
+                <p>Radio button group to enable or disable a Goal's scheduled evaluation. Disabled Goals will not be evaluated on the configured schedule until they are enabled.</p>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i.png" alt="Important" /> The Active/Inactive designation only refers to the frequency of execution. Any object that references the Goal will return the Goal's current value, irrespective of whether the Goal is active or not.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="Execution"></a>Execution Options Tab <a href="#Execution" class="anchor">#</a></h2>
-        <p>Goals are configured by filling in the Execution Options properties in the Goal definition.</p>
+        <p>Goals are configured by configuring the <span class="UIElement">Execution Options</span> tab of the Goal definition.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Goal.png" />
         </p>
-        <p>Goals are configured to automatically evaluate on a schedule configured by the goal creator. Actual goal evaluation frequency, however, depends on several factors, including the frequency with which activity checks are being run within Process Director in general. When saving a goal definition, Process Director will try to determine if the goal is being scheduled for evaluation more frequently than activity checks, and will display a warning if that is the case. However, note that goal evaluation frequency is always approximate.</p>
+        <p>Goals are configured to automatically evaluate on a schedule configured by the Goal creator. Actual Goal evaluation frequency, however, depends on several factors, including the frequency with which activity checks are being run within Process Director in general. When saving a Goal definition, Process Director will try to determine if the Goal is being scheduled for evaluation more frequently than activity checks, and will display a warning if that is the case. However, note that Goal evaluation frequency is always approximate.</p>
         <p>The <span class="UIElement">Execution Options </span>tab is divided into four sections: <span class="ControlName">Execution Options</span>,<span class="ControlName"> Condition and Results</span>, <span class="ControlName">Evaluation Frequency</span>, and <span class="ControlName">History</span>.</p>
-        <p>The <span class="ControlName">Execution Options </span>section defines how the goal conditions are evaluated, and how actions are performed on the goal result.</p>
+        <p>The <span class="ControlName">Execution Options </span>section defines how the Goal conditions are evaluated, and how actions are performed on the Goal result.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Execute Actions when</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <ul>
-                    <li><b>Conditions are met:</b> The Goal's actions will run every time the goal is evaluated and the conditions are met.</li>
+                    <li><b>Conditions are met:</b> The Goal's actions will run every time the Goal is evaluated and the conditions are met.</li>
                     <li><b>conditions are met AND Goal result differs from the previous result:</b> The Goal's actions will only run when the result of the Goal evaluation <i>changes</i>, and the conditions are met.&#160;</li>
                 </ul>
             </MadCap:dropDownBody>
@@ -90,7 +93,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <ul>
-                    <li><b>ALL Actions whose Conditions are met:</b> The goal will run all of the possible actions in the Actions list that meet the conditions.</li>
+                    <li><b>ALL Actions whose Conditions are met:</b> The Goal will run all of the possible actions in the Actions list that meet the conditions.</li>
                     <li><b>Only the FIRST Action whose Condition is met:</b> The Goal will only run the first action in the Actions list that meets the condition. If you elect to take only the first matching condition, then the conditions will be evaluated in the order you specify in this section, i.e., from top to bottom. If no conditions for the Goal evaluate to true, the Goal will return a blank value.</li>
                 </ul>
             </MadCap:dropDownBody>
@@ -109,7 +112,7 @@
                 <MadCap:dropDownHotspot>Order Buttons</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The order in which evaluations occur can be controlled by using the Arrow Icons at the end of each condition row. A goal result can be deleted by clicking the <img src="../Resources/Images/Capture70.png" /> icon.</p>
+                <p>The order in which evaluations occur can be controlled by using the Arrow Icons at the end of each condition row. A Goal result can be deleted by clicking the <img src="../Resources/Images/Capture70.png" /> icon.</p>
                 <p>
                     <img src="../Resources/Images/Capture57.png" />
                 </p>
@@ -192,7 +195,7 @@
                 <MadCap:dropDownHotspot>Days of Lead Time</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Sometimes, you want to begin a process prior to the due date. For example, a month-end report may need to be submitted on the first day of each month, covering the activities of the prior month. If we assume this report takes a couple of days to compile and generate, we might want to have a lead time of 2 days. In this case, the goal will be evaluated two days early, so you have adequate lead time to generate the report.</p>
+                <p>Sometimes, you want to begin a process prior to the due date. For example, a month-end report may need to be submitted on the first day of each month, covering the activities of the prior month. If we assume this report takes a couple of days to compile and generate, we might want to have a lead time of 2 days. In this case, the Goal will be evaluated two days early, so you have adequate lead time to generate the report.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

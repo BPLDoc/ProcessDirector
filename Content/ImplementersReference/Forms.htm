@@ -13,19 +13,21 @@
             <MadCap:concept term="Online Form Designer" />Forms</h1>
         <p>Electronic forms are web-based forms that can be published and made available to users so they can fill them out and submit them online from within their browser. When a Form is completed, it can be automatically routed using a process definition. This topic describes how to create and manage a Form, how to set the validation policies for the form fields and the optional scripting APIs that are available for interfacing with external systems and providing custom business logic.</p>
         <p>Forms are primarily created using the <a href="Form Online Builder.htm">Online Form Designer</a>. Additional form-building tools are available, if necessary: the <a href="FormBuilder.htm">Word Form Builder</a> or an ASP.Net development tool like Visual Studio. The Word Form Builder requires the BP Logix Word Plug-in and can only be used with a 32-bit version of Microsoft Word 2010 or higher. The Word Form Builder was largely deprecated by the introduction of the Online Form Designer, but is still supported mainly for legacy and backwards compatibility reasons. A Visual Studio plugin is available for using Visual Studio to create forms as ASCX custom controls, with the appropriate license option.</p>
-        <div class="Important">
-            <img src="../Resources/Images/i2.png" alt="Note" /> As of Process Director v4.5, the term <span class="KeyTerms">eForm </span>is no longer exclusively used. Electronic Forms are becoming a common standard, so the term eForm has been deprecated in favor of the simpler <span class="KeyTerms">Form</span> in the product. Users of prior versions of Process Director will still see the term eForm used in the product interface, while users of v4.5 and higher will see the term Form used.<br /><br />In this documentation, the terms eForm and Form may be used interchangeably, as we update the documentation—and the product—to replace the term eForm with Form. For example, you may still see screen shots of the product that display the term eForm, while the text of the documentation uses the term Form.</div>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i2.png" alt="Note" /> As of Process Director v4.5, the term <span class="KeyTerms">eForm </span>is no longer exclusively used. Electronic Forms are becoming a common standard, so the term eForm has been deprecated in favor of the simpler term <span class="KeyTerms">Form</span> in the product. Users of prior versions of Process Director will still see the term eForm used in the product interface, while users of v4.5 and higher will see the term Form used. In this documentation, the terms eForm and Form may be used interchangeably, as we update the documentation—and the product—to replace the term eForm with Form. For example, you may still see screen shots of the product that display the term eForm, while the text of the documentation uses the term Form.</div>
+        </p>
         <h2><a name="_Toc421536197"></a>
             <MadCap:keyword term="eForm Definition" />Form Definitions <a href="#_Toc421536198" class="anchor">#</a></h2>
         <p>Form definitions are stored in the Process Director database. Form definitions (templates) have properties similar to other objects, such as documents.</p>
-        <p>A Form definition is made available to users through their profile, the content list or from within a Knowledge View. The Form definition allows a user to fill out and submit form based information directly from within their browser. When a Form is submitted, the form data entered by the user is saved as a form data object. This form data is stored in the Process Director database and can be processed by a workflow. When viewing the data for a completed form the Form definition that was used to submit the information is used to display the data. </p>
+        <p>A Form definition is made available to users through their profile, the content list or from within a Knowledge View. The Form definition allows a user to fill out and submit form based information directly from within their browser. When a Form is submitted, the form data entered by the user is saved as a form data object in a new Form instance. This form data is stored in the Process Director database and can be processed by a workflow. When viewing the data for a completed form the Form definition that was used to submit the information is used to display the data. </p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="_Toc421536198"></a>Forms In the Content List</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>When a Form is filled out and submitted the data is stored in the content list as an object under the Form definition. To view the completed forms for a Form definition, click on the Form name or the <img src="../Resources/Images/ImplementersReference/eForms.png" style="visibility: visible;mso-wrap-style: square;width: 12px;height: 12px;" />&#160; icon in the content list. </p>
-                <p>The completed forms are similar to other objects in the Process Director database supporting permissions, categories, properties and workflows. Users must be given View permission to view completed form data in the content list. Users that are given View Children permission to a Form definition will automatically be given View permission when form data is captured and stored under that Form definition. </p>
+                <p>When a Form is filled out and submitted, the data is stored in the content list as a Form Instance under the Form definition. To view the Form instance, click on the Form instance's name or the <img src="../Resources/Images/ImplementersReference/eForms.png" style="visibility: visible;mso-wrap-style: square;width: 12px;height: 12px;" />&#160; icon in the Content List. </p>
+                <p>Form instances are similar to other objects in the Process Director database, supporting permissions, categories, properties and workflows. Users must be given the appropriate permissions to view Form instances in the Content List. Users that are given View Children permission to a Form definition will automatically be given View permission to Form instances stored under that Form definition. </p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/ContentListForm.png" />
                 </p>
@@ -36,15 +38,15 @@
                 <MadCap:dropDownHotspot><a name="_Toc421536199"></a>Adding a New Form Definition</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>To create a new Form definition, use the Create New dropdown in the content list and choose the <span class="UIElement">Form Definition</span> menu item. A user must have Modify permission to the parent folder to create a Form definition. If a user does not have the appropriate permission, the hotlink will not appear.</p>
+                <p>To create a new Form definition, use the<span class="UIElement"> Create New</span> dropdown in the content list and choose the <span class="UIElement">Form Definition</span> menu item. A user must have Modify permission to the parent folder to create a Form definition. If a user does not have the appropriate permission, the hotlink will not appear.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/CreateNewMenu.png" />
                 </p>
-                <p> The Create Form dialog will display, select the Form template format you'd like to use from the dropdown. Enter a required name for the form and optionally give it a description. Click the <span class="UIElement">OK </span>button to create the form. </p>
+                <p> The <span class="ControlName">Create Form</span> dialog will display, enabling you to select the Form template format you'd like to use from the dropdown. Enter a required name for the form and optionally give it a description. Click the <span class="UIElement">OK </span>button to create the form. </p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/NewFormType.png" />
                 </p>
-                <p>The are several option you can select for creating your Form template:</p>
+                <p>In nearly every case, you should use the default Online Form Designer format for creating new Forms. There are, however, several options you can select for creating your Form template:</p>
                 <ul>
                     <li><b>Upload Selected Form:</b>	This option will allow you to choose a Form template that you've already created. You can choose an existing word document template or a .NET form in ASPX format.</li>
                     <li><b>Use Empty Word Doc Form:</b>	This option will create a blank Word document template that you can then design manually.</li>
@@ -53,7 +55,7 @@
                     <li><b>Use Template .ASCX form:</b>	There is an existing ASP.NET web form template in Process Director that contains some basic fields and instructional text. You may choose this form to use for training, or as a basis for a new production form. This option is primarily for programmers, not regular implementers.</li>
                     <li><b>Use the Online Form Designer:</b> Process Director v4.06 and higher contains a built-in Online Form Designer that you can user to create Form Templates from within the Process Director interface. This is the default option for creating new Forms.</li>
                 </ul>
-                <p>Once the form is created, if you are using the Word form builder, you can navigate to the <span class="UIElement">Edit</span> tab of the newly created form, from which you can check out and edit your Form template. Refer to the <a href="FormBuilder.htm">Word Form Builder</a> section of the documentation for more information on building and modifying the Forms in Microsoft Word. If you use the Online Form Designer, you can click on the <span class="UIElement">Edit </span>tab to open the designer. refer to the <a href="Form Online Builder.htm">Online Form Designer</a> topic for more information on using it to design your Form template.</p>
+                <p>Once the form is created, if you are using the Word form builder, you can navigate to the <span class="UIElement">Edit</span> tab of the newly created form, from which you can check out and edit your Form template in Microsoft Word. Refer to the <a href="FormBuilder.htm">Word Form Builder</a> section of the documentation for more information on building and modifying the Forms in Microsoft Word. If you use the Online Form Designer, you can click on the <span class="UIElement">Edit </span>tab to open the designer. Please refer to the <a href="Form Online Builder.htm">Online Form Designer</a> topic for more information on using it to design your Form template.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -86,10 +88,14 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Forms can be linked and run from outside of Process Director using a manually-configured URL (for example, linked from your Intranet portal). The default URL can be found on at the bottom of the Form Definition's Properties page, and looks similar to this: </p>
-                <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;nohome=0&amp;completepageprompt=0&amp;completepage=&amp;completetext= </div>
-                <p>Where server_name is the hostname of BP Logix and PP is the internal ID of the Partition and NN is the internal ID of the Form Definition. For users of Process Director v5.12 and higher, the URL is displayed on this tab as a hyperlink.</p>
+                <p>
+                    <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;nohome=0&amp;completepageprompt=0&amp;completepage=&amp;completetext= </div>
+                </p>
+                <p>Where <code>server_name</code> is the hostname of BP Logix, <code>PP </code>is the internal ID of the Partition, and <code>NN </code>is the internal ID of the Form Definition. For users of Process Director v5.12 and higher, the URL is displayed on this tab as a hyperlink.</p>
                 <p>A number of URL&#160;parameters can be added to the URL's existing parameters to alter the way Process Director responds to the URL request. The URL&#160;parameters may be used in any order.</p>
-                <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;nohome=1&amp;completepageprompt=0</div>
+                <p>
+                    <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;nohome=1&amp;completepageprompt=0</div>
+                </p>
                 <ul>
                     <li>The <b>nohome</b> parameter controls whether the home page should be opened when the link to the task list or Form is clicked. Set nohome to 1 to ensure that the home page isn’t opened.</li>
                     <li>The <b>completepage</b> and <b>completetext</b> parameters specify the URL of the page that completing the Form should redirect to and the text displayed with the URL, respectively. When using completepage parameter, you must include the "http://" or "https://" when specifying your URL. In other words, the URL must be a fully-qualified URL, and not just a relative path or other partial URL. Additionally, the completepage URL must, for security reasons, point to a page <i>inside</i> the Process Director domain. You cannot redirect to an external URL. We recommend that, if you want to direct users to an external URL, you create a custom redirect page inside the /custom folder of your process director installation, and use that page as the completepage URL. That custom redirect page can then, in turn, redirect the users to an external URL.</li>
@@ -100,9 +106,9 @@
                 <p>Process Director v5.39 and higher adds additional URL&#160;parameters to control how the form responds to the <span class="UIElement">Save and Close</span> button, when used.</p>
                 <ul>
                     <li>The <b>saveformpage</b> and <b>saveformtext</b> parameters specify the URL of the page that saving the Form should redirect to and the text displayed with the URL, respectively. The usage specifics of the <b>completepageprompt</b> and <b>completetext</b> parameters listed above also apply to this parameter.</li>
-                    <li>The <b>saveformpageprompt</b> parameter supplies the page save prompt message. If saveformpageprompt=0, then the default "completed" page will NOT be displayed. If you are trying to redirect the user to a specific URL after the form is saved, you will most likely want to suppress the "completed" page. </li>
+                    <li>The <b>saveformpageprompt</b> parameter supplies the page save prompt message. If <code>saveformpageprompt=0</code>, then the default "completed" page will NOT be displayed. If you are trying to redirect the user to a specific URL after the form is saved, you will most likely want to suppress the "completed" page. </li>
                 </ul>
-                <p>You can also set the value of Form fields in the URL that will default or override the values for the specified fields. For security reasons, you will need to specify the fields you want to set via URL&#160;parameter beforehand. There are two methods for setting the value vis a URL&#160;parameter.</p>
+                <p>You can also set the value of Form fields in the URL that will default or override the values for the specified fields. For security reasons, you will need to specify the fields you want to set via URL&#160;parameter beforehand. There are two methods for setting the value via a URL&#160;parameter.</p>
                 <h5>Setting a default value</h5>
                 <p>If you <b>only</b> need to set the default value of a field via URL for a new Form instance, you can use the following procedure to configure the field.</p>
                 <p>In the<span class="UIElement"> Form Fields</span> tab of the Form definition, open the field properties for the field you wish to set. You must set a variable as the default value, and there are two ways to do this:</p>
@@ -119,23 +125,31 @@
                     <img src="../Resources/Images/ImplementersReference/FieldValueURLParameter1.png" />
                 </p>
                 <p>Using the VAR object in a text string enables you to add additional modifiers to the variable. For instance, the syntax <code>{VAR:JobTitle, null="Value if null"}</code> specifies the value to use if the URL parameter is not present.</p>
-                <p>The VAR (Variable) object is an ad-hoc variable whose primary use is to serve as a placeholder for the value passed via the URL&#160;Parameter. This is the same implementation procedure used when <a href="Knowledge View Exporting and Reporting.htm#_Toc421536233">passing values to a Knowledge View in a URL</a>.</p>
+                <p>The VAR (Variable) object is an <i>ad-hoc</i> variable whose primary use is to serve as a placeholder for the value passed via the URL&#160;Parameter. This is the same implementation procedure used when <a href="Knowledge View Exporting and Reporting.htm#_Toc421536233">passing values to a Knowledge View in a URL</a>.</p>
                 <p>No matter which of the two methods above that you implement, you can now use the Variable as a URL&#160;parameter. In the case of the above example, the Parameter would be</p>
-                <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;<span style="background-color: #ffff00;"><span style="background-color: #ffd700;">Stuff=value</span></span></div>
+                <p>
+                    <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;<span style="background-color: #ffff00;"><span style="background-color: #ffd700;">Stuff=value</span></span></div>
+                </p>
                 <p>The default value will be filled with the value specified in the URL parameter. </p>
                 <p>This procedure is the simplest method for setting a field's value, and it does not require any further configuration. The drawback to this method is that it can only be used to set the default value of a field in a new Form instance, and so will not change a field value that has already been saved in an existing Form instance.</p>
                 <p>If you wish to set the value in an existing Form, you will need to use the next method.</p>
                 <h5>Setting a Field Value Universally</h5>
                 <p>This method enables you to set a field value via URL parameter at any time. For security reasons, however, you must first identify the field by setting the field name as configurable via URL in the Custom Vars file (vars.cs.ascx), using the <a href="../DevelopersGuide/Customization File Misc.htm#FormFieldsAllowDisabledURLUpdate" target="_blank">FormFieldsAllowDisabledURLUpdate</a> method.</p>
                 <p>Once you have specified the field name in the Custom vars file, you can now use a URL&#160;parameter to set the value any time you desire. In the URL&#160;parameter, the field is identified using the prefix "EXT_ ", followed by the field name, to identify the field, e.g., "EXT_FieldName".</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> Be sure to URL encode the values you specify in the URL&#160;Parameter.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i.png" alt="Important" /> Be sure to URL encode the values you specify in the URL&#160;Parameter.</div>
+                </p>
                 <p><b>Example:</b>
                 </p>
                 <p>In the Custom Vars file, identify the fields to change via URL&#160;Parameter:</p>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Fields to set via URL&#160;Parameter</span><br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("Field1");<br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("Field2");<br />}</div>
+                <p>
+                    <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Fields to set via URL&#160;Parameter</span><br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("Field1");<br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("Field2");<br />}</div>
+                </p>
                 <p>Now, you can use the following URL&#160;parameters to set the field values:</p>
-                <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;<span style="background-color: #ffd700;">EXT_Field1=Some+Value</span>&amp;<span style="background-color: #ffd700;">EXT_Field2=Another+Value</span></div>
+                <p>
+                    <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;<span style="background-color: #ffd700;">EXT_Field1=Some+Value</span>&amp;<span style="background-color: #ffd700;">EXT_Field2=Another+Value</span></div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h3 MadCap:conditions="General.Not Printed"><a name="Example"></a>Documentation Examples <a href="#Example" class="anchor">#</a></h3>
@@ -160,23 +174,23 @@
         </MadCap:dropDown>
         <h2><a name="_Toc421536219"></a>
             <MadCap:keyword term="Locking" />Form Locking <a href="#_Toc421536219" class="anchor">#</a></h2>
-        <p>Forms can be locked by users, preventing other users from making changes to that instance of the form while the form is still locked. If a user views a form that is unlocked, but for which form locking is enabled, the form will be locked for all users except that user. The form remains locked until the user leaves the form. If another user views a locked form, all controls will appear disabled. You can display text for users viewing a locked form and optionally allow them to unlock a locked form using the <a href="Form Controls Other.htm#LockFormControl"><span class="Hyperlink">Lock Form Control</span></a>.</p>
+        <p>Forms can be locked by users, preventing other users from making changes to that instance of the form while the form is still locked. If a user views a form that is unlocked, but for which form locking is enabled, the form will be locked for all users except that user. The form remains locked until the user leaves the form. If another user views a locked form, all controls will appear disabled. You can display text for users viewing a locked form and optionally allow them to unlock a locked form using the <a href="Form Controls Other.htm#LockFormControl"><span class="Hyperlink"><span class="NamedControl">Lock Form </span>control</span></a>.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/The radio button input controls_102.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>To enable form locking, select the “Enable Form Locking” checkbox in the options tab on the Form definition properties page.</p>
+        <p>To enable form locking, select the <span class="ControlName">Enable Form Locking</span> checkbox in the <span class="ControlName">Options </span>section of the Form definition's <span class="UIElement">Properties </span>tab.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/The radio button input controls_103.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
         <p>Form locking can be problematic in some cases. If one user needs to review the form, without making changes, while another user in the process is trying to complete a task, the reviewer would lock the form, preventing the task assignee from completing his work. If multiple users can access the form, then the user that opens the form first will lock the others out.</p>
         <p>For this reason, the Form definition allows you to create conditions on the "Entire form is read-only when" option. This option allows you to determine conditions when the form can be made read-only. This prevents editing in specified circumstances, without locking the form for all users.</p>
         <h2><a name="Events"></a>Form Events <a href="#Events" class="anchor">#</a></h2>
-        <p>Form Events are actions that occur on a form, to which you can add custom actions of your own. Many events fire automatically as part of the form's natural life cycle. For instance, when a form is first opened, an event called Form Creation is fired. Some events, on the other hand, are manually fired. A Button control, for example, has an event that fires when the button is clicked, and this event is built into the Button control automatically. Additionally, form input controls can also be set as Event Fields in the properties you configure on the Form Controls tab of the Form Definition. These controls will fire an event when the data in the control is changed. Any time an event fires, you can configure an action to run on the event, such as a Set Form Data action, or running a Custom Task. For example, you might place a Button control on a form, and on the event for that button, run a Custom Task that converts the form to a PDF document.</p>
+        <p>Form Events are actions that occur on a form, to which you can add custom actions of your own. Many events fire automatically as part of the form's natural life cycle. For instance, when a form is first opened, an event called Form Creation is fired. Some events, on the other hand, are manually fired. A <span class="NamedControl">Button </span>control, for example, has an event that fires when the button is clicked, and this event is built into the <span class="NamedControl">Button </span>control automatically. Additionally, form input controls can also be set as an <span class="ControlName">Event Field</span> in the properties you configure on the <span class="UIElement">Form Controls</span> tab of the Form definition. These controls will fire an event when the data in the control is changed. Any time an event fires, you can configure an action to run on the event, such as a Set Form Data action, or running a Custom Task. For example, you might place a <span class="NamedControl">Button </span>control on a form, and on the event for that button, run a Custom Task that converts the form to a PDF document.</p>
         <p>Form events can be accessed from a Dropdown control that lists all of the available events on the form. This dropdown is primarily used on the <span class="UIElement">Set&#160;Form Data</span> and <span class="UIElement">Custom&#160;Task Event Mapping</span> tabs, though it appears anywhere that an event is applicable.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/EventDropdown.png" />
         </p>
-        <p>This dropdown displays all of the available events that can be used to attach actions to the form. By default, the dropdown shows only the events built into the form's life cycle, but any buttons or other event controls you place on the form will be automatically added to the selections displayed in the dropdown. The table below describes the default events that occur as part of the form's life cycle.</p>
+        <p>This dropdown displays all of the available events that can be used to attach actions to the Form. By default, the dropdown shows only the events built into the form's life cycle, but any buttons or other event controls you place on the form will be automatically added to the selections displayed in the dropdown. The table below describes the default events that occur as part of the form's life cycle.</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
             <col style="width: 50%;" class="TableStyle-Simple-Column-Column1" />
             <col style="width: 50%;" class="TableStyle-Simple-Column-Column1" />
@@ -250,7 +264,7 @@
                 <p><b>Custom Tasks:</b>&#160;Custom Task run after all other actions.</p>
             </li>
         </ul>
-        <p>The order that the actions run is very important. For instance, if you want to configure the <span class="UIElement">Set Form Data </span>tab to run an action that is based on some data pulled from a Custom Task, you cannot run both the Set Form Data action and the Custom task action on the same event, because the Custom Task will not run before the Set Form Data action, only after it. In a case like this example, you might have to run two custom tasks, with the first Custom Task retrieving the data, then running the Set Form Data Custom task, to ensure that the operations happen in the order you desire.</p>
-        <p>Additional advanced information on Form events from a scripting perspective, can be found in the <a href="../DevelopersGuide/Custom Scripting.htm#Events">Custom Scripting</a> and <a href="../DevelopersGuide/Form Class.htm#_Toc421269979">Form Class</a> documentation in the Developer's Guide.</p>
+        <p>The order in which the actions run is very important. For instance, if you want to configure the <span class="UIElement">Set Form Data </span>tab to run an action that is based on some data pulled from a Custom Task, you cannot run both the Set Form Data action and the Custom Task action on the same event. The Custom Task will <span class="Emphasis">not </span>run before the Set Form Data action, only after it. In such a case, you might have to run two Custom Tasks, with the first Custom Task retrieving the data, then running the Set Form Data Custom task second, to ensure that the operations happen in the order you desire.</p>
+        <p>Additional advanced information on Form events from a scripting perspective can be found in the <a href="../DevelopersGuide/Custom Scripting.htm#Events">Custom Scripting</a> and <a href="../DevelopersGuide/Form Class.htm#_Toc421269979">Form Class</a> documentation in the Developer's Guide.</p>
     </body>
 </html>
