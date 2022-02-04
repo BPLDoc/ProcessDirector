@@ -5,18 +5,19 @@
     </head>
     <body>
         <h1>Creating  Meta Data</h1>
-        <p>We can’t show you a working sample of this in the BP Logix Samples folder, since Meta Data categories cannot be transferred between partitions. So, let's do an in-depth walk through of how and why to create Meta Data categories and attributes inside of Process Director.</p>
-        <p>First of all, you must have access to the Meta Data Admin section in order to create the categories of Meta Data that will apply to your objects inside of Process Director. <b>Access to Meta Data Admin is only available to users with System Administration privileges.</b></p>
-        <p>Select your admin profile and look for the Meta Data Admin button. If you don’t have that at the top of the screen, you may have to change your Admin profile in the IT Admin &gt; Configuration section.</p>
+        <p>We can’t show you a working sample of this feature in the BP Logix <span class="ProcessDirectorObject">[Samples]</span> folder, since Meta Data categories cannot be transferred between partitions. So, let's do an in-depth walk through of how and why to create Meta Data categories and attributes inside of Process Director.</p>
+        <p>First of all, you must have access to the Meta Data Admin area to create the categories of Meta Data that will apply to the objects inside Process Director. <span class="Emphasis">Access to Meta Data Admin is only available to users with System Administration privileges.</span></p>
+        <p>Select your admin profile and look for the <span class="UIElement">Meta Data Admin</span> button. If you don’t see that button at the top of the screen, you may have to change your Admin profile in the IT Admin &gt; Configuration section to add the button to your Workspace.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/CreatingMetaData.png" />
         </p>
         <p>
-            <MadCap:keyword term="metadata" />Meta Data is stored by partition, so you will have to select the partition that holds the objects you want to describe using metadata, then click the Meta Data Administration link.</p>
+            <MadCap:keyword term="metadata" />Meta Data is stored by partition, so you will have to select the partition that holds the objects you want to describe using metadata, then click the <span class="UIElement">Meta Data Administration</span> link.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/meta02.png" alt="Create Meta Data" />
         </p>
-        <p>In order to start assigning Meta Data categories or attributes you must first click the link labeled “Create Category” to open the Create Category screen.</p>
+        <h2><a name="Cats"></a>Meta Data Categories <a href="#Cats" class="anchor">#</a></h2>
+        <p>To create Meta Data categories in the Meta Data Admin area, click the link labeled <span class="UIElement">Create Category</span> to open the <span class="ControlName">Create Category</span> screen.</p>
         <p>Insert a name and a brief description of what this category contains. Then click the <span class="UIElement">OK </span>button.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/MetaDataCreating1.png" />
@@ -25,24 +26,29 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/MetaDataCreating2.png" />
         </p>
-        <p>In this example, there is a Administration category and we will create a new subcategory called "Human Resources".</p>
+        <p>In this example, there is an <span class="ControlName">Administration</span> category and we will create a new subcategory called "Human Resources".</p>
         <p>When you have finished creating your category, click the <span class="UIElement">OK </span>button to save it.</p>
         <p>You should now see the new <span class="ControlName">Human Resources</span> subcategory under the <span class="ControlName">Administration</span> parent category.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/MetaDataCreating3.png" />
         </p>
-        <p>The great thing about metadata categories is you could now use them and simply assign objects to one or more categories. For example, if you open a Form definition, you can assign a category to it by selecting the<span class="UIElement"> Meta Data</span> tab in the Form definition.</p>
-        <p>You can assign meta data categories to the Form definition by clicking the <span class="UIElement">Assign Meta Data</span> button. The definition, and all instances that are created, will be assigned to the category you select. You can also add or replace the meta data categories assigned to existing instances by clicking the <span class="UIElement">Add </span>or <span class="UIElement">Replace </span>buttons for the child items.</p>
+        <p>&#160;</p>
+        <p>When you are finished creating your Meta Data categories, you can leave the Meta Data Admin area.</p>
+        <h3>Applying Meta Data Categories to Objects</h3>
+        <p>Metadata categories once created, can be assigned to Process Director objects via the object definition's <span class="UIElement">Meta Data</span> tab. For example, if you open a Form definition, you can assign categories to it by selecting the<span class="UIElement"> Meta Data</span> tab in the Form definition. Remember, Meta Data Categories are created separately in each partition, so you can only assign Meta Data from the same partition as the Process Director object you are configuring. Most Process Director installations maintain a single default permission, so this is not usually an issue. But, if you have separate partitions in your Process Director installation, the Meta Data in the partition can only be used for that partition's objects.</p>
+        <p>In the <span class="UIElement">Meta Data</span> tab, you can assign meta data categories to the Form definition by clicking the <span class="UIElement">Assign Meta Data</span> button. The object definition, and all new instances that are subsequently created, will be assigned to the category you select. You can also add or replace the meta data categories assigned to existing instances by clicking the <span class="UIElement">Add </span>or <span class="UIElement">Replace </span>buttons for the child items.</p>
         <p>Using this method, you can assign Meta Data to any object definition.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/MetaDataCreating.png" />
         </p>
-        <p>In addition to creating categories, you can also create attributes for a category. Attributes are different than categories in that, instead of just being assigned to an object or instance, you can store information from a form or process in the attribute.</p>
-        <p>To create an attribute, click on the Category for which you'd like to create the attribute. Just type the name of your new Meta Data attribute into the text box, select the type of data you’ll be storing and click “Add New Attribute”</p>
+        <p>&#160;</p>
+        <h2><a name="Atts"></a>Meta Data&#160;Attributes <a href="#Atts" class="anchor">#</a></h2>
+        <p>In addition to creating categories, you can also create Attributes for a category. Attributes are different than categories in that, instead of being a predefined value that is assigned to an object or instance, they are data fields into which you can store information from a form or process.</p>
+        <p>To create an attribute, click on the Category for which you'd like to create the attribute. Type the name of your new Meta Data attribute into the <span class="ControlName">Attribute Name </span>text box, select the type of data you’ll be storing from the <span class="ControlName">Attribute Type</span> dropdown, then click the <span class="UIElement">Add New Attribute </span>button</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/MetaDataCreating4.png" />
         </p>
-        <p>Selecting the <span class="UIElement">Edit Attribute</span> button will allow you to change the type of Meta Data later or add an “external” name to the attribute.</p>
+        <p>Selecting the <span class="UIElement">Edit Attribute</span> icon will enable you to change the type of Meta Data later or add an “external” name to the attribute.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/META09.png" alt="Edit Attribute" />
         </p>
@@ -51,5 +57,40 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/MetaDataCreating5.png" />
         </p>
+        <p>Once the desired attributes have been created, you can exit the Meta Data Admin area.</p>
+        <h3>Applying Attributes</h3>
+        <p>When you apply a Meta Data category to an object, any Attributes associated with the category will automatically be added to the Meta Data tab of the object.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/attributes.png" />
+        </p>
+        <p>Attributes store data that you wish to apply to the Form. There are two methods for assigning an attribute to an object.</p>
+        <h4>Meta Data Tab</h4>
+        <p>On the Meta Data tab of the Object definition, you can supply the values you'd like for the attribute. Any attributes placed into the Meta Data tab will be automatically filled out in <span class="Emphasis">every </span>new instance of the object when it is created. So, for instance, if you provide an <span class="ControlName">Effective Date </span>value on the Meta Data tab, every form instance that's created will use that value as the effective date for the form, irrespective of when the Form instance is created.</p>
+        <h4>Form Field</h4>
+        <p>While giving every instance of a Form the same attributes might be useful in some cases, you may need to have each form associated with unique attributes. For instance, in the example screenshot above, the two available attributes are <span class="ControlName">Keywords </span>and <span class="ControlName">Effective Date</span>. For these attributes, what you probably want to do is base them on some information found in each form instance.</p>
+        <p>On the <span class="UIElement">Form Controls</span> tab of the Form Definition, you can open the <span class="ControlName">Properties </span>dialog box for a Form field to access the <span class="ControlName">Link To Attribute</span> property.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/attributes1.png" />
+        </p>
+        <p>This property is an <span class="NamedControl">Object Picker</span> that enables you to navigate to the Attribute you desire to link to the field to store the field’s value as the Attribute value for the Form instance. In this example, the form field's name is <span class="ControlName">EffectveDate</span>, so we obviously want to associate the field with the <span class="ControlName">Effective Date</span> attribute. Clicking the property's button opens the <span class="ControlName">Choose Attribute</span> dialog box.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/attributes2.png" />
+        </p>
+        <p>From here, we can simply click on the link to the <span class="ControlName">Effective Date</span> attribute. Once do, the dialog box will close and the attribute will be linked to the <span class="ControlName">EffectiveDate</span> form field.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/attributes3.png" />
+        </p>
+        <p>Now, when a user fills out this field and submits the form, the attribute will be assigned only to this form instance, so each form instance can have a different <span class="ControlName">Effective Date </span>attribute. We can fill out a new form instance and submit it, then go into the Content List and open the properties for the form instance. If we navigate to the Meta Data tab, we can see that the <span class="ControlName">Effective Date</span> attribute has been properly applied to the form instance.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/attributes4.png" />
+        </p>
+        <p>We could, of course, do the same thing for the <span class="ControlName">Keywords </span>attribute, so that every form instance also has unique keywords as well.</p>
+        <h2><a name="KV"></a>Meta Data and Knowledge Views <a href="#KV" class="anchor">#</a></h2>
+        <p>Knowledge Views can be configured to enable navigation via Meta Data.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/attributes5.png" />
+        </p>
+        <p>When Meta Data navigation is enabled in a Knowledge View, the Knowledge View will display a list of categories on the left side of the screen, to display all of the available Meta Data categories. Clicking on a category will filter the right side of the screen to show only forms, documents, or other objects that match the category you selected on the left.</p>
+        <p>In addition, you can configure the Knowledge View to filter by Attribute, as shown in the example above. As you can see, the document we submitted is the only document in the HR category that has an effective date of 2/3/2022.</p>
     </body>
 </html>
