@@ -16,11 +16,11 @@
         <p>
             <img src="../Resources/Images/Capture186.png" />
         </p>
-        <p>A Timeline Activity of the Custom Task, Script or Sub-Process types can be configured to run in the background by checking the <span class="ControlName">Run this activity in the background (if unsure, leave this box unchecked)</span> check box  in the <span class="UIElement">Advanced Options</span> tab. Setting the operation to run in the background can be used to prevent a long-running, machine-centric Activity in the Process Timeline from hanging a user session while the processing occurs. The Activity will be run in a different context than the current user that caused the transition of the Activity. Additionally, if you have a <a href="../SystemAdministratorGuide/Load Balancing.htm#_Toc421094547">Rendering Server</a> enabled, the background processing will be conducted by the Rendering Server when the option is checked.</p>
+        <p>A Timeline Activity of the Custom Task, Script or Sub-Process types can be configured to run in the background by checking the <span class="ControlName">Run this activity in the background (if unsure, leave this box unchecked)</span> check box  in the <span class="UIElement">Advanced Options</span> tab. Setting the operation to run in the background can be used to prevent a long-running, machine-centric Activity in the Process Timeline from hanging a user session while the processing occurs. The Activity will be run in a different context from the current user's, even inf the user invoked the transition of the Activity. Additionally, if you have a <a href="../SystemAdministratorGuide/Load Balancing.htm#_Toc421094547">Rendering Server</a> enabled, the background processing will be conducted by the Rendering Server when the option is checked.</p>
         <p>
             <img src="../Resources/Images/Capture83.png" />
         </p>
-        <p>Please note that, when this option is selected, if the user's task is followed (after one or more intervening "background" tasks) by another task assigned to the same user, the current behavior in which the window remains open and is refreshed with the Form for the subsequent task will no longer be seen. Instead, the user will have to click the appropriate link in their task list or email notification to open the new task.</p>
+        <p>Please note that, when this option is selected, if the user's task is followed (after one or more intervening "background" tasks) by another task assigned to the same user, the current behavior in which the window remains open and is refreshed with the Form for the subsequent task will no longer be seen. Instead, the Form will close, and the user will have to click the appropriate link in their Task List or email notification to open the for to complete the new task.</p>
         <p> On some systems, when starting a subprocess using the asynchronous option, the system can mark the calling task as complete before the called subprocess completes. This may be especially true if the subprocess contains complex rendering operations. To avoid this, a wait time, in seconds, can be set using the <a href="../DevelopersGuide/Customization File Misc.htm#nAsyncSubProcessWaitSecs" target="_blank" title="nAsyncSubProcessWaitSecs Custom Variable" alt="nAsyncSubProcessWaitSecs Custom Variable">nAsyncSubProcessWaitSecs</a> variable in the Custom Vars file. The default setting for this variable is 5 seconds.</p>
         <h2><a name="_Toc421536174"></a>Activity Configuration Tabs <a href="#_Toc421536174" class="anchor">#</a></h2>
         <p>All activities share a few common tabs in their configuration windows.</p>
@@ -289,7 +289,7 @@
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="_Toc421536180"></a>Form Actions Activity <a href="#_Toc421536180" class="anchor">#</a></h2>
-        <p>This task configures which Form will be the default within the process, and allows new forms to be attached.</p>
+        <p>This task configures which Form will be the default within the process, and enables new forms to be attached.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Form Options Tab</MadCap:dropDownHotspot>
@@ -304,8 +304,10 @@
                 <p>Checking this option will make the selected Form the default form for this Timeline Instance.</p>
                 <h5>Set the form instance version to 1, this will prevent any default data from being applied to form fields</h5>
                 <p>This option will create the Form instance with a version of 1. Normally the version is set to a special value to indicate that the form has never been saved by a user which prevents it from showing up on Knowledge Views, and also applies the default data to the Form fields. Checking this option will cause the form instance to NOT use default data. </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> You should not use this option unless you know that your application specifically requires this behavior.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i.png" alt="Important" /> You should not use this option unless you know that your application specifically requires this behavior.</div>
+                </p>
                 <h5>Add new Form Instance</h5>
                 <p>Specifies the conditions under which a new instance of the form definition is created and then attached to the process.</p>
                 <p>
@@ -332,7 +334,7 @@
                 <p>This dropdown control contains the following configuration options:</p>
                 <ul>
                     <li><b>Rollback:</b> This will branch back to an earlier activity and proceed normally from there. This branch can only be configured to roll back to an activity preceding this activity on the dependency hierarchy. The activity must be dependent on the activity to which this activity rolls back, or it must be dependent on an activity dependent on that activity, and so on. For users of Process Director 5.26 and higher, Timelines can be rolled back to Parent activity types.</li>
-                    <li><b>Start:</b> This will start the defined activity, complete this branch activity, and then continue processing normally from this point.</li>
+                    <li><b>Start:</b> This will start the defined activity, complete this branch activity, and then continue processing normally from this point. Staring another activity does not end the branch that is currently running. The specified activity will start, and run concurrently with the activities that follow the Branch activity.</li>
                     <li><b>Jump:</b> This will transfer control from this branch activity to the activity we want to jump to, any activity “dependent” on this branch activity will NOT get run.</li>
                 </ul>
                 <h5>Branch to Activity</h5>
@@ -340,10 +342,12 @@
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="_Toc421536183"></a>Parent Activity <a href="#_Toc421536183" class="anchor">#</a></h2>
-        <p> Parent activities are containers for other activities, referred to as “Children”. </p>
-        <div class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" title="Important" /> You should not use any other type of activity as a Parent Activity.</div>
-        <p>In Process Director versions 3.45 and higher, additional functionality has been added to Parent activity types: Results Concatenation and Looping.</p>
+        <p> Parent activities are parent containers for other activities, which are referred to as “Children” or "child activities". </p>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i.png" alt="Important" title="Important" /> You should not use any other type of activity as a Parent Activity.</div>
+        </p>
+        <p>In Process Director versions 3.45 and higher, additional functionality is available to Parent activity types: Results Concatenation and Looping.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Results and Result Concatenation</MadCap:dropDownHotspot>
@@ -357,7 +361,7 @@
                 <MadCap:dropDownHotspot><a name="Looping"></a>Looping Tab</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Parent activities can also be used to create loops within your Process Timeline. When configured this way, the Children are referred to as a “looping segment”, i.e., a segment of your Process Timeline that iterates, or loops. A looping segment will continuously loop through the child activities until a user-defined condition, or set of conditions, is satisfied. </p>
+                <p>Parent activities can also be used to create loops within your Process Timeline. When configured this way, the children are referred to as a “looping segment”, i.e., a segment of your Process Timeline that iterates, or loops. A looping segment will continuously loop through the child activities until a user-defined condition, or set of conditions, is satisfied. </p>
                 <p>
                     <img src="../Resources/Images/loop.png" alt="Iteration Loop" />
                 </p>
@@ -403,7 +407,7 @@
                     <img src="../Resources/Images/Capture173.png" />
                 </p>
                 <h5>Set Activity result to a list of all children or user results</h5>
-                <p>Selecting this option concatenate the results of all child activities to a comma-separated list of results.</p>
+                <p>Selecting this option concatenates the results of all child activities to a comma-separated list of results, which become the result for the Parent activity.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -429,10 +433,6 @@
                     </li>
                 </ul>
                 <p>Follow the links above to see a detailed explanation of each System Variable.</p>
-                <p>A parent activity that implements iteration will display a unique icon in the Process Timeline definition.</p>
-                <p>
-                    <img src="../Resources/Images/ImplementersReference/Process Timelines_30.jpg" style="visibility: visible;mso-wrap-style: square;" />
-                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="_Toc421536184"></a>Wait Activity <a href="#_Toc421536184" class="anchor">#</a></h2>
@@ -446,7 +446,7 @@
                     <img src="../Resources/Images/Capture133.png" />
                 </p>
                 <h5>Duration of Activity</h5>
-                <p>Enables you to specify the length of time to wait, and/or to set the calculated due date. <i style="font-weight: bold;">Any time-related Wait activity must should have a Duration set.</i> If no Duration is set, the wait activity will automatically complete, unless a condition on the <span class="UIElement">Completed When </span>tab is set.</p>
+                <p>Enables you to specify the length of time to wait, and/or to set the calculated due date. <i style="font-weight: bold;">Any time-related Wait activity must should have a Duration set.</i> If no Duration is set, the Wait activity will automatically complete, unless a condition on the <span class="UIElement">Completed When </span>tab is set.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -498,7 +498,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyB-Column1-Row2">Wait for event string to be posted</td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row2">If this option is configured, the activity will wait until that event is posted, usually from an external source or process.</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">If this option is configured, the activity will wait until that event is posted, usually from an external source or process. </td>
                         </tr>
                     </tbody>
                 </table>
@@ -620,8 +620,10 @@
                     </tbody>
                 </table>
                 <p>It is possible to set both a time- and condition-based Wait-activity. The settings you choose on this tab will, however, change the way the activity responds. For example, if you set both a completion condition as well as a <span class="ControlName">Duration</span>, then set the I<span class="ControlName">f Time Limit Expires</span> property to "Wait until at least Due Date", then the activity will NOT end until the <span class="ControlName">Duration </span>expires, even if the condition evaluates as true. </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" title="Important" alt="Important" /> Setting a <span class="ControlName">Duration </span>AND setting the <span class="ControlName">If time limit expires</span> property to "Wait until at least Due Date", will ALWAYS keep the Timeline activity in a wait status until the <span class="ControlName">Duration </span>time is met.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i2.png" title="Important" alt="Important" /> Setting a <span class="ControlName">Duration </span>AND setting the <span class="ControlName">If time limit expires</span> property to "Wait until at least Due Date", will ALWAYS keep the Timeline activity in a wait status until the <span class="ControlName">Duration </span>time is met.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="CaseActivity"></a>Case&#160;Activity <a href="#CaseActivity" class="anchor">#</a></h2>

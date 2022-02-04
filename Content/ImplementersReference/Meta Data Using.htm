@@ -6,34 +6,69 @@
     <body>
         <h1>
             <MadCap:keyword term="metadata" />Using Meta Data</h1>
-        <p>There are two different ways to use the Process Director <span class="ProcessDirectorObject">Set Meta Data</span> Custom task: on a Form or in a process.</p>
-        <h2>Form</h2>
-        <p>This is a section of a Form. In order to add Meta Data to an object, the Form must already been submitted. The submission of the form (the <span class="UIElement">OK </span>button) is where the form is actually created and a record of it kept, including its Object ID, and we need the Object ID in order to associate an object with a Meta Data category.</p>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/meta12.png" alt="eForm" />
+        <p>Once Meta Data categories and attributes have been created, as shown in the <a href="Meta Data Creating.htm">Creating Meta Data topic</a>, this meta data can be used to both apply it to object instances, and to use Knowledge Views to filter objects using meta data to return all objects that match some desired Meta Data.</p>
+        <h2><a name="Applying"></a>Applying Meta Data <a href="#Applying" class="anchor">#</a></h2>
+        <p>Meta data can be applied to objects by either setting the Meta Data in an object definition, or by using the Set meta Data Custom Task. These two methods apply Meta Data to object instances in fundamentally different ways. </p>
+        <p>When Meta Data is set in an object definition's <span class="UIElement">Meta Data</span> tab, all new instances of the object will inherit the configured Meta Data automatically. So, when you wish, for example, all Form instances to apply a specific Meta Data category, setting the Categories in the <span class="UIElement">Meta Data</span> tab of the object definition is the easiest way to do that. Additionally, all attachments to the object, such as document attachments, will inherit the meta data categories as well.</p>
+        <p>There may, however, be cases where you only wish to apply Meta Data to specific instances, or where each instance must have different Meta Data applied. In that case, using the<span class="ProcessDirectorObject"> Set Meta Data</span> Custom Task is the easiest method. This method enables you to determine what Meta Data is applied to an instance, or when the Meta Data should be applied, on an instance-by-instance basis.</p>
+        <p>The most common use case for using Meta Data is to set meta data categories in an object definition—usually a Form definition—then set Meta Data attributes from Form fields on each Form definition. In that case, each Form instance will have the same categories applied to every instance, but each instance will have unique attributes, set from the Form fields in each instance. We'll describe this use case below.</p>
+        <h3>Applying Categories to Objects</h3>
+        <p>Metadata categories once created, can be assigned to Process Director objects via the object definition's <span class="UIElement">Meta Data</span> tab. For example, if you open a Form definition, you can assign categories to it by selecting the<span class="UIElement"> Meta Data</span> tab in the Form definition. Remember, Meta Data Categories are created separately in each partition, so you can only assign Meta Data from the same partition as the Process Director object you are configuring. Most Process Director installations maintain a single default permission, so this is not usually an issue. But, if you have separate partitions in your Process Director installation, the Meta Data in the partition can only be used for that partition's objects.</p>
+        <p>In the <span class="UIElement">Meta Data</span> tab, you can assign meta data categories to the Form definition by clicking the <span class="UIElement">Assign Meta Data</span> button. The object definition, and all new instances that are subsequently created, will be assigned to the category you select. You can also add or replace the meta data categories assigned to existing instances by clicking the <span class="UIElement">Add </span>or <span class="UIElement">Replace </span>buttons for the child items.</p>
+        <p>Using this method, you can assign Meta Data to any object definition.</p>
+        <p style="font-weight: bold;">
+            <img src="../Resources/Images/ImplementersReference/MetaDataCreating.png" />
         </p>
-        <p>This is a simple section with a single text field and a button that is going to kick off the Set Meta Data Custom Task. In the <span class="UIElement">Custom Task Event Mapping</span> tab on the Form, you can set the button's event to run the Set Meta Data Custom task.</p>
-        <p>This is the custom task configuration used to set the attribute “newattribute” to a form field value.</p>
+        <p>Selecting a lower-level category (i.e., a subcategory) will explicitly include all higher categories in the hierarchy tree. For example, let's use the following category hierarchy:</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/meta11.png" alt="Custom Task Configuration" />
+            <img src="../Resources/Images/ImplementersReference/categories.png">
+            </img>
         </p>
-        <p>It’s important to understand the “Item Type” and “Item Group” options and be aware that if you don’t select Workflow or Timeline references, that you may not be able to automatically associate other forms and documents later in the process.</p>
-        <p>In Workflows, there is a set Meta Data workflow task, and in Process Timelines, there is a Custom Task activity that you can set to use the Set Meta Data Custom task as the Custom task for the activity. The configuration for both is the same as shown here, for the form. For more information on the Set Meta Data Custom Task, refer to <a href="../Custom Tasks2/Meta Data Custom Tasks.htm#SetMetaData">the task's documentation</a> in the Custom Tasks Reference Guide.</p>
-        <h2>Process</h2>
-        <p>In any Timeline or Workflow, you can use the Set Meta Data and Copy Meta Data Custom Tasks. The process for each type of process is similar, and the custom task configuration is the same. </p>
-        <p>Once a form has been submitted, the Meta Data in the form is accessible from the process. In the examples below, we will see both the Set Meta Data and the Copy Meta Data Custom Tasks in use.</p>
+        <p>If you apply the <span class="ControlName">HR </span>category to a Form definition, doing so will automatically include every higher category in the tree, so that the <span class="ControlName">Webinar</span>, <span class="ControlName">Documents </span>and <span class="ControlName">HR </span>categories are all applied to the object. All of the categories will be displayed in the <span class="UIElement">Meta Data</span> tab of the object, once you select the HR category, as shown below.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/meta13.png" alt="Sample timeline" />
+            <img src="../Resources/Images/ImplementersReference/categories1.png" />
         </p>
-        <p>In this sample, the Set Meta Data Custom Task is run as the first activity when the Form is submitted.</p>
+        <p>The system works this way because Meta Data categories are hierarchical, and thus lower levels of the hierarchy are explicitly part of the higher-level categories of which they are a part. This hierarchical structure also makes category navigation in Knowledge Views work properly. So, in a Knowledge View, selecting the <span class="ControlName">Documents </span>category would show all objects that are assigned to both the <span class="ControlName">HR </span>and <span class="ControlName">IT </span>categories. We'll discuss Knowledge Views below.</p>
+        <h3>Applying Meta Data Attributes to Objects</h3>
+        <p>When you apply a Meta Data category to an object, any attributes associated with the category will automatically be added to the <span class="UIElement">Meta Data</span> tab of the object. </p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/meta14.png" />
+            <img src="../Resources/Images/ImplementersReference/attributes.png" />
         </p>
-        <p>In this case, we've configured the Set Meta Data Custom task to set the Meta Data for the Form only, and set the Category as UI&#160;Design. For the Attribute, the task is configured to set the attribute to the value of a notional Form Field.</p>
-        <p>Now that the Meta Data for the Form has been set, we can use the Copy Meta Data Custom Task to apply those Meta Data Value to other objects in the process.</p>
+        <p>Attributes store data that you wish to apply to the Form. There are two methods for assigning an attribute to an object.</p>
+        <h4>Meta Data Tab</h4>
+        <p>On the Meta Data tab of the Object definition, you can supply the values you'd like for the attribute. Any attributes placed into the Meta Data tab will be automatically filled out in <span class="Emphasis">every </span>new instance of the object when it is created. So, for instance, if you provide an <span class="ControlName">Effective Date </span>value on the Meta Data tab, every form instance that's created will use that value as the effective date for the form, irrespective of when the Form instance is created.</p>
+        <h4>Form Field</h4>
+        <p>While giving every instance of a Form the same attributes might be useful in some cases, you may need to have each form associated with unique attributes. For instance, in the example screen shot above, the two available attributes are <span class="ControlName">Keywords </span>and <span class="ControlName">Effective Date</span>. For these attributes, what you probably want to do is base them on some information found in each form instance.</p>
+        <p>On the <span class="UIElement">Form Controls</span> tab of the Form Definition, you can open the <span class="ControlName">Properties </span>dialog box for a Form field to access the <span class="ControlName">Link To Attribute</span> property.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/meta15.png" />
+            <img src="../Resources/Images/ImplementersReference/attributes1.png" />
         </p>
-        <p>In the example above, The Copy Meta Data task is copying the Meta Data from the Form (Data Source) to all of the Timeline references (Data Destination) in the process. We have configured the task to copy both the UI&#160;Design Category and Sample Attribute value to all of the Timeline references. As a result, any object attached to the Timeline (file attachments, for example) will now share the same Meta Data category and attribute with the Form.</p>
+        <p>This property is an <span class="NamedControl">Object Picker</span> that enables you to navigate to the Attribute you desire to link to the field to store the field’s value as the Attribute value for the Form instance. In this example, the form field's name is <span class="ControlName">EffectveDate</span>, so we obviously want to associate the field with the <span class="ControlName">Effective Date</span> attribute. Clicking the property's button opens the <span class="ControlName">Choose Attribute</span> dialog box.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/attributes2.png" />
+        </p>
+        <p>From here, we can simply click on the link to the <span class="ControlName">Effective Date</span> attribute. Once we do, the dialog box will close and the attribute will be linked to the <span class="ControlName">EffectiveDate</span> form field.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/attributes3.png" />
+        </p>
+        <p>Now, when a user fills out this field and submits the form, the attribute will be assigned only to this form instance, so each form instance can have a different <span class="ControlName">Effective Date </span>attribute. We can fill out a new form instance and submit it, then go into the Content List and open the properties for the form instance. If we navigate to the Meta Data tab, we can see that the <span class="ControlName">Effective Date</span> attribute has been properly applied to the form instance.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/attributes4.png" />
+        </p>
+        <p>We could, of course, do the same thing for the <span class="ControlName">Keywords </span>attribute, so that every form instance also has unique keywords as well.</p>
+        <h2><a name="CT"></a>The Set Meta Data Custom Task <a href="#CT" class="anchor">#</a></h2>
+        <p>The <span class="ProcessDirectorObject">Set Meta Data</span> Custom task is a Form and Process Timeline Custom task that enables you to set Meta Data on an individual object instance. As mentioned previously, this Custom Task is used to set Meta Data on an instance-by-instance basis.</p>
+        <p>When used on a Form, the<span class="ProcessDirectorObject"> Set Meta Data </span>Custom Task can only run on a form instance that has already been submitted. It cannot run on new Form instances, since none of the form data is saved until the form has been submitted. The submission of the form  is where the form instance is actually created and a record of it kept, including its Object ID, and the custom task requires the Object ID to properly associate an object with a Meta Data.</p>
+        <p>When used in a Process Timeline, the <span class="ProcessDirectorObject">Set Meta Data</span> Custom task is run as part of a Custom Task activity type.</p>
+        <p>You can manually apply Meta Data in the configuration of the Custom Task, apply Meta Data from generic Form fields. Two form controls, the <span class="NamedControl">Category Picker</span> and <span class="NamedControl">Attribute Picker </span>controls, will display a list of existing Meta Data categories and attributes on the form, making the selection of Meta Data on the Form much easier. When using the <span class="NamedControl">Category</span>/<span class="NamedControl">Attribute Picker</span> form controls, you must run the Set Meta Data Custom Task to apply the values you select in the controls to the instance's Meta Data. The Custom Task can be configured to set Meta Data from either generic Form controls, or the dedicated Meta Data picker controls.</p>
+        <p>In either case, the Custom Task can set Meta Data categories or attributes on any object, including document attachments. For more information on the Set Meta Data Custom Task, refer to <a href="../Custom Tasks2/Meta Data Custom Tasks.htm#SetMetaData">the task's documentation</a> in the Custom Tasks Reference Guide.</p>
+        <h2><a name="KV"></a>Meta Data and Knowledge Views <a href="#KV" class="anchor">#</a></h2>
+        <p>Knowledge Views can be configured to enable navigation via Meta Data.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/attributes5.png">
+            </img>
+        </p>
+        <p>When Meta Data navigation is enabled in a Knowledge View, the Knowledge View will display a list of categories on the left side of the screen, to display all of the available Meta Data categories. Clicking on a category will filter the right side of the screen to show only forms, documents, or other objects that match the category you selected on the left.</p>
+        <p>In addition, you can configure the Knowledge View to filter by Attribute, as shown in the example above. As you can see, the document we submitted in the Attributes section, above, is the only document in the HR category that has an effective date of 2/3/2022.</p>
     </body>
 </html>

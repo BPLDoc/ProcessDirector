@@ -9,7 +9,7 @@
             <MadCap:concept term="Process Timelines" />
             <MadCap:concept term="Implementation" /><a name="_Toc421536185"></a>
             <MadCap:keyword term="Process Timelines;Processes" />Managing Process Timeline Instances</h1>
-        <p>When a Process Timeline process is started, a Process Timeline instance is created. This is what is routed to the participants of the Process Timeline. The Process Timeline instance contains the routing slip, the Process Timeline objects (documents, Forms, etc.), optional references, and administrative controls. The Process Timeline instance can be viewed by authorized users for running and completed Process Timelines. </p>
+        <p>When a Process Timeline process is started, a Process Timeline instance is created. This instance is what is routed to the participants of the Process Timeline. The Process Timeline instance contains the routing slip, the Process Timeline objects (documents, Forms, etc.), optional references, and administrative controls. The Process Timeline instance can be viewed by authorized users for running and completed Process Timelines. </p>
         <h2><a name="Routing"></a>Routing Slip <a href="#Routing" class="anchor">#</a></h2>
         <p>Authorized users have access to the routing slip in the Process Timeline instance by clicking on the <span class="UIElement">Timeline Status</span> Tab. This tab displays a routing slip that shows the progress of the route. It displays all users that are participating in this Process Timeline and how far it has progressed in the routing process, including all iterations of an activity.</p>
         <p>
@@ -39,11 +39,11 @@
             <img src="../Resources/Images/ImplementersReference/ManagingTimelines1.png" />
         </p>
         <h5>Administering Process Timeline Activities</h5>
-        <p>You can access the properties for a Timeline activity displayed in the Administration/Timeline screen by right-clicking on the activity, and selecting "Properties" from the pop-up menu.</p>
+        <p>You can access the properties for a Timeline activity displayed in the <span class="UIElement">Administration/Timeline</span> tab by right-clicking on the activity, and selecting <span class="UIElement">Properties </span>from the pop-up menu.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Process Timelines_34.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>In the Activity Properties screen, you can access the full range of activity and user properties by checking the box next to the activity's user name in the Participants column of the Activity routing slip.</p>
+        <p>In the <span class="UIElement">Timeline Instance Activity Properties</span> tab, you can access the full range of activity and user properties by checking the box next to the activity's user name in the Participants column of the Activity routing slip.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/ManagingTimelines2.png" />
         </p>
@@ -68,8 +68,10 @@
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row1">
                         <p>Cancels this activity in the Process Timeline.</p>
-                        <div class="Important">
-                            <img src="../Resources/Images/i2.png" alt="Note" /> When a Parent activity is administratively canceled, the system will ripple the user and cancellation comments to all the child activities that are being canceled because the parent is canceled.</div>
+                        <p>
+                            <div class="Important">
+                                <img src="../Resources/Images/i2.png" alt="Note" /> When a Parent activity is administratively canceled, the system will ripple the user and cancellation comments to all the child activities that are being canceled because the parent is canceled.</div>
+                        </p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row2">
@@ -273,13 +275,15 @@
                 <p>Execute the following URL from a browser on the server that has Process Director:</p>
                 <p><code>http://localhost/services/wsTimeline.asmx/Run?tlid=TLID&amp;bpUserid=USERID&amp;bpPassword=PASSWORD</code>
                 </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> Be advised that using the bpUSERID or bpPassword parameter requires sending the User ID and Password in clear text, so be mindful of the security implications of transmitting these values.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i.png" alt="Important" /> Be advised that using the bpUSERID or bpPassword parameter requires sending the User ID and Password in clear text, so be mindful of the security implications of transmitting these values.</div>
+                </p>
                 <p>The wsTimeline.asmx command can take the following parameters on the QueryString URL:</p>
                 <ul style="list-style-type: disc;margin-left: 36pt;">
-                    <li style="list-style-type: disc;">tlid: The Timeline ID of the Timeline Definition to run;</li>
-                    <li style="list-style-type: disc;">bpUserid: A Process Director user ID with permission to run the Workflow Definition;</li>
-                    <li style="list-style-type: disc;">bpPassword: A Process Director password with permission to run the Workflow Definition;</li>
+                    <li style="list-style-type: disc;"><b>tlid:</b> The Timeline ID of the Timeline Definition to run;</li>
+                    <li style="list-style-type: disc;"><b>bpUserid:</b> A Process Director user ID with permission to run the Workflow Definition;</li>
+                    <li style="list-style-type: disc;"><b>bpPassword:</b> A Process Director password with permission to run the Workflow Definition;</li>
                 </ul>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -292,9 +296,11 @@
                 <p>Do not schedule IEXPLORE.EXE because the web browser will never close. Rather, use the bputil.exe command to run the web page. For example, enter this command in the “Run” dialog box to schedule the synchronization:</p>
                 <p><code>"PATH\bputil.exe" SU http://localhost/services/wsTimeline.asmx/Run?tlid=TLID&amp;bpUserid=USERID&amp;bpPassword=PASSWORD</code>
                 </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> Be advised that using the bpUSERID or bpPassword parameter requires sending the User ID and Password in clear text, so be mindful of the security implications of transmitting these values.</div>
                 <p>(Where PATH is the installation directory for Process Director, e.g. c:\Program Files\BP Logix\Process Director\). Enter the appropriate credentials in the Windows Scheduler when prompted. Use the “Schedule” tab to set the times to run the command. Consult the Microsoft help for more information on this utility.</p>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i.png" alt="Important" /> Be advised that using the bpUSERID or bpPassword parameter requires sending the User ID and Password in clear text, so be mindful of the security implications of transmitting these values.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

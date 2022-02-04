@@ -5,7 +5,7 @@
     </head>
     <body>
         <h1>Stream Actions Object</h1>
-        <p>Users of Process Director v5.26 and higher have access to the Stream Actions object. This object will read a recordset stream from a datasource, and enable you to submit a form instance for each record in the stream. Stream actions can be scheduled and run on a recurring basis to import data on any desired schedule.</p>
+        <p>Users of Process Director v5.26 and higher have access to the Stream Actions object. This object will read a recordset stream from a datasource, and enable you to submit a form instance for each record in the stream. Stream Actions can be scheduled and run on a recurring basis to import data on any desired schedule.</p>
         <p>A common use case for the Stream&#160;Actions Object would be to import data from an Excel spreadsheet, external data source, or Business Value, then create a new form instance for each row in the recordset, fill out fields on the form instance, then submit it to begin a process for each record.</p>
         <h2><a name="Properties"></a>Properties Tab <a href="#Properties" class="anchor">#</a></h2>
         <p>The <span class="UIElement">Properties </span>tab provides the basic object configuration settings.</p>
@@ -13,10 +13,41 @@
             <img src="../Resources/Images/ImplementersReference/StreamActions.png" />
         </p>
         <p>The following Properties are configurable.</p>
-        <p><b>Name:</b> The name of the Stream Actions object.</p>
-        <p><b>Description:</b> the description that you'd like to display in the second line of the object's entry in the Content List.</p>
-        <p><b>Stream Action is currently:</b> For Stream Actions that you wish to schedule, you can activate or de-activate the Stream Actions object from running by selecting the appropriate radio button.</p>
-        <p><b>Group in Value Picker:</b>&#160;Enables you to set the category in which this Stream Actions Object will appear in the dropdown selector of the <span class="ControlName">Choose System Variables</span> dialog box.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Name:</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The name of the Stream Actions object.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Description:</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>the description that you'd like to display in the second line of the object's entry in the Content List.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Stream Action is currently:</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For Stream Actions that you wish to schedule, you can activate or deactivate the Stream Actions object from running by selecting the appropriate radio button.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Group in Value Picker:</b>&#160;</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to set the category in which this Stream Actions Object will appear in the dropdown selector of the <span class="ControlName">Choose System Variables</span> dialog box.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
         <h2><a name="Data"></a>Data Set Tab <a href="#Data" class="anchor">#</a></h2>
         <p>The <span class="UIElement">Data Set </span>tab enables you to configure the data source you wish to use for this Stream Actions object. The configuration properties available on this tab will depend on the <span class="ControlName">Data Set Type </span>you select to use. You can select either a Business Value as a data source, which is the most common user case, but you can also configure a SQL data source directly as well.</p>
         <p>
@@ -42,11 +73,11 @@
                     <img src="../Resources/Images/ImplementersReference/StreamActions3.png" />
                 </p>
                 <p>When you set the <span class="ControlName">Data Set Type</span> to SQL&#160;Data Source, the following properties are configurable.</p>
-                <p><b>Please Choose Data Source:</b> An Object Picker that enables you to choose the Datasource object that connects to the database.</p>
-                <p><b>Test Connection:</b> Once the Datasource object has been selected, you can click this button to test the connection to the specified database.</p>
-                <p><b>SQL&#160;Command:</b> Enables you to type in the SQL&#160;Statement that is required to return the desired data.</p>
-                <p><b>Select Table.../Show Columns:</b> Enables you to select a table in the datasource to which you've connected, then show the columns contained in the selected table. This will assist you in writing your SQL&#160;statement, in case you don't which columns you want to include.</p>
-                <p><b>Test Query:</b>&#160;Once you've written the SQL&#160;Statement, you can test its operation by clicking this button.</p>
+                <p><span class="ControlName">Please Choose Data Source</span>: An Object Picker that enables you to choose the Datasource object that connects to the database.</p>
+                <p><span class="ControlName">Test Connection</span>: Once the Datasource object has been selected, you can click this button to test the connection to the specified database.</p>
+                <p><span class="ControlName">SQL&#160;Command</span>: Enables you to type in the SQL&#160;Statement that is required to return the desired data.</p>
+                <p><span class="ControlName">Select Table.../Show Columns</span>: Enables you to select a table in the datasource to which you've connected, then show the columns contained in the selected table. This will assist you in writing your SQL&#160;statement, in case you don't which columns you want to include.</p>
+                <p><span class="UIElement">Test Query</span>:&#160;Once you've written the SQL&#160;Statement, you can test its operation by clicking this button.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="Start"></a>Start Process Tab <a href="#Start" class="anchor">#</a></h2>
@@ -55,13 +86,45 @@
             <img src="../Resources/Images/ImplementersReference/StreamActions4.png" />
         </p>
         <p>The following properties are configurable.</p>
-        <p><b>Submit form and start process when:</b> This property invokes the <span class="ProcessDirectorObject">Condition Builder</span> to enable you to set whatever conditions you desire to determine whether the stream for each record should run.</p>
-        <p><b>Form Definition:</b> This Object Picker enables you to select the form definition to use when creating a form instance for each record in the dataset stream.</p>
-        <p><b>Form Field:</b> A dropdown containing all of the available form fields on the specified form. Select the field you want for each field in the stream's record.</p>
-        <p><b>Value:</b> A System Variable Picker that enables you to choose the record field to import into the form field. In the Picker, you can select the Variable type to display a dropdown list containing all of the fields in the stream record. The dropdown list will populate automatically with the fields in the stream record.</p>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/StreamActions8.png" />
-        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Submit form and start process when</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property invokes the <span class="ProcessDirectorObject">Condition Builder</span> to enable you to set whatever conditions you desire to determine whether the stream for each record should run.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Form Definition</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Object Picker enables you to select the form definition to use when creating a form instance for each record in the dataset stream.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Form Field</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A dropdown containing all of the available form fields on the specified form. Select the field you want for each field in the stream's record.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Value</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A System Variable Picker that enables you to choose the record field to import into the form field. In the Picker, you can select the Variable type to display a dropdown list containing all of the fields in the stream record. The dropdown list will populate automatically with the fields in the stream record.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/StreamActions8.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
         <p>An <span class="UIElement">Add Field Mapping </span>button enables you to add as many <span class="ControlName">Form Field</span>/<span class="ControlName">Value </span>rows as necessary. Additionally, Up (<img src="../Resources/Images/ImplementersReference/StreamActions5.png" />), Down(<img src="../Resources/Images/ImplementersReference/StreamActions6.png" />), and Delete (<img src="../Resources/Images/ImplementersReference/StreamActions7.png" />) buttons on each row enable you to order or delete rows.</p>
         <h2><a name="Schedule"></a>Schedule Tab <a href="#Schedule" class="anchor">#</a></h2>
         <p>The Schedule table enables you to create the schedule you'd like to use to import the Stream data on a periodic basis.</p>
@@ -69,12 +132,68 @@
             <img src="../Resources/Images/ImplementersReference/StreamActions9.png" />
         </p>
         <p>The following properties are configurable.</p>
-        <p><b>Run Stream Action.../No Automatic Stream Action:</b> This dropdown enables you to turn scheduling on or off for the Stream Actions object.</p>
-        <p><b>Repeat every:</b> This text/box. dropdown combination enables you to specify the number of time intervals, and the type of time interval (i.e., hours, days, months, etc.) between each run of the  Stream Actions object. The default is to run every 1 day.</p>
-        <p><b>Repeat Interval Starts At:</b> This DateTime Picker enables you to specify a start date for the stream Actions Object to begin the a scheduled import frequency.</p>
-        <p><b>Days of lead time:</b> This text box enables you to specify the number of days lead time you need to complete the process. For instance, let's say the processes that are started by the Stream Actions Object take 5 days to complete, and all need to be completed by the 15th of every month. You might set the <span class="ControlName">Repeat Every </span>property to run every month, and set the <span class="ControlName">Repeat Interval Starts At</span> property to the 15th of the coming month. If you set the lead time to 5 days, the data will be imported and the processes started five days prior to the 15th.</p>
-        <p><b>Scheduler Period End:</b> This DateTime Picker enables you to set an end date to stop running the Stream Actions Object's scheduled runs.</p>
-        <p><b>Limit to Business Hours Only:</b> Checking the property will ensure that the Stream Actions object runs only during the business hours you've set in the system.</p>
-        <p><b>Process Now:</b>&#160;Clicking this button will run the Stream Actions object immediately.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Run Stream Action.../No Automatic Stream Action</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This dropdown enables you to turn scheduling on or off for the Stream Actions object.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Repeat every</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This text/box. dropdown combination enables you to specify the number of time intervals, and the type of time interval (i.e., hours, days, months, etc.) between each run of the  Stream Actions object. The default is to run every 1 day.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Repeat Interval Starts At</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This DateTime Picker enables you to specify a start date for the stream Actions Object to begin the a scheduled import frequency.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Days of lead time</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This text box enables you to specify the number of days lead time you need to complete the process. For instance, let's say the processes that are started by the Stream Actions Object take 5 days to complete, and all need to be completed by the 15th of every month. You might set the <span class="ControlName">Repeat Every </span>property to run every month, and set the <span class="ControlName">Repeat Interval Starts At</span> property to the 15th of the coming month. If you set the lead time to 5 days, the data will be imported and the processes started five days prior to the 15th.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Scheduler Period End</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This DateTime Picker enables you to set an end date to stop running the Stream Actions Object's scheduled runs.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Limit to Business Hours Only</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking the property will ensure that the Stream Actions object runs only during the business hours you've set in the system.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><b>Process Now</b>
+                </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking this button will run the Stream Actions object immediately.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
     </body>
 </html>

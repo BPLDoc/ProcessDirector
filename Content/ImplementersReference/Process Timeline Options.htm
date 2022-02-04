@@ -8,8 +8,8 @@
             <MadCap:concept term="Process Timelines" />
             <MadCap:concept term="Implementation" /><a name="_Toc421536158"></a>
             <MadCap:keyword term="Processes;Process Timelines" />Process Timeline Definitions</h1>
-        <p>Process Timeline Definitions can be created and modified by the business users. Use the Content List entry in the Process Director navigation bar to view the content list screen. You must have Modify permission in the folder you are viewing to be able to create a new Process Timeline Definition. </p>
-        <p>Process Timeline Definitions can be stored anywhere in the content list, under any folder structure.</p>
+        <p>Process Timeline Definitions can be created and modified by implementers. Use the Content List entry in the Process Director navigation bar to view the Content List screen. You must have Modify permission in the folder you are viewing to be able to create a new Process Timeline Definition in that folder. </p>
+        <p>Process Timeline Definitions can be stored anywhere in the Content List, under any folder structure, though BP&#160;logix recommends you use the organizational method suggested in the <a href="Importing Exporting Content.htm#Folders">Content List Folders section</a> of the Importing/Exporting Content topic.</p>
         <h2><a name="_Toc421536159"></a>Process Timeline Options <a href="#_Toc421536159" class="anchor">#</a></h2>
         <p>To configure the Process Timeline Definition settings, click on the <span class="ControlName">Options </span>section when viewing the <span class="UIElement">Properties </span>tab of the Process Timeline Definition. This will open the section to enable you to set the general Process Timeline options.</p>
         <p>
@@ -36,7 +36,7 @@
                 <MadCap:dropDownHotspot>Instantiated Name</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This field contains an optional name that should be used when a Process Timeline is started (i.e. instantiated). The default name of a running Process Timeline is the same name as the Process Timeline Definition. This name can contain system variables using the {SYSVAR} tag. This allows the running Process Timeline names to contain more meaningful information (e.g. “PR Review – started by {CURR_USER}). The running Process Timeline name is re-evaluated after each Process Timeline activity completes allowing variable data (e.g. Forms field values) to be used to construct the name. Refer to the section named System Variables in this document for more information.</p>
+                <p>This field contains an optional name that should be used when a Process Timeline is started (i.e. instantiated). The default name of a running Process Timeline is the same name as the Process Timeline Definition. This name can contain system variables using the {SYSVAR} tag. This property allows the running Process Timeline names to contain more meaningful information (e.g. “PR Review – started by {CURR_USER}). The running Process Timeline name is re-evaluated after each Process Timeline activity completes allowing variable data (e.g. Forms field values) to be used to construct the name. Refer to the section named System Variables in this document for more information.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -52,7 +52,7 @@
                 <MadCap:dropDownHotspot>Default Email Template in this Process Timeline</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This is an optional default email template to use when sending email notifications to users in an activity.&#160; If an email template is not specified in an activity, this default email template will be used.&#160; If no default email template is assigned, the system default email template will be used that was shipped with Process Director. For more information on email templates refer to the section named Using Email Templates in this document. Email Templates are stored in the Content List as a Form uploaded as an Email Template Form.</p>
+                <p>This is an optional default email template to use when sending email notifications to users in an activity.&#160; If an email template is not specified in an activity, this default email template will be used.&#160; If no default email template is assigned, the system default email template will be used that was shipped with Process Director. For more information on email templates refer to the <a href="Email Templates.htm">Email Templates</a> section of this guide. Email Templates are stored in the Content List as a Form that is specifically configured as an Email Template Form.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -117,7 +117,7 @@
                 <MadCap:dropDownHotspot>Show Columns</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This allows you to display the Index, Activity, Participants, and/or the Process Timeline columns of the Process Timeline Definition.</p>
+                <p>This property enables you to display the Index, Activity, Participants, and/or the Process Timeline columns of the Process Timeline Definition.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -125,7 +125,7 @@
                 <MadCap:dropDownHotspot>Display Process Timeline in</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This option allows you to display the Process Timeline in minutes, hours, days or weeks. You may also specify the default activity duration.</p>
+                <p>This property enables you to display the Process Timeline in minutes, hours, days or weeks. You may also specify the default activity duration.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -148,8 +148,10 @@
         <p>For Users of Process Director v3.75 and higher, Form data field values may be set directly from the Timeline definition. The field value can be set when a Timeline Activity task  starts or ends. This is a very useful option when you want to set form data without having to open the Form. This function is especially useful for setting a form or process status, or setting action dates, without having to open the Form. In most cases, the <span class="UIElement">Set Form Data</span> tab on the Timeline Activity will replace the requirement to use a Custom Task to set form data in the Timeline.</p>
         <p>You can configure the Set&#160;Form Data function in either the <span class="UIElement">Set Form Data</span> section of the Timeline Definition, or on the<span class="UIElement"> Set Form Data</span> tab of an individual Timeline Activity. Irrespective of which method you use, the Set Form Data settings you configure will be displayed automatically in both places. Configurations can be edited in either location as well.</p>
         <p>To set a Form field value, first ensure that you have specified a form to associate with the Process Timeline, via the<span class="ControlName"> Form for Timeline</span> property in the <span class="UIElement">Options </span>section of the Timeline Definition. Next, in the <span class="UIElement">Set Form Data</span> section of the Timeline definition or in the <span class="UIElement">Set Form Data</span> tab of an individual Timeline Activity, select the activity and activity event for which you'd like to set the value. The two activity events that appear as usable events are <span class="ControlName">Task Start</span> and <span class="ControlName">Task End</span>. An additional option for the event, <span class="ControlName">No Event</span>, can be used as a placeholder. The Set Form Data action will NOT occur if the event is set to <span class="ControlName">No Event</span>.</p>
-        <div class="Important">
-            <img src="../Resources/Images/i2.png" alt="Note" /> As of v4.03, these selections are available as separate dropdown controls. Prior versions present them as a single dropdown control.</div>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i2.png" alt="Note" /> For Process Director v4.03 and higher, these selections are available as separate dropdown controls. Prior versions present them as a single dropdown control.</div>
+        </p>
         <p>
             <img src="../Resources/Images/ImplementersReference/TLSetFormData.png" />
         </p>

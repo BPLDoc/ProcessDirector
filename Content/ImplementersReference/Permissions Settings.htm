@@ -7,8 +7,8 @@
         <h1>
             <MadCap:concept term="Implementation" /><a name="_Toc421536250"></a>
             <MadCap:keyword term="Permissions" />Setting Permissions</h1>
-        <p>Any object in the Process Director database may contain a list of permission rules that determine who can access the object and what function they can perform against it. A permission rule can either grant or deny a user or group of users' access. The lack of a matching permission rule granting a user access, will deny access to the object. If there are conflicting rules which either grant or deny a user access, the user will be denied. When the server attempts to determine whether a user has access to an object in the database, it will search through the objects entire permission list until it finds a permission rule that grants the user the requested access, or until the end of the list. A user is granted the highest level of permission found for them in the permission list.</p>
-        <p>Different object types in the database have different permissions and options available to them. Objects that can be run (e.g. Workflow definition, Form definition) will have more permissions options available to them, as will objects that can have children objects (e.g. folders, Form definitions, etc.).</p>
+        <p>Any object in the Process Director database may contain a list of permission rules that determine who can access the object and what functions they can perform against it. A permission rule can either grant or deny a user or group of users' access. The absence of a permission rule granting a user access to an object, will automatically deny access to it. If there are conflicting rules which either grant or deny a user access, the user will be denied. When the server attempts to determine whether a user has access to an object in the database, it will search through the object's entire permission list until it finds a permission rule that grants the user the requested access, or until the end of the list. Assuming the user is <span class="Emphasis">not </span>denied permissions to an object, the user is granted the highest level of permission found for them in the permission list.</p>
+        <p>Different object types in the database have different permissions and options available to them. Objects that can be run (e.g. process definition, Form definition) will have more permissions options available to them, as will objects that can have children objects (e.g. folders, Form definitions, etc.).</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/PermissionsSettings1.png" />
         </p>
@@ -60,13 +60,13 @@
                 <MadCap:dropDownHotspot>Object Creator</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This is a special permission type only available to objects that can have children (i.e. folders, Workflow definitions, Form definitions). This will automatically give the permissions specified to the author/creator of any child objects that are created. For example, if a user starts a Workflow definition that gives the Object Creator a permission of Modify; that will automatically be converted to the initiator users ID with Modify permission for that specific Workflow instance the user is creating (starting).</p>
+                <p>This is a special permission type only available to objects that can have children (i.e. folders, process definitions, Form definitions). This will automatically give the permissions specified to the author/creator of any child objects that are created. For example, if a user starts a process definition that gives the Object Creator a permission of Modify; that will automatically be converted to the initiator users ID with Modify permission for that specific process instance the user is creating (starting).</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="_Toc421536252"></a>Object Permission Types <a href="#_Toc421536252" class="anchor">#</a></h2>
-        <p>Setting the permissions for a folder does not automatically set the permissions for the objects contained within it. You have the ability to replicate all permissions of the parent folder to all of the child objects in the folder. You have two options for doing so. </p>
-        <p>First, you can Replicate permissions to all child objects, which will not only overwrite the existing permissions on definition objects, it will also overwrite permissions on all of the form and process instances—including those instances that are active and in-progress.&#160; This may completely change the ability of users to complete active Workflow or form instances, so you should exercise caution in using this option in the production environment.</p>
-        <p>You also have the option, though, to replicate the permissions to child all child objects except for form, Workflow, and Process Timeline instances. This is probably the preferred option for replicating folder permissions in the production environment where there are active processes running. Future process and form instances will be created under the new permissions regime, but existing instances will still run under the permissions regime that was valid when they were created.</p>
+        <p>Setting the permissions for a folder does not automatically set the permissions for the existing objects contained within it. You have the ability to replicate all permissions of the parent folder to all of the existing child objects in the folder. You have two options for doing so. </p>
+        <p>First, you can Replicate permissions to all child objects, which will not only overwrite the existing permissions on definition objects, it will also overwrite permissions on all of the form and process instances—including those instances that are active and in-progress.&#160; This may completely change the ability of users to complete active Process Timeline or Form instances, so you should exercise caution in using this option in the production environment.</p>
+        <p>You also have the option, though, to replicate the permissions to child all child objects except for form, process, and Process Timeline instances. This is probably the preferred option for replicating folder permissions in the production environment where there are active processes running. Future process and form instances will be created under the new permissions regime, but existing instances will still run under the permissions regime that was valid when they were created.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/PermissionsSettings2.png" />
         </p>
@@ -119,14 +119,14 @@
                 <p>This permission gives a user full control over a document. A user with this permission can delete the document. Delete permission is required for a user to perform a rollback to an older version of a document, or to delete any portion of the document history. A user must have Delete permission to be able to grant Delete permission to another user.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2><a name="_Toc421536254"></a>Workflow Permission Types <a href="#_Toc421536254" class="anchor">#</a></h2>
-        <p>Permissions are defined for a Workflow definition. When the Workflow definition is run, a child is created as an instantiation of the Workflow definition. This “running” Workflow is located beneath the Workflow definition in the content list. This instantiated, running Workflow will inherit the Child Permission settings from the Workflow definition.</p>
+        <h2><a name="_Toc421536254"></a>Process Permission Types <a href="#_Toc421536254" class="anchor">#</a></h2>
+        <p>Permissions are defined for a process definition, e.g., a Process Timeline. When the process definition is run, a child is created as an instantiation of the process definition. This “running” process is located beneath the process definition in the content list. This instantiated, running process will inherit the Child Permission settings from the process definition.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>View</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This permission gives a user the ability to view a Workflow definition in the content list. It does not grant the ability to run or modify the Workflow definition, and does not grant any permission to the running Workflows instantiated from this definition.</p>
+                <p>This permission gives a user the ability to view a process definition in the content list. It does not grant the ability to run or modify the process definition, and does not grant any permission to the running processes instantiated from this definition.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -134,7 +134,7 @@
                 <MadCap:dropDownHotspot>Modify</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This permission gives a user the ability to modify a Workflow definition in the content list. It does not grant the ability to run a Workflow definition, and does not grant any permission to the running Workflows instantiated from this definition. A user must have Modify permission to view or set the permissions for a Workflow definition.</p>
+                <p>This permission gives a user the ability to modify a process definition in the content list. It does not grant the ability to run a process definition, and does not grant any permission to the running processes instantiated from this definition. A user must have Modify permission to view or set the permissions for a process definition.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -142,7 +142,7 @@
                 <MadCap:dropDownHotspot>Delete</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This permission gives a user the ability to delete a Workflow definition. This will also delete all running and completed Workflow Instances beneath this Workflow definition in the content list. A user must have Delete permission to be able to grant Delete permission to another user.</p>
+                <p>This permission gives a user the ability to delete a process definition. This will also delete all running and completed process Instances beneath this process definition in the content list. A user must have Delete permission to be able to grant Delete permission to another user.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -150,7 +150,7 @@
                 <MadCap:dropDownHotspot>Run</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This permission allows a user to run or start this Workflow definition. If a user does not have Run permission to a Workflow definition, it will not be displayed on their home page or when they select the Start Workflow hotlink in the content list after selecting an object.</p>
+                <p>This permission allows a user to run or start this process definition. If a user does not have Run permission to a process definition, it will not be displayed on their home page, nor will they be given access to the <span class="UIElement">Run </span>button for that object in the Content List.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -158,7 +158,7 @@
                 <MadCap:dropDownHotspot>View Children</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This permission gives a user the ability to view the children of a Workflow definition (e.g. running Workflows). When a Workflow is started, the running Workflow will copy all of the View Children permission rules as View permissions. If a user is granted View Children permission on the Workflow definition, they will be able to see all running and completed Workflows instantiated from the Workflow definition. They will also be able to see the Workflow definition in the content list to enable the navigation to the running and completed Workflow children. Users will not be view the actual Workflow definition properties without View permission.</p>
+                <p>This permission gives a user the ability to view the children of a process definition (e.g. running processes). When a process is started, the running process will copy all of the View Children permission rules as View permissions. If a user is granted View Children permission on the process definition, they will be able to see all running and completed processes instantiated from the process definition. They will also be able to see the process definition in the content list to enable the navigation to the running and completed process children. Users will not be view the actual process definition properties without View permission.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -166,7 +166,7 @@
                 <MadCap:dropDownHotspot>Modify Children</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This permission gives a user the ability to modify the children of a Workflow definition (e.g. running Workflows). When a Workflow is started, the running Workflow will copy all of the Modify Children permission rules as Modify permissions. If a user is granted Modify Children permission on the Workflow definition, they will be able to modify running Workflows instantiated from the Workflow definition. This gives the user administrative control over the running Workflow (e.g. add user, remove user, skip step, restart step, etc.).</p>
+                <p>This permission gives a user the ability to modify the children of a process definition (e.g. running processes). When a process is started, the running process will copy all of the Modify Children permission rules as Modify permissions. If a user is granted Modify Children permission on the process definition, they will be able to modify running processes instantiated from the process definition. This gives the user administrative control over the running process (e.g. add user, remove user, skip step, restart step, etc.).</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -174,7 +174,7 @@
                 <MadCap:dropDownHotspot>Delete Children</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This permission gives a user the ability to delete the children of a Workflow definition (e.g. running Workflows). When a Workflow is started, the running Workflow will copy all of the Delete Children permission rules as Delete permissions. A user must have Delete permission to be able to grant Delete permission to another user.</p>
+                <p>This permission gives a user the ability to delete the children of a process definition (e.g. running processes). When a process is started, the running process will copy all of the Delete Children permission rules as Delete permissions. A user must have Delete permission to be able to grant Delete permission to another user.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="_Toc421536255"></a>Form Permission Types <a href="#_Toc421536255" class="anchor">#</a></h2>
@@ -308,7 +308,7 @@
         <h2><a name="_Toc421536259"></a>Administrators <a href="#_Toc421536259" class="anchor">#</a></h2>
         <p>Any user that is checked as the “System Administrator” is given full administrative privileges. A user that is a System Administrator has full permission (View, Modify, and Delete) to all objects in the Process Director database.</p>
         <h2><a name="_Toc421536260"></a>Adding/Removing Permissions <a href="#_Toc421536260" class="anchor">#</a></h2>
-        <p>Permission records can be modified for an object by selecting the Permissions button. Each permission record has to be removed or added individually. Existing permission records cannot be modified, they must be removed and a new record added. To remove a permission record, click on the checkbox for that entry and select the Delete hotlink. To add a new permission record, select the type of user, the type of permission and click on the “Add New Permission” button. You cannot delete a permission record that would eliminate Write permission for yourself; the system will return an error message. If this occurs, add a new permission record granting your User ID Write permission, then delete the other permission record. </p>
+        <p>Permission records can be modified for an object by selecting the <span class="UIElement">Permissions </span>button. Each permission record has to be removed or added individually. Existing permission records cannot be modified, they must be removed and a new record added. To remove a permission record, click on the checkbox for that entry and select the Delete hotlink. To add a new permission record, select the type of user, the type of permission and click on the “Add New Permission” button. You cannot delete a permission record that would eliminate Write permission for yourself; the system will return an error message. If this occurs, add a new permission record granting your User ID Write permission, then delete the other permission record. </p>
         <h2 MadCap:conditions="General.Not Printed"><a name="Example"></a>Documentation Example <a href="#Example" class="anchor">#</a></h2>
         <MadCap:dropDown MadCap:conditions="General.Not Printed">
             <MadCap:dropDownHead>

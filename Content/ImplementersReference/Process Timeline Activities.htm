@@ -9,14 +9,16 @@
             <MadCap:concept term="Process Timelines" />
             <MadCap:concept term="Implementation" /><a name="_Toc421536160"></a>
             <MadCap:keyword term="Processes;Process Timelines;Process Timeline Activities" />Process Timeline Activities</h1>
-        <p>A Process Timeline is made up of a series of activities. Each activity in a Process Timeline identifies the task to be performed and the users that should perform the task. Activities are run from the beginning (start activity). Activities can be easily added, moved and deleted from a Process Timeline Definition.</p>
-        <div class="Important">
-            <img src="../Resources/Images/i2.png" alt="Note" /> If your process includes tasks for unauthenticated users, please refer to the documentation on <a href="Managing Users.htm#_Toc421536078">Anonymous Users</a> for special concerns that may apply to some settings.</div>
+        <p>A Process Timeline is made up of a series of activities. Each activity in a Process Timeline identifies the task to be performed and the users that should perform the task.  Activities can be easily added, moved and deleted from a Process Timeline Definition.</p>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i2.png" alt="Note" /> If your process includes tasks for unauthenticated users, please refer to the documentation on <a href="Managing Users.htm#_Toc421536078">Anonymous Users</a> for special concerns that may apply to some settings.</div>
+        </p>
         <h2><a name="_Toc421536161"></a>Built-in Task Settings</h2>
         <p>These settings are included in all task types. To configure an activity in the Process Timeline, double click on the activity or click on the Properties <img src="../Resources/Images/ImplementersReference/Process Timelines_2.png" style="visibility: visible;mso-wrap-style: square;width: 16px;height: 16px;" /> icon.&#160; All activities in a Process Timeline Definition will have the following information associated with them.</p>
         <h3><a name="_Toc421536162"></a>Activity Tab <a href="#_Toc421536162" class="anchor">#</a></h3>
         <h5>Activity Name</h5>
-        <p>The first field on this dialog identifies the name of the activity. This information is important for the users and the Process Timeline owners because it is used to determine what activity the Process Timeline is currently running on, and what function is being performed. This is also displayed on the routing slip to show where the process is currently running.</p>
+        <p>The first field on this dialog identifies the name of the activity. This information is important for the users and the Process Timeline owners because it is used to determine what activity in the Process Timeline is currently running, and what function is being performed. This name is also displayed on the routing slip to show where the process is currently running.</p>
         <p>
             <img src="../Resources/Images/Capture104.png" />
         </p>
@@ -25,11 +27,11 @@
                 <MadCap:dropDownHotspot>Activity Type</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This dropdown contains type of activity to be used for the current activity. This will display different options depending on the type of activity selected.</p>
+                <p>This dropdown contains type of activity to be used for the current activity. This dropdown will display different options depending on the type of activity selected.</p>
                 <p>
                     <img src="../Resources/Images/Capture105.png" />
                 </p>
-                <p>For example, the default Activity Type is the User activity. With the user activity selected, the second tab on the options form will be "Participants". Selecting a different type of activity will change the second tab to a different option setting, and some activity types will remove some of the form's tabs completely, as they contain inapplicable settings for that type of activity.</p>
+                <p>For example, the default Activity Type is the User activity. With the user activity selected, the second tab on the options dialog will be <span class="UIElement">Participants</span>. Selecting a different type of activity will change the second tab to a different option setting, and some activity types will remove some of the form's tabs completely, as they contain inapplicable settings for that type of activity.</p>
                 <p>The available activity types are described below.</p>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
                     <thead>
@@ -108,16 +110,20 @@
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>Wait</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>Pauses the execution of the Process Timeline, usually until some condition is met, after which, execution of the Process Timeline continues.</p>
                             </td>
                         </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Case</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Performs actions on a case instance that is associated with the Process Timeline.</td>
+                        </tr>
                     </tbody>
                 </table>
-                <p>Once again, selecting different activity types will cause different option tabs to be displayed on the options screen for the activity.</p>
+                <p>Once again, selecting different activity types will cause different option tabs to be displayed on the <span class="ControlName">Properties </span>dialog box for the activity.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -265,7 +271,7 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_30.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>Unlike the End Process step in the Workflow, the End Process activity in a Process Timeline stops the running of the Process Timeline immediately. As such, the End process activity can only run once in a Process Timeline. So, if you have parallel activities running in a Process Timeline, all of the parallel steps must complete before the End Process activity is reached.&#160; Process Timelines with multiple End Process activities will need to have conditions set on each End Process activity to ensure that only one of the End Process Activities runs. When the subprocess completes, the name of the End Process activity that was run will be returned to the parent process as the result of the Process activity that started the subprocess.</p>
+        <p>Unlike the End Process step in the Workflow, the End Process activity in a Process Timeline stops the running of the Process Timeline immediately. As such, the End Process activity can only run once in a Process Timeline. So, if you have parallel activities running in a Process Timeline, all of the parallel steps must complete before the End Process activity is reached.&#160; Process Timelines with multiple End Process activities will need to have conditions set on each End Process activity to ensure that only one of the End Process Activities runs. When the subprocess completes, the name of the End Process activity that was run will be returned to the parent process as the result of the Process activity that started the subprocess.</p>
         <h4><a name="_Toc421536166"></a>Options Tab</h4>
         <p>This is one of the two tabs displayed for each results configuration settings. The Options Tab includes the following controls.</p>
         <p>
@@ -325,8 +331,10 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>If this option is selected, then users can complete this task from their task list without opening the Form for the process. </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> This feature requires the use of a custom Task List that includes a column to display the results.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i.png" alt="Important" /> This feature requires the use of a custom Task List that includes a column to display the results.</div>
+                </p>
                 <p>When the user completes a task from the task list, Process Director will display a small popup that indicates the task completion is in progress. Additionally, if the result selected is configured to require completion comments, Process Director will prompt the user for the comments before completing that task.</p>
                 <p>The size of the prompt and confirmation dialogs will not usually need to be changed, however, if, for some reason the size does need to be changed, there are custom variables available to change the width and height of the dialogs: nTaskCompleteDialogWidth, nTaskCompleteDialogHeight, nTaskCompletePromptDialogWidth, and nTaskCompletePromptDialogHeight. Documentation for these four custom variables can be found in the <a href="../DevelopersGuide/Customization File Misc.htm">Miscellaneous Custom Variables</a> topic of the Developer's Guide.</p>
             </MadCap:dropDownBody>
@@ -341,9 +349,9 @@
         </MadCap:dropDown>
         <h3><a name="_Toc421536167"></a>Start When Tab <a href="#_Toc421536167" class="anchor">#</a></h3>
         <p>This allows you to add dependencies to the activity. Click on the Add Dependency button. A dropdown list will display of all the activities that are available in the Process Timeline. </p>
-        <p>If an activity has a start condition that is not met and the Advanced Options &gt;&#160; Activity Required to Complete Parent checkbox is checked, the parent activity will remain running even if the child activity has not started.<img src="../Resources/Images/Capture112.png" /></p>
+        <p>If an activity has a start condition that is not met and the <span class="UIElement">Advanced Options </span>&gt;&#160; <span class="ControlName">Activity Required to Complete Parent</span> checkbox is checked, the parent activity will remain running even if the child activity has not started.<img src="../Resources/Images/Capture112.png" /></p>
         <h3><a name="_Toc421536168"></a>Completed When Tab <a href="#_Toc421536168" class="anchor">#</a></h3>
-        <p>This allows you to indicate when the activity is considered completed. Conditions can be defined that determine when this activity should be terminated. </p>
+        <p>This allows you to indicate when the activity is considered complete. Conditions can be defined that determine when this activity should be terminated. </p>
         <p>
             <img src="../Resources/Images/Capture113.png" />
         </p>
@@ -475,14 +483,14 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/Notifications.png" />
                 </p>
-                <p>All Active Users in Step: this will send a notification to all users who have yet to complete a user step</p>
-                <p>All Users in Step: this will notify all the users involved in this User step.</p>
-                <p>Users: this allows you to select specific users to notify.</p>
-                <p>Groups: this will notify all users in a specific group.</p>
-                <p>Business Rule Value: this will notify the user result of a Business Rule.</p>
-                <p>Workflow Initiator: this will notify the initiator of this workflow instance.</p>
-                <p>From Form Field: this will notify a User specified by a form on the container Form.</p>
-                <p>External Users: this will send a notification to an email address you can specify in the provided text box.</p>
+                <p><b>All Active Users in Step:</b> Send a notification to all users who have yet to complete a user step</p>
+                <p><b>All Users in Step:</b> Notify all the users involved in this User step.</p>
+                <p><b>Users:</b> Specific users to notify.</p>
+                <p><b>Groups:</b> Notify all users in a specific group.</p>
+                <p><b>Business Rule Value:</b> Notify the user result of a Business Rule.</p>
+                <p><b>Workflow Initiator:</b> Notify the initiator of this workflow instance.</p>
+                <p><b>From Form Field:</b> Notify a User specified by a field on the container Form.</p>
+                <p><b>External Users:</b> Send a notification to an email address you can specify in the provided text box.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -490,11 +498,11 @@
                 <MadCap:dropDownHotspot>Using Email Template</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This is an optional email template to use when sending email notifications to users in this activity. If this is not specified, the default email template will be used that is shipped with Process Director. For more information on email templates refer to the section named Using Email Templates in this guide. </p>
+                <p>This is an optional email template to use when sending email notifications to users in this activity. If this is not specified, the default email template for the Process Timeline will be used. If a default email template is not specified, the notification will use the email template that is shipped with Process Director. For more information on email templates refer to the section named <a href="Email Templates.htm">Email Templates</a> in this guide. </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h3><a name="_Toc421536172"></a><a name="AdvancedOptions"></a>Advanced Options Tab <a href="#AdvancedOptions" class="anchor">#</a></h3>
-        <p>Depending on the Activity type, a number of different options will be available on this tab. Since the User Activity is the most common Activity type, the options for a User Activity are described below.</p>
+        <p>Depending on the Activity type,several different options will be available on this tab. Since the User Activity is the most common Activity type, the options for a User Activity are described below.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/TLAdvancedTab1.png" />
         </p>
@@ -560,8 +568,10 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>If this option is checked, at least one user will be required to complete the task, or the task cannot complete. Depending on how the task assignment is configured, it's possible that no users will be assigned to the task in certain scenarios. For instance, if a task restarts after all users have completed their assignment, and the assignment is set to "Start users that did not complete previously" there will be no available user to which the task can be re-assigned. Checking this option will assign the task to one of the previously completed users.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> If an administrator cancels a user in an Activity where this option is set, the Activity will go into an error state. The administrator will have to cancel the Activity to cause it to move on.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i.png" alt="Important" /> If an administrator cancels a user in an Activity where this option is set, the Activity will go into an error state. The administrator will have to cancel the Activity to cause it to move on.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -578,8 +588,10 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Checking this option will enable anonymous users to complete a task based on the user's email address. This is a required option when using the <a href="../SystemVariablesReferenceGuide/Email System Variables.htm#EmailAnonTaskList" target="_blank">Email Anonymous Task List</a> system variable. In the vast majority of use cases, however, the email address will be taken from a Form field identified on the Participants tab.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> Access to Process Director for unauthenticated or anonymous users is enabled by an optionally licensed component.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> Access to Process Director for unauthenticated or anonymous users is enabled for Cloud and Subscription licenses. On-premise licenses using the legacy Tired licensing model require  an additional, optionally licensed component.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
