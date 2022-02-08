@@ -7,12 +7,12 @@
         <h1>
             <MadCap:keyword term="System Administration" />
             <MadCap:concept term="System Administration" /><a name="_Toc421094505"></a>Partitions</h1>
-        <p>Process Director allows you to create partitions in an installation. <span class="KeyTerms">Partitions </span>function as separate data stores or independent sections of a Process Director installation. Objects stored in one partition cannot interact with objects stored in a different partition. Similarly, users assigned to one partition cannot see or work with objects stored in a different partition.
+        <p>Process Director enables you to create partitions in an installation, if needed. <span class="KeyTerms">Partitions </span>function as separate data stores or independent sections of a Process Director installation. Objects stored in one partition cannot interact with objects stored in a different partition. Similarly, users assigned to one partition cannot see or work with objects stored in a different partition.
 One common use of partitions is to segregate sensitive data from data that is more generally accessible. For instance, Process Director objects that support HR operations, which often use sensitive privacy data, can be placed in a partition that can only be accessed by HR personnel.
 By default, a Process Director installation contains only one partition, known as the "Default" partition. Additional partitions, if necessary, can be added by system administrators.
 </p>
         <p>Partitioning a system can provide secure grouping of users, documents, permissions and processes. Users can belong to multiple partitions, but this is only required when a system must be logically divided into multiple server partitions (e.g. application service providers). All users are automatically a member of the default partition (named “Default Partition”). Information can be shared across partitions for more flexibility with business processes.</p>
-        <p>You can Create, Edit and Delete partitions from the list displayed.&#160; Once you have created your partition, click on the <span class="UIElement">Edit </span>link next to that partition. You can now administer the users and groups in that partition. </p>
+        <p>You can create, edit and delete partitions from the list displayed.&#160; Once you have created your partition, click on the <span class="UIElement">Edit </span>link next to that partition. You can now administer the users and groups in that partition. </p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/Partitions.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
@@ -20,8 +20,10 @@ By default, a Process Director installation contains only one partition, known a
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/Partitions_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <div class="Important">
-            <img src="../Resources/Images/i2.png" alt="Note" /> When importing XML/PDZ files from another system, always import the Partition files first, then Global Knowledge Views, and the Profiles last.</div>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i2.png" alt="Note" /> When importing XML/PDZ files from another system, always import the Partition files first, then Global Knowledge Views, and the Profiles last.</div>
+        </p>
         <h2><a name="Creating"></a>Creating a Partition <a href="#Creating" class="anchor">#</a></h2>
         <p>In the Configuration section of the IT Admin area, click the <span class="UIElement">Partitions </span>button to enter the Partitions section. The Partitions section will display a list of the current partitions.</p>
         <p>
@@ -32,14 +34,38 @@ By default, a Process Director installation contains only one partition, known a
             <img src="../Resources/Images/Training/Administrator/Partitions1.png" />
         </p>
         <p>In the <span class="ControlName">Partition Name</span> property text box, enter the name for the partition, then enter a brief description in the <span class="ControlName">Description </span>property field. When you have entered a name and description, click the <span class="UIElement">OK </span>button to create the partition, and open the <span class="ControlName">Edit Partition</span> screen. In the <span class="ControlName">Edit Partition</span> screen, there are some additional properties that can be set.</p>
-        <h4>New users added to the system should be automatically added to this partition</h4>
-        <p>If this box is checked, then every time a new user is added to Process Director, the user will automatically be added to this partition.</p>
-        <h4>New groups added to the system should be automatically added to this partition</h4>
-        <p>If this box is checked, then every time a new user group is added to Process Director, it will automatically be added to this partition.</p>
-        <h4>Assign Users</h4>
-        <p>Clicking on the Assign Users button will open the User Selector dialog box, which enables you to select users to assign to the partition.</p>
-        <h4>Assign Groups</h4>
-        <p>Clicking on the Assign Groups button will open the Group Selector dialog box, which enables you to select groups to assign to the workspace.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>New users added to the system should be automatically added to this partition</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If this box is checked, then every time a new user is added to Process Director, the user will automatically be added to this partition.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>New groups added to the system should be automatically added to this partition</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If this box is checked, then every time a new user group is added to Process Director, it will automatically be added to this partition.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Assign Users</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking on the Assign Users button will open the User Selector dialog box, which enables you to select users to assign to the partition.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Assign Groups</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking on the Assign Groups button will open the Group Selector dialog box, which enables you to select groups to assign to the workspace.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
         <p>
             <img src="../Resources/Images/Training/Administrator/Partitions2.png" />
         </p>
@@ -48,5 +74,7 @@ By default, a Process Director installation contains only one partition, known a
         <p>
             <img src="../Resources/Images/Training/Administrator/Partitions3.png" />
         </p>
+        <h2>Continue</h2>
+        <p>Continue to the documentation for the <a href="Global Knowledge Views.htm">Global Knowledge Views page</a>.</p>
     </body>
 </html>

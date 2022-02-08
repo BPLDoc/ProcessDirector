@@ -32,7 +32,7 @@
         <p>Cloud users that are licensed for <i>any</i> day passes should pre-load/configure all named users who may consume day passes, prior to their use. All that's required is the UserID, authentication mechanism(such as SAML or built-in login, and the license type. This list of temporary users can be entered annually, or loaded using the Excel import feature in the User Administration page. If you use a self-provisioning for new users, then the self-provisioned user will consume day passes unless their user record is updated manually by the administrator. Setting the <a href="../DevelopersGuide/Customization File Administration.htm#DefaultNewUsersToDayPass">DefaultNewUsersToDayPass</a> custom variable will force all new users to be added as day pass users.</p>
         <h2><a name="_Toc421094511"></a>Adding a New User <a href="#_Toc421094511" class="anchor">#</a></h2>
         <p>This section describes how to add users to Process Director using the built-in authentication. This is not required for users that are authenticated by Windows, your LDAP server or an external authentication system. For built-in users, a User ID and password must be added to the Process Director database before a login can occur. When a user is configured in the Process Director database, additional information such as the user’s email address and alias can be configured.</p>
-        <p>Within the <span class="ControlName">Users </span>section of the<span class="ControlName"><MadCap:keyword term="System Administration" /> System Administration</span> area, click on the<span class="UIElement"> Create User</span> link. This will prompt you to enter a User ID for the new user. Please Note: This will create a built-in user, not a Windows user.</p>
+        <p>On the User Page of the<span class="ControlName"><MadCap:keyword term="System Administration" /> System Administration</span> area, click on the<span class="UIElement"> Create User</span> link. This will prompt you to enter a User ID for the new user. Please Note: This will create a built-in user, not a Windows user.</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/User Administration.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
@@ -43,8 +43,10 @@
         </p>
         <p>Enter the user’s <span class="ControlName">User ID</span> and <span class="ControlName">Password</span>. You can force the user to change his password upon login. Click <span class="UIElement">OK</span> when done. After you create the user, you can click on the “Edit” link next to the user’s name and configure it further.</p>
         <p>The User ID will also serve as the user’s login user name for Process Director. BP Logix highly recommends that administrators ensure that User ID’s are unique to each user. This may not be possible, however, when using SAML authentication for existing users where duplicate user names exist. In this case the SAML authentication must send a unique GUID or identifier for the users. There is a variable in the custom vars file called <a href="../DevelopersGuide/Customization File SAML.htm#fAuthSAMLAllowDuplicateUserIDs">fAuthSAMLAllowDuplicateUserIDs</a> that must be set to “true” to allow this behavior.</p>
-        <div class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" /> In many cases, Process Director will return a comma-separated list of users. Since the users are identified by UserName, we strongly recommend that your users names do <b style="font-style: italic;">not</b> include commas as part of the user name.</div>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i.png" alt="Important" /> In many cases, Process Director will return a comma-separated list of users. Since the users are identified by UserName, we strongly recommend that your users names do <b style="font-style: italic;">not</b> include commas as part of the user name.</div>
+        </p>
         <h3><a name="UserProperties"></a>User Properties</h3>
         <p>
             <img src="../Resources/Images/Custom Tasks2/UserAdmin.png" />
@@ -174,8 +176,10 @@
                 </p>
                 <p>From the list box on the left, select the user group(s) to which you'd like to assign the user, then click the <img src="../Resources/Images/Capture78.png" /> button, which will move the group names over to the list box on the left.</p>
                 <p>To remove the user from a group, select the group from the list box on the left, then click the <img src="../Resources/Images/Capture77.png" /> button to remove the group.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> When adding users to a group, the <a href="../DevelopersGuide/Customization File Tasks.htm#fStartUsersAddedToGroup">fStartUsersAddedToGroup</a> custom variable determines whether the new user will be assigned to any running tasks that are assigned to that group.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> When adding users to a group, the <a href="../DevelopersGuide/Customization File Tasks.htm#fStartUsersAddedToGroup">fStartUsersAddedToGroup</a> custom variable determines whether the new user will be assigned to any running tasks that are assigned to that group.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -330,8 +334,10 @@
             <img src="../Resources/Images/SystemAdministratorGuide/User Administration_4.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
         <p>When impersonating another user, you will use your own credentials to complete tasks that require reauthentication, so you do not need to know the impersonated user's password to complete tasks.</p>
-        <div class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" title="Important!" /> For Process Director v5.13 and higher, a user cannot impersonate anyone who has System Administrator permissions, unless the user also has System Administrator permissions.</div>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i.png" alt="Important" title="Important!" /> For Process Director v5.13 and higher, a user cannot impersonate anyone who has System Administrator permissions, unless the user also has System Administrator permissions.</div>
+        </p>
         <h2><a name="_Toc421094523"></a>User Permissions <a href="#_Toc421094523" class="anchor">#</a></h2>
         <p>Administrators of Cloud installations or on-Premise installations with the Compliance Option will notice an additional <span class="UIElement">User Permissions</span> menu button in the<span class="ControlName"> IT Admin</span> interface.</p>
         <p>
@@ -703,8 +709,10 @@
                     <td class="TableStyle-Simple-BodyB-Column1-Row1">DeleteUser</td>
                     <td class="TableStyle-Simple-BodyB-Column1-Row1">
                         <p>This is an optional column that will, when set to "DELETE" on a user's row, delete the user from the system.</p>
-                        <div class="Important">
-                            <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix <b>strongly</b> recommends that you disable, rather than delete users, to retain the user's activity history, but this is an available spreadsheet option, if needed.</div>
+                        <p>
+                            <div class="Important">
+                                <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix <b>strongly</b> recommends that you disable, rather than delete users, to retain the user's activity history, but this is an available spreadsheet option, if needed.</div>
+                        </p>
                     </td>
                     <td class="TableStyle-Simple-BodyA-Column1-Row1">&#160;</td>
                 </tr>
@@ -717,5 +725,7 @@
             <li>Remove users from groups not listed in import file</li>
         </ul>
         <p>The first option will automatically create and groups in  the “Groups” column if they do not exist. The default is to add users to groups that exist, but not to create the groups.  The second option will remove a user from an group that is not listed in their “Groups” column.</p>
+        <h2>Continue</h2>
+        <p>Continue to the documentation for the <a href="Group Administration.htm">Groups page</a>.</p>
     </body>
 </html>

@@ -6,12 +6,16 @@
     <body>
         <h1><a name="_Toc421172278"></a>
             <MadCap:keyword term="Windows Scheduler;Activity Check;System Administration" /><a href="#_Toc421172278"><img src="../Resources/Images/link.png" alt="Link" /></a>Activity Check Page</h1>
-        <p>Process Director runs as a virtual directory in IIS and processes all time-related events like due dates when activity is present on the system (e.g. Users are actively working on the system). But, Process Director does not have a running service, <b>it is only active when IIS is active and it is processing web page requests</b>. If there are no active users, IIS goes inactive and shuts down after 20 minutes of inactivity. We want to avoid that during business hours, but still leave some time for IIS to restart on its own during a period of inactivity. So, we have provided an activity check page in the installation folder, named activity_check.aspx.</p>
-        <p>The activity check page does a couple things. First, it keeps IIS active so it does not shut down and need to restart during the day. Second, it tells Process Director that timer process should NOT occur under the context of a user, but only occur in the context of the activity_check.aspx page. If timer processing occurs under the context of a user, they may see their session hang while the processing is occurring, but setting the timer context to the activity check page will avoid this.</p>
-        <div class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" /> We recommend setting the activity check page to run every 15 minutes for a duration of 15 hours. Setting the activity check timer to 15-minute intervals will prevent IIS&#160;from shutting down every 20 minutes if the system has no active users, while ending the checks after 15 hours allows IIS to shut down the Application Pool at night, when the system is not active.</div>
+        <p>Process Director runs as a virtual directory in IIS and processes all time-related events like due dates when activity is present on the system (e.g. Users are actively working on the system). But, Process Director does not have a constantly running timer service, <b>it is only active when IIS is active and it is processing web page requests</b>. If there are no active users, IIS goes inactive and shuts down after 20 minutes of inactivity. We want to avoid that during business hours, but still leave some time for IIS to restart on its own during a period of inactivity. So, we have provided an activity check page in the installation folder, named activity_check.aspx.</p>
+        <p>The activity check page does a couple things. First, it keeps IIS active so it does not shut down and need to restart during the business day. Second, it tells Process Director that timer process should NOT occur under the context of a user, but only occur in the context of the activity_check.aspx page. If timer processing occurs under the context of a user, they may see their session hang while the processing is occurring, but setting the timer context to the activity check page will avoid this.</p>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i.png" alt="Important" /> We recommend setting the activity check page to run every 15 minutes for a duration of 15 hours. Setting the activity check timer to 15-minute intervals will prevent IIS&#160;from shutting down every 20 minutes if the system has no active users, while ending the checks after 15 hours allows IIS to shut down the Application Pool at night, when the system is not active.</div>
+        </p>
         <p>To run the activity check page on a scheduled basis, you can set the following command in the <a href="../ImplementersReference/Using the Windows Scheduler Utility.htm">Windows Scheduler utility</a> to be run according to the highlighted schedule above:</p>
-        <div class="CodeBase">PATH\bputil.exe" SU "http://localhost/activity_check.aspx"</div>
+        <p>
+            <div class="CodeBase">PATH\bputil.exe" SU "http://localhost/activity_check.aspx"</div>
+        </p>
         <p>In this example, PATH is the installation directory for Process Director (e.g. c:\Program Files\BP Logix\Process Director\).</p>
         <p>There are a number of URL parameters that you can apply to the URL for the activity check page above that will enable the activity check to check specific  processes. Only one of these URL parameters can be used at any time.</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
@@ -21,11 +25,17 @@
             <li style="list-style-type: disc;"><b>PRINSTID:</b> A specific Process Timeline instance.</li>
         </ul>
         <p>For instance, you can do an activity check on a workflow definition by using the command</p>
-        <div class="CodeBase">PATH\bputil.exe" SU "http://localhost/activity_check.aspx?WFID=XXXXXX"</div>
-        <div class="Important">
-            <img src="../Resources/Images/i.png" /> The activity check page <b>cannot</b> be run from a remote host. It can only be executed from the local server where Process Director is installed, or run remotely when logged in as an administrator. Assuming that the remote host is a secure server, however, you can add the remote server to the list of "local IPs" in the installation settings to cause Process Director to treat the remote host as a local host.</div>
+        <p>
+            <div class="CodeBase">PATH\bputil.exe" SU "http://localhost/activity_check.aspx?WFID=XXXXXX"</div>
+        </p>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i.png" style="width: 10px;height: 10px;" /> The activity check page <b>cannot</b> be run from a remote host. It can only be executed from the local server where Process Director is installed, or run remotely when logged in as an administrator. Assuming that the remote host is a secure server, however, you can add the remote server to the list of "local IPs" in the installation settings to cause Process Director to treat the remote host as a local host.</div>
+        </p>
         <p>When the activity check page runs, Process Director will determine which timer processing functions need to occur. (There are a few things like GOALS that will be evaluated EVERY time the activity check runs because they are low-impact.) You can control the timer functions by setting custom variables in the vars.cs customization file. These timer functions are NOT controlled by the frequency that the activity_check.aspx page is scheduled. The following configuration variables control the amount of time to wait between different types of timer processing.</p>
-        <div class="CodeBase">bp.Vars.TimerSecondsCheckWfAdvance = 60 * 60 * 2;                   <br /><span class="ControlName">// default to 2 hours between checking Workflows for advance <br />//&#160;(e.g. due dates, wait steps, etc.)</span><br /><br />bp.Vars.TimerSecondsCheckWfReminders = 60 * 60 * 1; <br /><span class="ControlName">             // default to 1 hour between checking Workflows for email reminders</span><br /><br />bp.Vars.TimerSecondsCheckProjAdvance = 60 * 60 * 2;                 <br /><span class="ControlName">// default to 2 hours between checking Process Timelines for advance <br />// AND prediction calculations (e.g. completed/start when <br />// conditions, due dates, etc.)</span><br /><br />bp.Vars.TimerSecondsCheckProjReminders = 60 * 60 * 1; <br /><span class="ControlName">           // default to 1 hour between checking Process Timelines for email reminders</span></div>
+        <p>
+            <div class="CodeBase">bp.Vars.TimerSecondsCheckWfAdvance = 60 * 60 * 2;                   <br /><span class="ControlName">// default to 2 hours between checking Workflows for advance <br />//&#160;(e.g. due dates, wait steps, etc.)</span><br /><br />bp.Vars.TimerSecondsCheckWfReminders = 60 * 60 * 1; <br /><span class="ControlName">             // default to 1 hour between checking Workflows for email reminders</span><br /><br />bp.Vars.TimerSecondsCheckProjAdvance = 60 * 60 * 2;                 <br /><span class="ControlName">// default to 2 hours between checking Process Timelines for advance <br />// AND prediction calculations (e.g. completed/start when <br />// conditions, due dates, etc.)</span><br /><br />bp.Vars.TimerSecondsCheckProjReminders = 60 * 60 * 1; <br /><span class="ControlName">           // default to 1 hour between checking Process Timelines for email reminders</span></div>
+        </p>
         <p>These defaults can be changed, but use caution when setting these to a smaller value because excessive system resources can be consumed.</p>
         <p>There are ways for force the timer processing to occur without being governed by the variables above. Instead, you can pass special URL parameters on the activity_check.aspx URL querystring. For example, you can pass a workflow definition ID (WFID) on the URL which tells Process Director to process all timers for all running workflow instances under that definition. This should be used with care for resource utilization. If it is executed too often it will cause excessive system resources to be consumed. The following URL&#160;Parameters are available to run timers on specific objects:</p>
         <ul>
@@ -37,7 +47,13 @@
             <li>PRID</li>
             <li>MLID</li>
         </ul>
-        <div class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" /> Process Director v4.52 and higher implements advanced timer checking to ensure that new instances of a running timer cannot be created until the current instance of the running timer has completed.</div>
+        <p>Timers can also be manually forced from the troubleshooting page of the IT&#160;Admin area, by clicking the <span class="UIElement">Run&#160;Timers</span> action link.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/runtimers.png" />
+        </p>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i.png" alt="Important" /> Process Director v4.52 and higher implements advanced timer checking to ensure that new instances of a running timer cannot be created until the current instance of the running timer has completed.</div>
+        </p>
     </body>
 </html>

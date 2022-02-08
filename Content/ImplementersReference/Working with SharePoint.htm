@@ -8,6 +8,10 @@
         <h1>
             <MadCap:concept term="Implementation" /><a name="_Toc421536334"></a>
             <MadCap:keyword term="SharePoint;Processes" />Working with SharePoint</h1>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i.png" alt="Important" /> For SharePoint 365, also known as "Modern SharePoint", web parts pages have been modified by Microsoft to preclude the use of the SharePoint Picker.htm web part. The component, therefore, will not work for those SharePoint Installations. The "Import Files from Filesystem" Custom Task, however, can interface with a SharePoint Data Source.</div>
+        </p>
         <p>Process Director has a number of Custom Tasks that provide interoperability between Process Director and SharePoint. These Custom Tasks allow you to do a number of things. You can pull a document from—or push a document into—a SharePoint document library. You can import and export data between Process Director Forms and SharePoint lists. You can also fill Process Director dropdown controls with data from SharePoint. All of these custom tasks can be used inside a Process Director Form, Timeline, or Workflow.</p>
         <p>In this walk-through, we will step through the process of moving documents back and forth between Process Director and SharePoint using two of the Custom Tasks:</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
@@ -17,8 +21,6 @@
         <p>In this walk-through, we will create a simple round-trip document editing process that will allow you to retrieve a document from a SharePoint document library, edit it, then return the new version of the document to the SharePoint document library. All that’s required to complete this process is a simple Process Director Form.</p>
         <h2><a name="_Toc421536335"></a>Configuring SharePoint <a href="#_Toc421536335" class="anchor">#</a></h2>
         <p>While Process Director has a number of Custom Tasks for working with SharePoint, getting and pushing documents between SharePoint and Process Director requires some work on SharePoint first. You will need the “SharePoint Picker.htm” file uploaded to SharePoint and you’ll need a web part page to house both it and the library with which you want to work. The “SharePoint Picker.htm” file can be obtained from the "/website/" directory under your Process Director installation directory.</p>
-        <div class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" /> For SharePoint 365, also known as "Modern SharePoint", web parts pages have been modified by Microsoft to preclude the use of the SharePoint Picker.htm web part. The component, therefore, will not work for those SharePoint Installations. The the "Import Files from Filesystem" Custom Task, however, can interface with a SharePoint Data Source.</div>
         <p>One of the more convenient places to store the “SharePoint Picker.htm” file is the “Site Assets” library, as this is one of the standard SharePoint libraries, and its purpose is to house assets that may be required throughout the SharePoint instance. As such, it’s a great place to store the file. So, once you have copied the “SharePoint Picker.htm” file, upload it to the Site Assets library.</p>
         <p>Now, you’ll need to build a SharePoint web parts page to which to attach the “SharePoint Picker.htm” file. To create this page in SharePoint, go to “Site Actions &gt;&gt; More Options”. This will bring up the Create dialog box. From here select “Page” from the navigation menu on the left side of the form. This will display various types of SharePoint pages you can create. From the list of page type, click the “Web Part Page” icon, then click the “Create” button.</p>
         <p>

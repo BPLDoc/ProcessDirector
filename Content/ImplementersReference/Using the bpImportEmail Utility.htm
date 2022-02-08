@@ -8,8 +8,8 @@
         <h1>
             <MadCap:concept term="Implementation" /><a name="_Toc421536101"></a>Using the&#160; <MadCap:keyword term="bpImportEmail;Utilities;bpEmailImport" />bpEmailImport Utility</h1>
         <p>The bpEmailImport utility (bpEmailImport.exe) allows you to send formatted emails to a process either on a schedule or any time an email is received. Using bpEmailImport.exe, you can set the conditions and format under which you would like to import the emails. </p>
-        <p>The executable file, bpEmailImport.exe, is located in the c:\Program Files\BP Logix\Process Director\ directory by default. You can copy this utility to any computer that has Internet Explorer 6 or higher installed.</p>
-        <p> Cloud customers can download the utility from the Downloads section of the <a href="https://bplogix.zendesk.com/hc/en-us/sections/4408576448283-Process-Director-Software-and-Downloads" target="_blank">BP&#160;Logix support site</a>.</p>
+        <p>The executable file, bpEmailImport.exe, is located in the c:\Program Files\BP Logix\Process Director\ directory by default. You can copy this utility to any computer that has Internet Explorer 6 or higher installed. </p>
+        <p> Cloud installation customers can download the utility from the Downloads section of the <a href="https://bplogix.zendesk.com/hc/en-us/sections/4408576448283-Process-Director-Software-and-Downloads" target="_blank">BP&#160;Logix support site</a>.</p>
         <h2><a name="_Toc421536102"></a>Connection Tab <a href="#_Toc421536102" class="anchor">#</a></h2>
         <p>
             <img src="../Resources/Images/ImplementersReference/bpEmailImport1.png" />
@@ -232,7 +232,9 @@
         </MadCap:dropDown>
         <h2><a name="Scheduling"></a>Scheduling Imports <a href="#Scheduling" class="anchor">#</a></h2>
         <p>Using the Windows Scheduler, you can run the Email Import utility via a command line argument, e.g., </p>
-        <div class="CodeBase">bpEmailImport.exe -w "http://hostname/" -s "mail.MailServer.com" -u "user1" -p "" -i "Test Partition"  -–delete</div>
+        <p>
+            <div class="CodeBase">bpEmailImport.exe -w "http://hostname/" -s "mail.MailServer.com" -u "user1" -p "" -i "Test Partition"  -–delete</div>
+        </p>
         <p>The Email Import utility can be called by using a number of command line switches, which are described below. While in the command line interface, you can also see the full list of available switches by invoking the "/?" help switch, e.g., <code>bpEmailImport /?</code></p>
         <p>The available command line switches correspond to the properties that are accessible in the GUI, as described above.</p>
         <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
@@ -365,14 +367,14 @@
         </table>
         <h2><a name="Optional"></a>Optional Meta Data XML Files <a href="#Optional" class="anchor">#</a></h2>
         <p>The import utility can include Meta Data with each of the files being uploaded to Process Director. This Meta Data can set the categories and attributes for the document on the server. This occurs if the option is selected to allow associated Meta Data files on the import dialog. If this option is selected the import utility will attempt to find matching file names with “.XML” appended to the name. For example, if the import utility finds a file named mydoc.pdf, it will attempt to locate the mydoc.pdf.xml file for the Meta Data. The Meta Data XML file must be of a certain format to be recognized as valid Meta Data. The XML file must contain the following structure and tags.</p>
-        <div>
+        <p>
             <div class="CodeBase">&lt;META_DATA&gt;<br />&#160;&#160;&#160;&#160;&lt;INPUT_META_DATA&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_NAME&gt;external_attribute_name&lt;/META_NAME&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_VALUE&gt;attribute_value&lt;/META_VALUE&gt;<br />&#160;&#160;&#160;&#160;&lt;/INPUT_META_DATA&gt;<br />&#160;&#160;&#160;&#160;&lt;INPUT_META_DATA&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_NAME&gt;external_attribute_name_2&lt;/META_NAME&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_VALUE&gt;attribute value 2&lt;/META_VALUE&gt;<br />&#160;&#160;&#160;&#160;&lt;/INPUT_META_DATA&gt;<br />&lt;/META_DATA&gt;</div>
-        </div>
+        </p>
         <p>The <code>&lt;META_NAME&gt;</code> must match an External Name in a category attribute for the document to be assigned to that category. If a matching External Name is not found in the category tree the Meta Data is discarded after the upload completes.</p>
         <p>For example, assume you have a category named Operations that contains a subcategory named Quality with an attribute name of ActionManager. You can assign this entire category tree (i.e. Operations.Quality) to the imported document by using a matching External Name in the ActionManager attribute. If the external name in the ActionManager attribute is set to “manager_name”, the XML for the imported document would look as follows:</p>
-        <div>
+        <p>
             <div class="CodeBase">&lt;META_DATA&gt;<br />&#160;&#160;&#160;&#160;&lt;INPUT_META_DATA&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_NAME&gt;manager_name&lt;/META_NAME&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;META_VALUE&gt;John Smith&lt;/META_VALUE&gt;<br />&#160;&#160;&#160;&#160;&lt;/INPUT_META_DATA&gt;<br />&lt;/META_DATA&gt;</div>
-        </div>
+        </p>
         <p>To set values for checkboxes, the values YES and NO correspond to a checked state and an unchecked state, respectively.</p>
         <p>Date values vary based on locale: if you’re in the USA, use mm/dd/yyyy. If you’re elsewhere, use dd/mm/yyyy.</p>
         <h2><a name="Remote"></a>Using the Utility on a Remote Machine <a href="#Remote" class="anchor">#</a></h2>
