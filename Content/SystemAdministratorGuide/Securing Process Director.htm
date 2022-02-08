@@ -14,8 +14,10 @@
         <p><code>X-XSS-Protection: 1; mode=block</code>
         </p>
         <p>When the browser detects a cross-scripting attempt, it will stop rendering the page completely, rather than attempting to sanitize the attack and render the page.</p>
-        <div class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" /> The Firefox browser does <b>not</b> support cross-site scripting protection via the XSS filter.</div>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i.png" alt="Important" /> The Firefox browser does <b>not</b> support cross-site scripting protection via the XSS filter.</div>
+        </p>
         <p>Starting with Process Director v3.78,  Cross-Site Request Forgery (CSRF) protection is enabled by setting the <a href="../DevelopersGuide/Customization File Misc.htm#fEnableReferrerProtection">fEnableReferrerProtection custom variable</a>. When set to "true," this variable enables Process Director to screen for CSRF by ensuring that the HTTP Referrer header is valid.</p>
         <h2><a name="HSTS"></a>HTTP Strict Transport Security <a href="#HSTS" class="anchor">#</a></h2>
         <p>For Process Director v4.54 and higher, HTTP Strict Transport Security (HSTS) has been implemented to protect against "man in the middle" attackes, like protocol downgrade or cookie hijacking attacks. The HSTS setting is sent to the browser via an HTTPS response header field named "Strict-Transport-Security", and specifies a time period during which the browser can only access the server via a secure transport layer.</p>
@@ -66,7 +68,8 @@
                 <MadCap:dropDownHotspot>fAuditLogFileOnly</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This variable determines whether Process Director will write audit log information only to the text log files. The variable defaults to "True", meaning that it will not write any audit logging information to the Process Director database. Setting this variable to "False" will cause the audit data to be written to the Process Director database, in addition to the log files.</p>
+                <p>This variable determines whether Process Director will write audit log information only to the text log files. The variable defaults to "True", meaning that it will not write any audit logging information to the Process Director database. Setting this variable to "False" will cause the audit data to be written to the Process Director database, in addition to the log files. </p>
+                <p>Documentation: <a href="../DevelopersGuide/Customization File Auditing.htm#fAuditLogFileOnly">fAuditLogFileOnly</a></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -75,30 +78,34 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This variable sets the number of days to keep the zipped audit log files. The default value is 30 days. Log files are stored in the /website/App_Data/logs_archive/ folder. Any log files older than the number of days specified by this setting will be deleted.</p>
+                <p>Documentation: <a href="../DevelopersGuide/Customization File Misc.htm#nArchiveLogDays">nArchiveLogDays</a></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>nAuditLogDays </MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>nAuditLogDays</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This is the number of days to keep the audit log data in the Process Director database. The default value is 30 days.  Any audit data older than the specified value will be removed from the database.</p>
+                <p>Documentation: <a href="../DevelopersGuide/Customization File Auditing.htm#nAuditLogDays">nAuditLogDays</a></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>fAuditFormAPICalls </MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>fAuditFormAPICalls</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This variable determines whether Process Director will write an audit log for changes made by APIs. The default value is "True", which means that Process Director will log an audit record of API calls resulting in a change to form data. While we generally recommend that this value remain set to the default value of "True", please note that this setting can have an effect on server performance for applications rapidly performing large numbers of API-based form field changes.</p>
+                <p>Documentation: <a href="../DevelopersGuide/Customization File Auditing.htm#fAuditFormAPICalls">fAuditFormAPICalls</a></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>fAuditFormViews </MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>fAuditFormViews</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This variable determines whether Process Director will write an audit log for all form views. This can result in a tremendous amount of audit logging when the value is set to "True". The default for this variable is "False". </p>
+                <p>Documentation: <a href="../DevelopersGuide/Customization File Auditing.htm#fAuditFormViews">fAuditFormViews</a></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h4>User Authentication Variables</h4>
@@ -118,6 +125,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This variable sets the Process Director installation to Test Mode when set to "True", and will allow a user to login as any other user without a password. The default value for this variable is "False". Ensure that this custom variable is always set to "False" in your production system. The variable should also be set to "False" on your development and test systems, except for those times when it is explicitly needed, after which, it should be set back to "False".</p>
+                <p>Documentation: <a href="../DevelopersGuide/Customization File System.htm#fTestMode">fTestMode</a></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="_Toc421094551"></a>User Settings <a href="#_Toc421094551" class="anchor">#</a></h2>
@@ -218,13 +226,19 @@
         </p>
         <p>Checking the Encrypted Field check box will cause Process Director to save the field value in an encrypted format in the database. You may wish to consider this for fields that contain passwords, PII, HIPAA, or other sensitive data. Keep in mind, however, that you may not be able to search for data stored in encrypted form.</p>
         <h2><a name="TLS"></a>TLS <a href="#TLS" class="anchor">#</a></h2>
+        <p>
+            <div class="important">
+                <img src="../Resources/Images/i.png" alt="Important" /> The BP&#160;Logix plugin is not necessary for installations that do not use the legacy Word Form Builder.</div>
+        </p>
         <p>By default, the BP Logix form plugin defaults to using TLS 1.0, but it can use TLS 1.1 and TLS 1.2 when configured to do so. If a Process Director web site is requires a certain level of TLS to connect, the older versions of TLS have to be disabled where the BP Logix plugin is installed. </p>
         <p>To do this open the windows registry and create a “DWORD (32-bit) Value” named “SecurityProtocol” in this path key:</p>
         <p><code>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\BP Logix\Plugin]</code>
         </p>
         <p>Set the value to <code>00000f00 </code>(3840 decimal) to disable TLS 1.0</p>
         <p>Set the value to <code>00000c00 </code>(3072 decimal) to disable both TLS 1.0 and TLS 1.1</p>
-        <div class="Important">
-            <img src="../Resources/Images/i2.png" alt="Note" /> Setting these values may cause a problem connecting to a Process Director web site that only supports TLS 1.0 or TLS 1.1.</div>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i2.png" alt="Note" /> Setting these values may cause a problem connecting to a Process Director web site that only supports TLS 1.0 or TLS 1.1.</div>
+        </p>
     </body>
 </html>

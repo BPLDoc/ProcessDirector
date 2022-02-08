@@ -49,13 +49,21 @@
                 </p>
                 <p>Why? Because the indexing lists the trailing number (1) in the first example in the ‘system’ Stop Word list, and so does <b style="font-style: italic;">not</b> include the trailing number as part of the search criterion in the first example.</p>
                 <p>To see what Stop Word list is used by tblObject, issue this SQL command:</p>
-                <div class="CodeBase">SELECT<br />&#160;&#160;&#160;&#160;ft_c.name AS [Catalog],<br />&#160;&#160;&#160;&#160;s.name AS [Schema],<br />&#160;&#160;&#160;&#160;o.name AS [Table],<br />&#160;&#160;&#160;&#160;[StopList] =<br />&#160;&#160;&#160;&#160;CASE<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;WHEN ft_i.stoplist_id IS NULL THEN 'None'<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ELSE ISNULL(ft_sl.NAME, 'System')<br />&#160;&#160;&#160;&#160;END<br />FROM<br />&#160;&#160;&#160;&#160;sys.fulltext_indexes AS ft_i LEFT OUTER JOIN<br />&#160;&#160;&#160;&#160;sys.fulltext_stoplists AS ft_sl ON ft_sl.stoplist_id = ft_i.stoplist_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.fulltext_catalogs AS ft_c ON ft_c.fulltext_catalog_id = ft_i.fulltext_catalog_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.objects AS o ON o.object_id = ft_i.object_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.schemas AS s ON s.schema_id = o.schema_id</div>
+                <p>
+                    <div class="CodeBase">SELECT<br />&#160;&#160;&#160;&#160;ft_c.name AS [Catalog],<br />&#160;&#160;&#160;&#160;s.name AS [Schema],<br />&#160;&#160;&#160;&#160;o.name AS [Table],<br />&#160;&#160;&#160;&#160;[StopList] =<br />&#160;&#160;&#160;&#160;CASE<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;WHEN ft_i.stoplist_id IS NULL THEN 'None'<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ELSE ISNULL(ft_sl.NAME, 'System')<br />&#160;&#160;&#160;&#160;END<br />FROM<br />&#160;&#160;&#160;&#160;sys.fulltext_indexes AS ft_i LEFT OUTER JOIN<br />&#160;&#160;&#160;&#160;sys.fulltext_stoplists AS ft_sl ON ft_sl.stoplist_id = ft_i.stoplist_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.fulltext_catalogs AS ft_c ON ft_c.fulltext_catalog_id = ft_i.fulltext_catalog_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.objects AS o ON o.object_id = ft_i.object_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.schemas AS s ON s.schema_id = o.schema_id</div>
+                </p>
                 <p>To see the list of all stop words for English:</p>
-                <div class="CodeBase">SELECT * FROM sys.fulltext_system_stopwords WHERE language_id = 1033;</div>
+                <p>
+                    <div class="CodeBase">SELECT * FROM sys.fulltext_system_stopwords WHERE language_id = 1033;</div>
+                </p>
                 <p>To turn off the use of stop words in SQL Server for tblObject:</p>
-                <div class="CodeBase">ALTER FULLTEXT INDEX ON tblObject SET STOPLIST = OFF</div>
+                <p>
+                    <div class="CodeBase">ALTER FULLTEXT INDEX ON tblObject SET STOPLIST = OFF</div>
+                </p>
                 <p>To use "system" stop words in SQL Server for tblObject:</p>
-                <div class="CodeBase">ALTER FULLTEXT INDEX ON tblObject SET STOPLIST = SYSTEM</div>
+                <p>
+                    <div class="CodeBase">ALTER FULLTEXT INDEX ON tblObject SET STOPLIST = SYSTEM</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -198,7 +206,9 @@
         <p>This is the folder that contains the log files that are being written to when the system is being used.</p>
         <h2><a name="TIFF"></a>TIFF&#160;Files <a href="#TIFF" class="anchor">#</a></h2>
         <p>TIFF file formats are not natively supported in most browsers. To display a TIFF file in a browser or embedded on a Form you must install a TIFF ActiveX viewer (e.g. www.alternatiff.com, QuickTime, etc.). These viewers are provided by and supported by their respective companies. Once a TIFF viewer is installed on all users PC's, you can configure Process Director to display the TIFF files inline, instead of as a popup window in another application. This is done by adding the following lines to Process Director configuration file named vars.cs.ascx. Add to the PreSetSystemVars() function in vars.cs.ascx</p>
-        <div class="CodeBase">bp.Vars.EmbedDocumentTypes.Add("tiff");<br />bp.Vars.EmbedDocumentTypes.Add("tif");</div>
+        <p>
+            <div class="CodeBase">bp.Vars.EmbedDocumentTypes.Add("tiff");<br />bp.Vars.EmbedDocumentTypes.Add("tif");</div>
+        </p>
         <p>The vars.asp configuration file is located in the c:\Program Files\BP Logix\Process Director\website\custom\ directory.</p>
         <h2><a name="DDEExcel"></a>DDE and Excel <a href="#DDEExcel" class="anchor">#</a></h2>
         <p>If you are unable to open Excel documents from Process Director or, upon trying to open an Excel document, ensure that DDE is enabled in Microsoft Excel. See  <a href="http://support.microsoft.com/kb/211494" target="_blank">Microsoft's documentation</a> on this error for more information and instructions on how to enable DDE.</p>

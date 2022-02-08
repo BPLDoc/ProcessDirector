@@ -8,11 +8,11 @@
         <h1>
             <MadCap:keyword term="System Administration" />
             <MadCap:concept term="System Administration" /><a name="_Toc421094531"></a>Troubleshooting</h1>
-        <p>The <span class="UIElement">Troubleshooting </span>tab allows contains the various tools needed for troubleshooting Process Director. This provides you with an easier way to troubleshoot issues with the server and processes. The logs can be read here without going to the logs folder, and can be submitted to technical support with a single button click.</p>
+        <p>The Troubleshooting page contains the various tools needed for troubleshooting Process Director. This section provides you with an easier way to troubleshoot issues with the server and processes. The logs can be read here without going to the logs folder, and can be submitted to technical support with a single button click.</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>The <span class="UIElement">Troubleshooting </span>tab also provides basic information about this Process Director installation, including its name, Interface URL, Server Version, Install Path, License Description, Server IP Address, and Logging Level.</p>
+        <p>The page also provides basic information about this Process Director installation, including its name, Interface URL, Server Version, Install Path, License Description, Server IP Address, and Logging Level.</p>
         <h2><a name="_Toc421094532"></a>Server Control <a href="#_Toc421094532" class="anchor">#</a></h2>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting.png" />
@@ -29,12 +29,14 @@
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/LogsPage.png" />
         </p>
-        <p>The most recent log files are available for view in this page's log reader. All of the log files are also available from within your Process Director installation in the %InstallationDirectory%\website\App_Data\logs folder.</p>
+        <p>The most recent log files are available for view in this page's log reader. All of the log files are also available from within your Process Director installation in the <code>%InstallationDirectory%\website\App_Data\logs</code> folder.</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/InstallationDirectory.png" />
         </p>
-        <div class="Important">
-            <img src="../Resources/Images/i2.png" alt="Note" /> The log files are saved in a comma-separated text format. If you change the file extension of the logs from ".log" or ".bkX" to ".csv", they can generally be opened in Excel for easier reading than opening the text log file in Notepad.</div>
+        <p>
+            <div class="Important">
+                <img src="../Resources/Images/i2.png" alt="Note" /> The log files are saved in a comma-separated text format. If you change the file extension of the logs from ".log" or ".bkX" to ".csv", they can generally be opened in Excel for easier reading than opening the text log file in Notepad.</div>
+        </p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Available Logs</MadCap:dropDownHotspot>
@@ -684,8 +686,10 @@
             <MadCap:dropDownBody>
                 <p>If you have an active support ticket, you can automatically attach the logs to your tech Support ticket by entering your BP Logix Company ID and the Support Ticket number into the fields provided, then clicking the <span class="UIElement">Email Logs to Support </span>button.</p>
                 <p>Additionally, you can send specific archive logs by selecting a date from the <span class="ControlName">Archive Log Date</span> control, which will attach the logs from 1 day before to 1 day after the specified date.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> This is the preferred method for sending logs to BP&#160;Logix when requesting help via a support ticket. Alternatively, however, you can download the log file by  clicking the <span class="UIElement">Download Logs as .Zip</span> button, and attaching the resulting ZIP file to the support ticket.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> This is the preferred method for sending logs to BP&#160;Logix when requesting help via a support ticket. Alternatively, however, you can download the log file by  clicking the <span class="UIElement">Download Logs as .Zip</span> button, and attaching the resulting ZIP file to the support ticket.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -722,37 +726,103 @@
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting_7.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>This page allows you to set up an email and have Process Director send it, testing Process Director’s ability to send emails. The email body and content can be configured, as well as the server from which the email is sent.</p>
+        <p>This page enables you to set up an email and have Process Director send it, testing Process Director’s ability to send emails. The email body and content can be configured, as well as the server from which the email is sent.</p>
         <p>From the Troubleshooting section, you can navigate to the Email Tests page by clicking the <span class="UIElement">Run Email Tests</span> button.</p>
         <p>The Email Tests screen enables you to configure a number of options for sending a test email.</p>
-        <h4>From</h4>
-        <p>The email address from which the email is sent.</p>
-        <h4>To</h4>
-        <p>The email address to which to send the test.</p>
-        <h4>Subject</h4>
-        <p>The Subject of the test email message. A simple default value is supplied, as illustrated in Figure 65.</p>
-        <h4>Body</h4>
-        <p>The Body of the test email message. A simple default value is supplied, as illustrated in Figure 65.</p>
-        <h4>Attach Log File?</h4>
-        <p>A check box that, when checked, will send a log file as an attachment to the email.</p>
-        <h4>Use Process Director Configured Settings</h4>
-        <p>A radio button that, when selected will send the test email using the SMTP settings that have been configured for the Process Director installation.</p>
-        <h4>Use local IIS SMTP Server</h4>
-        <p>A radio button that, when selected, will send the test email using the locally configured SMTP server for the IIS installation that is running on the local machine containing the Process Director installation.</p>
-        <h4>Use specific SMTP Server</h4>
-        <p>A radio button that, when selected, enables you to specify a different SMTP server. When this option is selected, the following SMTP properties for the server will be enabled:</p>
-        <ul>
-            <li><b>SMTP Server Name or IP Address:</b> The SMTP server you wish to use to send the email.</li>
-            <li><b>SMTP Port:</b> The port number to use for sending SMTP email.</li>
-        </ul>
-        <h4>Use SSL?</h4>
-        <p>A check box that, when checked, will send the test email via the encrypted SSL layer, if applicable.</p>
-        <h4>UserID (optional)</h4>
-        <p>The User ID of the email account from which to send the email.</p>
-        <h4>Password (optional)</h4>
-        <p>The Password for the user account from which to send email.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>From</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The email address from which the email is sent.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>To</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The email address to which to send the test.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Subject</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Subject of the test email message. A simple default value is supplied, as illustrated in Figure 65.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Body</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Body of the test email message. A simple default value is supplied, as illustrated in Figure 65.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Attach Log File?</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A check box that, when checked, will send a log file as an attachment to the email.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Use Process Director Configured Settings</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A radio button that, when selected will send the test email using the SMTP settings that have been configured for the Process Director installation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Use local IIS SMTP Server</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A radio button that, when selected, will send the test email using the locally configured SMTP server for the IIS installation that is running on the local machine containing the Process Director installation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Use specific SMTP Server</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A radio button that, when selected, enables you to specify a different SMTP server. When this option is selected, the following SMTP properties for the server will be enabled:</p>
+                <ul>
+                    <li><b>SMTP Server Name or IP Address:</b> The SMTP server you wish to use to send the email.</li>
+                    <li><b>SMTP Port:</b> The port number to use for sending SMTP email.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Use SSL?</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A check box that, when checked, will send the test email via the encrypted SSL layer, if applicable.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>UserID (optional)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The User ID of the email account from which to send the email.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Password (optional)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Password for the user account from which to send email.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
         <p>Once you have configured the test email settings, you can send the test email by clicking the Send button.</p>
         <h1>Help</h1>
-        <p>From the troubleshooting section, clicking the <span class="UIElement">Help </span>button will open a new tab that displays the Product Documentation web site for  Process Director.</p>
+        <p>From the Troubleshooting section, clicking the <span class="UIElement">Help </span>button will open a new tab that displays the Product Documentation web site for  Process Director.</p>
     </body>
 </html>

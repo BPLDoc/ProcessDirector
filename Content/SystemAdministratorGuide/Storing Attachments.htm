@@ -7,7 +7,7 @@
         <h1>
             <MadCap:keyword term="System Administration" />Storing Attachments</h1>
         <p>You have two choices when it comes to storing documents, such as file attachments, in Process Director: internal database or file system storage.</p>
-        <p>The default method of document storage is to store the documents in the Process Director internal database, in a BLOB field. For most users, this is the recommended option, for a number of reasons.</p>
+        <p>The default method of document storage is to store the documents in the Process Director internal database, in a binary field. For most users, this is the recommended option, for a number of reasons.</p>
         <ul>
             <li>Backing up the Process Director database automatically backs up the stored documents, so the number of required backups is reduced.</li>
             <li>Outside users can't inadvertently access the documents outside of Process Director to alter, move, or delete them.</li>
@@ -16,14 +16,14 @@
         </ul>
         <p>For some users, however, there are use cases where storing documents in a separate file system makes more sense, such as:</p>
         <ul>
-            <li>You store very large files, such as high-definition video files. It is more efficient to store these files on a File System, rather than to transform them to BLOB database storage and back, which imposes performance delays that file system storage does not.</li>
+            <li>You store very large files, such as high-definition video files. It is more efficient to store these files on a File System, rather than to transform them to binary database storage and back, which imposes performance delays that file system storage does not.</li>
             <li>You have a need for the files to be accessed from outside of Process Director.</li>
             <li>You have a large number, i.e., in the hundreds of thousands, of documents, which greatly increases the time needed for a database backup.</li>
         </ul>
         <p>Obviously, when documents are stored on a separate file system, you must perform two backups, one of the database, and one of the file system. And, of course, it may be possible for malicious users to get into the file system and alter or delete the documents, so extra security considerations apply.  There are configuration options in the administrative settings that allow you to control the size of documents that should be stored on the file system. This is useful if you only want to store very large documents external to the database but maintain the advantages of using the database storage for all other documents.  However, it is recommended to decide on one approach or the other, and if storing files on the file system, set the size to 0 so that all documents binaries are stored as files.</p>
         <p>Ultimately, the decision whether to store documents in process Director or a file system depends on your use case, the size and number of documents you expect to store, your network bandwidth, and the backup requirements that will be imposed under each alternative. This is decision best made in consultation with your internal IT professionals. </p>
         <p>Whichever choice you make, Process Director will handle the stored documents in a way that is transparent to your users.</p>
-        <p>There is a built-in Process Director function that allows documents to be moved according to the current configuration of the system. You have to go into “debug mode” in the client browser and navigate to the administrative Troubleshooting pages. There will be a link that will move documents back/forth from the file system to the database. This can take quite some time, and if canceled in the middle, it can be restarted and it will continue safely where is left off.</p>
+        <p>There is a built-in Process Director function that enables documents to be moved according to the current configuration of the system. You have to go into “debug mode” in the client browser and navigate to the administrative Troubleshooting pages. There will be a link that will move documents back/forth from the file system to the database. This can take quite some time, and if canceled in the middle, it can be restarted and it will continue safely where is left off.</p>
         <p>Some internal documents will always be stored in the database regardless of the installation settings, for example, form definitions.</p>
     </body>
 </html>

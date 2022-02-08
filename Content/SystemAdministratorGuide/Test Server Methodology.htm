@@ -7,16 +7,16 @@
         <h1>
             <MadCap:keyword term="System Administration" />
             <MadCap:concept term="System Administration" />Test Server Methodology</h1>
-        <p>Process Director can be installed on a TEST server to create and test processes and Forms without affecting your production environment. Processes (Workflows, Process Timelines, Forms, Knowledge Views, etc.) can be exported from a test server and imported to the production server. See the <a href="../ImplementersReference/Importing Exporting Content.htm">Importing/Exporting Content topic</a> in the Implementer's Reference.</p>
-        <p>The  safest option is to create a new, blank database for your Test installation. You will, once the test server is set up properly, have to manually export all of your existing object definitions from the Production server to the Test server.</p>
+        <p>Process Director can be installed on a development or test/staging server to create and test processes and Forms without affecting your production environment. Processes (Workflows, Process Timelines, Forms, Knowledge Views, etc.) can be exported from a test server and imported to the production server. See the <a href="../ImplementersReference/Importing Exporting Content.htm">Importing/Exporting Content topic</a> in the Implementer's Reference.</p>
+        <p>The  safest option is to create a new, blank database for your test installation. You will, once the test server is set up properly, have to manually export all of your existing object definitions from the Production server to the Test server.</p>
         <p>When you want to set up a Test server, follow these steps:</p>
         <ol>
             <li>Create a new, blank Test database<ol style="list-style-type: lower-alpha;"><li>Create a blank database on SQL&#160;Server to host your test installation. </li></ol></li>
             <li>Ensure that the database settings for Process Director are using the connection string for the test database and not the production database.</li>
             <li>Run the test server diagnostics using the online Administrative functions under Troubleshooting.</li>
             <li>Enter the test license key and token again on the test server in the online Administrative section under the Installation &gt; Licensing.</li>
-            <li>Navigate to the installation tab in the Administration section and ensure the Interface URL in the Installation Settings is pointing to the TEST server (if any values were configured).</li>
-            <li>Turn off email notifications on the test server using the Administrative section and changing the Email Notification option in the Installation tab.<br />This is important because emails sent to users from the test system may be confusing. The other option is to replace all email addresses in the database with another email address for testing. This can be done by setting the <a href="../DevelopersGuide/Customization File System.htm#TestUser2">TestUserEmails</a>  custom variable in the installation's vars.cs.ascx file. This variable allows you to route all process emails (task list emails, notifications, etc) to a single user. Use this setting with caution. It should only be used on non-production systems to test processes and Forms. </li>
+            <li>Navigate to the installation tab in the Administration section and ensure the Interface URL in the Installation Settings is pointing to the test server (if any values were configured).</li>
+            <li>Turn off email notifications on the test server using the Administrative section and changing the Email Notification option in the Installation tab.<br />This setting is important because emails sent to users from the test system may be confusing. The other option is to replace all email addresses in the database with another email address for testing. This can be done by setting the <a href="../DevelopersGuide/Customization File System.htm#TestUser2">TestUserEmails</a>  custom variable in the installation's vars.cs.ascx file. This variable allows you to route all process emails (task list emails, notifications, etc) to a single user. Use this setting with caution. It should only be used on non-production systems to test processes and Forms. </li>
             <li>To test the system by logging in as different users, turn off security for all users on the TEST system at the database layer, and set the <code>fTestMode</code> variable to "true" in the vars.cs file. In this mode, Windows Integrated authentication is disabled. This mode allows anyone to log into the server without a password. Use this setting with caution. It should only be used on non-production systems to test processes and Forms. </li>
             <li>You can now export Content List items from the Production server, and import the Content List items into the Test server.</li>
         </ol>
@@ -26,10 +26,12 @@
                 <MadCap:dropDownHotspot>Custom Variables Code Sample</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = true;<br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmails = User.GetUserByUserID(bp, "my_test_id");<br />}</div>
+                <p>
+                    <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = true;<br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmails = User.GetUserByUserID(bp, "my_test_id");<br />}</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <p>After the above steps are completed, you can modify existing Processes on the TEST system and export them. The exported Processes can be then imported into the production server.</p>
+        <p>After the above steps are completed, you can modify existing Processes on the test system and export them. The exported Processes can be then imported into the production server.</p>
         <h2>Using Production Data</h2>
         <p>When you are ready, you have an additional option to use production data on your Test server by importing your existing Production database into the Test database. This will provide an exact mirror of your Production installation, however, it may expose sensitive data to users in the test environment. </p>
         <p><span class="UIElement" style="font-weight: bold;">Exercise extreme caution when selecting this option, to avoid a breach of sensitive data.</span>
