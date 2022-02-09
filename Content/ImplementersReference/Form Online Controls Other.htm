@@ -138,22 +138,28 @@
                 </p>
                 <h5>JavaScript</h5>
                 <p>In addition to normal HTML, you can include JavaScript. So, to send an alert that greets the user, you could say:</p>
-                <div>
+                <p>
                     <div class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;Alert(“Hello {CURR_USER}”);<br />&lt;/script&gt;</div>
-                </div>
+                </p>
                 <p>If you create a JavaScript function called “bpUserJavaScript” and put it on the form inside an HTML control - it will run on the initial Form Load and all Postback events, enabling you to insert JavaScript into these events. </p>
-                <div class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">//Script code for Load and Postback goes here.</span><br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</div>
+                <p>
+                    <div class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">//Script code for Load and Postback goes here.</span><br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</div>
+                </p>
                 <p>This feature enables you to insert complicated client-side JavaScript that sets a control's state on Postback. In the example below, a notional Form has a <span class="NamedControl">Checkbox </span>control that is set as en event field to fire the Postback. On Postback, the bpUserJavaScript function runs to control the state of the <span class="NamedControl">Checkbox </span>.</p>
-                <div class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;var SaveClick;<br /><br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick = CurrentForm.FormControls["CheckBox2"].onclick;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].onclick = NewClick;<br />&#160;&#160;&#160;&#160;}<br /><br />&#160;&#160;&#160;&#160;function NewClick()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (confirm("Are you sure?"))<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (typeof(SaveClick) != "undefined" &amp;&amp; SaveClick)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick();<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;else<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].checked = <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;!CurrentForm.FormControls["CheckBox2"].checked;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</div>
+                <p>
+                    <div class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;var SaveClick;<br /><br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick = CurrentForm.FormControls["CheckBox2"].onclick;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].onclick = NewClick;<br />&#160;&#160;&#160;&#160;}<br /><br />&#160;&#160;&#160;&#160;function NewClick()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (confirm("Are you sure?"))<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (typeof(SaveClick) != "undefined" &amp;&amp; SaveClick)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick();<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;else<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].checked = <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;!CurrentForm.FormControls["CheckBox2"].checked;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</div>
+                </p>
                 <h5>Server Side Controls</h5>
                 <p>You can also place ASP.NET server –side controls in this tag. For example:</p>
-                <div class="CodeBase">&lt;asp:TextBox runat=”server” ID=”bpLogixTextBox” /&gt;</div>
+                <p>
+                    <div class="CodeBase">&lt;asp:TextBox runat=”server” ID=”bpLogixTextBox” /&gt;</div>
+                </p>
                 <p>Server-side ASP.NET controls also act as normal BP Logix form fields, allowing you to reference them with System Variables and through Process Director. You can place an HTML control on a Form, leave the Name property blank, then place the ASP.NET&#160;control markup in the HTMLString Property. Entering a Name for the HTML control will cause Process Director to treat it like a Process Director Control and override the ASP.NET control. Leaving the Name property blank will cause Process Director to take the HTML&#160;markup for the ASP.NET control, and display the ASP.NET control in the Form. By wrapping a native ASP.NET control in an unnamed HTML control, Process Director supports the use of any native ASP.NET control on a Form.</p>
                 <p>You can stylize your HTML with CSS, either in the tag you want to stylize or in a separate &lt;style&gt; tag.</p>
-                <div>
+                <p>
                     <div class="CodeBase"><span class="ControlName">&lt;!-- You can do this: --&gt;</span>
                         <br />&lt;p style="text-align: center;"&gt;Text&lt;/p&gt;<br /><br /><span class="ControlName">&lt;!-- Or this: --&gt;</span><br />&lt;style type="text/css"&gt;<br />&#160;&#160;&#160;&#160;p{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;text-align: center;<br />&#160;&#160;&#160;&#160;}<br />&lt;/style&gt;</div>
-                </div>
+                </p>
                 <p>To use the ASP.NET controls, you must have Process Director v3.5 or higher.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -189,13 +195,16 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/hotlinkcontrol.png" />
                 </p>
-                <p>&#160;</p>
                 <p>The <span class="ControlName">Name </span>is the name of the control.</p>
                 <p>The <span class="ControlName">Text </span>property sets the text displayed on the form.</p>
                 <p>The <span class="ControlName">URL </span>property sets the URL to which the hotlink control will link.</p>
                 <p>The <span class="ControlName">Style </span>property determines CSS styling for the link.</p>
                 <p>The <span class="ControlName">Open in new window</span> checkbox will, when checked, force the link to open in a new browser tab/window.</p>
                 <p>The <span class="ControlName">OnClientClick </span>property specifies the name of a JavaScript subroutine to be executed when the user clicks on the link. It must be encased in quotation marks.</p>
+                <p>
+                    <div class="important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> A built-in CKEditor control, the <a href="Form Online Builder.htm#link">Link</a> control (<a href="https://ckeditor.com/cke4/addon/link" target="_blank">documentation</a>) offers additional functionality, and may serve as a better control for some use cases.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -208,10 +217,14 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsOther8.png" />
                 </p>
-                <p>The <span class="ControlName">Image URL </span>field specifies the URL at which the image can be found. If text is entered in the <span class="ControlName">URL </span>field, the image will redirect the user to that URL if the image is clicked on. You can check the checkbox to open the link in a new window.</p>
+                <p>The <span class="ControlName">Image URL </span>field specifies the URL at which the image can be found. If text is entered in the <span class="ControlName">URL </span>field, the image will redirect the user to that URL if the image is clicked on. You can check the checkbox to open the link in a new window. For use of QR&#160;Codes, the <span class="ControlName">Image URL</span> property will accept the <a href="../SystemVariablesReferenceGuide/Miscellaneous System Variables.htm#QR">QR&#160;Code system variable</a>  to generate the QR code automatically as the image for this control.</p>
                 <p>The image can also be stylized using CSS, with the <span class="ControlName">CSS&#160;Class</span> property specifying the name of a CSS class that exists in a custom CSS stylesheet, and the <span class="ControlName">Style </span>property containing CSS style directives for solely this control. The <span class="ControlName">HTML Height</span> and <span class="ControlName">Width </span>can be set in pixels/Percent.</p>
                 <p>For accessibility, all <span class="NamedControl">Image </span>controls should configure the <span class="ControlName">Alt Tag</span> text to be displayed if the image is not available, or for users of assistive devices.</p>
                 <p>For images that use the <span class="ControlName">URL </span>property to specify a link to open when the image is clicked, the <span class="ControlName">Open hotlink in new window</span> checkbox will, when checked, force the link to open in a new browser tab/window.</p>
+                <p>
+                    <div class="important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> A built-in CKEditor control, the <a href="Form Online Builder.htm#image">Image</a> tool (<a href="https://ckeditor.com/cke4/addon/image" target="_blank">documentation</a>) offers additional functionality, and may serve as a better control for some use cases. This tool will <span class="Emphasis">not </span>work with the QR&#160;Code system variable.</div>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
