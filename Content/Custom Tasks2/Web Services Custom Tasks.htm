@@ -14,8 +14,10 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This Custom Form Task will automatically fill a dropdown field on the Form with results from a web service call. Choose the Form dropdown field and the output parameter(s) that should be used to fill the dropdown. This Custom Task should be mapped to the [Form Displayed] event to ensure the dropdown values are always populated.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> This Custom task does not support WCF web services.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> This Custom task does not support WCF web services.</div>
+                </p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/Web Services Custom Tasks.jpg" style="visibility: visible;mso-wrap-style: square;width: 576px;height: 377px;" />
                 </p>
@@ -478,7 +480,7 @@
                                 <p>Result Mapping Dropdown</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Map results to Form Fields<br />Place all data from REST call into a single field<br />Dump Data from REST call into an attachment</p>
+                                <p>Map results to Form Fields<br />Place all data from REST call into a single field<br />Dump Data from REST call into an attachment<br />Dump Result Field from REST call into an Attachment</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>See the Result Tab Options section below for a detailed explanation of each option.</p>
@@ -755,9 +757,11 @@
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Prompt for Order Number</td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>Check this box to pass an “Order Number” field to the gateway for inclusion in the payment transaction. Entry of this field is not required, as passing an order number to the gateway is not required, but may be desirable. The default value is unchecked.</p>
-                                <div class="Important">
-                                    <img src="../Resources/Images/i2.png" alt="Note" /> If an order number is not provided, the gateway will use its Payment ID as an order number when processing the transaction.
+                                <p>
+                                    <div class="Important">
+                                        <img src="../Resources/Images/i2.png" alt="Note" /> If an order number is not provided, the gateway will use its Payment ID as an order number when processing the transaction.
 </div>
+                                </p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -788,7 +792,7 @@
                 </p>
                 <h6>Request Information</h6>
                 <p>You will notice that there are some fields in the screen shot above that are disabled. Those fields are conditionally disabled based upon the selections made in the Basic Settings and Advanced Settings sections. For example, the Customer Account field is disabled when the “Prompt for Customer Account” field in Basic Settings is unchecked.</p>
-                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100rem;" class="TableStyle-Simple" cellspacing="0">
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
                     <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
                     <col class="TableStyle-Simple-Column-Column1" />
                     <thead>
@@ -807,16 +811,20 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>Maps a Drop-Down List control on the payment transaction Form to its corresponding Custom Task control. Entry of this field is required only when “Gateway Locale” in Advanced Settings is “Select at Runtime”. There is no default value. (This is the gateway “language” parameter.) 
 </p>
-                                <div class="Important"> <img src="../Resources/Images/i2.png" alt="Note" /> The Drop-Down List control on the parent Form must have values that are recognized by the Custom Task. Refer to “Request Information – Gateway Locale” in the Runtime Operation section of this document for a list of valid values.
+                                <p>
+                                    <div class="Important"> <img src="../Resources/Images/i2.png" alt="Note" /> The Drop-Down List control on the parent Form must have values that are recognized by the Custom Task. Refer to “Request Information – Gateway Locale” in the Runtime Operation section of this document for a list of valid values.
 </div>
+                                </p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Payment Request</td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>Maps a Drop-Down List control on the payment transaction Form to its corresponding Custom Task control. Entry of this field is required only when “Payment Request” in Advanced Settings is “Select at Runtime”. There is no default value. (This is the gateway “action_type” parameter.)</p>
-                                <div class="Important">
-                                    <img src="../Resources/Images/i2.png" alt="Note" /> The Drop-Down List control on the parent Form must have values that are recognized by the Custom Task. Refer to “Request Information – Payment Request” in the Runtime Operation section of this document for a list of valid values.</div>
+                                <p>
+                                    <div class="Important">
+                                        <img src="../Resources/Images/i2.png" alt="Note" /> The Drop-Down List control on the parent Form must have values that are recognized by the Custom Task. Refer to “Request Information – Payment Request” in the Runtime Operation section of this document for a list of valid values.</div>
+                                </p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -828,9 +836,11 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>Maps a Textbox control on the payment transaction Form to its corresponding Custom Task control. Entry of this field is required only when “Prompt for Order Number” is checked. There is no default value. (This is the gateway “order_number” parameter.)
 </p>
-                                <div class="Important">
-                                    <img src="../Resources/Images/i2.png" alt="Note" /> The data of this field is used only for processing the transaction. It doesn’t appear in the response, or in the gateway-generated receipt.
+                                <p>
+                                    <div class="Important">
+                                        <img src="../Resources/Images/i2.png" alt="Note" /> The data of this field is used only for processing the transaction. It doesn’t appear in the response, or in the gateway-generated receipt.
 </div>
+                                </p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -842,9 +852,11 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>Maps a Textbox control on the payment transaction Form to its corresponding Custom Task control. Entry of this field is required. There is no default value. (This is the gateway “tax_amount” parameter.)
 </p>
-                                <div class="Important">
-                                    <img src="../Resources/Images/i2.png" alt="Note" /> The data of this field is used only for processing the transaction. It doesn’t appear in the response, or in the gateway-generated receipt.
+                                <p>
+                                    <div class="Important">
+                                        <img src="../Resources/Images/i2.png" alt="Note" /> The data of this field is used only for processing the transaction. It doesn’t appear in the response, or in the gateway-generated receipt.
 </div>
+                                </p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -868,9 +880,11 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>Maps a Drop-Down List control on the payment transaction Form to its corresponding Custom Task control. Entry of this field is required only when “Prompt for Bill To” is checked. There is no default value. (This is the gateway “billing_state” parameter.)
 </p>
-                                <div class="Important">
-                                    <img src="../Resources/Images/i2.png" alt="Note" /> The Drop-Down List control on the parent Form must have values that correspond to the states and provinces that we support. You should include in your Drop-Down List control only those states and provinces that you require. Refer to “Request Information – Bill To State/Province” in the Runtime Operation section of this document for a list of state/province names and codes.
+                                <p>
+                                    <div class="Important">
+                                        <img src="../Resources/Images/i2.png" alt="Note" /> The Drop-Down List control on the parent Form must have values that correspond to the states and provinces that we support. You should include in your Drop-Down List control only those states and provinces that you require. Refer to “Request Information – Bill To State/Province” in the Runtime Operation section of this document for a list of state/province names and codes.
 </div>
+                                </p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -882,9 +896,11 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>Maps a Drop-Down List control on the payment transaction Form to its corresponding Custom Task control. Entry of this field is required only when “Prompt for Bill To” is checked. There is no default value. (This is the gateway “billing_country_id” parameter.)
 </p>
-                                <div class="Important">
-                                    <img src="../Resources/Images/i2.png" alt="Note" /> The Drop-Down List control on the parent Form must have values that correspond to the countries that we support. You should include in your Drop-Down List control only those countries that you require. Refer to “Request Information – Bill To Country” in the Runtime Operation section of this document for a list of country names and codes.
+                                <p>
+                                    <div class="Important">
+                                        <img src="../Resources/Images/i2.png" alt="Note" /> The Drop-Down List control on the parent Form must have values that correspond to the countries that we support. You should include in your Drop-Down List control only those countries that you require. Refer to “Request Information – Bill To Country” in the Runtime Operation section of this document for a list of country names and codes.
 </div>
+                                </p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -1046,9 +1062,11 @@
                     </tbody>
                 </table>
                 <p>To facilitate the form auto-close feature, you must customize the Sample Payment Processing Form Script, and then associate it with your payment transaction Form. You will find the following instructional text in the BP_Display method of the sample Form script file:</p>
-                <div class="CodeBase"><span class="ControlName">// NOTE: You must replace the text "YourControlNameGoesHere" below with<br />// the associated control names on your payment transaction Form.<br />// When finished, save and upload this script file.</span>
-                    <br />
-                    <br />&#160;&#160;&#160;&#160;<span class="ControlName">// The Form Transaction Auto-Close check box control name.</span><br />&#160;&#160;&#160;&#160;string FORM_CONTROL_TRANSACTION_AUTO_CLOSE = "YourControlNameGoesHere";<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// The Form Transaction Task Status input control name.</span><br />&#160;&#160;&#160;&#160;string FORM_CONTROL_TRANSACTION_TASK_STATUS = "YourControlNameGoesHere";<br />&#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// The Form Transaction Gateway Status input control name.</span><br />&#160;&#160;&#160;&#160;string FORM_CONTROL_TRANSACTION_GATEWAY_STATUS = "YourControlNameGoesHere";<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// The Form Response Transaction Status input control name.</span><br />&#160;&#160;&#160;&#160;string FORM_CONTROL_RESPONSE_TRANSACTION_STATUS = "YourControlNameGoesHere";<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// The Form Response Fail Code input control name.</span><br />&#160;&#160;&#160;&#160;string FORM_CONTROL_RESPONSE_FAIL_CODE = "YourControlNameGoesHere";</div>
+                <p>
+                    <div class="CodeBase"><span class="ControlName">// NOTE: You must replace the text "YourControlNameGoesHere" below with<br />// the associated control names on your payment transaction Form.<br />// When finished, save and upload this script file.</span>
+                        <br />
+                        <br />&#160;&#160;&#160;&#160;<span class="ControlName">// The Form Transaction Auto-Close check box control name.</span><br />&#160;&#160;&#160;&#160;string FORM_CONTROL_TRANSACTION_AUTO_CLOSE = "YourControlNameGoesHere";<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// The Form Transaction Task Status input control name.</span><br />&#160;&#160;&#160;&#160;string FORM_CONTROL_TRANSACTION_TASK_STATUS = "YourControlNameGoesHere";<br />&#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// The Form Transaction Gateway Status input control name.</span><br />&#160;&#160;&#160;&#160;string FORM_CONTROL_TRANSACTION_GATEWAY_STATUS = "YourControlNameGoesHere";<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// The Form Response Transaction Status input control name.</span><br />&#160;&#160;&#160;&#160;string FORM_CONTROL_RESPONSE_TRANSACTION_STATUS = "YourControlNameGoesHere";<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// The Form Response Fail Code input control name.</span><br />&#160;&#160;&#160;&#160;string FORM_CONTROL_RESPONSE_FAIL_CODE = "YourControlNameGoesHere";</div>
+                </p>
                 <p>Process Director will automatically populate these controls on your payment transaction Form at the conclusion of the payment transaction. A successful transaction is one that has these values:</p>
                 <ul>
                     <li>Transaction Task Status = COMPLETED</li>
@@ -1057,8 +1075,10 @@
                     <li>Response Fail Code = APPROVED</li>
                 </ul>
                 <p>Upon completion of the financial transaction, if the control values indicate a successful transaction, the sample Form script will automatically save the form, and close the Form. If the Form is running within a timeline activity, it will complete that activity with a result of “Payment Completed”. </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> You may capture this result by specifying “Payment Completed” as a valid result in your timeline activity, and setting the “Show this result button when” condition to a value that is never true.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> You may capture this result by specifying “Payment Completed” as a valid result in your timeline activity, and setting the “Show this result button when” condition to a value that is never true.</div>
+                </p>
                 <h6>Advanced Settings</h6>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/PaymentGatewayAdvancedSettings.png" />
@@ -3596,8 +3616,10 @@
                 <MadCap:dropDownHotspot><a name="FillFieldsFromWebService"></a><a href="#FillFieldsFromWebService"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill Fields from Web Service</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> This Custom tasks does not support WCF web services.</div>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i2.png" alt="Note" /> This Custom tasks does not support WCF web services.</div>
+                </p>
                 <p>This Custom Form Task will make a Web Service Call, sending data from the running form as inputs to the method.</p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/Web Services Custom Tasks_4.jpg" style="visibility: visible;mso-wrap-style: square;width: 576px;height: 142px;" />
@@ -3722,6 +3744,175 @@
                         </tr>
                     </tbody>
                 </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="FillFieldsFromREST"></a><a href="#FillFieldsFromREST"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Form Recognizer from REST</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <div class="important">
+                        <img src="../Resources/Images/i.png" alt="Important" /> <span class="Emphasis">This custom task is specifically designed for use with the Vaccine Tracking Application. </span>It uses the Form Recognizer component to provide OCR&#160;text recognition for Vaccine Cards. It is specifically designed to extract text from Vaccine Card images, and <span class="Emphasis">not </span>for general use to fill form fields for other use cases. This CT requires a separately-licensed Application Key from BP Logix to access the Form Recognizer.</div>
+                </p>
+                <p>For Process Director Vaccine Tracking application users, this Form Custom Task can fill multiple fields on a Form with values from the Form Recognizer REST Web Service for Vaccination Cards. You can choose the Form fields and the queries (in XPath) that correspond to data with which to fill the Form fields, or choose to put all of the data into a single Form field. You can also pass data in the URL to the REST Service.</p>
+                <h4>Standard Tabs</h4>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/FRCT.png" />
+                </p>
+                <h4>Settings/Advanced tabs</h4>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/FRCT1.png" />
+                </p>
+                <h4>Configuration</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p style="font-weight: bold;">REST URL TAB</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>REST URL</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The URL of the REST Service, including the parameters</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Method</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">GET<br />POST<br />PUT<br />PATCH<br />DELETE</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The Web method to use to call the REST&#160;service.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p style="font-weight: bold;">RESULTS TAB</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Result Mapping Dropdown</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Map results to Form Fields<br />Place all data from REST call into a single field<br />Dump Data from REST call into an attachment<br />Dump Result Field from REST call into an attachment</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>See the Result Tab Options section below for a detailed explanation of each option.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Success Message</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>A text message to display when the REST&#160;call completes successfully.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3"><b>SETTINGS TAB</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Subscription Key</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The Form Recognizer Subscription Key obtained from BP&#160;Logix.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Attachments Group Name</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">An optional Group name to assign to attachments returned by the REST&#160;call.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Reference Type(s)</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Process References<br />Form References</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The type of attachment to include in the REST&#160;call for multipart web requests. Additional reference types may be added by clicking the <span class="UIElement">Add Row</span> button; however, if you use a System Variable to specify the attachment in the <span class="ControlName">Body</span>, you should <b style="font-style: italic;">not</b> use the Add Row button to add additional attachments.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Model Type</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">All Text<br />Printed Text<br />Written Text</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The text model of text you desire to return from the Form Recognizer. You can choose to have the OCR interpret all text, just printed text, or only handwritten text.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Sort Order</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Lowest Score<br />Highest Score</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The sort order, by recognition score, into which the results should be sorted.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p style="font-weight: bold;">ADVANCED TAB</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Default XPath namespace</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Global</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                                <p>The default namespace is generally correct.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Result Tab Options</h3>
+                <h4>Map results to Form Fields</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST1.png" />
+                </p>
+                <p>When this option is selected, the following properties can be configured:</p>
+                <p><b>Form Field:</b>&#160;The Form field into which to place data from a REST field.</p>
+                <p><b>XPath Expression:</b>&#160;The XPath expression that specifies the location of a REST field in the XML&#160;DOM.</p>
+                <p><b>Value Dropdown:</b>&#160;The data to place in the field. By default, this is the REST&#160;field value, but you can choose to use the Inner or Outer XML from the REST return XML.</p>
+                <p>Additional Form fields can be added by clicking the <span class="UIElement">Add Mapping</span> button to add a new field.</p>
+                <h4>Place all data from REST call into a single field</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST2.png" />
+                </p>
+                <p>When this option is selected, the following properties can be configured:</p>
+                <p><b>Form Field:</b>&#160;The Form field into which the entire REST response will be placed.</p>
+                <h4>Dump Data from REST call into an attachment</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST3.png" />
+                </p>
+                <p>When this option is selected, the following properties can be configured:</p>
+                <p><b>Attach Objects to:</b>&#160;This property enables you to create either a Form or a Process Attachment from the REST&#160;response.</p>
+                <p><b>Name:</b>&#160;The Name of the attachment file.</p>
+                <p><b>Group Name:</b>&#160;The desired attachment Group name for the attachment file.</p>
+                <h4>Dump Result Field from REST call into an Attachment</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FFFromRest4.png" />
+                </p>
+                <p><b>Attach Objects to:</b>&#160;This property enables you to create either a Form or a Process Attachment from the REST&#160;response.</p>
+                <p><b>Results Field (XPATH&#160;Expression):</b> The XPATH to the results field. This value can be placed in the Inner or Outer XML, or as a Value by selecting the appropriate value from the dropdown control associated with this property.</p>
+                <p><b>Name:</b>&#160;The Name of the attachment file.</p>
+                <p><b>Group Name:</b>&#160;The desired attachment Group name for the attachment file.</p>
+                <h3>Additional Notes:</h3>
+                <p>If URL parameters are being used in the REST call to pass in form field data, the system variables need to use the '&amp;' encode type. e.g., <code>{&amp;FORM:formfield}</code>.</p>
+                <p>If you request the results to be returned in JSON format AND have mapped to individual form fields, <b>an XPATH expression is still required</b> when defining the mapping between the results and form field (Typically JSONPath expressions are used with JSON). Further, depending on the JSON string, a double slash may be required in the expression when specifying the JSON identifier, because the JSON string might have translated into an empty root XML node, which would require the double slash. So, if a JSON query with a single slash doesn’t work when you think it should, try prefixing the query with a double slash ("//").”</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

@@ -220,9 +220,11 @@
                 <MadCap:dropDownHotspot><a name="ExportFilesToFilesystem"></a><a href="#ExportFilesToFilesystem"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Export Files to <MadCap:keyword term="Filesystem" />Filesystem</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task allows a user to export objects from Process Director to outside file systems. In most cases, this Custom Task should be used instead of the older Export Items Custom Task.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important!" /> Security enhancements for Process Director v5.X disable the use of System Variables to configure the <span class="ControlName">Destination Folder</span> property. Additionally, the requirement was imposed that all export paths must be explicitly listed in the Custom Variables file, through the use of the <a href="../DevelopersGuide/Customization File System.htm#AllowedExportLocations">AllowedExportLocations</a> Custom Variable.</div>
+                <p>This Custom Task enables a user to export objects from Process Director to outside file systems. In most cases, this Custom Task should be used instead of the older Export Items Custom Task.</p>
+                <p>
+                    <div class="Important">
+                        <img src="../Resources/Images/i.png" alt="Important!" /> Security enhancements for Process Director v5.0 disable the use of System Variables to configure the <span class="ControlName">Destination Folder</span> property. Additionally, the requirement was imposed that all export paths must be explicitly listed in the Custom Variables file, through the use of the <a href="../DevelopersGuide/Customization File System.htm#AllowedExportLocations">AllowedExportLocations</a> Custom Variable.</div>
+                </p>
                 <h4>Export Tab</h4>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/Content Actions Custom Tasks.jpg" style="visibility: visible;mso-wrap-style: square;width: 519px;height: 219px;" />
@@ -447,8 +449,10 @@
                 <h4>
                     <MadCap:keyword term="XML" />XML Format</h4>
                 <p>When the XML option is selected, form instances are exported to an XML file of the following format. The XML file stores information about the state of each field in the form instance.</p>
-                <div class="CodeBase"><span class="ControlName">&lt;!-- Export Items XML Format --&gt;</span>
-                    <br />&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br />&lt;FormDataXML xlmns:xsi=”http://www.w3.org/2001/XMLSchema-instance” <br />&#160;&#160;&#160;&#160;xmlns:xsd=”http://www.w3.org/2001/XMLSchema”&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">&lt;!-- each form field’s information is contained inside a &lt;FormFieldsList&gt; tag --&gt;</span><br />&#160;&#160;&#160;&#160;&lt;FormFieldsList&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;Name&gt;someName&lt;/Name&gt;<span class="ControlName">&lt;!-- the name of the form field --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;Value&gt;someValue&lt;/Value&gt;<span class="ControlName">&lt;!-- this form instance’s value for the field --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;Text&gt;someText&lt;/Text&gt;<span class="ControlName">&lt;!-- the text of the form field (if applicable) --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">&lt;!-- Array Tags: these tags only appear if the field is part of an array --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;ArrayName&gt;someName&lt;/ArrayName&gt;<span class="ControlName">&lt;!-- the array containing this field --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;ArrayNum&gt;0&lt;/ArrayNum&gt;<span class="ControlName">&lt;!-- the number of the row this field is in --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">&lt;!-- this tag appears for every field, and is just a placeholder to <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ensure future compatibility --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;FormField_V1 /&gt;<br />&#160;&#160;&#160;&#160;&lt;/FormFieldsList&gt;<br />&lt;/FormDataXML&gt;</div>
+                <p>
+                    <div class="CodeBase"><span class="ControlName">&lt;!-- Export Items XML Format --&gt;</span>
+                        <br />&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br />&lt;FormDataXML xlmns:xsi=”http://www.w3.org/2001/XMLSchema-instance” <br />&#160;&#160;&#160;&#160;xmlns:xsd=”http://www.w3.org/2001/XMLSchema”&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">&lt;!-- each form field’s information is contained inside a &lt;FormFieldsList&gt; tag --&gt;</span><br />&#160;&#160;&#160;&#160;&lt;FormFieldsList&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;Name&gt;someName&lt;/Name&gt;<span class="ControlName">&lt;!-- the name of the form field --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;Value&gt;someValue&lt;/Value&gt;<span class="ControlName">&lt;!-- this form instance’s value for the field --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;Text&gt;someText&lt;/Text&gt;<span class="ControlName">&lt;!-- the text of the form field (if applicable) --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">&lt;!-- Array Tags: these tags only appear if the field is part of an array --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;ArrayName&gt;someName&lt;/ArrayName&gt;<span class="ControlName">&lt;!-- the array containing this field --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;ArrayNum&gt;0&lt;/ArrayNum&gt;<span class="ControlName">&lt;!-- the number of the row this field is in --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">&lt;!-- this tag appears for every field, and is just a placeholder to <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ensure future compatibility --&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;FormField_V1 /&gt;<br />&#160;&#160;&#160;&#160;&lt;/FormFieldsList&gt;<br />&lt;/FormDataXML&gt;</div>
+                </p>
                 <h4>
                     <MadCap:keyword term="CSV" />CSV Format</h4>
                 <p>When the CSV option is selected, form instances are exported to a CSV file of the following format. The CSV file stores information about the state of each field in the form instance.</p>
@@ -636,7 +640,7 @@
                 <h4>Configuration Options </h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
                     <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
-                    <col style="width: 25rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
                     <col class="TableStyle-Simple-Column-Column1" />
                     <thead>
                         <tr class="TableStyle-Simple-Head-Header1">
@@ -777,8 +781,10 @@
                             <td class="TableStyle-Simple-BodyB-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row2">
                                 <p>Checking this option will delete the currently running process instance. </p>
-                                <div class="Important">
-                                    <img src="../Resources/Images/i.png" alt="Important" />Use this carefully; any pending tasks in the process will be deleted, and if the Item Actions CT is deleting a process as a task in that process, forms opened on a task in that process will be closed.</div>
+                                <p>
+                                    <div class="Important">
+                                        <img src="../Resources/Images/i.png" alt="Important" />Use this property carefully; any pending tasks in the process will be deleted, and if the Item Actions CT is deleting a process as a task in that process, forms opened on a task in that process will be closed.</div>
+                                </p>
                             </td>
                         </tr>
                     </tbody>
