@@ -8,7 +8,7 @@
         <h1>
             <MadCap:keyword term="CUSTOM TASKS;pdf" />
             <MadCap:concept term="Custom Tasks" /><a name="_Toc421015719"></a>PDF Custom Tasks</h1>
-        <p>The PDF custom tasks are used to create PDF files from Forms, and to convert other file types to PDF documents. The following document file types can be converted to PDF:</p>
+        <p>The PDF Custom Tasks are used to create PDF files from Forms, and to convert other file types to PDF documents. The following document file types can be converted to PDF:</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
             <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
             <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
@@ -101,8 +101,10 @@
                                 <p>Selecting <span class="ControlName">Current Form Only </span>will only convert the Form to PDF, and, if checked, will disable the remaining options. This option is only available when the Custom Task is being used as a Form Custom Task, and will not appear in the configuration for Custom Task activities in a Process Timeline.</p>
                                 <p><span class="ControlName">Process References </span>will convert only items that are attached to the process. The Form itself is a process reference object.</p>
                                 <p><span class="ControlName">Form References</span> will convert only items that are attached to the form. The Form is <b>not</b> a form reference object.</p>
-                                <div class="Important">
-                                    <img src="../Resources/Images/i2.png" alt="Note" /> The best practice with attachments is to attach them to the process, not the form. If you do attach items to the form, and you'd like to convert both the form and all form attachments to a PDF, you <b>must</b> check both <span class="ControlName">Process References</span> and <span class="ControlName">Form References</span>.</div>
+                                <p>
+                                    <div class="Important">
+                                        <img src="../Resources/Images/i2.png" alt="Note" /> The best practice with attachments is to attach them to the process, not the form. If you do attach items to the form, and you'd like to convert both the form and all form attachments to a PDF, you <b>must</b> check both <span class="ControlName">Process References</span> and <span class="ControlName">Form References</span>.</div>
+                                </p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -376,8 +378,10 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This Custom Task will extract values from PDF form fields in an attached PDF form to fill form fields with that data, for installations running Process Director v5.44.500 or higher. </p>
-                <div class="important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> A template file containing a blank version of the PDF form must reside in the Content List to enable field mapping between the attachment and the Form.</div>
+                <p>
+                    <div class="important">
+                        <img src="../Resources/Images/i.png" alt="Important" /> A template file containing a blank version of the PDF form must reside in the Content List to enable field mapping between the attachment and the Form.</div>
+                </p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/FillFieldsFromPDF.png" />
                 </p>
@@ -475,7 +479,7 @@
                 <MadCap:dropDownHotspot><a name="MakePDFRendition"></a><a href="#MakePDFRendition"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Make PDF Rendition of Documents</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This custom task displays all attached documents as PDFs.</p>
+                <p>This Custom Task converts all attached documents to PDF format.</p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/PDF Custom Tasks_3.jpg" style="visibility: visible;mso-wrap-style: square;width: 570px;height: 164px;" />
                 </p>
@@ -605,7 +609,7 @@
                 <MadCap:dropDownHotspot><a name="SignPDF"></a><a href="#SignPDF"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Sign PDF</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This custom task allows you to place a text or image of a user’s signature on a PDF document. </p>
+                <p>This Custom Task places a text or image of a user’s signature on a PDF document. </p>
                 <h4>PDF Source/Signature Options Tabs</h4>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/PDF Custom Tasks_4.jpg" style="visibility: visible;mso-wrap-style: square;width: 518px;height: 396px;" />
@@ -778,7 +782,7 @@
                 </p>
                 <p>Digital signature certificates can be accessed in two ways when you select Digital Signature as the <span class="ControlName">Signature Source</span>. You can install the certificate directly on the server, in which case it will appear automatically in the <span class="ControlName">Installed Certificate</span> dropdown, and you can select the installed certificate you desire to use. For instructions on installing a digital signature certificate, please see the Microsoft documentation for your particular server's operating system.</p>
                 <p>Alternatively, you can place a certificate file in an accessible file system, and select "Use Certificate File" from the <span class="ControlName">Installed Certificate</span> dropdown. If you choose to use a certificate file, you must provide the fully qualified file path to the file in the <span class="ControlName">Certificate File </span>text box, then supply the password for the certificate file in the <span class="ControlName">Password for Certificate</span> text box. Again, for  instructions on creating a certificate file, please see the Microsoft documentation for your particular server's operating system.</p>
-                <p>Once configured, the same certificate or certificate file will be used to digitally sign all documents produced by the Custom Task. There is no functionality that enables the use of user-level certificates, only server-level ones.</p>
+                <p>Once configured, the same certificate or certificate file will be used to digitally sign all documents produced by the Custom Task. <span class="Emphasis">There is no functionality that enables the use of user-level certificates, only server-level ones.</span></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -917,7 +921,7 @@
         <p> Process Director can be configured to transfer Rich Text content into PDF form fields  from Rich Text fields in Process Director Forms by setting the following configuration options:</p>
         <ul>
             <li>Set the <a href="../DevelopersGuide/Customization File Misc.htm#AllowRichTextTemplate">AllowRichTextTemplate custom variable</a> to "true" in the Process Director Custom customization file (vars.cs.aspx).</li>
-            <li> In the PDF&#160;template, the "Allow Rich Text Formatting" checkbox must be checked in the Text Field Properties of the appropriate form fields.</li>
+            <li> In the PDF&#160;template, the <span class="ControlName">Allow Rich Text Formatting</span> checkbox must be checked in the Text Field Properties of the appropriate form fields.</li>
         </ul>
         <p>Support for Rich Text content transfer should be considered experimental and partial, due to the way that Adobe incorporates rich text into its forms. As such, you may see unexpected behaviors when Rich Text content is transferred, such as:</p>
         <ul>
