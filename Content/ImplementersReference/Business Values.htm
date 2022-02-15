@@ -14,8 +14,8 @@
         <p>Process Director addresses these issues by separating the details of accessing systems of record from using the resulting data within a business application. As a result, technical experts can configure the appropriate access mechanism once, and implementers can reuse the information provided anywhere at all within the application, without having to know or understand how the information was obtained. An implementer may also, on occasion, create a business value that references only internal data from Process Director, such as a calculation based on a knowledge View. In either case, once configured, a Business Value is universally available to implementers. </p>
         <p>A fundamental advantage of using a Business Value is that any changes to how the Business Value is derived are transparent—and largely irrelevant—to the implementer. If the organization changes to a different CRM or HR system the Business Value can be reconfigured to use data from the new system without implementers having to make changes to existing processes. </p>
         <p>A Business Value can extract a single value, or a list of values such as those in a database table. In the context of a Form, for example, a Business Value can be used to fill out a form Array with a recordset from an external database.</p>
-        <div class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" /> As a default, Process Director will return a maximum of 200 rows in a recordset. This default value can be changed by setting the <a href="../DevelopersGuide/Customization File Administration.htm#nMaxBusinessValueRows">nMaxBusinessValueRows</a> Custom Variable in the customization file.</div>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> As a default, Process Director will return a maximum of 200 rows in a recordset. This default value can be changed by setting the <a href="../DevelopersGuide/Customization File Administration.htm#nMaxBusinessValueRows">nMaxBusinessValueRows</a> Custom Variable in the customization file.</p>
         <h4><a name="BusinessValueParameters"></a>Business Value Parameters</h4>
         <p>An even more powerful way of using Business Values is to use parameters to return values dynamically for use in your processes. Previously, instead of a Business Value, you would need to create a Custom Task step in your process, or Use a custom task in a Form, to return data values to fill fields. As a result, you might have several Custom Tasks, spread out among several projects, all of which were essentially configured exactly the same. Any change to the database schema, would require making changes to every single one of those Custom Tasks, making updates tedious, and costly in terms of time and effort. While there are certainly times that a database Custom Task will still be needed, the Business Value can replace a Custom task in many use cases.</p>
         <p>Let's take a look at a hypothetical case. We will assume that we have a database table that stores customer information. We can create a Business Value to provide that information. Let's look at how such a Business value might be configured.</p>
@@ -24,10 +24,10 @@
         </p>
         <p>The <span class="ControlName">SQL&#160;Command</span> for this Business Value retrieves records for active customers. If no "CustomerID" parameter is supplied, the command will simply pull every customer record. If the "CustomerID" parameter is supplied, Business Value will return only a single record. In other words, the same Business Value can return a single or scalar value based on the parameter.</p>
         <p>Next, the Business Value uses the database columns to create three properties: the Name, ID, and Type properties will all contain values extracted from the database, In addition, since the business rule automatically knows how many records have been returned by the SQL&#160;Command, the fourth property, Count, will contain the number of records returned.</p>
-        <div class="Important">
-            <img src="../Resources/Images/i2.png" alt="Note" /> When a Business Value Property returns no data from a SQL command, it can still be used in a condition, because the value will be set to an empty string, allowing comparisons in the conditions to work correctly.</div>
+        <p class="Important">
+            <img src="../Resources/Images/i2.png" alt="Note" /> When a Business Value Property returns no data from a SQL command, it can still be used in a condition, because the value will be set to an empty string, allowing comparisons in the conditions to work correctly.</p>
         <p>Once we have created the Business Value, it's accessible by all other objects in Process Director. None of your business users or other implementers need to know anything about how the data is configured to use the business value, because the Business Value properties are available through the condition builder dropdowns. They merely need to select the properties they want, which means that, in most cases,  implementers no longer need to create a Custom Task to retrieve the data. They no longer need to know or care about the database schema or the SQL&#160;syntax to retrieve the data they want. This functionality greatly reduces the level of technical knowledge that business users and implementers need to conduct relatively sophisticated data retrieval operations. With Business Values, technical details about the data, and how to acquire it, is largely irrelevant to implementers. The only person who needs to have any sort of technical knowledge about the database is the creator of the Business Value itself.</p>
-        <div class="Important"> <img src="../Resources/Images/i2.png" /> Combined with the scheduling and process initiation available in the <a href="Goals.htm" target="_blank">Goals</a> feature, Process Director is a powerful workflow automation system, enabling automatic workflow initialization based on data from external systems.</div>
+        <p class="Important"> <img src="../Resources/Images/i2.png" /> Combined with the scheduling and process initiation available in the <a href="Goals.htm" target="_blank">Goals</a> feature, Process Director is a powerful workflow automation system, enabling automatic workflow initialization based on data from external systems.</p>
         <h2><a name="Mathematical"></a>Mathematical Operations <a href="#Mathematical" class="anchor">#</a></h2>
         <p>Another function available for business values is the ability to perform mathematical operations on a database or Knowledge View column. When retrieving any numeric column data, Process Director can perform the following calculations on the values:</p>
         <ul>
@@ -118,8 +118,8 @@
                     </MadCap:dropDownHead>
                     <MadCap:dropDownBody>
                         <p>Enter the SQL command that will select the data to be set as the business value.</p>
-                        <div class="Important">
-                            <img src="../Resources/Images/i.png" alt="Important" /> While the system will accept any valid SQL&#160;command, BP&#160;Logix <b style="font-style: italic;">very strongly recommends</b><i> </i>that you limit the use of Business Values to SELECT commands. Updating, deleting, and inserting data should be done separately, through the appropriate Custom Task/Datasource.</div>
+                        <p class="Important">
+                            <img src="../Resources/Images/i.png" alt="Important" /> While the system will accept any valid SQL&#160;command, BP&#160;Logix <b style="font-style: italic;">very strongly recommends</b><i> </i>that you limit the use of Business Values to SELECT commands. Updating, deleting, and inserting data should be done separately, through the appropriate Custom Task/Datasource.</p>
                     </MadCap:dropDownBody>
                 </MadCap:dropDown>
                 <MadCap:dropDown>
@@ -154,8 +154,8 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>The <span class="UIElement">Knowledge View Data Source</span> tab enables you to select a Knowledge View and apply a filter for returning data from a Knowledge View. </p>
-                <div class="Important">
-                    <img src="../Resources/Images/ImplementersReference/Expressions.png" alt="Note" /> All Knowledge View columns are available to the Business Value, including those that are marked not to display in the Knowledge View Definition. Also, Knowledge Views that contain sorting criteria will be presented with the same sort order in the Business Value. For v5.32 and higher, a Knowledge View that uses folder navigation to filter the results can now be used as the data source for a Business Value to return all data, and ignore the folder navigation filter.</div>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> All Knowledge View columns are available to the Business Value, including those that are marked not to display in the Knowledge View Definition. Also, Knowledge Views that contain sorting criteria will be presented with the same sort order in the Business Value. For v5.32 and higher, a Knowledge View that uses folder navigation to filter the results can now be used as the data source for a Business Value to return all data, and ignore the folder navigation filter.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/BusinessValues4.png" />
                 </p>
@@ -253,8 +253,8 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/RESTBV.png" />
                 </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> Business Values also support JSON returns and JSONPath, as well.</div>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> Business Values also support JSON returns and JSONPath, as well.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -315,8 +315,8 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" /> The <span class="ControlName">Form Field</span> and <span class="ControlName">Form Instance</span> data types are only available for users of Process Director v5.12.02 and higher.</div>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" /> The <span class="ControlName">Form Field</span> and <span class="ControlName">Form Instance</span> data types are only available for users of Process Director v5.12.02 and higher.</p>
                 <p>The properties returned can be  ordered by using the UP and Down arrow icons, and deleted by clicking the red "X" icon.</p>
                 <p>
                     <img src="../Resources/Images/Capture57.png" />
@@ -336,8 +336,8 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/PatametersBV.png" />
                 </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> For Process Director v5.26 and higher, Parameters can also be used as column values in both the SQL statement, and the Parameter  as a Property Value. For instance, A SQL&#160;statement such as "<code>SELECT {$PARAMETER:column} from TABLENAME</code>" can be used to return a column for a Property that uses"{PARAMETER:column}" as the Property Value. Thus, the Parameter can supply the column name for both the SQL&#160;Statement and be used as the value of the Property itself. Please note that the Property Name must still be a static value. Similarly, System Variables may be used in the Property values for REST&#160;data sources. This enables users to build parameterized filter expressions that can be used to filter the JSONPath/XPath results, e.g.:<br /><code>$.components[?(@.classification &gt;= /Graded/I &amp;&amp; @.section = <b>{$PARM:section}</b>)].section</code></div>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> For Process Director v5.26 and higher, Parameters can also be used as column values in both the SQL statement, and the Parameter  as a Property Value. For instance, A SQL&#160;statement such as "<code>SELECT {$PARAMETER:column} from TABLENAME</code>" can be used to return a column for a Property that uses"{PARAMETER:column}" as the Property Value. Thus, the Parameter can supply the column name for both the SQL&#160;Statement and be used as the value of the Property itself. Please note that the Property Name must still be a static value. Similarly, System Variables may be used in the Property values for REST&#160;data sources. This enables users to build parameterized filter expressions that can be used to filter the JSONPath/XPath results, e.g.:<br /><code>$.components[?(@.classification &gt;= /Graded/I &amp;&amp; @.section = <b>{$PARM:section}</b>)].section</code></p>
                 <MadCap:dropDown>
                     <MadCap:dropDownHead>
                         <MadCap:dropDownHotspot>Name</MadCap:dropDownHotspot>

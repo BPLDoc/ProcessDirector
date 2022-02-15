@@ -13,10 +13,8 @@
             <MadCap:concept term="Online Form Designer" />Forms</h1>
         <p>Electronic forms are web-based forms that can be published and made available to users so they can fill them out and submit them online from within their browser. When a Form is completed, it can be automatically routed using a process definition. This topic describes how to create and manage a Form, how to set the validation policies for the form fields and the optional scripting APIs that are available for interfacing with external systems and providing custom business logic.</p>
         <p>Forms are primarily created using the <a href="Form Online Builder.htm">Online Form Designer</a>. Additional form-building tools are available, if necessary: the <a href="FormBuilder.htm">Word Form Builder</a> or an ASP.Net development tool like Visual Studio. The Word Form Builder requires the BP Logix Word Plug-in and can only be used with a 32-bit version of Microsoft Word 2010 or higher. The Word Form Builder was largely deprecated by the introduction of the Online Form Designer, but is still supported mainly for legacy and backwards compatibility reasons. A Visual Studio plugin is available for using Visual Studio to create forms as ASCX custom controls, with the appropriate license option.</p>
-        <p>
-            <div class="Important">
-                <img src="../Resources/Images/i2.png" alt="Note" /> As of Process Director v4.5, the term <span class="KeyTerms">eForm </span>is no longer exclusively used. Electronic Forms are becoming a common standard, so the term eForm has been deprecated in favor of the simpler term <span class="KeyTerms">Form</span> in the product. Users of prior versions of Process Director will still see the term eForm used in the product interface, while users of v4.5 and higher will see the term Form used. In this documentation, the terms eForm and Form may be used interchangeably, as we update the documentation—and the product—to replace the term eForm with Form. For example, you may still see screen shots of the product that display the term eForm, while the text of the documentation uses the term Form.</div>
-        </p>
+        <p class="Important">
+            <img src="../Resources/Images/i2.png" alt="Note" /> As of Process Director v4.5, the term <span class="KeyTerms">eForm </span>is no longer exclusively used. Electronic Forms are becoming a common standard, so the term eForm has been deprecated in favor of the simpler term <span class="KeyTerms">Form</span> in the product. Users of prior versions of Process Director will still see the term eForm used in the product interface, while users of v4.5 and higher will see the term Form used. In this documentation, the terms eForm and Form may be used interchangeably, as we update the documentation—and the product—to replace the term eForm with Form. For example, you may still see screen shots of the product that display the term eForm, while the text of the documentation uses the term Form.</p>
         <h2><a name="_Toc421536197"></a>
             <MadCap:keyword term="eForm Definition" />Form Definitions <a href="#_Toc421536198" class="anchor">#</a></h2>
         <p>Form definitions are stored in the Process Director database. Form definitions (templates) have properties similar to other objects, such as documents.</p>
@@ -88,14 +86,10 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Forms can be linked and run from outside of Process Director using a manually-configured URL (for example, linked from your Intranet portal). The default URL can be found on at the bottom of the Form Definition's Properties page, and looks similar to this: </p>
-                <p>
-                    <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;nohome=0&amp;completepageprompt=0&amp;completepage=&amp;completetext= </div>
-                </p>
+                <p class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;nohome=0&amp;completepageprompt=0&amp;completepage=&amp;completetext= </p>
                 <p>Where <code>server_name</code> is the hostname of BP Logix, <code>PP </code>is the internal ID of the Partition, and <code>NN </code>is the internal ID of the Form Definition. For users of Process Director v5.12 and higher, the URL is displayed on this tab as a hyperlink.</p>
                 <p>A number of URL&#160;parameters can be added to the URL's existing parameters to alter the way Process Director responds to the URL request. The URL&#160;parameters may be used in any order.</p>
-                <p>
-                    <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;nohome=1&amp;completepageprompt=0</div>
-                </p>
+                <p class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;nohome=1&amp;completepageprompt=0</p>
                 <ul>
                     <li>The <b>nohome</b> parameter controls whether the home page should be opened when the link to the task list or Form is clicked. Set nohome to 1 to ensure that the home page isn’t opened.</li>
                     <li>The <b>completepage</b> and <b>completetext</b> parameters specify the URL of the page that completing the Form should redirect to and the text displayed with the URL, respectively. When using completepage parameter, you must include the "http://" or "https://" when specifying your URL. In other words, the URL must be a fully-qualified URL, and not just a relative path or other partial URL. Additionally, the completepage URL must, for security reasons, point to a page <i>inside</i> the Process Director domain. You cannot redirect to an external URL. We recommend that, if you want to direct users to an external URL, you create a custom redirect page inside the /custom folder of your process director installation, and use that page as the completepage URL. That custom redirect page can then, in turn, redirect the users to an external URL.</li>
@@ -127,29 +121,21 @@
                 <p>Using the VAR object in a text string enables you to add additional modifiers to the variable. For instance, the syntax <code>{VAR:JobTitle, null="Value if null"}</code> specifies the value to use if the URL parameter is not present.</p>
                 <p>The VAR (Variable) object is an <i>ad-hoc</i> variable whose primary use is to serve as a placeholder for the value passed via the URL&#160;Parameter. This is the same implementation procedure used when <a href="Knowledge View Exporting and Reporting.htm#_Toc421536233">passing values to a Knowledge View in a URL</a>.</p>
                 <p>No matter which of the two methods above that you implement, you can now use the Variable as a URL&#160;parameter. In the case of the above example, the Parameter would be</p>
-                <p>
-                    <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;<span style="background-color: #ffff00;"><span style="background-color: #ffd700;">Stuff=value</span></span></div>
-                </p>
+                <p class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;<span style="background-color: #ffff00;"><span style="background-color: #ffd700;">Stuff=value</span></span></p>
                 <p>The default value will be filled with the value specified in the URL parameter. </p>
                 <p>This procedure is the simplest method for setting a field's value, and it does not require any further configuration. The drawback to this method is that it can only be used to set the default value of a field in a new Form instance, and so will not change a field value that has already been saved in an existing Form instance.</p>
                 <p>If you wish to set the value in an existing Form, you will need to use the next method.</p>
                 <h5>Setting a Field Value Universally</h5>
                 <p>This method enables you to set a field value via URL parameter at any time. For security reasons, however, you must first identify the field by setting the field name as configurable via URL in the Custom Vars file (vars.cs.ascx), using the <a href="../DevelopersGuide/Customization File Misc.htm#FormFieldsAllowDisabledURLUpdate" target="_blank">FormFieldsAllowDisabledURLUpdate</a> method.</p>
                 <p>Once you have specified the field name in the Custom vars file, you can now use a URL&#160;parameter to set the value any time you desire. In the URL&#160;parameter, the field is identified using the prefix "EXT_ ", followed by the field name, to identify the field, e.g., "EXT_FieldName".</p>
-                <p>
-                    <div class="Important">
-                        <img src="../Resources/Images/i.png" alt="Important" /> Be sure to URL encode the values you specify in the URL&#160;Parameter.</div>
-                </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> Be sure to URL encode the values you specify in the URL&#160;Parameter.</p>
                 <p><b>Example:</b>
                 </p>
                 <p>In the Custom Vars file, identify the fields to change via URL&#160;Parameter:</p>
-                <p>
-                    <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Fields to set via URL&#160;Parameter</span><br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("Field1");<br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("Field2");<br />}</div>
-                </p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Fields to set via URL&#160;Parameter</span><br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("Field1");<br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("Field2");<br />}</p>
                 <p>Now, you can use the following URL&#160;parameters to set the field values:</p>
-                <p>
-                    <div class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;<span style="background-color: #ffd700;">EXT_Field1=Some+Value</span>&amp;<span style="background-color: #ffd700;">EXT_Field2=Another+Value</span></div>
-                </p>
+                <p class="CodeBase">http://server_name/form.aspx?pid=PP&amp;formid=NN&amp;<span style="background-color: #ffd700;">EXT_Field1=Some+Value</span>&amp;<span style="background-color: #ffd700;">EXT_Field2=Another+Value</span></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h3 MadCap:conditions="General.Not Printed"><a name="Example"></a>Documentation Examples <a href="#Example" class="anchor">#</a></h3>

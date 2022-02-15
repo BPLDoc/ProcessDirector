@@ -132,34 +132,22 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsOther4.png" />
                 </p>
-                <p>
-                    <div class="Important">
-                        <img src="../Resources/Images/i.png" alt="Important" /> If your inserted HTML includes { or } characters, such as used in JavaScript code, you must leave the control's <span class="ControlName">Name </span>property blank. Otherwise the "{" and "}" characters will be interpreted as System Variables.</div>
-                </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> If your inserted HTML includes { or } characters, such as used in JavaScript code, you must leave the control's <span class="ControlName">Name </span>property blank. Otherwise the "{" and "}" characters will be interpreted as System Variables.</p>
                 <h5>JavaScript</h5>
                 <p>In addition to normal HTML, you can include JavaScript. So, to send an alert that greets the user, you could say:</p>
-                <p>
-                    <div class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;Alert(“Hello {CURR_USER}”);<br />&lt;/script&gt;</div>
-                </p>
+                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;Alert(“Hello {CURR_USER}”);<br />&lt;/script&gt;</p>
                 <p>If you create a JavaScript function called “bpUserJavaScript” and put it on the form inside an HTML control - it will run on the initial Form Load and all Postback events, enabling you to insert JavaScript into these events. </p>
-                <p>
-                    <div class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">//Script code for Load and Postback goes here.</span><br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</div>
-                </p>
+                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">//Script code for Load and Postback goes here.</span><br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
                 <p>This feature enables you to insert complicated client-side JavaScript that sets a control's state on Postback. In the example below, a notional Form has a <span class="NamedControl">Checkbox </span>control that is set as en event field to fire the Postback. On Postback, the bpUserJavaScript function runs to control the state of the <span class="NamedControl">Checkbox </span>.</p>
-                <p>
-                    <div class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;var SaveClick;<br /><br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick = CurrentForm.FormControls["CheckBox2"].onclick;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].onclick = NewClick;<br />&#160;&#160;&#160;&#160;}<br /><br />&#160;&#160;&#160;&#160;function NewClick()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (confirm("Are you sure?"))<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (typeof(SaveClick) != "undefined" &amp;&amp; SaveClick)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick();<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;else<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].checked = <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;!CurrentForm.FormControls["CheckBox2"].checked;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</div>
-                </p>
+                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;var SaveClick;<br /><br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick = CurrentForm.FormControls["CheckBox2"].onclick;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].onclick = NewClick;<br />&#160;&#160;&#160;&#160;}<br /><br />&#160;&#160;&#160;&#160;function NewClick()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (confirm("Are you sure?"))<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (typeof(SaveClick) != "undefined" &amp;&amp; SaveClick)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick();<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;else<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].checked = <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;!CurrentForm.FormControls["CheckBox2"].checked;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
                 <h5>Server Side Controls</h5>
                 <p>You can also place ASP.NET server –side controls in this tag. For example:</p>
-                <p>
-                    <div class="CodeBase">&lt;asp:TextBox runat=”server” ID=”bpLogixTextBox” /&gt;</div>
-                </p>
+                <p class="CodeBase">&lt;asp:TextBox runat=”server” ID=”bpLogixTextBox” /&gt;</p>
                 <p>Server-side ASP.NET controls also act as normal BP Logix form fields, allowing you to reference them with System Variables and through Process Director. You can place an HTML control on a Form, leave the Name property blank, then place the ASP.NET&#160;control markup in the HTMLString Property. Entering a Name for the HTML control will cause Process Director to treat it like a Process Director Control and override the ASP.NET control. Leaving the Name property blank will cause Process Director to take the HTML&#160;markup for the ASP.NET control, and display the ASP.NET control in the Form. By wrapping a native ASP.NET control in an unnamed HTML control, Process Director supports the use of any native ASP.NET control on a Form.</p>
                 <p>You can stylize your HTML with CSS, either in the tag you want to stylize or in a separate &lt;style&gt; tag.</p>
-                <p>
-                    <div class="CodeBase"><span class="ControlName">&lt;!-- You can do this: --&gt;</span>
-                        <br />&lt;p style="text-align: center;"&gt;Text&lt;/p&gt;<br /><br /><span class="ControlName">&lt;!-- Or this: --&gt;</span><br />&lt;style type="text/css"&gt;<br />&#160;&#160;&#160;&#160;p{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;text-align: center;<br />&#160;&#160;&#160;&#160;}<br />&lt;/style&gt;</div>
-                </p>
+                <p class="CodeBase"><span class="ControlName">&lt;!-- You can do this: --&gt;</span>
+                    <br />&lt;p style="text-align: center;"&gt;Text&lt;/p&gt;<br /><br /><span class="ControlName">&lt;!-- Or this: --&gt;</span><br />&lt;style type="text/css"&gt;<br />&#160;&#160;&#160;&#160;p{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;text-align: center;<br />&#160;&#160;&#160;&#160;}<br />&lt;/style&gt;</p>
                 <p>To use the ASP.NET controls, you must have Process Director v3.5 or higher.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -201,10 +189,8 @@
                 <p>The <span class="ControlName">Style </span>property determines CSS styling for the link.</p>
                 <p>The <span class="ControlName">Open in new window</span> checkbox will, when checked, force the link to open in a new browser tab/window.</p>
                 <p>The <span class="ControlName">OnClientClick </span>property specifies the name of a JavaScript subroutine to be executed when the user clicks on the link. It must be encased in quotation marks.</p>
-                <p>
-                    <div class="important">
-                        <img src="../Resources/Images/i2.png" alt="Note" /> A built-in CKEditor control, the <a href="Form Online Builder.htm#link">Link</a> control (<a href="https://ckeditor.com/cke4/addon/link" target="_blank">documentation</a>) offers additional functionality, and may serve as a better control for some use cases.</div>
-                </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> A built-in CKEditor control, the <a href="Form Online Builder.htm#link">Link</a> control (<a href="https://ckeditor.com/cke4/addon/link" target="_blank">documentation</a>) offers additional functionality, and may serve as a better control for some use cases.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -221,10 +207,8 @@
                 <p>The image can also be stylized using CSS, with the <span class="ControlName">CSS&#160;Class</span> property specifying the name of a CSS class that exists in a custom CSS stylesheet, and the <span class="ControlName">Style </span>property containing CSS style directives for solely this control. The <span class="ControlName">HTML Height</span> and <span class="ControlName">Width </span>can be set in pixels/Percent.</p>
                 <p>For accessibility, all <span class="NamedControl">Image </span>controls should configure the <span class="ControlName">Alt Tag</span> text to be displayed if the image is not available, or for users of assistive devices.</p>
                 <p>For images that use the <span class="ControlName">URL </span>property to specify a link to open when the image is clicked, the <span class="ControlName">Open hotlink in new window</span> checkbox will, when checked, force the link to open in a new browser tab/window.</p>
-                <p>
-                    <div class="important">
-                        <img src="../Resources/Images/i2.png" alt="Note" /> A built-in CKEditor control, the <a href="Form Online Builder.htm#image">Image</a> tool (<a href="https://ckeditor.com/cke4/addon/image" target="_blank">documentation</a>) offers additional functionality, and may serve as a better control for some use cases. This tool will <span class="Emphasis">not </span>work with the QR&#160;Code system variable.</div>
-                </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> A built-in CKEditor control, the <a href="Form Online Builder.htm#image">Image</a> tool (<a href="https://ckeditor.com/cke4/addon/image" target="_blank">documentation</a>) offers additional functionality, and may serve as a better control for some use cases. This tool will <span class="Emphasis">not </span>work with the QR&#160;Code system variable.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -302,10 +286,8 @@
                     <MadCap:keyword term="Scheduler" />Scheduler</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>
-                    <div class="Important">
-                        <img src="../Resources/Images/i.png" alt="Important" /> Use of the <span class="NamedControl">Scheduler </span>control has largely been deprecated in the product. BP&#160;Logix recommends using the <a href="Goals.htm">Goal object</a> for most scheduled operations that were formerly implemented via the <span class="NamedControl">Scheduler</span>.</div>
-                </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> Use of the <span class="NamedControl">Scheduler </span>control has largely been deprecated in the product. BP&#160;Logix recommends using the <a href="Goals.htm">Goal object</a> for most scheduled operations that were formerly implemented via the <span class="NamedControl">Scheduler</span>.</p>
                 <p>The <span class="NamedControl">Scheduler </span>control is part of the Process Director Scheduler Module (PDSM), which is used to launch processes (Workflows or Process Timelines) at pre-defined intervals within a specified window of time.&#160;&#160; </p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_5.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;" />
@@ -364,10 +346,8 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>The <span class="NamedControl">Email Data </span>control is used in a email notification template to specify the configuration of the email that is sent via task notifications. In addition to the <span class="ControlName">Name </span>property that is common to all controls, the properties for this control are configured on the interface tabs shown below.</p>
-                <p>
-                    <div class="Important">
-                        <img src="../Resources/Images/i2.png" alt="Note" /> For users of Process Director v5.27 and higher, Process Director enables the use of address strings with a Display Name component (e.g. "Test User &lt;test@example.com&gt;").</div>
-                </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> For users of Process Director v5.27 and higher, Process Director enables the use of address strings with a Display Name component (e.g. "Test User &lt;test@example.com&gt;").</p>
                 <h5>Email&#160;Data Control Tab</h5>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/EmailData.png" />

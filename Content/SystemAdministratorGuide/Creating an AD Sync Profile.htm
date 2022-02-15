@@ -200,14 +200,10 @@
             </p>
         </p>
         <p>For example, enter this command in the “Run” dialog box to schedule the synchronization:</p>
-        <p>
-            <div class="CodeBase">"PATH\bputil.exe" SU "http://localhost/WD/admin/ad_sync.aspx?ads=Profile_Name"</div>
-        </p>
+        <p class="CodeBase">"PATH\bputil.exe" SU "http://localhost/WD/admin/ad_sync.aspx?ads=Profile_Name"</p>
         <p>where PATH is the installation directory for Process Director (e.g. c:\Program Files\BP Logix\Process Director\). Enter the appropriate credentials in the Windows Scheduler when prompted. Use the “Schedule” tab to set the times to run the command. Consult the Microsoft help for more information on this utility.</p>
-        <p>
-            <div class="Important">
-                <img src="../Resources/Images/i.png" alt="Important" /> You must enclose the URL to ad_sync.asp in double quotes.</div>
-        </p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> You must enclose the URL to ad_sync.asp in double quotes.</p>
         <h5>User Synchronization</h5>
         <p>AD users will be created in the Process Director database when synchronization is performed and when the user logs in. The user ID, display name, email address and organization hierarchy will be kept in sync. If a user is renamed in AD it will be reflected in the Process Director database during a login or a synchronization operation. If a user is deleted in AD, the user will be disabled in the Process Director database. It is recommend that the user ID be left as disabled instead of deleting it so that the user history is maintained (e.g. processes they participated in, documents they modified, etc.).</p>
         <h5>Group Synchronization</h5>
@@ -219,10 +215,8 @@
             <img src="../Resources/Images/Training/Administrator/SyncLog.png" />
         </p>
         <p>This link opens a searchable log page to view all of the log events generated during a synchronization. </p>
-        <p>
-            <div class="Important">
-                <img src="../Resources/Images/i.png" alt="Important" /> Please be aware that larger organizations may have—depending on the size and frequency of the synchronizations—a huge number of log entries, which can return a massive amount of data and degrade system performance. The number of records returned, however, can be restricted by setting the <a href="../DevelopersGuide/Customization File Administration.htm#nMaxADSyncLogEvents">nMaxADSyncLogEvents</a> and <a href="../DevelopersGuide/Customization File Administration.htm#fKeepADSyncInfoLogs">fKeepADSyncInfoLogs</a> custom variables.</div>
-        </p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> Please be aware that larger organizations may have—depending on the size and frequency of the synchronizations—a huge number of log entries, which can return a massive amount of data and degrade system performance. The number of records returned, however, can be restricted by setting the <a href="../DevelopersGuide/Customization File Administration.htm#nMaxADSyncLogEvents">nMaxADSyncLogEvents</a> and <a href="../DevelopersGuide/Customization File Administration.htm#fKeepADSyncInfoLogs">fKeepADSyncInfoLogs</a> custom variables.</p>
         <p>
             <img src="../Resources/Images/Training/Administrator/SyncLog1.png" />
         </p>
@@ -249,10 +243,8 @@
         </ul>
         <p>In such cases you may want to reassociate the same Process Director user with the changed AD Account, so that you can maintain continuity with the Process Director user's different profiles or AD&#160;Accounts.</p>
         <p>In such cases, the solution we would recommend is creating an admin form that allows a user ID and new AD GUID or Profile ID to be entered and have it update the tblUser database table. This form would  update the Process Director sExternalGUID and/or oADID fields in the table tblUser within the Process Director database for the affected user.  The form can save the original GUIDs from tblUser in the form instance, just in case there was a mistake made. Also, that would provide an audit trail of changes. You can then delete the new user from Process Director.</p>
-        <p>
-            <div class="Important">
-                <img src="../Resources/Images/i.png" alt="Important" /> This is an advanced solution, so you should use due caution in implementing it. We <i style="font-weight: bold;">very strongly</i> advise you to contact us for Direct Assistance in creating this solution unless you are <span class="Emphasis">absolutely </span>sure you know how to implement it.</div>
-        </p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> This is an advanced solution, so you should use due caution in implementing it. We <i style="font-weight: bold;">very strongly</i> advise you to contact us for Direct Assistance in creating this solution unless you are <span class="Emphasis">absolutely </span>sure you know how to implement it.</p>
         <h2>Continue</h2>
         <p>Continue to the documentation for the <a href="User Administration.htm#_Toc421094523">User Perms</a> and <a href="User Administration.htm#UserReferences">User References</a> pages, both of which are included in the main User Administration topic.</p>
     </body>

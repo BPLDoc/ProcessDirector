@@ -14,10 +14,8 @@
         <p><code>X-XSS-Protection: 1; mode=block</code>
         </p>
         <p>When the browser detects a cross-scripting attempt, it will stop rendering the page completely, rather than attempting to sanitize the attack and render the page.</p>
-        <p>
-            <div class="Important">
-                <img src="../Resources/Images/i.png" alt="Important" /> The Firefox browser does <b>not</b> support cross-site scripting protection via the XSS filter.</div>
-        </p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> The Firefox browser does <b>not</b> support cross-site scripting protection via the XSS filter.</p>
         <p>Starting with Process Director v3.78,  Cross-Site Request Forgery (CSRF) protection is enabled by setting the <a href="../DevelopersGuide/Customization File Misc.htm#fEnableReferrerProtection">fEnableReferrerProtection custom variable</a>. When set to "true," this variable enables Process Director to screen for CSRF by ensuring that the HTTP Referrer header is valid.</p>
         <h2><a name="HSTS"></a>HTTP Strict Transport Security <a href="#HSTS" class="anchor">#</a></h2>
         <p>For Process Director v4.54 and higher, HTTP Strict Transport Security (HSTS) has been implemented to protect against "man in the middle" attackes, like protocol downgrade or cookie hijacking attacks. The HSTS setting is sent to the browser via an HTTPS response header field named "Strict-Transport-Security", and specifies a time period during which the browser can only access the server via a secure transport layer.</p>
@@ -226,19 +224,15 @@
         </p>
         <p>Checking the Encrypted Field check box will cause Process Director to save the field value in an encrypted format in the database. You may wish to consider this for fields that contain passwords, PII, HIPAA, or other sensitive data. Keep in mind, however, that you may not be able to search for data stored in encrypted form.</p>
         <h2><a name="TLS"></a>TLS <a href="#TLS" class="anchor">#</a></h2>
-        <p>
-            <div class="important">
-                <img src="../Resources/Images/i.png" alt="Important" /> The BP&#160;Logix plugin is not necessary for installations that do not use the legacy Word Form Builder.</div>
-        </p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> The BP&#160;Logix plugin is not necessary for installations that do not use the legacy Word Form Builder.</p>
         <p>By default, the BP Logix form plugin defaults to using TLS 1.0, but it can use TLS 1.1 and TLS 1.2 when configured to do so. If a Process Director web site is requires a certain level of TLS to connect, the older versions of TLS have to be disabled where the BP Logix plugin is installed. </p>
         <p>To do this open the windows registry and create a “DWORD (32-bit) Value” named “SecurityProtocol” in this path key:</p>
         <p><code>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\BP Logix\Plugin]</code>
         </p>
         <p>Set the value to <code>00000f00 </code>(3840 decimal) to disable TLS 1.0</p>
         <p>Set the value to <code>00000c00 </code>(3072 decimal) to disable both TLS 1.0 and TLS 1.1</p>
-        <p>
-            <div class="Important">
-                <img src="../Resources/Images/i2.png" alt="Note" /> Setting these values may cause a problem connecting to a Process Director web site that only supports TLS 1.0 or TLS 1.1.</div>
-        </p>
+        <p class="Important">
+            <img src="../Resources/Images/i2.png" alt="Note" /> Setting these values may cause a problem connecting to a Process Director web site that only supports TLS 1.0 or TLS 1.1.</p>
     </body>
 </html>

@@ -9,18 +9,14 @@
             <MadCap:concept term="System Administration" /><a name="_Toc421094543"></a>Load Balancing, Standby, and Rendering Options</h1>
         <p>Customers can license load balancing, rendering servers, and hot standby systems as installation options.</p>
         <p>Process Director installations that use multiple servers can implement load balancing between machines to ensure that processing is evenly distributed across all machines in the installation. This prevents one machine from being overloaded with processing tasks while the other machines sit idle.  When configuring Process Director to run in a load balanced environment, see the settings below.</p>
-        <p>
-            <div class="Important">
-                <img src="../Resources/Images/i.png" alt="Important" /> Each load balanced system must be licensed separately, and you will be given a unique license key for each load balanced system that will be used on the register page.</div>
-        </p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> Each load balanced system must be licensed separately, and you will be given a unique license key for each load balanced system that will be used on the register page.</p>
         <p>The <span class="KeyTerms">hot standby</span> is a redundant method in which one system runs simultaneously with an identical primary Process Director system. Both systems have identical data and either point to the same database, or point to a replicated database. A hot standby is also known as hot spare. In the hot standby configuration, the backup system typically only processes traffic when the primary system goes down.  This redirection of traffic to the backup server is controlled by the customer, who may use specialty devices to detect the loss of the primary server and automatically redirect traffic to the hot standby.  In a hot standby configuration, ensure that any changes that are made to the configuration files on the local server are made on all systems. This includes the following configuration that is referenced in the <a href="Backups.htm">backup procedures</a> topic in this document.</p>
         <p>The difference between a hot standby and a load balanced (LB) configuration is that a LB deployment requires a load balancing device that sits in front of the Process Director web applications. This device is responsible for sending traffic to one system or the other, based on each system's capabilities and configuration. In a load balanced configuration. all the servers must be pointing to the same database server. Replication should not be used except to create a hot standby of the database.</p>
         <h3><a name="_Toc421094544"></a>Custom Var Settings</h3>
         <p>Implementing load balancing requires that some specific settings be mirrored on all machines in the installation. All Process Director servers that participate in the load balancing scheme should have the following settings made in the PreSetSystemVars() function in the Custom Vars file on each machine.</p>
-        <p>
-            <div class="CodeBase"><span class="ControlName">// Record cache</span>
-                <br />tbl.tblWfInstance.StaticCache.Enabled = false;<br />tbl.tblWfStepInst.StaticCache.Enabled = false;<br />tbl.tblWfStepUserInst.StaticCache.Enabled = false;<br />tbl.tblWfStepNotifyInst.StaticCache.Enabled = false;<br />tbl.tblObject.StaticCache.Enabled = false;<br />tbl.tblDocument.StaticCache.Enabled = false;<br />tbl.tblDocumentOnly.StaticCache.Enabled = false;<br />tbl.tblContent.StaticCache.Enabled = false;<br /><br /><span class="ControlName">// Read-only cache</span><br />tbl.tblWfInstance.StaticCache.EnabledDirtyRead = true;<br />tbl.tblWfStepInst.StaticCache.EnabledDirtyRead = true;<br />tbl.tblWfStepUserInst.StaticCache.EnabledDirtyRead = true;<br />tbl.tblWfStepNotifyInst.StaticCache.EnabledDirtyRead = true;<br />tbl.tblObject.StaticCache.EnabledDirtyRead = true;<br />tbl.tblDocument.StaticCache.EnabledDirtyRead = true;<br />tbl.tblContent.StaticCache.EnabledDirtyRead = true;<br />tbl.tblDocumentOnly.StaticCache.EnabledDirtyRead = false;</div>
-        </p>
+        <p class="CodeBase"><span class="ControlName">// Record cache</span>
+            <br />tbl.tblWfInstance.StaticCache.Enabled = false;<br />tbl.tblWfStepInst.StaticCache.Enabled = false;<br />tbl.tblWfStepUserInst.StaticCache.Enabled = false;<br />tbl.tblWfStepNotifyInst.StaticCache.Enabled = false;<br />tbl.tblObject.StaticCache.Enabled = false;<br />tbl.tblDocument.StaticCache.Enabled = false;<br />tbl.tblDocumentOnly.StaticCache.Enabled = false;<br />tbl.tblContent.StaticCache.Enabled = false;<br /><br /><span class="ControlName">// Read-only cache</span><br />tbl.tblWfInstance.StaticCache.EnabledDirtyRead = true;<br />tbl.tblWfStepInst.StaticCache.EnabledDirtyRead = true;<br />tbl.tblWfStepUserInst.StaticCache.EnabledDirtyRead = true;<br />tbl.tblWfStepNotifyInst.StaticCache.EnabledDirtyRead = true;<br />tbl.tblObject.StaticCache.EnabledDirtyRead = true;<br />tbl.tblDocument.StaticCache.EnabledDirtyRead = true;<br />tbl.tblContent.StaticCache.EnabledDirtyRead = true;<br />tbl.tblDocumentOnly.StaticCache.EnabledDirtyRead = false;</p>
         <h3><a name="_Toc421094545"></a>Installation Settings</h3>
         <p>All Process Director servers that participate in the load balancing scheme should have the following settings implemented on the Installation Settings page of the IT Administration section.</p>
         <p>In the <span class="ControlName">Load Balanced URLs</span> field, enter the URL of each server that participates in the load balancing scheme, separating each URL with commas.</p>
@@ -48,11 +44,7 @@
                 <MadCap:dropDownHotspot>Example</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <div class="CodeBase">
-                    <p>
-                        <div class="codebase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.BaseURLFromRenderingServer = "http://productionserver.com";<br />}</div>
-                    </p>
-                </div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.BaseURLFromRenderingServer = "http://productionserver.com";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <p>Next, on the production server, set the <a href="../DevelopersGuide/Customization File Reporting.htm#ReportRemoteURL">ReportRemoteURL</a> system variable to the base URL for the Rendering Server.</p>
@@ -61,11 +53,7 @@
                 <MadCap:dropDownHotspot>Example</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <div class="CodeBase">
-                    <p>
-                        <div class="codebase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.ReportRemoteURL = "http://renderingserver.com";<br />}</div>
-                    </p>
-                </div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.ReportRemoteURL = "http://renderingserver.com";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <p>Once the appropriate variables have been set on each server, the rendering server will provide the processing for rendering operations.</p>

@@ -8,10 +8,8 @@
             <MadCap:concept term="Implementation" />
             <MadCap:keyword term="Windows Scheduler;Activity Check" /><a name="WindowsScheduler"></a>Using the Microsoft <MadCap:keyword term="Windows Scheduler;Utilities" />Windows Scheduler</h1>
         <p>To schedule any Process Director task (e.g. an import task) using the Microsoft Windows Scheduled Tasks utility, follow one of the procedures below. One of the most common uses of the Windows Scheduler is <a href="../SystemAdministratorGuide/Activity Check.htm">running the activity check page</a> periodically.</p>
-        <p>
-            <div class="important">
-                <img src="../Resources/Images/i.png" alt="Important" /> For most use cases that involve activities such as starting processes, or other internal Process Director actions, scheduled activities should be implemented through the use of the Goal object, rather than the Windows Scheduler.</div>
-        </p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> For most use cases that involve activities such as starting processes, or other internal Process Director actions, scheduled activities should be implemented through the use of the Goal object, rather than the Windows Scheduler.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Scheduled Tasks Utility (Windows 2008 and earlier)</MadCap:dropDownHotspot>
@@ -19,9 +17,7 @@
             <MadCap:dropDownBody>
                 <p>Open the Windows Start &gt; All Programs &gt; Accessories &gt; System Tools &gt; Scheduled Tasks menu item. This will display the Windows Scheduler. Click on the “Add a Scheduled Task” item and browse for the application to run. Go to the Process Director install directory and choose the program (e.g. bpImport.exe). Then continue with the scheduler indicating that it should run every day. When prompted for user credentials, ensure you enter a user that will not have the password change occur too often, because any change to this password will prevent the scheduled task from running. You can optionally create a new user account to run this task under (ensure the account you choose has the appropriate permissions by logging in as that user and running the bpImport.exe).</p>
                 <p>Once the task has been created, open the advanced properties of the item to configure the task. Change the Run input box to include the appropriate parameters to the command. </p>
-                <p>
-                    <div class="CodeBase">"c:\Program Files\BP Logix\Process Director\bpImport.exe" –w "http://localhost" –u "user1" –d "m:\My Docs" --delete</div>
-                </p>
+                <p class="CodeBase">"c:\Program Files\BP Logix\Process Director\bpImport.exe" –w "http://localhost" –u "user1" –d "m:\My Docs" --delete</p>
                 <p>The following dialog is displayed when the properties of the task are viewed. This is also where the Windows user account that this task is run as can be changed.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/Using the bpImportEmail Utility.png" style="visibility: visible;mso-wrap-style: square;width: 316px;height: 346px;" />
@@ -30,10 +26,8 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/Using the bpImportEmail Utility_1.png" style="visibility: visible;mso-wrap-style: square;width: 494px;height: 333px;" />
                 </p>
-                <p>
-                    <div class="Important">
-                        <img src="../Resources/Images/i2.png" /> When running the Process Director import utilities from the Windows scheduler, any errors will be written to a file named bpU.log in same the directory where the bpImport.exe exists.</div>
-                </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" /> When running the Process Director import utilities from the Windows scheduler, any errors will be written to a file named bpU.log in same the directory where the bpImport.exe exists.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -41,40 +35,38 @@
                 <MadCap:dropDownHotspot>Task Scheduler (Windows 2013 and Later)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>To open the Task Scheduler, click the Start Button, then type "Task Scheduler" in the search box. The utility will appear in the Start menu results. Click on the Task Scheduler program item.</p>
+                <p>To open the Task Scheduler, click the Start Button, then type "Task Scheduler" in the search box. The utility will appear in the Start menu results. Click on the <span class="ControlName">Task Scheduler</span> program item.</p>
                 <p>
                     <img src="../Resources/Images/Capture192.png" />
                 </p>
-                <p>From the Actions pane on the right side of the Task Scheduler window, click the Create Task item to open the Create Task dialog box.</p>
+                <p>From the <span class="UIElement">Actions </span>pane on the right side of the <span class="ControlName">Task Scheduler</span> window, click the <span class="UIElement">Create Task</span> item to open the <span class="ControlName">Create Task</span> dialog box.</p>
                 <p>
                     <img src="../Resources/Images/Capture193.png" />
                 </p>
-                <p>In the General tab of the Create Task dialog box, enter the Name of the task, e.g., "Run BP&#160;Import", then set the appropriate security options.</p>
+                <p>In the <span class="UIElement">General </span>tab of the <span class="ControlName">Create Task </span>dialog box, enter the <span class="ControlName">Name </span>of the task, e.g., "Run BP&#160;Import", then set the appropriate security options.</p>
                 <p>
                     <img src="../Resources/Images/Capture194.png" />
                 </p>
-                <p>To create the schedule for the task, you will need to add a trigger, so select the Trigger tab, then click the New button.</p>
+                <p>To create the schedule for the task, you will need to add a trigger, so select the <span class="UIElement">Trigger </span>tab, then click the <span class="UIElement">New </span>button.</p>
                 <p>
                     <img src="../Resources/Images/Capture195.png" />
                 </p>
-                <p>Clicking the New Button will open a New Trigger dialog box from which you can set the tasks schedule. In the example below, the trigger is set to run the task every 2 days at 10:30 PM.</p>
+                <p>Clicking the <span class="UIElement">New </span>button will open a <span class="ControlName">New Trigger</span> dialog box from which you can set the tasks schedule. In the example below, the trigger is set to run the task every 2 days at 10:30 PM.</p>
                 <p>
                     <img src="../Resources/Images/Capture196.png" />
                 </p>
-                <p>Click the OK button to save and close your trigger configuration, then click the Actions tab to set the task action. In the Actions tab, click the New button to open the New Action dialog box, from which you can create the action for the task, i.e., to run the bpImport task.</p>
+                <p>Click the <span class="UIElement">OK </span>button to save and close your trigger configuration, then click the <span class="UIElement">Actions </span>tab to set the task action. In the <span class="UIElement">Actions </span>tab, click the <span class="UIElement">New </span>button to open the <span class="ControlName">New Action</span> dialog box, from which you can create the action for the task, i.e., to run the bpImport task.</p>
                 <p>
                     <img src="../Resources/Images/Capture197.png" />
                 </p>
-                <p>In the New Action dialog box, select "Start a Program" from the Action dropdown, then browse to select the bpImport task.</p>
+                <p>In the <span class="ControlName">New Action</span> dialog box, select "Start a Program" from the <span class="ControlName">Action </span>dropdown, then browse to select the bpImport task.</p>
                 <p>
                     <img src="../Resources/Images/Capture198.png" />
                 </p>
-                <p>You can add the additional arguments in the Add Arguments box, e.g., <code>–w "http://localhost" –u "user1" –d "m:\My Docs" --delete</code>, then click the OK button to save and close the action.</p>
-                <p>To finish creating the task, click the Create Task dialog box's OK button.</p>
-                <p>
-                    <div class="Important">
-                        <img src="../Resources/Images/i2.png" /> When running the Process Director import utilities from the Windows scheduler, any errors will be written to a file named bpU.log in same the directory where the bpImport.exe exists.</div>
-                </p>
+                <p>You can add the additional arguments in the <span class="ControlName">Add Arguments</span> box, e.g., <code>–w "http://localhost" –u "user1" –d "m:\My Docs" --delete</code>, then click the <span class="UIElement">OK </span>button to save and close the action.</p>
+                <p>To finish creating the task, click the <span class="ControlName">Create Task</span> dialog box's <span class="UIElement">OK </span>button.</p>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" /> When running the Process Director import utilities from the Windows scheduler, any errors will be written to a file named bpU.log in same the directory where the bpImport.exe exists.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

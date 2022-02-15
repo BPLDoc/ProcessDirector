@@ -336,8 +336,8 @@
                     <MadCap:keyword term="Scheduler" />Scheduler</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> Use of the Scheduler module has largely been deprecated in the product. BP&#160;Logix recommends using the Goal object for scheduled most operations that were formerly implemented via the Scheduler Module.</div>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> Use of the Scheduler module has largely been deprecated in the product. BP&#160;Logix recommends using the Goal object for scheduled most operations that were formerly implemented via the Scheduler Module.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_24.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
@@ -366,26 +366,22 @@
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_25.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <p>The HTML Code control allows you to insert an HTML code snippet into the Form definition. You can include system variables in the code snippet, and Process Director will parse them properly. The control has a character limit of 5,500 characters, so if you have a lengthy HTML snippet, you should break it up across multiple HTML controls to ensure that you don't exceed the character limit.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> If your inserted HTML includes { or } characters, you must leave the control's <span class="ControlName">Name </span>property blank. Otherwise the "{" and "}" characters will be interpreted as System Variables.</div>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> If your inserted HTML includes { or } characters, you must leave the control's <span class="ControlName">Name </span>property blank. Otherwise the "{" and "}" characters will be interpreted as System Variables.</p>
                 <h5>JavaScript</h5>
                 <p>In addition to normal HTML, you can include JavaScript. So, to send an alert that greets the user, you could say:</p>
-                <div>
-                    <div class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;Alert(“Hello {CURR_USER}”);<br />&lt;/script&gt;</div>
-                </div>
+                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;Alert(“Hello {CURR_USER}”);<br />&lt;/script&gt;</p>
                 <p>If you create a javascript function called “bpUserJavaScript” and put it on the form inside an HTML control - it will run on the initial Form Load and all Postback events, enabling you to insert JavaScript into these events. </p>
-                <div class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">//Script code for Load and Postback goes here.</span><br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</div>
+                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">//Script code for Load and Postback goes here.</span><br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
                 <p>This feature enables you to insert complicated client-side JavaScript that sets a control's state on Postback. In the example below, a notional Form has a <span class="NamedControl">Checkbox </span>control that is set as en event field to fire the Postback. On Postback, the bpUserJavaScript function runs to control the state of the <span class="NamedControl">Checkbox </span>.</p>
-                <div class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;var SaveClick;<br /><br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick = CurrentForm.FormControls["CheckBox2"].onclick;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].onclick = NewClick;<br />&#160;&#160;&#160;&#160;}<br /><br />&#160;&#160;&#160;&#160;function NewClick()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (confirm("Are you sure?"))<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (typeof(SaveClick) != "undefined" &amp;&amp; SaveClick)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick();<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;else<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].checked = <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;!CurrentForm.FormControls["CheckBox2"].checked;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</div>
+                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;var SaveClick;<br /><br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick = CurrentForm.FormControls["CheckBox2"].onclick;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].onclick = NewClick;<br />&#160;&#160;&#160;&#160;}<br /><br />&#160;&#160;&#160;&#160;function NewClick()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (confirm("Are you sure?"))<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (typeof(SaveClick) != "undefined" &amp;&amp; SaveClick)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick();<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;else<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].checked = <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;!CurrentForm.FormControls["CheckBox2"].checked;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
                 <h5>Server Side Controls</h5>
                 <p>You can also place ASP.NET server –side controls in this tag. For example:</p>
-                <div class="CodeBase">&lt;asp:TextBox runat=”server” ID=”bpLogixTextBox” /&gt;</div>
+                <p class="CodeBase">&lt;asp:TextBox runat=”server” ID=”bpLogixTextBox” /&gt;</p>
                 <p>Server-side ASP.NET controls also act as normal BP Logix form fields, allowing you to reference them with System Variables and through Process Director. You can place an HTML control on a Form, leave the Name property blank, then place the ASP.NET&#160;control markup in the HTMLString Property. Entering a Name for the HTML control will cause Process Director to treat it like a Process Director Control and override the ASP.NET control. Leaving the Name property blank will cause Process Director to take the HTML&#160;markup for the ASP.NET control, and display the ASP.NET control in the Form. By wrapping a native ASP.NET control in an unnamed HTML control, Process Director supports the use of any native ASP.NET control on a Form.</p>
                 <p>You can stylize your HTML with CSS, either in the tag you want to stylize or in a separate &lt;style&gt; tag.</p>
-                <div>
-                    <div class="CodeBase"><span class="ControlName">&lt;!-- You can do this: --&gt;</span>
-                        <br />&lt;p style="text-align: center;"&gt;Text&lt;/p&gt;<br /><br /><span class="ControlName">&lt;!-- Or this: --&gt;</span><br />&lt;style type="text/css"&gt;<br />&#160;&#160;&#160;&#160;p{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;text-align: center;<br />&#160;&#160;&#160;&#160;}<br />&lt;/style&gt;</div>
-                </div>
+                <p class="CodeBase"><span class="ControlName">&lt;!-- You can do this: --&gt;</span>
+                    <br />&lt;p style="text-align: center;"&gt;Text&lt;/p&gt;<br /><br /><span class="ControlName">&lt;!-- Or this: --&gt;</span><br />&lt;style type="text/css"&gt;<br />&#160;&#160;&#160;&#160;p{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;text-align: center;<br />&#160;&#160;&#160;&#160;}<br />&lt;/style&gt;</p>
                 <p>To use the ASP.NET controls, you must have Process Director v3.5 or higher.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -468,13 +464,13 @@
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_33.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <h5>Syntax (Vertical)</h5>
-                <div class="CodeBase">{RadioList:radio_list8, RepeatDirection=Vertical, item="Item One", item="Item 2", item="The 3rd Item"}</div>
+                <p class="CodeBase">{RadioList:radio_list8, RepeatDirection=Vertical, item="Item One", item="Item 2", item="The 3rd Item"}</p>
                 <h6>Run-Time Appearance</h6>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_34.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <h5>Syntax (Diferent Display Text and Value)</h5>
-                <div class="CodeBase">{RadioList:radio_list8, RepeatDirection=Vertical, item="Item One":1, item="Item 2":2, item="The 3rd Item":3}</div>
+                <p class="CodeBase">{RadioList:radio_list8, RepeatDirection=Vertical, item="Item One":1, item="Item 2":2, item="The 3rd Item":3}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

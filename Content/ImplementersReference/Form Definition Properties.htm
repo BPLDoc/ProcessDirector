@@ -187,8 +187,8 @@
             <MadCap:dropDownBody>
                 <p>Selecting this option will display only the text in disabled fields, rather than displaying the actual control. The value in the control will be output to the Form as simple text, as if the control did not exist.</p>
                 <p>
-                    <div class="Important">
-                        <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix recommends that you use this setting.</div>
+                    <p class="Important">
+                        <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix recommends that you use this setting.</p>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -252,9 +252,7 @@
             <li>Error</li>
         </ul>
         <p>Additionally, the Additional Form Body CSS Styling property will accept CSS Stylesheet Class syntax that you can apply to any element on the Form. You would simply enter the CSS styling in the same way you would in a CSS stylesheet, e.g.:</p>
-        <p>
-            <div class="CodeBase">body<br />{<br />&#160;&#160;&#160;&#160;color: #FF0000;<br />&#160;&#160;&#160;&#160;font-family:&#160;Arial, Geneva, Helvetica, sans-serif;<br />}</div>
-        </p>
+        <p class="CodeBase">body<br />{<br />&#160;&#160;&#160;&#160;color: #FF0000;<br />&#160;&#160;&#160;&#160;font-family:&#160;Arial, Geneva, Helvetica, sans-serif;<br />}</p>
         <p>For Process Director v5.31 and higher, a custom variable, <a href="../DevelopersGuide/Customization File Administration.htm#EnableFormFieldDownload">EnableFormFieldDownload</a>, will  display a link at the bottom of this tab labeled Download Field List, to enable users to download an Excel Spreasheet containing the list of fields. This feature is primarily relevant to the use of the separately-licensed <a href="Mobile App.htm">Mobile Application&#160;Component</a>.</p>
         <h2><a name="EditTab"></a>Edit Tab <a href="#EditTab" class="anchor">#</a></h2>
         <p>Clicking on the <span class="UIElement">Edit </span>tab will, depending on the format of the form template, open one of two different screens. Form templates created in Word or ASCX format will present the following screen. Use of this screen is documented in the <a href="FormBuilder.htm">Word Form Builder topic</a>.</p>
@@ -404,14 +402,10 @@
                 <ol MadCap:continue="true">
                     <li>Click the <span class="UIElement">OK </span>button to confirm the change, close the dialog box, and update all previous Form Instances to the new data type for the field.</li>
                 </ol>
-                <p>
-                    <div class="Important">
-                        <img src="../Resources/Images/i2.png" alt="Note" /> An additional debugging option exists to convert existing form data from a text field into a number or date field, as appropriate. This is available in the troubleshooting tab in the IT Admin while in "debug mode" and is called "Update All Form Data to match Controls". This will fix an issue that arises when trying to generate SQL&#160;Views that include text fields that stored integer or date data. Earlier version of Process Director stored this data as a string. This option will transfer the data from a string field in the database into the appropriate number or date fields. This does not affect the usual operation of Process Director, and is relevant only when trying to include these fields in a SQL View.</div>
-                </p>
-                <p>
-                    <div class="Important">
-                        <img src="../Resources/Images/i2.png" alt="Note" /> For v5.32 and higher, an additional debugging option, which will appear next to form fields that are setting meta data attributes, will cause the system to update the category and attribute data on all old form instances using the form data on the instance.</div>
-                </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> An additional debugging option exists to convert existing form data from a text field into a number or date field, as appropriate. This is available in the troubleshooting tab in the IT Admin while in "debug mode" and is called "Update All Form Data to match Controls". This will fix an issue that arises when trying to generate SQL&#160;Views that include text fields that stored integer or date data. Earlier version of Process Director stored this data as a string. This option will transfer the data from a string field in the database into the appropriate number or date fields. This does not affect the usual operation of Process Director, and is relevant only when trying to include these fields in a SQL View.</p>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> For v5.32 and higher, an additional debugging option, which will appear next to form fields that are setting meta data attributes, will cause the system to update the category and attribute data on all old form instances using the form data on the instance.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -492,8 +486,8 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eForms_28.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> Validation and required fields work together in an important way, because Process Director will only validate a field if it contains a value. Process Director will <b>not</b> validate a blank field,  even a field that you want specifically formatted using a Regular Expression. Setting a field as required tells Process Director that the field must contain a value, and will impose validation on a blank field. <i>The fact that you specify a data type or regular expression for a field does not indicate to Process Director that the field must contain a value.</i> So, if you want to ensure that Process Director validates a field, even if it's blank, then the field must be a required field.</div>
+                <p class="Important">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> Validation and required fields work together in an important way, because Process Director will only validate a field if it contains a value. Process Director will <b>not</b> validate a blank field,  even a field that you want specifically formatted using a Regular Expression. Setting a field as required tells Process Director that the field must contain a value, and will impose validation on a blank field. <i>The fact that you specify a data type or regular expression for a field does not indicate to Process Director that the field must contain a value.</i> So, if you want to ensure that Process Director validates a field, even if it's blank, then the field must be a required field.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="CustomTaskEventMappingTab"></a>Custom Task Event Mapping Tab <a href="#CustomTaskEventMappingTab" class="anchor">#</a></h2>
@@ -946,10 +940,8 @@
                 <p>When setting the value, you can specify the row number if the field value to be set is contained in an array. If you do not specify an array row when setting data, Process Director will handle the <span class="UIElement">Set Form Data</span> action in different ways, depending on the data you are using to modify the array,</p>
                 <p>When using the <span class="UIElement">Set Form Data</span> tab with Business Value properties, the key thing to remember is that the default behavior when adding Business Value data to an existing array is to append new rows when a Row Number is not specified. In other words, if the array has two existing rows, then, when the event fires that retrieves Business Value data returns four rows, the array will expand to six rows when the four new rows are appended. If you wish to overwrite the existing array data, then the first thing you must do in the event is to set the array's value to "0", which will clear the array. The new data will then create the appropriate number of rows for the data returned. </p>
                 <p>It is possible to return data from multiple Business Values in the same event, and Process Director will concatenate the values from multiple Business Values into a single Array change.  Process Director will append the number of rows that corresponds to the largest number of results from any Business Value Property in the same Condition Set. With Business Value Properties that return different numbers of results, the Set Form Data will set no data in fields in the appended Array rows that have no corresponding result. In other words, if one Business Value property set returns five rows, and a second returns four rows, then Process Director will append five rows to the array, but the fifth row will have no value from the second Business Value.</p>
-                <p>
-                    <div class="Important">
-                        <img src="../Resources/Images/i.png" alt="Important" /> When returning data from two different business values, you have no way to ensure that the values from each Business Value corresponds with the data from other Business Values. In such a case, you are essentially retrieving two unrelated sets of data. So, if possible, you should retrieve data with multiple columns from a single Business Value.</div>
-                </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> When returning data from two different business values, you have no way to ensure that the values from each Business Value corresponds with the data from other Business Values. In such a case, you are essentially retrieving two unrelated sets of data. So, if possible, you should retrieve data with multiple columns from a single Business Value.</p>
                 <p>The behavior with any other type of System Variable is quite different from the Business Value behavior. Instead of appending new rows, the Set Form Data event will apply the new System variable value to each row that is currently in the array, <i>overwriting the existing data on every row with the new value</i>.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>

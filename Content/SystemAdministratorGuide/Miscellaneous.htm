@@ -49,21 +49,13 @@
                 </p>
                 <p>Why? Because the indexing lists the trailing number (1) in the first example in the ‘system’ Stop Word list, and so does <b style="font-style: italic;">not</b> include the trailing number as part of the search criterion in the first example.</p>
                 <p>To see what Stop Word list is used by tblObject, issue this SQL command:</p>
-                <p>
-                    <div class="CodeBase">SELECT<br />&#160;&#160;&#160;&#160;ft_c.name AS [Catalog],<br />&#160;&#160;&#160;&#160;s.name AS [Schema],<br />&#160;&#160;&#160;&#160;o.name AS [Table],<br />&#160;&#160;&#160;&#160;[StopList] =<br />&#160;&#160;&#160;&#160;CASE<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;WHEN ft_i.stoplist_id IS NULL THEN 'None'<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ELSE ISNULL(ft_sl.NAME, 'System')<br />&#160;&#160;&#160;&#160;END<br />FROM<br />&#160;&#160;&#160;&#160;sys.fulltext_indexes AS ft_i LEFT OUTER JOIN<br />&#160;&#160;&#160;&#160;sys.fulltext_stoplists AS ft_sl ON ft_sl.stoplist_id = ft_i.stoplist_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.fulltext_catalogs AS ft_c ON ft_c.fulltext_catalog_id = ft_i.fulltext_catalog_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.objects AS o ON o.object_id = ft_i.object_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.schemas AS s ON s.schema_id = o.schema_id</div>
-                </p>
+                <p class="CodeBase">SELECT<br />&#160;&#160;&#160;&#160;ft_c.name AS [Catalog],<br />&#160;&#160;&#160;&#160;s.name AS [Schema],<br />&#160;&#160;&#160;&#160;o.name AS [Table],<br />&#160;&#160;&#160;&#160;[StopList] =<br />&#160;&#160;&#160;&#160;CASE<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;WHEN ft_i.stoplist_id IS NULL THEN 'None'<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ELSE ISNULL(ft_sl.NAME, 'System')<br />&#160;&#160;&#160;&#160;END<br />FROM<br />&#160;&#160;&#160;&#160;sys.fulltext_indexes AS ft_i LEFT OUTER JOIN<br />&#160;&#160;&#160;&#160;sys.fulltext_stoplists AS ft_sl ON ft_sl.stoplist_id = ft_i.stoplist_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.fulltext_catalogs AS ft_c ON ft_c.fulltext_catalog_id = ft_i.fulltext_catalog_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.objects AS o ON o.object_id = ft_i.object_id INNER JOIN<br />&#160;&#160;&#160;&#160;sys.schemas AS s ON s.schema_id = o.schema_id</p>
                 <p>To see the list of all stop words for English:</p>
-                <p>
-                    <div class="CodeBase">SELECT * FROM sys.fulltext_system_stopwords WHERE language_id = 1033;</div>
-                </p>
+                <p class="CodeBase">SELECT * FROM sys.fulltext_system_stopwords WHERE language_id = 1033;</p>
                 <p>To turn off the use of stop words in SQL Server for tblObject:</p>
-                <p>
-                    <div class="CodeBase">ALTER FULLTEXT INDEX ON tblObject SET STOPLIST = OFF</div>
-                </p>
+                <p class="CodeBase">ALTER FULLTEXT INDEX ON tblObject SET STOPLIST = OFF</p>
                 <p>To use "system" stop words in SQL Server for tblObject:</p>
-                <p>
-                    <div class="CodeBase">ALTER FULLTEXT INDEX ON tblObject SET STOPLIST = SYSTEM</div>
-                </p>
+                <p class="CodeBase">ALTER FULLTEXT INDEX ON tblObject SET STOPLIST = SYSTEM</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -247,11 +239,11 @@
         <p>To recover from these errors, just reinstall Process Director to restore the Resources.resx file.</p>
         <h2><a name="WinLDAP"></a>Simultaneous Windows and LDAP&#160;Authentication <a href="#WinLDAP" class="anchor">#</a></h2>
         <p>You can configure a Process Director installation to have both Windows and LDAP authentication enabled at the same time. To enable this, you have to <b>enable</b> Windows and LDAP authentication, but <b>disable</b> Integrated Windows authentication and <b>disable</b> the function that automatically adds users after they initially authenticate through Windows or LDAP. To configure the system in this way, the following flags must be set in the PreSetSystemVars() method of the custom variable file.</p>
-        <div class="CodeBase">bp.Vars.fAuthTryAllAuthTypes = true;<br />bp.Vars.fAuthWindowsIntegrated = false;<br />bp.Vars.fAuthWindowsAutoAdd = false;<br />bp.Vars.fAuthLDAPAutoAdd = false;</div>
+        <p class="CodeBase">bp.Vars.fAuthTryAllAuthTypes = true;<br />bp.Vars.fAuthWindowsIntegrated = false;<br />bp.Vars.fAuthWindowsAutoAdd = false;<br />bp.Vars.fAuthLDAPAutoAdd = false;</p>
         <h2><a name="ForceTLS"></a>
             <MadCap:keyword term="TLS;Encryption" />Force TLS 1.2 on outgoing HTTP connections <a href="#ForceTLS" class="anchor">#</a></h2>
         <p>For Process Director v5.34 and higher, the default the SSL cipher used for <i>outgoing</i> web requests will use TLS 1.2 instead of 1.0 or 1.1, which have been deprecated for security reasons.  This can be changed back by setting this in the vars:</p>
-        <p><code>System.Net.ServicePointManager.SecurityProtocol = <b>System.Net.SecurityProtocolType.Ssl3 | System.Net.SecurityProtocolType.Tls</b>;</code>
+        <p class="CodeBase"><code>System.Net.ServicePointManager.SecurityProtocol = <b>System.Net.SecurityProtocolType.Ssl3 | System.Net.SecurityProtocolType.Tls</b>;</code>
         </p>
     </body>
 </html>
