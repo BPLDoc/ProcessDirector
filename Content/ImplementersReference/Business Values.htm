@@ -24,10 +24,10 @@
         </p>
         <p>The <span class="ControlName">SQL&#160;Command</span> for this Business Value retrieves records for active customers. If no "CustomerID" parameter is supplied, the command will simply pull every customer record. If the "CustomerID" parameter is supplied, Business Value will return only a single record. In other words, the same Business Value can return a single or scalar value based on the parameter.</p>
         <p>Next, the Business Value uses the database columns to create three properties: the Name, ID, and Type properties will all contain values extracted from the database, In addition, since the business rule automatically knows how many records have been returned by the SQL&#160;Command, the fourth property, Count, will contain the number of records returned.</p>
-        <p class="Important">
+        <p class="PDNote">
             <img src="../Resources/Images/i2.png" alt="Note" /> When a Business Value Property returns no data from a SQL command, it can still be used in a condition, because the value will be set to an empty string, allowing comparisons in the conditions to work correctly.</p>
         <p>Once we have created the Business Value, it's accessible by all other objects in Process Director. None of your business users or other implementers need to know anything about how the data is configured to use the business value, because the Business Value properties are available through the condition builder dropdowns. They merely need to select the properties they want, which means that, in most cases,  implementers no longer need to create a Custom Task to retrieve the data. They no longer need to know or care about the database schema or the SQL&#160;syntax to retrieve the data they want. This functionality greatly reduces the level of technical knowledge that business users and implementers need to conduct relatively sophisticated data retrieval operations. With Business Values, technical details about the data, and how to acquire it, is largely irrelevant to implementers. The only person who needs to have any sort of technical knowledge about the database is the creator of the Business Value itself.</p>
-        <p class="Important"> <img src="../Resources/Images/i2.png" /> Combined with the scheduling and process initiation available in the <a href="Goals.htm" target="_blank">Goals</a> feature, Process Director is a powerful workflow automation system, enabling automatic workflow initialization based on data from external systems.</p>
+        <p class="PDNote"> <img src="../Resources/Images/i2.png" /> Combined with the scheduling and process initiation available in the <a href="Goals.htm" target="_blank">Goals</a> feature, Process Director is a powerful workflow automation system, enabling automatic workflow initialization based on data from external systems.</p>
         <h2><a name="Mathematical"></a>Mathematical Operations <a href="#Mathematical" class="anchor">#</a></h2>
         <p>Another function available for business values is the ability to perform mathematical operations on a database or Knowledge View column. When retrieving any numeric column data, Process Director can perform the following calculations on the values:</p>
         <ul>
@@ -154,7 +154,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>The <span class="UIElement">Knowledge View Data Source</span> tab enables you to select a Knowledge View and apply a filter for returning data from a Knowledge View. </p>
-                <p class="Important">
+                <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> All Knowledge View columns are available to the Business Value, including those that are marked not to display in the Knowledge View Definition. Also, Knowledge Views that contain sorting criteria will be presented with the same sort order in the Business Value. For v5.32 and higher, a Knowledge View that uses folder navigation to filter the results can now be used as the data source for a Business Value to return all data, and ignore the folder navigation filter.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/BusinessValues4.png" />
@@ -253,7 +253,7 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/RESTBV.png" />
                 </p>
-                <p class="Important">
+                <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> Business Values also support JSON returns and JSONPath, as well.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -315,7 +315,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <p class="Important">
+                <p class="PDNote">
                     <img src="../Resources/Images/i2.png" /> The <span class="ControlName">Form Field</span> and <span class="ControlName">Form Instance</span> data types are only available for users of Process Director v5.12.02 and higher.</p>
                 <p>The properties returned can be  ordered by using the UP and Down arrow icons, and deleted by clicking the red "X" icon.</p>
                 <p>
@@ -336,7 +336,7 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/PatametersBV.png" />
                 </p>
-                <p class="Important">
+                <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> For Process Director v5.26 and higher, Parameters can also be used as column values in both the SQL statement, and the Parameter  as a Property Value. For instance, A SQL&#160;statement such as "<code>SELECT {$PARAMETER:column} from TABLENAME</code>" can be used to return a column for a Property that uses"{PARAMETER:column}" as the Property Value. Thus, the Parameter can supply the column name for both the SQL&#160;Statement and be used as the value of the Property itself. Please note that the Property Name must still be a static value. Similarly, System Variables may be used in the Property values for REST&#160;data sources. This enables users to build parameterized filter expressions that can be used to filter the JSONPath/XPath results, e.g.:<br /><code>$.components[?(@.classification &gt;= /Graded/I &amp;&amp; @.section = <b>{$PARM:section}</b>)].section</code></p>
                 <MadCap:dropDown>
                     <MadCap:dropDownHead>

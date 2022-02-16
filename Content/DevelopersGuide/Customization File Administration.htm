@@ -42,8 +42,8 @@
                 <p><code>SELECT * FROM Training_Vendor WHERE VendorName LIKE '%{<b>$</b>PARAMETER:Vendor}%'</code>
                 </p>
                 <p>The default value for this custom variable is "true". When set to "true", Process Director will issue a warning to the user that variables are not properly encoded, but <b style="font-style: italic;">will</b> allow them to save the configuration.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix recommends that you set this custom variable to "false", if possible. You may—indeed, probably—have existing Custom tasks or Business Values whose variable values are not properly encoded, so you should <b style="font-style: italic;">not</b> set this value to "false" until you have ensured that all of your existing Custom Tasks and Business Values use the proper encodings.</div>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix recommends that you set this custom variable to "false", if possible. You may—indeed, probably—have existing Custom tasks or Business Values whose variable values are not properly encoded, so you should <b style="font-style: italic;">not</b> set this value to "false" until you have ensured that all of your existing Custom Tasks and Business Values use the proper encodings.</p>
                 <h5>Example</h5>
                 <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Prevent saving CT&#160;or BV&#160;configurations that do not use SQL-safe encodings for variable values.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowUnencodedSysvarsinBV = false;<br />}</div>
             </MadCap:dropDownBody>
@@ -133,8 +133,8 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This variable, when set to "false" enables the <span class="NamedControl">Dropdown </span>control to properly display type-ahead functionality. The default value is "true".</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> This variable was previously used to enable Telerik themes for forms, but this functionality has been deprecated.</div>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> This variable was previously used to enable Telerik themes for forms, but this functionality has been deprecated.</p>
                 <h5>Example</h5>
                 <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Revert to unthemed operation, and enable<br />&#160;&#160;&#160;&#160;// dropdown type-ahead.</span><br />&#160;&#160;&#160;&#160;bp.Vars.EnableFormThemes = false;<br />}</div>
             </MadCap:dropDownBody>
@@ -168,8 +168,8 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This variable, when set to "false", will prevent the <a href="../SystemAdministratorGuide/Creating an AD Sync Profile.htm#SyncLogHistory">Active Directory Sync Log History</a> from from logging most events at the "info" level (i.e., it will only log warnings and errors). This should substantially reduce the number of logs in the tblLogs table in the database, but you may still want to clear out the old logs prior to setting this variable. You can do so by adjusting the <a href="#nImportLogSyncDays">nImportLogSyncDays</a> variable to 0, then running the global timer routines in the Troubleshooting window. Once complete, you can reset <a href="#nImportLogSyncDays">nImportLogSyncDays</a> to the desired value. This Variable can be used in conjunction with the <a href="#nMaxADSyncLogEvents">nMaxADSyncLogEvents</a> variable to control the length of AD&#160;synchronization audit logs. The default value for this variable is "true".</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> Prior to Process Director v5.3, clearing out the old logs requires resetting the nImportLogDays Custom Variable. The nImportLogDays was deprectaed in v5.3 and replaced with nImportLogSyncDays.</div>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> Prior to Process Director v5.3, clearing out the old logs requires resetting the nImportLogDays Custom Variable. The nImportLogDays was deprectaed in v5.3 and replaced with nImportLogSyncDays.</p>
                 <h5>Example</h5>
                 <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Prevent detailed AD&#160;Sync logging</span><br />&#160;&#160;&#160;&#160;Vars.fKeepADSyncInfoLogs = false;<br />}</div>
             </MadCap:dropDownBody>
@@ -181,8 +181,8 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This variable, when set to "true", will remove all saved form instances for a user that is deleted or disabled. The default value for this variable is "false". </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> Caution should be used when implementing this feature, as removing or disabling a user will delete all historical form data for the user.</div>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> Caution should be used when implementing this feature, as removing or disabling a user will delete all historical form data for the user.</p>
                 <h5>Example</h5>
                 <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Remove form instances for deleted/disabled users</span><br />&#160;&#160;&#160;&#160;bp.Vars.fRemoveSavedInstForOldUsers = true;<br />}</div>
             </MadCap:dropDownBody>
@@ -300,8 +300,8 @@
                     <MadCap:keyword term="nImportLogDays" /><a name="nImportLogDays"></a><a href="#nImportLogDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogDays</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> This Custom Variable has been deprecated in Process Director v5.3.</div>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> This Custom Variable has been deprecated in Process Director v5.3.</p>
                 <p>Process Director v4.55 and higher logs XML import events, goal evaluations, and Active Directory syncs by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
                 <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep logs for 45 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogDays = 45;<br />}</div>

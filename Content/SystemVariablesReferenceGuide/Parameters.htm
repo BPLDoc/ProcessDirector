@@ -36,8 +36,8 @@
                 <p><code>{ACTIVITY_NUM_TIMES_RUN:<b>"Activity Name"</b>}</code>
                 </p>
                 <p>...to ensure that the name is parsed properly. Activity names that do not contain spaces may be referenced without the quotation marks. </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> As a best practice, you may wish to consider using quotation marks any time you reference an object name in a system variable.</div>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> As a best practice, you may wish to consider using quotation marks any time you reference an object name in a system variable.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -131,8 +131,8 @@
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>Turns off the automatic HTML&#160;encoding for system variables used on a Form.</p>
-                                <div class="Important">
-                                    <img src="../Resources/Images/i.png" alt="Important" /> BP Logix does <b style="font-style: italic;">not</b> recommend the use of this encoding option.</div>
+                                <p class="Important">
+                                    <img src="../Resources/Images/i.png" alt="Important" /> BP Logix does <b style="font-style: italic;">not</b> recommend the use of this encoding option.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1" MadCap:conditions="">
@@ -161,8 +161,8 @@
                 <p>The combination of the ~ encode and the ESCAPE clause in the example will produce an encoded value of:</p>
                 <p><code>100/%</code>
                 </p>
-                <div class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> In order to reduce security issues, Process Director v4.5 and higher issues a warning for using non-encoded System Variables in the SQL Statements used by Business Values or Custom Tasks. A Custom Variable setting, <a href="../DevelopersGuide/Customization File Administration.htm#fAllowUnencodedSysvarsinBV">fAllowUnencodedSysvarsinBV</a>, will, when set to "false", prevent users from saving any object that has unencoded variables in a SQL&#160;statement.</div>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> In order to reduce security issues, Process Director v4.5 and higher issues a warning for using non-encoded System Variables in the SQL Statements used by Business Values or Custom Tasks. A Custom Variable setting, <a href="../DevelopersGuide/Customization File Administration.htm#fAllowUnencodedSysvarsinBV">fAllowUnencodedSysvarsinBV</a>, will, when set to "false", prevent users from saving any object that has unencoded variables in a SQL&#160;statement.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -322,8 +322,8 @@
                 <p><code>{FORM:<b>SomeFieldName</b>, digits=<b>Number</b>}</code>
                 </p>
                 <p>Adding the formatter <code>digits=n</code>, where "n" is the number of digits, will return the number formatted as an n-digit number. This Modifier will PAD the form field value with 0's, and it will not truncate. Example usage: A numeric form field using the Modifier<code> {FORM:fieldname, digits=3}</code> and that contains the value "23" will return "023".</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> For v5.23 or higher, this formatter is available for use for any system variable, and will unconditionally convert any value to digits. Passing a non-numeric value will result in a n-digit number of 0s.</div>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> For v5.23 or higher, this formatter is available for use for any system variable, and will unconditionally convert any value to digits. Passing a non-numeric value will result in a n-digit number of 0s.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -347,7 +347,7 @@
                     <li><b>FULLDAYS:</b>&#160;Adds the number of full, 24-hour days for a DateTime or Timestamp SysVar result.</li>
                     <li><b>OR NEAREST BUSINESS DAY: </b>This option instructs all date system variables to return the evaluated date if that date is a business day, and otherwise to return the previous or next business day, as directed. The time portion of the date value is unaffected, only the date portion is (potentially) modified. The syntax is <code>{DATETIME_VARIABLE, OrNearestBusinessDay=<b>Prev|Next</b>}</code>.</li>
                 </ul>
-                <div class="Important"> <img src="../Resources/Images/i2.png" /> The Types YEARS, MONTHS, DAYS, HOURS, and MINUTES use "calendar" elapsed times, which is to say that, if a time span crosses a calendar date, it counts as a full increment of the selected calendar Type (Day, Month, etc.). For example, a time span from 11:59 PM on Dec 31 to 12:01 AM on Jan 1 is only a two-minute time span, but it will be counted as 1 day in DAYS, 1 month in MONTHS, or 1 year in YEARS. Any time span which crosses a date will be counted as a full increment of the Type chosen.<br /><br />The Types FULLDAYS, FULLMONTHS, and FULLYEARS compare the time span to a pre-defined length of time. FULLDAYS returns 1 for every actual 24 hours elapsed, FULLMONTHS returns 1 for every 30.416 days, and FULLYEARS returns 1 for every 365 days. Using these Types, the time span from 11:59 PM on Dec 31 to 12:01 AM on Jan 1 would return 0 for all three types.</div>
+                <p class="PDNote"> <img src="../Resources/Images/i2.png" /> The Types YEARS, MONTHS, DAYS, HOURS, and MINUTES use "calendar" elapsed times, which is to say that, if a time span crosses a calendar date, it counts as a full increment of the selected calendar Type (Day, Month, etc.). For example, a time span from 11:59 PM on Dec 31 to 12:01 AM on Jan 1 is only a two-minute time span, but it will be counted as 1 day in DAYS, 1 month in MONTHS, or 1 year in YEARS. Any time span which crosses a date will be counted as a full increment of the Type chosen.<br /><br />The Types FULLDAYS, FULLMONTHS, and FULLYEARS compare the time span to a pre-defined length of time. FULLDAYS returns 1 for every actual 24 hours elapsed, FULLMONTHS returns 1 for every 30.416 days, and FULLYEARS returns 1 for every 365 days. Using these Types, the time span from 11:59 PM on Dec 31 to 12:01 AM on Jan 1 would return 0 for all three types.</p>
                 <h4>
                     <MadCap:keyword term="Format" />Format</h4>
                 <p>Datetime system variables also have a format Modifier that can be used to determine how the date and time are displayed. The format Modifier can be set to any combination of the following options:</p>
@@ -394,8 +394,8 @@
                 <p>The resulting Timespan returned from calculating the difference between these two dates would be "229.05:30:15 ", which is a duration of 229 days, 5 hours, 30 minutes, and 15 seconds.</p>
                 <h4>Format</h4>
                 <p>You can specify the format of Timespan system variables using the Format= option.&#160; The Format= option determines how the Timespan is displayed in text. The string specifying the format of a Timespan can have any text, and should also include at least one of the options below. Timespan formatters must be enclosed in square brackets, as shown below.</p>
-                <div class="Important">
-                    <img src="../Resources/Images/i2.png" /> For each option below, we will use the sample Timespan of "229.05:30:15" to calculate the sample values.</div>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" /> For each option below, we will use the sample Timespan of "229.05:30:15" to calculate the sample values.</p>
                 <ul>
                     <li><b>[d]:</b> the days portion of the timespan ( Sample value: 229).</li>
                     <li><b>[D]:</b> the duration of the timespan expressed in days, padded to two decimal places (Sample value: 229).</li>
