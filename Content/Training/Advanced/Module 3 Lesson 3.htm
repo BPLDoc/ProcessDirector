@@ -34,8 +34,8 @@
             <li>
                 <b>Dashboard:</b> A case Dashboard will display all of the objects associated with the case, such as Forms or Documents, usually via knowledge Views. The Dashboard will also provide a method to submit new Forms or otherwise begin new processes related to the Case, usually via navigation buttons added to the dashboard. A Case Dashboard displays only the objects related to a single case.</li>
         </ol>
-        <div class="Important">
-            <img src="../../Resources/Images/i2.png" alt="Note" /> The initial versions of Process Director that supported Case management (v3.82 - v4.01) used Workspaces to display Case folders/objects. This UI convention was superseded by the Dashboard object in v4.02 and higher, as the dashboard provides a more versatile method of presenting case objects. </div>
+        <p class="Important">
+            <img src="../../Resources/Images/i2.png" alt="Note" /> The initial versions of Process Director that supported Case management (v3.82 - v4.01) used Workspaces to display Case folders/objects. This UI convention was superseded by the Dashboard object in v4.02 and higher, as the dashboard provides a more versatile method of presenting case objects. </p>
         <p>For illustrative purposes, this topic will display elements from a simple, notional Case Management Application, with examples of how the various objects are configured to work with the Case. In our sample case, we will track an automobile insurance claim, and will link three different processes as part of that claim:</p>
         <ol>
             <li>
@@ -72,13 +72,11 @@
         <h2>Forms</h2>
         <p>With the Case Management feature, Form definitions have a property located in the <span class="ControlName">Options </span>section of the <span class="UIElement">Form Options</span> tab, called, <span class="ControlName">Case Definition to create an instance for (optional)</span>. When you set a Case definition for this property, the Form, when submitted, will create a new Case instance. All subsequent processes, Forms, etc. that are created in the context of the case will be linked to the Case instance.</p>
         <p>
-            <img src="../../Resources/Images/ImplementersReference/caseeformoptions.png">
-            </img>
+            <img src="../../Resources/Images/ImplementersReference/caseeformoptions.png" />
         </p>
         <p>The Case Management functionality also provides some new configuration options for Form fields. The field properties in a Form definition are enabled to use a Case property as a default value and/or to save the field value as a Case property.</p>
         <p>
-            <img src="../../Resources/Images/ImplementersReference/eFormFieldCaseProperty.png">
-            </img>
+            <img src="../../Resources/Images/ImplementersReference/eFormFieldCaseProperty.png" />
         </p>
         <p>The Auto Claim Form for our sample auto claims application uses case properties extensively. In our sample application, policyholder information containing the customer's contact and vehicle information are extracted from an external data source, and filled into the form automatically when the user enters a policy number.</p>
         <p>
@@ -103,27 +101,23 @@
         <h2>Knowledge Views</h2>
         <p>On the <span class="UIElement">Options </span>tab of a Knowledge View, you can associate a Case with Knowledge View by choosing the desired case from the <span class="ControlName">Case Definitions Associated with Knowledge View (optional)</span> property.</p>
         <p>
-            <img src="../../Resources/Images/ImplementersReference/casekview.png">
-            </img>
+            <img src="../../Resources/Images/ImplementersReference/casekview.png" />
         </p>
         <p>Next, in the <span class="UIElement">Advanced Options</span> tab of the Knowledge View definition, You can configure the Knowledge View to return Case instances. When you do so, clicking on a Case instance in the Knowledge View's results will open the case instance in the Case Dashboard you configure.</p>
         <p>
-            <img src="../../Resources/Images/ImplementersReference/casekviewreturns.png">
-            </img>
+            <img src="../../Resources/Images/ImplementersReference/casekviewreturns.png" />
         </p>
         <p>Finally, the Knowledge View's <span class="UIElement">Filter </span>tab is enabled to use Case properties as a Knowledge View filter.</p>
         <p>
-            <img src="../../Resources/Images/ImplementersReference/casekviewfilter2.png">
-            </img>
+            <img src="../../Resources/Images/ImplementersReference/casekviewfilter2.png" />
         </p>
         <p>Indeed, the Case properties automatically appear in the<span class="ControlName"> Choose System Variable</span> dialog box for use in any condition builder.</p>
         <p>
-            <img src="../../Resources/Images/ImplementersReference/casekviewfilter.png">
-            </img>
+            <img src="../../Resources/Images/ImplementersReference/casekviewfilter.png" />
         </p>
         <p>Because Case management requires the use of a Case Dashboard that shows you all of the information relevant to a specific case, you will need to create a number of Knowledge Views that will appear in the Case Dashboard portlets. In the sample Case Management Project, the <span class="ProcessDirectorObject">Claims </span>Dashboard uses two Knowledge Views, <span class="ProcessDirectorObject">Case Reports</span> and <span class="ProcessDirectorObject">Case Estimates</span>, to display all of the Adjuster's Reports and Repair Estimates, respectively, that are associated with the case.</p>
-        <div class="Important">
-            <img src="../../Resources/Images/i2.png" alt="Note" /> When running a Knowledge View from inside a form that is in a case context, the results of the Knowledge View will be limited to objects in that same case instance.</div>
+        <p class="Important">
+            <img src="../../Resources/Images/i2.png" alt="Note" /> When running a Knowledge View from inside a form that is in a case context, the results of the Knowledge View will be limited to objects in that same case instance.</p>
         <h2>Administrative Note</h2>
         <p>When running administrative commands in the process administration interfaces, the commands will run in the context of the case instance of which the process is a member.</p>
         <h2>Conclusion</h2>
