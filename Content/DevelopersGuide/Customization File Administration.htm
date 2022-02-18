@@ -16,7 +16,7 @@
             <MadCap:dropDownBody>
                 <p>This Custom Variable, when set to "true", will automatically create all new users as Day Pass users. The default value of this variable is "false". This variable is relevant only if you have the Day Passes license component.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Make all new users day pass users.</span><br />&#160;&#160;&#160;&#160;bp.Vars.DefaultNewUsersToDayPass = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Make all new users day pass users.</span><br />&#160;&#160;&#160;&#160;bp.Vars.DefaultNewUsersToDayPass = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -29,7 +29,7 @@
                 <p>The UserDisplayString function sets the display string universally in the product. </p>
                 <p>The UserDisplayString2 function returns the Display string to the location/object from which it is being called, to give you the flexibility to only change the display string for the user in a specific place instead of in the whole product.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Enables you to call the UserDisplayString and UserDisplayString2 functions.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowCustomUserString = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Enables you to call the UserDisplayString and UserDisplayString2 functions.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowCustomUserString = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -45,7 +45,7 @@
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix recommends that you set this custom variable to "false", if possible. You may—indeed, probably—have existing Custom tasks or Business Values whose variable values are not properly encoded, so you should <b style="font-style: italic;">not</b> set this value to "false" until you have ensured that all of your existing Custom Tasks and Business Values use the proper encodings.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Prevent saving CT&#160;or BV&#160;configurations that do not use SQL-safe encodings for variable values.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowUnencodedSysvarsinBV = false;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Prevent saving CT&#160;or BV&#160;configurations that do not use SQL-safe encodings for variable values.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowUnencodedSysvarsinBV = false;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -56,7 +56,7 @@
             <MadCap:dropDownBody>
                 <p>This variable enables Process Director to log various events in the audit logs that are specific to anonymous access to Process Director. In most cases, theProcess Director installation will not be accessed by outside users with anonymous access, so this variable is set to "false" by default. Setting this variable to "true" will turn on the audit logging for these events.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will turn on audit logging for anonymous access.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAuditAnonAccesses = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will turn on audit logging for anonymous access.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAuditAnonAccesses = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -67,7 +67,7 @@
             <MadCap:dropDownBody>
                 <p>Prior to v5.31, when importing a CSV with numbers and strings in a column, the system, by default, looked at the first row of the CSV file to determine the data type. This could result in a data type error when the first row contains a number and subsequent rows contain character strings. For v5.31 and higher, data imported will default to the String datatype, unless a different datatype is specified in the header row.  This variable, when set to "true", will disable the new logic, and revert to the pre-v5.31 conversion logic. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Revert to the old CSV&#160;field type logic</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableCSVNumberStringLogic = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Revert to the old CSV&#160;field type logic</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableCSVNumberStringLogic = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -78,7 +78,7 @@
             <MadCap:dropDownBody>
                 <p>This variable, when set to "true", will disable application level caching in the Knowledge Views when using a Load Balanced system. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable application-level caching for load balancing</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableKViewAppCaches = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable application-level caching for load balancing</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableKViewAppCaches = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -90,7 +90,7 @@
                 <p>This variable, when set to "true", will disable the time-consuming update of the sValueSearch field that takes place during some upgrades. This option enables the system to be updated and work without using the sValueSearch field. Upgrades that require this field update can take up to 24 hours. The sValueSearch field was added to the database to significantly improve search performance. It must be populated, however, which can be a very time-consuming process. This population, by default, happens during the upgrade cycle, which can cause the upgrade to take a very long time.</p>
                 <p>You can, when this value is set to "true", skip the field update during the upgrade, and populate it later using the troubleshooting page in the IT Admin section in DEBUG mode. There is a link to update the search value column in tblFormData. This command could take 24 hours to run, depending on the speed of your database. It can be run and re-run and, each time, will pickup where it left off, until the entire update is complete. This feature enables you to perform the update during non-work hours. Once the update has no more records to process you can remove this variable setting from the vars file to have the searches start using the new sValueSearch column.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable the update to the sValueSearch field</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisable_sValueSearch = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable the update to the sValueSearch field</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisable_sValueSearch = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -101,7 +101,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v4.55 and higher logs XML import events, goal evaluations, and Active Directory syncs by default, which means that the default value for this variable is "true". This logging can be turned off by setting this variable to false.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Turn off database logging for imports, AD Syncs, etc.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableDatabaseLogs = false;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Turn off database logging for imports, AD Syncs, etc.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableDatabaseLogs = false;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -112,7 +112,7 @@
             <MadCap:dropDownBody>
                 <p>This variable enables Process Director to implement a "Deny" permissions model, so that users can be specifically denied access to objects. In most cases, the default Process Director permissions model is adequately hardened, so this variable is set to "false" by default. There are, however, some use cases for adding specific denial records. Setting this variable to "true" will turn on the denial permissions model, but the extra permissions checking that the denial model requires may have some impact on system performance.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will enable denial permissions.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableDenyPermissions = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will enable denial permissions.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableDenyPermissions = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -123,7 +123,7 @@
             <MadCap:dropDownBody>
                 <p>This variable, when set to "true" enables users to download the form fields in an excel file, from a link on the Properties tab of the Form Definition. The default value is "false".</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Allow form field downloads in Excel.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableFormFieldDownload = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Allow form field downloads in Excel.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableFormFieldDownload = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -136,7 +136,7 @@
                 <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> This variable was previously used to enable Telerik themes for forms, but this functionality has been deprecated.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Revert to unthemed operation, and enable<br />&#160;&#160;&#160;&#160;// dropdown type-ahead.</span><br />&#160;&#160;&#160;&#160;bp.Vars.EnableFormThemes = false;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Revert to unthemed operation, and enable<br />&#160;&#160;&#160;&#160;// dropdown type-ahead.</span><br />&#160;&#160;&#160;&#160;bp.Vars.EnableFormThemes = false;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -147,7 +147,7 @@
             <MadCap:dropDownBody>
                 <p>This variable, when set to "true", enables custom forms to pass JavaScript to be executed after a form completes. The default value for this variable is "false". For users of Process Director v4.54 and below, this variable must be set to "true" to enable the <a href="../Custom Tasks2/Form Data Mapping Custom Tasks.htm#CopyFormData">Copy Form Data Custom Task</a> to close one form and open another, when configured to do so.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will enable custom forms to pass Javascript to be executed<br />&#160;&#160;&#160;&#160;// after the form completes.</span><br />&#160;&#160;&#160;&#160;Vars.fEnableJSURL = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will enable custom forms to pass Javascript to be executed<br />&#160;&#160;&#160;&#160;// after the form completes.</span><br />&#160;&#160;&#160;&#160;Vars.fEnableJSURL = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -158,7 +158,7 @@
             <MadCap:dropDownBody>
                 <p>This variable, when set to "true", disables the Group Name wildcard functionality for ShowAttach controls. The default value for this variable is "false". </p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable wildcards for ShowAttach control Group Names</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableOldShowAttach = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable wildcards for ShowAttach control Group Names</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableOldShowAttach = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -171,7 +171,7 @@
                 <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> Prior to Process Director v5.3, clearing out the old logs requires resetting the nImportLogDays Custom Variable. The nImportLogDays was deprectaed in v5.3 and replaced with nImportLogSyncDays.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Prevent detailed AD&#160;Sync logging</span><br />&#160;&#160;&#160;&#160;Vars.fKeepADSyncInfoLogs = false;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Prevent detailed AD&#160;Sync logging</span><br />&#160;&#160;&#160;&#160;Vars.fKeepADSyncInfoLogs = false;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -184,7 +184,7 @@
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> Caution should be used when implementing this feature, as removing or disabling a user will delete all historical form data for the user.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Remove form instances for deleted/disabled users</span><br />&#160;&#160;&#160;&#160;bp.Vars.fRemoveSavedInstForOldUsers = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Remove form instances for deleted/disabled users</span><br />&#160;&#160;&#160;&#160;bp.Vars.fRemoveSavedInstForOldUsers = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -195,7 +195,7 @@
             <MadCap:dropDownBody>
                 <p>This variable , when set to "true" will implement <a href="../SystemAdministratorGuide/User Delegation.htm#SharedDelegation">Shared Delegation</a> for all processes. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will enable shared delegation for all processes.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fSharedDelegationAllProcesses = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will enable shared delegation for all processes.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fSharedDelegationAllProcesses = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -206,7 +206,7 @@
             <MadCap:dropDownBody>
                 <p>This variable , when set to "true" will display a random background image on the login page. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Enable random backgound images for login page</span><br />&#160;&#160;&#160;&#160;bp.Vars.fLoginBgRand = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Enable random backgound images for login page</span><br />&#160;&#160;&#160;&#160;bp.Vars.fLoginBgRand = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -217,7 +217,7 @@
             <MadCap:dropDownBody>
                 <p>This variable , when set to "true" will remove the ability for users to perform delegation from their user profile page. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will disable user delegation in the user profile.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffDelegation = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will disable user delegation in the user profile.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffDelegation = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -228,7 +228,7 @@
             <MadCap:dropDownBody>
                 <p>This variable , when set to "true" will remove the ability for users to perform shared delegation from their user profile page. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will disable shared delegation ability in the user profile.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffSharedDelegation = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will disable shared delegation ability in the user profile.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffSharedDelegation = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -241,7 +241,7 @@
                 <p><i>This variable is configured in the <code>PreSetSystemVars() </code>function.</i>
                 </p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will clear an existing users active session if the user logs in again</span><br />&#160;&#160;&#160;&#160;bp.Vars.fUseNewLoginSessionGUID = true;<br />}</div>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will clear an existing users active session if the user logs in again</span><br />&#160;&#160;&#160;&#160;bp.Vars.fUseNewLoginSessionGUID = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -252,7 +252,7 @@
                 <p>
                     <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This string variable enables you to set the URL of a custom error page to display when a Process Director error occurs. The custom error page should be placed into the /custom folder at the website root to ensure that they are not overwritten during an upgrade of the product. An HTML&#160;and ASPX sample error page are included in the /custom folder by default.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the URL of the custom error page.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ErrorPage = "http://servername.com/custom/error.htm";<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the URL of the custom error page.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ErrorPage = "http://servername.com/custom/error.htm";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -264,7 +264,7 @@
                     <MadCap:keyword term="ForceSecureCookies">
                     </MadCap:keyword>This string variable enables you to set cookies to transmit using only the Secure Sockets Layer (SSL).</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Force cookies to transmit only via SSL.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ForceSecureCookies = true;<br />}</div>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Force cookies to transmit only via SSL.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ForceSecureCookies = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -280,7 +280,7 @@
                     <li><b>pValue:</b> The string value used to identify the culture, in one of the standard culture formats, e.g. "es". Process Director will use this value to identify the Culture name used on the name of the RESX file, e.g., "strings.es.resx".</li>
                 </ul>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Add Cultures to process Director</span><br />&#160;&#160;&#160;&#160;bp.Vars.Locales.Add(new NameValue("Spanish", "es"));<br />&#160;&#160;&#160;&#160;bp.Vars.Locales.Add(new NameValue("German", "de"));<br />}</div>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Add Cultures to process Director</span><br />&#160;&#160;&#160;&#160;bp.Vars.Locales.Add(new NameValue("Spanish", "es"));<br />&#160;&#160;&#160;&#160;bp.Vars.Locales.Add(new NameValue("German", "de"));<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -291,7 +291,7 @@
                 <p>
                     <MadCap:keyword term="MaxUploadSize" />This string variable enables you to set the maximum size, in bytes, for file uploads and attachments.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Set max upload size to 1MB.</span><br />&#160;&#160;&#160;&#160;CV.MaxUploadSize = 1000000;<br />}</div>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Set max upload size to 1MB.</span><br />&#160;&#160;&#160;&#160;CV.MaxUploadSize = 1000000;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -304,7 +304,7 @@
                     <img src="../Resources/Images/i.png" alt="Important" /> This Custom Variable has been deprecated in Process Director v5.3.</p>
                 <p>Process Director v4.55 and higher logs XML import events, goal evaluations, and Active Directory syncs by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep logs for 45 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogDays = 45;<br />}</div>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep logs for 45 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogDays = 45;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -315,7 +315,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs goal evaluations by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep Goal logs for 2 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogGoalDays = 2;<br />}</div>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep Goal logs for 2 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogGoalDays = 2;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -326,7 +326,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs XML&#160;imports by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep XML import logs for 15 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogImportDays = 15;<br />}</div>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep XML import logs for 15 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogImportDays = 15;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -337,7 +337,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs Knowledge View executions by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep KV&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogKVRunDays = 5;<br />}</div>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep KV&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogKVRunDays = 5;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -348,7 +348,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs Machine Learning object publications by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep ML&#160;Pub logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogMLPublishDays = 5;<br />}</div>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep ML&#160;Pub logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogMLPublishDays = 5;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -359,7 +359,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs Stream Action runs by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep SA&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogSArunDays = 5;<br />}</div>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep SA&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogSArunDays = 5;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -370,7 +370,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs Active Directory synchronizations by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep AD Sync logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogSyncDays = 5;<br />}</div>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep AD Sync logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogSyncDays = 5;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -383,7 +383,7 @@
                     <MadCap:keyword term="nMaxActivityStarts">
                     </MadCap:keyword>This variable sets how many times a step restarts in the number of seconds set in the nMaxActivityStartsInLastSecs variable before considering it in a loop. The default value is 100.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMaxActivityStarts = 100;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMaxActivityStarts = 100;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -396,7 +396,7 @@
                     </MadCap:keyword>If a Process Timeline instance is determined to be in an endless loop condition, the problem activity will be placed into an error state. This detection logic to define an endless loop is controlled through the <a href="#nMaxActivityStarts">nMaxActivityStarts</a>, nMaxActivityStartsInLastSecs, and <a href="Customization File Misc.htm#nTimelineLoopCountStarts">nTimelineLoopCountStarts</a> variables.</p>
                 <p>This variable sets how many seconds to use in loop calculations performed by the nMaxActivityStarts variable. The default is 60.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMaxActivityStartsInLastSecs = 60;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMaxActivityStartsInLastSecs = 60;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -408,7 +408,7 @@
                     <MadCap:keyword term="nMaxAdminAuditRows">
                     </MadCap:keyword>This variable enables you to set the maximum number of audit rows to display. The default is 1000.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the maximum number of audit rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminAuditRows = 1000;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the maximum number of audit rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminAuditRows = 1000;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -420,7 +420,7 @@
                     <MadCap:keyword term="nMaxAdminPermRows">
                     </MadCap:keyword>This variable enables you to set the maximum number of administrative permissions rows to display. The default is 1000.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the maximum number of admin permissions rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminPermRows = 1000;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the maximum number of admin permissions rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminPermRows = 1000;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -431,7 +431,7 @@
                 <p>
                     <MadCap:keyword term="nMaxAdminRows">&#160;</MadCap:keyword>This variable enables you to set the maximum number of rows in the Admin section for any list. The default is 100.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will set the maximum number of rows to 400 in any list of<br></br>&#160;&#160;&#160;&#160;// the admin section.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminRows = 100;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will set the maximum number of rows to 400 in any list of<br></br>&#160;&#160;&#160;&#160;// the admin section.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminRows = 100;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -442,7 +442,7 @@
                 <p>
                     <MadCap:keyword term="nMaxAdminRows">&#160;</MadCap:keyword>On the User Admin page, there is a search box that will enable you to search for a specific user by typing in a text string. By default, Process Director will include Group names in that search. However, for a large number of users, searching the Group names as part of this search adds unacceptable overhead to the search function. If the number of users in the system exceeds this value, the search function on the User Admin page will stop using Group names as part of the search. The default value is 10000.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will set the maximum number of rows before stopping<br></br>&#160;&#160;&#160;&#160;// the use of Group names as a search criteria in User Admin.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminRows = 10000;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will set the maximum number of rows before stopping<br></br>&#160;&#160;&#160;&#160;// the use of Group names as a search criteria in User Admin.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminRows = 10000;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -453,7 +453,7 @@
                 <p>
                     <MadCap:keyword term="nMaxADSyncLogEvents" />This variable sets the maximum number of synchronization log events that will be displayed on the <a href="../SystemAdministratorGuide/Creating an AD Sync Profile.htm#SyncLogHistory">Active Directory Sync Log History</a> page.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;//Default is 200 </span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxADSyncLogEvents = 100;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;//Default is 200 </span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxADSyncLogEvents = 100;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -464,7 +464,7 @@
                 <p>
                     <MadCap:keyword term="nMaxBusinessValueRows" />This variable sets the maximum number of rows that will be returned by a Business Value. The default is 200.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;//Default is 200 </span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxBusinessValueRows = 100;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;//Default is 200 </span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxBusinessValueRows = 100;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -475,7 +475,7 @@
                 <p>
                     <MadCap:keyword term="nMaxGroupDropdownRows" />This variable enables you to set the maximum number of dropdown rows that appear in a <span class="NamedControl">Group Picker</span> control that is displayed as a dropdown control. </p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the maximum number of user dropdown rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxGroupDropdownRows = 15;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the maximum number of user dropdown rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxGroupDropdownRows = 15;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -486,7 +486,7 @@
                 <p>
                     <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This variable enables you to set the maximum number of buttons an administrator can configure in a profile. These buttons are show at the top of each user’s home page, and the default is 12.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will set the maximum number of buttons an admin can<br></br>&#160;&#160;&#160;&#160;// configure.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxProfileButtons = 12;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will set the maximum number of buttons an admin can<br></br>&#160;&#160;&#160;&#160;// configure.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxProfileButtons = 12;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -497,7 +497,7 @@
                 <p>
                     <MadCap:keyword term="nMaxUserDropdownRows" />This variable enables you to set the maximum number of dropdown rows that appear in a <span class="NamedControl">User Picker </span>control that is displayed as a dropdown control. </p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the maximum number of user dropdown rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxUserDropdownRows = 15;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the maximum number of user dropdown rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxUserDropdownRows = 15;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -508,7 +508,7 @@
                 <p>
                     <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This variable enables you to set the maximum number of user permissions rows to display. The default is 1000.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will set the maximum number of user permissions rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxUserPermsRows = 1000;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will set the maximum number of user permissions rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxUserPermsRows = 1000;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -519,7 +519,7 @@
                 <p>
                     <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This boolean variable enables you to turn off <a href="../ImplementersReference/Managing Content Locking.htm">object locking</a> by setting the value to "false". The default value is "true".</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will enable object locking.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ObjectLockingEnable = true;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will enable object locking.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ObjectLockingEnable = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -530,7 +530,7 @@
                 <p>
                     <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This boolean variable enables you to require <a href="../ImplementersReference/Managing Content Locking.htm">object locking</a> when set to "true". The default value is "false".</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will require object locking when set to true.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ObjectLockingForce = false;<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This will require object locking when set to true.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ObjectLockingForce = false;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -541,7 +541,7 @@
                 <p>
                     <MadCap:keyword term="sPickupDirectoryLocation" />IIS in Windows 2008 R2 and higher requires a path to be configured to the mail pickup directory when using the local SMTP server to send email. This is set using the sPickupDirectoryLocation custom variable. For Process Director v5.31 and higher, Process Director defaults this pickup directory to the Windows default of C:\Inetpub\mailroot\Pickup\ so it only needs to be set when it is in a different location. Additionally, the setting of this variable will not force emails to use the local SMTP server when an SMTP Host is specified in the installation settings.</p>
                 <h5>Example</h5>
-                <div class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Change the mail pickup directory to a non-default location.</span><br />&#160;&#160;&#160;&#160;bp.Vars.sPickupDirectoryLocation = "C:\nonDefault\directory";<br />}</div>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Change the mail pickup directory to a non-default location.</span><br />&#160;&#160;&#160;&#160;bp.Vars.sPickupDirectoryLocation = "C:\nonDefault\directory";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

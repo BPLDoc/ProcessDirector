@@ -147,14 +147,14 @@
                     </tbody>
                 </table>
                 <h3>Examples</h3>
-                <div class="CodeBase">SELECT * FROM MyTable WHERE col1 = '{$:text1}'</div>
+                <p class="CodeBase">SELECT * FROM MyTable WHERE col1 = '{$:text1}'</p>
                 <p>The $ encode will safely type the value of "text1" from:</p>
                 <p><code>Bob's Place </code>
                 </p>
                 <p>To:</p>
                 <p><code>Bob''s Place.</code>
                 </p>
-                <div class="CodeBase">SELECT * FROM MyTable WHERE col1 LIKE ‘%{~:text1}%’ ESCAPE '\'</div>
+                <p class="CodeBase">SELECT * FROM MyTable WHERE col1 LIKE ‘%{~:text1}%’ ESCAPE '\'</p>
                 <p>When used in in a LIKE statement, the ~ encode type will perform the same safe encoding as the $ does. Additionally, when adding the ESCAPE clause to the SQL statement, values that require escapes for special characters will be added to the encoding. So, for a value of:</p>
                 <p><code>100%</code>
                 </p>
@@ -192,9 +192,9 @@
                 <p><code>{:<b>somFormField</b>, case=<b>upper|lower</b>}</code>
                 </p>
                 <p>The substring Modifier enables you to extract a desired substring by identifying the starting character location with the "subStart" Modifier, and the length of the substring with the "subLength" Modifier. The position of the "subStart" Modifier is zero-based, meaning that the first character position is 0, rather than 1.</p>
-                <div class="CodeBase">{:somFormField, subStart=6, subLength=10}<br /><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "ghijklmnop".</span></div>
+                <p class="CodeBase">{:somFormField, subStart=6, subLength=10}<br /><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "ghijklmnop".</span></p>
                 <p>The Case Modifier can also be used in conjunction with the substring Modifiers.</p>
-                <div class="CodeBase">{:somFormField, case=upper, subStart=6, subLength=10}<br /><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "GHIJKLMNOP".</span></div>
+                <p class="CodeBase">{:somFormField, case=upper, subStart=6, subLength=10}<br /><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "GHIJKLMNOP".</span></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -209,7 +209,7 @@
                 <p><code>{:<b>somFormField</b>, Pattern=<b>"some text"</b>, Replace=<b>"other text"</b>, Trim=<b>1</b>}</code>
                 </p>
                 <p>This System Variable tag will remove any semicolons from the current user’s name:</p>
-                <div class="CodeBase">{CURR_USER, Pattern=";", Replace=""}</div>
+                <p class="CodeBase">{CURR_USER, Pattern=";", Replace=""}</p>
                 <p>You can also combine Encoding characters and Pattern/Replace together to modify strings. For instance, the sample below shows various ways to display the selected items from a ListBox.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/PatterReplaceEncode1.png" />
@@ -225,7 +225,7 @@
                 <p>For process Director v5.1 and higher, string variables enable you to use an "indexOf" modifier to return the 0-based index of the starting location for a specified substring. If the substring is not found, this variable will return "-1". The substring search is case insensitive.</p>
                 <h5>Example</h5>
                 <p>In this example, a form field, "myField" contains the following text string: "I Do Approve This". To find the starting index of the substring "approve", the following syntax would be used:</p>
-                <div class="CodeBase">{:myField, indexOf="approve"}</div>
+                <p class="CodeBase">{:myField, indexOf="approve"}</p>
                 <p>The System variable will, in this case, return "5".</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -240,13 +240,13 @@
                 <p>To get the value for the most recent instance, set the instance Modifier to 0. To get the value for the second most recent instance, set the instance Modifier to -1. To get the value for the third most recent instance, set the instance Modifier to -3, and so on.</p>
                 <p>To get the value for the first instance of the step or activity in the Workflow or Timeline instance, set the instance Modifier to 1. To get the value for the second instance of the step or activity, set the instance Modifier to 2, and so on.</p>
                 <h4>Examples:</h4>
-                <div class="CodeBase">{ACTIVITY_RUN_TIME:"Some Activity", instance=all}</div>
+                <p class="CodeBase">{ACTIVITY_RUN_TIME:"Some Activity", instance=all}</p>
                 <p>This system variable will return the total time the activity has run in the Timeline instance.</p>
-                <div class="CodeBase">{ACTIVITY_RUN_TIME:SomeActivity, instance=0}</div>
+                <p class="CodeBase">{ACTIVITY_RUN_TIME:SomeActivity, instance=0}</p>
                 <p>This system variable will return the time it took the most recent instance of the activity to run in the Timeline instance.</p>
-                <div class="CodeBase">{ACTIVITY_RUN_TIME:"Some Activity", instance=-2}</div>
+                <p class="CodeBase">{ACTIVITY_RUN_TIME:"Some Activity", instance=-2}</p>
                 <p>This system variable will return the time it took for the third most recent instance of the activity to run.</p>
-                <div class="CodeBase">{ACTIVITY_RUN_TIME:SomeActivity, instance=1}</div>
+                <p class="CodeBase">{ACTIVITY_RUN_TIME:SomeActivity, instance=1}</p>
                 <p>This system variable will return the time it took for the first instance of the activity to run in the Timeline instance.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
