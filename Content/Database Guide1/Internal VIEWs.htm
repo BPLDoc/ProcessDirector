@@ -6,19 +6,131 @@
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Database;Developer" /><a name="InternalViews"></a>Internal VIEWs</h1>
+            <MadCap:concept term="Database;Developer" /><a name="InternalViews"></a>Internal Database Views</h1>
         <p>
-            <MadCap:keyword term="Database" />A user with IT Admin access can create an internal SQL View in Process Director’s database. The views will be created on the database after clicking the “Create Internal VIEWs” link on the IT Admin’s troubleshooting page.</p>
+            <MadCap:keyword term="Database" />A user with IT Admin access can create an internal SQL View in Process Director’s database. The views will be created on the database after clicking the <span class="UIElement">Create Internal VIEWs</span> link on the IT Admin’s troubleshooting page.</p>
         <p>
             <img src="../Resources/Images/Database Guide1/Internal VIEWs.jpg" style="visibility: visible;mso-wrap-style: square;width: 576px;height: 322px;" />
         </p>
         <p>We have included multiple pre-constructed Views for use with the reporting and they could also be used in your Knowledge Views. Here is a detailed description of each field in the Views. At the end of this section, there is a short explanation of some of the more advanced database concepts that are implicated by using these Views.</p>
+        <h2><a name="Enumerators"></a>Enumerators <a href="#Enumerators" class="anchor">#</a></h2>
+        <p>Several of the Views use common enumerators for status, termination reason, etc.</p>
+        <h4>IsTimeline Enumerator</h4>
+        <p>The <span class="ControlName">IsTimeline </span>field will contain one of the following values.</p>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 7em;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">STATUS</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">DEFINITION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">0</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Workflow.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">1</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">Process Timeline.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Status Enumerator</h4>
+        <p>The <span class="ControlName">Status </span>field will contain one of the following status codes.</p>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 7em;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">STATUS</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">DEFINITION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">0</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Pending. The process is pending (not yet running.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">1</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Active. The process is running.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">2</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1"> Inactive. The process has been completed</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>TermReason Enumerator</h4>
+        <p>The <span class="ControlName">TermReason </span>field will contain one of the following termination codes.</p>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 7em;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">STATUS</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">DEFINITION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">0</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>NotSet. Not yet terminated.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">1</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Normal. Normal termination.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">2</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Timeout . Timeout occurred causing termination of step or workflow or project (ripple to "non-done" users in step).</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">3</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Did Not Finish. The user did not finish because enough users responded to transition to next step (e.g. approval %).</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">4</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Canceled. Admin canceled workflow, a step, or a user in a step.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">5</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Reassigned. This user step/activity was reassigned to another user.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">6</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">NotNeeded. The step/activity was not needed (because of rule).</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">7</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Notified. This value indicates it was a notify step/activity and the user was notified (so it shows up in the routing slip).</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">8</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">Stopped. Process stopped at this activity, no dependencies will be met.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Views</h2>
+        <p>The following SQL&#160;Views are available for use as a default.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="bpProcess"></a><a href="#bpProcess"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>bpProcess View</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="bpProcess"></a><a href="#bpProcess"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>bpProcess</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col style="width: 20em;" />
                     <thead>
                         <tr class="TableStyle-Simple-Head-Header1">
                             <th class="TableStyle-Simple-HeadE-Column1-Header1">
@@ -136,7 +248,7 @@
                                 <p>Yes</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>The ID of the initiator of the process.</p>
+                                <p>The User UID of the initiator of the process.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>&#160;</p>
@@ -159,8 +271,7 @@
                                 <p>If this process is a timeline.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>1 = Timeline</p>
-                                <p>0 = Workflow</p>
+                                <p>See IsTimeline Enumerator.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -223,9 +334,7 @@
                                 <p>Whether or not this process is active.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>Pending = 0, the process is pending (not yet running</p>
-                                <p>Active = 1,the process is running</p>
-                                <p>Inactive = 2, the process has been completed</p>
+                                <p>See Status Enumerator.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -245,15 +354,7 @@
                                 <p>The reason this process is no longer active.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>NotSet = 0, Not yet terminated.</p>
-                                <p>Normal = 1, normal termination.</p>
-                                <p>Timeout = 2, timeout occurred causing termination of step or workflow or project (ripple to "non-done" users in step).</p>
-                                <p>DidNotFinish = 3, the user did not finish because enough users responded to transition to next step (e.g. approval %).</p>
-                                <p>Cancelled = 4, admin cancelled workflow, a step, or a user in a step.</p>
-                                <p>Reassigned = 5, This user was reassigned to another user.</p>
-                                <p>NotNeeded = 6, the project activity was not needed (because of rule).</p>
-                                <p>Notified = 7, this indicates it was a notify step and the user was notified - this is so it shows up in the routing slip.</p>
-                                <p>Stopped = 8,         timeline stopped at this activity, no dependencies will be met.</p>
+                                <p>See TermReason Enumerator.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -318,7 +419,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">IsComplete</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Is the process complete?</td>
@@ -326,7 +427,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">IsActive</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Is the process active?</td>
@@ -334,7 +435,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyB-Column1-Row2">ElapsedSeconds</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Int</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">int</td>
                             <td class="TableStyle-Simple-BodyB-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyB-Column1-Row2">No</td>
                             <td class="TableStyle-Simple-BodyB-Column1-Row2">The number of seconds that have elapsed since the process started, or the total runtime for the task, if complete.</td>
@@ -346,11 +447,17 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="bpProcessTask"></a><a href="#bpProcessTask"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>bpProcessTask View</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="bpProcessTask"></a><a href="#bpProcessTask"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>bpProcessTask</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <p>This view includes the process tasks from the Parent, User, and Subprocess task types.</p>
             <MadCap:dropDownBody>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col style="width: 20em;" />
                     <thead>
                         <tr class="TableStyle-Simple-Head-Header1">
                             <th class="TableStyle-Simple-HeadE-Column1-Header1">
@@ -379,7 +486,7 @@
                                 <p>DefinitionName</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Nvarchar</p>
+                                <p>nvarchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>256</p>
@@ -399,7 +506,7 @@
                                 <p>InstanceName</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Nvarchar</p>
+                                <p>nvarchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>256</p>
@@ -419,7 +526,7 @@
                                 <p>TaskName</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Nvarchar</p>
+                                <p>nvarchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>128</p>
@@ -439,7 +546,7 @@
                                 <p>ID</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Varchar</p>
+                                <p>varchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>36</p>
@@ -459,7 +566,7 @@
                                 <p>INSTID</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Varchar</p>
+                                <p>varchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>36</p>
@@ -479,7 +586,7 @@
                                 <p>TASKID</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Varchar</p>
+                                <p>varchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>36</p>
@@ -499,7 +606,7 @@
                                 <p>TASKINSTID</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Varchar</p>
+                                <p>varchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>36</p>
@@ -519,7 +626,7 @@
                                 <p>IsTimeline</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Int</p>
+                                <p>int</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
@@ -531,13 +638,12 @@
                                 <p>If this process is a Timeline.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>1 = Timeline</p>
-                                <p>0 = Workflow</p>
+                                <p>See IsTimeline Enumerator.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">IsUserTask</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Is the task a User task?</td>
@@ -545,7 +651,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">IsProcessTask</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Is the task a Process task?</td>
@@ -555,7 +661,7 @@
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>SUBPROCESSINSTID</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Varchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">varchar</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">36</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">The Instance ID of the subprocess instance for the task, if any.</td>
@@ -563,7 +669,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">SUBPROCESSID</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Varchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">varchar</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">36</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">The Process ID of the subprocess for the task, if any.</td>
@@ -574,7 +680,7 @@
                                 <p>Status</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Int</p>
+                                <p>int</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
@@ -586,10 +692,7 @@
                                 <p>Whether or not this process is active.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>AnyValue = -1, For filters ... any value</p>
-                                <p>Pending = 0, the workflow, step or user is pending (not yet running)</p>
-                                <p>Active = 1,the workflow, step or user is running</p>
-                                <p>Inactive = 2, the workflow, step or user has completed</p>
+                                <p>See Status Enumerator.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -597,7 +700,7 @@
                                 <p>TermReason</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Int</p>
+                                <p>int</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
@@ -609,17 +712,7 @@
                                 <p>The reason this process is no longer active.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>NotSet = 0, Not yet terminated</p>
-                                <p>Normal = 1, normal termination.</p>
-                                <p>Timeout = 2, timeout occurred causing termination of step or workflow or project (ripple to "non-done" users in step).</p>
-                                <p>DidNotFinish = 3,the user did not finish because enough users responded to transition to next task(e.g. approval %).</p>
-                                <p>Cancelled = 4, admin cancelled workflow, a step, or a user in a step.</p>
-                                <p>Reassigned = 5, This user was reassigned to another user.</p>
-                                <p>NotNeeded = 6, the project activity was not needed (because of rule).</p>
-                                <p>Notified = 7, this indicates it was a notify task and the user was notified - this is so it shows up in the routing slip.</p>
-                                <p>Stopped = 8,         timeline stopped at this activity, no dependencies will be met.</p>
-                                <p>Break = 9, an iteration break condition was met that caused this running activity to be stopped.</p>
-                                <p>Restart = 10,  an iteration restart condition was met that caused this running activity to be stopped.</p>
+                                <p>See TermReason Enumerator.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -627,7 +720,7 @@
                                 <p>StartTime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Datetime</p>
+                                <p>datetime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
@@ -647,7 +740,7 @@
                                 <p>EndTime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Datetime</p>
+                                <p>datetime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
@@ -667,7 +760,7 @@
                                 <p>DueTime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Datetime</p>
+                                <p>datetime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
@@ -687,7 +780,7 @@
                                 <p>PredictedStartTime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Datetime</p>
+                                <p>datetime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
@@ -707,7 +800,7 @@
                                 <p>PredictedEndTime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Datetime</p>
+                                <p>datetime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
@@ -724,7 +817,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Result</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">nvarchar</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">The activity result, or the branch name taken for a step.</td>
@@ -732,7 +825,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">IsPredictedLate</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Is the task predicted to be late?</td>
@@ -740,7 +833,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">IsRunningLate</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Is the task running late?</td>
@@ -748,7 +841,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">IsRunningOntime</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Is the task running within the predicted time frame?</td>
@@ -756,7 +849,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">IsCompletedLate</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Did the task end later than scheduled.</td>
@@ -764,7 +857,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">IsCompletedOntime</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Did the task end within the predicted time frame?</td>
@@ -772,7 +865,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">IsComplete</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Is the task complete?</td>
@@ -780,7 +873,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">IsActive</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Is the task running currently?</td>
@@ -788,7 +881,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">IsPending</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Is the task in Pending status?</td>
@@ -796,10 +889,10 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">ElapsedSeconds</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Int</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">int</td>
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">No</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">The number of seconds that have elapsed since the process started, or the total runtime for the task, if complete.</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">The number of seconds that have elapsed since the process started, or the total run time for the task, if complete.</td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row1">&#160;</td>
                         </tr>
                     </tbody>
@@ -808,10 +901,16 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="bpProcessTaskUser"></a><a href="#bpProcessTaskUser"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>bpProcessTaskUser View</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="bpProcessTaskUser"></a><a href="#bpProcessTaskUser"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>bpProcessTaskUser</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col style="width: 20em;" />
                     <thead>
                         <tr class="TableStyle-Simple-Head-Header1">
                             <th class="TableStyle-Simple-HeadE-Column1-Header1">
@@ -840,7 +939,7 @@
                                 <p>DefinitionName</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Nvarchar</p>
+                                <p>nvarchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>256</p>
@@ -860,7 +959,7 @@
                                 <p>InstanceName</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Nvarchar</p>
+                                <p>nvarchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>256</p>
@@ -880,7 +979,7 @@
                                 <p>UserUID</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Varchar</p>
+                                <p>varchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>36</p>
@@ -889,7 +988,7 @@
                                 <p>Yes</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>The ID of the assigned user.</p>
+                                <p>The User UID of the assigned user.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>&#160;</p>
@@ -900,7 +999,7 @@
                                 <p>TaskName</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Nvarchar</p>
+                                <p>nvarchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>128</p>
@@ -920,7 +1019,7 @@
                                 <p>TASKID</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Varchar</p>
+                                <p>varchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>36</p>
@@ -940,7 +1039,7 @@
                                 <p>TASKINSTID</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Varchar</p>
+                                <p>varchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>36</p>
@@ -960,7 +1059,7 @@
                                 <p>ID</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Varchar</p>
+                                <p>varchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>36</p>
@@ -980,7 +1079,7 @@
                                 <p>INSTID</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Varchar</p>
+                                <p>varchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>36</p>
@@ -1000,7 +1099,7 @@
                                 <p>IsTimeline</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Int</p>
+                                <p>int</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
@@ -1020,7 +1119,7 @@
                                 <p>Status</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Int</p>
+                                <p>int</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
@@ -1032,9 +1131,7 @@
                                 <p>Whether or not this process is active.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Pending = 0, the task is pending (not yet running).</p>
-                                <p>Active = 1,&#160; the task is running.</p>
-                                <p>Inactive = 2, the task has completed.</p>
+                                <p>See Status Enumerator</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -1042,7 +1139,7 @@
                                 <p>TermReason</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Int</p>
+                                <p>int</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
@@ -1054,15 +1151,7 @@
                                 <p>The reason this process is no longer active.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>NotSet = 0, Not yet terminated.</p>
-                                <p>Normal = 1, normal termination.</p>
-                                <p>Timeout = 2, timeout occurred causing termination of task (ripple to "non-done" users in step).</p>
-                                <p>DidNotFinish = 3,the user did not finish because enough users responded to transition to next step (e.g. approval %).</p>
-                                <p>Cancelled = 4, admin cancelled task in a step.</p>
-                                <p>Reassigned = 5, This task was reassigned to another user.</p>
-                                <p>NotNeeded = 6, the project activity was not needed (because of rule).</p>
-                                <p>Notified = 7, this indicates it was a notify task and the user was notified - this is so it shows up in the routing slip.</p>
-                                <p>Stopped = 8,         timeline stopped at this activity, no dependencies will be met.</p>
+                                <p>See TermReason Enumerator.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -1070,7 +1159,7 @@
                                 <p>StartTime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Datetime</p>
+                                <p>datetime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
@@ -1090,7 +1179,7 @@
                                 <p>EndTime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Datetime</p>
+                                <p>datetime</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
@@ -1110,7 +1199,7 @@
                                 <p>UserComment</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Nvarchar</p>
+                                <p>nvarchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>Max</p>
@@ -1130,7 +1219,7 @@
                                 <p>Result</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Nvarchar</p>
+                                <p>nvarchar</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>128</p>
@@ -1139,7 +1228,7 @@
                                 <p>Yes</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>These are the results, or the branch taken in a task that has been completed.</p>
+                                <p>These is the activity result, or the workflow branch taken in a task that has been completed.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>&#160;</p>
@@ -1147,7 +1236,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">IsComplete</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Is the task complete?</td>
@@ -1155,7 +1244,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">IsActive</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Is the task running currently?</td>
@@ -1163,7 +1252,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">IsPending</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">No</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Is the task in Pending status?</td>
@@ -1171,7 +1260,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">ElapsedSeconds</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Int</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">int</td>
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">No</td>
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">The number of seconds that have elapsed since the process started, or the total runtime for the task, if complete.</td>
@@ -1183,355 +1272,16 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="bpUser"></a><a href="#bpUser"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>bpUser View</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="bpTaskList"></a><a href="#bpTaskList"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>bpTaskList</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
-                    <col class="TableStyle-Simple-Column-Column1" />
-                    <col class="TableStyle-Simple-Column-Column1" />
-                    <col class="TableStyle-Simple-Column-Column1" />
-                    <col style="width: 96px;" class="TableStyle-Simple-Column-Column1" />
-                    <col class="TableStyle-Simple-Column-Column1" />
-                    <col class="TableStyle-Simple-Column-Column1" />
-                    <thead>
-                        <tr class="TableStyle-Simple-Head-Header1">
-                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
-                                <p>COLUMN</p>
-                            </th>
-                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
-                                <p>DATA TYPE</p>
-                            </th>
-                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
-                                <p>LENGTH</p>
-                            </th>
-                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
-                                <p>NULLABLE</p>
-                            </th>
-                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
-                                <p>EXPLANATION</p>
-                            </th>
-                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
-                                <p>POSSIBLE VALUES</p>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>UserID</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>nvarchar</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>64</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Yes</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>The user logon name.</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>UserName</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>nvarchar</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>128</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Yes</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>The name of the user.</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>EmailAddress</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Nvarchar</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>256</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Yes</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>The email address of the user.</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>UserUID</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Varchar</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>36</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>No</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>The ID of the user.</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>ADID</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>varchar</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>36</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Yes</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>The active directory ID of the user.</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>AuthType</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Int</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>No</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>The type of authorization used to allow the user into Process Director</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>BuiltIn = 0</p>
-                                <p>Windows = 1</p>
-                                <p>LDAP = 2</p>
-                                <p>External = 3</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>LastActivity</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Datetime</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Yes</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>The last time the user was authorized inside Process Director.</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>LastLogin</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Datetime</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Yes</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>The last time the user logged in.</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Disabled</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>tinyint</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>No</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Whether or not the user is active or allowed to log in.</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>0 = Active</p>
-                                <p>1 = Disabled</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">CustomString</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">1024</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Custom String user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">CustomString2</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">1024</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Custom String 2 user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>CustomNumber</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Int</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">No</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Custom Number user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">CustomDate</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">DateTime</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Custom Date user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Phone</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">64</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Phone user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Description</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">1024</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Description user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Title</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">256</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Title user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Office</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">256</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Office user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Company</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">256</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Company user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Department</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">256</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Department user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">LegalEntity</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">256</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The LegalEntityuser attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">BusinessUnit</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">256</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The BusinessUnit user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Country</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">256</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Country user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Location</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">256</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Location user attribute.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row2">ManagerUID</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row2">NVarchar</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row2">36</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Yes</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row2">The UID of the user's Manager.</td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row2">&#160;</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="bpTaskList"></a><a href="#bpTaskList"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>bpTaskList View</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col style="width: 20em;" />
                     <thead>
                         <tr class="TableStyle-Simple-Head-Header1">
                             <th class="TableStyle-Simple-HeadE-Column1-Header1">
@@ -1612,9 +1362,7 @@
                                 <p>The kind of task that has been assigned to the user.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>NotSet = 0</p>
-                                <p>WorkflowTask = 1 CheckOut = 2SavedFormInst = 3 </p>
-                                <p>ProjectTask = 4</p>
+                                <p>0 = NotSet<br />1 = Workflow Task<br />2 = Check Out<br />3 = Saved Form Instance<br />4 = Process Timeline Task</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -1654,10 +1402,7 @@
                                 <p>The type of object that this task represents.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>NotSet = 0 </p>
-                                <p>Document = 1</p>
-                                <p>WfInstance = 7</p>
-                                <p>ProjectInstance = 60 </p>
+                                <p>0 = NotSet<br />1 = Document<br />7 = Workflow Instance<br />60 = Process Timeline Instance</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -1757,9 +1502,7 @@
                                 <p>The assigned priority.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>High Priority = 1</p>
-                                <p>Medium Priority = 2</p>
-                                <p>Low Priority = 3</p>
+                                <p>1 = High Priority<br />2 = Medium Priority<br />3 = Low Priority</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -1801,6 +1544,347 @@
                             <td class="TableStyle-Simple-BodyA-Column1-Row2">
                                 <p>&#160;</p>
                             </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="bpUser"></a><a href="#bpUser"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>bpUser</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 20em;" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>COLUMN</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>DATA TYPE</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>LENGTH</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>NULLABLE</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>EXPLANATION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>POSSIBLE VALUES</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>UserID</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>nvarchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>64</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Yes</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>The user logon name.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>UserName</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>nvarchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>128</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Yes</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>The name of the user.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>EmailAddress</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>nvarchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>256</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Yes</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>The email address of the user.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>UserUID</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>varchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>36</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>No</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>The User UID of the user.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>ADID</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>varchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>36</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Yes</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>The active directory ID of the user.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>AuthType</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>int</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>No</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>The type of authorization used to allow the user into Process Director</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>0 = BuiltIn<br />1 = Windows<br />2 = LDAP<br />3 = External</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>LastActivity</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>datetime</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Yes</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>The last time the user was authorized inside Process Director.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>LastLogin</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>datetime</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Yes</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>The last time the user logged in.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Disabled</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>tinyint</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>No</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Flag that indicates whether  the user account is disabled.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">CustomString</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">1024</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Custom String user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">CustomString2</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">1024</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Custom String 2 user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>CustomNumber</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">No</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Custom Number user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">CustomDate</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">DateTime</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Custom Date user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Phone</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">64</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Phone user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Description</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">1024</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Description user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Title</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">256</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Title user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Office</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">256</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Office user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Company</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">256</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Company user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Department</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">256</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Department user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">LegalEntity</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">256</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The LegalEntityuser attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">BusinessUnit</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">256</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The BusinessUnit user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Country</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">256</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The Country user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Location</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">256</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Yes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The Location user attribute.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">ManagerUID</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Nvarchar</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">36</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Yes</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">The User UID of the user's Manager.</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">&#160;</td>
                         </tr>
                     </tbody>
                 </table>
