@@ -50,6 +50,17 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="EnableReactAdminPages"></a><a href="#EnableReactAdminPages"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>EnableReactAdminPages</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="EnableReactAdminPages" />This variable was implemented In Process Director v5.44.600. When set to "false", it disables the redesigned look of some IT Admin pages to the classic view. The default value for this variable is "true".</p>
+                <h5>Vars.cs Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Disable admin page UI updates.</span><br />&#160;&#160;&#160;&#160;bp.Vars.EnableReactAdminPages = false;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="fAllowLoginRememberMe"></a><a href="#fAllowLoginRememberMe"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAllowLoginRememberMe</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -94,6 +105,21 @@
                     <MadCap:keyword term="fAllowRetrievePassword">&#160;</MadCap:keyword>This variable permits the name of a document object in the content list to be changed to match the name of the document being checked in, when set to "true". The default value is "false", i.e., that the name in the content list is retained even if the document being checked in has a different name.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fDocRenameLogicOff = true;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fEnableEncryptionMigration"></a><a href="#fEnableEncryptionMigration"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fEnableEncryptionMigration</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fEnableEncryptionMigration" />This variable, when set to "false", will disable the migration to AES encryption when upgrading to Process Director v5.44.700 or higher from v5.44.600 or lower. The default value for this variable is "true". </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> The encryption system used by Process Director prior to v.5.44.600 has been deprecated. Setting this value to "false" will prevent encrypted fields from being upgraded to full AES encryption, and  existing encrypted fields will use the deprecated encryption system, which is being replaced by AES.</p>
+                <p>When this value is set to "false", though migration of existing encrypted values will not occur on upgrade,<span class="Emphasis"> new encrypted values will still be created using AES</span>, e.g., submitting a new form instance with encrypted form controls. </p>
+                <p>Any time data that uses the deprecated encryption is accessed, an ERROR log message will be generated as a reminder that migration has not yet been performed (I.e., "ERROR: Deprecated encrypted value detected, please upgrade using Administration pages."). There won't be any data-loss or corruption, as the system will recognize both AES and deprecated encryption.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Turn off AES&#160;Encryption Migration</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableEncryptionMigration= false;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

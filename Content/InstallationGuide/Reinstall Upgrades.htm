@@ -12,15 +12,58 @@
         <p>After installing a new Process Director patch, you can roll back to the previous version by uninstalling Process Director and then reinstalling the previous version. However, some patches involve changes to Process Director’s database. If a patch has changed the database, new database columns, indices, and tables will need to be removed, and the tblSettings columns “nDBVersion” and “nDBVersionPrev” will need to be reset. If you are reverting to a patch that involves database changes, <a href="https://support.bplogix.net/" target="_blank">contact technical support</a> for instructions on reconfiguring the database.</p>
         <h2><a name="_Toc421172275"></a>Uninstalling <a href="#_Toc421172275" class="anchor">#</a></h2>
         <p>You may uninstall Process Director by using the Add or Remove Programs in the Control Panel:</p>
-        <ol style="list-style-type: decimal;margin-left: 36pt;" start="1">
-            <p>Click on the Start button on the Windows taskbar.</p>
-            <p>Select the Settings <span style="font-family: Wingdings;">à</span> Control Panel</p>
-            <p>Click on the “Add or Remove Programs” icon.</p>
-            <p>Select Process Director and click Remove</p>
+        <ol>
+            <li>
+                <p>Click on the <span class="UIElement">Start </span>button on the Windows taskbar.</p>
+            </li>
+            <li>
+                <p>Select <span class="ControlName">Settings</span>, then <span class="ControlName">Control Panel</span>.</p>
+            </li>
+            <li>
+                <p>Click on the <span class="ControlName">Add or Remove Programs </span>icon.</p>
+            </li>
+            <li>
+                <p>Select <span class="ControlName">Process Director</span> and click <span class="UIElement">Remove</span>.</p>
+            </li>
         </ol>
         <p>The un-install program will NOT remove the Process Director database or the website or virtual directory. </p>
         <h2><a name="_Toc421172276"></a>Upgrading to a New Version <a href="#_Toc421172276" class="anchor">#</a></h2>
         <p>The upgrade process for installing new versions of Process Director is very straightforward. Essentially, simply downloading and installing the new version will automatically upgrade your existing version of Process Director, and carry over all of your settings and licensing information. If you are upgrading to Process Director v3.41 or higher from an earlier version, however, you will have to take the additional step of setting the Application Pool to use ASP.NET 4.5.</p>
+        <h3>Process Director v5.44.700 and Higher</h3>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> Process Director v5.44.700 and higher uses AES encryption for all encrypted fields/data. This encryption change provides higher security, but it does affect the migration process the <b style="font-style: italic;">first time</b>--and ONLY the first time--you install v5.44.700 or higher from v5.44.600 or lower. Again, this is a one-time change to the process. Upgrading from v5.44.700 to any higher version requires no special action.</p>
+        <h4>Custom Tasks</h4>
+        <p>You will need to update the Custom Tasks for your installation, <span class="Emphasis">prior to upgrading Process Director. </span>Some Custom Tasks include changes to field properties that require updated versions. If you update the Custom Tasks after upgrading Process Director, then you will need to go to the Server Control page of the IT&#160;Admin area's Troubleshooting section, and click the action link labeled, <span class="UIElement">Encrypt Old Form Data</span>.</p>
+        <h4>Singe-Server Installations</h4>
+        <p>Migration to AES encryption occurs automatically for customers, by default, when installing v5.44.700 on a single-server installation. <span class="Emphasis">This migration may significantly increase the time needed to upgrade the system</span>, depending on how extensively your installation uses encrypted fields. It is possible to disable the encryption migration, and migrate manually at a later date. </p>
+        <p>To disable the migration during upgrade, use the following procedure:</p>
+        <ol>
+            <li>Upgrade the Custom Tasks.</li>
+            <li>Stop the Process Director server instance.</li>
+            <li>Edit the Custom Variables file to set the <a href="../DevelopersGuide/Customization File System.htm#fEnableEncryptionMigration">fEnableEncryptionMigration</a> custom variable to "false".</li>
+            <li>Restart the Process Director server instance.</li>
+            <li>Upgrade the server instance.</li>
+        </ol>
+        <p>Migration to AES Encryption can later be done manually by navigating to the Server Control page of the IT&#160;Admin area's Troubleshooting section. In the list of action links on this page, click the link labeled, <span class="UIElement">Migrate to AES Encryption</span>. The migration will start and run in the background. Logs will indicate when the migration process started and stopped, what tables were modified, and the row count of modified fields. If, for any reason, the migration is stopped, you can simply restart it using the same action link.</p>
+        <h4>Multi-Server Installations</h4>
+        <p>For multi-instance or load-balanced installations that use more than one Process Director server, the following procedure is required:</p>
+        <ol>
+            <li>Update the Custom Tasks on all servers.</li>
+            <li>Stop all Process Director/web server instances.</li>
+            <li>Upgrade Process Director on the primary system only.</li>
+            <li>Start Process Director on the primary system and access a page or log in.</li>
+            <li>Navigate to App_Data\bpProperties.xml and copy the following values in the Server Settings section of the file, which are highlighted in red, below:</li>
+        </ol>
+        <p class="CodeBase">&lt;?xml version="1.0" encoding="utf-8"?&gt;<br />&#160;&#160;&#160;&#160;&lt;BP_PROPERTIES xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;<br />...<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;SERVER_SETTINGS&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="UIElement">&lt;sEncryptionKeyDoNotModify&gt;...&lt;/sEncryptionKeyDoNotModify&gt; <b>[COPY THIS NODE/VALUE</b>]<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;sCheckValue&gt;...&lt;/sCheckValue&gt;                                 <b>[COPY THIS NODE/VALUE</b></span><b>]</b><br />...</p>
+        <ol MadCap:continue="true">
+            <li>
+                <p>Paste those two values, at the same line location, in the  bpProperties.xml files for  all other systems, and save them.</p>
+            </li>
+            <li>
+                <p>Upgrade and then start Process Director on the other systems, <span class="Emphasis">one system at a time</span>.</p>
+            </li>
+        </ol>
+        <h3>Upgrade Process</h3>
         <p>To begin the upgrade process, log into the BP&#160;Logix Support site and navigate to <a href="https://bplogix.zendesk.com/hc/en-us/sections/4408576448283-Process-Director-Software-and-Downloads" target="_blank">the Downloads page</a>.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/DownloadPage.png" />
