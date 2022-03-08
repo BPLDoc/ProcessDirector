@@ -230,7 +230,9 @@
                     <td class="TableStyle-Simple-BodyD-Column1-Row2">A boolean value to determine whether or not to grant delete permission to the child objects of a Content Object, i.e., an Object Instance.</td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row1">
-                    <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="2"><b>The values below are used only for Deny permissions. This will not be applicable to most installations. We strongly recommend that, due to system overhead, Deny permissions not be used unless necessary.</b>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="2">
+                        <p colspan="2" class="Important"><b><img src="../Resources/Images/i.png" alt="Important" /> The values below are used only for Deny permissions. This will not be applicable to most installations. We strongly recommend that, due to system overhead, Deny permissions not be used unless necessary.</b>
+                        </p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row2">
@@ -285,7 +287,7 @@
                 <p><b>pGroup:</b> Optionally the group name to add into.</p>
                 <p><b>pID:</b> The ID of the object to add.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.Add(Form.Instantiate(bp, Some_FORMID));</p>
             </MadCap:dropDownBody>
@@ -357,7 +359,7 @@
                 <p><b>DestinationID:</b> The ID of the Content Object to add a shortcut into.</p>
                 <p><b>DestinationObjectType:</b> The Type of the Content Object to add a shortcut into.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.AddObjectMap("1234", ObjectType.Folder);</p>
             </MadCap:dropDownBody>
@@ -378,7 +380,7 @@
                 <p><b>pObj:</b> The Content object to add to the pending queue.</p>
                 <p><b>pGroup:</b> The Group Name of the Object.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">//Set the Process and content object</span>
                     <br />var oProcess = Project.GetProcessByID(bp, "ProcessID");<br />var oObject = Form.GetFormByFORMID("FormID");<br /><span class="ControlName">//Add the object to the Pending Queue</span><br />oProcess.AddPending(oObject);</p>
@@ -399,7 +401,7 @@
                 <p><b>ID:</b> The string ID of the Content Object.</p>
                 <p><b>Category:</b> The string name of the category to which the object should be assigned.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.AssignCategory("CategoryName");</p>
             </MadCap:dropDownBody>
@@ -421,7 +423,7 @@
                 <p><b>pString:</b> The string containing optional sysvars to convert.</p>
                 <p><b>pContext:</b> A System Variable Context object identifying the context of the variables </p>
                 <h4>Returns</h4>
-                <p><b>String:</b> The converted string</p>
+                <p><b>string:</b> The converted string</p>
                 <h4>Example</h4>
                 <p class="CodeBase">var NewString = oObject.ConvertSysVarsInString("Convert embedded sysvars");</p>
             </MadCap:dropDownBody>
@@ -444,7 +446,7 @@
                 <p><b>DestinationObjectType:</b> The Type of the Content Object to copy into. (optional parameter)</p>
                 <p><b>GroupName:</b> The Group name of the object</p>
                 <h4>Returns</h4>
-                <p><b>String:</b> The ID of the new object, or “” if the copy failed.</p>
+                <p><b>string:</b> The ID of the new object, or “” if the copy failed.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.CopyObject</p>
             </MadCap:dropDownBody>
@@ -459,7 +461,7 @@
                 <h4>Parameters</h4>
                 <p>none</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.DeleteObject();</p>
             </MadCap:dropDownBody>
@@ -474,7 +476,7 @@
                 <h4>Parameters</h4>
                 <p>none</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.DeleteObjectAndChildren();</p>
             </MadCap:dropDownBody>
@@ -534,7 +536,7 @@
                 <p><b>ID:</b> The ID of the attribute to retrieve</p>
                 <p><b>pCat:</b> The Meta Data Category object</p>
                 <h4>Returns</h4>
-                <p><b>List:</b> The Name-Value pairs of each Attribute</p>
+                <p><b>list:</b> The Name-Value pairs of each Attribute</p>
                 <h4>Example</h4>
                 <p class="CodeBase">var atts = oObject.GetAttributes("Category 1.Category 2");<br />foreach( var att in atts )<br />{<br />var name = att.Name;<br />var val = att.Value;<br />}</p>
             </MadCap:dropDownBody>
@@ -585,7 +587,7 @@
                 <p><b>GroupName:</b> The optional group name of the objects to filter.</p>
                 <p><b>ParentID:</b> The optional ID of the parent object to filter</p>
                 <h4>Returns</h4>
-                <p><b>List:</b> A List of the ContentObject type.</p>
+                <p><b>list&lt;ContentObject&gt;:</b> A List of the ContentObject type.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">var childList = CurrentWorkflow.GetChildren(ObjectType.Document);</p>
             </MadCap:dropDownBody>
@@ -600,7 +602,7 @@
                 <h4>Parameters</h4>
                 <p>none</p>
                 <h4>Returns</h4>
-                <p><b>String:</b> The file extension (e.g. “docx”, “ascx”) of the document or Form.</p>
+                <p><b>string:</b> The file extension (e.g. “docx”, “ascx”) of the document or Form.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">Var FileType = oObject.GetFileType();</p>
             </MadCap:dropDownBody>
@@ -672,7 +674,7 @@
                 <h4>Parameters</h4>
                 <p><b>idProc:</b> The string ID of the content object fow which you wish to return the associated process.</p>
                 <h4>Returns</h4>
-                <p><b>Workflow or Project:</b> The process object associated with the idProc used as the input parameter.</p>
+                <p><b>Workflow or Project (Process Timeline) object:</b> The process object associated with the idProc used as the input parameter.</p>
                 <h4>Example</h4>
                 <p>If a content object is ised in a single process, you can return the process without passing any parameters. In the sample below, a form is identified, then used to return the process associated with the form:</p>
                 <p class="CodeBase">var form = Form.GetFormByFORMINSTID(bp, "InstanceID");<br />var proc = form.GetProcess();</p>
@@ -696,7 +698,7 @@
                 <p><b>ID:</b> The ID of the ContentObject to check.</p>
                 <p><b>Category:</b> The string name of the category to check.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the object is assigned to the given Meta Data Category.</p>
+                <p><b>boolean:</b> True if the object is assigned to the given Meta Data Category.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.IsCatAssigned("CategoryName");</p>
             </MadCap:dropDownBody>
@@ -719,7 +721,7 @@
                 <p><b>DestinationObjectType:</b> The Type of the Content Object to move into. (optional parameter)</p>
                 <p><b>oDest:</b> The Content Object of the destination to which to move the object</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.MoveObject("1234");</p>
             </MadCap:dropDownBody>
@@ -740,7 +742,7 @@
                 <p><b>ID:</b> The ID of the ContentObject to check.</p>
                 <p><b>Category:</b> The string name of the category to check.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the method succeeds.</p>
+                <p><b>boolean:</b> True if the method succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.RemoveCategory("CategoryName");</p>
             </MadCap:dropDownBody>
@@ -767,7 +769,7 @@
                 <p><b>eMapType :</b> The relationship Map Type between the child and parent objects.</p>
                 <p><b>pParentID:</b> The string ID of the parent object.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.RemoveObjectFromParent(pParentObject);</p>
             </MadCap:dropDownBody>
@@ -795,7 +797,7 @@
                 <p><b>Group:</b> The Group object from which to remove permissions.</p>
                 <p><b>User:</b> The user object from which to remove permissions.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.RemovePermissions(); // Remove all permissions to this object</p>
             </MadCap:dropDownBody>
@@ -815,7 +817,7 @@
                 <p><b>BP:</b> The Process Director BP Object</p>
                 <p><b>ID:</b> The ID of the object from which to remove permissions.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.ReplicatePermsToChildren();</p>
             </MadCap:dropDownBody>
@@ -835,7 +837,7 @@
                 <p><b>BP:</b> The Process Director BP Object</p>
                 <p><b>ID:</b> The ID of the object from which to remove permissions.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.ReplicatePermsToChildrenAndForms();</p>
             </MadCap:dropDownBody>
@@ -867,7 +869,7 @@
                 <p><b>Value:</b> The string or DataItem to assign to the Attribute.</p>
                 <p><b>ATTID:</b> The ID of the attribute from which to remove permissions.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.SetAttribute("Category 1.Category 2", "Attribute Name", "1");</p>
             </MadCap:dropDownBody>
@@ -892,7 +894,7 @@
                 <p><b>ID:</b> The ID of the object from which to remove permissions.</p>
                 <p><b>Attributes:</b> A list of NameValueEx objects where the Name specifies the <code>Category.Attribute</code> name, and the Value specifies the value to set.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -911,7 +913,7 @@
                 <p><b>ExternalName:</b> The string value for the external name to use for the attribute name.</p>
                 <p><b>Value:</b> The string value of the Attribute to set.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.SetExternalAttribute("ExternalName", "ValueToSet");</p>
             </MadCap:dropDownBody>
@@ -932,7 +934,7 @@
                 <p><b>ID:</b> The ID of the object to which to set the attributes.</p>
                 <p><b>MetaData:</b> A  list object consisting of Name/Value pairs.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.SetExternalAttributes(MetaDataList);</p>
             </MadCap:dropDownBody>
@@ -947,7 +949,7 @@
                 <h4>Parameters</h4>
                 <p><b>GroupName:</b> The group for this object.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.SetGroupName("My Group");</p>
             </MadCap:dropDownBody>
@@ -969,7 +971,7 @@
                 <p><b>ID:</b> The ID of the object for which the Meta Data is to be set..</p>
                 <p><b>XML_Data:</b> The XML&#160;String containing the Meta Data information.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">//Make the XML&#160;String for the Meta Data</span>
                     <br />StringBuilder sb = new StringBuilder();<br />sb.Append("&lt;sb.Append("&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;");<br />sb.Append("&lt;META_DATA xmlns:xsi=");<br />sb.Append("\"http://www.w3.org/2001/XMLSchema-instance\"");<br />sb.Append("xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"&gt;"");<br />sb.Append("&lt;INPUT_META_DATA&gt;");<br />sb.Append("&lt;ATTRIB_NAME&gt;Cat 1.Cat 2.Attrib 1&lt;/ATTRIB_NAME&gt;");<br />sb.Append("&lt;META_VALUE&gt;Value 1&lt;/META_VALUE&gt;");<br />sb.Append("&lt;/INPUT_META_DATA&gt;");<br />sb.Append("&lt;INPUT_META_DATA&gt;");<br />sb.Append("&lt;ATTRIB_NAME&gt;Cat 1.Cat 2.Attrib 2&lt;/ATTRIB_NAME&gt;");<br />sb.Append("&lt;META_VALUE&gt;Value 2&lt;/META_VALUE&gt;");<br />sb.Append("&lt;/INPUT_META_DATA&gt;");<br />sb.Append("&lt;/META_DATA&gt;");<br /><br /><span class="ControlName">//Set&#160;Meta Data</span><br />oObject.SetMetaData(sb.ToString());</p>
@@ -1006,7 +1008,7 @@
                 <p><b>GrantID:</b> The string ID of the user/group for whom permissions should be added.</p>
                 <p><b>GrantType:</b> The GrantType object of the permissions.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">var user = User.GetUserByUserID(bp, “User 1”);<br />oObject.SetPermissions(user, true, true, false, true); <br /><span class="ControlName">// Grant “User 1” permission to view, modify, or run the object </span><br /><span class="ControlName">// (but not to delete it)</span><br /><br />var group = Group.GetGroupByName(bp, “Finance”);<br />oObject.SetPermissions(group, true, false, false, false); <br /><span class="ControlName">// Grant the “Finance” group view permissions only</span></p>
             </MadCap:dropDownBody>
@@ -1031,7 +1033,7 @@
                 <p><b>PermDelete:</b> Whether or not the user will have Delete permission on the object.</p>
                 <p><b>PermRun:</b> Whether or not the user will have Run permission on the object.</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">var granttype= TempPerm.GrantType;<br />oObject.SetPermissionsEx(bp, "IDValue", "PartitionID", "GrantID", <br />&#160;&#160;&#160;&#160;granttype, 1, 1, 0, 1); <br /><span class="ControlName">// Grant “User 1” permission to view, modify, or run the object </span><br /><span class="ControlName">// (but not to delete it)</span><br /></p>
             </MadCap:dropDownBody>
@@ -1046,7 +1048,7 @@
                 <h4>Parameters</h4>
                 <p>none</p>
                 <h4>Returns</h4>
-                <p><b>Boolean:</b> True if the operation succeeds.</p>
+                <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase">oObject.UpdateObject();</p>
             </MadCap:dropDownBody>
