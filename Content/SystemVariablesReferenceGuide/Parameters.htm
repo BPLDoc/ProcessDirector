@@ -12,7 +12,7 @@
             <MadCap:keyword term="System Variables" />System variables will often contain Modifiers or other variables which control the data the system variable will return. These are specified in SysVar tags using the following syntax:</p>
         <p><code>{VARNAME, format=<b>format_type</b>}</code>
         </p>
-        <p>VARNAME is the name of the system variable, and format type is the formatting option. format type can be one of any set of the following, depending on the system variable it’s in. </p>
+        <p>VARNAME is the name of the system variable, and format type is the formatting option. Format type can be one of any set of the relevant formatters, depending on the system variable in which it's used. </p>
         <p>System variable modifiers are not case sensitive.</p>
         <h3 MadCap:conditions="General.Not Printed">Video Example</h3>
         <p MadCap:conditions="General.Not Printed">
@@ -192,9 +192,11 @@
                 <p><code>{:<b>somFormField</b>, case=<b>upper|lower</b>}</code>
                 </p>
                 <p>The substring Modifier enables you to extract a desired substring by identifying the starting character location with the "subStart" Modifier, and the length of the substring with the "subLength" Modifier. The position of the "subStart" Modifier is zero-based, meaning that the first character position is 0, rather than 1.</p>
-                <p class="CodeBase">{:somFormField, subStart=6, subLength=10}<br /><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "ghijklmnop".</span></p>
+                <p class="CodeBase"><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "ghijklmnop".</span>
+                    <br />{:somFormField, subStart=6, subLength=10}</p>
                 <p>The Case Modifier can also be used in conjunction with the substring Modifiers.</p>
-                <p class="CodeBase">{:somFormField, case=upper, subStart=6, subLength=10}<br /><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "GHIJKLMNOP".</span></p>
+                <p class="CodeBase"><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "GHIJKLMNOP".</span>
+                    <br />{:somFormField, case=upper, subStart=6, subLength=10}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
