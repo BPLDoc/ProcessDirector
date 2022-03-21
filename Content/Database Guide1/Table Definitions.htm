@@ -9,7 +9,7 @@
             <MadCap:concept term="Database;Developer" /><a name="_Toc421178523"></a>Table Definitions</h1>
         <p>The table definitions below are current as of Process Director v5.44.600.</p>
         <h2><a name="Enumerators"></a>Enumerators <a href="#Enumerators" class="anchor">#</a></h2>
-        <p>Several table use common enumerators to specify object types or statuses. These common enumerators are listed below. Numerators that are used only in specific tables are displayed with the relevant table definition.</p>
+        <p>Several table use common enumerators to specify object types or statuses. These common enumerators are listed below. Numerators that are used only in specific tables are displayed in the section that pertains to the relevant table.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="nDataType"></a><a href="#nDataType"><img src="../Resources/Images/link.png" alt="Link" /></a>nDataType Enumeration</MadCap:dropDownHotspot>
@@ -8823,6 +8823,114 @@
                                 <p>36</p>
                             </td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row2">Case property ID if stored in a case.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>nEventType Enumerator</h4>
+                <p>The possible values for the <span class="ControlName">nEventType </span>field are shown below.</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0" summary="nAuditType Enumeration">
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 9em;" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 13em;" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">&#160;&#160;nEventType</th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">Event Name</th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">0</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">None</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">1</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">FieldEvent</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">An event mapped to a specific form field event, e.g. button or event field FCID.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">2</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">BP_Event</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">An event mapped to all Form events.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">3</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">BP_FormInitialize</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">An event called one time to initialize a Form instance.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">4</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">BP_ViewStateInit</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">An event mapped to the Form Init viewstate. This is called once prior to the BP_Complete event, after which it is reset.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">5</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">BP_Rules</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Called prior to a condition evaluation.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">6</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">BP_Rules_Post</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Called after a condition evaluation.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">7</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">BP_Validation</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Called prior to a built in Form validation.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">8</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">BP_Validation_Post</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Called after a built in Form validation.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">9</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">BP_Completed</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Mapped to the Form Complete event. You cannot stop or interrupt the Form Complete event.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">10</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">BP_Display</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Called just prior to displaying a Form, any time the form opens, or any time the Form is refreshed.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">11</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">BP_AjaxRequest</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Used for Ajax requests, only as a backwards compatibility technique.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">-1</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">TaskBegin</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Called prior to the start of a Process task.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">-2</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">TaskEnd</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Called after the completion of a Process Task.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>nDSType Enumerator</h4>
+                <p>The possible values for the <span class="ControlName">nDSType </span>field are shown below.</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0" summary="nAuditType Enumeration">
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 6em;" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">&#160;&#160;nStatus</th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">0</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Set Form Data</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">1</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Set Dropdown</td>
                         </tr>
                     </tbody>
                 </table>
