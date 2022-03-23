@@ -63,7 +63,7 @@
                 <MadCap:dropDownHotspot><a name="SQLSlow"></a><a href="#SQLSlow"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>SQL&#160;Queries Run&#160;Slowly After Upgrading to SQL&#160;Server 2014</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>In SQL Server 2014, Microsoft changed how SQL commands are evaluated.If, while running SQL Server 2008/2012, you created a SQL view that contains array fields for a form definition, this query will run more slowly if you subsequently upgrade your database to SQL&#160;Server 2014. This is <b>only</b> an issue on SQL Server 2014 with views that map columns in an array. Views that map array fields will need to be dropped and recreated after the upgrade to SQL 2014. When you recreate the view from the form definition, it will append a new "trace flags" option that will tell SQL Server 2014 to use the older logic from SQL&#160;Server 2008/2012, and eliminate the performance deficiency.</p>
+                <p>In SQL Server 2014, Microsoft changed how SQL commands are evaluated. If, while running SQL Server 2008/2012, you created a SQL view that contains array fields for a form definition, this query will run more slowly if you subsequently upgrade your database to SQL&#160;Server 2014. This is <b>only</b> an issue on SQL Server 2014 with views that map columns in an array. Views that map array fields will need to be dropped and recreated after the upgrade to SQL 2014. When you recreate the view from the form definition, it will append a new "trace flags" option that will tell SQL Server 2014 to use the older logic from SQL&#160;Server 2008/2012, and eliminate the performance deficiency.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -71,9 +71,7 @@
                 <MadCap:dropDownHotspot><a name="SQLEscapeBug"></a><a href="#SQLEscapeBug"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>SQL&#160;Server Escape Bug</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>A bug in SQL Server can cause a performance problem with Knowledge Views searching for form data using "contains". To work around this, the product will now match any special wildcard characters in your search filter with any character. You can re-enable the exact matching using special characters by setting a new variable in the custom vars that we have created to help mitigate this SQL&#160;Server bug. The new variable exists to enable the ESCAPE, but ensure your SQL Server version is patched at the appropriate level. The variable can be enabled in the vars file in the PresetSystemVars() function :</p>
-                <p><code>CV.fEnableSQLEscape = true;</code>
-                </p>
+                <p>A bug in SQL Server can cause a performance problem with Knowledge Views searching for form data using "contains". To work around this, the product will now match any special wildcard characters in your search filter with any character. You can re-enable the exact matching using special characters by setting the <a href="../DevelopersGuide/Customization File System.htm#fEnableSQLEscape">fEnableSQLEscape Custom Variable</a> that we created to help mitigate this SQL&#160;Server bug to 'true". The new variable exists to enable the ESCAPE, but <span class="Emphasis">ensure your SQL Server version is patched at the appropriate level</span>. The variable can be enabled in the Custom Vars file in the PresetSystemVars() function.</p>
                 <p>See the MS KB article: <a href="https://support.microsoft.com/en-us/kb/2698639" target="_blank">https://support.microsoft.com/en-us/kb/2698639</a> for more information. It is important to note that the bug effects more than the SQL Server versions listed in the KB article (e.g. SQL Server 2014 is also effected).</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -181,6 +179,8 @@
                 <MadCap:dropDownHotspot><a name="Plug"></a><a href="#Plug"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>Plug-In Issues in Microsoft Word</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix Recommends the use of the Online Form Designer, instead of the Word Form Builder.</p>
                 <p>In November 2016, Microsoft introduced a bug in their update of Word 2013 and 2016. This bug interferes with your ability to create or modify e-forms. If you have not yet done so, please do NOT update Word 2013 or 2016 on systems you use for this purpose.</p>
                 <p>For Word 2013, uninstalling KB3039719 using Windows Update appears to resolve the issue.</p>
                 <p>For Word 2016, we have not yet identified which KB update seems to have caused the problem.</p>

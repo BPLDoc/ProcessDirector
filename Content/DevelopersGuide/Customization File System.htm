@@ -128,12 +128,24 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="fAllowRetrievePassword">&#160;</MadCap:keyword>This variable permits form variables to be set or retrieved from Javascript, when set to the default value of "true". Setting this value to "false" disables this behavior.</p>
+                    <MadCap:keyword term="fEnableJavaScriptDev">
+                    </MadCap:keyword>This variable permits form variables to be set or retrieved from Javascript, when set to the default value of "true". Setting this value to "false" disables this behavior.</p>
                 <h5>Vars.cs Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable Javascript access to vars</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableJavaScriptDev = false;<br />}</p>
                 <h5>Javascript Example </h5>
                 <p>By default, Javascript can be used to get or set form value for controls that are not contained in a Form array. The best practice for this type of use would most often be to insert the Javascript into an HTML&#160;Control on the Form.</p>
                 <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Function call to get form data from a Form via Javascript</span><br />&#160;&#160;&#160;&#160;function getVariable()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = CurrentForm.FormControls["FORM_VAR"].value;<br />&#160;&#160;&#160;&#160;}<br /><br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Function call to set a Form field value with JavaScript</span><br />&#160;&#160;&#160;&#160;function setFieldValue()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = "SomeValue";<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["FORM_VAR"].value = frmValue;<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fEnableSQLEscape"></a><a href="#fEnableSQLEscape"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fEnableSQLEscape</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fEnableSQLEscape" />When you run a SELECT statement that contains a LIKE operator and an ESCAPE clause in SQL Server 2008 R2, SQL Server 2012, or SQL&#160;Server 2014, SQL Server may use an inefficient query plan for the statement. Additionally, the performance of the statement is low. This SQL&#160;Server bug can cause a performance problem with Knowledge Views searching for form data using "contains", especially when using the "contains" operator with wildcard characters. This Custom variable, when set to "true", alters the operation of these queries to improve performance and help mitigate this SQL&#160;Server bug. The default value for this variable is "false".</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Mitigate SQL&#160;Server bug for LIKE/Wildcard queries</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableSQLEscape = true;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
