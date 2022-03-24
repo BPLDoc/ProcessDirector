@@ -35,7 +35,7 @@
         <h2><a name="Dashboard"></a>Dashboard <a href="#Dashboard" class="anchor">#</a></h2>
         <p>The <span class="ControlName">Dashboard </span>section of the Case Definition enables you to specify a dashboard to use to display the case folder.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/CaseDahboard1.png" />
+            <img src="../Resources/Images/ImplementersReference/CaseDef.png" />
         </p>
         <p>Note that, as with most text-based properties, you can use System Variables as part of the <span class="ControlName">Name to display on Tab</span> property.</p>
         <p>With the Case Dashboards, whenever a user opens a case instance, the Dashboard appears automatically, displaying all of the associated files, Forms, documents, etc., that are relevant to the case.</p>
@@ -49,15 +49,13 @@
         <p>Additional buttons can be added to the Case dashboard, such as buttons to open Forms, or display other related Knowledge views.</p>
         <p>To learn more about creating and configuring Dashboards, please see the <a href="Dashboards.htm">Dashboards</a> topic.</p>
         <h2><a name="eForms"></a>Forms <a href="#eForms" class="anchor">#</a></h2>
-        <p>With the Case Management feature, Form definitions have a property located in the <span class="ControlName">Options </span>section of the <span class="UIElement">Form Options</span> tab, called, <span class="ControlName">Case Definition to create an instance for (optional)</span>. When you set a Case definition for this property, the Form, when submitted, will create a new Case instance. All subsequent processes, Forms, etc. that are created in the context of the case will be linked to the Case instance.</p>
+        <p>With the Case Management feature, Form definitions have a property located in the <span class="ControlName">Options </span>section of the <span class="UIElement">Form Options</span> tab, called, <span class="ControlName">Automatically create an instance of this Case (optional)</span>. When you set a Case definition for this property, the Form, when submitted, will create a new Case instance. All subsequent processes, Forms, etc. that are created in the context of the case will be linked to the Case instance.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/caseeformoptions.png">
-            </img>
+            <img src="../Resources/Images/ImplementersReference/CaseDef1.png" />
         </p>
         <p>The Case Management functionality also provides some new configuration options for Form fields. The field properties in a Form definition are enabled to use a Case property as a default value and/or to save the field value as a Case property.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/eFormFieldCaseProperty.png">
-            </img>
+            <img src="../Resources/Images/ImplementersReference/CaseDef2.png" />
         </p>
         <p>The Auto Claim Form for our sample auto claims application uses case properties extensively. In our sample application, policyholder information containing the customer's contact and vehicle information are extracted from an external data source, and filled into the form automatically when the user enters a policy number.</p>
         <p>
@@ -80,25 +78,21 @@
         <p>Because you associate the Form with the Case, in most cases there are no special configuration settings that need to be set on the Process Timelines or Workflows. The Forms are already "painted" with the case, and some of that "paint" transfers to the processes automatically. The sample project is configured in this way.<br /></p>
         <p>There may, however, be times when you do need to associate a process with a case, so there is a Timeline activity type called the Case activity. Please see the documentation on Timeline activity types or Workflow step types for more information about this feature.</p>
         <h2><a name="KnowledgeViews"></a>Knowledge Views <a href="#KnowledgeViews" class="anchor">#</a></h2>
-        <p>On the <span class="UIElement">Options </span>tab of a Knowledge View, you can associate a Case with Knowledge View by choosing the desired case from the <span class="ControlName">Case Definitions Associated with Knowledge View (optional)</span> property.</p>
+        <p>On the <span class="UIElement">Properties </span>tab of a Knowledge View, you can associate a Case with Knowledge View by choosing the desired case from the <span class="ControlName">Case Definitions Associated with Knowledge View (optional)</span> property.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/casekview.png">
-            </img>
+            <img src="../Resources/Images/ImplementersReference/CaseDef3.png" />
         </p>
-        <p>Next, in the <span class="UIElement">Advanced Options</span> tab of the Knowledge View definition, You can configure the Knowledge View to return Case instances. When you do so, clicking on a Case instance in the Knowledge View's results will open the case instance in the Case Dashboard you configure.</p>
+        <p>Next, in the <span class="UIElement">Options</span> tab of the Knowledge View definition, You can configure the Knowledge View to return Case instances. When you do so, clicking on a Case instance in the Knowledge View's results will open the case instance in the Case Dashboard you configure.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/casekviewreturns.png">
-            </img>
+            <img src="../Resources/Images/ImplementersReference/CaseDef4.png" />
         </p>
         <p>Finally, the Knowledge View's <span class="UIElement">Filter </span>tab is enabled to use Case properties as a Knowledge View filter.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/casekviewfilter2.png">
-            </img>
+            <img src="../Resources/Images/ImplementersReference/CaseDef5.png" />
         </p>
         <p>Indeed, the Case properties automatically appear in the<span class="ControlName"> Choose System Variable</span> dialog box for use in any condition builder.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/casekviewfilter.png">
-            </img>
+            <img src="../Resources/Images/ImplementersReference/CaseDef6.png" />
         </p>
         <p>Because Case management requires the use of a Case Dashboard that shows you all of the information relevant to a specific case, you will need to create a number of Knowledge Views that will appear in the Case Dashboard portlets. In the sample Case Management Project, the <span class="ProcessDirectorObject">Claims </span>Dashboard uses two Knowledge Views, <span class="ProcessDirectorObject">Case Reports</span> and <span class="ProcessDirectorObject">Case Estimates</span>, to display all of the Adjuster's Reports and Repair Estimates, respectively, that are associated with the case.</p>
         <p class="PDNote">
