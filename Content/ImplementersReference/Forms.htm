@@ -14,7 +14,7 @@
         <p>Electronic forms are web-based forms that can be published and made available to users so they can fill them out and submit them online from within their browser. When a Form is completed, it can be automatically routed using a process definition. This topic describes how to create and manage a Form, how to set the validation policies for the form fields and the optional scripting APIs that are available for interfacing with external systems and providing custom business logic.</p>
         <p>Forms are primarily created using the <a href="Form Online Builder.htm">Online Form Designer</a>. Additional form-building tools are available, if necessary: the <a href="FormBuilder.htm">Word Form Builder</a> or an ASP.Net development tool like Visual Studio. The Word Form Builder requires the BP Logix Word Plug-in and can only be used with a 32-bit version of Microsoft Word 2010 or higher. The Word Form Builder was largely deprecated by the introduction of the Online Form Designer, but is still supported mainly for legacy and backwards compatibility reasons. A Visual Studio plugin is available for using Visual Studio to create forms as ASCX custom controls, with the appropriate license option.</p>
         <p class="PDNote">
-            <img src="../Resources/Images/i2.png" alt="Note" /> As of Process Director v4.5, the term <span class="KeyTerms">eForm </span>is no longer exclusively used. Electronic Forms are becoming a common standard, so the term eForm has been deprecated in favor of the simpler term <span class="KeyTerms">Form</span> in the product. Users of prior versions of Process Director will still see the term eForm used in the product interface, while users of v4.5 and higher will see the term Form used.</p>
+            <img src="../Resources/Images/i2.png" alt="Note" /> As of Process Director v4.5, the term "eForm" is no longer exclusively used. Electronic Forms are becoming a common standard, so the term eForm has been deprecated in favor of the simpler term "Form" in the product. Users of prior versions of Process Director will still see the term "eForm" used in the product interface, while users of v4.5 and higher will see the term "Form" used.</p>
         <h2><a name="_Toc421536197"></a>
             <MadCap:keyword term="eForm Definition" />Form Definitions <a href="#_Toc421536198" class="anchor">#</a></h2>
         <p>Form definitions are stored in the Process Director database. Form definitions (templates) have properties similar to other objects, such as documents.</p>
@@ -42,7 +42,7 @@
                 </p>
                 <p> The <span class="ControlName">Create Form</span> dialog will display, enabling you to select the Form template format you'd like to use from the dropdown. Enter a required name for the form and optionally give it a description. Click the <span class="UIElement">OK </span>button to create the form. </p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/NewFormType.png" />
+                    <img src="../Resources/Images/ImplementersReference/Forms.png" />
                 </p>
                 <p>In nearly every case, you should use the default Online Form Designer format for creating new Forms. There are, however, several options you can select for creating your Form template:</p>
                 <ul>
@@ -76,7 +76,7 @@
             <MadCap:dropDownBody>
                 <p>You can immediately access the online template for any Form that was built using the Online Form Designer by clicking the <span class="UIElement">Edit </span>tab of the Form definition. Process Director will automatically check out the Form template and display it in the designer.</p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/EditTab.png" />
+                    <img src="../Resources/Images/ImplementersReference/Forms1.png" />
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -107,16 +107,16 @@
                 <p>If you <b>only</b> need to set the default value of a field via URL for a new Form instance, you can use the following procedure to configure the field.</p>
                 <p>In the<span class="UIElement"> Form Fields</span> tab of the Form definition, open the field properties for the field you wish to set. You must set a variable as the default value, and there are two ways to do this:</p>
                 <ol>
-                    <li>Set the default value as a Variable, then enter the name you'd like to use for the variable:</li>
+                    <li>Set the <span class="ControlName">Default Value </span>as a Variable, then enter the name you'd like to use for the variable:</li>
                 </ol>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/FieldValueURLParameter2.png" />
+                    <img src="../Resources/Images/ImplementersReference/Forms2.png" />
                 </p>
                 <ol MadCap:continue="true">
                     <li>Set the default value to a string, and enter a generic variable into the field, using the syntax <code>{VAR:VarName, modifier=ModifierValue}</code>.</li>
                 </ol>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/FieldValueURLParameter1.png" />
+                    <img src="../Resources/Images/ImplementersReference/Forms3.png" />
                 </p>
                 <p>Using the VAR object in a text string enables you to add additional modifiers to the variable. For instance, the syntax <code>{VAR:JobTitle, null="Value if null"}</code> specifies the value to use if the URL parameter is not present.</p>
                 <p>The VAR (Variable) object is an <i>ad-hoc</i> variable whose primary use is to serve as a placeholder for the value passed via the URL&#160;Parameter. This is the same implementation procedure used when <a href="Knowledge View Exporting and Reporting.htm#_Toc421536233">passing values to a Knowledge View in a URL</a>.</p>
@@ -166,10 +166,10 @@
         </p>
         <p>To enable form locking, select the <span class="ControlName">Enable Form Locking</span> checkbox in the <span class="ControlName">Options </span>section of the Form definition's <span class="UIElement">Properties </span>tab.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/The radio button input controls_103.jpg" style="visibility: visible;mso-wrap-style: square;" />
+            <img src="../Resources/Images/ImplementersReference/Forms4.png" />
         </p>
         <p>Form locking can be problematic in some cases. If one user needs to review the form, without making changes, while another user in the process is trying to complete a task, the reviewer would lock the form, preventing the task assignee from completing his work. If multiple users can access the form, then the user that opens the form first will lock the others out.</p>
-        <p>For this reason, the Form definition allows you to create conditions on the "Entire form is read-only when" option. This option allows you to determine conditions when the form can be made read-only. This prevents editing in specified circumstances, without locking the form for all users.</p>
+        <p>For this reason, the Form definition allows you to create conditions on the <span class="ControlName">Entire form is read-only when</span> option. This option allows you to determine conditions when the form can be made read-only. This prevents editing in specified circumstances, without locking the form for all users.</p>
         <h2><a name="Events"></a>Form Events <a href="#Events" class="anchor">#</a></h2>
         <p>Form Events are actions that occur on a form, to which you can add custom actions of your own. Many events fire automatically as part of the form's natural life cycle. For instance, when a form is first opened, an event called Form Creation is fired. Some events, on the other hand, are manually fired. A <span class="NamedControl">Button </span>control, for example, has an event that fires when the button is clicked, and this event is built into the <span class="NamedControl">Button </span>control automatically. Additionally, form input controls can also be set as an <span class="ControlName">Event Field</span> in the properties you configure on the <span class="UIElement">Form Controls</span> tab of the Form definition. These controls will fire an event when the data in the control is changed. Any time an event fires, you can configure an action to run on the event, such as a Set Form Data action, or running a Custom Task. For example, you might place a <span class="NamedControl">Button </span>control on a form, and on the event for that button, run a Custom Task that converts the form to a PDF document.</p>
         <p>Form events can be accessed from a Dropdown control that lists all of the available events on the form. This dropdown is primarily used on the <span class="UIElement">Set&#160;Form Data</span> and <span class="UIElement">Custom&#160;Task Event Mapping</span> tabs, though it appears anywhere that an event is applicable.</p>

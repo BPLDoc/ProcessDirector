@@ -18,7 +18,7 @@
         <h5>Activity Name</h5>
         <p>The first field on this dialog identifies the name of the activity. This information is important for the users and the Process Timeline owners because it is used to determine what activity in the Process Timeline is currently running, and what function is being performed. This name is also displayed on the routing slip to show where the process is currently running.</p>
         <p>
-            <img src="../Resources/Images/Capture104.png" />
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities.png" />
         </p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -27,7 +27,7 @@
             <MadCap:dropDownBody>
                 <p>This dropdown contains type of activity to be used for the current activity. This dropdown will display different options depending on the type of activity selected.</p>
                 <p>
-                    <img src="../Resources/Images/Capture105.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities2.png" />
                 </p>
                 <p>For example, the default Activity Type is the User activity. With the user activity selected, the second tab on the options dialog will be <span class="UIElement">Participants</span>. Selecting a different type of activity will change the second tab to a different option setting, and some activity types will remove some of the form's tabs completely, as they contain inapplicable settings for that type of activity.</p>
                 <p>The available activity types are described below.</p>
@@ -167,7 +167,7 @@
         <h3><a name="_Toc421536163"></a>Participants Tab <a href="#_Toc421536163" class="anchor">#</a></h3>
         <p>The Participants Tab appears when the User activity type is selected.</p>
         <p>
-            <img src="../Resources/Images/Capture109.png" />
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities4.png" />
         </p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -180,7 +180,7 @@
         <h3><a name="_Toc421536164"></a>Results Tab <a href="#_Toc421536164" class="anchor">#</a></h3>
         <p>The Results Tab appears when the User or Wait activity types are selected. The Process activity also has a result, which is generated automatically, and is explained in the "Results of a Process Activity" section below.</p>
         <p>
-            <img src="../Resources/Images/Capture110.png" />
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities5.png" />
         </p>
         <p>A user activity in the Process Timeline can have results assigned to it. Multiple results can be added to an activity by clicking on the Add Result Button.&#160; Each result will have its own properties, which are presented in a tabbed interface.</p>
         <p>The results will be used as the Activity result for the task, which will appear in Routing Slips and in the Timeline Administration screen.</p>
@@ -234,10 +234,9 @@
                 <MadCap:dropDownHotspot>Activity result condition met when</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This enables you to select a condition, or conditions, which, when met, will complete this task with the result recorded as the activity result. When setting an activity result condition, you <b>must</b> set the Completed When dropdown to "When Any Result Condition Is Met" to complete the activity.</p>
-                <p>
-                    <img src="../Resources/Images/ImplementersReference/ResultCondition.png" />
-                </p>
+                <p>This enables you to select a condition, or conditions, which, when met, will complete this task with the result recorded as the activity result. </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> When setting an activity result condition, you <b>must</b> set the Completed When dropdown to "When Any Result Condition Is Met" to complete the activity on the Completed When<span class="UIElement"> </span>tab of the activity definition. <br /><img src="../Resources/Images/ImplementersReference/ResultCondition.png" /></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -267,7 +266,7 @@
         <p>Workflows do NOT automatically end when an End process step is reached. Workflows end when all of the required steps in a Workflow have completed. You can have two Workflow paths running concurrently, or in parallel, each of which may have its own End Process step. If a Workflow contains two parallel paths that each have a different End Process step, then, when the subprocess completes, it will return a comma-separated string containing the names of BOTH end process steps. In the parent Process Timeline, the returned string will then be set as the result of the Process activity that started the subprocess.</p>
         <h5>Timeline</h5>
         <p>
-            <img src="../Resources/Images/ImplementersReference/Workflow2_30.jpg" style="visibility: visible;mso-wrap-style: square;" />
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities6.png" />
         </p>
         <p>Unlike the End Process step in the Workflow, the End Process activity in a Process Timeline stops the running of the Process Timeline immediately. As such, the End Process activity can only run once in a Process Timeline. So, if you have parallel activities running in a Process Timeline, all of the parallel steps must complete before the End Process activity is reached.&#160; Process Timelines with multiple End Process activities will need to have conditions set on each End Process activity to ensure that only one of the End Process Activities runs. When the subprocess completes, the name of the End Process activity that was run will be returned to the parent process as the result of the Process activity that started the subprocess.</p>
         <h4><a name="_Toc421536166"></a>Options Tab</h4>
@@ -345,26 +344,27 @@
         </MadCap:dropDown>
         <h3><a name="_Toc421536167"></a>Start When Tab <a href="#_Toc421536167" class="anchor">#</a></h3>
         <p>This allows you to add dependencies to the activity. Click on the Add Dependency button. A dropdown list will display of all the activities that are available in the Process Timeline. </p>
-        <p>If an activity has a start condition that is not met and the <span class="UIElement">Advanced Options </span>&gt;&#160; <span class="ControlName">Activity Required to Complete Parent</span> checkbox is checked, the parent activity will remain running even if the child activity has not started.<img src="../Resources/Images/Capture112.png" /></p>
+        <p>If an activity has a start condition that is not met and the <span class="UIElement">Advanced Options </span>&gt;&#160; <span class="ControlName">Activity Required to Complete Parent</span> checkbox is checked, the parent activity will remain running even if the child activity has not started.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities7.png" />
+        </p>
         <h3><a name="_Toc421536168"></a>Completed When Tab <a href="#_Toc421536168" class="anchor">#</a></h3>
         <p>This allows you to indicate when the activity is considered complete. Conditions can be defined that determine when this activity should be terminated. </p>
         <p>
-            <img src="../Resources/Images/Capture113.png" />
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities8.png" />
         </p>
-        <p>By default, a User activity completes when all users have completed the activity manually. If you wish to set a Completed When condition, you <b>must</b> set the Completed When dropdown to "When Any Result Condition Is Met". Additionally, you <b>must</b> set a default result on the <span class="UIElement">Results </span>tab for the activity to complete the activity, and/or to prevent the activity from going into an error state.</p>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/CompletedWhenCondition.png" />
-        </p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> By default, a User activity completes when all users have completed the activity manually. If you wish to set a Completed When condition, you <b>must</b> set the Completed When dropdown to "When Any Result Condition Is Met". Additionally, you <b>must</b> set a default result on the Results tab for the activity to complete the activity, and/or to prevent the activity from going into an error state.<br /><img src="../Resources/Images/ImplementersReference/CompletedWhenCondition.png" /></p>
         <p>Another option on the dropdown, "All Users Complete or Result Number Met", enables you to immediately end a task automatically—even if the task requires all users to complete—by specifying certain results to override that and force the activity to be completed.  For example, you may have 3 results on an activity and normally want all users to complete their task, however you may want one result to immediately end the activity when a user selects it using the "Number of Users" set to 1.</p>
         <h3><a name="_Toc421536169"></a>Needed When Tab <a href="#_Toc421536169" class="anchor">#</a></h3>
         <p>This allows you to define when this activity is “needed”. The conditions indicate when this activity is enabled (needed). If the condition is not met, the activity instance is created to satisfy any dependencies, but is it not run. </p>
         <p>
-            <img src="../Resources/Images/Capture114.png" />
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities9.png" />
         </p>
         <h3><a name="_Toc421536170"></a>Due Date Tab <a href="#_Toc421536170" class="anchor">#</a></h3>
         <p>Each activity in the Process Timeline can have unique time limit/due date options. Process Director runs as a virtual directory in IIS and processes all time related events like due dates when activity is present on the system (e.g. a login). To force this activity checking more often, you can schedule a command in the Windows Scheduler.</p>
         <p>
-            <img src="../Resources/Images/Capture115.png" />
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities10.png" />
         </p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -449,7 +449,7 @@
         <h3><a name="_Toc421536171"></a>Notifications Tab <a href="#_Toc421536171" class="anchor">#</a></h3>
         <p>Each activity in the Process Timeline can have unique notification options. </p>
         <p>
-            <img src="../Resources/Images/Capture116.png" />
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities11.png" />
         </p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>

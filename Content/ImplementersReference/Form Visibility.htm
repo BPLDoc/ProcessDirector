@@ -20,20 +20,20 @@
         <p>First, we can assume that most of the controls on a Form should be edited when the initial user fills out and submits the Form. The corollary to this is that, once a form has been submitted, most of the controls do not need to be edited. It follows then, that the default state for controls on the initial display to the first user should be enabled, while the default state for subsequent viewings of the Form should be to have controls disabled. </p>
         <p>For the initial display of the Form, Process Director incorporates this assumption by providing a dropdown setting on the <span class="UIElement">Properties </span>tab of the Form definition that determines the default state for form fields. You can change the visible or enabled state of the controls at any later step in the process, based on whatever conditions you desire.</p>
         <p>
-            <img src="../Resources/Images/Enabled by default.png" />
+            <img src="../Resources/Images/ImplementersReference/FormVisibility.png" />
         </p>
         <p>One of the settings in the dropdown is <span class="ControlName">Form Fields are Enabled Only when</span>, and this setting enables you to set a condition, which should almost always be "New Form Instance = Yes". This setting allows the initial user to fill out the form, but disables the fields for subsequent users. Because Process Director's inheritance model allows the lowest control setting to win, you can enable individual sections of the Form, so that users can fill them out when needed in the process, while the rest of the Form's controls are still disabled, preventing inadvertent editing of those controls.</p>
         <p>By default, disabled Form control displays in Process Director as "grayed-out" controls, like the example below:</p>
         <p>
-            <img src="../Resources/Images/disabkled fields.png" />
+            <img src="../Resources/Images/ImplementersReference/FormVisibility1.png" />
         </p>
         <p>Another useful option in Process Director will change this display behavior to simply show the fields as text, without displaying the control itself. In the <span class="ControlName">Options </span>section of the <span class="UIElement">Properties</span> tab of the Form definition, you can check the<span class="ControlName"> Show disabled fields as text </span>check box to enable this option.</p>
         <p>
-            <img src="../Resources/Images/show disabled fields as text.png" />
+            <img src="../Resources/Images/ImplementersReference/FormVisibility2.png" />
         </p>
         <p>When you check the<span class="ControlName"> Show disabled fields as text</span> option, the data for disabled controls appears on the Form without the "grayed out" control being visible.</p>
         <p>
-            <img src="../Resources/Images/disabled fields as text.png" />
+            <img src="../Resources/Images/ImplementersReference/FormVisibility3.png" />
         </p>
         <h2>Initial Display Conditions</h2>
         <p>When a form is first filled out prior to submission, it's quite possible that some fields are irrelevant, and don't need to be displayed. For instance, if there is a routing slip—and there should be—approver's comments, or fields that contain information that will be added at a future point in the process, they simply don't need to be displayed in new Form Instances. In fact, at every step in the process, fields that aren't relevant to that specific task shouldn't be displayed. After all, you want users to be focused on the assigned task, so there's no need to show them data that isn't relevant to that task.</p>

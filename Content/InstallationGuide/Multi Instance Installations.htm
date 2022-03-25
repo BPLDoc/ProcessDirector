@@ -9,20 +9,16 @@
             <MadCap:keyword term="Installation" />
             <MadCap:concept term="Installation" /><a name="_Toc421172279"></a>Multi-Instance Installations</h1>
         <p>The product supports the ability to have multiple instances installed on the same server. Even different versions of the products can be installed. Each instance must be licensed appropriately, and each instance requires its own database. Each instance will run as a separate virtual directory or website under IIS.</p>
-        <p>As a pre-requisite, on the target machine for the multi-instance install, any previous installations of Process Director must be removed BEFORE attempting to perform a multi-instance install. </p>
+        <p>As a pre-requisite, on the target machine for the multi-instance install, any previous single-instance installations of Process Director must be removed BEFORE attempting to perform a multi-instance install. </p>
         <p>To facilitate the installation of multiple instances, you must contact BP&#160;Logix support by submitting a technical support ticket to request that we send you the multi-instance installation files. There are two required installation files, BP_Multi.exe, and BPLogixMultiInstance.exe.</p>
         <p>Once you have received the files, the first step is to run the multi-instance preparation application, BP_Multi.exe. This application will prepare the target machine to run the multi-instance installer.</p>
         <p>Once you have completed running the BP_Multi.exe application, you can then install the multi-instance version of Process Director by running the BPLogixMultiInstance.exe installation program.</p>
         <p>The Multi-Instance Installer will actually run the Process Director setup program (downloaded separately) for each instance. You can create as many “installation groups” as you want on a server. Each installation group can contain any number of server instances. All instances in a server group must be at the same version and patch level of the software. Each server instance in the installation group will use the same version of Process Director.</p>
         <p>To configure the Multi-Instance Installer, create a text file for each group of instances. The text file will have this syntax:</p>
-        <p class="CodeBase">GROUP=My Server <br />Group
-            NAME=Instance1
-            <br />PATH=c:\wd1
-<br />          NAME=Instance2
-<br />          PATH=c:\wd2<br />           ...Etc.</p>
+        <p class="CodeBase">GROUP=My Server Group<br />NAME=Instance1<br />PATH=c:\wd1<br />NAME=Instance2<br />PATH=c:\wd2<br /><span class="ControlName">...Etc.</span></p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
-            <col style="width: 9em;" />
-            <col />
+            <col style="width: 9em;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
             <thead>
                 <tr class="TableStyle-Simple-Head-Header1">
                     <th class="TableStyle-Simple-HeadE-Column1-Header1">
@@ -60,11 +56,11 @@
                 </tr>
             </tbody>
         </table>
-        <p>Any number of PATH/NAME pairs can be placed in the configuration file. To run the Multi-Instance Installer, use the following syntax:</p>
+        <p>Any number of PATH/NAME pairs can be placed in the configuration file. To run the Multi-Instance Installer, use the following syntax in the system's command line interface:</p>
         <p class="CodeBase">BPLogixMultiInstance.exe "BP_GROUP=c:\instance.txt" "BP_INSTALL=c:\ProcessDirectorInstall.exe"</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
-            <col style="width: 9em;" />
-            <col />
+            <col style="width: 9em;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
             <thead>
                 <tr class="TableStyle-Simple-Head-Header1">
                     <th class="TableStyle-Simple-HeadE-Column1-Header1">

@@ -12,13 +12,13 @@
         <p>There are a number of different Timeline Activity Types. While there are some broadly-applied, general settings that are applicable to each Activity type, there are also custom configuration settings that are <i>specific</i> to each Activity type, which will be discussed below. For more information on the general Timeline Activity settings, please see the <a href="Process Timeline Activities.htm">Process Timeline Activities topic</a>.</p>
         <h2><a name="Asynchronous"></a>
             <MadCap:keyword term="Asynchronous Operations" />Background Operations <a href="#Asynchronous" class="anchor">#</a></h2>
-        <p>Users are assigned a task when they are added to a Process Timeline activity. A context sensitive web page or Form is displayed that is specific to the task type when the user selects the entry in their Task List, or the link in their email notification. Each task type defines a set of functions or actions that can be performed, as well as custom instructions for the participants. The activity’s type can be set using the Activity Type dropdown in the Activity tab of the activity’s properties.</p>
+        <p>Users are assigned a task when they are added to a Process Timeline activity. A context sensitive web page or Form is displayed that is specific to the task type when the user selects the entry in their Task List, or the link in their email notification. Each task type defines a set of functions or actions that can be performed, as well as custom instructions for the participants. The activity’s type can be set using the <span class="ControlName">Activity Type </span>dropdown in the <span class="UIElement">Activity </span>tab of the activity’s properties.</p>
         <p>
-            <img src="../Resources/Images/Capture186.png" />
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities1.png" />
         </p>
         <p>A Timeline Activity of the Custom Task, Script or Sub-Process types can be configured to run in the background by checking the <span class="ControlName">Run this activity in the background (if unsure, leave this box unchecked)</span> check box  in the <span class="UIElement">Advanced Options</span> tab. Setting the operation to run in the background can be used to prevent a long-running, machine-centric Activity in the Process Timeline from hanging a user session while the processing occurs. The Activity will be run in a different context from the current user's, even inf the user invoked the transition of the Activity. Additionally, if you have a <a href="../SystemAdministratorGuide/Load Balancing.htm#_Toc421094547">Rendering Server</a> enabled, the background processing will be conducted by the Rendering Server when the option is checked.</p>
         <p>
-            <img src="../Resources/Images/Capture83.png" />
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes.png" />
         </p>
         <p>Please note that, when this option is selected, if the user's task is followed (after one or more intervening "background" tasks) by another task assigned to the same user, the current behavior in which the window remains open and is refreshed with the Form for the subsequent task will no longer be seen. Instead, the Form will close, and the user will have to click the appropriate link in their Task List or email notification to open the for to complete the new task.</p>
         <p> On some systems, when starting a subprocess using the asynchronous option, the system can mark the calling task as complete before the called subprocess completes. This may be especially true if the subprocess contains complex rendering operations. To avoid this, a wait time, in seconds, can be set using the <a href="../DevelopersGuide/Customization File Misc.htm#nAsyncSubProcessWaitSecs" target="_blank" title="nAsyncSubProcessWaitSecs Custom Variable" alt="nAsyncSubProcessWaitSecs Custom Variable">nAsyncSubProcessWaitSecs</a> variable in the Custom Vars file. The default setting for this variable is 5 seconds.</p>
@@ -73,7 +73,7 @@
                 <p>Determines when users are notified about the task. Checking the <span class="ControlName">Notify participants when activity starts</span> checkbox will notify the participants when the activity starts using the email template specified in the <span class="ControlName">Using email template</span> field.</p>
                 <p>Additional notifications can be added with the <span class="UIElement">Add Notification</span> button. The occurrence of the notification is specified using the <span class="ControlName">Choose Notification Time</span> dropdown, which allows the creation of a one-time notification or a recurring notification.</p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/Process Timelines_3.png" style="visibility: visible;mso-wrap-style: square;" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes1.png" />
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -94,11 +94,11 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/Process Timelines_22.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities3.png" />
                 </p>
                 <p>Determines which users are a part of the user task. Users can be added via the <span class="UIElement">Add Participant</span> button, and the participants can be specified via the <span class="ControlName">Participant Type </span>dropdown.</p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/Process Timelines_4.png" style="visibility: visible;mso-wrap-style: square;" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes2.png" />
                 </p>
                 <p>When multiple users are assigned to a task,  a sub task can be automatically created for each user. You must have a form field that specifies the name of each desired subtask. For instance, you might assign a task called "Approvals" to two users, in sequence. In that case, you would need two form fields, one of which has a default value of "Approval 1", and the other "Approval 2". When the users complete their task, Both the Task Name and Sub Task name will be assigned to each user, so that you can track both the task, and sub tasks for each user, as they are completed.</p>
             </MadCap:dropDownBody>
@@ -109,7 +109,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/Capture134.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities10.png" />
                 </p>
                 <p>The standard options for the Due Date tab are described in the <a href="Process Timeline Activities.htm#_Toc421536170">Due Date Tab section</a> of the Timeline Activities Topic. The User activity type also has an additional option specific to the User activity type.</p>
                 <h5>If time limit expires</h5>
@@ -178,7 +178,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/GettingStartedGuide/ActivityAdvancedOptions.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes3.png" />
                 </p>
                 <p>The advanced options tab contains miscellaneous options for configuring a user activity. It contains many more configuration options than the generic Advanced Options tab. This is the most common Activity type, and the detailed explanation of the Advanced Options Tab for the User Activity Type is presented in the <a href="Process Timeline Activities.htm#_Toc421536172">Process Timeline Activities topic</a>.</p>
             </MadCap:dropDownBody>
@@ -191,9 +191,9 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/Capture118.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes4.png" />
                 </p>
-                <p>There are two Advanced options for Notification activities.</p>
+                <p>There are two advanced options for Notification activities.</p>
                 <h5>Is Activity required to Complete Parent</h5>
                 <p>This option defaults to true, so that the Parent activity, if any, cannot be completed until this activity is complete. This is, by far, the most common relationship between parent/child activities.</p>
                 <h5>Use Form for Activity</h5>
@@ -208,7 +208,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/Process Timelines_23.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes5.png" />
                 </p>
                 <p>Determines the process that the Activity starts. It also allows objects in the child process to be copied to the parent and vice versa. The objects copied can be limited to a specified group.</p>
                 <h5>Start Process When Activity Begins</h5>
@@ -231,9 +231,9 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/Process Timelines_24.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes6.png" />
                 </p>
-                <p>The script tab determines the script to be run. The script file is determined via contest list object picker. The script parameters are passed to the script as a string.</p>
+                <p>The <span class="UIElement">Script </span>tab determines the script to be run. The script file is determined via contest list object picker. The script parameters are passed to the script as a string.</p>
                 <h5>Script File</h5>
                 <p>You may use the <span class="NamedControl">Object Picker</span> to select a script that will automatically start when the Activity starts. </p>
                 <h5>Script Parameters (optional)</h5>
@@ -246,7 +246,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/ScriptActivityAdvancedOptions.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes7.png" />
                 </p>
                 <h5>Use Form For Activity</h5>
                 <p>In Timeline, if parent activity has "Use Form for Activity" specified with particular form, then all child activities will default to the same form. This property enables a Script Activity in a Timeline to specify a different Form to use a current form for the activity. If this property is not configured, the Process Director will check the parent Timeline activity for a configured Form and, if set, it will use that Form. Otherwise, Process Director will revert to passing the script to the current form instance that is associated with the running process.</p>
@@ -260,7 +260,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/Process Timelines_25.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes8.png" />
                 </p>
                 <p>Specifies the Custom Task(s) to be run for this activity. To add additional Custom Tasks, click the<span class="UIElement"> Add Custom&#160;Task</span> button.</p>
                 <h5>Custom Task</h5>
@@ -296,7 +296,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/eFormActions.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes9.png" />
                 </p>
                 <h5>Form Definition</h5>
                 <p>You may use the <span class="NamedControl">Object Picker</span> to select a form definition to be attached to the process. </p>
@@ -309,7 +309,7 @@
                 <h5>Add new Form Instance</h5>
                 <p>Specifies the conditions under which a new instance of the form definition is created and then attached to the process.</p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/Process Timelines_6.png" style="visibility: visible;mso-wrap-style: square;" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes11.png" />
                 </p>
                 <h5>Group Name</h5>
                 <p>Assigns a group name to the added form instance.</p>
@@ -325,7 +325,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/Process Timelines_27.jpg" style="visibility: visible;mso-wrap-style: square;" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes12.png" />
                 </p>
                 <p>The Branch tab determines where the activity goes, as specified by the “Branch Type” dropdown. The Branch can either roll back to the activity on which it depends or start or jump to a new activity. Jumping to a new activity skips all the activities in between; they will not be started this process instance. Starting a new activity allows the steps in between to start as they normally would.</p>
                 <h5>Branch Type</h5>
@@ -400,7 +400,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/Capture173.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes13.png" />
                 </p>
                 <h5>Set Activity result to a list of all children or user results</h5>
                 <p>Selecting this option concatenates the results of all child activities to a comma-separated list of results, which become the result for the Parent activity.</p>
@@ -439,7 +439,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/Capture133.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes14.png" />
                 </p>
                 <h5>Duration of Activity</h5>
                 <p>Enables you to specify the length of time to wait, and/or to set the calculated due date. <i style="font-weight: bold;">Any time-related Wait activity must should have a Duration set.</i> If no Duration is set, the Wait activity will automatically complete, unless a condition on the <span class="UIElement">Completed When </span>tab is set.</p>
@@ -451,7 +451,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/Capture7.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes15.png" />
                 </p>
                 <p>The<span class="UIElement"> Completed When </span>tab enables you to specify condition-based criteria for determining the length of the Wait activity. The following options are available:</p>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
@@ -506,7 +506,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/Capture134.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities10.png" />
                 </p>
                 <h5>Due Date is</h5>
                 <p>The Due Date Is property enables you to set the manner in which the due date for the task will be calculated. Four options are available.</p>
@@ -629,7 +629,7 @@
             <MadCap:dropDownBody>
                 <p>The Case Activity has a <span class="UIElement">Case Options</span> tab where Case Management operations can be selected.</p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/CaseActivity2.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes16.png" />
                 </p>
                 <h5>Case Definition</h5>
                 <p>An Object Picker that enables you to select the Case definition on which the action will be conducted.</p>
@@ -643,26 +643,26 @@
                 </ul>
                 <p>If you select either <i>Create a new Case instance</i> or <i>Add to an Existing Case Instance</i> from the <span class="ControlName">Case Action</span> property, the following options will become available:</p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/CaseActivity3.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes17.png" />
                 </p>
                 <h5>Add Process Attachments to Case</h5>
                 <p>Checking this box will add all attachments to the selected case, unless modified by the <span class="ControlName">Limit objects to these groups</span> property.</p>
                 <h5>Limit objects to these groups</h5>
                 <p>This property will accept a single Group name, or a comma-separated list of Group names to copy only attachments in the specified group(s). Additionally this property enables you to enter <code>"" </code>(double quotation marks) into the property, to return only those objects that have no Group name specified.</p>
-                <p>
-                    <img src="../Resources/Images/ImplementersReference/CaseActivity4.png" />
-                </p>
                 <h5>Find Case instance condition</h5>
                 <p>If you select the Add... or Remove... options from the <span class="ControlName">Case Action</span> property, you can identify the specific Case Instance to modify by using the Condition Builder to create a condition set that will return the desired case instance.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes18.png" />
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>Advanced Tab</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>Advanced Options Tab</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/CaseActivityAdvancedTab.png" />
+                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes19.png" />
                 </p>
                 <h5>Use Form for Activity</h5>
                 <p>For Process Director v5.1 and higher, this property enables you to choose a specific form definition to use for conditionals using field names. This is useful when you are using multiple form definitions with the process.</p>
