@@ -21,12 +21,12 @@
             <li style="list-style-type: circle;">4: SAML</li>
         </ul>
         <ul style="list-style-type: disc;margin-left: 18pt;">
-            <li style="list-style-type: disc;"><b>ShowManager:</b> If set to 1 or True, this option returns the user’s manager. Additionally, using this in conjunction with the "format" option can return additional information about the manager. For instance, the manager's email address can be returned using the following syntax:<br /><code>{CURR_USER, ShowManager=<b>1</b>, format=<b>email</b>}</code></li>
-            <li><b>ShowDelegate:</b> If the user has delegation turned on and this option is set to 1 or True, then this option returns the identify of the user’s delegate. Otherwise, it will return no value. Additionally, using this in conjunction with the "format" option can return additional information about the delegate. For instance, the delegate's email address can be returned using the following syntax:<br /><code>{CURR_USER, ShowDelegate=<b>1</b>, format=<b>email</b>}</code><br /></li>
+            <li style="list-style-type: disc;"><b>ShowManager:</b> If set to 1 or True, this option returns the user’s manager. Additionally, using this in conjunction with the "format" option can return additional information about the manager. For instance, the manager's email address for the current user can be returned using the following syntax:<br /><code>{CURR_USER, ShowManager=1, format=email}</code></li>
+            <li><b>ShowDelegate:</b> If the user has delegation turned on and this option is set to 1 or True, then this option returns the identify of the user’s delegate. Otherwise, it will return no value. Additionally, using this in conjunction with the "format" option can return additional information about the delegate. For instance, the delegate's email address for the current user can be returned using the following syntax:<br /><code>{CURR_USER, ShowDelegate=1, format=email}</code><br /></li>
         </ul>
         <p>User system variables also have formatting options, which change the format of the data being returned. The format parameter can be set to the following:</p>
         <h3>Example</h3>
-        <p><code>{CURR_USER, format=<b>FormatOption</b>}</code>
+        <p><code>{CURR_USER, format=<span class="CodeOption">FormatOption</span>}</code>
         </p>
         <h2>Format Options</h2>
         <ul style="list-style-type: disc;margin-left: 18pt;">
@@ -51,7 +51,7 @@
             <li style="list-style-type: disc;"><b>Userid:</b> Returns the user’s User ID.</li>
         </ul>
         <h5>Example</h5>
-        <p><code>{CURR_USER, format=<b>Email</b>}</code>
+        <p><code>{CURR_USER, format=Email}</code>
         </p>
         <p>When comparing User system variables, it is important to make sure that you are comparing the same kinds of values. Ensure that the format options for all the User system variables in a comparison are the same, or else you may end up with an unexpected result.</p>
         <h5>Active Directory Fields</h5>
@@ -65,7 +65,7 @@
             <li style="list-style-type: disc;"><b>Company:</b> returns the name of the company to which the user belongs</li>
         </ul>
         <h5>Example</h5>
-        <p><code>{CURR_USER, format=<b>Phone</b>}</code>
+        <p><code>{CURR_USER, format=Phone}</code>
         </p>
         <h2>Return Values</h2>
         <p>User system variables return different default values based on how they are called. In all cases, the system variable will return a string value, but selecting a user variable from the user interface will return the string value of the user ID, while using the "curly brackets" syntax will return the formatted Name property string of the user. For example, let's assume a user named Diana Stuart is the current user, and the following condition exists in the Condition Builder:</p>
@@ -117,13 +117,13 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a comma-separated list of the groups the current user belongs to.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="CURR_USER_GROUPS" />{CURR_USER_GROUPS, format=ID, ShowDelegate=true}</code>
+                <p><code><MadCap:keyword term="CURR_USER_GROUPS" />{CURR_USER_GROUPS, format=id, ShowDelegate=true}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>format:</b> This system variable may be formatted to return the GroupID rather than the group name, if the <code>format=ID</code> argument is used. The string names will be returned by default.</p>
-                <p><b>ShowDelegate:</b> If you use the <code>ShowDelegate=true</code> argument, the system variable will show results for the user to whom the current user is delegating, rather than the current user.</p>
+                <p><b>format=id:</b> This system variable may be formatted to return the GroupID rather than the group name, if the <code>format=ID</code> argument is used. The string names will be returned by default.</p>
+                <p><b>ShowDelegate=true:</b> If you use the <code>ShowDelegate=true</code> argument, the system variable will show results for the user to whom the current user is delegating, rather than the current user.</p>
                 <h3>Optional Tags</h3>
-                <p><code>{CURRENT_USER_GROUPS...}</code>
+                <p><code>{CURRENT_USER_GROUPS}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -139,7 +139,7 @@
                 <h3>Returns</h3>
                 <p>This system variable allows the user to specify a group to be used in comparisons. Information about a group can be gathered via SysVar tags by referencing a group picker form field.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{FORM:<b>someGroupPicker</b>}</code>
+                <p><code>{FORM:<span class="CodeOption">someGroupPicker</span>}</code>
                 </p>
                 <h3>Parameters</h3>
                 <p><b>someGroupPicker&#160;(required):</b>&#160;The name of a Group Picker on a form.</p>
@@ -157,17 +157,17 @@
                 <p>This system variable returns a comma-separated list of users that belong to a specified group. If no optional formatting parameters are used, the default return format will be the actual name of the user.</p>
                 <h3>SysVar Tags</h3>
                 <h4>Single Group</h4>
-                <p><code>{GROUP_USERS:<b>GroupName|GID</b>, format=<b>userid|guid|id|name</b>}</code>
+                <p><code>{GROUP_USERS:<span class="CodeOption">GroupName|GID</span>, format=<span class="CodeOption">userid|guid|id|name</span>}</code>
                 </p>
                 <h4>Multiple Groups</h4>
-                <p><code>{GROUP_USERS, GROUPS='<b>GroupName1,Groupname2</b>', format=<b>userid|guid|id|name</b>, Operator=<b>AND|OR</b>}</code>
+                <p><code>{GROUP_USERS, GROUPS='<span class="CodeOption">GroupName1,Groupname2</span>', format=<span class="CodeOption">userid|guid|id|name</span>, Operator=<span class="CodeOption">AND|OR</span>}</code>
                 </p>
                 <h3>Examples:</h3>
                 <h4>Single Group</h4>
-                <p><code><MadCap:keyword term="GROUP_USERS" />{GROUP_USERS:<b>admin</b>, format=<b>userid</b>}</code>
+                <p><code><MadCap:keyword term="GROUP_USERS" />{GROUP_USERS:admin, format=userid}</code>
                 </p>
                 <h4>Multiple Groups</h4>
-                <p><code>{GROUP_USERS, GROUPS='<b>Finance,admin</b>', Operator=<b>OR</b>}</code>
+                <p><code>{GROUP_USERS, GROUPS='Finance,admin', Operator=OR}</code>
                 </p>
                 <h3>Parameters</h3>
                 <p><b>GroupName (Required):</b> The group name for the group from which the users should be returned.</p>
@@ -212,7 +212,7 @@
                 <h3>Returns</h3>
                 <p>This variable returns a list of all users who will receive a notification for a specified Timeline Activity, regardless of the type of notification they will receive.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{NOTIFY_USERS:<b>ActivityName</b>, format=<b>FormatType</b>}</code>
+                <p><code>{NOTIFY_USERS:<span class="CodeOption">ActivityName</span>, format=<span class="CodeOption">FormatType</span>}</code>
                 </p>
                 <h3>Parameters</h3>
                 <p><b>ActivityName (Required):</b> The name of the activity for which you wish to return the list of users who will receive a notification.</p>
@@ -232,7 +232,7 @@
                 <h3>Returns</h3>
                 <p>This option allows the user to specify a user to be used for comparisons. This is technically not a system variable, but information about a user can be gathered via SysVar tags by referencing a user picker. This system variable returns the User ID or Formatted User Name, depending on the method used to call the variable, as described in the Return Values section, above.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{FORM:<b>someUserPicker</b>}</code>
+                <p><code>{FORM:<span class="CodeOption">someUserPicker</span>}</code>
                 </p>
                 <h3>Parameters</h3>
                 <p><b>someUserPicker (Required):</b> The name of the user picker whose values you wish to return.</p>

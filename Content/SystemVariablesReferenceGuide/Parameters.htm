@@ -10,7 +10,7 @@
             <MadCap:keyword term="Parameters" />System Variable Modifiers and Parameters</h1>
         <p>
             <MadCap:keyword term="System Variables" />System variables will often contain Modifiers or other variables which control the data the system variable will return. These are specified in SysVar tags using the following syntax:</p>
-        <p><code>{VARNAME, format=<b>format_type</b>}</code>
+        <p><code>{VARNAME, format=<span class="CodeOption">format_type</span>}</code>
         </p>
         <p>VARNAME is the name of the system variable, and format type is the formatting option. Format type can be one of any set of the relevant formatters, depending on the system variable in which it's used. </p>
         <p>System variable modifiers are not case sensitive.</p>
@@ -30,10 +30,10 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Many System Variables require that you specify the name of a specific Content List object for the System Variable to work properly. For instance, calling the number of times a Timeline Activity has run requires that you specify the name of the activity in the System Variable, using the syntax:</p>
-                <p><code>{ACTIVITY_NUM_TIMES_RUN:<b>ActivityName</b>}</code>
+                <p><code>{ACTIVITY_NUM_TIMES_RUN:<span class="CodeOption">ActivityName</span>}</code>
                 </p>
                 <p>...where <span class="ControlName">ActivityName </span>is the name of the Timeline Activity you are evaluating. If you use spaces in the Activity name, then you must enclose the name in quotation marks, e.g.: </p>
-                <p><code>{ACTIVITY_NUM_TIMES_RUN:<b>"Activity Name"</b>}</code>
+                <p><code>{ACTIVITY_NUM_TIMES_RUN:<span class="CodeOption">"Activity Name"</span>}</code>
                 </p>
                 <p>...to ensure that the name is parsed properly. Activity names that do not contain spaces may be referenced without the quotation marks. </p>
                 <p class="PDNote">
@@ -46,7 +46,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Most system variables can be configured via the “group” Modifier, which limits the results of a system variable such that it will return only results belonging to the specified group. Use the following syntax to add a group restriction to a SysVar tag:</p>
-                <p><code>{SYSTEM_VARIABLE, group=<b>GroupName</b>}</code>
+                <p><code>{SYSTEM_VARIABLE, group=<span class="CodeOption">GroupName</span>}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -176,7 +176,7 @@
                     <img src="../Resources/Images/SystemVariablesReferenceGuide/SystemVariablesReferenceGuide.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <p>To specify the Pre, Post, and Null values in a SysVar tag, use the following format:</p>
-                <p><code>{VARNAME pre=<b>pre_text</b>, post=<b>post_text</b>, null=<b>null_text</b>}</code>
+                <p><code>{VARNAME pre=<b class="CodeOption">pre_text</b>, post=<span class="CodeOption">post_text</span>, null=<span class="CodeOption">null_text</span>}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -189,7 +189,7 @@
                 <p>String system variables can be manipulated by using case and substring Modifiers.</p>
                 <h4>Examples:</h4>
                 <p>The Case Modifier will convert string text into all upper case or lower case as desired.</p>
-                <p><code>{:<b>somFormField</b>, case=<b>upper|lower</b>}</code>
+                <p><code>{:<span class="CodeOption">someFormField</span>, case=<b class="CodeOption" style="font-weight: normal;">upper|lower</b>}</code>
                 </p>
                 <p>The substring Modifier enables you to extract a desired substring by identifying the starting character location with the "subStart" Modifier, and the length of the substring with the "subLength" Modifier. The position of the "subStart" Modifier is zero-based, meaning that the first character position is 0, rather than 1.</p>
                 <p class="CodeBase"><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "ghijklmnop".</span>
@@ -208,7 +208,7 @@
                 <p>Pattern and Replace are Modifiers that can be added to any system variable. Data in the result of a system variable matching a regular expression specified in the Pattern Modifier will be replaced as specified in the Replace Modifier. See Microsoft’s <a href="http://msdn.microsoft.com/en-us/library/hs600312(v=vs.90).aspx"><span class="Hyperlink">documentation on regular expressions in .NET</span></a> for more information regarding regular expressions. The Trim Modifier can also be added to any system variable. When set to 1, it will trim leading and trailing spaces off the result of the system variable.</p>
                 <h5>Examples:</h5>
                 <p>This Control Tag will replace the text “some text” in a form field with the text “other text”:</p>
-                <p><code>{:<b>somFormField</b>, Pattern=<b>"some text"</b>, Replace=<b>"other text"</b>, Trim=<b>1</b>}</code>
+                <p><code>{:<span class="CodeOption">someFormField</span>, Pattern="<span class="CodeOption">some text</span>", Replace="<span class="CodeOption">other text</span>", Trim=<span class="CodeOption">1</span>}</code>
                 </p>
                 <p>This System Variable tag will remove any semicolons from the current user’s name:</p>
                 <p class="CodeBase">{CURR_USER, Pattern=";", Replace=""}</p>
@@ -269,7 +269,7 @@
             <MadCap:dropDownBody>
                 <p>A number of general formatting and value options apply to Form Field values.</p>
                 <h4>Format:</h4>
-                <p><code>{FORM:<b>someFieldName</b>, format=<b>Formatter</b>}</code>
+                <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, format=<span class="CodeOption">Formatter</span>}</code>
                 </p>
                 <ul style="list-style-type: disc;margin-left: 18pt;">
                     <li style="list-style-type: disc;"><b>Currency:</b> Formats the system variable into a format representing currency. Applies only to fields configured as a "Number" data type, or to Calculation fields.<br />A field containing the value "2245" would be displayed as "$2,245.00".</li>
@@ -286,14 +286,14 @@
                     <li style="list-style-type: disc;"><b>count:</b> For Process Director v5.31 and higher, list controls that have multiple selection enabled, such as the <span class="NamedControl">UserPicker </span>and <span class="NamedControl">List Box</span>, as well as <span class="NamedControl">Input </span>controls that display comma-separated lists, can use this formatter to return the number of items in the list.</li>
                 </ul>
                 <h4>ROW_NUM:</h4>
-                <p><code>{FORM:<b>someFieldName</b>, ROW_NUM=<b>2</b>}</code>
+                <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, ROW_NUM=<span class="CodeOption">2</span>}</code>
                 </p>
                 <p>If this form control is part of an array, returns the value specified by the ROW_NUM Modifier. The Row Number Modifier can also be specific with a shorthand alias:</p>
-                <p><code>{FORM:<b>someFieldName</b>:<b>2</b>}</code>
+                <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>:<span class="CodeOption">2</span>}</code>
                 </p>
                 <p>In this example, the row number is specified by the "<code>:2</code>" syntax.</p>
                 <h4>Separator</h4>
-                <p><code>{FORM:<b>someColumnFieldName</b>, SEPARATOR=<b>|</b>}</code>
+                <p><code>{FORM:<span class="CodeOption">someColumnFieldName</span>, SEPARATOR=<span class="CodeOption">|</span>}</code>
                 </p>
                 <p>If this form control is part of an array, a list of users, or a list of groups, this option specifies which character will be used to separate the different values in the different elements of the array. By default, the separator is a comma. The Separator modifier can also be used for any list field that can use the "format=count" formatter.</p>
             </MadCap:dropDownBody>
@@ -306,7 +306,7 @@
             <MadCap:dropDownBody>
                 <p>System variables that return numbers will have the following options:</p>
                 <h4>Format</h4>
-                <p><code>{FORM:<b>SomeFieldName</b>, format=<b>FormatType</b>}</code>
+                <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, format=<span class="CodeOption">FormatType</span>}</code>
                 </p>
                 <ul style="list-style-type: disc;margin-left: 18pt;">
                     <li style="list-style-type: disc;"><b>Currency:</b> Formats the system variable into a format representing currency (e.g. $22.99).</li>
@@ -321,7 +321,7 @@
                     <MadCap:keyword term="Digits" />Digits</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p><code>{FORM:<b>SomeFieldName</b>, digits=<b>Number</b>}</code>
+                <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, digits=<span class="CodeOption">Number</span>}</code>
                 </p>
                 <p>Adding the formatter <code>digits=n</code>, where "n" is the number of digits, will return the number formatted as an n-digit number. This Modifier will PAD the form field value with 0's, and it will not truncate. Example usage: A numeric form field using the Modifier<code> {FORM:fieldname, digits=3}</code> and that contains the value "23" will return "023".</p>
                 <p class="PDNote">
@@ -353,7 +353,7 @@
                 <h4>
                     <MadCap:keyword term="Format" />Format</h4>
                 <p>Datetime system variables also have a format Modifier that can be used to determine how the date and time are displayed. The format Modifier can be set to any combination of the following options:</p>
-                <p><code>{FORM:<b>MyDateField</b>, format=<b>option</b>, years=<b>numberOfYears</b>, months=<b>numberOfMonths</b> ... }</code>
+                <p><code>{FORM:<span class="CodeOption">MyDateField</span>, format=<span class="CodeOption">option</span>, years=<span class="CodeOption">numberOfYears</span>, months=<span class="CodeOption">numberOfMonths...</span>}</code>
                 </p>
                 <ul style="list-style-type: disc;margin-left: 18pt;">
                     <li style="list-style-type: disc;"><b>d:</b> displays the current day of the month as a number (1 – 31)</li>
@@ -410,7 +410,7 @@
                 </ul>
                 <p>Each of these options can be modified to pad the variable to two or three characters in length, by changing the format string from [x] to [xx] or [xxx] respectively. For example, to pad the seconds portion of the timespan to three characters in length, you would use the format string [sss], and to pad the duration of the timespan in days to two characters in length, you could use the format string [DD].</p>
                 <p>Formatting strings can be concatenated into a single formatting string to return complex formatting results for a timespan system variable. For example, a DateDiff system variable formatted as:</p>
-                <p><code>{DateDiff:<b>datediffField</b>, Date1=<b>Date1</b>, Date2=<b>Date2</b>,FORMAT=<b>"[d] days, [h] hours, [m] mins"</b>}</code>
+                <p><code>{DateDiff:<span class="CodeOption">FieldName</span>, Date1=<span class="CodeOption">Date1</span>, Date2=<span class="CodeOption">Date2</span>,FORMAT=<span class="CodeOption">"[d] days, [h] hours, [m] mins"</span>}</code>
                 </p>
                 <p>Might return the notional result:<br></br><code>2 days, 4 hours, 23 minutes</code></p>
             </MadCap:dropDownBody>
@@ -420,11 +420,11 @@
                 <MadCap:dropDownHotspot><a name="Generic"></a><a href="#Generic"><img src="../Resources/Images/link.png" alt="Link" /></a>Generic Variables</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Process Director enables you to create custom variable placeholders by using the generic Variable selector, or the generic <code>{VARIABLE:VarName} </code>syntax.</p>
+                <p>Process Director enables you to create custom variable placeholders by using the generic Variable selector, or the generic <code>{VARIABLE:<span class="CodeOption">VarName</span>} </code>syntax.</p>
                 <p>
                     <img src="../Resources/Images/SystemVariablesReferenceGuide/var.png" />
                 </p>
-                <p>This feature enables you to create generic variables for use with URL parameters to set the default value of a field or to pass a filter parameter to a Knowledge View. Detailed explanations of how to use generic variables with URL&#160;parameters can be seen in the <a href="../ImplementersReference/Knowledge View Exporting and Reporting.htm#_Toc421536232">Knowledge View Exporting and Reporting</a> and <a href="../ImplementersReference/Forms.htm#eForm">Forms</a> topics. Additionally, this feature can be used to pass chart parameters, as described in the <a href="../ImplementersReference/Chart.htm#Drill">Drill down target</a> section of the Charts topic that  uses an example showing the <code>{VARIABLE:VarName}</code> syntax.</p>
+                <p>This feature enables you to create generic variables for use with URL parameters to set the default value of a field or to pass a filter parameter to a Knowledge View. Detailed explanations of how to use generic variables with URL&#160;parameters can be seen in the <a href="../ImplementersReference/Knowledge View Exporting and Reporting.htm#_Toc421536232">Knowledge View Exporting and Reporting</a> and <a href="../ImplementersReference/Forms.htm#eForm">Forms</a> topics. Additionally, this feature can be used to pass chart parameters, as described in the <a href="../ImplementersReference/Chart.htm#Drill">Drill down target</a> section of the Charts topic that  uses an example showing the <code>{VARIABLE:<span class="CodeOption">VarName</span>}</code> syntax.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

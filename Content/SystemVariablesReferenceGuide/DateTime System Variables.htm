@@ -54,17 +54,17 @@
                 <h3>Returns</h3>
                 <p>This variable returns the offset (in minutes, hours, or seconds) between local time and Greenwich Mean Time (GMT), also known as Coordinated Universal Time (UTC). Process Director stores all times in GMT/UTC, and, in most cases automatically converts GMT/UTC to local time when times and dates are displayed to users. In some cases, Business Values or other data sources that use the raw time value from the Process Director database will display the GMT/UTC time rather than the local time. This variable enables you to determine the time difference between local time and GMT/UTC, in order to perform the appropriate time conversions manually.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{CURR_GMTOFFSET,format=<b>hours|minutes|seconds</b>}</code>
+                <p><code>{CURR_GMTOFFSET,format=<span class="CodeOption">hours|minutes|seconds</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>format:</b> The result of this form field SysVar tag can be formatted according to the options available for datetime SysVar tags.</p>
                 <h3>Sample</h3>
                 <p>If you are in Pacific Standard Time Zone, the following syntax will return "-8" in most cases, indicating that the time is 8 hours behind GMT/UTC. Britain and the US enter Daylight Savings Time on slightly different dates, so the value will vary +-1 hour, depending on those dates.</p>
-                <p><code>{CURR_GMTOFFSET,format=<b>hours</b>}</code>
+                <p><code>{CURR_GMTOFFSET,format=hours}</code>
                 </p>
                 <h3>Optional Tags</h3>
                 <p>The Current GMT Offset will also be correctly returned using the alternate syntax option below:</p>
-                <p><code>{CURRENT_GMTOFFSET,format=<b>hours</b>}</code>
+                <p><code>{CURRENT_GMTOFFSET,format=<span class="CodeOption">IncrementType</span>}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -77,7 +77,7 @@
                 <h3>Returns</h3>
                 <p>This option allows the user to specify a datetime from a datetime picker. While not technically a system variable, information about a date can be gathered via SysVar tags by referencing a date picker.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{FORM:<b>someDateTimePicker</b>}</code>
+                <p><code>{FORM:<span class="CodeOption">someDateTimePicker</span>}</code>
                 </p>
                 <h3>Parameters</h3>
                 <p><b>someDateTimePicker:</b>&#160;The name of a <span class="NamedControl">DateTime Picker</span> control on a form.</p>
@@ -94,7 +94,7 @@
                 <h3>Returns</h3>
                 <p>This system variable is used <b style="font-style: italic;">for Forms only</b>, to return the difference between two datetimes.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="DATEDIFF" />{DATEDIFF, DATE1={<b>someDate</b>}, DATE2={<b>someOtherDate</b>}, TYPE=<b>YEARS|MONTHS|DAYS|HOURS|MINUTES|SECONDS|BUSINESS_DAYS|BUSINESS_HOURS|FULLDAYS|FULLMONTHS|FULLYEARS</b>, INCLUDEENDDATE=<b>true|false</b>}</code>
+                <p><code><MadCap:keyword term="DATEDIFF" />{DATEDIFF, DATE1={<span class="CodeOption">someDate</span>}, DATE2={<b class="CodeOption" style="font-weight: normal;">someOtherDate</b>}, TYPE=<span class="CodeOption">YEARS|MONTHS|DAYS|HOURS|MINUTES|SECONDS|BUSINESS_DAYS|BUSINESS_HOURS|FULLDAYS|FULLMONTHS|FULLYEARS</span>, INCLUDEENDDATE=<span class="CodeOption">true|false</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>DATE1 (Required):</b> The first date to compare.</p>
@@ -112,7 +112,7 @@
                 <h3>Returns</h3>
                 <p>This system variable is used <b style="font-style: italic;">for email templates only</b>, to return the difference between two datetimes.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="DATEDIFF_SYSVAR" />{DATEDIFF_SYSVAR, DATE1={<b>someDate</b>}, DATE2={<b>someOtherDate</b>}, TYPE=<b>YEARS|MONTHS|DAYS|HOURS|MINUTES|SECONDS|BUSINESS_DAYS|BUSINESS_HOURS|FULLDAYS|FULLMONTHS|FULLYEARS</b>, INCLUDEENDDATE=<b>true|false</b>}</code>
+                <p><code><MadCap:keyword term="DATEDIFF_SYSVAR" />{DATEDIFF_SYSVAR, DATE1={<span class="CodeOption">someDate</span>}, DATE2={<span class="CodeOption">someOtherDate</span>}, TYPE=<span class="CodeOption">YEARS|MONTHS|DAYS|HOURS|MINUTES|SECONDS|BUSINESS_DAYS|BUSINESS_HOURS|FULLDAYS|FULLMONTHS|FULLYEARS</span>, INCLUDEENDDATE=<span class="CodeOption">true|false</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>DATE1 (Required):</b> The first date to compare.</p>
@@ -133,7 +133,7 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a date a specific number of days before the date that this system variable is referenced.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{CURR_DATE, days=<b>-NumberOfDaysAgo</b>}</code>
+                <p><code>{CURR_DATE, days=<b>-</b><span class="CodeOption">NumberOfDaysAgo</span>}</code>
                 </p>
                 <h3>Optional Parameters</h3>
                 <p>This system variable can be formatted according to the options available to datetime system variables.</p>
@@ -151,7 +151,7 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a date a specific number of days after the date that this system variable is referenced.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{CURR_DATE, days=<b>NumberOfDaysFromNow</b>}</code>
+                <p><code>{CURR_DATE, days=<span class="CodeOption">NumberOfDaysFromNow</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>days:</b> A number you can use to return the number of days from now.</p>
@@ -169,12 +169,12 @@
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="IS_BUSINESS_DAY" />{IS_BUSINESS_DAY}</code>
                 </p>
-                <p><code>{IS_BUSINESS_DAY, Date=<b>DateTimeValue</b>}</code>
+                <p><code>{IS_BUSINESS_DAY, Date=<span class="CodeOption">DateTimeValue</span>}</code>
                 </p>
-                <p><code>{IS_BUSINESS_DAY:<b>DateTimeValue</b>}</code>
+                <p><code>{IS_BUSINESS_DAY:<span class="CodeOption">DateTimeValue</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>Date:</b> A DateTime value other than the current date, which you wish to be evaluated. Omitting this variable will cause the variable to evaluate the current DateTime. You can omit the modifier by using the syntax <code>{IS_BUSINESS_DAY:<b>DateTimeValue</b>}</code></p>
+                <p><b>Date:</b> A DateTime value other than the current date, which you wish to be evaluated. Omitting this variable will cause the variable to evaluate the current DateTime. You can omit the modifier by using the syntax <code>{IS_BUSINESS_DAY:<span class="CodeOption">DateTimeValue</span>}</code></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -184,16 +184,16 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns True if the evaluated DateTime value falls within business hours. Since this variable only evaluates times, you must first use the <code>IS_BUSINESS_DAY</code> variable to determine if the date is a business day, prior to using this variable to determine whether the time falls within business hours. So, for a given datetime value, both <code>IS_BUSINESS_DAYS</code> and <code>IS_BUSINESS_HOURS</code> must return true to determine that the DateTime value actually occurs during business hours.</p>
+                <p>This system variable returns True if the evaluated DateTime value falls within business hours. Since this variable only evaluates times, you must first use the <code>IS_BUSINESS_DAY</code> variable to determine if the date is a business day, prior to using this variable to determine whether the time falls within business hours. So, for a given datetime value, both <a href="#IsBusinessDay"><code>IS_BUSINESS_DAY</code></a> and <code>IS_BUSINESS_HOUR</code> must return true to determine that the DateTime value actually occurs during business hours.</p>
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="IS_BUSINESS_HOUR" />{IS_BUSINESS_HOUR}</code>
                 </p>
-                <p><code>{IS_BUSINESS_HOUR, Date=<b>DateTimeValue</b>}</code>
+                <p><code>{IS_BUSINESS_HOUR, Date=<span class="CodeOption">DateTimeValue</span>}</code>
                 </p>
-                <p><code>{IS_BUSINESS_HOUR:<b>DateTimeValue</b>}</code>
+                <p><code>{IS_BUSINESS_HOUR:<span class="CodeOption">DateTimeValue</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>Date:</b> A DateTime value other than the current date, which you wish to be evaluated. Omitting this variable will cause the variable to evaluate the current DateTime. You can omit the modifier by using the syntax <code>{IS_BUSINESS_HOUR:<b>DateTimeValue</b>}</code></p>
+                <p><b>Date:</b> A DateTime value other than the current date, which you wish to be evaluated. Omitting this variable will cause the variable to evaluate the current DateTime. You can omit the modifier by using the syntax <code>{IS_BUSINESS_HOUR:<span class="CodeOption">DateTimeValue</span>}</code></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -203,16 +203,16 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns True if the evaluated DateTime value is a business date and time. Unlike <code><code href="#IsBusinessDay">IS_BUSINESS_DAY</code></code> and <a href="#IsBusinessHour"><code>IS_BUSINESS_HOUR</code></a>, this variable evaluates both the date and time.</p>
+                <p>This system variable returns True if the evaluated DateTime value is a business date and time. Unlike <a href="#IsBusinessDay"><code>IS_BUSINESS_DAY</code></a> and <a href="#IsBusinessHour"><code>IS_BUSINESS_HOUR</code></a>, this variable evaluates both the date and time.</p>
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="IS_BUSINESS_DATE" />{IS_BUSINESS_DATE}</code>
                 </p>
-                <p><code>{IS_BUSINESS_DATE, Date=<b>DateTimeValue</b>}</code>
+                <p><code>{IS_BUSINESS_DATE, Date=<span class="CodeOption">DateTimeValue</span>}</code>
                 </p>
-                <p><code>{IS_BUSINESS_DATE:<b>DateTimeValue</b>}</code>
+                <p><code>{IS_BUSINESS_DATE:<span class="CodeOption">DateTimeValue</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>Date:</b> A DateTime value other than the current date, which you wish to be evaluated. Omitting this variable will cause the variable to evaluate the current DateTime. You can omit the modifier by using the syntax <code>{IS_BUSINESS_DATE:<b>DateTimeValue</b>}</code></p>
+                <p><b>Date:</b> A DateTime value other than the current date, which you wish to be evaluated. Omitting this variable will cause the variable to evaluate the current DateTime. You can omit the modifier by using the syntax <code>{IS_BUSINESS_DATE:<span class="CodeOption">DateTimeValue</span>}</code></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

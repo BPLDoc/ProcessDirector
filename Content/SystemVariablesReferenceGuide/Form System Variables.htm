@@ -32,13 +32,13 @@
                 <h3>Returns</h3>
                 <p>This system variable returns the name of the currently selected tab in a specified <span class="NamedControl">TabStrip </span>control.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="CURR_TAB" />{CURR_TAB, tab=<b>TabStripName</b>, format=name}</code>
+                <p><code><MadCap:keyword term="CURR_TAB" />{CURR_TAB, tab=<span class="CodeOption">TabStripName</span>, format=name}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>tab:</b> This required string modifier contains the name of the <span class="NamedControl">TabStrip </span>control you wish to evaluate to determine the currently selected tab.</p>
                 <p><b>format=name:</b> This optional modifier will return the Name of the current tab, instead of the Tab ID.</p>
                 <h3>Alternate Syntax</h3>
-                <p><span class="Code"><MadCap:keyword term="CURRENT_TAB" />{CURRENT_TAB, tab=<b>TabStripName</b>}</span>
+                <p><span class="Code"><MadCap:keyword term="CURRENT_TAB" />{CURRENT_TAB, tab=<span class="CodeOption">TabStripName</span>}</span>
                 </p>
                 <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> You can also return the current tab using the form field system variable for the TabStrip control as well, e.g., <code>{:<b>TabStripName</b>}</code>. For most use cases, this is probably the simplest method of returning the current tab's name.</p>
@@ -66,7 +66,7 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a comma-separated list of object names attached to this form instance.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="FORM_ATTACHMENTS" />{FORM_ATTACHMENTS, ShowName=<b>1</b>, ShowDesc=<b>0</b>, ShowID=<b>0</b>, GroupName=<b>group</b>}</code>
+                <p><code><MadCap:keyword term="FORM_ATTACHMENTS" />{FORM_ATTACHMENTS, ShowName=<span class="CodeOption">1</span>, ShowDesc=<span class="CodeOption">0</span>, ShowID=<span class="CodeOption">0</span>, GroupName=<span class="CodeOption">Group</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>Groupname:</b> Filters the results returned  by group. </p>
@@ -89,7 +89,7 @@
                 <h3>Returns</h3>
                 <p>This system variable returns the cumulative size of all documents attached to the form.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="FORM_ATTACHMENT_SIZE" />{FORM_ATTACHMENT_SIZE, groupname=<b>GroupName</b>}</code>
+                <p><code><MadCap:keyword term="FORM_ATTACHMENT_SIZE" />{FORM_ATTACHMENT_SIZE, groupname=<span class="CodeOption">GroupName</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>groupname:</b> The option can be used to have the system variable return the cumulative size of only the documents in the specified group.</p>
@@ -177,10 +177,10 @@
                 <h3>Returns</h3>
                 <p>A Form Field system variable will return the value of a specified form field. The data will be drawn from the active instance of the Form. When the form field name is the name of a column in an array, this system variable will return a comma separated listed of the values of all the non-empty fields in that column. To include empty values in that list, set the optional parameter KeepEmptyRows to true.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{FORM:<b>form_field_name</b>}</code>
+                <p><code>{FORM:<span class="CodeOption">form_field_name</span>}</code>
                 </p>
                 <p>OR</p>
-                <p><code>{:<b>form_field_name</b>}</code>
+                <p><code>{:<span class="CodeOption">form_field_name</span>}</code>
                 </p>
                 <h3>Paramaters</h3>
                 <p><b>form_field_name (Required):</b> The name of the form field whose value you wish to return.</p>
@@ -188,9 +188,9 @@
                 <p>The Modifiers available depend on what kind of data the form field contains. If the form field contains arbitrary data, then the form field system variable Modifiers apply. If the form field contains data about a user, then the user system variable Modifiers apply. No Modifiers are available when the form field contains information about an object.</p>
                 <p>The general <a href="Parameters.htm#FormFields">form field system variable parameters</a> apply to all form fields.</p>
                 <p>When the form field name is the name of a column in an array, this system variable will return a comma separated listed of the values of all the non-empty fields in that column. To include empty values in that list, set the optional parameter KeepEmptyRows to true.</p>
-                <p>When the form field is a checkbox, you can use the formatters <code>True="value"</code> and <code>False="value"</code>. These formatters allow you to place any desired string in the 'value' to replace the default values of True and False with the desired strings. </p>
+                <p>When the form field is a checkbox, you can use the formatters <code>True="<span class="CodeOption">ValueIfTrue</span>"</code> and <code>False="<span class="CodeOption">ValueIfFalse</span>"</code>. These formatters allow you to place any desired string in the 'value' to replace the default values of True and False with the desired strings. </p>
                 <p>When the form field has a numeric values, adding the formatter <code>digits=n</code>, where "n" is the number of digits, will return the number formatted as an n-digit number. </p>
-                <p>When the form field is a Comment Log control, adding the formatter <code>format=COMMENTS</code> will return the number of comments entered into the comment log.</p>
+                <p>When the form field is a Comment Log control, adding the formatter <code>format=comments</code> will return the number of comments entered into the comment log.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -280,7 +280,7 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a string value consisting of the folder path for Form attachments. If there are more than one attachment, then a comma-separated list of folder paths will be returned.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="FORM_REFERENCE_FOLDER_PATH" />{FORM_REFERENCE_FOLDER_PATH, groupname=<b>"GroupName"</b>}</code>
+                <p><code><MadCap:keyword term="FORM_REFERENCE_FOLDER_PATH" />{FORM_REFERENCE_FOLDER_PATH, groupname=<b>"</b><span class="CodeOption">GroupName</span><b>"</b>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>Groupname:</b> Returns only the paths for attachments in the specified group.</p>
@@ -315,7 +315,7 @@
                 <h3>Returns</h3>
                 <p>This system variable displays a specified icon on a Form page.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="ICON" />{ICON, IconNumber=<b>0000</b>, IconSize=<b>00</b>, IconColor=<b>#000000</b>, IconBackcolor=<b>#000000</b>, CSSClass=<b>Classname</b>, tooltip=<b>"Tootip text"</b>}</code>
+                <p><code><MadCap:keyword term="ICON" />{ICON, IconNumber=<span class="CodeOption">0000</span>, IconSize=<span class="CodeOption">00</span>, IconColor=#<span class="CodeOption">000000</span>, IconBackcolor=#<span class="CodeOption">000000</span>, CSSClass=<span class="CodeOption">Classname</span>, tooltip="<span class="CodeOption">Tootip text</span>"}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>IconNumber (Required):</b> The ID&#160;Number of the Icon, which is displayed as the icon's tooltip in the Icon Chooser.</p>
@@ -386,7 +386,7 @@
                 <h3>Returns</h3>
                 <p>This system variable returns the number of attachments to a Form instance.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="FORM_ATTACHMENT_NUM" />{FORM_ATTACHMENT_NUM, ObjectType=<b>Document|Form </b>CSStatus<b>=Pending|NotPending|Failed|Done|PendingOrFailed</b>, GroupName=<b>group</b>, UploadStatus=<b>PENDING|NOT_PENDING</b>}</code>
+                <p><code><MadCap:keyword term="FORM_ATTACHMENT_NUM" />{FORM_ATTACHMENT_NUM, ObjectType=<span class="CodeOption">Document|Form</span><b> </b>CSStatus<b>=</b><span class="CodeOption">Pending|NotPending|Failed|Done|PendingOrFailed</span>, GroupName=<span class="CodeOption">Group</span>, UploadStatus=<span class="CodeOption">PENDING|NOT_PENDING</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>ObjectType:</b> This system variable’s results can be restricted by object type using the ObjectType parameter. Acceptable values are DOCUMENT and FORM.</p>

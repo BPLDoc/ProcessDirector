@@ -24,7 +24,7 @@
                     <p class="CodeBase">bp.Vars["TaskListKV"] = "EA89390C-53B7-44DC-B6CB-12938EFBC236";</p>
                 </p>
                 <p>Once the custom variable has been set, it can be referenced in the "kvid" parameter as:</p>
-                <p><code><MadCap:keyword term="EMAIL_ANON_TASKLIST_URL" />{EMAIL_ANON_TASKLIST_URL, kvid={CUSTOMVAR:TaskListKV}}</code>
+                <p><code><MadCap:keyword term="EMAIL_ANON_TASKLIST_URL" />{EMAIL_ANON_TASKLIST_URL, kvid={CUSTOMVAR:<span class="CodeOption">TaskListKV</span>}}</code>
                 </p>
                 <p>This is the recommended method for setting the KVID.</p>
                 <p>The second method for setting the KVID is simply to pass the KVID directly in the email template by using the syntax:</p>
@@ -47,12 +47,12 @@
                 <h3>Returns</h3>
                 <p>This system variable returns the URL of the page to automatically complete the task.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_COMPLETE_URL" />{EMAIL_COMPLETE_URL, action=<b>"TaskName"</b>, Confirm=1, Comments=1}</code>
+                <p><code><MadCap:keyword term="EMAIL_COMPLETE_URL" />{EMAIL_COMPLETE_URL, action="<span class="CodeOption">TaskName</span>", Confirm=<span class="CodeOption">1</span>, Comments=<span class="CodeOption">1</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>Action:</b> the name of the task to complete. If unspecified, the user will be given a dropdown of the tasks to complete.</p>
-                <p><b>Confirm:</b> If set to 1, a web page will be shown prompting the user to confirm that he wants to complete the task.&#160;By default, this is set to "0".</p>
-                <p><b>Comments:</b> If set to 1, a text box will appear allowing the user to enter comments. By default, this is set to "0".</p>
+                <p><b>Confirm (Optional):</b> If set to 1, a web page will be shown prompting the user to confirm that he wants to complete the task.&#160;By default, this is set to "0".</p>
+                <p><b>Comments (Optional):</b> If set to 1, a text box will appear allowing the user to enter comments. By default, this is set to "0".</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -77,9 +77,10 @@
                 <h3>Returns</h3>
                 <p>This system variable returns the URL to the form instance or process activity that sent this email.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_FORM_INSTANCE_URL" />{EMAIL_FORM_INSTANCE_URL, CompletePage="URL", CompletePagePrompt=0, CompleteText=<b>"SomeTextString"</b>, NoHome=1, AddProcessID=1}</code>
+                <p><code><MadCap:keyword term="EMAIL_FORM_INSTANCE_URL" />{EMAIL_FORM_INSTANCE_URL, CompletePage="<span class="CodeOption">URL</span>", CompletePagePrompt=<span class="CodeOption">0</span>, CompleteText="<span class="CodeOption">SomeTextString</span>", NoHome=<span class="CodeOption">1</span>, AddProcessID=<span class="CodeOption">1</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
+                <p>All modifiers for this System Variable are optional.</p>
                 <p><b>CompletePage:</b> The full URL of the page to navigate to after the task is completed.</p>
                 <p><b>CompletePagePrompt:</b> Set to 0 to prevent a confirmation prompt from displaying. By default, this is set to "1".</p>
                 <p><b>CompleteText:</b> text to display after the task is completed</p>
@@ -125,12 +126,13 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a list of the URLs of the branches or activity results from the task that sent this email.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_RESULT_LINKS" />{EMAIL_RESULT_LINKS,comments=<b>1</b>, confirm=<b>1</b>, separator=<b>" | "</b>,icon=<b>1</b>}</code>
+                <p><code><MadCap:keyword term="EMAIL_RESULT_LINKS" />{EMAIL_RESULT_LINKS,comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>, separator="<span class="CodeOption">|</span>", icon=<span class="CodeOption">1</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
+                <p>All modifiers for this System Variable are optional, though <span class="Emphasis">using the Separator option is highly recommended for readability</span>.</p>
                 <p><b>Confirm:</b> If set to 1, which is the default value, prompts a user to confirm that he wants to take this branch.</p>
                 <p><b>Comments:</b> If set to 1, a text box appears allowing the user to enter comments.&#160;The default value is "0".</p>
-                <p><b>Separator:</b> Specifies arbitrary text or HTML to separate each link. HTML tags must be enclosed in square brackets. For example, <code>separator=”[br/]”</code> would put a new line between each link.</p>
+                <p><b>Separator:</b> Specifies arbitrary text or HTML to separate each link. HTML tags must be enclosed in square brackets. For example, <code>separator="[br/]"</code> would put a new line between each link. Failing to use a Separator will cause the results text options to display without spaces or other puctuation between each item, which will be confusing to end users.</p>
                 <p><b>Icon:</b> Determines if the link returned links to an icon (if set to 1) or the branch or activity result (if set to 0). The default value is "0".</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -143,10 +145,10 @@
                 <h3>Returns</h3>
                 <p>This variable returns a list of the potential branches or activity results from this task.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_RESULT_LIST" />{EMAIL_RESULT_LIST, separator=<b>"TextOrHTML"</b>}</code>
+                <p><code><MadCap:keyword term="EMAIL_RESULT_LIST" />{EMAIL_RESULT_LIST, separator=<b>"</b><span class="CodeOption">TextOrHTML</span><b>"</b>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>Separator:</b> Specifies arbitrary text or HTML to separate each result. HTML tags must be enclosed in square brackets. For example, <code>separator=”[br/]”</code> would put a new line between each link.</p>
+                <p><b>Separator:</b> Specifies arbitrary text or HTML to separate each result. HTML tags must be enclosed in square brackets. For example, <code>separator="[br/]"</code> would put a new line between each link.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -236,13 +238,14 @@
                 <p>This system variable returns the URL of the task to which the email notification refers, if the user is in the context of a task. If the user is not in task context, the returned URL will most likely be the default form instance for the process, which the user can view, but not use to complete a task.. </p>
                 <p>This system variable can be put in HTML tags for use in hyperlinks.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_URL" />{EMAIL_URL, CompletePage="URL", CompletePagePrompt=0, CompleteText=<b>"SomeTextString"</b>, NoHome=1}</code>
+                <p><code><MadCap:keyword term="EMAIL_URL" />{EMAIL_URL, CompletePage="<span class="CodeOption">URL</span>", CompletePagePrompt=<span class="CodeOption">0</span>, CompleteText="<span class="CodeOption">SomeTextString</span>", NoHome=<span class="CodeOption">1</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
+                <p>All modifiers for this System Variable are optional.</p>
                 <p><b>CompletePage:</b> the full URL of the page to navigate to after the task is completed.</p>
-                <p><b>CompletePagePrompt:</b> set to 0 to prevent a confirmation prompt from displaying</p>
-                <p><b>CompleteText:</b> text to display after the task is completed</p>
-                <p><b>NoHome:</b> set to 1 to prevent the home page from displaying when the task link is clicked.</p>
+                <p><b>CompletePagePrompt:</b> set to 0 to prevent a confirmation prompt from displaying.</p>
+                <p><b>CompleteText:</b> Text to display after the task is completed.</p>
+                <p><b>NoHome:</b> Set to 1 to prevent the home page from displaying when the task link is clicked.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -268,7 +271,7 @@
                 <h3>Returns</h3>
                 <p>This system variable is usable only within the Email Actions Custom Task. When a user responds to a task assignment via email, the Custom Task will processes the email, and will extract the sender's email address, subject, and body. The system variable can return any of the extracted data through the use of the format paramater.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="INCOMING_EMAIL" />{INCOMING_EMAIL, format=<b>Subject|From|To|Body</b>}</code>
+                <p><code><MadCap:keyword term="INCOMING_EMAIL" />{INCOMING_EMAIL, format=<span class="CodeOption">Subject|From|To|Body</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>Format:</b> The Format parameter is used to determine the email data that the system variable returns. The possible formatting options are:</p>
