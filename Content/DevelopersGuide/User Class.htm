@@ -324,7 +324,7 @@
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Add a user to shared delegation</span>
-                    <br />CurrentUser.AddSharedDelegate("UID");</p>
+                    <br />CurrentUser.AddSharedDelegate("<span class="CodeOption">UserUID</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -334,9 +334,9 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="AddToGroup" />This method adds the user to the specified group. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public void AddToGroup(Group Group)</code>
+                <p><code>public void AddToGroup(Group <span class="CodeOption">Group</span>)</code>
                 </p>
-                <p><code>public void AddToGroup(string GID)
+                <p><code>public void AddToGroup(string <span class="CodeOption">GID</span>)
 </code>
                 </p>
                 <h4>Parameters</h4>
@@ -345,7 +345,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br /><br /><span class="ControlName">// The following two calls do the same thing (add "User 1" to "Group 1")</span><br />oUser.AddToGroup(oGroup); <span class="ControlName">// Call with the Group object</span><br />oUser.AddToGroup(oGroup.GID); <span class="ControlName">// Call with the Group ID</span></p>
+                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br /><br /><span class="ControlName">// The following two calls do the same thing (add "User 1" to "Group 1")</span><br />oUser.AddToGroup(<span class="CodeOption">oGroup</span>); <span class="ControlName">// Call with the Group object</span><br />oUser.AddToGroup(<span class="CodeOption">oGroup.GID</span>); <span class="ControlName">// Call with the Group ID</span></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -361,7 +361,7 @@
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h5>Example</h5>
                 <p class="CodeBase"><span class="ControlName">// Create a user, and force the user to change the password after login</span>
-                    <br />var oUser = User.CreateUser(bp, "NewUserID", "new@acme.com", "New User", <br />"TEMP_PASSWORD",true);<br /><br /><span class="ControlName">// Add the new user to a partition</span><br />oUser.AddUserToPartition(Partition.GetPartition(bp, "Default Partition"));</p>
+                    <br />var oUser = User.CreateUser(bp, "NewUserID", "new@acme.com", "New User", <br />"TEMP_PASSWORD",true);<br /><br /><span class="ControlName">// Add the new user to a partition</span><br />oUser.AddUserToPartition(<span class="CodeOption">Partition.GetPartition(bp, "Partition Name")</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -377,7 +377,7 @@
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Create a user, and force the user to change the password after login</span>
-                    <br />var oUser = User.CreateUser(bp, "NewUserID", "new@acme.com", <br />&#160;&#160;&#160;&#160;"New User", "TEMP_PASSWORD",true);<br /><br /><span class="ControlName">// Add the new user to a profile</span><br />oUser.AddUserToProfile("Default Profile");</p>
+                    <br />var oUser = User.CreateUser(bp, "NewUserID", "new@acme.com", <br />&#160;&#160;&#160;&#160;"New User", "TEMP_PASSWORD",true);<br /><br /><span class="ControlName">// Add the new user to a profile</span><br />oUser.AddUserToProfile("<span class="CodeOption">ProfileName</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -399,7 +399,7 @@
                 <p><b>User:</b> A user object representation of the new user.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Create a user, and force the user to change the password after login</span>
-                    <br />var oUser = User.CreateUser(bp, "NewUserID", "new@acme.com", <br />&#160;&#160;&#160;&#160;"New User", "TEMP_PASSWORD",true);</p>
+                    <br />var oUser = User.CreateUser(bp, "<span class="CodeOption">NewUserID</span>", "<span class="CodeOption">new@acme.com</span>", <br />&#160;&#160;&#160;&#160;"<span class="CodeOption">New User</span>", "<span class="CodeOption">Temp_Password</span>",<span class="CodeOption"> true</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -409,18 +409,18 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="CreateExternalUser (Static Method)" />This method will create a user object for the specified ID. The user object is an external user which can only be signed in via an external authentication system. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public static User CreateExternalUser(bp BP, string UserID, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; string Email, string UserName)</code>
+                <p><code>public static User CreateExternalUser(bp BP, string <span class="CodeOption">UserID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; string <span class="CodeOption">Email</span>, string <span class="CodeOption">UserName</span>)</code>
                 </p>
-                <p><code>public static User CreateExternalUser(bp BP, string UserID, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string Email, string UserName, 
-        <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Defines.eAuth UserType)
+                <p><code>public static User CreateExternalUser(bp BP, string <span class="CodeOption">UserID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">Email</span>, string <span class="CodeOption">UserName</span>, 
+        <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Defines.eAuth <span class="CodeOption">UserType</span>)
 </code>
                 </p>
-                <p><code>        public static User CreateExternalUser(bp BP, string UserID, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string Email, string UserName, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string GUID, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-        Defines.eAuth UserType)
+                <p><code>        public static User CreateExternalUser(bp BP, string <span class="CodeOption">UserID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">Email</span>, string <span class="CodeOption">UserName</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">GUID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+        Defines.eAuth <span class="CodeOption">UserType</span>)
 </code>
                 </p>
-                <p><code>        public static User CreateExternalUser(bp BP, string UserID, string Email, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string UserName, string GUID, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string Domain, 
-        <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Defines.eAuth UserType) </code>
+                <p><code>        public static User CreateExternalUser(bp BP, string <span class="CodeOption">UserID</span>, string <span class="CodeOption">Email</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">UserName</span>, string <span class="CodeOption">GUID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">Domain</span>, 
+        <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Defines.eAuth <span class="CodeOption">UserType</span>) </code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>BP:</b> The bp environment.</p>
@@ -433,7 +433,7 @@
                 <p><b>User:</b> A user object representation of the new user.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Create a SAML user</span>
-                    <br />var oUser = User.CreateExternalUser (bp, "NewUserID", "new@acme.com", <br />"New User", User.eAuth.SAML);</p>
+                    <br />var oUser = User.CreateExternalUser (bp, "<span class="CodeOption">NewUserID</span>", "<span class="CodeOption">new@acme.com</span>", <br />"<span class="CodeOption">New User</span>", <span class="CodeOption">User.eAuth.SAML</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -448,7 +448,7 @@
                 <h4>Returns</h4>
                 <p><b>String:</b> The "name" portion of the LDAP string.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">string name = DecodeLDAPName("cn=ABC");</p>
+                <p class="CodeBase">string name = DecodeLDAPName("<span class="CodeOption">cn=ABC</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -464,7 +464,7 @@
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Delegate current users tasks to another user</span>
-                    <br />CurrentUser.DelegateUser(oOtherUser);</p>
+                    <br />CurrentUser.DelegateUser("<span class="CodeOption">UserUID</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -489,13 +489,15 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This method will remove the User from the system.</p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix strongly recommends that users be disabled, not deleted. Deleting a user will delete all of their system history as well, including all process partitipation.</p>
                 <h4>Parameters</h4>
-                <p><b>BP:</b>&#160;The BP&#160;Logix environment.455615</p>
-                <p>&#160;</p>
+                <p><b>BP:</b>&#160;The BP&#160;Logix environment.</p>
+                <p><b>UserUID:</b> The User UID&#160;of the User to delete.</p>
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True if the operation suceeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">bool deleted = DeleteUser(bp, "USERUID");</p>
+                <p class="CodeBase">bool deleted = DeleteUser(bp, "<span class="CodeOption">USERUID</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -535,10 +537,9 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This method will enable a Process Director User. This is an overloaded method with the following possible declarations:</p>
-                <p><span class="Code">public bool EnableUser()</span>
+                <p><code>public bool EnableUser()</code>
                 </p>
-                <p><span class="Code">public bool EnableUser(bool pEnable) </span><b>[Deprecated]</b>
-                </p>
+                <p><code>public bool EnableUser(bool <span class="CodeOption">pEnable</span>)</code> <span class="UIElement" style="font-weight: bold;">[Deprecated]</span></p>
                 <h4>Parameters</h4>
                 <p><b>pEnable [Optional]:</b> Setting this parameter to "True" will enable the user, and setting it to "False" will disable the user. The method that uses this parameter has been deprecated, but remains in the product for backward compatibility.</p>
                 <h4>Returns</h4>
@@ -590,7 +591,7 @@
                 <h4>Returns</h4>
                 <p><b>User:</b> A user object representation of the user.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oUser = User.GetUserByEmail(bp, "jane@acme.com");</p>
+                <p class="CodeBase">var oUser = User.GetUserByEmail(bp, "<span class="CodeOption">jane@acme.com</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -606,7 +607,7 @@
                 <h4>Returns</h4>
                 <p><b>User:</b> A user object representation of the user.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oUser = User.GetUserByExtID (bp, userprincipal.Sid.ToString());</p>
+                <p class="CodeBase">var oUser = User.GetUserByExtID (bp,<span class="CodeOption"> userprincipal.Sid.ToString()</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -623,7 +624,7 @@
                 <p><b>User:</b> A user object representation of the user.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Normally not used directly</span>
-                    <br />var oUser = User.GetUserByID(bp, "dc1c51ea-612e-48c0-8cc6-4ff9276cbfc9");</p>
+                    <br />var oUser = User.GetUserByID(bp, "<span class="CodeOption">dc1c51ea-612e-48c0-8cc6-4ff9276cbfc9</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -633,10 +634,10 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="GetUserByID (Static Method)" />This method will get a user object from the specified ID. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public static User GetUserByUserID(bp BP, string pUserID)
+                <p><code>public static User GetUserByUserID(bp BP, string <span class="CodeOption">pUserID</span>)
 </code>
                 </p>
-                <p><code>public static User GetUserByUserID(bp BP, string pUserID, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Defines.eAuth AuthType)
+                <p><code>public static User GetUserByUserID(bp BP, string <span class="CodeOption">pUserID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Defines.eAuth <span class="CodeOption">AuthType</span>)
 </code>
                 </p>
                 <h4>Parameters</h4>
@@ -647,7 +648,7 @@
                 <p><b>User:</b> A user object representation of the user.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Normally not used directly</span>
-                    <br />var oUser = User.GetUserByUserID(bp, "user1", User.eAuth.BuiltIn);</p>
+                    <br />var oUser = User.GetUserByUserID(bp, "<span class="CodeOption">user1</span>", <span class="CodeOption">User.eAuth.BuiltIn</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -657,10 +658,10 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="GetUserByID (Static Method)" />This method will get a user object from the specified UID or UserID. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public static User GetUserByUserID(bp BP, string pUser)
+                <p><code>public static User GetUserByUserID(bp BP, string <span class="CodeOption">pUser</span>)
 </code>
                 </p>
-                <p><code>public static User GetUserByUserID(bp BP, string pUser,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Defines.eAuth AuthType)
+                <p><code>public static User GetUserByUserID(bp BP, string <span class="CodeOption">pUser</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Defines.eAuth <span class="CodeOption">AuthType</span>)
 </code>
                 </p>
                 <h4>Parameters</h4>
@@ -671,7 +672,7 @@
                 <p><b>User:</b> A user object representation of the user.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Normally not used directly</span>
-                    <br />var oUser = User.GetUserByUserID(bp, "1234");</p>
+                    <br />var oUser = User.GetUserByUserID(bp, "<span class="CodeOption">1234</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -689,7 +690,7 @@
                 <p><b>String:</b> The result of the import operation.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Import the users in the "Users.XLSX" file in the sheet named "Sheet1"</span>
-                    <br />var DID = ContentObject.GetObjectByPathName(bp, "Partition1",<br />&#160;&#160;&#160;&#160;"/Users.XLSX");<br />var RES = BPLogix.WorkflowDirector.SDK.User.ImportUsersFromExcel(bp, <br />&#160;&#160;&#160;&#160;DID.ID, "Sheet1");</p>
+                    <br />var DID = ContentObject.GetObjectByPathName(bp, "Partition1",<br />&#160;&#160;&#160;&#160;"/Users.XLSX");<br />var RES = BPLogix.WorkflowDirector.SDK.User.ImportUsersFromExcel(bp, <br />&#160;&#160;&#160;&#160;<span class="CodeOption">DID.ID</span>, "<span class="CodeOption">Sheet1</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -705,7 +706,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> Whether or not the user exists in the specified group.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br /><span class="ControlName">// The following two conditional tests the same thing (is "User 1" <br />// in "Group 1")</span><br />if(oUser.InGroup(oGroup))<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Do action</span><br />}<br />if(oUser.InGroup(oGroup.GID))<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Do action</span><br />}</p>
+                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br /><span class="ControlName">// The following two conditional tests the same thing (is "User 1" <br />// in "Group 1")</span><br />if(oUser.InGroup(<span class="CodeOption">oGroup</span>))<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Do action</span><br />}<br />if(oUser.InGroup(<span class="CodeOption">oGroup.GID</span>))<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Do action</span><br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -720,7 +721,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">bool locked = LockUserAccount("UID");</p>
+                <p class="CodeBase">bool locked = LockUserAccount("<span class="CodeOption">UserUID</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -730,7 +731,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This method will take a UID or UserID list in string format or in a DataItem object and convert it to a normalized List object. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public static List&lt;User&gt; NormalizeUserList(bp BP, string pUserList)<br />public static List&lt;User&gt; NormalizeUserList(bp BP, string pUserList, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool ReturnNullOnInvalid)<br />public static List&lt;User&gt; NormalizeUserList(bp BP, ref DataItem pUsers)<br />public static List&lt;User&gt; NormalizeUserList(bp BP, ref DataItem pUsers,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool ReturnNullOnInvalid)</code>
+                <p><code>public static List&lt;User&gt; NormalizeUserList(bp BP, string <span class="CodeOption">pUserList</span>)<br />public static List&lt;User&gt; NormalizeUserList(bp BP, string <span class="CodeOption">pUserList</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeOption">ReturnNullOnInvalid</span>)<br />public static List&lt;User&gt; NormalizeUserList(bp BP, ref DataItem <span class="CodeOption">pUsers</span>)<br />public static List&lt;User&gt; NormalizeUserList(bp BP, ref DataItem <span class="CodeOption">pUsers</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeOption">ReturnNullOnInvalid</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>BP:</b> The bp environment.</p>
@@ -741,7 +742,7 @@
                 <p><b>List:</b> A List object containing the UIDs or UserIDs.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Normally not used directly</span>
-                    <br />List oUsers = NormalizeUserList(bp, "User1, User2, User3");</p>
+                    <br />List oUsers = NormalizeUserList(bp, "<span class="CodeOption">User1,User2,User3</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -757,7 +758,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br />oUser.RemoveFromGroup(oGroup);</p>
+                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br />oUser.RemoveFromGroup(<span class="CodeOption">oGroup</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -774,7 +775,7 @@
                 <p><b>Boolean:</b>&#160;True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Remove a user from shared delegation</span>
-                    <br />CurrentUser.RemoveSharedDelegate("UID");</p>
+                    <br />CurrentUser.RemoveSharedDelegate("<span class="CodeOption">UserUID</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -789,7 +790,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True of the operation succeeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />oUser.ReplaceWithUser("ReplacementUID");</p>
+                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />oUser.ReplaceWithUser("<span class="CodeOption">ReplacementUID</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -805,7 +806,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">bool curr = SetCurrentUserContext("UserID");</p>
+                <p class="CodeBase">bool curr = SetCurrentUserContext("<span class="CodeOption">UserID</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -836,7 +837,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">bool unlocked = UnlockUserAccount("UID");</p>
+                <p class="CodeBase">bool unlocked = UnlockUserAccount("<span class="CodeOption">UserUID</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -886,7 +887,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True if the user exists.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">bool exists = userExists(bp, "UserID", User.eAuth.BuiltIn);</p>
+                <p class="CodeBase">bool exists = userExists(bp, "<span class="CodeOption">UserID</span>", <span class="CodeOption">User.eAuth.BuiltIn</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

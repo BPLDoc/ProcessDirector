@@ -33,7 +33,7 @@
                 <p>For Process Director v5.39 and below, the default timings for TimerSecondsCheckWfAdvance and TimerSecondsCheckProjAdvance are set to 2 hours. This was changed in newer versions as the shorter time limits could use excessive system resources on very active systems.</p>
                 <p>Additionally, the <b>fDisableUserPrediction</b> Custom Variable will, when set to "false", enable more accurate prediction of activity times based on each specific user that has been assigned to an activity. <i>This setting will consume more system resources when being used</i>, so the default value for this variable is "true".  When set to "true", prediction will still occur, but with less predictive accuracy.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Default to 6 hours between checking workflows for advance<br />&#160;&#160;&#160;&#160;// (e.g. due dates, wait steps, etc.)</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckWfAdvance = 60 * 60 * 6;<br />&#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Default to 1 hour between checking workflows for email reminders</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckWfReminders = 60 * 60 * 1;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Default to 6 hours between checking projects for advance<br />&#160;&#160;&#160;&#160;// AND prediction calculations (e.g. completed/start when<br />&#160;&#160;&#160;&#160;// conditions, due dates, etc.)</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckProjAdvance = 60 * 60 * 6;<br /><br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// default to 1 hour between checking projects for email reminders</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckProjReminders = 60 * 60 * 1;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Less accurate user predictions for task completion,<br />&#160;&#160;&#160;&#160;// but fewer system resources used</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableUserPrediction = true;<br /><br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Default to 6 hours between checking workflows for advance<br />&#160;&#160;&#160;&#160;// (e.g. due dates, wait steps, etc.)</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckWfAdvance = <span class="CodeOption">60 * 60 * 6</span>;<br />&#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Default to 1 hour between checking workflows for email reminders</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckWfReminders = <span class="CodeOption">60 * 60 * 1</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Default to 6 hours between checking projects for advance<br />&#160;&#160;&#160;&#160;// AND prediction calculations (e.g. completed/start when<br />&#160;&#160;&#160;&#160;// conditions, due dates, etc.)</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckProjAdvance = <span class="CodeOption">60 * 60 * 6</span>;<br /><br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// default to 1 hour between checking projects for email reminders</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckProjReminders = <span class="CodeOption">60 * 60 * 1</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Less accurate user predictions for task completion,<br />&#160;&#160;&#160;&#160;// but fewer system resources used</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableUserPrediction = <span class="CodeOption">true</span>;<br /><br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -45,7 +45,7 @@
                     <MadCap:keyword term="AllowedExportLocations" />The AllowedExportLocations variable is a list of strings that contains all of the folder locations to where a file export via Knowledge View URL is allowed. This variable enables you to control the locations to which a KView can export documents when <a href="../ImplementersReference/Knowledge View Exporting and Reporting.htm#_Toc421536238">called via a URL</a>. Calling a Knowledge View via URL will accept a URL&#160;Parameter named <span class="ControlName">exportname</span> that enables the Knowledge View to export a file to a specified file path/file name. To prevent users from exporting files to unwanted locations, or overwriting existing files, this variable MUST be set. Any attempt to export a file from a Knowledge View to any folder not listed in this variable will fail.</p>
                 <p>The locations listed in this system variable will be treated as parent-level folders, which means that you can write documents to any location or subfolder <i>below</i> the specified folder location.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Create List values</span><br />&#160;&#160;&#160;&#160;List&lt;string&gt; MyExportLocations = new List&lt;string&gt;();<br />&#160;&#160;&#160;&#160;MyExportLocations.Add(@"C:\FilePath");<br />&#160;&#160;&#160;&#160;MyExportLocations.Add(@"C:\FilePath\Subfolder");<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Apply List values to the Custom Variable</span><br />&#160;&#160;&#160;&#160;bp.Vars.AllowedExportLocations = MyExportLocations;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Create List values</span><br />&#160;&#160;&#160;&#160;List&lt;string&gt; MyExportLocations = new List&lt;string&gt;();<br />&#160;&#160;&#160;&#160;MyExportLocations.Add(@"<span class="CodeOption">C:\FilePath</span>");<br />&#160;&#160;&#160;&#160;MyExportLocations.Add(@"<span class="CodeOption">C:\FilePath\Subfolder</span>");<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Apply List values to the Custom Variable</span><br />&#160;&#160;&#160;&#160;bp.Vars.AllowedExportLocations = MyExportLocations;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -56,7 +56,7 @@
                 <p>
                     <MadCap:keyword term="EnableReactAdminPages" />This variable was implemented In Process Director v5.44.600. When set to "false", it disables the redesigned look of some IT Admin pages to the classic view. The default value for this variable is "true".</p>
                 <h5>Vars.cs Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable admin page UI updates.</span><br />&#160;&#160;&#160;&#160;bp.Vars.EnableReactAdminPages = false;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable admin page UI updates.</span><br />&#160;&#160;&#160;&#160;bp.Vars.EnableReactAdminPages = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -67,7 +67,7 @@
                 <p>
                     <MadCap:keyword term="fAllowLoginRememberMe">&#160;</MadCap:keyword>This variable enables you to control whether built-in users can ask Process Director to remember their session so they don’t have to log in each time they visit Process Director.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Allow users to use 'Remember Me' option</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowLoginRememberMe = true;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Allow users to use 'Remember Me' option</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowLoginRememberMe = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -79,7 +79,7 @@
                     <MadCap:keyword term="fAllowRetrievePassword">&#160;</MadCap:keyword>This variable enables you to control whether built-in users can retrieve their passwords if they are forgotten. If set to true, a prompt will appear on the login page. Development systems that use the <a href="#TestUserEmailAddress">TestUserEmailAddress</a> will not send password reset request email to the TesUserEmailAddress, but will, instead, send them to the requesting user.</p>
                 <h5>Example</h5>
                 <p>
-                    <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Allow users to retrieve passwords</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowRetrievePassword = true;<br />}</p>
+                    <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Allow users to retrieve passwords</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowRetrievePassword = <span class="CodeOption">true</span>;<br />}</p>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -92,7 +92,7 @@
                     <MadCap:keyword term="fDisableUserRenameOnDisable" />This variable will, when set to "true", prevent a disabled user from being renamed and preventing a new GUID from being applied during an update/synchronization. The default value for this variable is "false".</p>
                 <h5>Example</h5>
                 <p>
-                    <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="ControlName"><br></br>&#160;&#160;&#160;&#160;// Prevent disabled users from being renamed</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableUserRenameOnDisable = true;<br />}</p>
+                    <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="ControlName"><br />&#160;&#160;&#160;&#160;// Prevent disabled users from being renamed</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableUserRenameOnDisable = <span class="CodeOption">true</span>;<br />}</p>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -104,7 +104,7 @@
                 <p>
                     <MadCap:keyword term="fAllowRetrievePassword">&#160;</MadCap:keyword>This variable permits the name of a document object in the content list to be changed to match the name of the document being checked in, when set to "true". The default value is "false", i.e., that the name in the content list is retained even if the document being checked in has a different name.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Turn on object renaming</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDocRenameLogicOff = true;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Turn on object renaming</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDocRenameLogicOff = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -119,7 +119,7 @@
                 <p>When this value is set to "false", though migration of existing encrypted values will not occur on upgrade,<span class="Emphasis"> new encrypted values will still be created using AES</span>, e.g., submitting a new form instance with encrypted form controls. </p>
                 <p>Any time data that uses the deprecated encryption is accessed, an ERROR log message will be generated as a reminder that migration has not yet been performed (I.e., "ERROR: Deprecated encrypted value detected, please upgrade using Administration pages."). There won't be any data-loss or corruption, as the system will recognize both AES and deprecated encryption.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Turn off AES&#160;Encryption Migration</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableEncryptionMigration= false;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Turn off AES&#160;Encryption Migration</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableEncryptionMigration= <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -131,10 +131,10 @@
                     <MadCap:keyword term="fEnableJavaScriptDev">
                     </MadCap:keyword>This variable permits form variables to be set or retrieved from Javascript, when set to the default value of "true". Setting this value to "false" disables this behavior.</p>
                 <h5>Vars.cs Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable Javascript access to vars</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableJavaScriptDev = false;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable Javascript access to vars</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableJavaScriptDev = <span class="CodeOption">false</span>;<br />}</p>
                 <h5>Javascript Example </h5>
                 <p>By default, Javascript can be used to get or set form value for controls that are not contained in a Form array. The best practice for this type of use would most often be to insert the Javascript into an HTML&#160;Control on the Form.</p>
-                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Function call to get form data from a Form via Javascript</span><br />&#160;&#160;&#160;&#160;function getVariable()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = CurrentForm.FormControls["FORM_VAR"].value;<br />&#160;&#160;&#160;&#160;}<br /><br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Function call to set a Form field value with JavaScript</span><br />&#160;&#160;&#160;&#160;function setFieldValue()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = "SomeValue";<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["FORM_VAR"].value = frmValue;<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
+                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Function call to get form data from a Form via Javascript</span><br />&#160;&#160;&#160;&#160;function getVariable()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = CurrentForm.FormControls["<span class="CodeOption">FORM_VAR</span>"].value;<br />&#160;&#160;&#160;&#160;}<br /><br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Function call to set a Form field value with JavaScript</span><br />&#160;&#160;&#160;&#160;function setFieldValue()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = "<span class="CodeOption">SomeValue</span>";<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["<span class="CodeOption">FORM_VAR</span>"].value = frmValue;<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -145,7 +145,7 @@
                 <p>
                     <MadCap:keyword term="fEnableSQLEscape" />When you run a SELECT statement that contains a LIKE operator and an ESCAPE clause in SQL Server 2008 R2, SQL Server 2012, or SQL&#160;Server 2014, SQL Server may use an inefficient query plan for the statement. Additionally, the performance of the statement is low. This SQL&#160;Server bug can cause a performance problem with Knowledge Views searching for form data using "contains", especially when using the "contains" operator with wildcard characters. This Custom variable, when set to "true", alters the operation of these queries to improve performance and help mitigate this SQL&#160;Server bug. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Mitigate SQL&#160;Server bug for LIKE/Wildcard queries</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableSQLEscape = true;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Mitigate SQL&#160;Server bug for LIKE/Wildcard queries</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableSQLEscape = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -156,7 +156,7 @@
                 <p>
                     <MadCap:keyword term="fIncludeBootstrap" />This variable, when set to true, enables you to use the Bootstrap controls in the <a href="../ImplementersReference/Form Online Controls Responsive.htm">Online Form Designer's Responsive Layout</a> menu, and provides visual markers on the design surface for the Bootstrap controls. The default setting for this variable is false.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Enable Bootstrap in the Online Form Designer</span><br />&#160;&#160;&#160;&#160;bp.Vars.fIncludeBootstrap = true;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Enable Bootstrap in the Online Form Designer</span><br />&#160;&#160;&#160;&#160;bp.Vars.fIncludeBootstrap = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -168,7 +168,7 @@
                     <MadCap:keyword term="fTestMode">&#160;</MadCap:keyword>These variables allow you to set the system into a test mode. In this mode, Windows Integrated authentication is disabled. This mode enables anyone to log into the server without a password. Use this setting with caution. It should only be used on non-production systems to test processes and Forms. </p>
                 <p>For more information, see the <a href="../SystemAdministratorGuide/Test Server Methodology.htm">Test Server Methodology</a> topic in the System Administrator's Guide.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = true;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Set the test email user</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmails = User.GetUserByUserID(bp, "my_test_id");<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// ===OR===<br /><br />&#160;&#160;&#160;&#160;// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER EMAIL ADDRESS FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = true;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Set the test email user</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmailAddress = "username@domain.com";<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Set the test email user</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmails = User.GetUserByUserID(bp, "<span class="CodeOption">my_test_id</span>");<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// ===OR===<br /><br />&#160;&#160;&#160;&#160;// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER EMAIL ADDRESS FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Set the test email user</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmailAddress = "<span class="CodeOption">username@domain.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -179,7 +179,7 @@
                 <p>
                     <MadCap:keyword term="Custom Workflow Step Colors">&#160;</MadCap:keyword>Process Director enables the addition of locales by editing the vars.cs file. </p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// If you comment out the first line, <br />&#160;&#160;&#160;&#160;// it will append new values to the default list</span><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Otherwise a new list will be created</span><br />&#160;&#160;&#160;&#160;Locales = new List&lt;NameValue&gt;();<br />&#160;&#160;&#160;&#160;Locales.Add(new NameValue("English", "en"));<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// If you comment out the first line, <br />&#160;&#160;&#160;&#160;// it will append new values to the default list</span><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Otherwise a new list will be created</span><br />&#160;&#160;&#160;&#160;Locales = new List&lt;NameValue&gt;();<br />&#160;&#160;&#160;&#160;Locales.Add(new NameValue(<span class="CodeOption">"English", "en"</span>));<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -190,7 +190,7 @@
                 <p>
                     <MadCap:keyword term="nMaxLogBackups">&#160;</MadCap:keyword>This variable enables you to set the maximum number of log files. After a log file reaches the size configured by nMaxLogFileSize, it will “wrap” in a circular log file queue.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep a maximum of 20 wrapping log files</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxLogBackups = 20;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Keep a maximum of 20 wrapping log files</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxLogBackups = <span class="CodeOption">20</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -201,7 +201,7 @@
                 <p>
                     <MadCap:keyword term="nMaxLogFileSize">&#160;</MadCap:keyword>This variable enables you to set the maximum size of the wrapping log files. Specify this value in kilobytes.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the maximum log file size to 3 meg.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxLogFileSize = 3000;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// This will set the maximum log file size to 3 meg.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxLogFileSize = <span class="CodeOption">3000</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -212,7 +212,7 @@
                 <p>
                     <MadCap:keyword term="sLoadingImage" />This variable enables you customize the loading image that is displayed when the system is waiting on a Form event. The preferred file format for the image should be an animated GIF image.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Custom loading image</span><br />&#160;&#160;&#160;&#160;bp.Vars.sLoadingImage = "http://myserver/image.gif";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Custom loading image</span><br />&#160;&#160;&#160;&#160;bp.Vars.sLoadingImage = "<span class="CodeOption">http://myserver/image.gif</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -223,7 +223,7 @@
                 <p>
                     <MadCap:keyword term="sLogoLink">&#160;</MadCap:keyword>This variable enables you customize the destination address if the logo is clicked.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Customize logo click URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.sLogoLink = "http://myserver/my_intranet";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Customize logo click URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.sLogoLink = "<span class="CodeOption">http://myserver/my_intranet</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -234,7 +234,7 @@
                 <p>
                     <MadCap:keyword term="sLogoURL">&#160;</MadCap:keyword>This variable enables you customize the top left logo displayed on the home page. Use a standard URL.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /> <span class="ControlName">&#160;&#160;&#160;// Customize logo image</span><br />&#160;&#160;&#160;&#160;bp.Vars.sLogoURL = "http://myserver/mylogo.gif";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /> <span class="ControlName">&#160;&#160;&#160;// Customize logo image</span><br />&#160;&#160;&#160;&#160;bp.Vars.sLogoURL = "<span class="CodeOption">http://myserver/mylogo.gif</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -245,7 +245,7 @@
                 <p>
                     <MadCap:keyword term="sMobileWebServerURL" />This string variable enables customers who have licensed the offline Appenate server to configure the custom URL&#160;of their mobile server for use by Custom Tasks and other features. This feature is unavailable for versions prior to Process Director v5.45, and who have not also licensed the offline mobile feature.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Mobile App server URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.sMobileWebServerURL = "http://mobile.bplogix.com";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Mobile App server URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.sMobileWebServerURL = "<span class="CodeOption">http://mobile.bplogix.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -256,7 +256,7 @@
                 <p>
                     <MadCap:keyword term="TestModeIPs" />This variable enables you specify the IP addresses that are allowed to connect to a Process Director Server that has been placed in Test mode, via the <a href="#fTestMode">fTestMode</a> custom variable. This is required to allow access to a server that is in test mode. If accessing the server locally, the IP address does not need to be listed.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = true;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Set the IP Addresses allowed to access the server</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestModeIPs.Add("10.1.1.1");<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = true;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Set the IP Addresses allowed to access the server</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestModeIPs.Add("<span class="CodeOption">10.1.1.1</span>");<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -267,7 +267,7 @@
                 <p>
                     <MadCap:keyword term="TestUserEmailAddress">&#160;</MadCap:keyword>This variable enables you to route all process emails (task list emails, notifications, etc.) to a single email address. This system variable does not require a database connection.&#160; Use this setting with caution. It should only be used on non-production systems to test process and Forms. If your installation is configured to enable users to retrieve forgotten passwords, via the <a href="#fAllowRetrievePassword">fAllowRetrievePassword</a> custom variable, the TestUserEmailAddress will not receive password reset request emails.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = true;<br /><span class="ControlName"><br />&#160;&#160;&#160;&#160;// Set test email</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmailAddress = "demo@bplogix.com";<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><span class="ControlName"><br />&#160;&#160;&#160;&#160;// Set test email</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmailAddress = "<span class="CodeOption">demo@bplogix.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -278,7 +278,7 @@
                 <p>
                     <MadCap:keyword term="TestUserEmails">&#160;</MadCap:keyword>This variable enables you to route all process emails (task list emails, notifications, etc) to a single user. Use this setting with caution. It should only be used on non-production systems to test processes and Forms. </p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = true;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Specify user to use for test emails</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmails = User.GetUserByUserID(bp, "my_test_id");<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Specify user to use for test emails</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmails = User.GetUserByUserID(bp, "<span class="CodeOption">my_test_id</span>");<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -291,10 +291,10 @@
                 <h5>Project Reminder Times</h5>
                 <p>Project reminder times are times for which reminders should be sent before a task is due.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Activity Reminder times<br />&#160;&#160;&#160;&#160;// If you comment out this next line, it will append new values to<br />&#160;&#160;&#160;&#160;// the default list<br />&#160;&#160;&#160;&#160;// Otherwise, a new list will be created</span><br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes= new List&lt;TimeValue&gt;();<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(new TimeValue(-1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"1 Day Before Due"));<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(new TimeValue(-2 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"2 Days Before Due"));<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(new TimeValue(1 * (60 * 60 * 4),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Hours"));<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(new TimeValue(1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Day"));<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(new TimeValue(4 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Days"));<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(new TimeValue(7 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Week"));<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Activity Reminder times<br />&#160;&#160;&#160;&#160;// If you comment out this next line, it will append new values to<br />&#160;&#160;&#160;&#160;// the default list<br />&#160;&#160;&#160;&#160;// Otherwise, a new list will be created</span><br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes= new List&lt;TimeValue&gt;();<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(-1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"1 Day Before Due")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(-2 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"2 Days Before Due")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 4),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Hours")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Day")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(4 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Days")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(7 * (60 * 60 * 24),<br></br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Week")</span>);<br />}</p>
                 <h5>Task Due Reminder Times</h5>
                 <p>Task Due reminder Times are times that reminders should be sent after a task's due date has passed. In the example below, the reminder times add additional reminder options to the standard list, and once added, will also appear in the dropdown control as selectable options.</p>
-                <p class="CodeBase">bp.Vars.TaskDueReminderTimes.Add(new TimeValue(-1 * (24 * (60 * 60)), <br />&#160;&#160;&#160;&#160;"Every 1 day after task is due"));<br />bp.Vars.TaskDueReminderTimes.Add(new TimeValue(-2 * (24 * (60 * 60)), <br />&#160;&#160;&#160;&#160;"Every 2 days after task is due"));<br />bp.Vars.TaskDueReminderTimes.Add(new TimeValue(-3 * (24 * (60 * 60)), <br />&#160;&#160;&#160;&#160;"Every 3 days after task is due"));</p>
+                <p class="CodeBase">bp.Vars.TaskDueReminderTimes.Add(<span class="CodeOption">new TimeValue(-1 * (24 * (60 * 60)), <br />&#160;&#160;&#160;&#160;"Every 1 day after task is due")</span>);<br />bp.Vars.TaskDueReminderTimes.Add(<span class="CodeOption">new TimeValue(-2 * (24 * (60 * 60)), <br />&#160;&#160;&#160;&#160;"Every 2 days after task is due")</span>);<br />bp.Vars.TaskDueReminderTimes.Add(<span class="CodeOption">new TimeValue(-3 * (24 * (60 * 60)), <br></br>&#160;&#160;&#160;&#160;"Every 3 days after task is due")</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -305,7 +305,7 @@
                 <p>
                     <MadCap:keyword term="TestUserEmails">&#160;</MadCap:keyword>This variable enables you to specify a folder to use as a temporary folder when using the Multi-File Upload functionality with the <span class="NamedControl">AttachObjects </span>control. The default system temp path may not release large file uploads properly. Setting your own folder in the folder system can alleviate this issue.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Set the temporary path for large file uploads</span><br />&#160;&#160;&#160;&#160;CV.UploadTempPath = @"m:\tempupload";<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Set the temporary path for large file uploads</span><br />&#160;&#160;&#160;&#160;CV.UploadTempPath = @"<span class="CodeOption">m:\tempupload</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -316,7 +316,7 @@
                 <p>
                     <MadCap:keyword term="Custom Workflow Reminder Times">&#160;</MadCap:keyword>Process Director enables the reminder times in the workflow builder to be customized in the dropdown lists. </p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Step Reminder times<br />&#160;&#160;&#160;&#160;// If you comment out this next line, it will append new values to <br />&#160;&#160;&#160;&#160;// the default list</span><br /><span class="ControlName">&#160;&#160;&#160;&#160;// Otherwise, a new list will be created</span><br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes = new List&lt;TimeValue&gt;();<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(new TimeValue(-1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"1 Day Before Due"));<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(new TimeValue(-2 * (60 * 60 * 24), <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"2 Days Before Due"));<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(new TimeValue(1 * (60 * 60 * 4),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Hours"));<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(new TimeValue(1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Day"));<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(new TimeValue(4 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Days"));<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(new TimeValue(7 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Week"));<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Step Reminder times<br />&#160;&#160;&#160;&#160;// If you comment out this next line, it will append new values to <br />&#160;&#160;&#160;&#160;// the default list</span><br /><span class="ControlName">&#160;&#160;&#160;&#160;// Otherwise, a new list will be created</span><br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes = new List&lt;TimeValue&gt;();<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(-1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"1 Day Before Due")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(-2 * (60 * 60 * 24), <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"2 Days Before Due")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 4),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Hours")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Day")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(4 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Days")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(7 * (60 * 60 * 24),<br></br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Week")</span>);<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -327,27 +327,26 @@
                 <p>
                     <MadCap:keyword term="Custom Workflow Step Colors">&#160;</MadCap:keyword>Process Director enables the the colors for Workflow Branches, Branch Button, Process Timeline Activities, and Activity result buttonsto be customized in the dropdown list of colors. You can add colors to the existing list of colors, or you can create an entirely new list of your own devising.</p>
                 <p>To create your own list, start by adding the following lines of code to the PreSetSystemVars method in the Custom Vars file:</p>
-                <p><code>bp.Vars.WorkflowColors = new List&lt;ColorValue&gt;();<br />bp.Vars.WorkflowColors.Add(new ColorValue("Default", "", ""));</code>
-                </p>
+                <p class="CodeBase">bp.Vars.WorkflowColors = new List&lt;ColorValue&gt;();<code><br /></code>bp.Vars.WorkflowColors.Add(new ColorValue("Default", "", ""));</p>
                 <p>This will create an entirely new list with a default color value, which will be the standard default color in the interface, e.g., buttons will be the standard gray color. You can then add additional colors to your list using the color addition code described below. </p>
                 <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note:" /> If you merely want to add colors to the existing default color list, do not include these lines.</p>
                 <p>To add a new colors to the existing list, or to the new list you created above, add the following line for each desired color:</p>
-                <p><code>bp.Vars.WorkflowColors.Add(new ColorValue("<b>Label</b>", "<b>BackColor</b>", "<b>ForeColor</b>"));</code>
+                <p><code>bp.Vars.WorkflowColors.Add(new ColorValue("<span class="CodeOption">Label</span>", "<span class="CodeOption">BackColor</span>", "<span class="CodeOption">ForeColor</span>"));</code>
                 </p>
                 <p>The following Parameters are required for this line of code:</p>
                 <p><b>Label:</b> The label that will appear for the color in the dropdown.</p>
                 <p><b>BackColor:</b> The HTML hexadecimal, HTML named color, or RGB background color of the dropdown item.</p>
                 <p><b>ForeColor:</b>&#160;The HTML hexadecimal, HTML named color, or RGB foreground color of the dropdown item.</p>
                 <p>So, using the following line of code:</p>
-                <p><code>bp.Vars.WorkflowColors.Add(new ColorValue("Cornflower", "#739CCB", "#FFFFFF"));</code>
+                <p><code>bp.Vars.WorkflowColors.Add(new ColorValue("<span class="CodeOption">Cornflower</span>", "<span class="CodeOption">#739CCB</span>", "<span class="CodeOption">#FFFFFF</span>"));</code>
                 </p>
                 <p>...will result in the following addition to the bottom of the color dropdown:</p>
                 <p>
                     <img src="../Resources/Images/DevelopersGuide/ColorPicker.png" />
                 </p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Workflow colors<br />&#160;&#160;&#160;&#160;// If you add the line, it will create a new color list<br />&#160;&#160;&#160;&#160;// to replace the default list</span><br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors = new List&lt;ColorValue&gt;();<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Create a new default color entry for the new list.</span><br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors.Add(new ColorValue("Default", "", ""));<br />&#160;&#160;&#160;&#160;<span class="ControlName">// If you do NOT add these lines, the colors below will<br />&#160;&#160;&#160;&#160;// simply be added to the default color list.</span><br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">//Add colors to the list</span><br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors.Add(new ColorValue("333366", "#333366", "#FFFFFF"));<br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors.Add(new ColorValue("FFCCFF", "#FFCCFF", "#666666"));<br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors.Add(new ColorValue("FFFF00", "#FFFF00", "#666666"));<br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors.Add(new ColorValue("FFFF99", "#FFFF99", "#666666"));<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Workflow colors<br />&#160;&#160;&#160;&#160;// If you add the line, it will create a new color list<br />&#160;&#160;&#160;&#160;// to replace the default list</span><br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors = new List&lt;ColorValue&gt;();<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Create a new default color entry for the new list.</span><br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors.Add(new ColorValue("Default", "", ""));<br />&#160;&#160;&#160;&#160;<span class="ControlName">// If you do NOT add these lines, the colors below will<br />&#160;&#160;&#160;&#160;// simply be added to the default color list.</span><br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">//Add colors to the list</span><br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors.Add(new ColorValue("<span class="CodeOption">Lt Black</span>", "<span class="CodeOption">#333366</span>", "<span class="CodeOption">#FFFFFF</span>"));<br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors.Add(new ColorValue("<span class="CodeOption">Lt Lavender</span>", "<span class="CodeOption">#FFCCFF</span>", "<span class="CodeOption">#666666</span>"));<br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors.Add(new ColorValue("<span class="CodeOption">Yellow</span>", "<span class="CodeOption">#FFFF00</span>", "<span class="CodeOption">#666666</span>"));<br />&#160;&#160;&#160;&#160;bp.Vars.WorkflowColors.Add(new ColorValue("<span class="CodeOption">Dk Gray</span>", "#<span class="CodeOption">FFFF99</span>", "<span class="CodeOption">#666666</span>"));<br />}</p>
                 <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> This variable will also accept RGB&#160;color values, e.g., "rgb(255,0,0,)", in addition to HTML&#160;color values.</p>
             </MadCap:dropDownBody>

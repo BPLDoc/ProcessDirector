@@ -205,11 +205,11 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="AddErrorMessage" />This API will add an error message to the form which will be displayed to the user. If an error message is added, the user will not be able to submit the form. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public void AddErrorMessage(FormMessageString pMessage, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;params object[] pParams)</code>
+                <p><code>public void AddErrorMessage(FormMessageString <span class="CodeOption">pMessage</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;params object[] <span class="CodeOption">pParams</span>)</code>
                 </p>
-                <p><code>public void AddErrorMessage(string pFormat,&#160;params object[] pParams</code><code>)<br />public T AddErrorMessage&lt;T&gt;(T ret, string pFormat, params object[] pParams)</code>
+                <p><code>public void AddErrorMessage(string <span class="CodeOption">pFormat</span>,&#160;params object[] <span class="CodeOption">pParams</span></code><code>)<br />public T AddErrorMessage&lt;T&gt;(T ret, string <span class="CodeOption">pFormat</span>, params object[] <span class="CodeOption">pParams</span>)</code>
                 </p>
-                <p><code>public T AddErrorMessage&lt;T&gt;(T ret, FormMessageString pMessage, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;params object[] pParams)</code>
+                <p><code>public T AddErrorMessage&lt;T&gt;(T ret, FormMessageString <span class="CodeOption">pMessage</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;params object[] <span class="CodeOption">pParams</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>pMessage:</b> The error message to return (this can be a string or the FormMessageString class).</p>
@@ -219,7 +219,7 @@
                 <p>None</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// This example will be called in the validation event of a form script</span>
-                    <br />protected override void BP_Validation()<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Display an error on the form if the Amount form field is &gt; 100<br />&#160;&#160;&#160;&#160;// and place the focus on the form field “Amount”</span><br />&#160;&#160;&#160;&#160;If (CurrentCurrentForm.FormControl("Amount").Number &gt; 100)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.AddErrorMessage(new FormMessageString("Must be &lt; 100",<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Amount"));<br />&#160;&#160;&#160;&#160;}<br />}</p>
+                    <br />protected override void BP_Validation()<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Display an error on the form if the Amount form field is &gt; 100<br />&#160;&#160;&#160;&#160;// and place the focus on the form field “Amount”</span><br />&#160;&#160;&#160;&#160;If (CurrentCurrentForm.FormControl("Amount").Number &gt; 100)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.AddErrorMessage(<span class="CodeOption">new FormMessageString("Must be &lt; 100",<br></br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Amount")</span>);<br />&#160;&#160;&#160;&#160;}<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -229,9 +229,9 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="AddInfoMessage" />This API will add an informational message to the form which will be displayed to the user. If an informational message is added, the user will not be able to submit the form. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public void AddInfoMessage(FormMessageString pMessage, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;params object[] pParams)</code>
+                <p><code>public void AddInfoMessage(FormMessageString <span class="CodeOption">pMessage</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;params object[] <span class="CodeOption">pParams</span>)</code>
                 </p>
-                <p><code>public void AddInfoMessage(string pFormat, params object[] pParams)</code>
+                <p><code>public void AddInfoMessage(string <span class="CodeOption">pFormat</span>, params object[] <span class="CodeOption">pParams</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>pMessage:</b> The error message to return (this can be a string or the FormMessageString class).</p>
@@ -240,7 +240,7 @@
                 <p>None</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// This example will be called in every event</span>
-                    <br />protected override void BP_Event()<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Display a message on the form if the Amount form field is &gt; 100</span><br />&#160;&#160;&#160;&#160;If (CurrentCurrentForm.FormControl("Amount").Number &gt; 100)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.AddInfoMessage("The amount is &gt; 100");<br />&#160;&#160;&#160;&#160;}<br />}</p>
+                    <br />protected override void BP_Event()<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Display a message on the form if the Amount form field is &gt; 100</span><br />&#160;&#160;&#160;&#160;If (CurrentCurrentForm.FormControl("<span class="CodeOption">Amount</span>").<span class="CodeOption">Number &gt; 100</span>)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.AddInfoMessage("<span class="CodeOption">The amount is &gt; 100</span>");<br />&#160;&#160;&#160;&#160;}<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -256,7 +256,7 @@
                 <p>None</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// We will add our JavaScript in the initial load</span>
-                    <br />protected override void BP_ViewStateiInit()<br />{<br />&#160;&#160;&#160;&#160;CurrentForm.AddJavaScript("alert('Please submit the form before <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;closing it.')");<br />}</p>
+                    <br />protected override void BP_ViewStateiInit()<br />{<br />&#160;&#160;&#160;&#160;CurrentForm.AddJavaScript("<span class="CodeOption">alert('Please submit the form before <br></br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;closing it.')</span>");<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -288,7 +288,7 @@
                 <p>None</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// We will add our JavaScript in the initial load</span>
-                    <br />protected override void BP_ViewStateiInit()<br />{<br />&#160;&#160;&#160;&#160;CurrentForm.AddTopHTML("&lt;p&gt;Hello, World!&lt;/p&gt;");<br />}</p>
+                    <br />protected override void BP_ViewStateiInit()<br />{<br />&#160;&#160;&#160;&#160;CurrentForm.AddTopHTML("<span class="CodeOption">&lt;p&gt;Hello, World!&lt;/p&gt;</span>");<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -304,7 +304,7 @@
                 <p>None</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// We will add our JavaScript in the initial load</span>
-                    <br />protected override void BP_ViewStateiInit()<br />{<br />&#160;&#160;&#160;&#160;CurrentForm.AddBottomHTML("&lt;p&gt;Hello, World!&lt;/p&gt;");<br />}</p>
+                    <br />protected override void BP_ViewStateiInit()<br />{<br />&#160;&#160;&#160;&#160;CurrentForm.AddBottomHTML("<span class="CodeOption">&lt;p&gt;Hello, World!&lt;/p&gt;</span>");<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -321,7 +321,7 @@
                 <p><b>String:</b> The resultant string after converting every system variable.</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// Returns "USER1 editing this form on 2008-01-01"</span>
-                    <br />bp.log0(CurrentForm.ConvertSysVarsInString("{CURR_USER} editing this form <br />&#160;&#160;&#160;&#160;on {CURR_DATE}")); <br />var cText = CurrentForm.FormControl("Item", 2);<br /><br /><span class="ControlName">// Returns "Row number: 2"</span><br />string result2 = CurrentForm.ConvertSysVarsInString("Row number: {ROW_NUM}",<br />&#160;&#160;&#160; cText); </p>
+                    <br />bp.log0(CurrentForm.ConvertSysVarsInString("<span class="CodeOption">{CURR_USER} editing this form <br />&#160;&#160;&#160;&#160;on {CURR_DATE}</span>")); <br />var cText = CurrentForm.FormControl("<span class="CodeOption">Item</span>", <span class="CodeOption">2</span>);<br /><br /><span class="ControlName">// Returns "Row number: 2"</span><br />string result2 = CurrentForm.ConvertSysVarsInString("<span class="CodeOption">Row number: {ROW_NUM}</span>",<br />&#160;&#160;&#160; cText); </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -331,9 +331,9 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This API creates a dummy copy of an existing form, or of an Array Row, which can be filled with data attached to a workflow via other APIs. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public static FormControl CreateDummy(Form form)</code>
+                <p><code>public static FormControl CreateDummy(Form <span class="CodeOption">form</span>)</code>
                 </p>
-                <p><code>public static FormControl CreateDummy(FormControl fcArray, int row)</code>
+                <p><code>public static FormControl CreateDummy(FormControl <span class="CodeOption">fcArray</span>, int <span class="CodeOption">row</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>Form:</b> The Form object to reproduce.</p>
@@ -342,7 +342,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Examples</h4>
-                <p class="CodeBase">Form myForm = CreateDummy(CurrentForm);</p>
+                <p class="CodeBase">Form myForm = CreateDummy(<span class="CodeOption">CurrentForm</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -358,7 +358,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">CurrentForm.DoValidation(false, false);</p>
+                <p class="CodeBase">CurrentForm.DoValidation(<span class="CodeOption">false</span>, <span class="CodeOption">false</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -368,9 +368,9 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This API searches through each field of a given name containing a given value and returns a list of each form control that matches the query. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public static List&lt;FormControl&gt; FindControlInForms(bp BP, string FCName,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string Value)</code>
+                <p><code>public static List&lt;FormControl&gt; FindControlInForms(bp BP, string <span class="CodeOption">FCName</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">Value</span>)</code>
                 </p>
-                <p><code>public static List&lt;FormControl&gt; FindControlInForms(bp BP, string FCName, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string FORMID, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string Value)</code>
+                <p><code>public static List&lt;FormControl&gt; FindControlInForms(bp BP, string <span class="CodeOption">FCName</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">FORMID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">Value</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>BP:</b> The BP&#160;Object.</p>
@@ -380,7 +380,7 @@
                 <h4>Returns</h4>
                 <p><b>List:</b> A list object containing the form controls.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">List myList = FindControlInForms(bp, "ControlName", "ControlValue");</p>
+                <p class="CodeBase">List myList = FindControlInForms(bp, "<span class="CodeOption">ControlName</span>", "<span class="CodeOption">ControlValue</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -390,11 +390,11 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="FormControl" />This API will return a single form control. When using arrays, if you retrieve a form object without specifying a row number, you are acting on the entire column. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public FormControl FormControl(string Name, int ArrayNum)</code>
+                <p><code>public FormControl FormControl(string <span class="CodeOption">Name</span>, int <span class="CodeOption">ArrayNum</span>)</code>
                 </p>
-                <p><code>public FormControl FormControl(string pName, FormControl RefControl)</code>
+                <p><code>public FormControl FormControl(string <span class="CodeOption">pName</span>, FormControl <span class="CodeOption">RefControl</span>)</code>
                 </p>
-                <p><code>public FormControl FormControl(string pName, FormControl RefArray, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;int ArrayNum)</code>
+                <p><code>public FormControl FormControl(string <span class="CodeOption">pName</span>, FormControl <span class="CodeBase">RefArray</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;int <span class="CodeOption">ArrayNum</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>Name:</b> The name of the form control to retrieve.</p>
@@ -404,7 +404,7 @@
                 <p><b>FormControl:</b> The form control instance.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Add 1 to the Count form control</span>
-                    <br />CurrentCurrentForm.FormControl("Amount").Number += 1;<br /><span class="ControlName">// Make the Item in row 2 required</span><br />CurrentCurrentForm.FormControl("Item", 2).Display.Required = eYNU.Yes;<br /><span class="ControlName">// Make the entire Description column required</span><br />CurrentCurrentForm.FormControl("Description").Display.Required =  eYNU.Yes;</p>
+                    <br />CurrentCurrentForm.FormControl("<span class="CodeOption">Amount</span>").<span class="CodeOption">Number += 1</span>;<br /><span class="ControlName">// Make the Item in row 2 required</span><br />CurrentCurrentForm.FormControl("<span class="CodeOption">Item</span>", <span class="CodeOption">2</span>).Display.Required = eYNU.Yes;<br /><span class="ControlName">// Make the entire Description column required</span><br />CurrentCurrentForm.FormControl("<span class="CodeOption">ControlName</span>").Display.Required =  eYNU.Yes;</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -429,11 +429,11 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="FormControlByID" />This API will return a form control which corresponds to the ID you pass it. You would use this when you have a Form's ID (e.g. from a ControlPicker control). This is an overloaded method with the following possible declarations:</p>
-                <p><code>public FormControl FormControlByID(string FCID)</code>
+                <p><code>public FormControl FormControlByID(string <span class="CodeOption">FCID</span>)</code>
                 </p>
-                <p><code>public FormControl FormControlByID(string FCID, int ArrayNum)</code>
+                <p><code>public FormControl FormControlByID(string <span class="CodeOption">FCID</span>, int <span class="CodeOption">ArrayNum</span>)</code>
                 </p>
-                <p><code>public FormControl FormControlByID(string pFCID, FormControl RefControl)</code>
+                <p><code>public FormControl FormControlByID(string <span class="CodeOption">pFCID</span>, FormControl <span class="CodeOption">RefControl</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>ArrayNum:</b> (optional) Form controls in an array, the row number of the specific control</p>
@@ -443,7 +443,7 @@
                 <h4>Returns</h4>
                 <p><b>FormControl:</b> The form control instance.</p>
                 <h4>Examples</h4>
-                <p class="CodeBase">var cPicker = CurrentForm.FormControl("ControlsPick").Value; <br /><span class="ControlName">// If "ControlsPick" is a ControlPicker on the Form<br />// set the form control's text to "Add Another"</span><br />CurrentForm.FormControlByID(cPicker).Text = "Add Another";<br />var cPick2 = CurrentForm.FormControl("ControlsPickArray").Value;<br /><span class="ControlName">// Increment the control's value by 1</span><br />CurrentForm.FormControlByID(cPick2).Number += 1;<br /><span class="ControlName">// Disable the whole column of the control</span><br />CurrentForm.FormControlByID(cPick2).Display.Enabled = false;</p>
+                <p class="CodeBase">var cPicker = CurrentForm.FormControl("<span class="CodeOption">ControlName</span>").Value; <br /><span class="ControlName">// If "ControlsPick" is a ControlPicker on the Form<br />// set the form control's text to "Add Another"</span><br />CurrentForm.FormControlByID(<span class="CodeOption">cPicker</span>).Text = "<span class="CodeOption">Add Another</span>";<br />var cPick2 = CurrentForm.FormControl("<span class="CodeOption">ControlName2</span>").Value;<br /><span class="ControlName">// Increment the control's value by 1</span><br />CurrentForm.FormControlByID(<span class="CodeOption">cPick2</span>).<span class="CodeOption">Number += 1</span>;<br /><span class="ControlName">// Disable the whole column of the control</span><br />CurrentForm.FormControlByID(<span class="CodeOption">cPick2</span>).Display.Enabled = false;</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -453,7 +453,7 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="FormControlByID" />This API is an <b>override</b> for the base FormNavigate method, and enables you to create a custom Form Navigate method.</p>
-                <p><code>public virtual void FormNavigate(BPLogix.WorkflowDirector.SDK.bp bp, string URL)</code>
+                <p><code>public virtual void FormNavigate(BPLogix.WorkflowDirector.SDK.bp bp, string <span class="CodeOption">URL</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>bp:</b> The Process Director SDK handle.</p>
@@ -461,7 +461,7 @@
                 <h4>Returns</h4>
                 <p>None.</p>
                 <h4>Examples</h4>
-                <p class="CodeBase">public virtual void FormNavigate(BPLogix.WorkflowDirector.SDK.bp bp, string URL)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Your custom page navigation code here.</span><br />}</p>
+                <p class="CodeBase">public virtual void FormNavigate(BPLogix.WorkflowDirector.SDK.bp bp, string URL)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Your custom page navigation code here.</span><br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -477,7 +477,7 @@
                 <p><b>List&lt;FormMessageString&gt;:</b> The list of form error messages.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// This example will be called after built-in validation has occurred</span>
-                    <br />protected override void BP_Validation_Post()<br />{<br />&#160;&#160;&#160;&#160;var ErrorList = CurrentForm.GetErrorMessages();<br />&#160;&#160;&#160;&#160;if (ErrorList.Count &gt; 5)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.AddInfoMessage("Wow, that’s a lot of errors");<br />&#160;&#160;&#160;&#160;}<br />}</p>
+                    <br />protected override void BP_Validation_Post()<br />{<br />&#160;&#160;&#160;&#160;var ErrorList = CurrentForm.GetErrorMessages();<br />&#160;&#160;&#160;&#160;if (ErrorList.Count &gt; 5)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.AddInfoMessage("<span class="CodeOption">More than 5 errors!</span>");<br />&#160;&#160;&#160;&#160;}<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -494,7 +494,7 @@
                 <p><b>Form:</b> An instance of the form object, or null if it could not be found.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// This example will get a form instance, and log its name</span>
-                    <br />var OtherForm = Form.GetFormByFORMID(bp, "123");<br />bp.log0("The form instance name is: " + OtherForm.Name);</p>
+                    <br />var OtherForm = Form.GetFormByFORMID(bp, "<span class="CodeOption">123</span>4");<br />bp.log0(<span class="CodeOption">"The form instance name is: " + OtherForm.Name</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -511,7 +511,7 @@
                 <p><b>Form:</b> An instance of the form object, or null if it could not be found.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// This example will get a form instance, and log its name</span>
-                    <br />var OtherForm = Form.GetFormByFORMINSTID(bp, "123");<br />bp.log0("The form instance name is: " + OtherForm.Name);</p>
+                    <br />var OtherForm = Form.GetFormByFORMINSTID(bp, "<span class="CodeOption">123</span>");<br />bp.log0(<span class="CodeOption">"The form instance name is: " + OtherForm.Name</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -543,7 +543,7 @@
                 <p><b>List&lt;FormMessageString&gt;:</b> The list of form error messages.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// This example will be called immediately prior to displaying the form</span>
-                    <br />protected override void BP_Display()<br />{<br />&#160;&#160;&#160;&#160;var InfoList = CurrentForm.GetInfoMessages();<br />&#160;&#160;&#160;&#160;foreach (var info in InfoList)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0("INFO MESSAGE: " + info);<br />&#160;&#160;&#160;&#160;}<br />}</p>
+                    <br />protected override void BP_Display()<br />{<br />&#160;&#160;&#160;&#160;var InfoList = CurrentForm.GetInfoMessages();<br />&#160;&#160;&#160;&#160;foreach (var info in InfoList)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0(<span class="CodeOption">"INFO MESSAGE: " + info</span>);<br />&#160;&#160;&#160;&#160;}<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -566,9 +566,9 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="Instantiate (Static Method)" />This API will instantiate a new form instance. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public static Form Instantiate(bp BP, string FORMID)</code>
+                <p><code>public static Form Instantiate(bp BP, string <span class="CodeOption">FORMID</span>)</code>
                 </p>
-                <p><code>public static Form Instantiate(bp BP, string FORMID, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool SkipDefaultValues)</code>
+                <p><code>public static Form Instantiate(bp BP, string <span class="CodeOption">FORMID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeOption">SkipDefaultValues</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p>BP: The bp environment</p>
@@ -578,7 +578,7 @@
                 <p><b>Form:</b> An instance of the form object, or null if it could not be found.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// This example will create a new form instance</span>
-                    <br />var NewFormInstance = Form.Instantiate(bp, ContentObject.GetObjectByPathName(bp, “Partition1”, <br />&#160;&#160;&#160;&#160;“/My Project/My Form Definition”).ID);<br />bp.log0("The form instance name is: " + NewFormInstance.Name);</p>
+                    <br />var NewFormInstance = Form.Instantiate(bp, <span class="CodeOption">ContentObject.GetObjectByPathName(bp, “Partition1”</span>, <br />&#160;&#160;&#160;&#160;<span class="CodeOption">“/My Project/My Form Definition”).ID</span>);<br />bp.log0(<span class="CodeOption">"The form instance name is: " + NewFormInstance.Name</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -605,7 +605,7 @@
                 <p>The number of rows in the array.</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// Save the number of rows in the array named MyArray </span>
-                    <br />int rows = CurrentForm.FormControl("MyArray").RowCount();</p>
+                    <br />int rows = CurrentForm.FormControl("<span class="CodeOption">ArrayName</span>").RowCount();</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

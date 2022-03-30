@@ -67,9 +67,9 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="AddUser" />This API adds the specified user to the group. If the user is already in the group, a note of that will be made in the logs, but the function will not add a duplicate user to the group. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public void AddUser(User User)</code>
+                <p><code>public void AddUser(User <span class="CodeOption">User</span>)</code>
                 </p>
-                <p><code>public void AddUser(string UID)
+                <p><code>public void AddUser(string <span class="CodeOption">UID</span>)
 </code>
                 </p>
                 <h4>Parameters</h4>
@@ -78,7 +78,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br /><br /><span class="ControlName">// The following two calls do the same thing <br />// (add "User 1" to "Group 1")</span><br />oGroup.AddUser(oUser); <span class="ControlName">// Call with the User object</span><br />oGroup.AddUser(oUser.UID); <span class="ControlName">// Call with the User ID</span></p>
+                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br /><br /><span class="ControlName">// The following two calls do the same thing <br />// (add "User 1" to "Group 1")</span><br />oGroup.AddUser(<span class="CodeOption">oUser</span>); <span class="ControlName">// Call with the User object</span><br />oGroup.AddUser(<span class="CodeOption">oUser.UID</span>); <span class="ControlName">// Call with the User ID</span></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -94,7 +94,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.CreateGroup(bp, "Group 1");</p>
+                <p class="CodeBase">var oGroup = Group.CreateGroup(bp, "<span class="CodeOption">Group 1</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -125,7 +125,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> Returns false of the operation fails.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">bool dekleted = DeleteGroup(bp, "Groupname");</p>
+                <p class="CodeBase">bool dekleted = DeleteGroup(bp, "<span class="CodeOption">GroupName</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -140,7 +140,7 @@
                 <h4>Returns</h4>
                 <p><b>List&lt;Group&gt;:</b> A Group object representation of the group</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var allGroups = Group.GetAllGroups (bp);</p>
+                <p class="CodeBase">var allGroups = Group.GetAllGroups(bp);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -157,7 +157,7 @@
                 <p><b>Group:</b> A Group object representation of the group</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="ControlName">// Normally not used directly</span>
-                    <br />var oGroup = Group.GetGroupByID(bp, "4321");</p>
+                    <br />var oGroup = Group.GetGroupByID(bp, "<span class="CodeOption">1234</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -173,7 +173,7 @@
                 <h4>Returns</h4>
                 <p><b>Group:</b> A Group object representation of the group</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oGroup = Group.GetGroupByName(bp, "Group 1");</p>
+                <p class="CodeBase">var oGroup = Group.GetGroupByName(bp, "<span class="CodeOption">Group 1</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -183,9 +183,9 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="HasUser" />This API checks if the specified user exists in the group. In some situations, it may be more efficient to view the list of groups to which a specific user belongs, using the User.Groups property. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public bool HasUser(User User)</code>
+                <p><code>public bool HasUser(User <span class="CodeOption">User</span>)</code>
                 </p>
-                <p><code>public bool HasUser(string UID)
+                <p><code>public bool HasUser(string <span class="CodeOption">UID</span>)
 </code>
                 </p>
                 <h4>Parameters</h4>
@@ -194,7 +194,7 @@
                 <h4>Returns</h4>
                 <p><b>True/False:</b> Whether or not the specified user exists in the group</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br /><br /><span class="ControlName">// The following two conditional tests test the same thing<br />// (is "User 1" in "Group 1")</span><br />if(oGroup.HasUser(oUser))<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Do action</span><br />}<br /><br />if(oGroup.HasUser(oUser.UID))<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Do action</span><br />}</p>
+                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br /><br /><span class="ControlName">// The following two conditional tests test the same thing<br />// (is "User 1" in "Group 1")</span><br />if(oGroup.HasUser(<span class="CodeOption">oUser</span>))<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Do action</span><br />}<br /><br />if(oGroup.HasUser(<span class="CodeOption">oUser.UID</span>))<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Do action</span><br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -204,23 +204,23 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This API will convert a comma-separated string or DataItem containing a list of Groups into a normalized List object. This is an overloaded method with the following possible declarations:</p>
-                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, string pGroupList)</code>
+                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, string <span class="CodeOption">pGroupList</span>)</code>
                 </p>
-                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, string pGroupList, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool ReturnNullOnInvalid)</code>
+                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, string <span class="CodeOption">pGroupList</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeOption">ReturnNullOnInvalid</span>)</code>
                 </p>
-                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, ref DataItem pGroups)</code>
+                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, ref DataItem <span class="CodeOption">pGroups</span>)</code>
                 </p>
-                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, ref DataItem pGroups,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool ReturnNullOnInvalid)</code>
+                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, ref DataItem <span class="CodeOption">pGroups</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeOption">ReturnNullOnInvalid</span>)</code>
                 </p>
                 <h4>Parameters</h4>
-                <p><b>BP:</b> TheBP&#160;Logix environment.</p>
+                <p><b>BP:</b> The BP&#160;Logix environment.</p>
                 <p><b>pGroupList:</b> A string containing a comma-separated list of groups.</p>
                 <p><b>pGroups:</b> A DataItem object containing a list of groups.</p>
                 <p><b>ReturnNullOnInvalid:</b> A boolean value specifying whether to return a null List object if the list is invalid.</p>
                 <h4>Returns</h4>
                 <p><b>List:</b> A&#160;List object containing the groups.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var groupList = NormalizeGroupList(bp, "Group1, Group2, Group3");</p>
+                <p class="CodeBase">var groupList = NormalizeGroupList(bp, "<span class="CodeOption">Group1,Group2,Group3</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -230,9 +230,9 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="RemoveUser" />This API will remove the specified user from the group. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public void RemoveUser(User User)</code>
+                <p><code>public void RemoveUser(User <span class="CodeOption">User</span>)</code>
                 </p>
-                <p><code>public void RemoveUser(string UID)
+                <p><code>public void RemoveUser(string <span class="CodeOption">UID</span>)
 </code>
                 </p>
                 <h4>Parameters</h4>
@@ -241,7 +241,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br />oGroup.RemoveUser(oUser);</p>
+                <p class="CodeBase">var oUser = User.GetUserByUserID(bp, "User 1");<br />var oGroup = Group.GetGroupByName(bp, "Group 1");<br />oGroup.RemoveUser(<span class="CodeOption">oUser</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

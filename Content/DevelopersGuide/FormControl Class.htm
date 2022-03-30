@@ -276,7 +276,7 @@
         </table>
         <h5>Examples</h5>
         <p class="CodeBase"><span class="ControlName">// Sets the control “MyTextBox” as an event field</span>
-            <br />CurrentForm.FormControl("MyTextBox").Display.EventField = eYNU.Yes;<br /><span class="ControlName">// Sets the control “MyTextBox” Friendly Name</span><br />CurrentForm.FormControl("MyTextBox").Display.FriendlyName = <br />&#160;&#160;&#160;&#160;"Your current address";</p>
+            <br />CurrentForm.FormControl("<span class="CodeOption">MyTextBox</span>").Display.EventField = eYNU.Yes;<br /><span class="ControlName">// Sets the control “MyTextBox” Friendly Name</span><br />CurrentForm.FormControl("<span class="CodeOption">MyTextBox</span>").Display.FriendlyName = <br />&#160;&#160;&#160;&#160;"Your current address";</p>
         <h2><a name="_Toc421269982"></a>
             <MadCap:keyword term="Methods" />Methods</h2>
         <MadCap:dropDown>
@@ -292,7 +292,7 @@
                 <p><b>Integer:</b> The number of rows in the array after the Add</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// This will add a row to the beginning of "Array1"</span>
-                    <br />CurrentForm.FormControl("Array1").AddRow(1);<br /><span class="ControlName">// This will add a row to the end of "Array1"</span><br />CurrentForm.FormControl("Array1").AddRow();</p>
+                    <br />CurrentForm.FormControl("Array1").AddRow(<span class="CodeOption">1</span>);<br /><span class="ControlName">// This will add a row to the end of "Array1"</span><br />CurrentForm.FormControl("Array1").AddRow();</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -311,7 +311,7 @@
                 <p><b>Integer:</b> The number of rows in the Comment Log after the Add.</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// This will add a new comment for the current user</span>
-                    <br />CurrentForm.FormControl("ComLog1").AddRowToCommentLog(null, <br />&#160;&#160;&#160;&#160;DateTime.Now, CurrentUser.UID, "This is my new comment");</p>
+                    <br />CurrentForm.FormControl("ComLog1").AddRowToCommentLog(<span class="CodeOption">null</span>, <br />&#160;&#160;&#160;&#160;<span class="CodeOption">DateTime.Now</span>, <span class="CodeOption">CurrentUser.UID</span>, "<span class="CodeOption">This is my new comment</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -321,15 +321,15 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="AddToDropDown" />This API adds an item or list of items to a DropDown control. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public void AddToDropDown(IEnumerable&lt;DropDownValue&gt; DDList)</code>
+                <p><code>public void AddToDropDown(IEnumerable&lt;DropDownValue&gt; <span class="CodeOption">DDList</span>)</code>
                 </p>
-                <p><code>public void AddToDropDown(DropDownValue DDV, params DropDownValue[] DDVs)</code>
+                <p><code>public void AddToDropDown(DropDownValue <span class="CodeOption">DDV</span>, params DropDownValue[] <span class="CodeOption">DDVs</span>)</code>
                 </p>
-                <p><code>public void AddToDropDown(IEnumerable&lt;string&gt; ListText, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IEnumerable&lt;string&gt; ListValues)</code>
+                <p><code>public void AddToDropDown(IEnumerable&lt;string&gt; <span class="CodeOption">ListText</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IEnumerable&lt;string&gt; <span class="CodeOption">ListValues</span>)</code>
                 </p>
-                <p><code>public void AddToDropDown(IEnumerable&lt;string&gt; Values)</code>
+                <p><code>public void AddToDropDown(IEnumerable&lt;string&gt; <span class="CodeOption">Values</span>)</code>
                 </p>
-                <p><code>public void AddToDropDown(string pValue, params string[] Values)
+                <p><code>public void AddToDropDown(string <span class="CodeOption">pValue</span>, params string[] <span class="CodeOption">Values</span>)
 </code>
                 </p>
                 <h4>Parameters</h4>
@@ -343,7 +343,7 @@
                 <p>None</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// This example will build a DropDownValue list and a name/value pair of lists</span>
-                    <br />var ddList = new List&lt;DropDownValue&gt;();<br />var textList = new List&lt;string&gt;();<br />var valList = new List&lt;string&gt;();<br />for(int i = 0; i &lt; 10; i++)<br />{<br />&#160;&#160;&#160;&#160;ddList.Add(new DropDownValue("Entry " + i, i.ToString()));<br />&#160;&#160;&#160;&#160;textList.Add("Entry " + i);<br />&#160;&#160;&#160;&#160;valList.Add(i.ToString());<br />}<br /><br /><span class="ControlName">// Both of the following AddToDropDown calls will add the same ten entries</span><br />CurrentForm.FormControl("Dropdown1").AddToDropDown(ddList);<br />CurrentForm.FormControl("Dropdown2").AddToDropDown(textList,valList);<br /><br /><span class="ControlName">// The next AddToDropDown call will add only the numerical portion to the<br />// DropDown control</span><br />CurrentForm.FormControl("Dropdown3").AddToDropDown(valList); <br /><br /><span class="ControlName">// Items: 1, 2, 3, 4, etc.<br />// Add the entries "Item 1", "Item 2", and "Item 3" to the<br />// DropDown control</span><br />CurrentForm.FormControl("Dropdown4").AddToDropDown("Item 1", "Item 2", <br />&#160;&#160;&#160;&#160;"Item 3");</p>
+                    <br />var ddList = new List&lt;DropDownValue&gt;();<br />var textList = new List&lt;string&gt;();<br />var valList = new List&lt;string&gt;();<br />for(int i = 0; i &lt; 10; i++)<br />{<br />&#160;&#160;&#160;&#160;ddList.Add(new DropDownValue("Entry " + i, i.ToString()));<br />&#160;&#160;&#160;&#160;textList.Add("Entry " + i);<br />&#160;&#160;&#160;&#160;valList.Add(i.ToString());<br />}<br /><br /><span class="ControlName">// Both of the following AddToDropDown calls will add the same ten entries</span><br />CurrentForm.FormControl("Dropdown1").AddToDropDown(<span class="CodeOption">ddList</span>);<br />CurrentForm.FormControl("Dropdown2").AddToDropDown(<span class="CodeOption">textList</span>,<span class="CodeOption">valList</span>);<br /><br /><span class="ControlName">// The next AddToDropDown call will add only the numerical portion to the<br />// DropDown control</span><br />CurrentForm.FormControl("Dropdown3").AddToDropDown(<span class="CodeOption">valList</span>); <br /><br /><span class="ControlName">// Items: 1, 2, 3, 4, etc.<br />// Add the entries "Item 1", "Item 2", and "Item 3" to the<br />// DropDown control</span><br />CurrentForm.FormControl("Dropdown4").AddToDropDown("<span class="CodeOption">Item 1</span>", "<span class="CodeOption">Item 2</span>", <br />&#160;&#160;&#160;&#160;"<span class="CodeOption">Item 3</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -399,19 +399,19 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="FillDropDown" />This API adds an item or list of items to a DropDown control, but clears the DropDown first. The API will attempt to re-select the previous value of the dropdown control, but will not select it if the value no longer exists in the DropDown. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public void FillDropDown(IEnumerable&lt;DropDownValue&gt; DDList)
+                <p><code>public void FillDropDown(IEnumerable&lt;DropDownValue&gt; <span class="CodeOption">DDList</span>)
 </code>
                 </p>
-                <p><code>public void FillDropDown(DropDownValue DDV, params DropDownValue[] DDVs)
+                <p><code>public void FillDropDown(DropDownValue DDV, <span class="CodeOption">params </span>DropDownValue[] <span class="CodeOption">DDVs</span>)
 </code>
                 </p>
-                <p><code>public void FillDropDown(IEnumerable&lt;string&gt; listText, 
-        <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IEnumerable&lt;string&gt; listValues)
+                <p><code>public void FillDropDown(IEnumerable&lt;string&gt; <span class="CodeOption">listText</span>, 
+        <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;IEnumerable&lt;string&gt; <span class="CodeOption">listValues</span>)
 </code>
                 </p>
-                <p><code>public void FillDropDown(IEnumerable&lt;string&gt; values)</code>
+                <p><code>public void FillDropDown(IEnumerable&lt;string&gt; <span class="CodeOption">values</span>)</code>
                 </p>
-                <p><code>public void FillDropDown(string Value, params string[] Values)
+                <p><code>public void FillDropDown(string <span class="CodeOption">Value</span>, params string[] <span class="CodeOption">Values</span>)
 </code>
                 </p>
                 <h4>Parameters</h4>
@@ -424,7 +424,7 @@
                 <p>None</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// This example will build a DropDownValue list and a name/value<br />// pair of lists</span>
-                    <br />var ddList = new List&lt;DropDownValue&gt;();<br />var textList = new List&lt;string&gt;();<br />var valList = new List&lt;string&gt;();<br />for(int i = 0; i &lt; 10; i++)<br />{<br />&#160;&#160;&#160;&#160;ddList.Add(new FormControl.DropDownValue("Entry " + i, i.ToString()));<br />&#160;&#160;&#160;&#160;textList.Add("Entry " + i);<br />&#160;&#160;&#160;&#160;valList.Add(i.ToString());<br />}<br /><br /><span class="ControlName">// Both of the following AddToDropDown calls will fill the DropDown with <br />// the same ten entries</span><br />CurrentForm.FormControl("Dropdown1").FillDropDown(ddList);<br />CurrentForm.FormControl("Dropdown2").FillDropDown(textList, valList);<br /><br /><span class="ControlName">// The next AddToDropDown call will fill the DropDown with only the<br />// numerical portion<br />// Items: 1, 2, 3, 4, etc.</span><br />CurrentForm.FormControl("Dropdown3").FillDropDown(valList); <br /><br /><span class="ControlName">// Fill the DropDown with the entries "Item 1", "Item 2", and "Item 3"</span><br />CurrentForm.FormControl("Dropdown4").FillDropDown("Item 1", "Item 2", <br />&#160;&#160;&#160;&#160;"Item 3");</p>
+                    <br />var ddList = new List&lt;DropDownValue&gt;();<br />var textList = new List&lt;string&gt;();<br />var valList = new List&lt;string&gt;();<br />for(int i = 0; i &lt; 10; i++)<br />{<br />&#160;&#160;&#160;&#160;ddList.Add(new FormControl.DropDownValue("Entry " + i, i.ToString()));<br />&#160;&#160;&#160;&#160;textList.Add("Entry " + i);<br />&#160;&#160;&#160;&#160;valList.Add(i.ToString());<br />}<br /><br /><span class="ControlName">// Both of the following AddToDropDown calls will fill the DropDown with <br />// the same ten entries</span><br />CurrentForm.FormControl("Dropdown1").FillDropDown(<span class="CodeOption">ddList</span>);<br />CurrentForm.FormControl("Dropdown2").FillDropDown(<span class="CodeOption">textList</span>, <span class="CodeOption">valList</span>);<br /><br /><span class="ControlName">// The next AddToDropDown call will fill the DropDown with only the<br />// numerical portion<br />// Items: 1, 2, 3, 4, etc.</span><br />CurrentForm.FormControl("Dropdown3").FillDropDown(valList); <br /><br /><span class="ControlName">// Fill the DropDown with the entries "Item 1", "Item 2", and "Item 3"</span><br />CurrentForm.FormControl("Dropdown4").FillDropDown("<span class="CodeOption">Item 1</span>", "<span class="CodeOption">Item 2</span>", <br />&#160;&#160;&#160;&#160;"<span class="CodeOption">Item 3</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -440,7 +440,7 @@
                 <p><b>Integer:</b> The number of rows in the array after the Remove.</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// This will remove the first row in "Array1"</span>
-                    <br />CurrentForm.FormControl("Array1").RemoveRow(1);<br /><br /><span class="ControlName">// This will remove the last row in "Array1"</span><br />CurrentForm.FormControl("Array1").RemoveRow();</p>
+                    <br />CurrentForm.FormControl("Array1").RemoveRow(<span class="CodeOption">1</span>);<br /><br /><span class="ControlName">// This will remove the last row in "Array1"</span><br />CurrentForm.FormControl("Array1").RemoveRow();</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -450,13 +450,13 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="SelectDropDown" />This API selects a value in the DropDown control. The API may add the value if it doesn't find it, depending on the parameters. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public void SelectDropDown(string Value)</code>
+                <p><code>public void SelectDropDown(string <span class="CodeOption">Value</span>)</code>
                 </p>
-                <p><code>public void SelectDropDown(string Value, string Text)</code>
+                <p><code>public void SelectDropDown(string <span class="CodeOption">Value</span>, string <span class="CodeOption">Text</span>)</code>
                 </p>
-                <p><code>public void SelectDropDown(string Value, bool AddIfNotFound)</code>
+                <p><code>public void SelectDropDown(string <span class="CodeOption">Value</span>, bool <span class="CodeOption">AddIfNotFound</span>)</code>
                 </p>
-                <p><code>public void SelectDropDown(List&lt;string&gt; Values)
+                <p><code>public void SelectDropDown(List&lt;string&gt; <span class="CodeOption">Values</span>)
 </code>
                 </p>
                 <h4>Parameters</h4>
@@ -468,7 +468,7 @@
                 <p>None</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// This example will try to select the value "1", and will add <br />// "[1]"/"1" (name/value) to the DropDown if the API can't find <br />// "1" already in the DropDown</span>
-                    <br />CurrentForm.FormControl("Dropdown1").SelectDropDown("1");<br /><br /><span class="ControlName">// This example will try to select the value "1", and will add <br />// "[Item 1]"/"1" (name/value) to the DropDown if the API can't find <br />// "1" already in the DropDown</span><br />CurrentForm.FormControl("Dropdown2").SelectDropDown("1", "Item 1");<br /><br /><span class="ControlName">// This example will try to select the value "1", and will not add <br />// anything to the DropDown if the API can't find "1" already in<br />// the DropDown</span><br />CurrentForm.FormControl("Dropdown3").SelectDropDown("1", false);</p>
+                    <br />CurrentForm.FormControl("Dropdown1").SelectDropDown("<span class="CodeOption">1</span>");<br /><br /><span class="ControlName">// This example will try to select the value "1", and will add <br />// "[Item 1]"/"1" (name/value) to the DropDown if the API can't find <br />// "1" already in the DropDown</span><br />CurrentForm.FormControl("Dropdown2").SelectDropDown("<span class="CodeOption">1</span>", "<span class="CodeOption">Item 1</span>");<br /><br /><span class="ControlName">// This example will try to select the value "1", and will not add <br />// anything to the DropDown if the API can't find "1" already in<br />// the DropDown</span><br />CurrentForm.FormControl("Dropdown3").SelectDropDown("<span class="CodeOption">1</span>", <span class="CodeOption">false</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -482,7 +482,7 @@
                 <p><b>Val:</b> The value for the form control.</p>
                 <p><b>sDisplay:</b> (Optional) The string the form control will display</p>
                 <h4>Example</h4>
-                <p class="CodeBase">CurrentForm.FormControl("TextBoxControl").SetValue("Value");</p>
+                <p class="CodeBase">CurrentForm.FormControl("<span class="CodeOption">ControlName</span>").SetValue("<span class="CodeOption">Value</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -492,17 +492,17 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="Sort" />This API sorts the rows in an Array. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public bool Sort(string PrimaryColumn)</code>
+                <p><code>public bool Sort(string <span class="CodeOption">PrimaryColumn</span>)</code>
                 </p>
-                <p><code>public bool Sort(string PrimaryColumn, string SecondaryColumn)</code>
+                <p><code>public bool Sort(string <span class="CodeOption">PrimaryColumn</span>, string <span class="CodeOption">SecondaryColumn</span>)</code>
                 </p>
-                <p><code>public bool Sort(string PrimaryColumn, string SecondaryColumn, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string TertiaryColumn)</code>
+                <p><code>public bool Sort(string <span class="CodeOption">PrimaryColumn</span>, string <span class="CodeOption">SecondaryColumn</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">TertiaryColumn</span>)</code>
                 </p>
-                <p><code>public bool Sort(string PrimaryColumn, bool Descending)</code>
+                <p><code>public bool Sort(string <span class="CodeOption">PrimaryColumn</span>, bool <span class="CodeOption">Descending</span>)</code>
                 </p>
-                <p><code>public bool Sort(string PrimaryColumn, string SecondaryColumn, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool Descending)</code>
+                <p><code>public bool Sort(string <span class="CodeOption">PrimaryColumn</span>, string <span class="CodeOption">SecondaryColumn</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeOption">Descending</span>)</code>
                 </p>
-                <p><code>public bool Sort(string PrimaryColumn, string SecondaryColumn, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string TertiaryColumn, bool Descending)
+                <p><code>public bool Sort(string <span class="CodeOption">PrimaryColumn</span>, string <span class="CodeOption">SecondaryColumn</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">TertiaryColumn</span>, bool <span class="CodeOption">Descending</span>)
 </code>
                 </p>
                 <h4>Parameters</h4>
@@ -514,7 +514,7 @@
                 <p>None</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// Sort the array</span>
-                    <br />CurrentForm.FormControl("Array1").Sort("NameColumn");</p>
+                    <br />CurrentForm.FormControl("Array1").Sort("<span class="CodeOption">ColumnName</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -531,7 +531,7 @@
                 <p>None</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="ControlName">// Swap the 1st row with the 4th</span>
-                    <br />CurrentForm.FormControl("Array1").SwapRows(1, 4);</p>
+                    <br />CurrentForm.FormControl("ArrayName").SwapRows(<span class="CodeOption">1</span>, <span class="CodeOption">4</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>
