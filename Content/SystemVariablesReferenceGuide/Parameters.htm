@@ -10,7 +10,7 @@
             <MadCap:keyword term="Parameters" />System Variable Modifiers and Parameters</h1>
         <p>
             <MadCap:keyword term="System Variables" />System variables will often contain Modifiers or other variables which control the data the system variable will return. These are specified in SysVar tags using the following syntax:</p>
-        <p><code>{VARNAME, format=<span class="CodeOption">format_type</span>}</code>
+        <p><code>{VARNAME, format=<span class="CodeOption">FormatType</span>}</code>
         </p>
         <p>VARNAME is the name of the system variable, and format type is the formatting option. Format type can be one of any set of the relevant formatters, depending on the system variable in which it's used. </p>
         <p>System variable modifiers are not case sensitive.</p>
@@ -176,7 +176,7 @@
                     <img src="../Resources/Images/SystemVariablesReferenceGuide/SystemVariablesReferenceGuide.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <p>To specify the Pre, Post, and Null values in a SysVar tag, use the following format:</p>
-                <p><code>{VARNAME pre=<b class="CodeOption">pre_text</b>, post=<span class="CodeOption">post_text</span>, null=<span class="CodeOption">null_text</span>}</code>
+                <p><code>{<span class="CodeOption">SYSTEM_VARIABLE </span>pre="<span class="CodeOption">Text before Var</span>", post="<span class="CodeOption">Text after Var</span>", null="<span class="CodeOption">Value if Null</span>"}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -189,7 +189,7 @@
                 <p>String system variables can be manipulated by using case and substring Modifiers.</p>
                 <h4>Examples:</h4>
                 <p>The Case Modifier will convert string text into all upper case or lower case as desired.</p>
-                <p><code>{:<span class="CodeOption">someFormField</span>, case=<b class="CodeOption" style="font-weight: normal;">upper|lower</b>}</code>
+                <p><code>{:<span class="CodeOption">someFormField</span>, case=<b class="CodeOption" style="font-weight: normal;">upper<code>|</code>lower</b>}</code>
                 </p>
                 <p>The substring Modifier enables you to extract a desired substring by identifying the starting character location with the "subStart" Modifier, and the length of the substring with the "subLength" Modifier. The position of the "subStart" Modifier is zero-based, meaning that the first character position is 0, rather than 1.</p>
                 <p class="CodeBase"><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "ghijklmnop".</span>
@@ -208,7 +208,7 @@
                 <p>Pattern and Replace are Modifiers that can be added to any system variable. Data in the result of a system variable matching a regular expression specified in the Pattern Modifier will be replaced as specified in the Replace Modifier. See Microsoft’s <a href="http://msdn.microsoft.com/en-us/library/hs600312(v=vs.90).aspx"><span class="Hyperlink">documentation on regular expressions in .NET</span></a> for more information regarding regular expressions. The Trim Modifier can also be added to any system variable. When set to 1, it will trim leading and trailing spaces off the result of the system variable.</p>
                 <h5>Examples:</h5>
                 <p>This Control Tag will replace the text “some text” in a form field with the text “other text”:</p>
-                <p><code>{:<span class="CodeOption">someFormField</span>, Pattern="<span class="CodeOption">some text</span>", Replace="<span class="CodeOption">other text</span>", Trim=<span class="CodeOption">1</span>}</code>
+                <p><code>{:<span class="CodeOption">someFormField</span>, Pattern="<span class="CodeOption">Some text</span>", Replace="<span class="CodeOption">Other text</span>", Trim=<span class="CodeOption">1</span>}</code>
                 </p>
                 <p>This System Variable tag will remove any semicolons from the current user’s name:</p>
                 <p class="CodeBase">{CURR_USER, Pattern=";", Replace=""}</p>

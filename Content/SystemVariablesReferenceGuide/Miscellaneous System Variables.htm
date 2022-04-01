@@ -16,7 +16,7 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a number of attributes for Form,&#160;Workflow, and Process Timeline attachments.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{ATTACHMENTS, AttachType=<span class="CodeOption">eForm|Workflow|Timeline|Process</span>, Return=<span class="CodeOption">Name|ID|CreateUser|CreateDate|UpdateUser|UpdateDate</span>, Group=<span class="CodeOption">Groupname</span>, ObjectType=<span class="CodeOption">Document|Form</span>, OrderBy=<span class="CodeOption">Name|CreateDate|UpdateDate</span>, OrderType=<span class="CodeOption">ASC|DESC</span>, Separator='<span class="CodeOption">,</span>'}</code>
+                <p><code>{ATTACHMENTS, AttachType=<span class="CodeOption">eForm</span>|<span class="CodeOption">Workflow</span>|<span class="CodeOption">Timeline</span>|<span class="CodeOption">Process</span>, Return=<span class="CodeOption">Name</span>|<span class="CodeOption">ID</span>|<span class="CodeOption">CreateUser</span>|<span class="CodeOption">CreateDate</span>|<span class="CodeOption">UpdateUser</span>|<span class="CodeOption">UpdateDate</span>, Group=<span class="CodeOption">Groupname</span>, ObjectType=<span class="CodeOption">Document</span>|<span class="CodeOption">Form</span>, OrderBy=<span class="CodeOption">Name</span>|<span class="CodeOption">CreateDate</span>|<span class="CodeOption">UpdateDate</span>, OrderType=<span class="CodeOption">ASC</span>|<span class="CodeOption">DESC</span>, Separator='<span class="CodeOption">,</span>'}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p>All modifiers are optional for this System Variable.</p>
@@ -228,7 +228,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns literal text that does NOT attempt to interpretor parse tokens like system variable curly brackets contained in the text. Instead, the token will be presented as a text character. For example, the syntax <span class="Code">{Literal,Text="This will contain { and } characters"}</span> will return the literal text "This will contain { and } characters".</p>
+                <p>This system variable returns literal text that does NOT attempt to interpretor parse tokens like system variable curly brackets contained in the text. Instead, the token will be presented as a text character. For example, the syntax <code>{Literal,Text="This will contain { and } characters"}</code> will return the literal text "This will contain { and } characters".</p>
                 <h3>SysVar Tag</h3>
                 <p style="font-weight: normal;"><code>{LITERAL, Text="<span class="CodeOption">Your text here.</span>"}</code>
                 </p>
@@ -297,7 +297,7 @@
                 <p><b>ecc:</b> This text modifier enables you to specify the Error Correction&#160;Code (ECC) that implements the desired level of error correction to include in the QR&#160;Code image as (L)ow, (M)edium, (Q)uartile, or (H)igh. The default is Q. Higher ECC levels will produce more complex QR&#160;Code images.</p>
                 <p><b>scheme:</b> Currently, the only supported scheme is "URI", e.g., a web page URL, which is the default scheme.  Other schemes, like SHC (SMART Health Card) may be available in the future. </p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="QR" />{QR, text=<span class="CodeOption">text_string</span>, type=<span class="CodeOption">png|jpg|gif</span>, size=<span class="CodeOption">N</span>, scheme=<span class="CodeOption">uri</span> ,ecc=<span class="CodeOption">L|M|Q|H</span>}</code>
+                <p><code><MadCap:keyword term="QR" />{QR, text=<span class="CodeOption">TextString</span>, type=<span class="CodeOption">png</span>|<span class="CodeOption">jpg</span>|<span class="CodeOption">gif</span>, size=<span class="CodeOption">N</span>, scheme=<span class="CodeOption">uri</span>,ecc=<span class="CodeOption">L</span>|<span class="CodeOption">M</span>|<span class="CodeOption">Q</span>|<span class="CodeOption">H</span>}</code>
                 </p>
                 <h3>Alternative Syntax</h3>
                 <p style="font-weight: normal;"><code>{QRCODE}</code>
@@ -414,7 +414,7 @@
             <MadCap:dropDownBody>
                 <p>This system variable returns the server’s version.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="SERVER_VERSION" />{SERVER_VERSION, format=<b>string</b>}</code>
+                <p><code><MadCap:keyword term="SERVER_VERSION" />{SERVER_VERSION, format=string}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>format=string:</b> Using this modifier returns a string containing the server’s version. Otherwise, this system variable returns the version number.</p>
@@ -472,7 +472,7 @@
                 <h3>Returns</h3>
                 <p>This system variable returns information about a permission. It can be used to verify that a user has a certain permission for a certain object. The ID of the relevant object is passed via the ID parameter, the User ID of the user is passed through the UserID parameter, and the type of permission being queried is passed through the PermType parameter.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="SQL_PERM" />{SQL_PERM, ID=<span class="CodeOption">objectID</span>, UserID=<span class="CodeOption">UserUID</span>, PermType=<span class="CodeOption">VIEW|MODIFY|DELETE|RUN</span>}</code>
+                <p><code><MadCap:keyword term="SQL_PERM" />{SQL_PERM, ID=<span class="CodeOption">objectID</span>, UserID=<span class="CodeOption">UserUID</span>, PermType=<span class="CodeOption">VIEW</span>|<span class="CodeOption">MODIFY</span>|<span class="CodeOption">DELETE</span>|<span class="CodeOption">RUN</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>ID (Required):</b> The ObjectID of the object whose permissions you wish to return.</p>
@@ -489,7 +489,7 @@
                 <h3>Returns</h3>
                 <p>The String system variable returns the value of a localized string in the relevant resource file. The localized string is referenced by its name in the resource file.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{STRING:<span class="CodeOption">string_name</span>, ResourceType=<span class="CodeOption">Internal|Custom</span>, DEFAULTSTRING="<span class="CodeOption">DefaultIfEmpty</span>"} </code>
+                <p><code>{STRING:<span class="CodeOption">string_name</span>, ResourceType=<span class="CodeOption">Internal<code>|</code>Custom</span>, DEFAULTSTRING="<span class="CodeOption">DefaultIfEmpty</span>"} </code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>ResourceType:</b> The type of string to return. This can be set either to “internal” or “custom”. If set to “internal”, the string will reference a Process Director-defined string, whereas when type is set to “custom”, it will reference a string defined by the user in a resource file.</p>
@@ -566,7 +566,7 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a user given a userID and an authentication type. </p>
                 <h3>SysVar Tag</h3>
-                <p><code>{USER, userid=<span class="CodeOption">someUserID</span>, auth=<span class="CodeOption">SAML|BUILTIN|AD|WINDOWS|LDAP|EXTERNAL</span>}</code>
+                <p><code>{USER, userid=<span class="CodeOption">someUserID</span>, auth=<span class="CodeOption">SAML<code>|</code>BUILTIN<code>|</code>AD<code>|</code>WINDOWS<code>|</code>LDAP<code>|</code>EXTERNAL</span>}</code>
                 </p>
                 <h3>Optional Modifiers</h3>
                 <p><b>Format:</b> This system variable can be formatted via the standard User system variable formatting options.</p>
