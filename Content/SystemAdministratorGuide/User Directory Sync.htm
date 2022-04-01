@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="System Administration" />
+            <MadCap:keyword term="Active Directory:AD;LDAP;User Directory" /><a name="_Toc421094519"></a>User Directory Synchronization</h1>
+        <p>If you are using an LDAP directory (e.g. Microsoft Active Directory) to authenticate your users, their User ID will be automatically added to the Process Director database when they first login. Process Director automatically synchronizes the user and group information when the login occurs. This happens transparently to the user. If you are using Windows Domain security to authenticate users you can still configure Process Director to synchronize user information with your LDAP server. This allows your users to authenticate against the Windows Domain, but still have their email address and user name (Alias) synchronized with the LDAP settings.</p>
+        <p>There are a couple of limitations to using this technique alone. It requires that a user logs into Process Director before it “knows” of that user and the groups the user belongs to. This means that you cannot add users to a workflow step, or specify users in permissions until after that user logs into Process Director. Additionally, users or groups that are changed or removed in LDAP will still exist in the Process Director database.</p>
+        <p>To address these scenarios, there is a user directory synchronization utility that will synchronize your LDAP user information with Process Director. For <span class="Emphasis">Active Directory</span> synchronization specifically, please see the <a href="Creating an AD Sync Profile.htm#_Toc421094524" target="_popup">Creating an Active Directory Sync Profile</a> topic. For generic <span class="Emphasis">LDAP synchronization</span>, please see the <a href="Creating an LDAP Sync Profile.htm">Creating an LDAP Sync Profile</a> topic. The synchronization utility will only synchronize attributes such as the name and email address, but will not copy over any passwords. Passwords are only stored on your LDAP server – the LDAP server is responsible for authentication.</p>
+    </body>
+</html>
