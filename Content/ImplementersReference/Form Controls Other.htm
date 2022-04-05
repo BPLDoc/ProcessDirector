@@ -61,14 +61,14 @@
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_7.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <p>The Control Picker is a dropdown list that contains the names of all the controls that are placed on the Form. The Control Picker does not have a visual placeholder, and is placed on the page in Process Director's markup language as:</p>
-                <p><code>{ControlPicker:control_picker1, ControlType=, DropDownPrompt=}</code>
+                <p><code>{ControlPicker:<span class="CodeOption">ControlName</span>, ControlType=, DropDownPrompt=}</code>
                 </p>
                 <p>When placed on the page without any modification, the control will appear as a dropdown control.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_8.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <p>You can customize the prompt that appears in the dropdown by changing the DropDownPrompt attribute. For example, using the following markup:</p>
-                <p><code>{ControlPicker:control_picker1, ControlType=, DropDownPrompt="Select One"}</code>
+                <p><code>{ControlPicker:<span class="CodeOption">ControlName</span>, ControlType=, DropDownPrompt="<span class="CodeOption">Select One</span>"}</code>
                 </p>
                 <p>Will cause the control to appear as follows:</p>
                 <p>
@@ -190,7 +190,7 @@
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_21.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <p>The Date Difference control displays the number of days, hours, minutes, etc., between two dates. This control has no visual placeholder and is placed on the page in Process Director's markup language, with the following syntax:</p>
-                <p><code>{DateDiff:datediff1, Date1=, Date2=, Type=}</code>
+                <p><code>{DateDiff:<span class="CodeOption">ControlName</span>, Date1=, Date2=, Type=}</code>
                 </p>
                 <p>There are three attributes that must be provided to enable the control to display the proper value in the Form:</p>
                 <ul style="list-style-type: disc;margin-left: 36pt;">
@@ -370,14 +370,14 @@
                     <img src="../Resources/Images/i.png" alt="Important" /> If your inserted HTML includes { or } characters, you must leave the control's <span class="ControlName">Name </span>property blank. Otherwise the "{" and "}" characters will be interpreted as System Variables.</p>
                 <h5>JavaScript</h5>
                 <p>In addition to normal HTML, you can include JavaScript. So, to send an alert that greets the user, you could say:</p>
-                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;Alert(“Hello {CURR_USER}”);<br />&lt;/script&gt;</p>
+                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;Alert("<span class="CodeOption">Hello {CURR_USER}</span>");<br />&lt;/script&gt;</p>
                 <p>If you create a javascript function called “bpUserJavaScript” and put it on the form inside an HTML control - it will run on the initial Form Load and all Postback events, enabling you to insert JavaScript into these events. </p>
                 <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">//Script code for Load and Postback goes here.</span><br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
                 <p>This feature enables you to insert complicated client-side JavaScript that sets a control's state on Postback. In the example below, a notional Form has a <span class="NamedControl">Checkbox </span>control that is set as en event field to fire the Postback. On Postback, the bpUserJavaScript function runs to control the state of the <span class="NamedControl">Checkbox </span>.</p>
                 <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;var SaveClick;<br /><br />&#160;&#160;&#160;&#160;function bpUserJavaScript()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick = CurrentForm.FormControls["CheckBox2"].onclick;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].onclick = NewClick;<br />&#160;&#160;&#160;&#160;}<br /><br />&#160;&#160;&#160;&#160;function NewClick()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (confirm("Are you sure?"))<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (typeof(SaveClick) != "undefined" &amp;&amp; SaveClick)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SaveClick();<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;else<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["CheckBox2"].checked = <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;!CurrentForm.FormControls["CheckBox2"].checked;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
                 <h5>Server Side Controls</h5>
                 <p>You can also place ASP.NET server –side controls in this tag. For example:</p>
-                <p class="CodeBase">&lt;asp:TextBox runat=”server” ID=”bpLogixTextBox” /&gt;</p>
+                <p class="CodeBase">&lt;asp:TextBox runat="server" ID="<span class="CodeOption">ControlName</span>" /&gt;</p>
                 <p>Server-side ASP.NET controls also act as normal BP Logix form fields, allowing you to reference them with System Variables and through Process Director. You can place an HTML control on a Form, leave the Name property blank, then place the ASP.NET&#160;control markup in the HTMLString Property. Entering a Name for the HTML control will cause Process Director to treat it like a Process Director Control and override the ASP.NET control. Leaving the Name property blank will cause Process Director to take the HTML&#160;markup for the ASP.NET control, and display the ASP.NET control in the Form. By wrapping a native ASP.NET control in an unnamed HTML control, Process Director supports the use of any native ASP.NET control on a Form.</p>
                 <p>You can stylize your HTML with CSS, either in the tag you want to stylize or in a separate &lt;style&gt; tag.</p>
                 <p class="CodeBase"><span class="ControlName">&lt;!-- You can do this: --&gt;</span>
@@ -395,7 +395,7 @@
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_26.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <p>The Datasource Picker control displays a dropdown list of data sources that have been added to the Process Director installation. The control has no visual placeholder and is placed on the page in Process Director's markup language, with the following syntax:</p>
-                <p><code>{DSNPicker:dsn_picker7,DataSourceType=SQLServer|Oracle|SharePoint}</code>
+                <p><code>{DSNPicker:<span class="CodeOption">ControlName</span>,DataSourceType=<span class="CodeOption">SQLServer</span>|<span class="CodeOption">Oracle</span>|<span class="CodeOption">SharePoint</span>}</code>
                 </p>
                 <p>The DataSourceType attribute accepts one of three values to determine the database type from which to draw the data sources: SQL Server, Oracle, or SharePoint.</p>
                 <p>At runtime, the control appears as a standard dropdown list.</p>
@@ -446,31 +446,31 @@
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_32.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <p>The Radio Button List control returns a single value from a list of radio buttons. The control has no visual placeholder and is placed on the page in Process Director's markup language, with the following syntax:</p>
-                <p><code>{RadioList:radio_list8, RepeatDirection=Horizontal|Vertical, item=, item=}</code>
+                <p><code>{RadioList:<span class="CodeOption">ControlName</span>, RepeatDirection=<span class="CodeOption">Horizontal</span>|<span class="CodeOption">Vertical</span>, item=, item=}</code>
                 </p>
                 <p>The <span class="ControlName">RepeatDirection </span>modifier enables you to select whether you wish the radio buttons to be arrayed horizontally across the page, or vertically in a single column. Examples of each RepeatDirection modifier are shown below.</p>
                 <p>The <span class="ControlName">Item </span>modifiers enable you to add as many items as needed to the RadioList, with each <span class="ControlName">Item </span>modifier representing a radio button item in the RadioList. The Item modifier can be declared in one of two ways:</p>
                 <ul>
-                    <li>For radio buttons whose display text and value are the same, the item can be declared as <code>item="value"</code>. The return value for the selected radio button will be the literal text of the option item.</li>
-                    <li>For radio buttons whose display text and value are different the item can be declared with a colon (:) between the display text and value, in the format <code>item="Display Text":value</code>. In this case, the user will see the display text when the RadioList is displayed on the Form, but  t he return value for the selected radio button will be the value component of the <span class="ControlName">Item </span>modifier.</li>
+                    <li>For radio buttons whose display text and value are the same, the item can be declared as <code>item="<span class="CodeOption">value</span>"</code>. The return value for the selected radio button will be the literal text of the option item.</li>
+                    <li>For radio buttons whose display text and value are different the item can be declared with a colon (:) between the display text and value, in the format <code>item=<span class="CodeOption">"Display Text</span>":<span class="CodeOption">value</span></code>. In this case, the user will see the display text when the RadioList is displayed on the Form, but  t he return value for the selected radio button will be the value component of the <span class="ControlName">Item </span>modifier.</li>
                 </ul>
                 <p>One item to note in the examples below is that one radio button item uses the term "3rd". Microsoft Word will, by default, place the "rd" in superscript, so that it appears as "3<sup>rd</sup>". You should eliminate the superscripting, and use standard text rather than superscript to avoid formatting problems.</p>
                 <h4>Examples</h4>
                 <h5>Syntax (Horizontal)</h5>
-                <p><code>{RadioList:radio_list8, RepeatDirection=Horizontal, item="Item One", item="Item 2", item="The 3rd Item"}</code>
+                <p><code>{RadioList:<span class="CodeOption">ControName</span>, RepeatDirection=<span class="CodeOption">Horizontal</span>, item="<span class="CodeOption">Item One</span>", item="<span class="CodeOption">Item 2</span>", item="<span class="CodeOption">The 3rd Item</span>"}</code>
                 </p>
                 <h6>Run-Time Appearance</h6>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_33.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <h5>Syntax (Vertical)</h5>
-                <p class="CodeBase">{RadioList:radio_list8, RepeatDirection=Vertical, item="Item One", item="Item 2", item="The 3rd Item"}</p>
+                <p class="CodeBase">{RadioList:<span class="CodeOption">ControlName</span>, RepeatDirection=<span class="CodeOption">Vertical</span>, item="<span class="CodeOption">Item One</span>", item="<span class="CodeOption">Item 2</span>", item="<span class="CodeOption">The 3rd Item</span>"}</p>
                 <h6>Run-Time Appearance</h6>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_34.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <h5>Syntax (Diferent Display Text and Value)</h5>
-                <p class="CodeBase">{RadioList:radio_list8, RepeatDirection=Vertical, item="Item One":1, item="Item 2":2, item="The 3rd Item":3}</p>
+                <p class="CodeBase">{RadioList:<span class="CodeOption">ControlName</span>, RepeatDirection=<span class="CodeOption">Vertical</span>, item="<span class="CodeOption">Item One</span>":<span class="CodeOption">1</span>, item="<span class="CodeOption">Item 2</span>":<span class="CodeOption">2</span>, item="<span class="CodeOption">The 3rd Item</span>":<span class="CodeOption">3</span>}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -535,7 +535,7 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_41.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>The properties window allows the user to configure the name of the control, the text the Show Report button displays, and the height and width of the report. It also allows the user to pass QueryString parameters to the report, configuring the data it returns. Separate parameters should be separated by new lines, using the [variable name] = [value] format to specify parameters and their values.</p>
+                <p>The properties window allows the user to configure the name of the control, the text the Show Report button displays, and the height and width of the report. It also allows the user to pass QueryString parameters to the report, configuring the data it returns. Separate parameters should be separated by new lines, using the <code><span class="CodeOption">VariableName</span>=<span class="CodeOption">Value </span></code>format to specify parameters and their values.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_42.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
@@ -579,10 +579,10 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_48.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>The “Text” field sets the text displayed on the form.</p>
-                <p>The “URL” field sets the URL to which the hotlink control will link.</p>
-                <p>The “Style” field determines CSS styling for the link.</p>
-                <p>The “OnClientClick” field specifies JavaScript code to be executed when the user clicks on the link. It must be encased in quotation marks.</p>
+                <p>The <span class="ControlName">Text </span>field sets the text displayed on the form.</p>
+                <p>The <span class="ControlName">URL</span> field sets the URL to which the hotlink control will link.</p>
+                <p>The <span class="ControlName">Style</span> field determines CSS styling for the link.</p>
+                <p>The <span class="ControlName">OnClientClick</span> field specifies JavaScript code to be executed when the user clicks on the link. It must be encased in quotation marks.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -594,16 +594,16 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_49.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>The Audit Button control enables the user to view a history of the controls whose values have changed on the Form, so long as the “Audit Form Changes” checkbox is checked on the Form properties tab in Process Director.</p>
+                <p>The <span class="NamedControl">Audit Button</span> control enables the user to view a history of the controls whose values have changed on the Form, so long as the <span class="ControlName">Audit Form Changes</span> checkbox is checked on the Form properties tab in Process Director.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_50.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>The Audit Button’s properties can be accessed by double clicking the button in the form builder.</p>
+                <p>The <span class="NamedControl">Audit Button</span>’s properties can be accessed by double clicking the button in the form builder.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_51.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <p>You can configure the control’s name, and the text displayed on the button. </p>
-                <p>Using the <span class="ControlName">Control Name</span>, <span class="ControlName">Step Name</span>, and <span class="ControlName">Activity Name </span>fields, you can filter the audit history to only display Form changes relevant to the specified controls, activities, and steps. For instance, if you set the <span class="ControlName">Activity Name </span>property to "Step 1", then only auditable activities that occur during the activity named "Step 1" will appear in the control at run-time. These three fields can accept multiple values by entering a comma-separated list of items. You can also set any of these field properties to a System Variable, instead of manually adding values to these fields. As an example, you can use a Business Rule to provide these values, and enter the System variable name for a Business Rule in each field, e.g., <code>{RULE:BusinessRuleName}</code>. You could then set the Business Rule to return the step completion date, so that you only capture changes made after that point in the process. Using a Business Rule enables you to change the filter values  by editing the Business Rule, instead of re-opening the Form template and modifying the template.</p>
+                <p>Using the <span class="ControlName">Control Name</span>, <span class="ControlName">Step Name</span>, and <span class="ControlName">Activity Name </span>fields, you can filter the audit history to only display Form changes relevant to the specified controls, activities, and steps. For instance, if you set the <span class="ControlName">Activity Name </span>property to "Step 1", then only auditable activities that occur during the activity named "Step 1" will appear in the control at run-time. These three fields can accept multiple values by entering a comma-separated list of items. You can also set any of these field properties to a System Variable, instead of manually adding values to these fields. As an example, you can use a Business Rule to provide these values, and enter the System variable name for a Business Rule in each field, e.g., <code>{RULE:<span class="CodeOption">BusinessRuleName</span>}</code>. You could then set the Business Rule to return the step completion date, so that you only capture changes made after that point in the process. Using a Business Rule enables you to change the filter values  by editing the Business Rule, instead of re-opening the Form template and modifying the template.</p>
                 <p>If you check the <span class="ControlName">Show field changes in tooltips...</span> check box, the Audit control will not be displayed at run-time. Instead, audit information will be displayed in a tooltip for the form fields when the user hovers the mouse over the relevant fields.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -620,7 +620,7 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_53.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>The Image Control properties can be accessed by double clicking on the control in the Form builder. The properties allow you to configure the name of the image control. The Image URL field specifies the URL at which the image can be found. If text is entered in the URL field, the image will redirect the user to that URL if the image is clicked on. You can check the checkbox to open the link in a new window.</p>
+                <p>The <span class="NamedControl">Image Control </span>properties can be accessed by double clicking on the control in the Form builder. The properties allow you to configure the name of the image control. The <span class="ControlName">Image URL</span> field specifies the URL at which the image can be found. If text is entered in the URL field, the image will redirect the user to that URL if the image is clicked on. You can check the checkbox to open the link in a new window.</p>
                 <p>The image can also be stylized using CSS, and its height and width can be set in pixels.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>

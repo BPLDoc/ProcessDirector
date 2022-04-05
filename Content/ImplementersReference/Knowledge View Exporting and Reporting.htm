@@ -11,22 +11,22 @@
         <p>Knowledge Views are a collection of related objects based on categorization or other criteria. They can be made available to either authenticated or anonymous users depending on the permissions. Also, there are a variety of ways to access, filter, or export/report on Knowledge View information.</p>
         <h2><a name="_Toc421536232"></a>Knowledge View URLs for External Access <a href="#_Toc421536232" class="anchor">#</a></h2>
         <p> A Knowledge View is represented by a URL that can be displayed outside of the BP Logix environment. The URL for a Knowledge View can be sent in an email, displayed in a web portal, or added to an existing web site. The URL format for an individual Knowledge View is:</p>
-        <p class="CodeBase">http://server_name/kv.aspx?ext=1&amp;id=NN</p>
-        <p>Where <code>server_name</code> is the hostname of BP Logix and <code>NN </code>is the internal ID displayed in the Knowledge View definition you want to use (e.g. <code>ID=ea1f7d30-2c44-4971-ac8a-4654ae2521ff</code>). </p>
+        <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/kv.aspx?ext=1&amp;id=<span class="CodeOption">NN</span></p>
+        <p>Where <code><span class="CodeOption">ServerName.com</span></code> is the hostname of BP Logix and <code class="CodeOption">NN </code>is the internal ID displayed in the Knowledge View definition you want to use (e.g. <code>ID=ea1f7d30-2c44-4971-ac8a-4654ae2521ff</code>). </p>
         <p>An additional URL parameter, "gkview", can be used to enable a Global Knowledge View to be displayed using the Knowledge View name instead of the ID, but it can only be used to return Global Knowledge Views that are Task Lists, e.g. <code>kv.aspx?gkview=Task List</code>.</p>
         <p>For user of Process Director v5.37 and higher, a URL&#160;Parameter, "canceltext", can be used on a task list URL and will display the configured text in an alert box when a user clicks on the <span class="UIElement">Cancel </span>button on the form.</p>
-        <p class="CodeBase">http://server_name/kv.aspx?canceltext="You clicked the Cancel button."</p>
+        <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/kv.aspx?canceltext="<span class="CodeOption">You clicked the Cancel button.</span>"</p>
         <h3><a name="_Toc421536233"></a>Passing Filter Values in the URL <a href="#_Toc421536233" class="anchor">#</a></h3>
         <p>The Knowledge View can be opened using a URL that is placed on a web site. If the Knowledge View is configured with Filter, you can pass this filter information to the Knowledge View on the URL. Simply set the desired filter result as a variable, then enter the variable name you'd like to use in the URL parameter like the example below: </p>
         <p>
             <img src="../Resources/Images/ImplementersReference/KViewVars.png" />
         </p>
-        <p>Alternatively, you can use a String for the filter, and use the syntax <code>{VAR:Var1, modifier=ModifierValue}</code> to use additional formatters/modifiers for the variable.</p>
+        <p>Alternatively, you can use a String for the filter, and use the syntax <code>{VAR:<span class="CodeOption">VarName</span>, modifier=<span class="CodeOption">ModifierValue</span>}</code> to use additional formatters/modifiers for the variable.</p>
         <p>Once the variables have been configured, you can pass the desired values via the URL parameters using this syntax with the query string parameters:</p>
-        <p class="CodeBase">http://server_name/kv.aspx?ext=1&amp;id=NN&amp;<span style="background-color: #ffd700;">var1=abd</span>&amp;<span style="background-color: #ffd700;">var2=123</span></p>
+        <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/kv.aspx?ext=1&amp;id=<span class="CodeOption">NN</span>&amp;<span style="background-color: #ffd700;">var1=abd</span>&amp;<span style="background-color: #ffd700;">var2=123</span></p>
         <p>This configuration uses the Variable object in the same way as <a href="Forms.htm#eForm">Form Definition URLs</a>.</p>
         <p class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" /> Sometimes, variables must be passed through multiple objects before reaching a Knowledge View, or other object. For instance, you may have a Form that calls a Chart, which, in turn, calls a Knowledge View via a drill-down. The data on the Form is passed to the Chart via a variable that is accessed using the normal <code style="font-weight: normal;">{VAR:ParmName}</code> syntax. However, when the chart does a drill-down to a Knowledge View, the Knowledge View does <b>not</b> have access to the original <code style="font-weight: normal;">{VAR:ParmName}</code> variable. Instead you need to append two underscores and the number "2" (<code style="font-weight: normal;">__2</code>) to the variable name, e.g. <code style="font-weight: normal;">{VAR:ParmName__2}</code>. When you do so, Process Director treats the "<code style="font-weight: normal;">{VAR:ParmName__2}</code>" in the in the Knowledge View as a pointer to the original value for <code style="font-weight: normal;">{VAR:ParmName}</code>, so that the proper value is automatically available to the knowledge view.</p>
+            <img src="../Resources/Images/i.png" alt="Important" /> Sometimes, variables must be passed through multiple objects before reaching a Knowledge View, or other object. For instance, you may have a Form that calls a Chart, which, in turn, calls a Knowledge View via a drill-down. The data on the Form is passed to the Chart via a variable that is accessed using the normal<span style="color: #ffffff;"> </span><code style="font-weight: normal;color: #ffffff;">{VAR:ParmName}</code> syntax. However, when the chart does a drill-down to a Knowledge View, the Knowledge View does <b>not</b> have access to the original <code style="font-weight: normal; color: #ffffff;">{VAR:ParmName}</code> variable. Instead you need to append two underscores and the number "2" (<code style="font-weight: normal; color: #ffffff;">__2</code>) to the variable name, e.g. <code style="font-weight: normal; color: #ffffff;">{VAR:ParmName__2}</code>. When you do so, Process Director treats the "<code style="font-weight: normal; color: #ffffff;">{VAR:ParmName__2}</code>" in the in the Knowledge View as a pointer to the original value for <code style="font-weight: normal; color: #ffffff;">{VAR:ParmName}</code>, so that the proper value is automatically available to the knowledge view.</p>
         <h2><a name="_Toc421536234"></a>Knowledge View Formatting <a href="#_Toc421536234" class="anchor">#</a></h2>
         <p>Each Knowledge View can implement a different look and feel by using the<span class="ControlName"> HTML Code</span> property in the <span class="UIElement">Configure </span>tab of the Knowledge View definition. This property enables HTML formatting to be applied to the top of the running Knowledge View. The Knowledge View window can also be framed in HTML frames and use a custom style sheet (CSS).  You can also display the knowledge view in a form by using the <span class="NamedControl">Knowledge View</span> control.</p>
         <p>
@@ -88,7 +88,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Knowledge views can be viewed or exported via URL from any web browser, using the kv.aspx page contained in Process Director. Below is a sample URL to the kv.aspx page: </p>
-                <p class="CodeBase">http://localhost/kv.aspx?id=KVID&amp;dorun=1&amp;bpUserID=USERID&amp;bpPassword=PASSWORD&amp;exportname=EXPORTNAME</p>
+                <p class="CodeBase">https://localhost/kv.aspx?id=KVID&amp;dorun=1&amp;bpUserID=USERID&amp;bpPassword=PASSWORD&amp;exportname=EXPORTNAME</p>
                 <p>The kv.aspx page can be used to:</p>
                 <ul>
                     <li>View a Knowledge View.</li>
@@ -161,13 +161,13 @@
                     </tbody>
                 </table>
                 <p>For example, the URL to run a Knowledge View which runs a workflow on each result would be:</p>
-                <p class="CodeBase">http://localhost/kv.aspx?id=KVID&amp;dorun=1&amp;bpUserID=USERID&amp;bpPassword=PASSWORD</p>
+                <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/kv.aspx?id=<span class="CodeOption">KVID</span>&amp;dorun=1&amp;bpUserID=<span class="CodeOption">USERID</span>&amp;bpPassword=<span class="CodeOption">PASSWORD</span></p>
                 <p>The URL to run a Knowledge View which writes the results into an XLS file (the KView must be defined to Export the results to Excel):</p>
-                <p class="CodeBase">http://localhost/kv.aspx?id=KVID&amp;bpUserID=USERID&amp;bpPassword=PASSWORD&amp;exportname=c:\test.xls</p>
+                <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/kv.aspx?id=<span class="CodeOption">KVID</span>&amp;bpUserID=<span class="CodeOption">USERID</span>&amp;bpPassword=<span class="CodeOption">PASSWORD</span>&amp;exportname=<span class="CodeOption">c:\test.xls</span></p>
                 <p>The URL to run a Knowledge View which writes the results into a PDF file (the KView must be defined to Export the results to Excel):</p>
-                <p class="CodeBase">http://localhost/kv.aspx?id=KVID&amp;bpUserID=USERID&amp;bpPassword=PASSWORD&amp;exportname=c:\test.pdf</p>
+                <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/kv.aspx?id=<span class="CodeOption">KVID</span>&amp;bpUserID=<span class="CodeOption">USERID</span>&amp;bpPassword=<span class="CodeOption">PASSWORD</span>&amp;exportname=<span class="CodeOption">c:\test.pdf</span></p>
                 <p>The URL to run a Knowledge View which writes the results into a CSV file (the KView must be defined to Export the results to CSV):</p>
-                <p class="CodeBase">http://localhost/kv.aspx?id=KVID&amp;bpUserID=USERID&amp;bpPassword=PASSWORD&amp;exportname=c:\test.csv</p>
+                <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/kv.aspx?id=<span class="CodeOption">KVID</span>&amp;bpUserID=<span class="CodeOption">USERID</span>&amp;bpPassword=<span class="CodeOption">PASSWORD</span>&amp;exportname=<span class="CodeOption">c:\test.csv</span></p>
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> When exporting to a Windows file location, you cannot export files via the <span class="ControlName">exportname </span>URL&#160;parameter to any folder that is not specifically listed in the <a href="../DevelopersGuide/Customization File System.htm#AllowedExportLocations">AllowedExportLocations</a> custom variable. Attempts to export to a non-allowed location will fail.</p>
             </MadCap:dropDownBody>
@@ -179,7 +179,7 @@
             <MadCap:dropDownBody>
                 <p>You may want to automatically schedule the Knowledge View to run at regular intervals (for example, every night at midnight). To do this, use the Microsoft Windows Scheduled Tasks utility. This utility enables you to schedule and test commands executed on a regular basis. </p>
                 <p>Do not schedule IEXPLORE.EXE because the web browser will never close. Rather, use the bputil.exe command to run the web page. For example, enter this command in the “Run” dialog box to schedule the synchronization:</p>
-                <p class="CodeBase">"PATH\bputil.exe" SU "http://localhost/kv.aspx?id=KVID&amp;dorun=1&amp;bpUserID=USERID&amp;bpPassword=PASSWORD"</p>
+                <p class="CodeBase">"PATH\bputil.exe" SU "https://<span class="CodeOption">ServerName.com</span>/kv.aspx?id=<span class="CodeOption">KVID</span>&amp;dorun=1&amp;bpUserID=<span class="CodeOption">USERID</span>&amp;bpPassword=<span class="CodeOption">PASSWORD</span>"</p>
                 <p>Where PATH is the installation directory for Process Director (e.g. c:\Program Files\BP Logix\Process Director\). Enter the appropriate credentials in the Windows Scheduler when prompted</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>

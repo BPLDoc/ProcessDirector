@@ -17,12 +17,12 @@
         </p>
         <p>There are two kinds of sections: normal sections and embedded sections. Embedded sections are used to gather various controls on a Form into one group, making it easier to set properties common throughout the group. Embedded sections are not visible to the user. Normal Sections are visible to the user, and are collapsible and expandable.</p>
         <p>All section controls automatically include HTML anchors using the syntax: </p>
-        <p><code>&lt;a name="SECTIONNAME"&gt;&lt;/a&gt;</code>
+        <p><code>&lt;a name="<span class="CodeOption">SectionName</span>"&gt;&lt;/a&gt;</code>
         </p>
         <p>The anchor has the same name as that of the Section control.&#160; Form designers can give their users the ability to scroll down to any section by providing a link (using the Hotlink control) with the URL:</p>
-        <p><code>#SECTIONNAME</code>
+        <p><code>#<span class="CodeOption">SectionName</span></code>
         </p>
-        <p>Simply replace "SECTIONNAME" with the actual name of the Section control. You may find the ability to link to document sections useful when designing long forms.</p>
+        <p>Simply replace "SectionName" with the actual name of the Section control. You may find the ability to link to document sections useful when designing long forms.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="Section"></a><a href="#Section"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Section / Section End</MadCap:dropDownHotspot>
@@ -80,7 +80,7 @@
                 </p>
                 <p>The Client Section control is generated through JavaScript in the browser client, unlike the normal Section control, which is rendered as a server control through ASP.NET. Because the client control is generated on the client, the control can be expanded or contracted without having to perform a postback of the form to the server. The Client Section control, therefore, provides faster performance than the regular Section control. On the other hand, the Client Section control cannot trigger any rules or logic, nor can it support any visibility or enable/disable rules like a regular Section control.</p>
                 <p>The Control Picker does not have a visual placeholder, and is placed on the page in Process Director's markup language as:</p>
-                <p><code>{ClientSection:client_section2, Text=xyz, InitialExpand=Yes|No, ExpandDefault=Yes|No}<br />&#160;&#160;&#160;&#160;This is content for the Client Section<br />{ClientSectionEnd}</code>
+                <p><code>{ClientSection:<span class="CodeOption">ControlName</span>, Text="<span class="CodeOption">Some Text</span>", InitialExpand=<span class="CodeOption">Yes</span>|<span class="CodeOption">No</span>, ExpandDefault=<span class="CodeOption">Yes</span>|<span class="CodeOption">No</span>}<br />&#160;&#160;&#160;&#160;<span class="ControlName">&lt;!--This is content for the Client Section--&gt;</span><br />{ClientSectionEnd}</code>
                 </p>
                 <p>The Client Section control has three attributes:</p>
                 <ul style="list-style-type: disc;margin-left: 36pt;">
@@ -117,7 +117,7 @@
                 </p>
                 <p>The ID of the TabStrip Content control, configured in the properties, must match the ID of one of the tabs defined in the Tab Strip properties.</p>
                 <p class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> IDs are case sensitive, so the case must match between the IDs in the <span class="NamedControl">TabStrip </span>and <span class="NamedControl">TabStripContent </span>controls.</p>
+                    <img src="../Resources/Images/i.png" alt="Important" /> IDs are case sensitive, so the case must match between the IDs in the TabStrip and TabStripContent controls.</p>
                 <p>
                     <img src="../Resources/Images/Capture166.png" />
                 </p>

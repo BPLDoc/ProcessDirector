@@ -434,7 +434,7 @@
                 </table>
                 <h3>Conditional Logic</h3>
                 <p>You can use if statements to apply label values conditionally with the following syntax:</p>
-                <p><code>#if (condition) {# expression #} else {# expression #}#</code>
+                <p><code>#if (<span class="CodeOption">condition</span>) {# <span class="CodeOption">expression </span>#} else {# <span class="CodeOption">expression </span>#}#</code>
                 </p>
                 <h5>Example</h5>
                 <p><code># if ( value == "0" ){# No Hours #} else {# #=value# Hours #}#</code>
@@ -481,7 +481,7 @@
                 <p><b>bpcValue:</b> The value of the Data Series.</p>
                 <p><b>bpcPercentage:</b> The percentage value of the Data Series in decimal format. This variable is only available with Pie, Doughnut and 100% Stacked charts.</p>
                 <p class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> Sometimes, variables must be passed through multiple objects before reaching a Knowledge View, or other object. For instance, you may have a Form that calls a Chart, which, in turn, calls a Knowledge View via a drill-down. The data on the Form is passed to the Chart via a variable that is accessed using the normal <code>{VAR:ParmName}</code> syntax. However, when the chart does a drill-down to a Knowledge View, the Knowledge View does <b>not</b> have access to the original <code>{VAR:ParmName}</code> variable. Instead you need to append two underscores and the number "2" (__2) to the variable name, e.g. <code>{VAR:ParmName__2}</code>. When you do so, Process Director treats the "<code>{VAR:ParmName__2}</code>" in the in the Knowledge View as a pointer to the original value for <code>{VAR:ParmName}</code>, so that the proper value is automatically available to the knowledge view.</p>
+                    <img src="../Resources/Images/i.png" alt="Important" /> Sometimes, variables must be passed through multiple objects before reaching a Knowledge View, or other object. For instance, you may have a Form that calls a Chart, which, in turn, calls a Knowledge View via a drill-down. The data on the Form is passed to the Chart via a variable that is accessed using the normal <code style="font-weight: normal; color: #ffffff;">{VAR:ParmName}</code> syntax. However, when the chart does a drill-down to a Knowledge View, the Knowledge View does <b>not</b> have access to the original <code style="font-weight: normal; color: #ffffff;">{VAR:ParmName}</code> variable. Instead you need to append two underscores and the number "2" (__2) to the variable name, e.g. <code style="font-weight: normal; color: #ffffff;">{VAR:ParmName__2}</code>. When you do so, Process Director treats the "<code style="font-weight: normal; color: #ffffff;">{VAR:ParmName__2}</code>" in the in the Knowledge View as a pointer to the original value for <code style="font-weight: normal; color: #ffffff;">{VAR:ParmName}</code>, so that the proper value is automatically available to the knowledge view.</p>
                 <h5>Drill-down Variables Implementation Example</h5>
                 <p>Let's assume that we want to use a Knowledge View as the data source for our charts. Any of the variables listed above can be used directly in the <span class="UIElement">Filter </span>tab of a Knowledge View as variables. Here's a simple example:</p>
                 <p>
