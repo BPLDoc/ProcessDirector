@@ -38,10 +38,10 @@
         <p>On the left side of the filter condition, add the <span class="ControlName">CustomerName </span>form field, then set the Operator to "Contains". In cases like this, it's a good practice to  use the "Contains" operator so users can a) perform a search using just a part of the customer name, without having to worry about matching the whole name exactly, and b) to return ALL of the records in the Knowledge View if the filter value is blank. </p>
         <p>On the right side of the condition, set the value to a "Variable". When you do so, a text box will appear that will enable you to enter the variable name you want to create. This name is an arbitrary value, so we are going to name the variable, "Cust". Now that we've set up the variable parameter, we can save and close the Knowledge View.</p>
         <p>With a Knowledge View that will accept a parameter, we can access filtered data by passing a value to the Knowledge View from another object, using a Query String. A <span class="KeyTerms">Query String</span> is a simple text phrase that passes the parameter value to the Knowledge View, and it's written with a specific syntax:</p>
-        <p><span class="Code">VariableName=Value</span>
+        <p><code><span class="CodeOption">VariableName</span>=<span class="CodeOption">Value</span></code>
         </p>
         <p>In the case of our example above, we might have a customer named "Pear Computer". If we wanted to return only sales orders from Pear Computer, therefore, our query string might be:</p>
-        <p><span class="Code">Cust=Pear</span>
+        <p><code>Cust=Pear Computer</code>
         </p>
         <p>Of course, in most cases, we won't be able--or want--to hard-code a customer name. Instead, we'll need to pass the customer name via some sort of system variable, based on the value of, say, a form field. So, to do that, let's continue with this sample Knowledge View, and build a more complicated implementation based on it. </p>
         <p>Let's say that we'd like to create a search form that enables us to enter the customer's name—or, since we're using the Contains operator, the relevant part of a customer's name—and return all the orders from that customer. To build that form, we'll need an input box to serve as the search box into users will enter the name, and an array that contains the rows and fields that the Knowledge View return. Of course, to populate that Array, we'll also need a Business Value that we can bind to the Array to fill out the data.</p>

@@ -68,7 +68,7 @@
         <p>There are two methods available in the custom vars file for creating custom vars: SetSystemVars and PreSetSystemVars. The PreSetSystemVars method is called prior to initializing the Process Director database, while the SetSystemVars method is called after database initialization.</p>
         <p>
             <MadCap:keyword term="Vars">&#160;</MadCap:keyword>In general, this means that the default method to use when creating custom vars is the PreSetSystemVars method; however, if you need to set the value of the var based on information stored in the database, such as the identity of the user or the workspace in which the user is working, you must use the SetSystemVars method.</p>
-        <p> Using the syntax <span class="Code">{CustomVar:MY_VAR</span><span class="Code">}</span> elsewhere in Process Director will return the custom variable (in this case, "MY_VAR") value that was defined in the vars.cs.ascx file.</p>
+        <p> Using the syntax <code>{CustomVar:MY_VAR}</code> elsewhere in Process Director will return the custom variable (in this case, "MY_VAR") value that was defined in the vars.cs.ascx file.</p>
         <h5>Example</h5>
         <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// This creates a new custom var that can be access from anywhere<br />&#160;&#160;&#160;&#160;// within Process Director by using the syntax {CustomVar:MY_VAR}</span><br />&#160;&#160;&#160;&#160;bp.Vars["<span class="CodeOption">MY_VAR</span>"] = "<span class="CodeOption">My string</span>";<br />}</p>
         <h3><a name="Session"></a>Session Variables</h3>
