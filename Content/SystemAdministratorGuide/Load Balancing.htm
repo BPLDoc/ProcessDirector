@@ -24,6 +24,36 @@
         </p>
         <p>Each URL should be the URL of another Process Director server in the load balancing scheme. The system should be accessible behind the load balancing device, and each URL should be a direct connection to the other server, without going through the load balancing device.</p>
         <p>Ensure that the <span class="ControlName">Web Service Enabled </span>property is set to "true" on the Installation Settings page on both systems. If <span class="ControlName">Require Web Service Authentication</span> is set to "true", you also need to add the IP addresses of all Process Director servers in the load balancing scheme to the list of IP&#160;Addresses in the <span class="ControlName">Web Service Restrictions</span> property of the primary Process Director installation.</p>
+        <p>For Process Director v5.44.700 and higher, the update to AES Encryption in the product requires an extra step to generate the appropriate <code>&lt;machineKey&gt; </code>configuration setting in the web.config file for all servers that participate in the load balancing scheme. Priot to this version, the value of the <code>&lt;machineKey&gt; </code>element was hard-coded. With the use of AES encryption this is no longer the case.</p>
+        <p>Thus, customers who utilize two or more servers with PD installed as part of a load balancing scheme must generate validation and encryption keys and update the <code>&lt;machineKey&gt;</code> XML element in the web.config files for all PD instances. This ensures each server uses the same keys which enables data encrypted by one server to be decrypted by the other. On every upgrade:</p>
+        <ul>
+            <li> The <code>&lt;machineKey&gt;</code> element will need to be generated and re-added, or, </li>
+            <li>You can save the value of the <code>&lt;machineKey&gt;</code> element before the upgrade and re-apply it after. </li>
+        </ul>
+        <p>Either way, manual modification of the web.config file will be required.</p>
+        <p>BP&#160;Logix will provide you with an application, <span class="KeyTerms">MachineKeyGenerator.exe</span>, that generates the Machine Key value. Once you have this file, you can perform the following procedure:</p>
+        <ol>
+            <li>
+                <p>Run the application and choose a location to which to extract the files, the click the <span class="UIElement">Extract </span>button.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey.png" style="width: 380px;height: 149px;" /></p>
+            </li>
+            <li>
+                <p>When prompted, enter the password “bplsupport”.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey1.png" style="width: 637px;height: 405px;" /></p>
+            </li>
+            <li>
+                <p>Using the Command Window, navigate to the folder into which you extracted the files, then run MachineKeyGenerator.exe.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey3.png" /></p>
+            </li>
+            <li>
+                <p>Copy the entire <code>machineKey </code>XML&#160;element that is circled above, i.e., everything within and including the <code>&lt;</code> and <code>&gt;</code> characters.</p>
+            </li>
+            <li>
+                <p>Paste the value into each PD instance's web.config file to replace  the existing <code>&lt;machineKey&gt;</code> element .</p>
+            </li>
+        </ol>
+        <p>Once you're done, the web.config file should look something like this:</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/MKey4.png" />
+        </p>
+        <p>Once all web.config files have been updated with the new <code>&lt;machineKey&gt;</code>, each machine in the load balancing scheme should be able to encrypt/decrypt any data from any of the machines in the load balanced installation.</p>
         <h3><a name="_Toc421094546"></a>Load Balancing Devices</h3>
         <p>On your load balancing device, you can configure the device to check the following URL to determine if a particular server is unresponsive:</p>
         <p><code>http://HOSTNAME/admin/test_aspx.aspx </code>
