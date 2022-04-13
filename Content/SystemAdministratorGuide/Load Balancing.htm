@@ -13,10 +13,10 @@
             <img src="../Resources/Images/i.png" alt="Important" /> Each load balanced system must be licensed separately, and you will be given a unique license key for each load balanced system that will be used on the register page.</p>
         <p>The <span class="KeyTerms">hot standby</span> is a redundant method in which one system runs simultaneously with an identical primary Process Director system. Both systems have identical data and either point to the same database, or point to a replicated database. A hot standby is also known as hot spare. In the hot standby configuration, the backup system typically only processes traffic when the primary system goes down.  This redirection of traffic to the backup server is controlled by the customer, who may use specialty devices to detect the loss of the primary server and automatically redirect traffic to the hot standby.  In a hot standby configuration, ensure that any changes that are made to the configuration files on the local server are made on all systems. This includes the following configuration that is referenced in the <a href="Backups.htm">backup procedures</a> topic in this document.</p>
         <p>The difference between a hot standby and a load balanced (LB) configuration is that a LB deployment requires a load balancing device that sits in front of the Process Director web applications. This device is responsible for sending traffic to one system or the other, based on each system's capabilities and configuration. In a load balanced configuration. all the servers must be pointing to the same database server. Replication should not be used except to create a hot standby of the database.</p>
-        <h3><a name="_Toc421094544"></a>Custom Var Settings</h3>
+        <h2><a name="_Toc421094544"></a>Custom Var Settings <a href="#_Toc421094544" class="anchor">#</a></h2>
         <p>Implementing load balancing requires that some specific settings be mirrored on all machines in the installation. All Process Director servers that participate in the load balancing scheme should have the following settings made in the <span class="Emphasis">PreSetSystemVars </span>function in the Custom Vars file on each machine.</p>
         <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<span class="ControlName"><br /></span>{<span class="ControlName"><br />&#160;&#160;&#160;&#160;// Record cache</span><br />&#160;&#160;&#160;&#160;tbl.tblProjectInstance.StaticCache.Enabled = false;<br />&#160;&#160;&#160;&#160;tbl.tblProjActivityInst.StaticCache.Enabled = false;<br />&#160;&#160;&#160;&#160;tbl.tblProjActivityUserInst.StaticCache.Enabled = false;<br />&#160;&#160;&#160;&#160;tbl.tblProjActivityNotifyInst.StaticCache.Enabled = false;<br />&#160;&#160;&#160;&#160;tbl.tblWfInstance.StaticCache.Enabled = false;<br />&#160;&#160;&#160;&#160;tbl.tblWfStepInst.StaticCache.Enabled = false;<br />&#160;&#160;&#160;&#160;tbl.tblWfStepUserInst.StaticCache.Enabled = false;<br />&#160;&#160;&#160;&#160;tbl.tblWfStepNotifyInst.StaticCache.Enabled = false;<br />&#160;&#160;&#160;&#160;tbl.tblObject.StaticCache.Enabled = false;<br />&#160;&#160;&#160;&#160;tbl.tblDocument.StaticCache.Enabled = false;<br />&#160;&#160;&#160;&#160;tbl.tblDocumentOnly.StaticCache.Enabled = false;<br />&#160;&#160;&#160;&#160;tbl.tblContent.StaticCache.Enabled = false;<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Read-only cache</span><br />&#160;&#160;&#160;&#160;tbl.tblProjectInstance.StaticCache.EnabledDirtyRead = true;<br />&#160;&#160;&#160;&#160;tbl.tblProjActivityInst.StaticCache.EnabledDirtyRead = true;<br />&#160;&#160;&#160;&#160;tbl.tblProjActivityUserInst.StaticCache.EnabledDirtyRead = true;<br />&#160;&#160;&#160;&#160;tbl.tblProjActivityNotifyInst.StaticCache.EnabledDirtyRead = true;<br />&#160;&#160;&#160;&#160;tbl.tblWfInstance.StaticCache.EnabledDirtyRead = true;<br />&#160;&#160;&#160;&#160;tbl.tblWfStepInst.StaticCache.EnabledDirtyRead = true;<br />&#160;&#160;&#160;&#160;tbl.tblWfStepUserInst.StaticCache.EnabledDirtyRead = true;<br />&#160;&#160;&#160;&#160;tbl.tblWfStepNotifyInst.StaticCache.EnabledDirtyRead = true;<br />&#160;&#160;&#160;&#160;tbl.tblObject.StaticCache.EnabledDirtyRead = true;<br />&#160;&#160;&#160;&#160;tbl.tblDocument.StaticCache.EnabledDirtyRead = true;<br />&#160;&#160;&#160;&#160;tbl.tblContent.StaticCache.EnabledDirtyRead = true;<br />&#160;&#160;&#160;&#160;tbl.tblDocumentOnly.StaticCache.EnabledDirtyRead = false;<br />}</p>
-        <h3><a name="_Toc421094545"></a>Installation Settings</h3>
+        <h2><a name="_Toc421094545"></a>Installation Settings <a href="#_Toc421094545" class="anchor">#</a></h2>
         <p>All Process Director servers that participate in the load balancing scheme should have the following settings implemented on the Installation Settings page of the IT Administration section.</p>
         <p>In the <span class="ControlName">Load Balanced URLs</span> field, enter the URL of each server that participates in the load balancing scheme, separating each URL with commas.</p>
         <p>
@@ -24,20 +24,17 @@
         </p>
         <p>Each URL should be the URL of another Process Director server in the load balancing scheme. The system should be accessible behind the load balancing device, and each URL should be a direct connection to the other server, without going through the load balancing device.</p>
         <p>Ensure that the <span class="ControlName">Web Service Enabled </span>property is set to "true" on the Installation Settings page on both systems. If <span class="ControlName">Require Web Service Authentication</span> is set to "true", you also need to add the IP addresses of all Process Director servers in the load balancing scheme to the list of IP&#160;Addresses in the <span class="ControlName">Web Service Restrictions</span> property of the primary Process Director installation.</p>
-        <p>For Process Director v5.44.700 and higher, the update to AES Encryption in the product requires an extra step to generate the appropriate <code>&lt;machineKey&gt; </code>configuration setting in the web.config file for all servers that participate in the load balancing scheme. Priot to this version, the value of the <code>&lt;machineKey&gt; </code>element was hard-coded. With the use of AES encryption this is no longer the case.</p>
-        <p>Thus, customers who utilize two or more servers with PD installed as part of a load balancing scheme must generate validation and encryption keys and update the <code>&lt;machineKey&gt;</code> XML element in the web.config files for all PD instances. This ensures each server uses the same keys which enables data encrypted by one server to be decrypted by the other. On every upgrade:</p>
-        <ul>
-            <li> The <code>&lt;machineKey&gt;</code> element will need to be generated and re-added, or, </li>
-            <li>You can save the value of the <code>&lt;machineKey&gt;</code> element before the upgrade and re-apply it after. </li>
-        </ul>
-        <p>Either way, manual modification of the web.config file will be required.</p>
-        <p>BP&#160;Logix will provide you with an application, <span class="KeyTerms">MachineKeyGenerator.exe</span>, that generates the Machine Key value. Once you have this file, you can perform the following procedure:</p>
+        <p>For Process Director v5.44.700 and higher, the update to AES Encryption in the product requires an extra step to generate the appropriate <code>&lt;machineKey&gt; </code>configuration setting in the web.config file for all servers that participate in the load balancing scheme. Prior to this version, the value of the <code>&lt;machineKey&gt; </code>element was hard-coded. With the use of AES encryption, this is no longer the case.</p>
+        <p>Thus, customers who utilize two or more servers with PD installed as part of a load balancing scheme must generate validation and encryption keys and update the <code>&lt;machineKey&gt;</code> XML element in the web.config files for all PD instances. This ensures each server uses the same keys, which enables data encrypted by one server to be decrypted by the other. So, for the <span class="Emphasis">first </span>upgrade to v5.44.700 or higher, you will need to follow the procedure below to apply the proper keys to all machines in the load balancing scheme:</p>
         <ol>
+            <li>
+                <p>BP&#160;Logix will provide you with an application, <span class="KeyTerms">MachineKeyGenerator.exe</span>, that generates the Machine Key value. </p>
+            </li>
             <li>
                 <p>Run the application and choose a location to which to extract the files, the click the <span class="UIElement">Extract </span>button.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey.png" style="width: 380px;height: 149px;" /></p>
             </li>
             <li>
-                <p>When prompted, enter the password “bplsupport”.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey1.png" style="width: 637px;height: 405px;" /></p>
+                <p>When prompted, enter the password “bplsupport”. Some anti-virus systems automatically reject unprotected self-extracting ZIP/7-ZIP archives, so the password has been applied this file to help prevent this automatic rejection.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey1.png" style="width: 637px;height: 405px;" /></p>
             </li>
             <li>
                 <p>Using the Command Window, navigate to the folder into which you extracted the files, then run MachineKeyGenerator.exe.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey3.png" /></p>
@@ -54,7 +51,15 @@
             <img src="../Resources/Images/SystemAdministratorGuide/MKey4.png" />
         </p>
         <p>Once all web.config files have been updated with the new <code>&lt;machineKey&gt;</code>, each machine in the load balancing scheme should be able to encrypt/decrypt any data from any of the machines in the load balanced installation.</p>
-        <h3><a name="_Toc421094546"></a>Load Balancing Devices</h3>
+        <p>After this procedure has been performed for the first upgrade, on every <span class="Emphasis">subsequent </span>upgrade:</p>
+        <ul>
+            <li> The <code>&lt;machineKey&gt;</code> element will need to be generated and re-added, or, </li>
+            <li>You can save the value of the <code>&lt;machineKey&gt;</code> element before the upgrade and re-apply it after. </li>
+        </ul>
+        <p><span class="Emphasis">Either way, manual modification of of all web.config files will be required.</span>
+        </p>
+        <p>Additional AES encryption configuration requirements for upgrading your system are discussed in the <a href="../InstallationGuide/Reinstall Upgrades.htm#Upgrading">Upgrading to a New Version</a> section of the Installation Guide's Reinstall/Upgrades/Moving Hosts topic.</p>
+        <h2><a name="_Toc421094546"></a>Load Balancing Devices <a href="#_Toc421094546" class="anchor">#</a></h2>
         <p>On your load balancing device, you can configure the device to check the following URL to determine if a particular server is unresponsive:</p>
         <p><code>http://HOSTNAME/admin/test_aspx.aspx </code>
         </p>
