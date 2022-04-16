@@ -27,14 +27,15 @@
                 <p>Select <span class="ControlName">Process Director</span> and click <span class="UIElement">Remove</span>.</p>
             </li>
         </ol>
-        <p>The un-install program will NOT remove the Process Director database or the website or virtual directory. </p>
+        <p>The uninstall program will NOT remove the Process Director database, the website, or the virtual directory. </p>
         <h2><a name="_Toc421172276"></a><a name="Upgrading"></a>Upgrading to a New Version <a href="#_Toc421172276" class="anchor">#</a></h2>
         <p>The upgrade process for installing new versions of Process Director is very straightforward. Essentially, simply downloading and installing the new version will automatically upgrade your existing version of Process Director, and carry over all of your settings and licensing information. If you are upgrading to Process Director v3.41 or higher from an earlier version, however, you will have to take the additional step of setting the Application Pool to use ASP.NET 4.5.</p>
-        <h3>Process Director v5.44.700 and Higher</h3>
+        <h3>
+            <MadCap:keyword term="AES;Encryption" />Process Director v5.44.700 and Higher</h3>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Process Director v5.44.700 and higher uses AES encryption for all encrypted fields/data. This encryption change provides higher security, but it does affect the migration process the <b style="font-style: italic;">first time</b>--and ONLY the first time--you install v5.44.700 or higher from v5.44.600 or lower. Again, this is a one-time change to the process. Upgrading from v5.44.700 to any higher version requires no special action.</p>
         <h4>Custom Tasks</h4>
-        <p>You will need to update the Custom Tasks for your installation, <span class="Emphasis">prior to upgrading Process Director. </span>Some Custom Tasks include changes to field properties that require updated versions. If you update the Custom Tasks after upgrading Process Director, then you will need to go to the Server Control page of the IT&#160;Admin area's Troubleshooting section, and click the action link labeled, <span class="UIElement">Encrypt Old Form Data</span>.</p>
+        <p>You will need to update the Custom Tasks for your installation, <span class="Emphasis">prior to upgrading Process Director. </span>Some Custom Tasks include changes to field properties that require updated versions. If you update the Custom Tasks after upgrading Process Director, then you will need to go to the <span class="ControlName">Server Control</span> page of the<span class="ProcessDirectorObject"> IT&#160;Admin</span> area's <span class="ProcessDirectorObject">Troubleshooting </span>section, and click the action link labeled, <span class="UIElement">Encrypt Old Form Data</span>.</p>
         <h4>Singe-Server Installations</h4>
         <p>Migration to AES encryption occurs automatically for customers, by default, when installing v5.44.700 on a single-server installation. <span class="Emphasis">This migration may significantly increase the time needed to upgrade the system</span>, depending on how extensively your installation uses encrypted fields. It is possible to disable the encryption migration, and migrate manually at a later date. </p>
         <p>To disable the migration during upgrade, use the following procedure:</p>
@@ -43,7 +44,7 @@
             <li>Edit the Custom Variables file to set the <a href="../DevelopersGuide/Customization File System.htm#fEnableEncryptionMigration">fEnableEncryptionMigration</a> custom variable to "false".</li>
             <li>Upgrade the server instance.</li>
         </ol>
-        <p>Migration to AES Encryption can later be done manually by navigating to the Server Control page of the IT&#160;Admin area's Troubleshooting section. In the list of action links on this page, click the link labeled, <span class="UIElement">Migrate to AES Encryption</span>. The migration will start and run in the background. Logs will indicate when the migration process started and stopped, what tables were modified, and the row count of modified fields. If, for any reason, the migration is stopped, you can simply restart it using the same action link.</p>
+        <p>Migration to AES Encryption can later be done manually by navigating to the <span class="ControlName">Server Control</span> page of the <span class="ProcessDirectorObject">IT&#160;Admin</span> area's <span class="ProcessDirectorObject">Troubleshooting </span>section. In the list of action links on this page, click the link labeled, <span class="UIElement">Migrate to AES Encryption</span>. The migration will start and run in the background. Logs will indicate when the migration process started and stopped, what tables were modified, and the row count of modified fields. If, for any reason, the migration is stopped, you can simply restart it using the same action link.</p>
         <h4>Multi-Server Installations</h4>
         <p>For multi-instance or load-balanced installations that use more than one Process Director server, the following procedure is required:</p>
         <ol>
@@ -184,7 +185,7 @@
         <ol MadCap:continue="true">
             <li>Set the Interface URL.</li>
         </ol>
-        <p class="indent1">After Process Director is activated with the copy of the database from the other system, navigate to the <span class="ControlName">Properties </span>page in the IT&#160;Admin area's Installation Settings section and ensure the Interface URL property points to the URL of the new server (if any values were configured).</p>
+        <p class="indent1">After Process Director is activated with the copy of the database from the other system, navigate to the <span class="ControlName">Properties </span>page in the <span class="ProcessDirectorObject">IT&#160;Admin</span> area's <span class="ProcessDirectorObject">Installation Settings</span> section and ensure the <span class="ControlName">Interface URL</span> property points to the URL of the new server (if any values were configured).</p>
         <ol MadCap:continue="true">
             <li>Rerun the registration process</li>
         </ol>

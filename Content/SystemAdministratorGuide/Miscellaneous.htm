@@ -16,7 +16,7 @@
                 <p>If the upgrade fails, perform the following procedure:</p>
                 <ol>
                     <li>Set the <a href="../DevelopersGuide/Customization File Misc.htm#nDBTransIsolationLevel">nDBTransIsolationLevel variable</a> in your vars file to IsolationLevel.RepeatableRead.</li>
-                    <li>Then, click on the <span class="UIElement">Verify Process Director Database Schema</span> button in the IT Admin settings.</li>
+                    <li>Then, click on the <span class="UIElement">Verify Process Director Database Schema</span> button in the <span class="ProcessDirectorObject">IT Admin</span> settings.</li>
                     <li>After the database schema has been verified, remove the nDBTransIsolationLevel variable from your custom vars file, and add to the top of the vars file the following line: <code>&lt;%@ Import Namespace=”System.Data” %&gt;</code></li>
                 </ol>
             </MadCap:dropDownBody>
@@ -245,5 +245,14 @@
         <p>For Process Director v5.34 and higher, the default the SSL cipher used for <i>outgoing</i> web requests will use TLS 1.2 instead of 1.0 or 1.1, which have been deprecated for security reasons.  This can be changed back by setting this in the vars:</p>
         <p class="CodeBase"><code>System.Net.ServicePointManager.SecurityProtocol = <span class="CodeOption">System.Net.SecurityProtocolType.Ssl3</span>|<span class="CodeOption">System.Net.SecurityProtocolType.Tls</span>;</code>
         </p>
+        <h2><a name="AES"></a>
+            <MadCap:keyword term="AES;Encryption" />AES&#160;Encryption for Process Director v5.44.700 and Higher <a href="#AES" class="anchor">#</a></h2>
+        <p>Process Director v5.44.700 and higher implements AES encryption. This encryption change provides higher security, but it does affect the migration process the first time--and ONLY the first time--you install v5.44.700 or higher from v5.44.600 or lower (except for load-balanced installations). Upgrading from v5.44.700 to any higher version will require no special action for most customers.</p>
+        <p>Please refer to the <a href="../InstallationGuide/Reinstall Upgrades.htm#_Toc421172276">Upgrading to a Newer Version section</a> of the Reinstall/Upgrades/Moving Hosts topic of the Installation guide, which covers the upgrade process for most customers.</p>
+        <p>Customers who manage a load-balanced installation are subject to some additional considerations, which are documented in the <a href="Load Balancing.htm#_Toc421094545">Installation Settings section</a> of the Load Balancing, Standby, and Rendering Options topic of the System Administration Guide.</p>
+        <p>On-premise customers who decide NOT to upgrade to v5.44.700, should also make a specific change to their installation. BP Logix recommends that you manually edit your installation's web.config file to direct Internet Information Server to provide an auto-generated cryptographic key that will be unique to your installation.</p>
+        <p>To do so, you should edit the machineKey configuration setting in the system.web section of the web.config file so that it looks like the example highlighted in red below.</p>
+        <p class="CodeBase">&lt;configuration&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Some other configuration settings may appear here</span><br />&#160;&#160;&#160;&#160;&lt;system.web&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="UIElement">&lt;machineKey<br></br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;validationKey="AutoGenerate,IsolateApps" validation="HMACSHA512"<br></br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;decryptionKey="AutoGenerate,IsolateApps" decryption="AES" /&gt;</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// Some other configuration settings may appear here</span><br />&#160;&#160;&#160;&#160;&lt;/system.web&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Some other configuration settings may appear here</span><br />&lt;/configuration&gt;</p>
+        <p>Once you have made this change and saved the web.config file, the system will recompile and new AES encryption keys will be automatically generated for your installation.</p>
     </body>
 </html>
