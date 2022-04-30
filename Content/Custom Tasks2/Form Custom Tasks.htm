@@ -11,6 +11,212 @@
         <p>These custom tasks perform various Form operations.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AddJavascript"></a><a href="#AddJavascript"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Add JavaScript</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Task will add JavaScript to run a client-side script in the Form.</p>
+                <p>
+                    <img src="../Resources/Images/Capture40.png" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+                    <col style="width: 726px;" class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Allow System Variables in JavaScript?</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>When this check box is selected, Process Director will parse the JavaScript for System Variables.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Actual JavaScript (do not use &lt;Script&gt; tags)</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">The JavaScript code to be run by the Custom Task. Only the actual JavaScript code is inserted into this box. HTML <code>&lt;script&gt;</code> tags should not be included.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p> Additionally, this Custom Task solves an issue with Internet Explorer where the browser looses focus on the Form after a Set Form Data Custom task is run. Simply insert the following JavaScript line in the JavaScript text box:</p>
+                <p class="CodeBase">bpSetWindowFocus();</p>
+                <p>Set this Custom Task to run immediately after the <span class="ProcessDirectorObject">Set Form Data</span> Custom Task to reapply focus to the Form.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AdvAlert"></a><a href="#AdvAlert"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Advanced Show Alert</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Task will show an Alert Box on a form, and enables you to configure several advanced options for the appearance and function of the Alert Box.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/AdvAlert.png" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Alert Caption</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The title text to display for the Alert. This property may contain system Variables.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Alert Text</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The main message text to display. </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Alert Icon</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">None<br />Info<br />Success<br />Warning<br />Error<br />Question<br /><b style="font-style: italic;">Or</b> User-Supplied Value</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The Icon to display on the Alert Box. You can select a standard item from the Dropdown control, or use the Text box to supply an icon via the <code>{ICON}</code> system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Footer Text</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Text to display in the footer of the Alert Box. </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Position</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Center (Default)<br />Center-Start<br />Center-End<br />Top<br />Top-Start<br />Top-End<br />Bottom<br />Bottom-Start<br />Bottom-End</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Sets the display location of the Alert Box</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Can the alert grow in size</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">No (Default)<br />Grow by Row<br />Grow by Column<br />Full Screen</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Determines the Alert Box resizing mode. "Grow by Row" extends the Alert box to the full horizontal width of the screen, "Grow by Column" to the full vertical width, and "Full Screen" covers the entire display.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Show Confirm Button</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When checked, will display a confirmation button in the Alert Box.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Confirm Button Text</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The caption to display on the confirmation button.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Color</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Sets the background color of the confirmation button, using an HTML&#160;named color or hexidecimal value. e.g., <code>blue</code> or <code>#082f4d</code>.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Form button to click after Confirm</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">(List of Form Controls)</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A Form <span class="NamedControl">Button </span>control to automatically click after clicking the confirmation button. The Form <span class="NamedControl">Button </span>must be visible.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Show Cancel Button</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When checked, will display a cancel button in the Alert Box.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">	Cancel Button Text</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The caption to display on the cancel button.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Cancel Button Color</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Sets the background color of the cancel button, using an HTML&#160;named color or hexidecimal value. e.g., <code>blue</code> or <code>#082f4d</code>.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Reverse Confirm and Cancel button display order</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">By default, the confirmation button appears on the left, and the cancel button on the right. Setting this property to checked will reverse that order.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Image URL</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The URL&#160;of an image to display in the Alert Box. The image will display between the Icon and the Alert Caption.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Image Height/Width</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The height and width of the image, in pixels, to display. Leaving these setting blank will automatically resize the image to display it with the original aspect ratio. </p>
+                                <p class="PDNote">
+                                    <img src="../Resources/Images/i2.png" alt="Note" /> Setting these values manually may change the aspect ratio of the image, making it display in an unexpected manner.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Close form when alert closes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>When checked, the Form instance will close automatically after the Alert Box closes. </p>
+                                <p class="PDNote">
+                                    <img src="../Resources/Images/i2.png" alt="Note" /> If this property is checked, the properties below will not be visible, as the remaining properties can only function if the Form remains open.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Input Type</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">None (default)<br />Alert Text:<br />Email<br />Password<br />Number<br />Telephone<br />Text Area<br />Checkbox</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The property, when set to other than "None" will display an input control of the selected type in the Alter box, below the Alert Text. The selected<span class="ControlName"> Input Type</span> will also validate user entry to conform properly to the <span class="ControlName">Input Type</span> selected, e.g., selecting "Email" will require the input to be entered in a valid email address format.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Input field empty text</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Sets the text to display as Empty Text in the Alert Box input field when no value is set, i.e., when the user will supply a value. If the selected<span class="ControlName"> Input Type</span> is a checkbox, this property will be used as the display text for the Checkbox.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Input field initial value</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Sets the initial value of the Alert Box input field. If a value is set, the Empty Text will not display.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Input target control for input</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">(List of Form Controls)</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">Enables you to select a form field into which the value of the Alert Box input field will be copied after the Alert Box is closed.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="FillDropdownWithFormData"></a><a href="#FillDropdownWithFormData"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill Dropdown from Form Data</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -157,6 +363,145 @@
                 </p>
                 <h4>Configuration Options</h4>
                 <p>This Custom task has no user-configurable options. It displays information on the last execution date for informational purposes. The configuration options needed to run this custom task are configured via the <a href="../DevelopersGuide/Customization File Mobile.htm" target="_blank">Mobile Application Custom Variables</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="RandomCode"></a><a href="#RandomCode"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Random Code Generator</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This custom task generates a random code based upon a pattern, and copies the generated code into a specified Form control.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/Capture2.png" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Code Pattern</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Enables you to configure the patter of the code to generate.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Control to Populate</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>(List of Form Controls)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                                <p>Selects the Form control that stores the generated code.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>Configuring the Code Pattern</h4>
+                <p>The code generated by this custom task will conform to specifications you configure in the <span class="ControlName">Code Pattern</span> property. You configure the desired pattern using a set of wildcard characters. The available wildcards are shown below:</p>
+                <p>1 - Number greater than zero, * - Any</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 6rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>WILDCARD</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>GENERATED CODE CHARACTER</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">A</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>An upper case letter character.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">a</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A lower case letter character.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">?</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A special character, such as !, or ^.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">#</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>A number from 0-9.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">1</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A number from 1-9 (no zeroes).</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">*</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Any upper or lower case letter, any number, or any special character.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Thus, using a <span class="ControlName">Code Pattern</span> of <code>Aa?#1*</code> could result in the following values randomly generated from this pattern:</p>
+                <ul>
+                    <li>
+                        <p><code>It!88J</code>
+                        </p>
+                    </li>
+                    <li>
+                        <p><code>Ge^07j</code>
+                        </p>
+                    </li>
+                    <li>
+                        <p><code>Yp:46Q</code>
+                        </p>
+                    </li>
+                    <li>
+                        <p><code>Gb)260</code>
+                        </p>
+                    </li>
+                </ul>
+                <p>For instance, you could set a 10-character autogenerated password using the <span class="ControlName">Code Pattern</span> <code>**********</code>, which might result in values such as:</p>
+                <ul>
+                    <li>
+                        <p><code>ueL;5('*6q</code>
+                        </p>
+                    </li>
+                    <li>
+                        <p><code>e@s=Udsu86</code>
+                        </p>
+                    </li>
+                    <li>
+                        <p><code>j&lt;#q;7ra`%</code>
+                        </p>
+                    </li>
+                    <li>
+                        <p>...and so forth.</p>
+                    </li>
+                </ul>
+                <p> </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -506,59 +851,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="AddJavascript"></a><a href="#AddJavascript"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Add JavaScript to Form</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>This Custom Task will add JavaScript to run a client-side script in the Form.</p>
-                <p>
-                    <img src="../Resources/Images/Capture40.png" />
-                </p>
-                <h4>Configuration Options</h4>
-                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
-                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
-                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
-                    <col style="width: 726px;" class="TableStyle-Simple-Column-Column1" />
-                    <thead>
-                        <tr class="TableStyle-Simple-Head-Header1">
-                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
-                                <p>OPTION</p>
-                            </th>
-                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
-                                <p>ATTRIBUTES</p>
-                            </th>
-                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
-                                <p>DESCRIPTION</p>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Allow System Variables in JavaScript?</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>When this check box is selected, Process Director will parse the JavaScript for System Variables.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Actual JavaScript (do not use &lt;Script&gt; tags)</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row2">The JavaScript code to be run by the Custom Task. Only the actual JavaScript code is inserted into this box. HTML <code>&lt;script&gt;</code> tags should not be included.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p> Additionally, this Custom Task solves an issue with Internet Explorer where the browser looses focus on the Form after a Set Form Data Custom task is run. Simply insert the following JavaScript line in the JavaScript text box:</p>
-                <p class="CodeBase">bpSetWindowFocus();</p>
-                <p>Set this Custom Task to run immediately after the <span class="ProcessDirectorObject">Set Form Data</span> Custom Task to reapply focus to the Form.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>
