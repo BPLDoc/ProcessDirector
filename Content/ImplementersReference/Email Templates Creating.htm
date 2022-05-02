@@ -15,7 +15,7 @@
         <p>You can also use a custom ASCX file for your email template, just like you can when creating a regular Form definition. Simply select the option you desire from the dropdown marked "Online Form Designer". In nearly all use cases, the default choice of the Online Form Designer is the simplest option, but you have the option to use the Word Form builder (assuming you have met the appropriate technical requirements) or to create a custom ASCX control on .NET&#160;using Visual Studio (assuming you have this license option).</p>
         <p>Your email template is now stored in the <span class="ProcessDirectorObject">Content List</span>. You can edit the template by selecting the template to edit and then select the Edit tab.&#160; You can make changes to your template in your preferred editor.</p>
         <h2><a name="_Toc421536189"></a>Email Variables <a href="#_Toc421536189" class="anchor">#</a></h2>
-        <p>Variable substitutions are performed when an email file is processed for a workflow request. System variables can be added to the email, either by typing them in plain text, or by using the <span class="NamedControl">System Variable</span> control. To see the complete list of system variables, please refer to the System Variables guide. Note that not all system variables are available for every event that generates an email.</p>
+        <p>Variable substitutions are performed when an email file is processed for a process request. System variables can be added to the email, either by typing them in plain text, or by using the <span class="NamedControl">System Variable</span> control. To see the complete list of system variables, please refer to the System Variables guide. Note that not all system variables are available for every event that generates an email.</p>
         <p>The <span class="ControlName">Subject</span>, <span class="ControlName">From Email</span>, <span class="ControlName">Mail Priority</span>, <span class="ControlName">From Display</span>, <span class="ControlName">Send As Attachment</span>, <span class="ControlName">Group Name </span>and <span class="ControlName">Cancel Email </span>properties are contained in each email template as properties of the <span class="NamedControl">Email Data</span> control. </p>
         <h2><a name="_Toc421536190"></a>
             <MadCap:keyword term="EmailData" />EmailData Control <a href="#_Toc421536190" class="anchor">#</a></h2>
@@ -58,7 +58,7 @@
         <p><code>{EMAIL_URL}</code>
         </p>
         <p>In .ascx:</p>
-        <p><code>&lt;bpx:HTML ID="<span class="CodeOption">ControlName</span>" runat="server" HTMLString="<span class="CodeOption">&lt;a href='{EMAIL_URL}'&gt;Click here to view the workflow&lt;/a&gt;</span>"&gt;<br />&lt;/bpx:HTML&gt;</code>
+        <p><code>&lt;bpx:HTML ID="<span class="CodeOption">ControlName</span>" runat="server" HTMLString="<span class="CodeOption">&lt;a href='{EMAIL_URL}'&gt;Click here to view the process&lt;/a&gt;</span>"&gt;<br />&lt;/bpx:HTML&gt;</code>
         </p>
         <p>This system tag will return the URL that can be placed within an &lt;A&gt; tag on the HTML email.</p>
         <h2><a name="_Toc421536193"></a>Complete Links in an Email <a href="#_Toc421536193" class="anchor">#</a></h2>
@@ -125,7 +125,7 @@
                         <p>true(default)/false</p>
                     </td>
                     <td class="TableStyle-Simple-BodyA-Column1-Row2">
-                        <p>Optional icons/images from the workflow branches appear next to each of the links. </p>
+                        <p>Optional icons/images from the Workflow branches or Timeline activity results appear next to each of the links. </p>
                         <p>NOTE: Process Timeline results do not have image icons.</p>
                     </td>
                 </tr>
@@ -281,7 +281,7 @@
         <h2><a name="_Toc421536194"></a>URL Access to the Process Instance <a href="#_Toc421536194" class="anchor">#</a></h2>
         <h4>Workflow (wd.aspx)</h4>
         <h5>Description</h5>
-        <p>This URL can be used for in Workflow emails. It is used to construct a hotlink back to the originating workflow.</p>
+        <p>This URL can be used for in Workflow emails. It is used to construct a hotlink back to the originating Workflow.</p>
         <h5>Parameters</h5>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
             <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
@@ -308,7 +308,7 @@
             </tbody>
         </table>
         <h5>Examples</h5>
-        <p>This example will create a hotlink in an ASCX Email template which points back to the workflow Form</p>
+        <p>This example will create a hotlink in an ASCX Email template which points back to the Workflow's Form</p>
         <p class="CodeOption"><code>&lt;bpx:HTML runat="server" HTMLString="<span class="CodeOption">&lt;a href='{INTERFACE_URL}wd.aspx?forminstid={FORM_INSTANCE_ID}'&gt;</span></code><span class="CodeOption"><br /></span><code><span class="CodeOption">&#160;&#160;&#160;&#160;Click Here to View the Form Instance&lt;/a&gt;</span>"&gt;</code>
             <br /><code>&lt;/bpx:HTML&gt;</code>
         </p>
