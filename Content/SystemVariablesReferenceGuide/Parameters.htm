@@ -154,12 +154,12 @@
                 <p>To:</p>
                 <p><code>Bob''s Place.</code>
                 </p>
-                <p class="CodeBase">SELECT * FROM MyTable WHERE col1 LIKE ‘%{~:text1}%’ ESCAPE '\'</p>
-                <p>When used in in a LIKE statement, the ~ encode type will perform the same safe encoding as the $ does. Additionally, when adding the ESCAPE clause to the SQL statement, values that require escapes for special characters will be added to the encoding. So, for a value of:</p>
+                <p class="CodeBase">SELECT * FROM MyTable WHERE col1 LIKE '%{~:text1}%' ESCAPE '\'</p>
+                <p>When used in in a LIKE statement, the <code>~</code> encode type will perform the same safe encoding as the <code>$</code> does. Additionally, when adding the ESCAPE clause to the SQL statement, values that require escapes for special characters will be added to the encoding. So, for a value of:</p>
                 <p><code>100%</code>
                 </p>
                 <p>The combination of the ~ encode and the ESCAPE clause in the example will produce an encoded value of:</p>
-                <p><code>100/%</code>
+                <p><code>100\%</code>
                 </p>
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> In order to reduce security issues, Process Director v4.5 and higher issues a warning for using non-encoded System Variables in the SQL Statements used by Business Values or Custom Tasks. A Custom Variable setting, <a href="../DevelopersGuide/Customization File Administration.htm#fAllowUnencodedSysvarsinBV">fAllowUnencodedSysvarsinBV</a>, will, when set to "false", prevent users from saving any object that has unencoded variables in a SQL&#160;statement.</p>
@@ -347,12 +347,12 @@
                     <li><b>FULLYEARS:</b>&#160;Adds the number of full, 365-day years  for a DateTime or Timestamp SysVar result.</li>
                     <li><b>FULLMONTHS:</b>&#160;Adds the number of full, 30.414-day months for a DateTime or Timestamp SysVar result.</li>
                     <li><b>FULLDAYS:</b>&#160;Adds the number of full, 24-hour days for a DateTime or Timestamp SysVar result.</li>
-                    <li><b>OR NEAREST BUSINESS DAY: </b>This option instructs all date system variables to return the evaluated date if that date is a business day, and otherwise to return the previous or next business day, as directed. The time portion of the date value is unaffected, only the date portion is (potentially) modified. The syntax is <code>{DATETIME_VARIABLE, OrNearestBusinessDay=<b>Prev|Next</b>}</code>.</li>
+                    <li><b>OR NEAREST BUSINESS DAY: </b>This option instructs all date system variables to return the evaluated date if that date is a business day, and otherwise to return the previous or next business day, as directed. The time portion of the date value is unaffected, only the date portion is (potentially) modified. The syntax is <code>{DATETIME_VARIABLE, OrNearestBusinessDay=<span class="CodeOption">Prev</span>|<span class="CodeOption">Next</span>}</code>.</li>
                 </ul>
                 <p class="PDNote"> <img src="../Resources/Images/i2.png" /> The Types YEARS, MONTHS, DAYS, HOURS, and MINUTES use "calendar" elapsed times, which is to say that, if a time span crosses a calendar date, it counts as a full increment of the selected calendar Type (Day, Month, etc.). For example, a time span from 11:59 PM on Dec 31 to 12:01 AM on Jan 1 is only a two-minute time span, but it will be counted as 1 day in DAYS, 1 month in MONTHS, or 1 year in YEARS. Any time span which crosses a date will be counted as a full increment of the Type chosen.<br /><br />The Types FULLDAYS, FULLMONTHS, and FULLYEARS compare the time span to a pre-defined length of time. FULLDAYS returns 1 for every actual 24 hours elapsed, FULLMONTHS returns 1 for every 30.416 days, and FULLYEARS returns 1 for every 365 days. Using these Types, the time span from 11:59 PM on Dec 31 to 12:01 AM on Jan 1 would return 0 for all three types.</p>
                 <h4>
                     <MadCap:keyword term="Format" />Format</h4>
-                <p>Datetime system variables also have a format Modifier that can be used to determine how the date and time are displayed. The format Modifier can be set to any combination of the following options:</p>
+                <p>Datetime system variables also have a format Modifier that can be used to determine how the date and time are displayed. The Format modifier can be set to any combination of the following options:</p>
                 <p><code>{FORM:<span class="CodeOption">MyDateField</span>, format=<span class="CodeOption">option</span>, years=<span class="CodeOption">numberOfYears</span>, months=<span class="CodeOption">numberOfMonths...</span>}</code>
                 </p>
                 <ul style="list-style-type: disc;margin-left: 18pt;">
@@ -409,8 +409,8 @@
                     <li><b>[S]:</b> the duration of the timespan expressed in seconds (Sample value: 19805415).</li>
                 </ul>
                 <p>Each of these options can be modified to pad the variable to two or three characters in length, by changing the format string from [x] to [xx] or [xxx] respectively. For example, to pad the seconds portion of the timespan to three characters in length, you would use the format string [sss], and to pad the duration of the timespan in days to two characters in length, you could use the format string [DD].</p>
-                <p>Formatting strings can be concatenated into a single formatting string to return complex formatting results for a timespan system variable. For example, a DateDiff Form field (Form Control tag) formatted as:</p>
-                <p><code>{DateDiff:<span class="CodeOption">FieldName</span>, Date1=<span class="CodeOption">Date1</span>, Date2=<span class="CodeOption">Date2</span>,FORMAT=<span class="CodeOption">"[d] days, [h] hours, [m] mins"</span>}</code>
+                <p>Formatting strings can be concatenated into a single formatting string to return complex formatting results for a timespan system variable. For example, a <span class="NamedControl">DateDiff </span>Form field (Form Control tag) formatted as:</p>
+                <p><code>{DateDiff:<span class="CodeOption">FieldName</span>, Date1=<span class="CodeOption">Date1</span>, Date2=<span class="CodeOption">Date2</span>,FORMAT=<span class="CodeOption">"[d] days, [h] hours, [m] minutes"</span>}</code>
                 </p>
                 <p>Might return the notional result:<br></br><code>2 days, 4 hours, 23 minutes</code></p>
             </MadCap:dropDownBody>
