@@ -4,7 +4,16 @@
         <link href="Resources/Stylesheets/StylesForHomePage.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <div class="topichero">
+        <script>
+			function pic() {
+			var bgm = ['resources/images/zheader1.jpg','resources/images/zheader2.jpg', 'resources/images/zheader5.jpg','resources/images/zheader6.jpg','resources/images/zheader7.jpg','resources/images/zheader8.jpg'];
+			const element = document.querySelector('.topichero');
+			var img = bgm[Math.floor(Math.random() * bgm.length)];
+			element.style.backgroundImage = 'url(' + img + ')';
+			}
+			window.addEventListener('load', pic);
+		</script>
+        <div class="topichero" style="background-image:url(resources/images/zheader0.jpg)">
             <div class="title-text">
                 <div style="height:100px;">&#160;</div>
                 <div class="small-6 small-centered columns">
@@ -21,7 +30,7 @@
                     <h1>BP Logix Product Documentation</h1>
                     <p style="font-weight: bold;"><a href="Documentation/Documentation.htm" title="Process Director Documentation" style="color: #ff0000;">Click here</a><span style="color: #ff0000;"> to see how the Process Director documentation system works.</span>
                     </p>
-                    <p><b>To get started quickly, you can go directly to the <a href="Quick Start Links.htm" style="color: #ff0000;">Quick Links Page</a> or use the Quick Links menu item under Implementation, at the top of the page, to see a collection of links to features that are used most often.</b>
+                    <p><b>To get started quickly, you can go directly to the <a href="Quick Start Links.htm" style="color: #ff0000;">Quick Links Page</a> or use the Quick Links menu at the top of the page to see a collection of links to the most often-used features of Process Director.</b>
                     </p>
                     <p>The documentation for Process Director is largely reference documentation. For training on how to use the product, please contact your sales representative for a login code to our <a href="https://bplogix.litmos.com/" target="_blank">Online Training Portal</a>. The training portal contains several self-paced training courses that cover all aspects of using Process Director to create low-code/no-code applications. A link to the training portal is also available in the main menu at the top of each page.</p>
                     <p>This documentation references the most current version of Process Director. Documentation for versions of Process Director v3.82 and below, please refer to the legacy documentation found at <a href="http://archive.bplogix.com/" target="_blank">archive.bplogix.com</a>.</p>
@@ -62,8 +71,6 @@
 	
 			var nav = $('.tab-bar');
 			nav.addClass("f-nav");
-		
-
 		});/*]]>*/</script>
     </body>
 </html>
