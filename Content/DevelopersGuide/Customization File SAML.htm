@@ -10,11 +10,35 @@
         <p>Custom variables in this section of the documentation can be used to customize a variety of settings associated with Using SAML/Federated Identity when working with SAML&#160;providers.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AddSAMLGroups"></a><a href="#AddSAMLGroups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="AddSAMLGroups" />AddSAMLGroups</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A Boolean variable that determines whether Process Director should add any Groups from a SAML login that Process Director does not already have.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Automatically create new SAML&#160;groups</span><br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroups = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AddSAMLGroupsIgnore"></a><a href="#AddSAMLGroupsIgnore"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                    <MadCap:keyword term="AddSAMLGroupsIgnore" />AddSAMLGroupsIgnore</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This variable consists of a list of Group names to ignore in the auto-add logic (<a href="#AddSAMLGroups">AddSAMLGroups</a> )on the SAML login. E.g. if the SAML login includes an "admin" group, but you don’t want a SAML login to automatically add anyone to the pre-existing "admin" group in Process Director.</p>
+                <h5>Examples</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// SAML&#160;Groups to ignore in the SAML import</span><br />&#160;&#160;&#160;&#160;List&lt;string&gt; IgnoreGroups = new List&lt;string&gt;();<br />&#160;&#160;&#160;&#160;IgnoreGroups.Add(@"<span class="CodeOption">admin</span>");<br />&#160;&#160;&#160;&#160;IgnoreGroups.Add(@"<span class="CodeOption">Administrators</span>");<br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroupsIgnore= IgnoreGroups;<br />}</p>
+                <p>OR</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// SAML&#160;Groups to ignore in the SAML import</span><br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroupsIgnore = new List&lt;string&gt; { "<span class="CodeOption">admin</span>", "<span class="CodeOption">Administrators</span>" };<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="EXT_User_AutoCreate"></a><a href="#EXT_User_AutoCreate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="EXT_User_AutoCreate" />EXT_User_AutoCreate</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>A Boolean variable that determines whetherProcess Director should automatically create user accounts for externally authenticated users. The default value is "true". Setting the variable to "false" will prevent the automatic creation of user accounts.</p>
+                <p>A Boolean variable that determines whether Process Director should automatically create user accounts for externally authenticated users. The default value is "true". Setting the variable to "false" will prevent the automatic creation of user accounts.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Automatically create user accounts for externally authenticated users</span><br />&#160;&#160;&#160;&#160;bp.Vars.EXT_User_AutoCreate = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
