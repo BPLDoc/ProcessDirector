@@ -13,8 +13,8 @@
         <p> A Knowledge View is represented by a URL that can be displayed outside of the BP Logix environment. The URL for a Knowledge View can be sent in an email, displayed in a web portal, or added to an existing web site. The URL format for an individual Knowledge View is:</p>
         <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/kv.aspx?ext=1&amp;id=<span class="CodeOption">NN</span></p>
         <p>Where <code><span class="CodeOption">ServerName.com</span></code> is the hostname of BP Logix and <code class="CodeOption">NN </code>is the internal ID displayed in the Knowledge View definition you want to use (e.g. <code>ID=ea1f7d30-2c44-4971-ac8a-4654ae2521ff</code>). </p>
-        <p>An additional URL parameter, "gkview", can be used to enable a Global Knowledge View to be displayed using the Knowledge View name instead of the ID, but it can only be used to return Global Knowledge Views that are Task Lists, e.g. <code>kv.aspx?gkview=Task List</code>.</p>
-        <p>For user of Process Director v5.37 and higher, a URL&#160;Parameter, "canceltext", can be used on a task list URL and will display the configured text in an alert box when a user clicks on the <span class="UIElement">Cancel </span>button on the form.</p>
+        <p>An additional URL parameter, "gkview", can be used to enable a Global Knowledge View to be displayed using the Knowledge View name instead of the ID, but it can only be used to return Global Knowledge Views that are <span class="ProcessDirectorObject">Task Lists</span>, e.g. <code>kv.aspx?gkview=Task List</code>.</p>
+        <p>For user of Process Director v5.37 and higher, a URL&#160;Parameter, "canceltext", can be used on a <span class="ProcessDirectorObject">Task List</span> URL and will display the configured text in an alert box when a user clicks on the <span class="UIElement">Cancel </span>button on the form.</p>
         <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/kv.aspx?canceltext="<span class="CodeOption">You clicked the Cancel button.</span>"</p>
         <h3><a name="_Toc421536233"></a>Passing Filter Values in the URL <a href="#_Toc421536233" class="anchor">#</a></h3>
         <p>The Knowledge View can be opened using a URL that is placed on a web site. If the Knowledge View is configured with Filter, you can pass this filter information to the Knowledge View on the URL. Simply set the desired filter result as a variable, then enter the variable name you'd like to use in the URL parameter like the example below: </p>
@@ -93,7 +93,7 @@
                 <ul>
                     <li>View a Knowledge View.</li>
                     <li>Export a Knowledge View to a CSV or Excel file on your local machine's file system.</li>
-                    <li>Export a Knowledge View to a CSV or Excel file in the Content List of the Process Director server.</li>
+                    <li>Export a Knowledge View to a CSV or Excel file in the <span class="ProcessDirectorObject">Content List</span> of the Process Director server.</li>
                 </ul>
                 <p>The kv.aspx command can take the following parameters as part of the QueryString in the URL:</p>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
@@ -131,7 +131,7 @@
                                 <p>exportname</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>This is parameter is required only when exporting the Knowledge View to a CSV or Excel file, or to the Content List. When exporting to the file system on a local machine, this parameter takes the desired local file path and file name of the exported file, e.g., "C:\filename.csv". When exporting to the Content List in Process Director, this parameter takes only the desired file name, e.g., "filename.csv".</p>
+                                <p>This is parameter is required only when exporting the Knowledge View to a CSV or Excel file, or to the <span class="ProcessDirectorObject">Content List</span>. When exporting to the file system on a local machine, this parameter takes the desired local file path and file name of the exported file, e.g., "C:\filename.csv". When exporting to the Content List in Process Director, this parameter takes only the desired file name, e.g., "filename.csv".</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -152,11 +152,11 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">contentfolderpath</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This is an optional parameter used only when exporting the Knowledge View to a CSV or Excel file in the Content List. The parameter takes the Content List folder path to the Content List folder where the file will be stored, e.g., "/folder1/folder2". The <i>contentparentid</i> parameter can be used in lieu of this parameter if the Folder ID of the destination folder is known.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This is an optional parameter used only when exporting the Knowledge View to a CSV or Excel file in the <span class="ProcessDirectorObject">Content List</span>. The parameter takes the <span class="ProcessDirectorObject">Content List </span>folder path to the Content List folder where the file will be stored, e.g., "/folder1/folder2". The <i>contentparentid</i> parameter can be used in lieu of this parameter if the Folder ID of the destination folder is known.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">contentparentid</td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row1">This is an optional parameter used only when exporting the Knowledge View to a CSV or Excel file in the Content List. The parameter takes the Folder ID of the desired destination folder. If the Folder ID is not known, the <i>contentfolderpath</i> parameter can be used, instead.</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">This is an optional parameter used only when exporting the Knowledge View to a CSV or Excel file in the <span class="ProcessDirectorObject">Content List</span>. The parameter takes the Folder ID of the desired destination folder. If the Folder ID is not known, the <i>contentfolderpath</i> parameter can be used, instead.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -219,12 +219,12 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/ExcelExport.png" />
                 </p>
-                <p>Before a Knowledge View can be exported to an Excel file, an Excel template file located in the Content List must be linked to the Knowledge View. To link to an Excel template file, set the <span class="ControlName">Select Excel Template</span> property.</p>
+                <p>Before a Knowledge View can be exported to an Excel file, an Excel template file located in the <span class="ProcessDirectorObject">Content List</span> must be linked to the Knowledge View. To link to an Excel template file, set the <span class="ControlName">Select Excel Template</span> property.</p>
                 <p>Knowledge Views can immediately export their results to an Excel file when opened. To activate this option, select the “Export to Excel” option in the <span class="ControlName">Knowledge View Results</span> dropdown.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/Knowledge Views_22.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>Please refer to the topic on <a href="Knowledge View Definitions.htm">configuring knowledge views</a> to configure the use of the <span class="ControlName">Selected Destination Folder...</span> and <span class="ControlName">Export File Name...</span> properties to use when exporting the Excel file to the Content List.</p>
+                <p>Please refer to the topic on <a href="Knowledge View Definitions.htm">configuring knowledge views</a> to configure the use of the <span class="ControlName">Selected Destination Folder...</span> and <span class="ControlName">Export File Name...</span> properties to use when exporting the Excel file to the <span class="ProcessDirectorObject">Content List</span>.</p>
                 <p>If the “Displayed in Grid” option is selected, then the Knowledge View results will display in the browser, along with an icon button giving the user the option to export the results to an Excel file.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -260,7 +260,7 @@
                 <h5>Define Excel Pivot Table / Formulas</h5>
                 <p>The Excel template file can contain Pivot tables or Excel formulas that can be automatically run against the data. Create the Pivot Table against a RANGE name that encompasses the template and header column. When the Knowledge View is run, it will stream (export) the results into the RANGE specified. The number of rows in the RANGE will be expanded automatically to accommodate the number of records returned from the Knowledge View. </p>
                 <p>To automatically run a Pivot Table, ensure that the option is selected in Excel that indicates the Pivot Table Report should run when loaded (i.e. Refresh on open). </p>
-                <p>Also, when using a Pivot table, ensure that the Excel file you upload in to the Content List was saved with the Pivot Table Graph as the sheet that is displayed. When the Excel file is saved, it will open with the same sheet displayed. </p>
+                <p>Also, when using a Pivot table, ensure that the Excel file you upload in to the <span class="ProcessDirectorObject">Content List</span> was saved with the Pivot Table Graph as the sheet that is displayed. When the Excel file is saved, it will open with the same sheet displayed. </p>
                 <h5>Special Excel Columns</h5>
                 <p>You can include special columns in the Excel output range which will automatically be filled in when the report is delivered to the user. You do not need to include these columns in the Knowledge View Definition.</p>
                 <p>Variable Suntax for these special columns should be:</p>
