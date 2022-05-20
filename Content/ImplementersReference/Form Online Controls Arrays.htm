@@ -12,7 +12,7 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/AdditionalControls8.png" />
         </p>
-        <p>The Form builder supports creating lists of input fields. An “array” tag can be used to surround a group of information or input fields on the Form. This allows the information to be repeated dynamically when the Form is displayed to the user. This can be used when a form has a list of items. </p>
+        <p>When configuring a form, controls can be placed into a dynamic list, known as an array. An <span class="KeyTerms">array </span>consists of Form controls placed in a single table row, with array boundary controls at the beginning and end of the table row. At run-time, users can dynamically add or remove rows from the array. A control placed inside an array will always return the values entered into that field in a comma-separated list. For instance, a field inside an array that contains three rows might return the string "Value1,Value2,Value3" as the value of the array control. The value of a specific row in an array can also be retrieved as a single value through the use of the array row's index (<code>ROW_NUM</code>). Please see the <a href="../SystemVariablesReferenceGuide/Parameters.htm#FormFields">Parameters topic</a> of the system variables guide for more information on extractive an array row value using the <code>ROW_NUM</code> formatter.</p>
         <h3 MadCap:conditions="General.Not Printed">Video Example</h3>
         <p MadCap:conditions="General.Not Printed">
             <object MadCap:HTML5Video="true" title="Array Example" MadCap:Param_autoplay="false" src="../Resources/Multimedia/Arrays1.mp4" MadCap:Param_controls="true" MadCap:Param_muted="true" MadCap:Param_loop="true" style="width: 100%;height: auto;border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;">
@@ -23,15 +23,17 @@
                 <MadCap:dropDownHotspot><a name="Array"></a><a href="#Array"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Array Start/End (Repeating Rows)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The array control allows rows of items to be dynamically increased or decreased using an array tag. Using the array controls, you will notice that red brackets mark the beginning and end of each array. </p>
+                <p>The array controls allow rows of items to be dynamically increased or decreased using an array tag. Using the array controls, you will notice that red brackets mark the beginning and end of each array. </p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_82.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>In general, Arrays are used in conjunction with table rows, with the Array Start control placed as the very first item in the first column of the table, and the Array End control placed as the very last item in the last column of the table. Each Array Start control requires a corresponding Array End control to close the array. All of the controls placed between the Array Start and Array End controls comprise the array row.</p>
+                <p>In general, Arrays are used in conjunction with table rows, with the <span class="NamedControl">Array Start</span> control placed as the very first item in the first column of the table, and the <span class="NamedControl">Array End</span> control placed as the very last item in the last column of the table. Each <span class="NamedControl">Array Start</span> control requires a corresponding <span class="NamedControl">Array End</span> control to close the array. All of the controls placed between the <span class="NamedControl">Array Start</span> and <span class="NamedControl">Array End</span> controls comprise the array row.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_83.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>Double-clicking the Array Start control will open the <span class="ControlName">Properties </span>dialog box, in which you can configure the settings for the array. </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> Arrays cannot be nested inside each other.</p>
+                <p>Double-clicking the <span class="NamedControl">Array Start</span> control will open the <span class="ControlName">Properties </span>dialog box, in which you can configure the settings for the array. </p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsArrays.png" />
                 </p>
@@ -59,7 +61,7 @@
                 <MadCap:dropDownHotspot><a name="ArrayMoveRows"></a><a href="#ArrayMoveRows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Move Row Up/Down</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The Move Rows controls should be placed inside the array controls so that you can use them to move the row up or down in the array.</p>
+                <p>The <span class="NamedControl">Move Rows</span> controls should be placed inside the array controls so that you can use them to move the row up or down in the array.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -67,7 +69,7 @@
                 <MadCap:dropDownHotspot><a name="ArraySum"></a><a href="#ArraySum"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Sum</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The sum control displays the sum of all of the elements in a column of the array.</p>
+                <p>The <span class="NamedControl">Sum </span>control displays the sum of all of the values in a column of the array.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_7.png" style="visibility: visible;mso-wrap-style: square;width: 23px;height: 22px;" />
                 </p>
@@ -75,7 +77,7 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsArrays2.png" />
                 </p>
-                <p>In the “Column” field, enter the name of the control in the column you would like to sum.</p>
+                <p>In the <span class="NamedControl">Column </span>field, enter the name of the control in the column you would like to sum.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -83,11 +85,11 @@
                 <MadCap:dropDownHotspot><a name="SortArray"></a><a href="#SortArray"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Sort Array</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The Sort Array control gives the user a button to sort the array alphabetically. The array can be sorted by three columns, in order of preference. This means that, if two elements in the primary column are the same, that those rows will be sorted according to the secondary column, and so on.</p>
+                <p>The <span class="NamedControl">Sort Array</span> control gives the user a button to sort the array alphabetically. The array can be sorted by three columns, in order of preference. This means that, if two elements in the primary column are the same, that those rows will be sorted according to the secondary column, and so on.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_85.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>To configure the Sort Array control, open the properties window by double clicking the control, to open the Properties dialog box for the control. The control has two primary configuration tabs: The <span class="UIElement">Sort </span>and <span class="UIElement">Button Properties </span>tabs. The <span class="UIElement">Comments </span>tab has no effect on the control's display, but enables you to enter and save designer comments for the control.</p>
+                <p>To configure the<span class="NamedControl"> Sort Array</span> control, open the properties window by double clicking the control, to open the <span class="ControlName">Properties </span>dialog box for the control. The control has two primary configuration tabs: The <span class="UIElement">Sort </span>and <span class="UIElement">Button Properties </span>tabs. The <span class="UIElement">Comments </span>tab has no effect on the control's display, but enables you to enter and save designer comments for the control.</p>
                 <h3>Sort  Tab</h3>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsArrays3.png" />
@@ -124,7 +126,7 @@
                 <MadCap:dropDownHotspot><a name="ArrayRowNumber"></a><a href="#ArrayRowNumber"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Row Number</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The Row Number control simply displays the row number (starting with row #1).</p>
+                <p>The<span class="NamedControl"> Row Number</span> control simply displays the row number (starting with row #1).</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2>Array Conditions and Validation</h2>
