@@ -68,6 +68,26 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="MatchSAMLGroups"></a><a href="#MatchSAMLGroups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>MatchSAMLGroups</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="MatchSAMLGroups" />This variable, when set to true, will, when group membership is specified in the SAML assertion, match the group assignments of an imported user to existing groups on the Process Director installation. When activated, the following import actions will occur to accomplish the group matching:</p>
+                <ol>
+                    <li>
+                        <p>Users will be removed from group membership in existing groups that do not exist in the SAML assertion, <b style="font-style: italic;">with the exception of</b> groups that do <b style="font-style: italic;">not</b> have <span class="ControlName">AuthType </span>set to <code>SAML</code>.</p>
+                    </li>
+                    <li>
+                        <p>Users will be added to groups of which they are not currently a member if the group exists in the SAML assertion. Users will be added to the groups, even if the group does <b style="font-style: italic;">not</b> have <span class="ControlName">AuthType </span>set to <code>SAML</code>.</p>
+                    </li>
+                </ol>
+                <p>In other words, if a Process Director User Group exists that has the same name as a SAML group contained in the assertion, but the existing group does <b style="font-style: italic;">not</b> have <span class="ControlName">AuthType </span>set to <code>SAML</code>, the user import will ensure the user is always  added to, but never removed from, the existing group.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Match SAML&#160;groups  with PD group membership</span><br />&#160;&#160;&#160;&#160;bp.Vars.MatchSAMLGroups = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="SAML_Enable"></a><a href="#SAML_Enable"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Enable" />SAML_Enable</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
