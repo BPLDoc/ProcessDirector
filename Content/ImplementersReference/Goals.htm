@@ -13,7 +13,7 @@
         <p>Goals also can initiate actions, either explicitly, or implicitly. If a Goal changes state after a scheduled execution, the Goal can initiate a process or a run a Knowledge View automatically when the state changes, which we refer to as an <span class="KeyTerms">explicit action</span>. Alternatively, a running Timeline instance may use a Goal's value to determine which Activities to run, or which users to assign to an activity, which we refer to as an <span class="KeyTerms">implicit action</span>.</p>
         <p>Let's examine a scenario in which a Goal might be useful. Imagine a call center that takes customer support requests. This customer center normally takes 50 or fewer callers per hour. If the number of calls per hour exceed 50 calls, you might want to assign additional users to take support calls. If there are more than 75 calls per hour, you might wish to notify managers of heavy call volume. In this scenario, you could create a Goal that checks the number of calls per hour every fifteen minutes. When then Goal evaluates, it sets a status of "Green" when there are 50 calls or less per hour, "Yellow" when there are 50-75 calls per hour, and "Red" when there are more than 75 calls per hour. In the Goal, you could also automatically start a new process that sends notifications to managers if the system status changes to "Red". In your process, you could add additional users to whom to assign tasks when the status is "Yellow" or "Red". In this example, using a Goal both alters how your process is performed and starts a new process when conditions require it.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/Goals.png" />
+            <img src="../Resources/Images/ImplementersReference/GoalDef.png" />
         </p>
         <p>The ability to start a process based on a Goal, along with the ability to schedule Goal evaluation, enables Process Director to schedule processes without having to use the Windows Scheduler.</p>
         <p>In addition, results for a Goal can be evaluated from a <a href="Business Values.htm" target="_blank">Business Value</a>, giving you the ability to schedule processes based on information from your outside CRM, ERP, or other systems. For example, you can use a Business Value to return any unprocessed Invoices or POs from your ERP system. The Goal can evaluate the Business Value at a desired interval, and, if there are unprocessed items, automatically start the PO or Invoice process to process the items. Moreover, you can return any required data to update your ERP system during the processing or after the processing is complete. In effect, simply entering a new invoice and PO into the ERP system would automatically start the PO&#160;or Invoice process—and ultimately update your external ERP system—when the Goal is evaluated. In this example, you would no longer need to manually start the process by filling out and submitting a Form.</p>
@@ -69,7 +69,7 @@
         <h2><a name="Execution"></a>Execution Options Tab <a href="#Execution" class="anchor">#</a></h2>
         <p>Goals are configured by configuring the <span class="UIElement">Execution Options</span> tab of the Goal definition.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/Goal.png" />
+            <img src="../Resources/Images/ImplementersReference/GoalDef1.png" />
         </p>
         <p>Goals are configured to automatically evaluate on a schedule configured by the Goal creator. Actual Goal evaluation frequency, however, depends on several factors, including the frequency with which activity checks are being run within Process Director in general. When saving a Goal definition, Process Director will try to determine if the Goal is being scheduled for evaluation more frequently than activity checks, and will display a warning if that is the case. However, note that Goal evaluation frequency is always approximate.</p>
         <p>The <span class="UIElement">Execution Options </span>tab is divided into four sections: <span class="ControlName">Execution Options</span>,<span class="ControlName"> Condition and Results</span>, <span class="ControlName">Evaluation Frequency</span>, and <span class="ControlName">History</span>.</p>
@@ -155,7 +155,7 @@
         </MadCap:dropDown>
         <p>The <span class="ControlName">Evaluation Options</span> tab enables you to define the Goal's evaluation schedule.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/Goal2.png" />
+            <img src="../Resources/Images/ImplementersReference/GoalDef3.png" />
         </p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -178,13 +178,13 @@
                 <MadCap:dropDownHotspot>Repeat Interval Starts At</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The date and time to begin scheduling evaluations. To select a date, click the Calendar icon located to the left of the text box control to open a calender you can use to select the date.</p>
+                <p>The date and time to begin scheduling evaluations. To select a date, click the <span class="ControlName">Calendar </span>icon located to the left of the text box control to open a calender you can use to select the date.</p>
                 <p>
-                    <img src="../Resources/Images/Capture227.png" MadCap:mediastyle="@media print { max-width: 6in; }" style="width: auto;height: auto;" />
+                    <img src="../Resources/Images/ImplementersReference/GoalDef4.png" />
                 </p>
-                <p>Similarly, to  select a time, click the Clock icon located to the left of the text box control to open a time selector you can use to select the time.</p>
+                <p>Similarly, to  select a time, click the <span class="ControlName">Clock </span>icon located to the left of the text box control to open a time selector you can use to select the time.</p>
                 <p>
-                    <img src="../Resources/Images/Capture228.png" style="width: auto;height: auto;max-width: 6in;" />
+                    <img src="../Resources/Images/ImplementersReference/GoalDef5.png" />
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -214,7 +214,7 @@
         </MadCap:dropDown>
         <p>The <span class="ControlName">History </span>Section displays the evaluation run times, current result, and last result. It has no configuration settings. </p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/Goal3.png" />
+            <img src="../Resources/Images/ImplementersReference/GoalDef2.png" alt="History Section" />
         </p>
     </body>
 </html>
