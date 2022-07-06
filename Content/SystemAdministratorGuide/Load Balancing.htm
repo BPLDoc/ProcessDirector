@@ -19,22 +19,20 @@
         <h2><a name="_Toc421094545"></a>Installation Settings <a href="#_Toc421094545" class="anchor">#</a></h2>
         <p>All Process Director servers that participate in the load balancing scheme should have the following settings implemented on the Installation Settings page of the<span class="ProcessDirectorObject"> IT Admin</span> area.</p>
         <p>In the <span class="ControlName">Load Balanced URLs</span> field, enter the URL of each server that participates in the load balancing scheme, separating each URL with commas.</p>
-        <p>
-            <img src="../Resources/Images/SystemAdministratorGuide/Load Balancing.jpg" style="visibility: visible;mso-wrap-style: square;" />
-        </p>
+        <p>&#160;</p>
         <p>Each URL should be the URL of another Process Director server in the load balancing scheme. The system should be accessible behind the load balancing device, and each URL should be a direct connection to the other server, without going through the load balancing device.</p>
         <p>Ensure that the <span class="ControlName">Web Service Enabled </span>property is set to "true" on the Installation Settings page on both systems. If <span class="ControlName">Require Web Service Authentication</span> is set to "true", you also need to add the IP addresses of all Process Director servers in the load balancing scheme to the list of IP&#160;Addresses in the <span class="ControlName">Web Service Restrictions</span> property of the primary Process Director installation.</p>
         <p>For Process Director v5.44.700 and higher, the update to AES Encryption in the product requires an extra step to generate the appropriate <code>&lt;machineKey&gt; </code>configuration setting in the web.config file for all servers that participate in the load balancing scheme. Prior to this version, the value of the <code>&lt;machineKey&gt; </code>element was hard-coded. With the use of AES encryption, this is no longer the case.</p>
-        <p>Thus, customers who utilize two or more servers with PD installed as part of a load balancing scheme must generate validation and encryption keys and update the <code>&lt;machineKey&gt;</code> XML element in the web.config files for all PD instances. This ensures each server uses the same keys, which enables data encrypted by one server to be decrypted by the other. So, for the <span class="Emphasis">first </span>upgrade to v5.44.700 or higher, you will need to follow the procedure below to apply the proper keys to all machines in the load balancing scheme:</p>
+        <p>Thus, customers who utilize two or more servers with PD installed as part of a load balancing scheme must generate validation and encryption keys and update the <code>&lt;machineKey&gt;</code> XML element in the web.config<img src="../Resources/Images/SystemAdministratorGuide/loadbalance.png" /> files for all PD instances. This ensures each server uses the same keys, which enables data encrypted by one server to be decrypted by the other. So, for the <span class="Emphasis">first </span>upgrade to v5.44.700 or higher, you will need to follow the procedure below to apply the proper keys to all machines in the load balancing scheme:</p>
         <ol>
             <li>
                 <p>BP&#160;Logix will provide you with an application, <span class="KeyTerms">MachineKeyGenerator.exe</span>, that generates the Machine Key value. </p>
             </li>
             <li>
-                <p>Run the application and choose a location to which to extract the files, the click the <span class="UIElement">Extract </span>button.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey.png" style="width: 380px;height: 149px;" /></p>
+                <p>Run the application and choose a location to which to extract the files, the click the <span class="UIElement">Extract </span>button.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey.png" style="width: 335px;height: 131px;" /></p>
             </li>
             <li>
-                <p>When prompted, enter the password “bplsupport”. Some anti-virus systems automatically reject unprotected self-extracting ZIP/7-ZIP archives, so the password has been applied this file to help prevent this automatic rejection.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey1.png" style="width: 637px;height: 405px;" /></p>
+                <p>When prompted, enter the password “bplsupport”. Some anti-virus systems automatically reject unprotected self-extracting ZIP/7-ZIP archives, so the password has been applied this file to help prevent this automatic rejection.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey1.png" style="width: 522px;height: 331px;" /></p>
             </li>
             <li>
                 <p>Using the Command Window, navigate to the folder into which you extracted the files, then run MachineKeyGenerator.exe.<br /><img src="../Resources/Images/SystemAdministratorGuide/MKey3.png" /></p>
