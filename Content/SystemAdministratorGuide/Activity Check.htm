@@ -5,7 +5,7 @@
     </head>
     <body>
         <h1><a name="_Toc421172278"></a>
-            <MadCap:keyword term="Windows Scheduler;Activity Check;System Administration" /><a href="#_Toc421172278"><img src="../Resources/Images/link.png" alt="Link" /></a>Activity Check Page</h1>
+            <MadCap:keyword term="Windows Scheduler;Activity Check;System Administration" /><a href="#_Toc421172278"><MadCap:concept term="System Administration" /><img src="../Resources/Images/link.png" alt="Link" /></a>Activity Check Page</h1>
         <p>Process Director runs as a virtual directory in IIS and processes all time-related events like due dates when activity is present on the system (e.g. Users are actively working on the system). But, Process Director does not have a constantly running timer service, <b>it is only active when IIS is active and it is processing web page requests</b>. If there are no active users, IIS goes inactive and shuts down after 20 minutes of inactivity. We want to avoid that during business hours, but still leave some time for IIS to restart on its own during a period of inactivity. So, we have provided an activity check page in the installation folder, named activity_check.aspx.</p>
         <p>The activity check page does a couple things. First, it keeps IIS active so it does not shut down and need to restart during the business day. Second, it tells Process Director that timer process should NOT occur under the context of a user, but only occur in the context of the activity_check.aspx page. If timer processing occurs under the context of a user, they may see their session hang while the processing is occurring, but setting the timer context to the activity check page will avoid this.</p>
         <p class="Important">
