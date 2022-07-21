@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer" />
+            <MadCap:keyword term="CUSTOM SCRIPTING">&#160;</MadCap:keyword>Process Scripts</h1>
+        <p>
+            <MadCap:keyword term="Workflow Script;Timeline Script;Process Script">
+            </MadCap:keyword>This section documents how to write custom process scripts for Process Director. A process script is called from a Script step or activity in a workflow or Timeline definition. The Script task type specifies a Script Function Name. This function name can a custom script function. Your custom functions can be located on a specific custom script file (in the Process Director database). Each step in the process definition points to a script file.</p>
+        <p>To develop Workflow View Scripts inside Visual Studio, use the fully functional Visual Studio project installed with the product named bpVS.zip. Refer to the sample file workflow_script.ascx.</p>
+        <h4>Using a Specific Process Script File</h4>
+        <p>
+            <MadCap:keyword term="Using a Specific Process Script File">&#160;</MadCap:keyword>To write a custom script for a process, create a script file with “.ASCX” as the file extension on your local hard drive. Add your custom script code and then upload the file to the Process Director database using the Create New menu item in the Content List (select Document/File in the dropdown). Browse to the location of your ASCX file and upload the file to Process Director. This file will be displayed in the Content List on the server. To make changes to this script file, you must check out the file first, update it, and then upload the new version. For information about modifying files and documents on Process Director, refer to the Implementers Reference Guide. The script for a process is configured in the Properties page of the process definition. The script must exist in the Process Director database and it will be called when a Script task is run in the workflow. For more information on configuring process definition properties refer to Workflow and Timeline chapters in the Implementers Reference Guide.</p>
+        <h4>Writing a Process Script Function</h4>
+        <p>
+            <MadCap:keyword term="Writing a Process Script Function">&#160;</MadCap:keyword>The optional parameters specified in the Script task are used to call your Script function in the process custom script file. For example if you specify “SOME_PARM” as the Script Parameters specified in the Script task, the parameter to your C# function (pParm in the example below) will be set to “SOME_PARM”.&#160; If you need to pass multiple values to the workflow script, you will need to encode the values by separating them by commas or other techniques (e.g. MY_PARM,1,2). The entire string will be passed to the process script function (WF_Script) as a single parameter. You will need to parse the string into its components using C# string manipulation functions. Your function in the script file would look as follows:</p>
+        <p class="CodeBase">&lt;%@ Control Language="C#" AutoEventWireup="false"<br />&#160;&#160;&#160;&#160;Inherits="BPLogix.WorkflowDirector.SDK.bpFormASCX" %&gt;<br />&lt;script runat="server"&gt;<br />&#160;&#160;&#160;&#160;public override void WF_Script(string <span class="CodeOption">pParm</span>)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0("Called workflow script:" + <span class="CodeOption">pParm</span>);<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
+        <p>This function is immediately available to all workflows as soon as the file is saved. You may also use System Variables in the Script Step parameter field to extend the capabilities of the workflow script.</p>
+        <p>This method will be called with the following environment:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>LOCAL VARIABLE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentWorkflow</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The current Workflow object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>CurrentWorkflowStep</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The current WorkflowStep object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentForm</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional Form instance object of workflow form</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>CurrentPartition</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Instance of the current Partition object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentProject</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional instance of the current Project object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>CurrentProjectActivity</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional instance of the current ProjectActivity object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p><code>bp</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>The bp environment</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Debugging Process Scripts</h4>
+        <p>
+            <MadCap:keyword term="Debugging Process Scripts">&#160;</MadCap:keyword>To test your custom script, run the workflow that contains a Script task that calls your function. When that step in the process is run, any error will cause the step to remain running and never complete. View this step using the Graphical Administration tab.</p>
+        <p>If any errors are encountered running the script, the step will stop with and have the status set to Error. The status field of the step will show the exact error (e.g. a compile error for the script). Correct any errors in your custom script and then right click the workflow step in the Graphical Administration, and select Restart Step. When your script runs successfully the workflow step will complete and transition to the next step in the workflow. </p>
+        <p>You can also debug a process script using the logging functions, like bp.log0 and bp.log1.</p>
+        <h2><a name="Handlers"></a>Process Script Handlers</h2>
+        <p>
+            <MadCap:keyword term="Process Script Handlers">&#160;</MadCap:keyword>This section documents how to write custom script handlers for Process Director which are called prior to each process step starting, when an error is encountered, and when the process step ends. Both workflows and Process Timelines have similar script events that can be incorporated into the process script. You can configure a single script file in the process definition by using the Advanced Options tab of the Settings.</p>
+        <p>Scripted behavior can be added to the beginning or end of any workflow step or Process Timeline activity. The script events WF_StartStep and WF_StopStep are used for workflows, and the Timeline_StartActivity and Timeline_StopActivity events are used for timelines.</p>
+        <p>The WF_StartStep and Timeline_StartActivity events are called prior to the start of each workflow step or timeline activity, respectively. Similarly, the WF_StopStep and Timeline_StopActivity events are called when each workflow step or timeline activity, respectively, ends.</p>
+        <p>To develop Workflow View Scripts inside Visual Studio, use the fully functional Visual Studio project installed with the product named bpVS.zip. Refer to the sample file workflow_pre_script.ascx.</p>
+        <h4>Using a Specific Process Script File</h4>
+        <p>
+            <MadCap:keyword term="Using a Specific Process Script File">&#160;</MadCap:keyword>To write a custom script for a process, create a script file with “.ASCX” as the file extension on your local hard drive. Add your custom script code and then upload the file to the Process Director database using the Create New menu item in the Content List (select Document/File in the dropdown). Browse to the location of your ASCX file and upload the file to Process Director. This file will be displayed in the Content List on the server. To make changes to this script file, you must check out the file first, update it, and then upload the new version. For information about modifying files and documents on Process Director, refer to the Implementers Reference Guide. This script for a process is configured in the Properties page of the process definition. The script must exist in the Process Director database and it will be called when a Script task is run in the workflow. For more information on configuring process definition properties refer to Workflow and Timeline chapters in the Implementers Reference Guide.</p>
+        <h4>Writing the Script Handler</h4>
+        <p>
+            <MadCap:keyword term="Writing the Script Handler">&#160;</MadCap:keyword>Your function in the script file would look as follows:</p>
+        <p class="CodeBase">&lt;%@ Control Language="C#" AutoEventWireup="false" <br />&#160;&#160;&#160;&#160;Inherits="BPLogix.WorkflowDirector.SDK.bpFormASCX" %&gt;<br />&lt;%@ Import Namespace="System.Collections.Generic" %&gt;<br />&lt;script runat="server"&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// these functions are used for workflow step</span>s<br />&#160;&#160;&#160;&#160;public override void WF_Script(string pParm)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0 ("WF_Script: " + pParm);<br />&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;public override void WF_StartStep()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0 ("WF_StepStart");<br />&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;public override void WF_StopStep()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0 ("WF_StepStop");<br />&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;public override void WF_PreStep(List&lt;ProcessUser&gt; pUsers)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0 ("WF_PreStep");<br />&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;public override void WF_ErrorStep(string pMessage)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0 ("WF_ErrorStep: " + pMessage);<br />&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;public override void WF_Check()&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0 ("WF_Check");<br />&#160;&#160;&#160;&#160;}<span class="ControlName"><br />&#160;&#160;&#160;&#160;// these functions are used for Timeline activities</span><br />&#160;&#160;&#160;&#160;public override void Timeline_Script(string pParm)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0 ("Timeline_Script: " + pParm);<br />&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;public override void Timeline_PreActivity(List&lt;ProcessUser&gt; pUsers)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0 ("Timeline_PreActivity");<br />&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;public override void Timeline_StartActivity()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0 ("Timeline_StartActivity");<br />&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;public override void Timeline_StopActivity()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0 ("Timeline_StopActivity");<br />&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;public override void Timeline_Check()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0 ("Timeline_Check");<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
+        <p>These functions are immediately available to all workflows as soon as the file is uploaded to the Content List. </p>
+        <p>The functions WF_StartStep and Timeline_StartActivity will be called at the beginning of every step in the process, even if the step has no users. It is called before PreStep.</p>
+        <p>The functions WF_PreStep Project_PreActivity will be called prior to every step in this process starting. The list of users which will be assigned to the CurrentWorkflowStep or CurrentProjectActivity is passed in the pUsers parameter. You can add to, remove, or replace users in this list. Timeline_PreActivity and WF_PreStep are only called for user steps.</p>
+        <p>The function WF_ErrorStep will only be called if the step encounters an error. The pMessage parameter has the error text.</p>
+        <p>The functions WF_StopStep or Timeline_StopActivity are called prior to a step’s completion or termination.</p>
+        <p>The functions Timeline_Check() and WF_Check(), for Timelines and Workflows respectively, enable you to check for advancing and due date/timer processing, and can be useful to implement custom timer processing. These are optional overrides that can be defined in the script associated with the timeline or workflow definition.</p>
+        <p>When a custom timeline script alters the state of a workflow or timeline process it will be processed immediately after the script runs, so that changes made to the process state are immediately reflected to the user. </p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>PROCESSUSER PROPERTIES</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>UID</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The UID of the user who will be assigned to this step</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>SUID</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional STEP USER ID that is starting this user, could be a group step user record</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>AdminUID</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional, used to set the UID of the person adding the user to this step</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>AdminComment</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>Optional, used to set the comment from the person adding the user to this step</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>This method will be called with the following environment:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>LOCAL VARIABLE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentWorkflow</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The current Workflow object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>CurrentWorkflowStep</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The current WorkflowStep object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentForm</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional Form instance object of workflow form</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>CurrentPartition</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Instance of the current Partition object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentProject</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional instance of the current Project object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>CurrentProjectActivity</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional instance of the current ProjectActivity object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p><code>bp</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>The bp environment</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

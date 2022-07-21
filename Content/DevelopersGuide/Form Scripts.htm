@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer" />
+            <MadCap:keyword term="CUSTOM SCRIPTING">&#160;</MadCap:keyword>Form Scripts</h1>
+        <p>
+            <MadCap:keyword term="Form Scripts">
+            </MadCap:keyword> Form scripts can be used for both Microsoft Word-based Forms, and native .ASCX Forms.</p>
+        <p>To develop Form Scripts inside Visual Studio, use the fully functional Visual Studio project installed with the product, which is bundled into a ZIP archive named bpVS.zip. This ZIP file is located in the c:\Program Files\BP Logix\Process Director\ directory by default. You can copy this utility to any computer that runs Visual Studio 2013 or higher. Cloud customers can download the plugin from the Downloads section of the <a href="https://bplogix.zendesk.com/hc/en-us/sections/4408576448283-Process-Director-Software-and-Downloads" target="_blank">BP&#160;Logix support site</a>.</p>
+        <p>Refer to the sample files eform_*.ascx, as well as the SamplePage.aspx file referenced in the <a href="#_Toc421269945">Custom ASPX&#160;Pages</a> section of the documentation, below.</p>
+        <p>Scripts for Microsoft Word-based Forms should be placed into a separate .ASCX document in the Content List. Here is the structure for this type of script:</p>
+        <p class="CodeBase">&lt;%@ Control Language="C#" AutoEventWireup="false" <br />&#160;&#160;&#160;&#160;Inherits="BPLogix.WorkflowDirector.SDK.bpFormASCX" %&gt;<br />&lt;script runat="server"&gt;<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Events...</span><br />&lt;/script&gt;<br />&lt;script&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Insert client-side JavaScript code and functions here...</span><br />&lt;/script&gt;</p>
+        <p>Scripts for .ASCX Forms are typically placed in the same file as the .ASCX source form. Here is the structure for this type of form:</p>
+        <p class="CodeBase">&lt;%@ Control Language="C#" AutoEventWireup="false"<br />&#160;&#160;&#160;&#160;Inherits="BPLogix.WorkflowDirector.SDK.bpFormASCX" %&gt;<br />&#160;&#160;&#160;<span class="ControlName">&#160;// Actual Form contents...</span><br />&lt;script runat="server"&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Events...</span><br />&lt;/script&gt;<br />&lt;script&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Insert client-side JavaScript code and functions here...</span><br />&lt;/script&gt;</p>
+        <h2><a name="Events"></a>Form Script Events <a href="#Events" class="anchor">#</a></h2>
+        <p>In both cases, the APIs and events available are the same. All events will be called with the following environment:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 20rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>LOCAL VARIABLE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentForm</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Reference to the current Form instance object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>CurrentUser</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional instance of the current User object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentPartition</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Instance of the current Partition object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>CurrentWorkflow</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional instance of the current Workflow object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentWorkflowStep</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional instance of the current WorkflowStep object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>CurrentWorkflowStepUser</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional instance of the current WorkflowStepUser object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentProject</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional instance of the current Project object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>CurrentProjectActivity</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Optional instance of the current ProjectActivity object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentProjectActivityUser</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional instance of the current ProjectActivityUser object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>bp</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The bp environment</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>bpEventHandle</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The class that holds information about the event that generated postback</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>bpEventHandle.EventType</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The type of event</p>
+                        <p><code>bp.EventType.User</code> – A custom button was hit</p>
+                        <p><code>bp.EventType.Complete </code>– A process complete button was hit</p>
+                        <p><code>bp.EventType.Cancel</code> – The cancel button was hit</p>
+                        <p><code>bp.EventType.Save</code> – The Save button was hit</p>
+                        <p><code>bp.EventType.SaveAndClose</code> – The Save and Close button was hit</p>
+                        <p><code>bp.EventType.Print </code>– The Print button was hit</p>
+                        <p><code>bp.EventType.CancelClose</code> – The Cancel process button was hit</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>bpEventHandle.EventName</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The name of the control that initiated the postback</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>bpEventHandle.EventControl</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>The actual FormControl of the control that initiated the postback</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p><code>bpEventHandle.EventControl.ArrayNum</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>The array row number of event, or 0 if event was not caused inside array.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>The Form life cycle has the following event callbacks:</p>
+        <p class="CodeBase">&lt;%@ Control Language="C#" AutoEventWireup="true" <br />&#160;&#160;&#160;&#160;Inherits="BPLogix.WorkflowDirector.SDK.bpFormASCX" %&gt;<br />&lt;script runat="server"&gt;<br /><span class="ControlName">// These methods are optionally overridden to allow custom script <br />// to be inserted into the Form life-cycle.<br /><br />// Called 1 time per form instance to initialize form fields</span><br />protected override void BP_FormInitialize()<br />{<br />}<br /><span class="ControlName"><br />// Called first time in ViewState that form is displayed</span><br />protected override void BP_ViewStateInit()<br />{<br />}<br /><br /><span class="ControlName">// Called for every event control and complete button</span><br />protected override void BP_Event(bp.EventType pEventType, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string pEventName)<br />{<br />}<br /><br /><span class="ControlName">// Called prior to processing rules</span><br />protected override void BP_Rules()<br />{<br />}<br /><br /><span class="ControlName">// Called after processing rules</span><br />protected override void BP_Rules_Post()<br />{<br />}<br /><br /><span class="ControlName">// Called prior to completing before internal validation</span><br />protected override void BP_Validation()<br />{<br />}<br /><br />// Called prior to completing after internal validation<br />protected override void BP_Validation_Post()<br />{<br />}<br /><br /><span class="ControlName">// Called prior to saving form data and closing form</span><br />protected override void BP_Completed()<br />{<br />}<br /><br /><span class="ControlName">// Called just prior to displaying a form</span><br />protected override void BP_Display()<br />{<br />}<br />&lt;/script&gt;</p>
+        <p>These methods are optionally overridden to allow custom script to be inserted into the Form life-cycle:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 20rem;" />
+            <col style="width: 730px;" class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>EVENT</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>BP_FormInitialize()</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Called 1 time per form instance to initialize form fields</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>BP_ViewStateInit()</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Called first time in ViewState that form is displayed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>BP_Event(bp.EventType pEventType, <br />&#160;&#160;&#160;&#160;string pEventName)</code> </p>
+                        <p>&#160;</p>
+                        <p>See sample above for example.</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Called for every event control and complete button</p>
+                        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                            <col style="width: 50%;" class="TableStyle-Simple-Column-Column1" />
+                            <col style="width: 50%;" class="TableStyle-Simple-Column-Column1" />
+                            <thead>
+                                <tr class="TableStyle-Simple-Head-Header1">
+                                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                        <p>pEventType:</p>
+                                    </th>
+                                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                        <p>The type of control that caused the event</p>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                        <p><code>bp.EventType.User</code>
+                                        </p>
+                                    </td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                        <p>A user event from a form control</p>
+                                    </td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row2">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                        <p><code>bp.EventType.Complete</code>
+                                        </p>
+                                    </td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                        <p>One of the complete buttons on a form</p>
+                                    </td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                        <p><code>bp.EventType.Save</code>
+                                        </p>
+                                    </td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                        <p>Save form data</p>
+                                    </td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row2">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                        <p><code>bp.EventType.SaveAndClose</code>
+                                        </p>
+                                    </td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                        <p>Save form data and close form</p>
+                                    </td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                        <p><code>bp.EventType.Print</code>
+                                        </p>
+                                    </td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                        <p>Print form</p>
+                                    </td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row2">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                        <p><code>bp.EventType.CancelClose</code>
+                                        </p>
+                                    </td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                        <p>Cancel workflow or form submission</p>
+                                    </td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                        <p><code>bpEventName</code>
+                                        </p>
+                                    </td>
+                                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                        <p>The ID of the form control that caused the event</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>BP_Rules()</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Called prior to processing rules</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>BP_Rules_Post()</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Called after processing rules</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>BP_Validation()</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Called prior to completing before internal validation</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>BP_Validation_Post()</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Called prior to completing after internal validation</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>BP_Completed()</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Called prior to saving form data and closing form</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p><code>BP_Display()</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>Called just prior to displaying a form</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

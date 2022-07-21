@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="CUSTOM SCRIPTING">&#160;</MadCap:keyword>
+            <MadCap:concept term="Developer" />Knowledge View Scripts</h1>
+        <p>
+            <MadCap:keyword term="Knowledge View Scripts">&#160;</MadCap:keyword>This section provides a reference for writing custom Knowledge View scripts for Process Director. The Knowledge View supports a custom script that can be called before the results are displayed to the user. The custom scripts are stored in the Process Director database in the Content List. The custom script is used to inspect, modify, calculate, or remove results from the Knowledge View. </p>
+        <p>To develop Knowledge View Scripts inside Visual Studio, use the fully functional Visual Studio project installed with the product named bpVS.zip. Refer to the sample file kview_script.ascx.</p>
+        <h4>Writing a Knowledge View Script Function</h4>
+        <p>
+            <MadCap:keyword term="Writing a Knowledge View Script Function">&#160;</MadCap:keyword>A Knowledge View can have a custom script that can alter the results of the displayed information.</p>
+        <p>When the Knowledge View runs, it will call this method in the script for EVERY row in the result:</p>
+        <p class="CodeBase">public override bool KV_Display(List&lt;NameValueEx&gt; <span class="CodeOption">pColumns</span>, <br />&#160;&#160;&#160;&#160;ContentObject <span class="CodeOption">pObject</span>, out bool <span class="CodeOption">pRemoveRow</span>)</p>
+        <p>If you set the pRemoveRow to true, then the row being processed will be excluded from the report.</p>
+        <p>The example below will add the HTML “bold” tag around the value for the Amount columns.</p>
+        <p class="CodeBase">&lt;%@ Control Language="C#" AutoEventWireup="false"<br />&#160;&#160;&#160;&#160;Inherits="BPLogix.WorkflowDirector.SDK.bpScript" %&gt;<br />&lt;%@ Import Namespace="System.Collections.Generic" %&gt;<br />&lt;%@ Import Namespace="BPLogix.WorkflowDirector.SDK" %&gt;<br />&lt;script runat="server"&gt;<br />&#160;&#160;&#160;&#160;public override bool KV_Display(List&lt;NameValueEx&gt; pColumns, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ContentObject pObject, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;out bool pRemoveRow)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;pRemoveRow = false;<span class="ControlName">// Do not remove the row being processed</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;foreach (var entry in pColumns)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// Bold the Amount column<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;if (entry.Name == "Amount")<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;entry.Value = "&lt;b&gt;" + entry.Value + "&lt;/b&gt;";<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return true;<span class="ControlName">// Return true if a value has changed</span><br />}<br />&lt;/script&gt;</p>
+        <p>Notice that Knowledge View scripts inherit from&#160; BPLogix.WorkflowDirector.SDK.bpScript.</p>
+        <p>This method will be called with the following environment:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width:100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>LOCAL VARIABLE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p><code>CurrentUser</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Optional instance of the current User object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p><code>CurrentPartition</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Instance of the current Partition object</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                        <p><code>bp</code>
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                        <p>The bp environment</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>NameValueEx List Object</h4>
+        <p>Note that the Knowledge View script uses the NameValueEx list object to store the values in each of the Knowledge View columns. The Value attribute of the NameValueEx list is always a string, but, of course, the value may be derived from a non-string object. Let's say that a value we wish to find comes from a checkbox. In that case, we would see the Value of the checkbox represented by the string values "True" or "False". If the Value contains a string representation of a number, on which you'd like to do some math, you can use the built-in Process Director conversion methods to convert the Value string to an appropriate numeric value.</p>
+        <p>In addition to the Value attribute, however, the NameValueEx list class also has a ValueEx attribute that contains the actual .NET DataItem object for the field, or a decminal number.</p>
+        <p>The NameValueEx object constructor has four overloads:</p>
+        <p class="CodeBase"><span class="ControlName">//Null values</span>
+            <br />public NameValueEx()<br /><span class="ControlName">//String Name and Value</span><br />public NameValueEx(string <span class="CodeOption">pName</span>, string <span class="CodeOption">pValue</span>)<br /><span class="ControlName">//String Name and Value, and Decimal Number</span><br />public NameValueEx(string <span class="CodeOption">pName</span>, string <span class="CodeOption">pValue</span>, decimal <span class="CodeOption">pNumber</span>)<br /><span class="ControlName">//String name and Value, and List DataItem</span><br />public NameValueEx(string <span class="CodeOption">pName</span>, string <span class="CodeOption">pValue</span>, DataItem <span class="CodeOption">pDataItem</span>)</p>
+    </body>
+</html>
