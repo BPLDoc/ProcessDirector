@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Process Timelines" />
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Parent Activity" />Parent Activity</h1>
+        <p> Parent activities are parent containers for other activities, which are referred to as “Children” or "child activities". </p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" title="Important" /> You should not use any other type of activity as a Parent Activity.</p>
+        <p>In Process Director versions 3.45 and higher, additional functionality is available to Parent activity types: Results Concatenation and Looping.</p>
+        <p>In addition to the common properties tabs that appear for all Timeline activities, the configuration settings below are unique to this activity type.</p>
+        <h2>Results and Result Concatenation</h2>
+        <p>By default, the result of a parent activity is set to the result of the child task whose completion resulted in the completion of the parent (this behavior is implemented in Process Director v3.45 and up. In previous versions, the parent never has a result.). Parent activities have the option of setting the result of the Parent activity to a comma-separated list of all the child results. This list will contain only the results from the immediate child activities of the Parent activity; it will not use results from any Parent activities that have been created under the top-level Parent. If the parent is configured to loop, only the results from the final iteration will be included. If the parent contains other parent activities, only the results from the direct children of that parent will be included; the results from the children of "subparents" will not be included.</p>
+        <h2><a name="Looping"></a>Looping Tab</h2>
+        <p>Parent activities can also be used to create loops within your Process Timeline. When configured this way, the children are referred to as a “looping segment”, i.e., a segment of your Process Timeline that iterates, or loops. A looping segment will continuously loop through the child activities until a user-defined condition, or set of conditions, is satisfied. </p>
+        <p>
+            <img src="../Resources/Images/loop.png" alt="Iteration Loop" />
+        </p>
+        <p>Selecting the Parent activity type will display a Looping tab in the designer, from which the iteration conditions can be specified.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/LoopingTab.png" />
+        </p>
+        <p>A parent activity that implements iteration will also display a unique icon in the Process Timeline definition.</p>
+        <p>
+            <img src="../Resources/Images/Training/Advanced/Iteration.png" />
+        </p>
+        <p>The Looping tab contains three methods for controlling iteration through the child activities, each of which controls some aspect of how the looping segment will work by determining the conditions under which the following actions will occur:</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li style="list-style-type: disc;">Stop repeating the loop</li>
+            <li style="list-style-type: disc;">Jump back to the top of the loop</li>
+            <li style="list-style-type: disc;">Cancel the remaining activities within the segment and stop repeating the loop.</li>
+        </ul>
+        <p>Here’s how these three methods work. </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Repeat Loop Until condition is met</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Each time Process Director prepares to execute the looping segment, this condition will be evaluated to determine whether or not to do so. If the condition is not met, the looping segment will start again. If the condition is met, however, the loop will not be repeated, and the parent activity will be marked as complete. Any successive activities in the Process Timeline will now be eligible to run.</p>
+                <p>The remaining methods of controlling the loop rely on conditions that are evaluated each time any child activity completes. When the relevant condition is met, execution of the loop will be interrupted.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Jump back to the top of the loop when condition is met</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>When the specified condition is met, the current loop will be immediately stopped, and the loop will restart with the first child activity.&#160; </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Cancel the remainder of the loop when condition is met</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>When the condition specified by the user is met, the current loop will be immediately stopped, and the parent activity will be marked as complete. Any successive activities in the Timeline will now be eligible to run. </p>
+                <p>It is quite possible that you will need to configure all three methods. As an example, let's consider a simple approval process for a request. Suppose that each level of approval can end in one of three results: Approve, Reject, and Terminate. In this case, we might want to configure the segment as follows:</p>
+                <ul style="list-style-type: disc;margin-left: 36pt;">
+                    <li style="list-style-type: disc;">Stop repeating the loop when all approvers approve the request</li>
+                    <li style="list-style-type: disc;">Exit the segment any time an approver chooses the terminate option</li>
+                    <li style="list-style-type: disc;">Jump back to the top of the segment when any approver chooses the reject option, to give earlier reviewers a chance to make changes.</li>
+                </ul>
+                <p>The first method for controlling the loop relies on a condition that is evaluated when your Process Timeline first runs the parent activity, and then again each time the looping segment completes (that is, each time all of the activities in the loop have completed).</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Reason If Other Users Are Canceled/Canceled due to jump</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property gives you the ability to provide an administrative comment that will show up in the <span class="NamedControl">Routing Slip</span> for the Timeline if the loop is canceled or restarted and cancels users in parallel activities.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Advanced Options Tab</h2>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes13.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Set Activity result to a list of all children or user results</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Selecting this option concatenates the results of all child activities to a comma-separated list of results, which become the result for the Parent activity.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Related System Variables</h2>
+        <p>The looping functionality is normally predicated on the results of the Child Activities. Specific System Variables have been implemented to make accessing the results of the Child Activities easier.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Process Timelines_29.jpg" style="visibility: visible;" />
+        </p>
+        <p>The Iteration SysVars are available from the Timeline Activity branch of the <span class="ProcessDirectorObject">Condition Builder</span>'s System Variables menu, and consist of:</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544616" target="_blank">Any Child Activity Result</a>
+            </li>
+            <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544615" target="_blank">All Children Activity Results</a>
+            </li>
+            <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544621" target="_blank">Last Child Activity Result</a>
+            </li>
+            <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544624" target="_blank">Parent Activity Iterated</a>
+            </li>
+            <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#ParentActivityRestarted">Parent Activity Restarted</a>
+            </li>
+        </ul>
+        <p>Follow the links above to see a detailed explanation of each System Variable.</p>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Process Timelines" />
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Branch Activity" />Branch Activity</h1>
+        <p>Enables an activity to jump or branch to another activity in the running Process Timeline. For Process Director v3.49 and above, the use of this Activity type should be replaced, in most cases, by the use of the Looping functionality available in the Parent activity type.</p>
+        <p>In addition to the common properties tabs that appear for all Timeline activities, the configuration settings below are unique to this activity type.</p>
+        <h2>Branch Tab</h2>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes12.png" />
+        </p>
+        <p>The Branch tab determines where the activity goes, as specified by the “Branch Type” dropdown. The Branch can either roll back to the activity on which it depends or start or jump to a new activity. Jumping to a new activity skips all the activities in between; they will not be started this process instance. Starting a new activity allows the steps in between to start as they normally would.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Branch Type</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This dropdown control contains the following configuration options:</p>
+                <ul>
+                    <li><b>Rollback:</b> This will branch back to an earlier activity and proceed normally from there. This branch can only be configured to roll back to an activity preceding this activity on the dependency hierarchy. The activity must be dependent on the activity to which this activity rolls back, or it must be dependent on an activity dependent on that activity, and so on. For users of Process Director 5.26 and higher, Timelines can be rolled back to Parent activity types.</li>
+                    <li><b>Start:</b> This will start the defined activity, complete this branch activity, and then continue processing normally from this point. Staring another activity does not end the branch that is currently running. The specified activity will start, and run concurrently with the activities that follow the Branch activity.</li>
+                    <li><b>Jump:</b> This will transfer control from this branch activity to the activity we want to jump to, any activity “dependent” on this branch activity will NOT get run.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Branch to Activity</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This dropdown contains a list of available Activities to which you may branch in the Timeline. The activities that appear in this list will depend on the location of this activity in the timeline, the <span class="ControlName">Branch Type</span> selected, and the activities that are in the critical path of the Process Timeline.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

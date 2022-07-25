@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Process Timelines" />
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="User Activity" />User Activity</h1>
+        <p>The user Activity is used to create an actionable item assigned to a user. If a user Activity has been assigned to a user, a task will appear in the user's <span class="ProcessDirectorObject">Task List</span>. The user must complete the task before it can be removed from the <span class="ProcessDirectorObject">Task List</span>. A user who is assigned a task will be automatically given permission to any object in the Process Timeline package so they may complete the task. Examples of this task can be an approval task or update task.</p>
+        <p>When a Process Timeline Activity is assigned to a user with an invalid UID or user ID, Process Director will immediately stop the process, and place the Process Timeline Activity into an error state. This is also true for anonymous user assignments if the email address is not a valid format (Process Director cannot validate the email address itself, only the format).</p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" alt="Note" /> If your process includes tasks for unauthenticated users, please refer to the documentation on <a href="Managing Users.htm#_Toc421536078">Anonymous Users</a> for special concerns that may apply to some settings.</p>
+        <p>In addition to the common properties tabs that appear for all Timeline activities, the configuration settings below are unique to this activity type.</p>
+        <h2><a name="Participants"></a>Participants Tab <a href="#Participants" class="anchor">#</a></h2>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities3.png" />
+        </p>
+        <p>Determines which users are a participants of the user task. Users can be added via the <span class="UIElement">Add Participant</span> button, and the participants can be specified via the <span class="ControlName">Participant Type </span>dropdown.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes2.png" />
+        </p>
+        <p>When multiple users are assigned to a task,  a sub task can be automatically created for each user. You must have a form field that specifies the name of each desired subtask. For instance, you might assign a task called "Approvals" to two users, in sequence. In that case, you would need two form fields, one of which has a default value of "Approval 1", and the other "Approval 2". When the users complete their task, Both the Task Name and Sub Task name will be assigned to each user, so that you can track both the task, and sub tasks for each user, as they are completed.</p>
+        <h2><a name="Results"></a>Results Tab <a href="#Results" class="anchor">#</a></h2>
+        <p>The <span class="UIElement">Results </span>Tab appears when either the User or Wait activity types are selected. The Process activity also has a result, which is generated automatically, and is explained in the "Results of a Process Activity" section below.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities5.png" />
+        </p>
+        <p>A user activity in the Process Timeline can have results assigned to it. Multiple results can be added to an activity by clicking on the Add Result Button.&#160; Each result will have its own properties, which are presented in a tabbed interface.</p>
+        <p>The results will be used as the Activity result for the task, which will appear in the <span class="NamedControl">Routing Slip</span> and in the Timeline Administration screen.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Result Name</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The name of the result, which will appear on all Forms, and as the completed result in the Timeline instance, if the result is selected by a user.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Description</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A brief text description of the result.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="_Toc421536165"></a>Conditions Tab <a href="#_Toc421536165" class="anchor">#</a></h3>
+        <p>This is one of the two tabs displayed for each result's configuration settings. The <span class="UIElement">Conditions </span>Tab includes the following controls.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ResultsContitionsTab.png" alt="Conditions Tab" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>% of participants that choose this result </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If the specified percentage of users select this result, the task will be considered complete, with this result recorded as the activity result. For example, if you wish the task to be concluded when 75% of users select this result, then the value you would place in the text box would be "75".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot># of participants that choose this result </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If the specified number of users select this result, the task will be considered complete, with this result recorded as the activity result. For example, if you wish the task to be concluded when 3 users select this result, then the value you would place in the text box would be "3".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Confirmation prompt for this result </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If a user selects this result, the specified confirmation prompt will be displayed to the user, requiring the user confirm this selection before it is recorded.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Activity result condition met when</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This enables you to select a condition, or conditions, which, when met, will complete this task with the result recorded as the activity result. </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> When setting an activity result condition, you <b>must</b> set the Completed When dropdown to "When Any Result Condition Is Met" to complete the activity on the Completed When tab of the activity definition. <br /><br /><img src="../Resources/Images/ImplementersReference/ResultCondition.png" /></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Show this result button when</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This enables you to select a condition, or conditions, which, when met, will display this result option to the user. If the condition(s) are not met, the result button will not be displayed to users.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Default Result</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This is a check box that, when checked, designates the result as the default result for the Timeline activity. When setting a Completed When condition, you <b>must</b> specify a default result, or the activity will either not end as expected, or will go into an error state.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h4>Results of a Process Activity</h4>
+        <p>The Process step requires that a Workflow or Process Timeline definition be configured. The configured process will be started as a subprocess (child process) of the main (parent) process. A subprocess can consist of a Workflow or a Process Timeline. You may copy objects from the parent process to the child process and vice versa.</p>
+        <p>When a subprocess contains an End Process step or activity, it will return the name of the End Process step as a result for the parent Process activity. Process Timelines and Workflows use the End Process function differently, so the results can be slightly different depending on the type of subprocess that is called by the Process activity.</p>
+        <h5>Workflow </h5>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Workflow2_29.jpg" style="visibility: visible;mso-wrap-style: square;" />
+        </p>
+        <p>In the example above, the Workflow's End Process step is named "Completed".&#160; If this Workflow runs as a subprocess, then, when the process reaches this step and completes, the name "Complete" will be passed to the parent workflow as the result of the Process step that started the sub-process.</p>
+        <p>Workflows do NOT automatically end when an End process step is reached. Workflows end when all of the required steps in a Workflow have completed. You can have two Workflow paths running concurrently, or in parallel, each of which may have its own End Process step. If a Workflow contains two parallel paths that each have a different End Process step, then, when the subprocess completes, it will return a comma-separated string containing the names of BOTH end process steps. In the parent Process Timeline, the returned string will then be set as the result of the Process activity that started the subprocess.</p>
+        <h5>Timeline</h5>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities6.png" />
+        </p>
+        <p>Unlike the End Process step in the Workflow, the End Process activity in a Process Timeline stops the running of the Process Timeline immediately. As such, the End Process activity can only run once in a Process Timeline. So, if you have parallel activities running in a Process Timeline, all of the parallel steps must complete before the End Process activity is reached.&#160; Process Timelines with multiple End Process activities will need to have conditions set on each End Process activity to ensure that only one of the End Process Activities runs. When the subprocess completes, the name of the End Process activity that was run will be returned to the parent process as the result of the Process activity that started the subprocess.</p>
+        <h3><a name="_Toc421536166"></a>Options Tab</h3>
+        <p>This is one of the two tabs displayed for each results configuration settings. The Options Tab includes the following controls.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ResultsOptionTab.png" alt="Options Tab" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Button order on Form</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This is a numeric value that determines the order in which the activity result button will appear on a Form. You may order the activity results in any order you desire. If you do not order the buttons manually, they will be displayed in the order in which the result was created. In older versions of Process Director, Process Timeline activity results were specified using a comma-separated list. The display of the buttons on the form for each result followed the order in which they were listed. Now, when migrating from an older release to this one, the display order of the results will be automatically preserved. To modify the order, adjust the "Button Order on Form" property of each result in the activity Results tab.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Button icon on Form </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking on the icon allows you to select a custom icon from a list. The selected icon will appear on the activity result's button on the Form.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Button Background Color</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The setting enables you to select a background color for the result button that will appear on the form.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Button Text Color</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The setting enables you to select a text color for the result button that will appear on the form.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Optional list of strings for email complete</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This text box will accept a comma-separated list of string values. For tasks that can be completed by email, a user can complete the task by replying to the task assignment email with one of the strings in the list you enter into this control. For example, the result displayed above is the "Reject" result. You might put the following list of responses into this control: "Reject, No, Disapprove, Rejected, Not Approved". If a user replies to the task assignment email with "No"—or any of the other possible responses in the list—as the body of the email message, the Reject result will be recorded as the activity result.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Signature Comments Required</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If this option is selected, then, if the user selects this result, then the Results Comments control in the Form cannot be empty.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Allow this result to be completed from the user's Task List</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If this option is selected, then users can complete this task from their <span class="ProcessDirectorObject">Task List</span> without opening the Form for the process. </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> This feature requires the use of a custom Task List that includes a column to display the results.</p>
+                <p>When the user completes a task from the <span class="ProcessDirectorObject">Task List</span>, Process Director will display a small popup that indicates the task completion is in progress. Additionally, if the result selected is configured to require completion comments, Process Director will prompt the user for the comments before completing that task.</p>
+                <p>The size of the prompt and confirmation dialogs will not usually need to be changed, however, if, for some reason the size does need to be changed, there are custom variables available to change the width and height of the dialogs: nTaskCompleteDialogWidth, nTaskCompleteDialogHeight, nTaskCompletePromptDialogWidth, and nTaskCompletePromptDialogHeight. Documentation for these four custom variables can be found in the <a href="../DevelopersGuide/Customization File Misc.htm">Miscellaneous Custom Variables</a> topic of the Developer's Guide.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Skip validation on form when Selected</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Check this box to specify that a given activity result will cause validation to be skipped. The feature is especially useful for steps/activities that include an option for the user to abandon or reject a form, which the user should be able to accomplish without, for example, filling in all required fields.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="Due"></a>Due Date Tab <a href="#Due" class="anchor">#</a></h2>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities10.png" />
+        </p>
+        <p>The standard options for the Due Date tab are described in the <a href="Process Timeline Activities.htm#_Toc421536170">Due Date Tab section</a> of the Timeline Activities topic. The User activity type also has an additional option specific to the User activity type.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>If time limit expires</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A dropdown that specifies the actions to take when the Due Date expires. The following options are available.</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: ;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>Option</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>Result</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Take no action</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Lets the activity continue running.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Cancel This Activity</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Cancel the activity and automatically advance to the next activity in the Process Timeline.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Add These Users from Business Rule</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Add users identified in the Business Rule.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Replace existing users with those in Rule</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Add the user from the Business Rule and cancel any running users.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Cancel the entire Timeline</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>Cancel the Process Timeline.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="Advanced"></a>Advanced Options Tab <a href="#Advanced" class="anchor">#</a></h2>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/TLAdvancedTab1.png" />
+        </p>
+        <p>This tab provides many additional settings for controlling task assignment, completion, activity restarts, and more, as described below.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Is activity required to complete parent </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this option will not allow a parent activity to complete until this activity is complete. This is the default option. This usually applies to an activity that is organized under a Parent activity type. If this activity does not complete, then the Parent activity cannot complete. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Set Activity result to a list of all user results</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>By default, the Result of a user activity that is completed by multiple users will be the single result selected by most users. For instance, if two users pick Reject and one picks Accept, the activity result is set to "Reject". In the case of a tie, e.g., if one user selects Accept and one Reject, the Result is set to "Accept, Reject". Selecting this option on a user activity causes the Result to be set to the comma-separated union of all Results selected by users. So, in the first example above, the Result would be set to "Reject, Reject, Accept" or some similar result. The order of the results in the results list is not guaranteed.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Re-authenticate Users</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Forces users to re-authenticate prior to completing a task. For example, when this option is selected, built-in users will be presented with a login screen, requiring them to log in prior to completing the task, even if they are currently logged in to Process Director. This is an extra security precaution.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Prompt for Signature Comments</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this option will cause a prompt to appear to users to enter signature comments when completing the task.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Allow Task Sharing</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this option will enable task sharing through the <a href="../SystemAdministratorGuide/User Delegation.htm#SharedDelegation">Shared Delegation</a> feature. If this option is not checked, this task will not be available for Shared Delegation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Allow task to be completed from email</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this option will enable users to complete the task by replying to an email without opening the Form associated with the activity or Process Timeline. Process Director can monitor an email inbox, import and parse the emails, and search for specific text in the email to determine the result. If a possible result for an activity is "Approved", a user can reply with the word "Approved" in the body text of the reply, and Process Director will complete the activity with the result of "Approve".</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Enable email invitations</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this option will enable users to invite others to perform the user task by forwarding the task assignment email to them. The task assignee can forward the email to a desired alternate, for example, and when that alternate clicks on a completion link in the email, the task will be completed with the appropriate result, and with an annotation that the task was completed by the users invited by the original task assignee.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Require at least one user to be assigned and complete this task</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If this option is checked, at least one user will be required to complete the task, or the task cannot complete. Depending on how the task assignment is configured, it's possible that no users will be assigned to the task in certain scenarios. For instance, if a task restarts after all users have completed their assignment, and the assignment is set to "Start users that did not complete previously" there will be no available user to which the task can be re-assigned. Checking this option will assign the task to one of the previously completed users.</p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> If an administrator cancels a user in an Activity where this option is set, the Activity will go into an error state. The administrator will have to cancel the Activity to cause it to move on.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Assign task to first user to accept</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this option will, when the task is assigned to multiple users, allow the first user to accept the task to be assigned to complete the task. When the task begins, all of the configured users will receive a <span class="ProcessDirectorObject">Task List</span> item that requests them to accept the task. When opening the Form, an <span class="UIElement">Accept Task</span> button will be displayed at the bottom of the Form. When any of the configured users clicks the <span class="UIElement">Accept Task </span>button, Process Director will remove task acceptance request from the <span class="ProcessDirectorObject">Task List </span>of all the other configured users, and the task will be assigned solely to the user who accepted the task.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Allow anonymous users to be assigned tasks by email address</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Checking this option will enable anonymous users to complete a task based on the user's email address. This is a required option when using the <a href="../SystemVariablesReferenceGuide/Email System Variables.htm#EmailAnonTaskList" target="_blank">Email Anonymous Task List</a> system variable. In the vast majority of use cases, however, the email address will be taken from a Form field identified on the Participants tab.</p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> Access to Process Director for unauthenticated or anonymous users is enabled for Cloud and Subscription licenses. On-premise licenses using the legacy Tired licensing model require  an additional, optionally licensed component.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Switch the user in Case Folder View when opening this task</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If this task is part of a Case Management application, checking the property will automatically display the Case Folder view when the user opens the task.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Assign users to this task</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option enables you to select how wish to assign a task when multiple users are associated with the same task. You have the following options:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>All in parallel</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>All users will be assigned the task at the same time, and will complete their actions at the same time as the other users.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>All in series</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Each user will be assigned the task individually, and each user must complete the assigned action before the task is assigned to the next user. The process will continue until all users have completed their actions.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>One (Round Robin)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Only one user will be assigned the task each time an instance of the Timeline is run. Each time an instance is run, a different user will be assigned the task until all users have been assigned an instance of the process. This will divide the assignments equally among all assigned users.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>One (fewest tasks in this process)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Only one user will be assigned the task each time an instance of the Timeline is run. Process Director will assign the task to the user who has the fewest number of active tasks pending in this process. This method assigns the task to the user who has the smallest workload in this process.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>One (fewest tasks overall)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>Only one user will be assigned the task each time an instance of the Timeline is run. Process Director will assign the task to the user who has the fewest number of active tasks in their <span class="ProcessDirectorObject">Task List</span>. This method assigns the task to the user who has the smallest overall workload.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>After a user completes this task</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option determines how a user's tasks are displayed when a user is assigned two sequential tasks in a process. The default in Process Director is to automatically show the user's next task if it is in the current process. </p>
+                <p>For example, if a user completes a task in a Form, and is also assigned the next task in the sequence, once the user clicks the OK or other task completion button on the Form, the Form will not close, but will simply redisplay itself to allow the user to complete the next task in the sequence. For various reasons, you may wish to override this behavior, in which case the Form will close once the first task has been completed, and the user will have to re-open the Form to complete the next task in the sequence.</p>
+                <p>You have the following options for configuring the behavior of Process Director:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Automatically show user's next task if it is in this process</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This is the default behavior, and will automatically redisplay the Form once the user completes the first task in the sequence.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Automatically show user's next task if it is for this step in a different process</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>This selection will automatically show the user's next task if the user is assigned a task in another process. For instance, if the current task starts a subprocess, and the user is assigned a task in the subprocess, the subprocess task will automatically be displayed.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Do not show the user's next task</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Once a user completes the task, the Form will close, and the user must reopen the Form from the <span class="ProcessDirectorObject">Task List</span> to begin performing the next task.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Automatically show user's next task if it is for any step for any related sub- process.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">This selection will automatically show the user's next task if the user is assigned a task in either the current process or related sub-process.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Restart Users</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This option determines how participants are assigned to the activity when it must be restarted, which is particularly relevant when an implementer changes the participants assigned to an activity in the Process Timeline definition. An existing instance may have been created when different participants were configured to participate in the task. This option enables you to determine how to handle user assignments when the configured users have changed.</p>
+                <p>It is also important to note that the term "restart" is used for both:</p>
+                <ul>
+                    <li>Cases in which a running task is restarted while the task is still running, and</li>
+                    <li>Cases in which a task has already been completed, but must be re-run, as in an iterative process, or as a result of a change to some condition.</li>
+                </ul>
+                <p>In either case, the <span class="ControlName">Restart Users</span> options you select will be applied.</p>
+                <p>The following options are available:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: ;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Start only configured task participants</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This option will assign the task to the currently configured users, irrespective of which users may have been previously assigned to the activity.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Start configured and users all previously run in this task.</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>By choosing this option, you ensure that both the currently configured users, as well as any users who were previously assigned the task, are assigned the task.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Start only users that previously completed this task</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This option will assign the task only to users who completed the task when it was previously run for this instance. Those users will be re-assigned the task irrespective of whoever is currently configured for task assignment in the Process Timeline definition.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Start from last completed user</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>If multiple users are assigned to the activity instance, this option will re-assign the activity to the last user who completed it when it was initially run.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Start users that did not complete previously</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>If multiple users are assigned to the activity instance, this option will assign the task to users who did not previously complete it. For instance, if the activity uses a round-robin assignment, the activity will be assigned to one of the users who were not assigned it on the initial run.&#160; </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Use Form in this Activity</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This will allow you to specify a Form to use in this activity. This controls the form displayed when a user opens their <span class="ProcessDirectorObject">Task List</span>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Owner that can share tasks with any of the running users	</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property enables you to specify a system variable that can return users who will be given shared task permission for this specific activity. This enables dynamic task sharing per each Timeline Activity, as opposed to the normal task sharing, which is set universally.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>
