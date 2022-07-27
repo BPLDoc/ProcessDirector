@@ -223,16 +223,5 @@
             <img src="../Resources/Images/SystemAdministratorGuide/encrypt.png" />
         </p>
         <p>Checking the <span class="ControlName">Encrypted Field</span> check box will cause Process Director to save the field value in an encrypted format in the database. You may wish to consider this for fields that contain passwords, PII, HIPAA, or other sensitive data. Keep in mind, however, that you may not be able to search for data stored in encrypted form.</p>
-        <h2><a name="TLS"></a>TLS <a href="#TLS" class="anchor">#</a></h2>
-        <p class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" /> The BP&#160;Logix plugin is not necessary for installations that do not use the legacy Word Form Builder.</p>
-        <p>By default, the BP Logix form plugin defaults to using TLS 1.0, but it can use TLS 1.1 and TLS 1.2 when configured to do so. If a Process Director web site is requires a certain level of TLS to connect, the older versions of TLS have to be disabled where the BP Logix plugin is installed. </p>
-        <p>To do this open the windows registry and create a “DWORD (32-bit) Value” named “SecurityProtocol” in this path key:</p>
-        <p><code>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\BP Logix\Plugin]</code>
-        </p>
-        <p>Set the value to <code>00000f00 </code>(3840 decimal) to disable TLS 1.0</p>
-        <p>Set the value to <code>00000c00 </code>(3072 decimal) to disable both TLS 1.0 and TLS 1.1</p>
-        <p class="PDNote">
-            <img src="../Resources/Images/i2.png" alt="Note" /> Setting these values may cause a problem connecting to a Process Director web site that only supports TLS 1.0 or TLS 1.1.</p>
     </body>
 </html>

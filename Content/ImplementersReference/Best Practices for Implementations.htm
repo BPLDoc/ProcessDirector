@@ -50,7 +50,7 @@
             <MadCap:dropDownBody>
                 <p>Use meaningful instance names for each form definition. The default names are too generic. By the same token, use simple, meaningful names for object and field definitions. Do not use Hungarian notation or other programming-style conventions. Names should be logical and recognizable. This is very helpful when the objects are used in other places, such as when defining conditions. Object names will appear sorted alphabetically.</p>
                 <hr />
-                <p>When using tables to provide Form layout, be sure to set the Role attribute, <a href="Form Online Builder.htm#Tables">as described here</a>.</p>
+                <p>When using tables to provide Form layout, be sure to set the Role attribute, <a href="Form Online Builder Tables.htm#Tables">as described here</a>.</p>
                 <hr />
                 <p>Instructions should tell users to do something. For example, “Please review this form and approve or reject it using the buttons below”. Note that it’s nice to begin instructions with “please”. Descriptions should explain something. Always use friendly names for form fields that are required, have validation rules associated with them, or may be used in knowledge views, so that Knowledge Views and other derived uses of the field display human-friendly field names. Keep in mind that Knowledge View column titles will use the friendly name, so brevity is important, as a friendly name like "This is the name of the user who filled out this form" might not be the best choice.</p>
                 <hr />
@@ -153,32 +153,6 @@
                 <p>For the purposes of this discussion, we'll refer to Business Rules, Business Values, and Goals collectively as "value objects", since they primarily return a value or values. These value objects occupy a slightly different space than other Process Director objects. Most objects, like Forms or Timelines, are tied to a specific implementation project. Conversely, value objects are often not tied to a specific project at all. For instance, a Business Value that extracts some data from an external ERP or CRM system may be widely used across a number of projects. Similarly, a Goal that specifies some universal system state may be used by all projects. This raises the question of where the value objects should be placed in the <span class="ProcessDirectorObject">Content List</span>, and when—or if-—they should be exported/imported between development and production systems.</p>
                 <p>You may wish to consider whether to create a folder at the root level of the content list to store value objects that are used by multiple projects, while storing project-centric objects within the relevant project folders. It's often quite easy to determine whether an object is project-centric or not: If you need someone else's permission or agreement to change or delete an object, it is most likely not a project-centric object, and may be a candidate for storage in a central location in the <span class="ProcessDirectorObject">Content List</span>, separate from any specific implementation project.</p>
                 <p>Indeed, you might wish to consider this method of centralizing storage for some other objects, as well. For instance, there's no reason to have a dropdown object that lists the names of US states replicated in multiple projects. It's a very static dropdown object that may be used in any project, so it, along with the value objects, is a good candidate for storing in a central location.</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>Word Form Builder (Legacy Forms)</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <p class="Important">
-                <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix Recommends the use of the Online Form Designer, rather than the Word Form Builder, for creating Forms.</p>
-            <MadCap:dropDownBody>
-                <p>When adding multiple spaces in the Word Form Builder, you may find that only one of the spaces is rendered into the HTML document. To add multiple spaces, you have to use non-breakable spaces. You can add a non-breakable space by pressing [CTRL]+[SHIFT]+[SPACE]. On a Macintosh computer, you can add a non-breakable space by pressing [ALT]+[SPACE].</p>
-                <hr />
-                <p>It is common to insert images, like corporate logos, into a Form. By default, Microsoft Word will attempt to compress the image to reduce the file size; however, this also degrades the quality of the image. To turn off this default image compression when using the Word Form Builder, click on the <span class="UIElement">File </span>tab in Microsoft Word, and select <span class="ControlName">Options</span> to open the <span class="ControlName">Options </span>dialog box. In the <span class="ControlName">Options </span>dialog box, select <span class="ControlName">Advanced </span>from the navigation bar on the left side of the dialog box, then on the right side of the dialog box, scroll down to the<span class="ControlName"> Image Size and Quality</span> section. Set the<span class="ControlName"> Image Size and Quality</span> drop down to "All New Documents", then check the option labeled "Do not compress images in file". Finally, click the <span class="UIElement">OK </span>button to save your settings changes and close the dialog box.</p>
-                <p>
-                    <img src="../Resources/Images/Capture184.png" />
-                </p>
-                <p>With image compression turned off, your images should display with higher quality.</p>
-                <hr />
-                <p>When creating tables in the Word Form Builder, a number of practices are advisable to ensure the table displays correctly when translated into HTML for display in Process Director:</p>
-                <ul style="list-style-type: disc;margin-left: 36pt;">
-                    <li style="list-style-type: disc;">Use default padding for table cells. When using embedded tables—a very common practice, and one you should be taking advantage of—it sometimes makes sense to set the left margin of the embedded table to 0.00 to avoid additional, unwanted indentation. This takes some playing with to get used to.</li>
-                    <li style="list-style-type: disc;">Do not merge or split cells. Merging cells will probably not break your Form, but will make it much harder to modify that table later—you will most likely have to delete and recreate the whole table if you need to do so. Splitting cells nearly always results in poor display behavior and should be avoided at all costs. Use nested (embedded) tables instead.</li>
-                    <li style="list-style-type: disc;">Do not use—and constantly check to remove—fixed widths for columns.</li>
-                    <li style="list-style-type: disc;">Keep the table structure as simple as humanly possible, and do not merge or split cells inside the table. Tables should be set to “Autofit to Window” or “Autofit to Contents”. In some cases, you can use a fixed <b>percentage</b> for a given column, but never use a fixed absolute width. Also note that Word will sometimes reset your columns to fixed widths for mysterious reasons—if a table isn’t displaying the way you’d like or expect, double check this setting.</li>
-                </ul>
-                <hr />
-                <p>If you are using the Word Form Builder, Microsoft Word will sometimes put corrupted data into the template document that will cause the upload of the Form template to crash. Open the bad .doc file and do a “Select All” (CTRL + A) and “Copy” (CTRL&#160;+&#160;C) the data, then “Paste” (CTRL + V) it into a new document and save it. Use the new template to upload.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>
