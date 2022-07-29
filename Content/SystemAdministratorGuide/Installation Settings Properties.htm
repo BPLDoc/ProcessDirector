@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="System Administration" />
+            <MadCap:concept term="System Administration" />Properties</h1>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/InstallationSettings1.png" />
+        </p>
+        <p>The <span class="ControlName">Properties </span>page lists the basic options to configure the Process Director Server, which helps maximize the flexibility of Process Director. Below is the list of options available on the Properties page.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Server Name</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The name for the Process Director installation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Interface URL</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Specifies the actual host name that can be used to connect to Process Director.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Proxy URL</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Specifies the URL of your proxy server, if you have one in use.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Store Documents on File System</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to store documents on the server file system. Setting this option will require you to set the Document Storage Path and Document Size for File System Storage properties. For more information about storing documents in the Process Director database as opposed to the file system, see the <a href="Storing Attachments.htm">Storing Attachments</a> topic.</p>
+                <p>There are times when you may want to store the binary data on a file system, instead of in the database. For example, if you are dealing with very large digital assets/documents, or a large number of them, storing them on the file system may be better.  If your database gets too large with document data, it can slow functions like your database backups.  When binaries are stored on the file system, you still will have entries in the internal document tables, but the BLOB column will be empty. It is transparent to the implementers and end-users where the document binaries are stored.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Document Storage Path</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Actual file path to store files.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Document Size for File System Storage</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to set the minimum size requirement of the file to be stored on the file system. If you want to store ALL files in the file system, set the value of this property to 0.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Local IP Addresses</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to add a comma separated list of IP addresses that have permission to the <span class="ProcessDirectorObject">IT Admin</span> area of Process Director.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Load balanced URLs</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Process Director incorporates load balancing to share the processing load between multiple Process Director installations. This property takes a comma-separated list of URLs that are part of the load balancing scheme.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Registered Email</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This is an email address to use as a fallback "From" address for process notifications if one of the primary email addresses is not available. The "From" address for a process notification is  set by the first value <b style="font-style: italic;">that is not empty</b> from the following list:</p>
+                <ol>
+                    <li>The value manually configured in an email template's EmailData Control.</li>
+                    <li>The value configured the <span class="ControlName">Workflow From Email Address</span> setting in the Installation Settings &gt; Global Variables section.</li>
+                    <li>If administratively Canceled, the email of the administrator that performed the operation.</li>
+                    <li>The email of the Process Initiator.</li>
+                    <li>The value configured in the <span class="ControlName">Registered Email Address</span>.</li>
+                    <li>As a final fallback: tech-support@bplogix.com</li>
+                </ol>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> For users of Process Director v5.27 and higher, Process Director enables the use of address strings with a Display Name component (e.g. "Test User &lt;test@example.com&gt;").</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Logging Level</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to set a specific logging level that may provide more information in the logs.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>CSS</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to specify a custom CSS file. It is recommended to place the CSS file in the custom directory of the Process Director install.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Logo URL</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to specify an image to replace the logo throughout the system. Additionally you can specify a hotlink for the logo.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Logo Link</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to specify a URL to which users will be sent if they click the logo image.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Background Image</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to specify a pre-defined background image to display in the background of the Login page. A number of stock images are displayed in the dropdown control enabling you to select the desired background image.</p>
+                <p>
+                    <img src="../Resources/Images/SystemAdministratorGuide/BackgroundImage1.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Background Image Sizing</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to specify how the background image will appear on the login page. The following options are available:</p>
+                <ul>
+                    <li>Cover: The image will expand to fill the entire page background.</li>
+                    <li>Center:&#160;The image will appear in its actual size, centered on the page vertically and horizontally.</li>
+                    <li>Tile: The image will appear in its actual size, aligned to the top left of the window, and will tile vertically and horizontally.</li>
+                    <li>Tile X: The image will appear in its actual size, aligned to the top left of the window, and will tile along the X-axis only.</li>
+                    <li>Tile Y: The image will appear in its actual size, aligned to the top left of the window, and will tile along the Y-axis only.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Home Page Top Height</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to adjust the height of the top navigation bar.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Home Page Logo Width </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to specify the width of the logo displayed at the top right of the page.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SMTP Host</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to set a host name or IP address for the SMTP Host. By default it will use the local SMTP server. Setting this property also allows you to set the SMTP Port, SMTP UserID, and SMTP Password, and SSL Required properties.</p>
+                <p>You do have some different options for sending mail from the system.</p>
+                <ol>
+                    <li>Using “relay” through your existing mail server (e.g. Exchange, O365, etc.)<ul><li>This method requires that your mail server enables relay. This can be controlled by IP address and/or the use of credentials to connect to your SMTP mail server.</li><li>If your mail server cannot return quickly from a large number of mail request, this could slow the end user experience in Process Director when the completion of a form results in process emails being sent out. To work around this, you can use option #3. This will perform a store and forward that will not be delayed with slowdowns in the email server responding.</li></ul></li>
+                    <li>Using the local IIS SMTP server to send the emails directly to the recipients<ul><li>This method will send emails from the local SMTP server. It may be necessary to setup a DNS SPF, DKIM or reverse DNS record for this server so recipients do not flag these emails as SPAM.</li></ul></li>
+                    <li>Using the local IIS SMTP server to relay through your mail server using the “Smart Host” configuration.<ul><li>This method requires that your mail server enables relay from this IP address. It will forward all emails through your mail server using a store/forward technique, allowing retries.</li></ul></li>
+                    <li>	Relaying through a mail provider (e.g. SMTP.com)<ul><li>This method requires that a provider be created and that recipients will allow emails sent from this domain to be received.</li></ul></li>
+                </ol>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> BP&#160;Logix recommends that you enable your mail server to accept mail relay from the IP Address of the process Director server, and set the SMTP host to the mail server name, e.g., relay.domain_name.com. This will provide the most direct connection to your mail server, and enable your mail server to impose organizational policies, and return error messages to Process Director.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SMTP Port</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The SMTP port used to send email. The default SMTP port is 25 for unencrypted connections and 465 for SSL connections.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SMTP UserID</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The User Name for the email account that will be used to send email.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SMTP Password</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Password for the email account that will be used to send email.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SSL Required</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines whether the connection to the SMTP server will require SSL to encrypt the UserID and password when sent to the SMTP server.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Web Service Enabled</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to enable or disable Web Services for the system. Additionally you can add restrictions. Setting this property allows you to set the Require Web Service Authentication and Web Service Restrictions properties.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Require Web Service Authentication</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Determines whether authentication is required to use a web service.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Web Service Restrictions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A comma-separated list of IP Addresses that you enter into this field, which will restrict access to web services to only requests from the IP Addresses entered. Leaving this field blank will allow universal access to web services.</p>
+                <p>In addition to a comma-separated list of IP Addresses, this field also supports CIDR notation for an IP&#160;Address range, e.g., "10.1.1.0/24" will use all IP&#160;Addresses between 10.1.1.0 and 10.1.1.24.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Number of Custom Icons</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enables you to set the number of custom icons that you can use in the Process Director interface. The default setting is 0. If you create any custom icons, you must set this value to the exact number of custom icons that you have created. For information on creating custom icons, please see the <a href="Creating Custom Icons.htm">Creating Custom Icons</a> topic.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>
