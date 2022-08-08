@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Datasources;SharePoint" />Sharepoint Data Sources</h1>
+        <p>With the implementation of Microsoft's move to <span class="KeyTerms">Modern Authentication</span>, using the Microsoft identity platform, logging into cloud-based versions of SharePoint is no longer possible by simply using a user name and password. Legacy installations that user older versions of SharePoint may still do so, but SharePoint has largely implemented an OAuth-based authentication scheme, with additional security provided by the use of encryption certificates. </p>
+        <p>In Process Director v5.44.900 and higher, Modern Authentication for SharePoint is implemented using the <span class="ProcessDirectorObject">SharePoint Oauth </span>Datasource. At the same time, the legacy <span class="ProcessDirectorObject">SharePoint </span>Datasource, which uses the simple username/password authentication scheme, is still available for customers who are using older versions of SharePoint. This legacy authentication method should be relevant to only a very small minority of customers.</p>
+        <h2>Configuring a SharePoint OAuth Datasource</h2>
+        <p>Modern Authentication provides much more secure access to SharePoint, but does require a more complex setup process. To set up Modern Authentication between SharePoint and Process Director, you must complete the following steps:</p>
+        <ol>
+            <li><a href="#cert">Create a certificate</a> to authenticate Process Director with SharePoint Online.<ol style="list-style-type: lower-alpha;"><li>Using Microsoft’s certreq.exe, installed on all modern Windows OS versions.</li><li>Using PowerShell, also included with all  modern Windows OS versions.</li></ol></li>
+            <li><a href="#azure">Add Process Director as an application</a> in the Azure Active Directory portal.<ol style="list-style-type: lower-alpha;"><li>Add public key certificate to Process Director application in Azure.</li><li>Configure SharePoint Online permissions.</li></ol></li>
+            <li>Create a new <a href="#datasource">SharePoint OAuth Datasource</a>.</li>
+        </ol>
+        <p>In this topic, we'll address each of these required steps in detail. Additional information about this topic can also be obtained from <a href="Additional details can be found at https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" target="_blank">Microsoft's online documentation</a>.</p>
+        <h3><a name="cert"></a>Create a certificate to authenticate Process Director with SharePoint Online <a href="#cert" class="anchor">#</a></h3>
+        <p>Microsoft prefers the use of certificates for authentication. Each certificate includes both the public and private keys used to encrypt data. The public key (in a CER file) is used by SharePoint Online to authenticate Process Director. The private key is packaged in a password-protected PFX file and is used by Process Director to authenticate with SharePoint online. There are two methods that can be used on Windows-based systems to create a proper certificate.</p>
+        <ul>
+            <li>
+                <p>Using Microsoft’s certreq.exe, installed on all modern Windows OS versions.</p>
+            </li>
+            <li>
+                <p>Using PowerShell, also included with all modern Windows OS versions.</p>
+            </li>
+        </ul>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> Keep in mind that certificates expire after a set period of time. Most organizations specify the maximum length of time certificates should be used. By default, the instructions that follow will generate certificates valid for one year. You should, therefore, generate and install new certificates well before existing certificates expire. This implies that your organization also has a mechanism in place to be reminded when expiration is approaching, to ensure that service interruptions don't occur.</p>
+        <h4>Creating a Certificate with certreq.exe</h4>
+        <p>This method of certificate creation might be preferred if you’re less comfortable with command-line operations and don’t intend to automate the generation of certificates. <a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn296456(v=ws.11)" target="_blank">Microsoft's online documentation</a> has additional information about certreq.exe.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Instructions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>First, using a text editor like Notepad, copy and paste the following text into a new document:</p>
+                <p class="CodeBase">[Version]<br />Signature = "$Windows NT$"<br /><br />[Strings]<br />szOID_ENHANCED_KEY_USAGE = "2.5.29.37"<br />szOID_KEY_ENCIPHERMENT = "1.3.6.1.5.5.7.3.1"<br /><br />[NewRequest]<br />Subject = "cn=BP Logix Process Director"<br />MachineKeySet = false<br />KeyLength = 2048<br />HashAlgorithm = Sha1<br />Exportable = true<br />RequestType = Cert<br /><br />KeyUsage = "CERT_KEY_ENCIPHERMENT_KEY_USAGE"<br />; The following values can be changed to generate certificates that expire<br />; sooner or later depending on your organizations needs. The default is 1 year.<br />ValidityPeriod = "Years"<br />ValidityPeriodUnits = "1"<br /><br />[Extensions]<br />%szOID_ENHANCED_KEY_USAGE% = "{text}%szOID_KEY_ENCIPHERMENT%"</p>
+                <p>Once you've done so, save the document as an INF file in a folder on your system, e.g., <code>c:\Users\Some.User\Documents\PD Certificate\CertReq.inf</code>.</p>
+                <p>Open the Windows Command Prompt. You can press the [WINDOWS] key, type "cmd", then select the "Command Prompt" application.</p>
+                <p>In the Command Prompt, open the directory in which you installed the INF by using the cd command, and the folder path to the INF file, then pressing the [ENTER] key. Using the example above, you'd need to type:</p>
+                <p class="CodeBase">cd c:\Users\Some.User\Documents\PD Certificate\</p>
+                <p>Once the directory changes, type the following and press the [ENTER] key to run the certreq application.</p>
+                <p class="CodeBase">certreq -new certreq.inf PublicKey.cer</p>
+                <p>Running the certreq application will create the certificate, and add it to the Windows Certificate Manager. To continue, you'll need to open the Certificate Manager to access the new certificate. To open the Certificate Manager, you can press the [WINDOWS] key, type "certmgr", then select the "Manage computer certificates" option. When the Certificate Manager opens, you'll need to navigate to the <code>Personal\Certificates </code>folder, where you should see the certificate issued to and by BP Logix Process Director.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/sharepointoauth.png" />
+                </p>
+                <p>Right-click that certificate and then select <span class="UIElement">All Tasks</span> &gt; <span class="UIElement">Export</span>.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/sharepointoauth1.png" />
+                </p>
+                <p>The Certificate Export Wizard will open. On the first screen, click the <span class="UIElement">Next </span>button. On the <span class="UIElement">Export Private Key </span>screen, select <span class="ControlName">Yes, export the private key</span>, then click the <span class="UIElement">Next </span>button.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/sharepointoauth2.png" />
+                </p>
+                <p>On the <span class="UIElement">Export File Format </span>screen of the Wizard, Ensure that you select the following options:</p>
+                <ul>
+                    <li><span class="ControlName">Personal Information Exchange - PKCS #12 (.PFX)</span>
+                    </li>
+                    <li><span class="ControlName">Include all certificates in the certification path, if possible</span>
+                    </li>
+                    <li><span class="ControlName">Enable certificate privacy</span>
+                    </li>
+                </ul>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/sharepointoauth3.png" />
+                </p>
+                <p>On the <span class="UIElement">Security </span>screen, check <span class="ControlName">Password </span>as the security protocol and enter a password twice.</p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> Be sure to store this password securely, you will need it in future steps. </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> Be sure to use a long, sufficiently complex password in line with your organization’s cryptographic standards.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/sharepointoauth4.png" />
+                </p>
+                <p>On the<span class="UIElement"> File to Export </span>screen, store the resulting PFX file in the same folder as you stored the CertReq.Inf and PublicKey.Cer files, then click the <span class="UIElement">Next </span>button.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/sharepointoauth5.png" />
+                </p>
+                <p>Click the <span class="UIElement">Finish </span>button on the next Wizard screen, then <span class="UIElement">OK </span>to finish the Wizard and close it.</p>
+                <p>BP&#160;Logix recommends that you remove the certificate installed in the Certificate Manager by right-clicking it and then selecting <span class="UIElement">Delete </span>followed by <span class="UIElement">Yes </span>to delete it in the confirmation dialog.</p>
+                <p>Keep both the PublicKey.cer and PrivatePublicKeys.pfx files handy for subsequent steps in this setup process. You should also archive them in a secure, backed up location as well.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h4>Creating a Certificate with PowerShell</h4>
+        <p>PowerShell is a command line application that's included with all modern versions of Windows. You can choose this method if you’re comfortable with PowerShell and might want to automate certificate generation on a recurring basis.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Instructions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Open PowerShell by pressing the [WINDOWS] key, typing "PowerShell" then selecting the<span class="UIElement"> Run as Administrator</span> option to open Windows PowerShell. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/sharepointoauth6.png" />
+                </p>
+                <p>In PowerShell, create or navigate to the directory you'd like to use to store the certificate files. Once you're in the desired directory, run the following command:</p>
+                <p class="CodeBase">$cert = New-SelfSignedCertificate -CertStoreLocation Cert:\LocalMachine\ -KeyUsage KeyEncipherment <br />&#160;&#160;&#160;&#160;-KeyAlgorithm rsa -KeyLength 2048 -subject "BP Logix Process Director" <br />&#160;&#160;&#160;&#160;-DnsName "BP Logix Process Director" -Type SSLServerAuthentication <br />&#160;&#160;&#160;&#160;-TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")</p>
+                <p>Next, run these commands in PowerShell, replacing <code class="CodeOption">&lt;password&gt;</code> with a password of your choosing. Ensure the passowrd is cryptographically secure, in accordance with your organization’s standards.  Be sure to also store this password securely, as you will need it in future steps.</p>
+                <p class="CodeBase">$pwd = ConvertTo-SecureString -String '<span class="CodeOption">&lt;password&gt;</span>' -Force -AsPlainText<br />$path = 'cert:\LocalMachine\My\' + $cert.Thumbprint</p>
+                <p>Finally, run these commands to create the .PFX and .CER files. Modify the <span class="CodeOption">&lt;path&gt;</span> value to store the file in a location of your choosing.</p>
+                <p class="CodeBase">Export-PfxCertificate -cert $path -FilePath <span class="CodeOption">&lt;path&gt;</span>\PrivatePublicKeys.pfx -Password $pwd<br />Export-Certificate -cert $path -FilePath <span class="CodeOption">&lt;path&gt;</span>\PublicKey.cer</p>
+                <p>Keep both the PublicKey.cer and PrivatePublicKeys.pfx files handy for subsequent steps in this setup process. You should also archive them in a secure backup location as well.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="azure"></a>Add Process Director to Azure <a href="#azure" class="anchor">#</a></h3>
+        <p>To add Process Director as an application in your Azure Active Directory portal, complete the steps below after signing into  your Azure portal (portal.azure.com):</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>1. Register Process Director as an Application</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ol style="list-style-type: upper-alpha;">
+                    <li>
+                        <p>If you have access to multiple tenants, use the Directories + subscriptions filter in the top menu to switch to the tenant in which you want to register the application.</p>
+                    </li>
+                    <li>
+                        <p>Search for and select <span class="ControlName">Azure Active Directory</span>.</p>
+                    </li>
+                    <li>
+                        <p>Under <span class="UIElement">Manage</span>, select <span class="UIElement">App registrations </span>&gt; <span class="UIElement">New registration</span>.</p>
+                    </li>
+                    <li>
+                        <p>Enter a display <span class="ControlName">Name </span>for your application, e.g., “Test SharePoint OAuth”. This name can be changed later, if needed.</p>
+                    </li>
+                    <li>
+                        <p>Specify who can use the application. Typically, only accounts in this organizational directory should be used. See the Microsoft documentation titled <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#register-an-application" target="_blank">Quickstart: Register an application with the Microsoft identity platform</a>  for more information.</p>
+                    </li>
+                    <li>
+                        <p>Add the <span class="ControlName">Redirect URI</span>, which is the URI for your Process Director installation, e.g., https://myorg.bplogix.net.</p>
+                    </li>
+                    <li>
+                        <p>Click the <span class="UIElement">Register </span>button to register the application.</p>
+                    </li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>2. Add Your Public Key Certificate</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To add your public key certificate to the Process Director application in Azure, complete the steps below.</p>
+                <ol style="list-style-type: upper-alpha;">
+                    <li>
+                        <p>In the Azure portal, in <span class="ProcessDirectorObject">App registrations</span>, select the Process Director application you created previously, e.g., “Test SharePoint OAuth”, as in step 1D, above.</p>
+                    </li>
+                    <li>
+                        <p>Select <span class="UIElement">Certificates &amp; secrets</span> &gt; <span class="UIElement">Certificates </span>&gt; <span class="UIElement">Upload certificate</span>.</p>
+                    </li>
+                    <li>
+                        <p>Select the PublicKey.cer file you created earlier.</p>
+                    </li>
+                    <li>
+                        <p>Click the <span class="UIElement">Add </span>button to upload your certificate.</p>
+                    </li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>3. Configure SharePoint Online permissions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ol style="list-style-type: upper-alpha;">
+                    <li>
+                        <p>If you have access to multiple tenants, use the Directories + subscriptions filter in the top menu to switch to the tenant in which you want to register the application.</p>
+                    </li>
+                    <li>
+                        <p>Search for and select <span class="ControlName">Azure Active Directory</span>.</p>
+                    </li>
+                    <li>
+                        <p>Under <span class="UIElement">Manage</span>, select<span class="UIElement"> App registrations</span>, then select your Process Director application, e.g., “Test SharePoint OAuth”, as in step 1D and 2A, above.</p>
+                    </li>
+                    <li>
+                        <p>Click <span class="UIElement">API permissions</span>.</p>
+                    </li>
+                    <li>
+                        <p>Click <span class="UIElement">Add a permission</span> and add all permissions displayed below:<img src="../Resources/Images/cert7.png" /><br /></p>
+                    </li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="datasource"></a>Create the SharePoint OAuth Datasource <a href="#datasource" class="anchor">#</a></h3>
+        <p>Now that the application has been fully registered in Azure, you can create the SharePoint OAuth Datasource in Process Director. Be sure to keep the Azure window open, however, as you'll need to transfer some information from Azure to configure the SharePoint OAuth datasource. Ensure you've opened the <span class="ProcessDirectorObject">Azure Active Directory admin center</span> window to the <span class="UIElement">Overview </span>tab of the <span class="ProcessDirectorObject">App registrations</span> page of your Process Director integration app. In this example, we'll use the "Test SharePoint OAuth" application we used in the steps above.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Instructions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ol>
+                    <li>
+                        <p>Navigate to the Process Director folder in which you want to store the new Datasource, then select <span class="UIElement">Data Source</span> from the<span class="UIElement"> Create New</span> menu.<br /><img src="../Resources/Images/ImplementersReference/sharepointoauth7.png" /></p>
+                    </li>
+                    <li>
+                        <p>In the <span class="ControlName">Create New Data Source </span>screen, enter an <span class="ControlName">Name </span>for the Datasource, then click the <span class="UIElement">OK </span>button to create the Datasource and open its configuration screen.</p>
+                    </li>
+                    <li>
+                        <p>On the <span class="UIElement">Properties </span>tab of the Datasource definition, change the <span class="ControlName">DataSource Type </span>to "SharePoint OAuth".</p>
+                    </li>
+                    <li>
+                        <p>Set the <span class="ControlName">Sharepoint Site URL</span> to the URL your SharePoint Online server.</p>
+                    </li>
+                    <li>
+                        <p>To set the <span class="ControlName">Client ID</span> property, Go to the Azure window, and using the "Copy to Clipboard" icon, copy the value in the <span class="ControlName">Application (client) ID</span> property, then paste it into the <span class="ControlName">Client ID </span>Property of the Datasource definition.<br /><img src="../Resources/Images/ImplementersReference/sharepointoauth8.png" /></p>
+                    </li>
+                    <li>
+                        <p>Similarly, you'll need to copy the value of the <span class="ControlName">Directory (tenant) ID </span>property in Azure to the<span class="ControlName"> Tenant ID</span> property of the Datasource definition.<br /><img src="../Resources/Images/ImplementersReference/sharepointoauth9.png" /></p>
+                    </li>
+                    <li>
+                        <p>To set the certificate to use for this datasource, click the <span class="UIElement">Browse </span>button for the <span class="ControlName">Sharepoint Certificate File</span> property, then  locate and select the PrivatePublicKeys.pfx file you created earlier (either with certreq.exe or PowerShell).</p>
+                    </li>
+                    <li>
+                        <p>Enter the certificate <span class="ControlName">Password </span>that you created for the PrivatePublicKeys.pfx file.</p>
+                    </li>
+                    <li>
+                        <p>Click the <span class="UIElement">OK </span>button to save your changes, then update the Datasource definition by selecting <span class="UIElement">Update </span>from the <span class="UIElement">OK </span>dropdown menu at the upper right corner of the page.</p>
+                    </li>
+                    <li>
+                        <p>Click the<span class="UIElement"> Test Connection</span> button to ensure that the Datasource can connect properly to SharePoint.</p>
+                    </li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Conclusion</h2>
+        <p>Congratulations! Assuming that you've correctly followed the instructions above, you've now configured both SharePoint Online and Process Director. You can now use this Datasource and the SharePoint Custom Tasks in Process Director to integrate your SharePoint sites and data with Process Director.</p>
+    </body>
+</html>
