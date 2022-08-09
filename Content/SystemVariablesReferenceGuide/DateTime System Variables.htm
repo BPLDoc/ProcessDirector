@@ -29,11 +29,13 @@
                 <p><code><MadCap:keyword term="CURR_YEAR" />{CURR_YEAR|CURR_MONTH|CURR_WEEK|CURR_DAYOFYEAR|CURR_DAY|CURR_DAYOFWEEK|CURR_HOUR|CURR_MINUTE} </code>
                 </p>
                 <p>Each component system variable will return the appropriate numeric value when evaluated. For example, if the data is January 1, 2019, the following returns could be expected:</p>
-                <p>CURR_YEAR: 2019</p>
-                <p>CURR_MONTH: 01</p>
-                <p>CURR_DAYOFYEAR:&#160;01</p>
+                <p><code>{CURR_YEAR</code>} returns 2019</p>
+                <p><code>{CURR_MONTH</code>} returns 01</p>
+                <p><code>{CURR_DAYOFYEAR}</code>&#160;returns 01</p>
                 <h3>Modifiers</h3>
-                <p>This system variable can be formatted according to the options available to all datetime system variables.</p>
+                <p>This system variable can be formatted according to the options available to all datetime system variables. </p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> The Current Date System Variable has an additional modifier, <code style="font-weight: normal;">days</code>, that is treated as a separate system variable in the product's UI. Please see the <a href="#DaysAgo">Days Ago/Days From Now topic</a> for more information on this modifier.</p>
                 <h3>Optional Tags</h3>
                 <p>The Current Date/Time/Month.Year, etc., will also be correctly returned using the alternate syntax options below:</p>
                 <p><code>{CURRENT_DATE}</code>
@@ -92,10 +94,10 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable is used <b style="font-style: italic;">for Forms only</b>, to return the difference between two datetimes.</p>
+                <p>This system variable is used <b style="font-style: italic;">for Forms only</b>, to return the difference between two datetime values.</p>
                 <h3>SysVar Tag</h3>
                 <p>
-                    <MadCap:keyword term="DATEDIFF" /><code>{DATEDIFF, DATE1={<span class="CodeOption">someDate</span>}, DATE2={<span class="CodeOption">someOtherDate</span>}, TYPE=<span class="CodeOption">YEARS</span>|<span class="CodeOption">MONTHS</span>|<span class="CodeOption">DAYS</span>|<span class="CodeOption">HOURS</span>|<span class="CodeOption">MINUTES</span>|<span class="CodeOption">SECONDS</span>|<span class="CodeOption">BUSINESS_DAYS</span>|<span class="CodeOption">BUSINESS_HOURS</span>|<span class="CodeOption">FULLDAYS</span>|<span class="CodeOption">FULLMONTHS</span>|<span class="CodeOption">FULLYEARS</span>, INCLUDEENDDATE=<span class="CodeOption">true</span>|<span class="CodeOption">false</span>}</code>
+                    <MadCap:keyword term="DATEDIFF" /><code>{DATEDIFF, DATE1=<span class="CodeOption">[someDate]</span>, DATE2=[<span class="CodeOption">someOtherDate]</span>, TYPE=<span class="CodeOption">YEARS</span>|<span class="CodeOption">MONTHS</span>|<span class="CodeOption">DAYS</span>|<span class="CodeOption">HOURS</span>|<span class="CodeOption">MINUTES</span>|<span class="CodeOption">SECONDS</span>|<span class="CodeOption">BUSINESS_DAYS</span>|<span class="CodeOption">BUSINESS_HOURS</span>|<span class="CodeOption">FULLDAYS</span>|<span class="CodeOption">FULLMONTHS</span>|<span class="CodeOption">FULLYEARS</span>, INCLUDEENDDATE=<span class="CodeOption">true</span>|<span class="CodeOption">false</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>DATE1 (Required):</b> The first date to compare.</p>
@@ -111,9 +113,9 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable is used <b style="font-style: italic;">for email templates only</b>, to return the difference between two datetimes.</p>
+                <p>This system variable is used <b style="font-style: italic;">for email templates only</b>, to return the difference between two datetime values.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="DATEDIFF_SYSVAR" />{DATEDIFF_SYSVAR, DATE1={<span class="CodeOption">someDate</span>}, DATE2={<span class="CodeOption">someOtherDate</span>}, TYPE=<span class="CodeOption">YEARS</span>|<span class="CodeOption">MONTHS</span>|<span class="CodeOption">DAYS</span>|<span class="CodeOption">HOURS</span>|<span class="CodeOption">MINUTES</span>|<span class="CodeOption">SECONDS</span>|<span class="CodeOption">BUSINESS_DAYS</span>|<span class="CodeOption">BUSINESS_HOURS</span>|<span class="CodeOption">FULLDAYS</span>|<span class="CodeOption">FULLMONTHS</span>|<span class="CodeOption">FULLYEARS</span>, INCLUDEENDDATE=<span class="CodeOption">true</span>|<span class="CodeOption">false</span>}</code>
+                <p><code><MadCap:keyword term="DATEDIFF_SYSVAR" />{DATEDIFF_SYSVAR, DATE1= <span class="CodeOption">[someDate]</span>, DATE2=<span class="CodeOption">[someOtherDate]</span>, TYPE=<span class="CodeOption">YEARS</span>|<span class="CodeOption">MONTHS</span>|<span class="CodeOption">DAYS</span>|<span class="CodeOption">HOURS</span>|<span class="CodeOption">MINUTES</span>|<span class="CodeOption">SECONDS</span>|<span class="CodeOption">BUSINESS_DAYS</span>|<span class="CodeOption">BUSINESS_HOURS</span>|<span class="CodeOption">FULLDAYS</span>|<span class="CodeOption">FULLMONTHS</span>|<span class="CodeOption">FULLYEARS</span>, INCLUDEENDDATE=<span class="CodeOption">true</span>|<span class="CodeOption">false</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>DATE1 (Required):</b> The first date to compare.</p>
@@ -125,38 +127,28 @@
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="_Toc421544460"></a><a name="DaysAgo"></a><a href="#DaysAgo"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>
-                    <MadCap:keyword term="Days Ago" />Days Ago</MadCap:dropDownHotspot>
+                    <MadCap:keyword term="Days Ago" />Days Ago/Days From Now</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/SystemVariablesReferenceGuide/DateTime System Variables_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
-                </p>
+                    <img src="../Resources/Images/SystemVariablesReferenceGuide/DateTime System Variables_1.jpg" style="visibility: visible;mso-wrap-style: square;" />&#160;<img src="../Resources/Images/SystemVariablesReferenceGuide/DateTime System Variables_2.jpg" style="visibility: visible;mso-wrap-style: square;" /></p>
                 <h3>Returns</h3>
-                <p>This system variable returns a date a specific number of days before the date that this system variable is referenced.</p>
+                <p>These two items appear as separate system values in the product UI, as shown in the screen shots above, but they're both  an implementation of the <a href="#CurrentDate">Current Date</a>, using the "days" formatter. These items are provided in the <span class="UIElement">Date </span>dropdown menu in the <span class="ProcessDirectorObject">Condition Builder</span> for your convenience, so you can return a date that matches a specified number of days prior to or subsequent to, the current date, without having to manually format a System Variable. In other contexts, where this menu is not available, you could use manually created system variables to achieve the same result.</p>
+                <p>To show dates prior to the current date, you'd use a negative value, while showing future dates would require using a positive value. For instance, to show the date two days ago using a manually typed system variable, you'd use the syntax:</p>
+                <p><code>{CURR_DATE, days=-2}</code>
+                </p>
+                <p>Similarly, to show the date two days from now, using a manually typed system variable, you'd use the syntax:</p>
+                <p><code>{CURR_DATE, days=2}</code>
+                </p>
                 <h3>SysVar Tag</h3>
-                <p><code>{CURR_DATE, days=<b>-</b><span class="CodeOption">NumberOfDaysAgo</span>}</code>
+                <h4>Days Ago</h4>
+                <p><code>{CURR_DATE, days=<span class="CodeOption">-N</span>}</code>
+                </p>
+                <h4>Days From Now</h4>
+                <p><code>{CURR_DATE, days=<span class="CodeOption">N</span>}</code>
                 </p>
                 <h3>Optional Parameters</h3>
                 <p>This system variable can be formatted according to the options available to datetime system variables.</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421544461"></a><a name="DaysFromNow"></a><a href="#DaysFromNow"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
-                    <MadCap:keyword term="Days From Now" />Days From Now</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <img src="../Resources/Images/SystemVariablesReferenceGuide/DateTime System Variables_2.jpg" style="visibility: visible;mso-wrap-style: square;" />
-                </p>
-                <h3>Returns</h3>
-                <p>This system variable returns a date a specific number of days after the date that this system variable is referenced.</p>
-                <h3>SysVar Tag</h3>
-                <p><code>{CURR_DATE, days=<span class="CodeOption">NumberOfDaysFromNow</span>}</code>
-                </p>
-                <h3>Modifiers</h3>
-                <p><b>days:</b> A number you can use to return the number of days from now.</p>
-                <p>This system variable can be formatted using any of the modifiers available for DateTime system variables.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

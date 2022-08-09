@@ -30,13 +30,13 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns the name of the currently selected tab in a specified <span class="NamedControl">TabStrip </span>control.</p>
+                <p>This system variable returns the <span class="ControlName">Tab ID</span>, or, with the appropriate modifier, the <span class="ControlName">Name </span>of the currently selected tab in a specified <span class="NamedControl">TabStrip </span>control.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="CURR_TAB" />{CURR_TAB, tab=<span class="CodeOption">TabStripName</span>, format=name}</code>
+                <p><code><MadCap:keyword term="CURR_TAB" />{CURR_TAB, tab=<span class="CodeOption">TabStripName</span>, <span class="CodeOption">format=name</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>tab:</b> This required string modifier contains the name of the <span class="NamedControl">TabStrip </span>control you wish to evaluate to determine the currently selected tab.</p>
-                <p><b>format=name:</b> This optional modifier will return the Name of the current tab, instead of the Tab ID.</p>
+                <p><b>format=name:</b> This optional modifier will return the <span class="ControlName">Name </span>of the current tab, instead of the <span class="ControlName">Tab ID</span>.</p>
                 <h3>Alternate Syntax</h3>
                 <p>
                     <MadCap:keyword term="CURRENT_TAB" /><code>{CURRENT_TAB, tab=TabStripName}
@@ -70,12 +70,11 @@
                 <p><code><MadCap:keyword term="FORM_ATTACHMENTS" />{FORM_ATTACHMENTS, ShowName=<span class="CodeOption">1</span>, ShowDesc=<span class="CodeOption">0</span>, ShowID=<span class="CodeOption">0</span>, GroupName=<span class="CodeOption">Group</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>Groupname:</b> Filters the results returned  by group. </p>
+                <p><b>Groupname:</b> Limits the system variable such that it only returns a list of objects in the specified group.</p>
                 <p><b>ShowName:</b> The option is set to 1 by default. When set to 1, it will display the name of the attachment. </p>
                 <p><b>ShowDesc :</b> The option is set to 0 by default. If set to 1, it will display the attachment’s description. </p>
                 <p><b>ShowID :</b> The option is set to 0 by default. If set t 1, it will display the object’s internal ID.</p>
-                <p>If each is set to 1, each attachment will be returned in the format “name : description, name : description, name : description”.</p>
-                <p>The GroupName parameter limits the system variable such that it only returns a list of objects in the specified group.</p>
+                <p>If both the <code>ShowName</code> and <code>ShowDesc</code> modifiers are set to <code>1</code>, each attachment will be returned in the format “name : description”.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -183,15 +182,14 @@
                 <p>OR</p>
                 <p><code>{:<span class="CodeOption">form_field_name</span>}</code>
                 </p>
-                <h3>Paramaters</h3>
+                <h3>Parameters</h3>
                 <p><b>form_field_name (Required):</b> The name of the form field whose value you wish to return.</p>
                 <h3>Modifiers</h3>
-                <p>The Modifiers available depend on what kind of data the form field contains. If the form field contains arbitrary data, then the form field system variable Modifiers apply. If the form field contains data about a user, then the user system variable Modifiers apply. No Modifiers are available when the form field contains information about an object.</p>
-                <p>The general <a href="Parameters.htm#FormFields">form field system variable parameters</a> apply to all form fields.</p>
+                <p>The modifiers available depend on what type of data the form field contains. If the form field contains arbitrary data, then the Form field system variable modifiers apply. If the form field contains data about a user, then the User system variable modifiers apply. No modifiers are available when the form field contains information about an object. The general <a href="Parameters.htm#FormFields">Form field system variable parameters</a> apply to all text Form fields.</p>
                 <p>When the form field name is the name of a column in an array, this system variable will return a comma separated listed of the values of all the non-empty fields in that column. To include empty values in that list, set the optional parameter KeepEmptyRows to true.</p>
-                <p>When the form field is a checkbox, you can use the formatters <code>True="<span class="CodeOption">ValueIfTrue</span>"</code> and <code>False="<span class="CodeOption">ValueIfFalse</span>"</code>. These formatters allow you to place any desired string in the 'value' to replace the default values of True and False with the desired strings. </p>
+                <p>When the form field is a checkbox, you can use the formatters <code>True="<span class="CodeOption">ValueIfTrue</span>"</code> and <code>False="<span class="CodeOption">ValueIfFalse</span>"</code>. These formatters enable you to place any desired string in the "value" to replace the default values of True and False with the desired strings. </p>
                 <p>When the form field has a numeric values, adding the formatter <code>digits=n</code>, where "n" is the number of digits, will return the number formatted as an n-digit number. </p>
-                <p>When the form field is a Comment Log control, adding the formatter <code>format=comments</code> will return the number of comments entered into the comment log.</p>
+                <p>When the form field is a<span class="NamedControl"> Comment Log</span> control, adding the formatter <code>format=comments</code> will return the number of comments entered into the comment log.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -337,7 +335,7 @@
                     <img src="../Resources/Images/SystemVariablesReferenceGuide/Form System Variables_9.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <h3>Returns</h3>
-                <p>This system variable returns a Boolean result that is true if another user has locked the form, preventing any other user from making changes to it. Form locking can be enabled with the “Enable Form Locking” setting on the form definition. The behavior of this system variable is different when it is used on a form or in a condition on a form. When this variable is used in a condition when a user is running a form, it will return FALSE <i>even though the current user has it locked</i>. When used on a form it will return TRUE only when ANOTHER user has the form instance locked. The Knowledge View behavior is different, in that it simply returns TRUE if <i>anyone</i> has it locked.</p>
+                <p>This system variable returns a Boolean result that is true if another user has locked the form, preventing any other user from making changes to it. Form locking can be enabled by checking the <span class="ControlName">Enable Form Locking</span> property checkbox on the form definition. The behavior of this system variable is different when it is used on a form or in a condition on a form. When this variable is used in a condition when a user is running a form, it will return FALSE <i>even though the current user has it locked</i>. When used on a form it will return TRUE only when ANOTHER user has the form instance locked. The Knowledge View behavior is different, in that it simply returns TRUE if <i>anyone</i> has it locked.</p>
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="IS_FORM_LOCKED" />{IS_FORM_LOCKED}</code>
                 </p>
@@ -369,7 +367,7 @@
                     <img src="../Resources/Images/SystemVariablesReferenceGuide/Form System Variables_11.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <h3>Returns</h3>
-                <p>This system variable returns a Boolean value (e.g. yes/no, true/false) reflecting whether or not the Form instance has just been created.</p>
+                <p>This system variable returns a Boolean value reflecting whether or not the Form instance has just been created.</p>
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="NEW_FORM_INSTANCE" />{NEW_FORM_INSTANCE}</code>
                 </p>
@@ -390,8 +388,8 @@
                 <p><code><MadCap:keyword term="FORM_ATTACHMENT_NUM" />{FORM_ATTACHMENT_NUM, ObjectType=<span class="CodeOption">Document</span>|<span class="CodeOption">Form</span>, CSStatus=<span class="CodeOption">Pending</span>|<span class="CodeOption">NotPending</span>|<span class="CodeOption">Failed</span>|<span class="CodeOption">Done</span>|<span class="CodeOption">PendingOrFailed</span>, GroupName=<span class="CodeOption">Group</span>, UploadStatus=<span class="CodeOption">PENDING</span>|<span class="CodeOption">NOT_PENDING</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>ObjectType:</b> This system variable’s results can be restricted by object type using the ObjectType parameter. Acceptable values are DOCUMENT and FORM.</p>
-                <p><b>CSStatus:</b> The option is available with Concept Share integration. When a value is specified, the system variable will return only the number of documents matching that stated. If “Failed” is selected, this system variable will return the number of documents that failed to upload to Concept Share.</p>
+                <p><b>ObjectType:</b> This system variable’s results can be restricted by object type using the ObjectType parameter. Acceptable values are <code>Document </code>and <code>Form</code>.</p>
+                <p><b>CSStatus:</b> The option is available with Concept Share integration. When a value is specified, the system variable will return only the number of documents matching that stated. If <code>Failed</code> is used, this system variable will return the number of documents that failed to upload to Concept Share.</p>
                 <p><b>GroupName:</b> The  option limits the system variable such that it only returns the number of attachments in the specified group.</p>
                 <p style="font-weight: normal;"><b>UploadStatus:</b> This parameter will return the number of attachments that meet the specified value.</p>
             </MadCap:dropDownBody>

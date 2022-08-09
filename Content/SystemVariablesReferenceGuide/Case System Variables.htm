@@ -21,7 +21,7 @@
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>true/false:</b> For Case system variables that represent a checkbox value on a Form, you can use the "true" and "false modifiers to assign true and false values, just as you do on a checkbox for a Form.</p>
-                <p><b>format:</b> The format parameter accepts the argument "value" for Case properties that are derived from a Dropdown control. By default, the Case system variable will return the display string of the property. specifying "format=value" will return the actual value of the dropdown.</p>
+                <p><b>format:</b> This parameter accepts the argument <code>value </code>for Case properties that are derived from a Dropdown control. By default, the Case system variable will return the display string of the property. Specifying <code>format=value</code> will return the actual value of the dropdown.</p>
                 <h3>Alternate Syntax</h3>
                 <p><code>{CASE_PROP:<span class="CodeOption">PropertyName</span>}</code>
                 </p>
@@ -41,12 +41,11 @@
                 <p><code><MadCap:keyword term="CASE_ATTACHMENTS" />{CASE_ATTACHMENTS, ShowName=<span class="CodeOption">1</span>, ShowDesc=<span class="CodeOption">0</span>, ShowID=<span class="CodeOption">0</span>, GroupName=<span class="CodeOption">Group</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>Groupname:</b> Filters the results returned  by group. </p>
+                <p><b>Groupname:</b> Filters the results returned  by group, and only returns items that match the specified group. </p>
                 <p><b>ShowName:</b> The option is set to 1 by default. When set to 1, it will display the name of the attachment. </p>
                 <p><b>ShowDesc :</b> The option is set to 0 by default. If set to 1, it will display the attachment’s description. </p>
                 <p><b>ShowID :</b> The option is set to 0 by default. If set t 1, it will display the object’s internal ID.</p>
-                <p>If each is set to 1, each attachment will be returned in the format “name : description, name : description, name : description”.</p>
-                <p>The GroupName modifiers limits the system variable such that it only returns a list of objects in the specified group.</p>
+                <p>If both <code>ShowName </code>and <code>ShowDesc </code>are set to <code>1</code>, each attachment will be returned in the format “name : description”.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -204,8 +203,8 @@
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="CASE_ATTACHMENT_NUM" />{CASE_ATTACHMENT_NUM, ObjectType=<span class="CodeOption">Document</span></code>|<code><span class="CodeOption">Form</span>, CSStatus=<span class="CodeOption">Pending</span>|<span class="CodeOption">NotPending</span></code>|<code><span class="CodeOption">Failed</span></code>|<code><span class="CodeOption">Done</span></code>|<code><span class="CodeOption">PendingOrFailed</span>, GroupName=<span class="CodeOption">Group</span>}</code></p>
                 <h3>Modifiers</h3>
-                <p><b>ObjectType:</b> This system variable’s results can be restricted by object type using the ObjectType parameter. Acceptable values are DOCUMENT and FORM.</p>
-                <p><b>CSStatus:</b> The option is available with Concept Share integration. When a value is specified, the system variable will return only the number of documents matching that stated. If “Failed” is selected, this system variable will return the number of documents that failed to upload to Concept Share.</p>
+                <p><b>ObjectType:</b> Restricts this system variable’s results  by object type. Acceptable values are <code>document</code> and <code>form</code>.</p>
+                <p><b>CSStatus:</b> The option is available with Concept Share integration. When a value is specified, the system variable will return only the number of documents matching that stated. If <code>Failed</code> is selected, this system variable will return the number of documents that failed to upload to Concept Share.</p>
                 <p><b>GroupName:</b> The  option limits the system variable such that it only returns the number of attachments in the specified group.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>

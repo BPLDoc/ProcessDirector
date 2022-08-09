@@ -36,14 +36,14 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns the numerical result of a mathematical formula. Both constants and system variables can be used in the formula. A formula is described in traditional mathematical notation, e.g. “100 – 5” or “{someSystemVariable} * 2”.</p>
+                <p>This system variable returns the numerical result of a mathematical formula. Both constants and system variables can be used in the formula. A formula is described in traditional mathematical notation, e.g. <code>100 – 5</code> or <code>{someSystemVariable} * 2</code>.</p>
                 <h3>SysVar Tag</h3>
                 <p><code>{CALC, Formula=<span class="CodeOption">SomeFormula</span>, Format=<span class="CodeOption">FormatString</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>Formula (Required):</b> The formula that will be used for the calculation,</p>
                 <p><b>Format (Optional):</b>&#160;System variable results that can be formatted as numbers can be formatted with .NET format strings. Consult MSDN to see what <a href="http://msdn.microsoft.com/en-us/library/dwhawy9k(v=vs.110).aspx"><span class="Hyperlink">standard format strings</span></a> are available, and to see how you can create your own format using a <a href="http://msdn.microsoft.com/en-us/library/0c899ak8(v=vs.110).aspx"><span class="Hyperlink">custom format string</span></a>.</p>
-                <p>Setting the format parameter to currency will format the result of this system variable as a currency.</p>
+                <p>Setting the <code>format </code>parameter to <code>currency</code> will format the result of this system variable as a currency.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -53,7 +53,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns a single ASCII character, specified by the ASCII&#160;Character Code in the format "CHAR:CharCode", where "CharCode" is the integer character code for the character to return. A list of ASCII&#160;character codes can be found <a href="https://msdn.microsoft.com/en-us/library/4z4t9ed1(v=vs.80).aspx" target="_blank">on MSDN</a>.</p>
+                <p>This system variable returns a single ASCII character, specified by the ASCII&#160;integer Character Code for that character. A list of ASCII&#160;character codes can be found <a href="https://msdn.microsoft.com/en-us/library/4z4t9ed1(v=vs.80).aspx" target="_blank">on MSDN</a>.</p>
                 <h3>SysVar Tag</h3>
                 <p><code>{CHAR:<span class="CodeOption">CharCode</span>}</code>
                 </p>
@@ -106,7 +106,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns the value of a specified variable defined in the vars.cs.ascx file.&#160; Please see the Developer's Guide to learn how to configure the values of custom variables. </p>
+                <p>This system variable returns the value of a specified custom variable that is defined in the vars.cs.ascx file.&#160; Please see the Developer's Guide to learn how to <a href="../DevelopersGuide/Customization File.htm#Creating">configure the values of custom variables</a>. </p>
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="CustomVar" />{CustomVar:<span class="CodeOption">someVariableName</span>}</code>
                 </p>
@@ -121,7 +121,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns a Boolean (yes/no) value reflecting whether debug mode is current on or off.</p>
+                <p>This system variable returns a Boolean value reflecting whether debug mode is current on or off.</p>
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="DEBUG_MODE" />{DEBUG_MODE}</code>
                 </p>
@@ -134,7 +134,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable, usable only on documents, returns the last user who checked in the documents.</p>
+                <p>This system variable, usable only for documents, returns the last user who checked in the documents.</p>
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="DOC_CHECK_IN_USER" />{DOC_CHECK_IN_USER, Format=<span class="CodeOption">FormatType</span>}</code>
                 </p>
@@ -153,8 +153,6 @@
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="DOC_TEMPLATE_NAME" />{DOC_TEMPLATE_NAME}</code>
                 </p>
-                <h3>Optional Parameters</h3>
-                <p>None</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -228,7 +226,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns literal text that does NOT attempt to interpretor parse tokens like system variable curly brackets contained in the text. Instead, the token will be presented as a text character. For example, the syntax <code>{Literal,Text="This will contain { and } characters"}</code> will return the literal text "This will contain { and } characters".</p>
+                <p>This system variable returns literal text that does NOT attempt to interpret or parse tokens like system variable curly brackets contained in the text. Instead, the token will be presented as a text character. For example, the syntax <code>{Literal,Text="This will contain { and } characters"}</code> will return the literal text "This will contain { and } characters".</p>
                 <h3>SysVar Tag</h3>
                 <p style="font-weight: normal;"><code>{LITERAL, Text="<span class="CodeOption">Your text here.</span>"}</code>
                 </p>
@@ -273,7 +271,7 @@
                 <p>When used in most places in the partition, the following syntax will work:</p>
                 <p><code><MadCap:keyword term="NUM_KVIEW_ITEMS" />{NUM_KVIEW_ITEMS:<span class="CodeOption">KViewName</span>}</code>
                 </p>
-                <p>When used in a workspace, the Workspace name must be replaced with the full folder path of the Knowledge View:</p>
+                <p>When used in a workspace, the <code>KViewName </code>name must be replaced with the full folder path of the Knowledge View:</p>
                 <p><code>{NUM_KVIEW_ITEMS:<span class="CodeOption">PartitionName/FolderName/SubfolderName/KViewName</span>}</code>
                 </p>
             </MadCap:dropDownBody>
@@ -290,12 +288,12 @@
                     <img src="../Resources/Images/Custom Tasks2/qrimage.png" />
                 </p>
                 <h3>Parameters</h3>
-                <p><b>text:</b> This is a required text parameter that specifies the text that should be encoded into the QR&#160;Code. This parameter will usually be the URL of a web page. System variables can be used to construct the <b>text</b> modifier.</p>
+                <p><b>text:</b> This is a required text parameter that specifies the text that should be encoded into the QR&#160;Code. This parameter will usually be the URL of a web page. System variables can be used to construct the <code>text</code> modifier.</p>
                 <h2>Optional Modifiers</h2>
                 <p><b>type:</b> This text modifier enables you to specify the image format of the QR code as JPG, PNG, or GIF format. The default is PNG format.</p>
                 <p><b>size:</b> This numeric modifier enables you to set the image size of the QR&#160;code image in pixels. It sets both the height and width as QR code images are square. The default is 200 pixels. </p>
                 <p><b>ecc:</b> This text modifier enables you to specify the Error Correction&#160;Code (ECC) that implements the desired level of error correction to include in the QR&#160;Code image as (L)ow, (M)edium, (Q)uartile, or (H)igh. The default is Q. Higher ECC levels will produce more complex QR&#160;Code images.</p>
-                <p><b>scheme:</b> Currently, the only supported scheme is "URI", e.g., a web page URL, which is the default scheme.  Other schemes, like SHC (SMART Health Card) may be available in the future. </p>
+                <p><b>scheme:</b> Currently, the only supported scheme is <code>URI</code>, e.g., a web page URL, which is the default scheme.  Other schemes, like SHC (SMART Health Card) may be available in the future. </p>
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="QR" />{QR, text=<span class="CodeOption">TextString</span>, type=<span class="CodeOption">png</span>|<span class="CodeOption">jpg</span>|<span class="CodeOption">gif</span>, size=<span class="CodeOption">N</span>, scheme=<span class="CodeOption">uri</span>,ecc=<span class="CodeOption">L</span>|<span class="CodeOption">M</span>|<span class="CodeOption">Q</span>|<span class="CodeOption">H</span>}</code>
                 </p>
@@ -347,7 +345,7 @@
                 <p><b>groupName:</b> Enables you to have separate sequence numbers, because each group name’s sequence number is updated individually. Therefore a variable <code>{SEQ_NUM:group1} </code>would, when referenced, not increment the variable <code>{SEQ_NUM:group2}</code>. Each group would increment only when it is referenced. There is no limit to the number of groups you can have when creating sequence numbers.</p>
                 <h3>Modifiers</h3>
                 <p><b>Digits:</b> You can specify the number of digits that this number should display. For instance <code>digits=4</code> would display the first number as "0001".</p>
-                <p>Setting the <b>Format=GUID</b> modifier causes the sequence number to be generated using a Globally Unique Identifier, rather than an integer.</p>
+                <p><b>format=guid:</b> This optional modifier causes the sequence number to be generated using a Globally Unique Identifier (GUID), rather than an integer.</p>
                 <h3>Additional Considerations</h3>
                 <p>The Sequence Number can be used in combination with other system variables to generate complex numbering formats. For instance, let's say you wish to generate a request number for Purchase Requests that </p>
                 <ol>
@@ -356,7 +354,7 @@
                     <li>Restarts numbering every year, and</li>
                     <li>Has a 4-digit request number.</li>
                 </ol>
-                <p>To meet these requirements, you'd like to display the request number in the format "PR17-0001". The system variable syntax to accomplish this might be written as:</p>
+                <p>To meet these requirements, you'd like to display the request number in the format "PR22-0001". The system variable syntax to accomplish this might be written as:</p>
                 <p><code>PR{CURR_YEAR, format=yy}-{SEQ_NUM:PR{CURR_YEAR},digits=4}</code>
                 </p>
                 <p>This sequence number will start on 1 January every year, and number the requests consecutively throughout the year (e.g., PR22-0001 to PR22-9999 for the year 2022). At the beginning of the next year, the very first request generated that year would be PR23-0001.</p>
@@ -385,12 +383,12 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns the server’s configured culture.</p>
+                <p>This system variable returns the server’s configured culture code, e.g., "en-US".</p>
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="SERVER_CULTURE" />{SERVER_CULTURE, format=name}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>format=name:</b> If the <code>format=name</code> option is used, this system variable returns the culture name. Otherwise, it returns the culture code.</p>
+                <p><b>format=name:</b> Using this optional modifier will returns the culture name, rather than the culture code.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -412,12 +410,12 @@
                     <MadCap:keyword term="Server Version" />Server Version</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This system variable returns the server’s version.</p>
+                <p>This system variable returns the server’s version number.</p>
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="SERVER_VERSION" />{SERVER_VERSION, format=string}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>format=string:</b> Using this modifier returns a string containing the server’s version. Otherwise, this system variable returns the version number.</p>
+                <p><b>format=string:</b> Using this optional modifier returns a string containing the server’s version. Otherwise, this system variable returns the version number.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -455,12 +453,12 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>Sets the Culture context of a Form to a desired locale for all form strings. It does <b>not</b> impact currency formats or validation as those evaluations occur <b>before</b> system variable string parsing. The locale can be set to any valid ASP.NET <a href="https://msdn.microsoft.com/en-us/goglobal/bb896001.aspx" target="_blank">Culture Name string</a> , e.g., "en-US", or "fr-CA". </p>
+                <p>Sets the Culture context of a Form to a desired locale for all form strings. It does <b>not</b> impact currency formats or validation as those evaluations occur <b>before</b> system variable string parsing. The locale can be set to any valid ASP.NET <a href="https://msdn.microsoft.com/en-us/goglobal/bb896001.aspx" target="_blank">Culture Code string</a> , e.g., "en-US", or "fr-CA". </p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="SET_LOCALE" />{SET_LOCALE, LOCALE=<span class="CodeOption">CultureNameString</span>}</code>
+                <p><code><MadCap:keyword term="SET_LOCALE" />{SET_LOCALE, LOCALE=<span class="CodeOption">CultureCodeString</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>LOCALE:</b> A&#160;valid Culture Name string to set the form to a specific locale.</p>
+                <p><b>LOCALE:</b> A&#160;valid Culture code string to set the form to a specific locale.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -470,7 +468,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns information about a permission. It can be used to verify that a user has a certain permission for a certain object. The ID of the relevant object is passed via the ID parameter, the User ID of the user is passed through the UserID parameter, and the type of permission being queried is passed through the PermType parameter.</p>
+                <p>This system variable returns information about a permission. It can be used to verify that a user has a certain permission for a certain object. The ID of the relevant object is passed via the <code>ID </code>parameter, the User ID of the user is passed through the <code>UserID</code> parameter, and the type of permission being queried is passed through the <code>PermType</code> parameter.</p>
                 <h3>SysVar Tag</h3>
                 <p><code><MadCap:keyword term="SQL_PERM" />{SQL_PERM, ID=<span class="CodeOption">objectID</span>, UserID=<span class="CodeOption">UserUID</span>, PermType=<span class="CodeOption">VIEW</span>|<span class="CodeOption">MODIFY</span>|<span class="CodeOption">DELETE</span>|<span class="CodeOption">RUN</span>}</code>
                 </p>
@@ -492,11 +490,11 @@
                 <p><code>{STRING:<span class="CodeOption">string_name</span>, ResourceType=<span class="CodeOption">Internal<code>|</code>Custom</span>, DEFAULTSTRING="<span class="CodeOption">DefaultIfEmpty</span>"} </code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>ResourceType:</b> The type of string to return. This can be set either to “internal” or “custom”. If set to “internal”, the string will reference a Process Director-defined string, whereas when type is set to “custom”, it will reference a string defined by the user in a resource file.</p>
+                <p><b>ResourceType:</b> The type of string to return. If set to <code>internal</code>, the string will reference a Process Director-defined string, whereas when type is set to <code>custom</code>, it will reference a string defined by the user in a resource file.</p>
                 <p><b>DefaultString:</b> A default value to use if the string is not found, or empty.</p>
                 <h3>Alternate Syntax</h3>
                 <p>A simpler, alternate syntax to present a string with a default value can be:</p>
-                <p><code>{S:string_name:"foo"}</code>
+                <p><code>{S:<span class="CodeOption">string_name</span>:"<span class="CodeOption">foo</span>"}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -510,7 +508,7 @@
                     <img src="../Resources/Images/SystemVariablesReferenceGuide/Miscellaneous System Variables.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;" />
                 </p>
                 <h3>Returns</h3>
-                <p>This option will allow the user to specify a string to be used in a comparison. It is not technically a system variable.</p>
+                <p>This option will enable the user to specify a string to be used in a comparison. It is not technically a system variable.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -537,7 +535,7 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a fully-qualified file path to an unused, unique, file name. </p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="TEMP_FILE_PATH" />{TEMP_FILE_PATH, APPEND=<b>"</b>.<span class="CodeOption">[File Extension]</span>",PREPEND="<span class="CodeOption">[Prefix Characters]</span>"}</code>
+                <p><code><MadCap:keyword term="TEMP_FILE_PATH" />{TEMP_FILE_PATH, APPEND=".<span class="CodeOption">[File Extension]</span>",PREPEND="<span class="CodeOption">[Prefix Characters]</span>"}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>PREPEND:</b> A string containing any characters the user wishes to add as a prefix to the file name.</p>
@@ -564,7 +562,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variable returns a user given a userID and an authentication type. </p>
+                <p>This system variable returns a user given a UserID and an authentication type. </p>
                 <h3>SysVar Tag</h3>
                 <p><code>{USER, userid=<span class="CodeOption">someUserID</span>, auth=<span class="CodeOption">SAML<code>|</code>BUILTIN<code>|</code>AD<code>|</code>WINDOWS<code>|</code>LDAP<code>|</code>EXTERNAL</span>}</code>
                 </p>

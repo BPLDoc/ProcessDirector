@@ -23,10 +23,10 @@
                 <p><code><MadCap:keyword term="ACTIVITY_USERS_ACTIVE" />{ACTIVITY_USERS_ACTIVE:<span class="CodeOption">ActivityName</span>,Format=<span class="CodeOption">FormatType</span>, Instance=<span class="CodeOption">InstNum</span>}</code>
                 </p>
                 <h3>Parameters</h3>
-                <p><b>ActivityName {Required):</b>&#160;The name of the activity for whom the users should be returned.</p>
+                <p><b>ActivityName (Required):</b>&#160;The name of the activity for whom the users should be returned.</p>
                 <h3>Modifiers</h3>
-                <p><b>Format:</b> This system variable can be formatted using the format= parameter. It can be formatted to display either the number of active users in this activity (using the format=count argument) or the percentage of users who are active in the activity (using the format=percentage).</p>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Modifiers and Parameters topic for more information.</p>
+                <p><b>Format:</b> This optional modifiers can be formatted to display either the number of active users in this activity (using the <code>format=count</code> argument) or the percentage of users who are active in the activity (using <code>format=percentage</code>).</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -56,10 +56,10 @@
                 <h3>Returns</h3>
                 <p>This system variable returns the specified activity’s lowest level activity. If two or more activities are running in different hierarchies, a comma-separated list of all lowest, unrelated, running activities will be returned. </p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="ACTIVITY_BOTTOM_RUNNING_NAME" />{ACTIVITY_BOTTOM_RUNNING_NAME, format=id}</code>
+                <p><code><MadCap:keyword term="ACTIVITY_BOTTOM_RUNNING_NAME" />{ACTIVITY_BOTTOM_RUNNING_NAME, <span class="CodeOption">format=id</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>format=id:</b> This formatter may be set to "id" to return the Activity Instance ID, instead of the activity name.</p>
+                <p><b>format=id:</b> This optional modifier can be used to return the Activity Instance ID, instead of the activity name.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -92,14 +92,14 @@
                 <h3>Returns</h3>
                 <p>This system variable returns the date the specified activity is due.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="ACTIVITY_DUE_DATE" />{ACTIVITY_DUE_DATE:<span class="CodeOption">ActivityName</span>, Instance=<span class="CodeOption">N</span>,<b> </b>UserTask=1}</code>
+                <p><code><MadCap:keyword term="ACTIVITY_DUE_DATE" />{ACTIVITY_DUE_DATE:<span class="CodeOption">ActivityName</span>, Instance=<span class="CodeOption">N</span>,<b> </b><span class="CodeOption">UserTask=1</span>}</code>
                 </p>
                 <h3>Parameters</h3>
                 <p><b>ActivityName:</b> If no activity name is specified, this system variable will return the due date of the currently running activity.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
-                <p>This system variable’s result can be formatted using the Modifiers that are generally available for DateTime system variables.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
                 <p><b>UserTask=1:</b> This optional modifier, when included in the variable, will return only user activities.</p>
+                <p>This system variable’s result can be formatted using the Modifiers that are generally available for DateTime system variables.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -216,7 +216,7 @@
                 <h3>Parameters</h3>
                 <p><b>ActivityName:</b> The name of the activity whose result you wish to return. If none is specified, it will return the start date of the current activity. This system variable can be formatted as a timespan.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information. Additionally, this variable supports the syntax <code>instance=all</code> to return a list of all results for an activity that has iterated.</p>
+                <p><b>Instance: </b>This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <b><a href="Parameters.htm#InstanceModifier" style="font-weight: normal;">Instance Modifier</a></b> section of the Parameters topic for more information. Additionally, this variable supports the syntax <code>instance=all</code> to return a list of all results for an activity that has iterated.</p>
                 <p><b>SubTask:</b> The subtask for which you'd like the result to be returned.</p>
                 <p><b>Separator:</b> Enables you to define a separator to use for the results when multiple results are returned.</p>
                 <p><b>KeepEmptyRows:</b> The list will return an empty space for rows that have no results when multiple results are returned.</p>
@@ -257,8 +257,8 @@
                 <h3>Parameters</h3>
                 <p><b>ActivityName (Required):</b> The name of the activity whose start date you wish to return.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
-                <p><b>Days:</b> This parameter is used to calculate the due date of an activity via System Variable. The Days parameter is an integer value that specifies the number of days after the Activity Start Date to set the due date. For example, a Days value of "3" would set the due date to three days after the Activity Start Date.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Days:</b> This modifier is used to calculate the due date of an activity via System Variable. The <code>Days</code> parameter is an integer value that specifies the number of days after the Activity Start Date to set the due date. For example, a <code>Days</code> value of "3" would set the due date to three days after the Activity Start Date.</p>
                 <p>This system variable can be formatted using the options available to a DateTime system variable. </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -276,7 +276,7 @@
                 <h3>Parameters</h3>
                 <p><b>ActivityName (Required):</b> The name of the activity whose calculated start date you wish to return.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
                 <p>This system variable’s results can be formatted as a DateTime system variable.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -294,7 +294,7 @@
                 <h3>Parameters</h3>
                 <p><b>ActivityName (Required):</b> The name of the activity whose configured start date you wish to return.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
                 <p>This system variable’s results can be formatted as a DateTime system variable.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -315,7 +315,7 @@
                 <h3>Parameters</h3>
                 <p><b>ActivityName (Required):</b> The name of the activity whose predicted start date you wish to return.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
                 <p>The result of this system variable can be formatted as a DateTime system variable.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -333,7 +333,7 @@
                 <h3>Parameters</h3>
                 <p><b>ActivityName (Required):</b> The name of the activity whose status you wish to return.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -353,7 +353,7 @@
                 <h3>Parameters</h3>
                 <p><b>ActivityName (Required):</b> The name of the activity whose stop date you wish to return.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
                 <p><b>SubTask:</b> The subtask for which you'd like the result to be returned.</p>
                 <p>This system variable can be formatted according to the options available for date results. </p>
             </MadCap:dropDownBody>
@@ -372,7 +372,7 @@
                 <h3>Parameters</h3>
                 <p><b>ActivityName (Required):</b> The name of the activity whose calculated stop date you wish to return.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
                 <p>The result of this system variable can be formatted as a DateTime system variable.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -390,7 +390,7 @@
                 <h3>Parameters</h3>
                 <p><b>ActivityName (Required):</b> The name of the activity whose configured stop date you wish to return.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
                 <p>The result of this system variable can be formatted as a DateTime system variable.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -411,7 +411,7 @@
                 <h3>Parameters</h3>
                 <p><b>ActivityName (Required):</b> The name of the activity whose predicted stop date you wish to return.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
                 <p>The result of this system variable can be formatted as a DateTime system variable.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -441,7 +441,7 @@
                 <h3>Parameters</h3>
                 <p><b>ActivityName:</b> The name of the activity whose termination reason you wish to return. Should one not be specified, this system variable will return the start date of the current activity.</p>
                 <h3>Modifiers</h3>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -491,7 +491,7 @@
                 <h3>Modifiers</h3>
                 <p><b>Format:</b> This system variable can be formatted to display either the number of users in this activity (using the <code>format=count</code> argument) or the percentage of users who are active in the activity (using the <code>format=percentage</code> argument).</p>
                 <p><b>ShowDelegator/ShowDelegatee:</b>&#160; Will respectively display who delegated a task and whom the task is delegated to. By default, the delegatee is shown and the delegator is not.</p>
-                <p><b>Instance:</b> This parameter takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -509,7 +509,7 @@
                 <p><b>ActivityName (Required):</b> The name of the activity from which the completed users need to be listed.</p>
                 <h3>Modifiers</h3>
                 <p><b>Result:</b> The name of an activity result. If the Result modifier is included, the SysVar will return the list of users that selected the specified result. </p>
-                <p><b>Instance:</b> This modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
+                <p><b>Instance:</b> This optional modifier takes an integer that corresponds to the number of times the step was run, which is useful for iterated steps. See the <a href="Parameters.htm#InstanceModifier">Instance Modifier</a> section of the Parameters topic for more information.</p>
                 <p style="font-weight: normal;"><b>Format:</b> Using the <code>format=comments</code> Modifier will to return only the comments placed by the users. If there were multiple users that completed this activity it will show them comma separated. If you want to limit the users to only those with a particular result, use the Result Modifier.</p>
                 <p style="font-weight: normal;"><b>Termreason:</b> This optional numeric parameter enables you to specify the termination reason for the activity users. When you do so, the variable will return only the users whose activity was terminated for the reason specified. The following values are acceptable.</p>
                 <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
@@ -523,35 +523,43 @@
                     </thead>
                     <tbody>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">1</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>1</code>
+                            </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Normal termination</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">2</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><code>2</code>
+                            </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Timeout</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">3</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>3</code>
+                            </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Did not finish</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">4</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><code>4</code>
+                            </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Canceled</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">5</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>5</code>
+                            </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Reassigned</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">6</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><code>6</code>
+                            </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Not Needed</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">9</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>9</code>
+                            </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Break</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row2">10</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2"><code>10</code>
+                            </td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row2">Restart</td>
                         </tr>
                     </tbody>
@@ -663,10 +671,10 @@
                 <p>When a parent activity is configured to implement iteration, this SysVar is used to determine whether the result of last completed child activity in the iterative loop contains a user-specified value. The use of this SysVar is configured in the Condition Builder of the Process Director user interface.</p>
                 <h3>SysVar Tag</h3>
                 <p>Unlike most other System Variables, this SysVar is solely configured for use in the Process Director user interface, and there is no current use case for using the actual SysVar tag with this variable.</p>
-                <p><code><MadCap:keyword term="ACTIVITY_RESULT_LAST_CHILD" />{ACTIVITY_RESULT_LAST_CHILD, format=name}</code>
+                <p><code><MadCap:keyword term="ACTIVITY_RESULT_LAST_CHILD" />{ACTIVITY_RESULT_LAST_CHILD, <span class="CodeOption">format=name</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p>Using the optional <code>format=name</code> formatter will return the activity Name, instead of the activity Result.</p>
+                <p><b>format=name</b>: This optional modifier will return the activity Name, instead of the activity Result.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -745,7 +753,7 @@
                 <h3>Returns</h3>
                 <p>This system variable returns the name of the currently running activity.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="ACTIVITY_RUNNING_NAME" />{ACTIVITY_RUNNING_NAME<code>, format=id}</code></code>
+                <p><code><MadCap:keyword term="ACTIVITY_RUNNING_NAME" />{ACTIVITY_RUNNING_NAME<code>, <span class="CodeOption">format=id</span>}</code></code>
                 </p>
                 <h3>Modifiers</h3>
                 <p><b>format=id:</b> This optional formatter can be set to "id" to return the Activity Instance ID, instead of the activity name. Setting this formatter to "child" will return the names of running child activities.</p>
