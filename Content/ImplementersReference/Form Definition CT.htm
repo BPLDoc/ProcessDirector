@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Form Definition;Forms;Implementation" />
+            <MadCap:keyword term="Form" />Custom Task Event Mapping Tab</h1>
+        <p>This tab specifies Form Custom Tasks to be mapped to different events that occur when the Form is run. The Form Custom Tasks provide enhanced functions to perform a variety of actions, such as to connect to external data sources or to manipulate data on the form.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/CTTabeForm.png" />
+        </p>
+        <p> Each custom task that you map, is mapped to an event that is raised by the Form. The events that are available will appear in the dropdown control that appears in the <span class="ControlName">Event Name</span> column. The Form events that can be mapped to a custom task, and the  order in which the events will be called, is displayed in the table below.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+            <col style="width: ;" class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>EVENT</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>DESCRIPTION</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>specific form event</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This allows you to tie a custom task to a specific form control that is marked as an event field. Every control that is marked as en event field will appear in the dropdown.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>[Event]</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>Any event from the form (a button, an event field being changed, etc.) will call this event.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>[Form Creation]</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This event is only called once per form instance to initialize the form data.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>[View State Init]</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>This event is called every time a form is opened. It will not be called for postbacks on the current view.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>[Before Conditions]</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This event is called prior to evaluating the form conditions (which control the visibility, the required setting, the enabled setting, etc.).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>[After Conditions]</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>This event is called after evaluating the form conditions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>[Before Validation]</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This event is called if the user hits a complete button, prior to the form validation.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>[After Validation]</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                        <p>This event is called if the user hits a complete button, after the form validation.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>[Form Completed]</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This event is called if the user hits a complete button, and the validation was successful.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>[Form Display]</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>This event is called prior to displaying the form. This will be called on every postback, and when the form is first displayed.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>The order of the events is very specific. For example, If the user changes a dropdown form field which is an event field, the custom tasks mapped to events in the following order will be called if configured: specific form event, [Event], [Before Conditions], [After Conditions], [Form Display].</p>
+        <p>If a user hits the <span class="UIElement">OK </span>button on a form, and the validation succeeds, the events will occur in this order: [Event], [Before Conditions], [After Conditions], [Before Validation], [After Validation], [Form Completed].</p>
+        <p>If a user hits the <span class="UIElement">OK </span>button on a form, and the validation fails, the events will occur in this order: [Event], [Before Conditions], [After Conditions], [Before Validation], [After Validation], [Form Display].</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Mapping an event to a Custom Task</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Click on the <span class="UIElement">Build </span>button for the <span class="NamedControl">Custom Task Picker</span> to open the<span class="ControlName"> Choose Custom Task</span> dialog box.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/BuildButtoneForm.png" />
+                </p>
+                <p>From the<span class="ControlName"> Choose Custom Task</span> dialog box, select the Custom task you want to map. When you select the Custom Task, the <span class="ControlName">Choose Custom Task </span>dialog box will close and the name of the Custom Task will appear in the text box of the<span class="NamedControl"> Custom Task Picker</span>. Click the <span class="UIElement">Add Custom Task</span> button to add the Custom Task to the Form.</p>
+                <p>The <span class="UIElement">Custom Task Event Mapping </span>tab will now display a new line containing the Custom Task to be configured.</p>
+                <p>From the dropdown in the<span class="ControlName"> Event Name</span> column, select the desired event to tell the Form definition to run the selected Custom Task when the event runs. </p>
+                <p>We now need to configure the Custom Task by clicking on the <span class="UIElement">Configure </span>button to open the configuration dialog box for the  Custom Task.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/CuonfigureButtonCT.png" />
+                </p>
+                <p>Each Custom task has its own, unique configuration dialog box. See the <a href="../Custom Tasks2/Custom Tasks.htm">Custom Tasks</a> documentation for information specific to configuring each Custom task. When you are finished configuring the Custom task, click the <span class="UIElement">OK </span>button to save your configuration changes and close the dialog box.</p>
+                <p>Each Custom Task mapping row contains a Condition column, from which you can use the <span class="ProcessDirectorObject">Condition Builder</span> to create an additional condition to meet before the task is run by clicking on the <span class="UIElement">Click to create condition...</span> link.</p>
+                <p>Each row can be ordered in the list of mapping rows by clicking one of the arrow icons to move the row up or down. The row can be deleted by clicking the red "X" icon. Process Director will execute the Custom tasks in the order, from top to bottom, in which they are placed in the list.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2 MadCap:conditions="General.Not Printed"><a name="Example"></a>Documentation Example <a href="#Example" class="anchor">#</a></h2>
+        <MadCap:dropDown MadCap:conditions="General.Not Printed">
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Video Example</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p MadCap:conditions="General.Not Printed">
+                    <object MadCap:HTML5Video="true" src="../Resources/Multimedia/newformct.mp4" MadCap:Param_controls="true" MadCap:Param_muted="true" MadCap:Param_loop="true" MadCap:Param_autoplay="true" style="max-width: 100%;width: auto;height: auto;border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;" title="Video - New Form Custom Task" alt="Video - New Form Custom Task">
+                    </object>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown MadCap:conditions="General.Not Printed">
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Use the Simulator</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p MadCap:conditions="General.Not Printed"><a href="../Resources/Simulations/Custom Task/New Form Custom Task/story.html" target="_blank" title="Simulator - New Form Custom Task" alt="Simulator - New Form Custom Task">Click here</a> to use the Simulator to add a Custom Task in the Custom Task Event Mapping Tab.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>More Configuration Tabs</h2>
+        <p>You can view the documentation for each of the other configuration tabs by using the Table of Contents displayed on the upper right corner of the page, or use one of the links below.</p>
+        <p><b><a href="Form Definition Properties.htm">Properties</a>:</b>&#160;General Form definition properties.</p>
+        <p><b><a href="Form Definition Edit.htm">Edit</a>:</b> Opens the editor for the form's visual template, the Online Form Designer.</p>
+        <p><b><a href="Form Definition Controls.htm">Form Controls</a>:</b> Enables you to set individual properties for each field on the form.</p>
+        <p><b><a href="Form Definition Validation.htm">Validation Rules</a>:</b> Enables you to add custom validation to the form. </p>
+        <p><b><a href="Form Definition SFD.htm">Set Form Data</a>:</b> Enables you to set the value of Form fields automatically, based on events or conditions you specify.</p>
+        <p><b><a href="Form Definition FillDD.htm">Fill Dropdowns</a>:</b> Enables you to automatically set the options available in a dropdown control.</p>
+        <p><b><a href="Form Definition Other.htm">Other Tabs</a>:</b> Documentation for the <span class="UIElement">Form Data SQL&#160;View</span>, <span class="UIElement">History</span>, <span class="UIElement">Meta Data</span>, <span class="UIElement">Versions</span>, and <span class="UIElement">Permissions </span>tabs.</p>
+    </body>
+</html>

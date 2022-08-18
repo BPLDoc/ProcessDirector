@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation;Forms" />
+            <MadCap:keyword term="Forms" />Form Definition URL</h1>
+        <p>Forms can be linked and run from outside of Process Director using a manually-configured URL (for example, linked from your Intranet portal). The default URL can be found on at the bottom of the Form Definition's Properties page, and looks similar to this: </p>
+        <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/form.aspx?pid=<span class="CodeOption">PP</span>&amp;formid=<span class="CodeOption">NN</span>&amp;nohome=<span class="CodeOption">0</span>&amp;completepageprompt=<span class="CodeOption">0</span>&amp;completepage=&amp;completetext= </p>
+        <p>Where <code class="CodeOption">ServerName</code> is the hostname of BP Logix, <code class="CodeOption">PP </code>is the internal ID of the Partition, and <code class="CodeOption">NN </code>is the internal ID of the Form Definition. For users of Process Director v5.12 and higher, the URL is displayed on this tab as a hyperlink.</p>
+        <p>A number of URL&#160;parameters can be added to the URL's existing parameters to alter the way Process Director responds to the URL request. The URL&#160;parameters may be used in any order.</p>
+        <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/form.aspx?pid=<span class="CodeOption">PP</span>&amp;formid=<span class="CodeOption">NN</span>&amp;nohome=<span class="CodeOption">1</span>&amp;completepageprompt=<span class="CodeOption">0</span></p>
+        <ul>
+            <li>The <b>nohome</b> parameter controls whether the home page should be opened when the link to the <span class="ProcessDirectorObject">Task List</span> or Form is clicked. Set nohome to 1 to ensure that the home page isn’t opened.</li>
+            <li>The <b>completepage</b> and <b>completetext</b> parameters specify the URL of the page that completing the Form should redirect to and the text displayed with the URL, respectively. When using completepage parameter, you must include the "<span class="CodeOption">ServerName.com</span>//" or "https://" when specifying your URL. In other words, the URL must be a fully-qualified URL, and not just a relative path or other partial URL. Additionally, the completepage URL must, for security reasons, point to a page <i>inside</i> the Process Director domain. You cannot redirect to an external URL. We recommend that, if you want to direct users to an external URL, you create a custom redirect page inside the /custom folder of your process director installation, and use that page as the completepage URL. That custom redirect page can then, in turn, redirect the users to an external URL.</li>
+            <li>The <b>completepageprompt</b> parameter supplies the page completion prompt message. If completepageprompt=0, then the default "completed" page will NOT be displayed. If you are trying to redirect the user to a specific URL after the form is submitted, you will most likely want to suppress the "completed" page. </li>
+            <li>The <b>prinstid</b> parameter supplies a process instance ID to display the form instance that is associated with a specific process instance.</li>
+            <li>The <b>findtask=1</b> parameter will display the form in task context. This will generally open the form in the context of the current task. Some form instances, of course, may be associated with multiple process instances, so you can give an additional hint about the process you are trying to use by adding the <b>linkprid</b> parameter to pass the ID of the specific process instance  which you want to open in task context.</li>
+        </ul>
+        <p>Process Director v5.39 and higher adds additional URL&#160;parameters to control how the form responds to the <span class="UIElement">Save and Close</span> button, when used.</p>
+        <ul>
+            <li>The <b>saveformpage</b> and <b>saveformtext</b> parameters specify the URL of the page that saving the Form should redirect to and the text displayed with the URL, respectively. The usage specifics of the <b>completepageprompt</b> and <b>completetext</b> parameters listed above also apply to this parameter.</li>
+            <li>The <b>saveformpageprompt</b> parameter supplies the page save prompt message. If <code>saveformpageprompt=0</code>, then the default "completed" page will NOT be displayed. If you are trying to redirect the user to a specific URL after the form is saved, you will most likely want to suppress the "completed" page. </li>
+        </ul>
+        <p>You can also set the value of Form fields in the URL that will default or override the values for the specified fields. For security reasons, you will need to specify the fields you want to set via URL&#160;parameter beforehand. There are two methods for setting the value via a URL&#160;parameter.</p>
+        <h5>Setting a default value</h5>
+        <p>If you <b>only</b> need to set the default value of a field via URL for a new Form instance, you can use the following procedure to configure the field.</p>
+        <p>In the<span class="UIElement"> Form Fields</span> tab of the Form definition, open the field properties for the field you wish to set. You must set a variable as the default value, and there are two ways to do this:</p>
+        <ol>
+            <li>Set the <span class="ControlName">Default Value </span>as a Variable, then enter the name you'd like to use for the variable:</li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Forms2.png" />
+        </p>
+        <ol MadCap:continue="true">
+            <li>Set the default value to a string, and enter a generic variable into the field, using the syntax <code>{VAR:VarName, modifier=ModifierValue}</code>.</li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Forms3.png" />
+        </p>
+        <p>Using the VAR object in a text string enables you to add additional modifiers to the variable. For instance, the syntax <code>{VAR:<span class="CodeOption">VarName</span>, null="<span class="CodeOption">Value if null</span>"}</code> specifies the value to use if the URL parameter is not present.</p>
+        <p>The VAR (Variable) object is an <i>ad-hoc</i> variable whose primary use is to serve as a placeholder for the value passed via the URL&#160;Parameter. This is the same implementation procedure used when <a href="Knowledge View Exporting and Reporting.htm#_Toc421536233">passing values to a Knowledge View in a URL</a>.</p>
+        <p>No matter which of the two methods above that you implement, you can now use the Variable as a URL&#160;parameter. In the case of the above example, the Parameter would be</p>
+        <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/form.aspx?pid=<span class="CodeOption">PP</span>&amp;formid=<span class="CodeOption">NN</span>&amp;<span style="background-color: #ffff00;"><span style="background-color: #ffd700;">Stuff=value</span></span></p>
+        <p>The default value will be filled with the value specified in the URL parameter. </p>
+        <p>This procedure is the simplest method for setting a field's value, and it does not require any further configuration. The drawback to this method is that it can only be used to set the default value of a field in a new Form instance, and so will not change a field value that has already been saved in an existing Form instance.</p>
+        <p>If you wish to set the value in an existing Form, you will need to use the next method.</p>
+        <h5>Setting a Field Value Universally</h5>
+        <p>This method enables you to set a field value via URL parameter at any time. For security reasons, however, you must first identify the field by setting the field name as configurable via URL in the Custom Vars file (vars.cs.ascx), using the <a href="../DevelopersGuide/Customization File Misc.htm#FormFieldsAllowDisabledURLUpdate" target="_blank">FormFieldsAllowDisabledURLUpdate</a> method.</p>
+        <p>Once you have specified the field name in the Custom vars file, you can now use a URL&#160;parameter to set the value any time you desire. In the URL&#160;parameter, the field is identified using the prefix "EXT_ ", followed by the field name, to identify the field, e.g., "EXT_FieldName".</p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> Be sure to URL encode the values you specify in the URL&#160;Parameter.</p>
+        <p><b>Example:</b>
+        </p>
+        <p>In the Custom Vars file, identify the fields to change via URL&#160;Parameter:</p>
+        <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Fields to set via URL&#160;Parameter</span><br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">Field1</span>");<br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">Field2</span>");<br />}</p>
+        <p>Now, you can use the following URL&#160;parameters to set the field values:</p>
+        <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/form.aspx?pid=<span class="CodeOption">PP</span>&amp;formid=<span class="CodeOption">NN</span>&amp;<span style="background-color: #ffd700;">EXT_Field1=Some+Value</span>&amp;<span style="background-color: #ffd700;">EXT_Field2=Another+Value</span></p>
+    </body>
+</html>

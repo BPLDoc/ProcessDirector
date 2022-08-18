@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation;Forms" />
+            <MadCap:keyword term="Forms" />Form Events</h1>
+        <p>Form Events are actions that occur on a form, to which you can add custom actions of your own. Many events fire automatically as part of the form's natural life cycle. For instance, when a form is first opened, an event called Form Creation is fired. Some events, on the other hand, are manually fired. A <span class="NamedControl">Button </span>control, for example, has an event that fires when the button is clicked, and this event is built into the <span class="NamedControl">Button </span>control automatically. Additionally, form input controls can also be set as an <span class="ControlName">Event Field</span> in the properties you configure on the <span class="UIElement">Form Controls</span> tab of the Form definition. These controls will fire an event when the data in the control is changed. Any time an event fires, you can configure an action to run on the event, such as a Set Form Data action, or running a Custom Task. For example, you might place a <span class="NamedControl">Button </span>control on a form, and on the event for that button, run a Custom Task that converts the form to a PDF document.</p>
+        <p>Form events can be accessed from a Dropdown control that lists all of the available events on the form. This dropdown is primarily used on the <span class="UIElement">Set&#160;Form Data</span> and <span class="UIElement">Custom&#160;Task Event Mapping</span> tabs, though it appears anywhere that an event is applicable.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EventDropdown.png" />
+        </p>
+        <p>This dropdown displays all of the available events that can be used to attach actions to the Form. By default, the dropdown shows only the events built into the form's life cycle, but any buttons or other event controls you place on the form will be automatically added to the selections displayed in the dropdown. The table below describes the default events that occur as part of the form's life cycle.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 50%;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 50%;" class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>Event</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Form Creation</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Fired when a Form instance is called for display.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">View State Init</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Fired on the preparation of the Form for display.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Event</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Fired on any Event</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Before Conditions</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Fired before any Form conditions, such as visibility or enabling conditions on controls, are called.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">After Conditions</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Fired after all Form conditions have been processed.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Before Validation</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Fired when the Form has been submitted, but before any Form validation conditions are evaluated.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">After Validation</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Fired after all validation conditions have been processed.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Form Display</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Fired when the form is actually displayed in the browser. All Fill Dropdown actions, form calculations for <span class="NamedControl">Calculation </span>and <span class="NamedControl">Sum </span>controls, and other automated form update events, are automatically processed on the Display event.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Form Completed</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Fired after the form's display has been ended (i.e., when the form closes), and just prior to the form being disposed from memory.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">No Event</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Placeholder to prevent an action from firing on any event.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">Ajax Request</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">Fired when a client-side JavaScript Ajax request is processed.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>So far, we've just talked about Form events in the context of the user interface, but Process Director also enables custom scripts to be run, and the script actions also run on the same events that UI configuration uses. Additionally, Custom Tasks also run on the same events.</p>
+        <p>The order of operations for these different actions is:</p>
+        <ul>
+            <li>
+                <p><b>Custom scripts:</b>&#160;Scripted actions always run first on any event.</p>
+            </li>
+            <li>
+                <p><b>UI&#160;and Datasets:</b> After the custom scripts complete, the UI&#160;or Dataset actions, such as Set Form Data or Fill Dropdowns, will run.</p>
+            </li>
+            <li>
+                <p><b>Custom Tasks:</b>&#160;Custom Task run after all other actions.</p>
+            </li>
+        </ul>
+        <p>The order in which the actions run is very important. For instance, if you want to configure the <span class="UIElement">Set Form Data </span>tab to run an action that is based on some data pulled from a Custom Task, you cannot run both the Set Form Data action and the Custom Task action on the same event. The Custom Task will <span class="Emphasis">not </span>run before the Set Form Data action, only after it. In such a case, you might have to run two Custom Tasks, with the first Custom Task retrieving the data, then running the Set Form Data Custom task second, to ensure that the operations happen in the order you desire.</p>
+        <p>Additional advanced information on Form events from a scripting perspective can be found in the <a href="../DevelopersGuide/Custom Scripting.htm">Custom Scripting</a> and <a href="../DevelopersGuide/Form Class.htm#_Toc421269979">Form Class</a> documentation in the Developer's Guide.</p>
+    </body>
+</html>

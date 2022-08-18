@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation;Forms" />
+            <MadCap:keyword term="Forms" />Validation Rules Tab</h1>
+        <p>The tab enables you to add custom validation to the form. By clicking on the<span class="UIElement"> Add Validation Rule</span> button you can add your own validation message. You can create a condition under which each validation rule will run. If that condition is met—or, not met, as you desire—you can display a custom message.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ValidationRulesTab1.png" />
+        </p>
+        <p>Some special considerations apply when using validation rules to validate fields in an array. Process Director uses slightly different logic for array validation, and that logic may change depending upon the operator used to validate the array values. In the examples below, there are a number of possible validation rules to assist you in understanding the logic used when validating arrays. In these examples, an array field will be designated as an array column with the name of <span class="ControlName">Col1</span>, <span class="ControlName">Col2</span> etc., while non-array fields will be designated as <span class="ControlName">Field1</span>, <span class="ControlName">Field2</span>, etc.</p>
+        <p>Some general rules need to be addressed first, though. Any time you create a validation rule, you are evaluating a value on the left side of the operator with a value on the right side of the operator. Process Director will respond differently depending on whether you are trying to compare a non-array field with an array field, on what side of the operator the array field is used, or whether you are comparing two array fields.</p>
+        <h4>Comparing Non-Array and Array fields</h4>
+        <p>The way process Director compares array fields with non-array fields is different, based on whether the array is on the left or right side of the operator.</p>
+        <ul>
+            <li>If the  right side of the operator is an array column, the evaluation will occur against a comma-separated list of all values in the column, e.g., "1,2,3".</li>
+            <li>If the left side is an array column field and the right side is a non-array field, the evaluation will occur for the column field for EACH row, and each condition is tested against the field value.</li>
+        </ul>
+        <p>Let's assume we have an array field, named <span class="ControlName">Col1</span>, containing three rows, with the following values:</p>
+        <ul>
+            <li>Row 1:&#160;a</li>
+            <li>Row 2: b</li>
+            <li>Row 3:&#160;c</li>
+        </ul>
+        <p>Let's also assume that we have a non-array field called <span class="ControlName">Field1</span>, with a value of "b". </p>
+        <p>If we want to do a comparison with <span class="ControlName">Field1 </span>on the left side of the operator and <span class="ControlName">Col1 </span>on the right side, Process Director will return the value of <span class="ControlName">Field1 </span>as "b", and <span class="ControlName">Col1 </span>as "a, b, c". As a result, some operators will generally not work. In general, <code>Field1 <span class="UIElement">=</span> Col1</code> (b = a, b, c), will generally return "false", while  <code>Field1 <span class="UIElement" style="font-weight: bold;">&lt;&gt;</span>&#160;Col1</code> (b &lt;&gt; a, b, c) will generally return "true". Similarly, <code>Field1 <span class="UIElement" style="font-weight: bold;">Contains </span>Col1</code> will generally return "false". On the other hand, <code>Field1 <span class="UIElement" style="font-weight: bold;">In </span>Col1</code> will validate properly, because "b" is in "a, b, c".</p>
+        <p>Notice the liberal use of the word "generally" in the preceding paragraph. You <i>can</i> make comparisons using the "=" or "&lt;&gt;" operators if the non-array field contains comma-separated values. For instance, if you put the value "a, b, c" in <span class="ControlName">Field1</span>, then<code> Field1 <span class="UIElement" style="font-weight: bold;">=</span> Col1</code> will return true, because "a, b, c" = "a, b, c". You're essentially comparing two comma-separated lists that both have the same value. (Actually, you need to be sure to put spaces between the values in <span class="ControlName">Field1</span>, because "a,b,c" won't validate, though "a, b, c" will.)</p>
+        <p>The logic for comparisons works differently if the array field is on the left side of the operator, and the non-array field is on the right. In that case, process Director will parse each array row for the comparison, which will provide the following results:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 25%;" />
+            <col class="TableStyle-Simple-Column-Column1" style="width: 25%;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">VALIDATION RULE                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">FIELD VALUES</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">DESCRIPTION
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Col1 <span class="UIElement" style="font-weight: bold;">In</span> Field1</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Col1:<br />X<br />2<br />Y</p>
+                        <p>Field1: 2</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Is true if ANY row in Col1 is IN Field1. For example, this is “true” because col1 (row2) is in Field1</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Col1 <span class="UIElement" style="font-weight: bold;">Not In</span> Field1</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Col1:<br />2
+<br />3<br />2</p>
+                        <p>Field1 = 2</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Is true if ANY row in col1 is IN NOT IN FIELD1. For example, this is “true” because col1 (row2) is NOT in Field1</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Col1 <span class="UIElement" style="font-weight: bold;">Contains</span> Field1</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Col1:<br />1
+<br />22<br />3</p>
+                        <p>Field1 = 2</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>Is true if ANY row in col1 contains FIELD1. For example, this is “true” because col1 (row2) contains Field1. In this case "22" contain "2" </p>
+                        <p>NOTE:&#160;This is a <i>text</i> comparison NOT a <i>numeric</i> comparison.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Col1 <span class="UIElement" style="font-weight: bold;">Does Not Contain</span> Field1</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>Col1:<br />2
+<br />3<br />2</p>
+                        <p>Field1 = 2</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">Is true if ANY row in col1 does not contain FIELD1. For example, this is “true” because col1 (row2) does not contain Field1</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Comparing Array Fields</h4>
+        <p>Comparing two array columns works quite differently. In general, Process Director will compare the values in each row in the array. The operators for array comparisons will work in the following manner.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 25%;" />
+            <col class="TableStyle-Simple-Column-Column1" style="width: 25%;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">OPERATOR                   </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">COLUMN VALUES</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">DESCRIPTION
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Col1 <span class="UIElement" style="font-weight: bold;">In </span>Col2</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <thead>
+                                <tr class="TableStyle-Simple-Head-Header1">
+                                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Col1</th>
+                                    <th class="TableStyle-Simple-HeadD-Column1-Header1">Col2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row1">1</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row1">2</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row2">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row2">2</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row2">X</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyB-Column1-Row1">3</td>
+                                    <td class="TableStyle-Simple-BodyA-Column1-Row1">Y</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Is true if ANY value in Col1 is in ANY row of Col2. For example, this is “true” because the value in Col1/Row2 is in Col2/Row1
+</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Col1 <span class="UIElement" style="font-weight: bold;">Not In </span>Col2</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <thead>
+                                <tr class="TableStyle-Simple-Head-Header1">
+                                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Col1</th>
+                                    <th class="TableStyle-Simple-HeadD-Column1-Header1">Col2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row1">1</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row1">3</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row2">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row2">X</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row2">2</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyB-Column1-Row1">3</td>
+                                    <td class="TableStyle-Simple-BodyA-Column1-Row1">1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Is true if ANY value in Col1 is NOT IN in ANY row of Col2.  For example, this is “true” because the value in Col1/Row2 is not in Col2.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Col1 <span class="UIElement" style="font-weight: bold;">= </span>Col2</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <thead>
+                                <tr class="TableStyle-Simple-Head-Header1">
+                                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Col1</th>
+                                    <th class="TableStyle-Simple-HeadD-Column1-Header1">Col2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row1">1</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row1">1</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row2">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row2">2</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row2">X</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyB-Column1-Row1">3</td>
+                                    <td class="TableStyle-Simple-BodyA-Column1-Row1">Y</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Is true if ANY value in Col1 equals the value in Col2 in the SAME Row.  For example, this is “true” because Col1=Col2 in Row 1.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Col1 <span class="UIElement" style="font-weight: bold;">&lt;&gt; </span>Col2</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <thead>
+                                <tr class="TableStyle-Simple-Head-Header1">
+                                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Col1</th>
+                                    <th class="TableStyle-Simple-HeadD-Column1-Header1">Col2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row1">1</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row1">1</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row2">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row2">2</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row2">X</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyB-Column1-Row1">3</td>
+                                    <td class="TableStyle-Simple-BodyA-Column1-Row1">3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Is true if any value in Col1 is not the same as the value in Col2 in the SAME Row.  For example, this is “true” because Col1 &lt;&gt; Col2 in Row 2.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Col1 <span class="UIElement" style="font-weight: bold;">Contains </span>Col2</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <thead>
+                                <tr class="TableStyle-Simple-Head-Header1">
+                                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Col1</th>
+                                    <th class="TableStyle-Simple-HeadD-Column1-Header1">Col2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row1">1</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row1">X</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row2">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row2">X2</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row2">2</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyB-Column1-Row1">3</td>
+                                    <td class="TableStyle-Simple-BodyA-Column1-Row1">Y</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Is true if any value in Col1 contains the value in Col2 in the SAME Row. For example, this is “true” because Col1 contains Col2 in Row 2. Again, keep in mind that this is a <i>text</i> comparison.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Col1 <span class="UIElement" style="font-weight: bold;">Does Not Contain </span>Col2</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+                            <thead>
+                                <tr class="TableStyle-Simple-Head-Header1">
+                                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Col1</th>
+                                    <th class="TableStyle-Simple-HeadD-Column1-Header1">Col2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row1">1</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row1">1</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row2">
+                                    <td class="TableStyle-Simple-BodyE-Column1-Row2">2</td>
+                                    <td class="TableStyle-Simple-BodyD-Column1-Row2">X</td>
+                                </tr>
+                                <tr class="TableStyle-Simple-Body-Row1">
+                                    <td class="TableStyle-Simple-BodyB-Column1-Row1">3</td>
+                                    <td class="TableStyle-Simple-BodyA-Column1-Row1">3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">Is true if any value in Col1 does not contain the value in Col2 in the SAME Row. For example, this is “true” because Col1 does not contain Col2 in Row 2</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>More Configuration Tabs</h2>
+        <p>You can view the documentation for each of the other configuration tabs by using the Table of Contents displayed on the upper right corner of the page, or use one of the links below.</p>
+        <p><b><a href="Form Definition Properties.htm">Properties</a>:</b>&#160;General Form definition properties.</p>
+        <p><b><a href="Form Definition Edit.htm">Edit</a>:</b> Opens the editor for the form's visual template, the Online Form Designer.</p>
+        <p><b><a href="Form Definition Controls.htm">Form Controls</a>:</b> Enables you to set individual properties for each field on the form.</p>
+        <p><b><a href="Form Definition CT.htm">Custom Task Event Mapping</a>:</b> Enables you to map Custom Tasks to run on specified form events.</p>
+        <p><b><a href="Form Definition SFD.htm">Set Form Data</a>:</b> Enables you to set the value of Form fields automatically, based on events or conditions you specify.</p>
+        <p><b><a href="Form Definition FillDD.htm">Fill Dropdowns</a>:</b> Enables you to automatically set the options available in a dropdown control.</p>
+        <p><b><a href="Form Definition Other.htm">Other Tabs</a>:</b> Documentation for the <span class="UIElement">Form Data SQL&#160;View</span>, <span class="UIElement">History</span>, <span class="UIElement">Meta Data</span>, <span class="UIElement">Versions</span>, and <span class="UIElement">Permissions </span>tabs.</p>
+    </body>
+</html>

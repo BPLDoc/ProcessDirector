@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation;Forms" />
+            <MadCap:keyword term="Forms" />Form Definition</h1>
+        <p>Form definitions are stored in the Process Director database. Form definitions have properties similar to other objects, such as documents.</p>
+        <p>A Form definition is made available to users through their profile, the <span class="ProcessDirectorObject">Content List</span> or from within a Knowledge View. The Form definition enables a user to fill out and submit form based information directly from within their browser. When a Form is submitted, the form data entered by the user is saved as a form data object in a new Form instance. This form data is stored in the Process Director database and can be evaluated by any process model. When viewing the data for a completed form, the Form definition that was used to submit the information is used to display the data. </p>
+        <h2><a name="Adding"></a>Adding a New Form Definition <a href="#Adding" class="anchor">#</a></h2>
+        <p>To create a new Form definition, use the<span class="UIElement"> Create New</span> dropdown in the <span class="ProcessDirectorObject">Content List</span> and choose the <span class="UIElement">Form Definition</span> menu item. A user must have Modify permission to the parent folder to create a Form definition. If a user does not have the appropriate permission, the hotlink will not appear.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/CreateNewMenu.png" />
+        </p>
+        <p> The <span class="ControlName">Create Form</span> dialog will display, enabling you to select the Form template format you'd like to use from the dropdown. Enter a required name for the form and optionally give it a description. Click the <span class="UIElement">OK </span>button to create the form. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Forms.png" />
+        </p>
+        <p>In nearly every case, you should use the default Online Form Designer format for creating new Forms. There are, however, several options you can select for creating your Form template:</p>
+        <ul>
+            <li><b>Upload Selected Form:</b>	This option will allow you to choose a Form template that you've already created. You can choose an existing word document template or a .NET form in ASPX format.</li>
+            <li><b>Use Empty .ASCX Form:</b>	This option will create a blank ASP.NET web form that uses c# as the CodeBehind programming language. This form must be edited in a C# programming IDE, like Visual Studio 2013. The ".ASCX" designation refers to the file extension for ASP.NET web forms. This option is primarily for programmers, not regular implementers.</li>
+            <li><b>Use Template .ASCX form:</b>	There is an existing ASP.NET web form template in Process Director that contains some basic fields and instructional text. You may choose this form to use for training, or as a basis for a new production form. This option is primarily for programmers, not regular implementers.</li>
+            <li><b>Use the Online Form Designer:</b> Process Director v4.06 and higher contains a built-in Online Form Designer that you can user to create Form Templates from within the Process Director interface. This is the default option for creating new Forms.</li>
+        </ul>
+        <p>Prior to v5.44.900, additional Form creation options for the Word Form Builder will be displayed:</p>
+        <ul>
+            <li><b>Use Empty Word Doc Form:</b>	This option will create a blank Word document template that you can then design manually. <span class="UIElement" style="font-weight: bold;">END&#160;OF&#160;LIFE</span></li>
+            <li><b>Use Template Word Doc Form:</b>	There is an existing Word template in Process Director that contains some basic fields and instructional text. You may choose this form to use for training, or as a basis for a new production form. <span class="UIElement" style="font-weight: bold;">END&#160;OF&#160;LIFE</span></li>
+        </ul>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix strongly recommends that you do NOTuse either of the Word document options for creating new forms, as described in the note at the top of this page.</p>
+        <p>Once the form is created, the Online Form Designer will open automatically to enable editing immediately.</p>
+        <h2><a name="Example"></a>Documentation Examples <a href="#Example" class="anchor">#</a></h2>
+        <MadCap:dropDown MadCap:conditions="General.Not Printed">
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Video Example</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p MadCap:conditions="General.Not Printed">
+                    <object MadCap:HTML5Video="true" alt="Create a Form" src="../Resources/Multimedia/createform.mp4" MadCap:Param_controls="true" MadCap:Param_muted="true" MadCap:Param_loop="true" MadCap:Param_autoplay="true" style="border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;max-height: auto;max-width: 100%;width: auto;height: auto;">
+                    </object>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown MadCap:conditions="General.Not Printed">
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Use the Simulator</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p MadCap:conditions="General.Not Printed"><a href="../Resources/Simulations/Creating a New Form/story.html" target="_blank" title="Simulator - Create a new Form Definition" alt="Simulator - Create a new Form Definition">Click here</a> to use the Simulator to create a new Form Definition.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="Config"></a>Form Configuration <a href="#Config" class="anchor">#</a></h2>
+        <p>Forms are configured via a tabbed interface, like all other Process Director objects. Each interface tab enables you to configure different properties. You can view the documentation for each of the configuration tabs by using the Table of Contents displayed on the upper right corner of the page, or use one of the links below.</p>
+        <p><b><a href="Form Definition Properties.htm">Properties</a>:</b>&#160;General Form definition properties.</p>
+        <p><b><a href="Form Definition Edit.htm">Edit</a>:</b> Opens the editor for the form's visual template, the Online Form Designer.</p>
+        <p><b><a href="Form Definition Controls.htm">Form Controls</a>:</b> Enables you to set individual properties for each field on the form.</p>
+        <p><b><a href="Form Definition CT.htm">Custom Task Event Mapping</a>:</b> Enables you to map Custom Tasks to run on specified form events.</p>
+        <p><b><a href="Form Definition Validation.htm">Validation Rules</a>:</b> Enables you to add custom validation to the form. </p>
+        <p><b><a href="Form Definition SFD.htm">Set Form Data</a>:</b> Enables you to set the value of Form fields automatically, based on events or conditions you specify.</p>
+        <p><b><a href="Form Definition FillDD.htm">Fill Dropdowns</a>:</b> Enables you to automatically set the options available in a dropdown control.</p>
+        <p><b><a href="Form Definition Other.htm">Other Tabs</a>:</b> Documentation for the <span class="UIElement">Form Data SQL&#160;View</span>, <span class="UIElement">History</span>, <span class="UIElement">Meta Data</span>, <span class="UIElement">Versions</span>, and <span class="UIElement">Permissions </span>tabs.</p>
+        <h2><a name="UpdatingOnline"></a>Updating a Form Definition <a href="#UpdatingOnline" class="anchor">#</a></h2>
+        <p>You can immediately access the online template for any Form that was built using the Online Form Designer by clicking the <span class="UIElement">Edit </span>tab of the Form definition. Process Director will automatically check out the Form template and display it in the designer.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Forms1.png" />
+        </p>
+        <h2><a name="ContentList"></a>Forms In the Content List <a href="#ContentList" class="anchor">#</a></h2>
+        <p>When a Form is filled out and submitted, the data is stored in the <span class="ProcessDirectorObject">Content List</span> as a Form Instance under the Form definition. To view the Form instance, click on the Form instance's name or the <img src="../Resources/Images/ImplementersReference/eForms.png" style="visibility: visible;mso-wrap-style: square;width: 12px;height: 12px;" />&#160; icon in the Content List. </p>
+        <p>Form instances are similar to other objects in the Process Director database, supporting permissions, categories, properties and processes. Users must be given the appropriate permissions to view Form instances in the <span class="ProcessDirectorObject">Content List</span>. Users that are given View Children permission to a Form definition will automatically be given View permission to Form instances stored under that Form definition. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ContentListForm.png" />
+        </p>
+    </body>
+</html>
