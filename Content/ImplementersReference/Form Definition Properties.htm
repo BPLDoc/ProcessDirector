@@ -43,12 +43,16 @@
                 <p>Form definitions can be configured as "read-only". Selecting this option enables you to define a condition or set of conditions that, when true, will cause the form will act as though the user does not have modify permission on the form (whether or not that would otherwise be the case). An open form in "read-only" state will not trigger form locking. Unlike the option to enable form fields, this option overrides any "enabled" settings at the control level. The data contained in a read-only form cannot be edited, irrespective of the enabled/disabled settings that might be set elsewhere.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <h2><a name="Options"></a>Options Section <a href="#Options" class="anchor">#</a></h2>
+        <p>This section of the tab contains the general properties of the form. This section enables you to specify the Process Timeline to invoke when the form is submitted, and to associate different objects to the form to make configuring conditions based on those objects easier. Additionally, this section contains properties that enable you to configure the overall operation of the form, and specify general form behaviors.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Automatically start this process after Form is submitted</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>The primary method for starting a process in Process Director is to call the process from a Form when the Form is submitted. This option defines the process that will be started, and the <span class="NamedControl">Object Picker</span> control allows you to choose either a Workflow or Process Timeline. Once you have selected the process you desire, then every time a new instance of the Form is submitted, the selected process will start, and the Form and its data will be attached to that process.</p>
+                <p>BP&#160;Logix recommends that you use a Process Timeline as the process to start after the form is submitted.</p>
+                <p>In most cases, you'll also want to set the <span class="ControlName">Timelines Associated With Form</span> property to the same process you set here, so that any Form conditions you create that evaluate process data will use this process by default. Setting the association will make configuring Timeline-based conditions much easier and quicker.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -56,7 +60,8 @@
                 <MadCap:dropDownHotspot>Workflows Associated with Form (optional) / Timelines Associated with Form (optional)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>You have the ability to associate multiple Workflows or Process Timelines to a Form, so that data can be passed between those associated processes and the Form. </p>
+                <p>In many cases, you will need to create conditions that evaluate process data to control the operation of a form. For example, you might wish to show a section of the form only when a specific timeline activity is running. To do so, you need to create a Form condition that returns true or false, based on whether the specified activity is currently running.  When you associate a process via this property, that process will become the default process to use when configuring process-based conditions. If you do not set this property, then you will have to specify the process every time you configure a condition that evaluates the process. Setting this property, therefore, makes configuring process-based conditions much simpler, and quicker.</p>
+                <p>Setting the<span class="ControlName"> Automatically start this process...</span> property does not create this association. In most cases, you should set both this property and the<span class="ControlName"> Automatically start this process...</span> property to the same Process Timeline.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -239,6 +244,9 @@
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h3><a name="DefaultStylesSection"></a>Default Styles Section <a href="#DefaultStylesSection" class="anchor">#</a></h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/DefaultStyles.png" />
+        </p>
         <p>This section enables you to quickly change the default styling of various fields on the Form, based on the status of the field. For each field status, you can choose a default style from the dropdown, or type in any desired CSS styles manually. You can alter the styling for the following field status types:</p>
         <ul>
             <li>Enabled</li>
