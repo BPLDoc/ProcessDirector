@@ -72,7 +72,7 @@
                 </p>
                 <p>On the <span class="UIElement">Security </span>screen, check <span class="ControlName">Password </span>as the security protocol and enter a password twice.</p>
                 <p class="PDNote">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> Be sure to store this password securely, you will need it in future steps. </p>
+                    <img src="../Resources/Images/i2.png" alt="Note" /> Be sure to store this password securely, you'll need it in future steps. </p>
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> Be sure to use a long, sufficiently complex password in line with your organization’s cryptographic standards.</p>
                 <p>
@@ -100,7 +100,7 @@
                 </p>
                 <p>In PowerShell, create or navigate to the directory you'd like to use to store the certificate files. Once you're in the desired directory, run the following command:</p>
                 <p class="CodeBase">$cert = New-SelfSignedCertificate -CertStoreLocation Cert:\LocalMachine\ -KeyUsage KeyEncipherment <br />&#160;&#160;&#160;&#160;-KeyAlgorithm rsa -KeyLength 2048 -subject "BP Logix Process Director" <br />&#160;&#160;&#160;&#160;-DnsName "BP Logix Process Director" -Type SSLServerAuthentication <br />&#160;&#160;&#160;&#160;-TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")</p>
-                <p>Next, run these commands in PowerShell, replacing <code class="CodeOption">&lt;password&gt;</code> with a password of your choosing. Ensure the passowrd is cryptographically secure, in accordance with your organization’s standards.  Be sure to also store this password securely, as you will need it in future steps.</p>
+                <p>Next, run these commands in PowerShell, replacing <code class="CodeOption">&lt;password&gt;</code> with a password of your choosing. Ensure the passowrd is cryptographically secure, in accordance with your organization’s standards.  Be sure to also store this password securely, as you'll need it in future steps.</p>
                 <p class="CodeBase">$pwd = ConvertTo-SecureString -String '<span class="CodeOption">&lt;password&gt;</span>' -Force -AsPlainText<br />$path = 'cert:\LocalMachine\My\' + $cert.Thumbprint</p>
                 <p>Finally, run these commands to create the .PFX and .CER files. Modify the <span class="CodeOption">&lt;path&gt;</span> value to store the file in a location of your choosing.</p>
                 <p class="CodeBase">Export-PfxCertificate -cert $path -FilePath <span class="CodeOption">&lt;path&gt;</span>\PrivatePublicKeys.pfx -Password $pwd<br />Export-Certificate -cert $path -FilePath <span class="CodeOption">&lt;path&gt;</span>\PublicKey.cer</p>

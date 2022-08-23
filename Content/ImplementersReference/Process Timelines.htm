@@ -1,16 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:concept term="Process Timelines" />
-            <MadCap:concept term="Implementation;Process Timelines" /><a name="_Toc421536156"></a>
+            <MadCap:concept term="Implementation;Process Timelines" />
+            <a name="_Toc421536156">
+            </a>
             <MadCap:keyword term="Processes;Process Timelines" />Process Timelines </h1>
         <p>Process Timeline is the automation of a business process in which documents, information or tasks are passed from one participant(s) to another for action. A Process Timeline is made up of many functions and activities such as a review process, <span class="ProcessDirectorObject">Task Lists</span>, notifications, alerts/triggers, reminders, context sensitive tasks, an approval process, status/tracking, due dates and reporting.</p>
-        <h2><a name="_Toc421536157"></a>What is a Process Timeline Definition?</h2>
+        <h2>
+            <a name="_Toc421536157">
+            </a>What is a Process Timeline Definition?</h2>
         <p>Process Timeline Definitions in Process Director are a series of logical activities, each with a specific task and assigned participants. The Process Timeline defines the path or route that a Form or document must take. Each activity in the Process Timeline path defines the task type, the participants, and the rules that govern how the Process Timeline will advance or transition to the next activity.</p>
         <p>The Process Timeline may look familiar to you, because it is presented in Gantt chart format. The Gantt chart is a type of chart that places each activity in a process on a single line that is horizontally marked in some increment of time, usually days. Each activity is marked with a bar that whose left end begins at the task's start date, and ends at the task's end date. This type of chart is widely used in project management.</p>
         <p>
@@ -21,9 +27,12 @@
         <p>Another important difference between Workflows and Process Timelines is that Timelines are <span class="KeyTerms">constraint-driven</span>. In a Workflow, tasks do not start until they are prompted to begin when the Workflow follows a specific branch. In a Process Timeline, however, all Timeline activities want to run all the time. The designer's job with a Process Timeline is to apply <i>constraints</i> to each activity to prevent it from running immediately. By default, this makes Process Timelines implicitly parallel. If you add two activities to a new Process Timeline, but don't configure any restraints, then both activities will run immediately, and in parallel, as soon as the Process Timeline instance starts. Conversely, in a Workflow, you must explicitly specify when two steps must run in parallel.</p>
         <p>Business users design Process Timelines by answering three questions that define the activity's constraints, as they add each step to the process:</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
-            <li style="list-style-type: disc;"><b>What activities must complete before this activity begins?</b> We call this the "dependency question". For each Timeline activity, you can specify what other activity, or activities, must complete, before this activity can begin. Process Director constantly evaluates this question, so that activities can start as soon as their dependencies are satisfied. Dependencies are configured on the <span class="UIElement">Start When</span> tab of a Timeline Activity.</li>
-            <li style="list-style-type: disc;"><b>What conditions must apply before this activity can begin?</b> We call this the "eligibility question". You can create a Start When condition or conditions that must be true before the activity can begin, even if the dependencies are complete. This question is also constantly evaluated, in conjunction with the dependency question. The eligibility conditions, or "start when" conditions, are also configured on the <span class="UIElement">Start When</span> tab of a Timeline Activity.</li>
-            <li style="list-style-type: disc;"><b>Is this activity needed?</b> We call this the "necessity question". If both the dependency and eligibility questions are satisfied, Process Director evaluates this Needed When condition, or conditions, once, when the activity begins. If the activity is not needed, Process Director will skip the activity, and automatically move to the next activity.  The necessity conditions are configured on the <span class="UIElement">Needed When</span> tab of a Timeline Activity.</li>
+            <li style="list-style-type: disc;">
+                <b>What activities must complete before this activity begins?</b> We call this the "dependency question". For each Timeline activity, you can specify what other activity, or activities, must complete, before this activity can begin. Process Director constantly evaluates this question, so that activities can start as soon as their dependencies are satisfied. Dependencies are configured on the <span class="UIElement">Start When</span> tab of a Timeline Activity.</li>
+            <li style="list-style-type: disc;">
+                <b>What conditions must apply before this activity can begin?</b> We call this the "eligibility question". You can create a Start When condition or conditions that must be true before the activity can begin, even if the dependencies are complete. This question is also constantly evaluated, in conjunction with the dependency question. The eligibility conditions, or "start when" conditions, are also configured on the <span class="UIElement">Start When</span> tab of a Timeline Activity.</li>
+            <li style="list-style-type: disc;">
+                <b>Is this activity needed?</b> We call this the "necessity question". If both the dependency and eligibility questions are satisfied, Process Director evaluates this Needed When condition, or conditions, once, when the activity begins. If the activity is not needed, Process Director will skip the activity, and automatically move to the next activity.  The necessity conditions are configured on the <span class="UIElement">Needed When</span> tab of a Timeline Activity.</li>
         </ul>
         <p> The Process Timeline's constraint-driven model enables organizations to build robust, complex executable process models within Process Director much more easily than the Workflow model can allow. The result is a solution with many valuable features:</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
@@ -33,7 +42,7 @@
             <li style="list-style-type: disc;">At any point—even the moment the process is launched—the system can determine which future activities, if any, may not be complete by their due date.</li>
             <li style="list-style-type: disc;">The system records actual versus predicted execution times each time the process is run, and adjusts its time estimates accordingly.</li>
         </ul>
-        <p>Most activities have a dependence on one or more other activities. Dependence refers to the requirement that an activity cannot begin until a predecessor activity, or activities, ends. This type of relationship (often referred to by project managers as finish-to-start) represents the most fundamental starting condition for any activity.</p>
+        <p>Most activities have a dependence on one or more other activities. Dependence refers to the requirement that an activity can't begin until a predecessor activity, or activities, ends. This type of relationship (often referred to by project managers as finish-to-start) represents the most fundamental starting condition for any activity.</p>
         <p>Below is a sample Process Timeline, consisting of three tasks, or activities.&#160; The Timeline column of the Process Timeline shows the number of days planned for each activity. Initial Approval is scheduled to take three workdays, Finance Approval is expected to take two workdays, and the Submitter Notification will take 0 workdays, as it is an automated process that will be performed by Process Director. The Finance Approval activity is dependent on the Initial Approval. The Submitter Notification, in turn, is dependent on Finance Approval.</p>
         <p>
             <img src="../Resources/Images/InstallationGuide/SampleTimeline.png" />
@@ -72,7 +81,7 @@
                         </p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                        <p>Drag to move order: Change where the activity appears in the Process Timeline. Note: changing the location of the activity does not change the behavior of the Process Timeline, which is strictly governed by the rules of dependence and other activity starting conditions.</p>
+                        <p>Drag to move order: Change where the activity appears in the Process Timeline. Note: changing the location of the activity doesn't change the behavior of the Process Timeline, which is strictly governed by the rules of dependence and other activity starting conditions.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row1">
@@ -186,12 +195,16 @@
                 </tr>
             </tbody>
         </table>
-        <h2><a name="Subprocesses"></a>Processes and Subprocesses <a href="#Subprocesses" class="anchor">#</a></h2>
+        <h2>
+            <a name="Subprocesses">
+            </a>Processes and Subprocesses <a href="#Subprocesses" class="anchor">#</a></h2>
         <p>A business process may occasionally need to invoke a separate process as a subprocess, or child process, of the main process. This subprocess may need to run synchronously or asynchronously with the main, or parent, process. </p>
-        <p>A <span class="KeyTerms">synchronous </span>subprocess pauses the parent process while it is running. Once the subprocess completes, the parent process continues from the point where the synchronous subprocess began. The parent process cannot continue until the subprocess is complete. </p>
+        <p>A <span class="KeyTerms">synchronous </span>subprocess pauses the parent process while it is running. Once the subprocess completes, the parent process continues from the point where the synchronous subprocess began. The parent process can't continue until the subprocess is complete. </p>
         <p>An <span class="KeyTerms">asynchronous </span>subprocess, on the other hand, does <span class="Emphasis" style="font-style: italic;">not </span>pause the main process while subprocess runs. Instead, both processes will run in parallel, and both will complete independently of each other.</p>
         <p>To invoke a subprocess to run synchronously, you can use the <a href="Process Timeline Process Activity.htm"><b>Process</b> activity type</a>. To invoke a subprocess to run asynchronously, you can use the <a href="Process Timeline Custom Task Activity.htm"><b>Custom Task</b> activity type</a>, and use the <a href="../Custom Tasks2/Process Custom Tasks.htm#RunProcess"><span class="ProcessDirectorObject">Run Process</span> custom task</a> to start the desired subprocess.</p>
-        <h2><a name="Asynchronous"></a>
+        <h2>
+            <a name="Asynchronous">
+            </a>
             <MadCap:keyword term="Asynchronous Operations" />Background Operations <a href="#Asynchronous" class="anchor">#</a></h2>
         <p>A Timeline Activity of the Custom Task, Script or Process types can be configured to run in the background by checking the <span class="ControlName">Run this activity in the background (if unsure, leave this box unchecked)</span> check box  in the <span class="UIElement">Advanced Options</span> tab. Setting the operation to run in the background can be used to prevent a long-running, machine-centric Activity in the Process Timeline from hanging a user session while the processing occurs. The Activity will be run in a different context from the current user's, even inf the user invoked the transition of the Activity. Additionally, if you have a <a href="../SystemAdministratorGuide/Load Balancing.htm#_Toc421094547">Rendering Server</a> enabled, the background processing will be conducted by the Rendering Server when the option is checked.</p>
         <p>
@@ -201,8 +214,14 @@
         <p> On some systems, when starting a subprocess using the asynchronous option, the system can mark the calling task as complete before the called subprocess completes. This may be especially true if the subprocess contains complex rendering operations. To avoid this, a wait time, in seconds, can be set using the <a href="../DevelopersGuide/Customization File Misc.htm#nAsyncSubProcessWaitSecs" target="_blank" title="nAsyncSubProcessWaitSecs Custom Variable" alt="nAsyncSubProcessWaitSecs Custom Variable">nAsyncSubProcessWaitSecs</a> variable in the Custom Vars file. The default setting for this variable is 5 seconds.</p>
         <h2>Other Process Timeline Topics</h2>
         <p>To see other Process Timeline topics, you can use the Table of Contents displayed on the upper right corner of the page, or use one of the links below.</p>
-        <p><b><a href="Process Timeline Options.htm">Process Timeline Definitions</a>:</b>&#160;General Properties for configuring a Process Timeline.</p>
-        <p><b><a href="Process Timeline Activities.htm">Process Timeline Activities</a>:</b> Properties for configuring  Timeline activities.</p>
-        <p><b><a href="Process Timeline Managing.htm">Managing Process Timeline Instances</a>:</b> Information about how to perform administrative actions on Timeline instances.</p>
+        <p>
+            <b>
+                <a href="Process Timeline Options.htm">Process Timeline Definitions</a>:</b>&#160;General Properties for configuring a Process Timeline.</p>
+        <p>
+            <b>
+                <a href="Process Timeline Activities.htm">Process Timeline Activities</a>:</b> Properties for configuring  Timeline activities.</p>
+        <p>
+            <b>
+                <a href="Process Timeline Managing.htm">Managing Process Timeline Instances</a>:</b> Information about how to perform administrative actions on Timeline instances.</p>
     </body>
 </html>

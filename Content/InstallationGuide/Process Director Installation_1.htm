@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:keyword term="Installation" />
-            <MadCap:concept term="Installation" /><a name="_Toc421172257"></a>Process Director Installation Process</h1>
+            <MadCap:concept term="Installation" />
+            <a name="_Toc421172257">
+            </a>Process Director Installation Process</h1>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" title="Important" />  Please review the <a href="Installation Overview.htm#InstallationProcess" target="_blank">Installation Process</a> section of the documentation to see an overview of the steps required to properly install Process Director.</p>
         <p>Ensure the latest Windows Updates are installed, and your server is up-to-date on all Important updates.&#160; </p>
@@ -19,10 +23,12 @@
         <p>For the purposes of this documentation, we will assume that you are installing the current version of Process Director, but the process for installing ASP.NET 3.5 is very similar.</p>
         <p>For Windows 2008 R2 (SP1) and Windows 2008 (SP2) assuming you have updated your system regularly through the update service, you should have the .NET Framework v4.5 or higher already installed. If not, please accept all of the operating system updated from Microsoft and accept them, so that your Windows 2008 server has the appropriate service pack and .Net Framework installed.</p>
         <p>Alternatively, v4.5.2 of the .NET Framework can be obtained directly from Microsoft's web site. An offline installer for .NET v4.5.2 can be obtained from:</p>
-        <p><a href="http://www.microsoft.com/en-us/download/details.aspx?id=42642" class="Hyperlink">http://www.microsoft.com/en-us/download/details.aspx?id=42642</a>
+        <p>
+            <a href="http://www.microsoft.com/en-us/download/details.aspx?id=42642" class="Hyperlink">http://www.microsoft.com/en-us/download/details.aspx?id=42642</a>
         </p>
         <p>A web installer for .NET v4.5.2 can be obtained from:</p>
-        <p><a href="http://www.microsoft.com/en-us/download/details.aspx?id=42643" class="Hyperlink">http://www.microsoft.com/en-us/download/details.aspx?id=42643</a>
+        <p>
+            <a href="http://www.microsoft.com/en-us/download/details.aspx?id=42643" class="Hyperlink">http://www.microsoft.com/en-us/download/details.aspx?id=42643</a>
         </p>
         <p>Both of these installers work for users of Windows Vista SP2, Windows 7 SP1, Windows 8, Windows 8.1, Windows Server 2008 SP2, Windows Server 2008 R2 SP1, Windows Server 2012 and Windows Server 2012 R2.</p>
         <p>For users of Oracle databases, upgrading to v3.24 of Process Director also requires updating the Oracle drivers for .NET v4.5. Most likely Oracle users will need to install the .NET 4 Oracle ODP/ODAC drivers (e.g. ODAC121021_x64). The Microsoft Oracle drivers do not contain the correct functionality, so be sure to use the Oracle drivers, e.g., ODP.NET, and not the Microsoft drivers. Oracle users will see this error in Process Director if the Oracle drivers are for the wrong .NET version:</p>
@@ -30,9 +36,13 @@
         <p class="CodeBase">Connect Failed: Database Error: Open, Data: DbProviderFactories.GetFactory: Exception: System.ArgumentException: Unable to find the requested .Net Framework Data Provider. It may not be installed., Data: Oracle.DataAccess.Client</p>
         <h5>Oracle 12</h5>
         <p class="CodeBase">Connect Failed: Database Error: Open, Data: DbProviderFactories.GetFactory: Exception: System.ArgumentException: Unable to find the requested .Net Framework Data Provider. It may not be installed., Data: System.Data.OracleClient</p>
-        <h2><a name="_Toc421172258"></a>Installing Internet Information Server (IIS) <a href="#_Toc421172258" class="anchor">#</a></h2>
-        <h3><a name="_Toc421172259"></a>Windows 2008 Server</h3>
-        <p>The first step of the installation is to be sure that Internet Information Services (IIS) and ASP.NET v4.5 is installed for Process Director versions numbered higher than v3.2, and ASP.NET v3.5 is installed for versions numbered v3.2 or lower. To install these items, you will need to open the Server Manager.</p>
+        <h2>
+            <a name="_Toc421172258">
+            </a>Installing Internet Information Server (IIS) <a href="#_Toc421172258" class="anchor">#</a></h2>
+        <h3>
+            <a name="_Toc421172259">
+            </a>Windows 2008 Server</h3>
+        <p>The first step of the installation is to be sure that Internet Information Services (IIS) and ASP.NET v4.5 is installed for Process Director versions numbered higher than v3.2, and ASP.NET v3.5 is installed for versions numbered v3.2 or lower. To install these items, you'll need to open the Server Manager.</p>
         <p>
             <img src="../Resources/Images/InstallationGuide/Process Director Installation_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
@@ -45,14 +55,16 @@
             <img src="../Resources/Images/InstallationGuide/Process Director Installation_1_2.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
         <p>Click the Add Required Role Services button, to close the dialog box and return to the wizard. Once you are back at the Wizard, click the wizard's Next button.</p>
-        <p>In the next pane of the wizard, which is the Select Role Services" pane, you will be presented with a list of additional role services to install as part of IIS. From this list, you should select "ASP.NET" and "Windows Authentication". Once you have selected these two items, click the Next button. The Wizard should then display a confirmation pane, from which you can click the Install button to begin the installation. Once the installation is complete, you should see a confirmation of a successful IIS installation.</p>
+        <p>In the next pane of the wizard, which is the Select Role Services" pane, you'll be presented with a list of additional role services to install as part of IIS. From this list, you should select "ASP.NET" and "Windows Authentication". Once you have selected these two items, click the Next button. The Wizard should then display a confirmation pane, from which you can click the Install button to begin the installation. Once the installation is complete, you should see a confirmation of a successful IIS installation.</p>
         <p>
             <img src="../Resources/Images/InstallationGuide/Process Director Installation_1_3.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <h3><a name="_Toc421172260"></a>Windows 2012 Server and Higher</h3>
+        <h3>
+            <a name="_Toc421172260">
+            </a>Windows 2012 Server and Higher</h3>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Process Director supports all Windows Server operating systems higher than WIndows 2008 Server, Including Windows Server 2016/2018/2022 etc.</p>
-        <p>The first step of the installation is to be sure that Internet Information Services (IIS) and ASP.NET v4.5 is installed. To install these items, you will need to open the Server Manager.</p>
+        <p>The first step of the installation is to be sure that Internet Information Services (IIS) and ASP.NET v4.5 is installed. To install these items, you'll need to open the Server Manager.</p>
         <p>
             <img src="../Resources/Images/InstallationGuide/Process Director Installation_1_4.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
@@ -98,7 +110,9 @@
             <li style="list-style-type: disc;">ISAPI Filters</li>
         </ul>
         <p>Complete the wizard and save the settings again. The full suite of ASP.NET 4.5/4.6 functionality should now be configured properly for IIS.</p>
-        <h2><a name="_Toc421172261"></a>Installing Process Director <a href="#_Toc421172261" class="anchor">#</a></h2>
+        <h2>
+            <a name="_Toc421172261">
+            </a>Installing Process Director <a href="#_Toc421172261" class="anchor">#</a></h2>
         <p>To install Process Director on Windows Server 2008/2012, exit all applications and follow these steps:</p>
         <ol>
             <li>Download the Process Director installation program from the BP Logix web site and save it to your hard drive.  The download can be obtained from the <a href="https://bplogix.zendesk.com/hc/en-us/sections/4408576448283-Process-Director-Software-and-Downloads" target="_blank">BP&#160;Logix Support site</a>.</li>
@@ -112,15 +126,18 @@
             <li>Navigate to the Process Director administration screens to configure the database connect string. This is located at: http://localhost/admin/db.aspx (where localhost can be replaced with the server where Process Director is installed).</li>
             <li>Enter your license key in the product administration screens.</li>
         </ol>
-        <h2><a name="_Toc421172262"></a>IIS Web Site Creation <a href="#_Toc421172262" class="anchor">#</a></h2>
+        <h2>
+            <a name="_Toc421172262">
+            </a>IIS Web Site Creation <a href="#_Toc421172262" class="anchor">#</a></h2>
         <p>To create a new web site in IIS for Process Director, use all of the all defaults provided by IIS. Point your website to the “website” folder located in the following directory (where Process Director is installed):</p>
-        <p><code>C:\Program Files\BP Logix\Process Director\website\</code>
+        <p>
+            <code>C:\Program Files\BP Logix\Process Director\website\</code>
         </p>
         <p>
             <img src="../Resources/Images/InstallationGuide/Process Director Installation.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;" />
         </p>
         <p>This is the default install location of Process Director. This may be different if you selected a folder other than the default.</p>
-        <p>Please note that creating a Virtual Directory will not work using IIS 7. You must either convert the Virtual Directory to an Application or add an Application.</p>
+        <p>Please note that creating a Virtual Directory won't work using IIS 7. You must either convert the Virtual Directory to an Application or add an Application.</p>
         <p>After the web site is created ensure these settings are configured in IIS:</p>
         <ol>
             <li>Ensure “Anonymous” and “Integrated Windows Authentication” is turned on in the IIS Authentication properties.</li>
@@ -137,8 +154,9 @@
         <p>
             <img src="../Resources/Images/InstallationGuide/Process Director Installation_1_13.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>You will not see a selection for a "4.5.xxxxx" framework, because of the way Microsoft treats some .NET Framework upgrades. The 4.5, 4.5.1, and 4.5.2 version of the .NET Framework are in-place upgrades to the v4.0 framework.&#160; So, in IIS, you will see the v4.0 selection identified here. If you want to ensure that the ASP.NET Framework v4.5.X is installed, you can check the registry by opening the Registry Editor, then opening the following subkey:</p>
-        <p><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full</code>
+        <p>You won't see a selection for a "4.5.xxxxx" framework, because of the way Microsoft treats some .NET Framework upgrades. The 4.5, 4.5.1, and 4.5.2 version of the .NET Framework are in-place upgrades to the v4.0 framework.&#160; So, in IIS, you'll see the v4.0 selection identified here. If you want to ensure that the ASP.NET Framework v4.5.X is installed, you can check the registry by opening the Registry Editor, then opening the following subkey:</p>
+        <p>
+            <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full</code>
         </p>
         <p>Check for a DWORD value named Release. The existence of the Release DWORD indicates that the .NET Framework 4.5 or newer has been installed on that computer.</p>
         <p>The value of the Release DWORD indicates which version of the .NET Framework is installed.</p>
@@ -189,7 +207,7 @@
             </tbody>
         </table>
         <p>For more information, see the MSDN&#160;blog entry for <a href="https://blogs.msdn.microsoft.com/rodneyviana/2014/12/23/identifying-the-net-version-you-are-running-2-0-4-5-4-5-1-or-4-5-2/" target="_blank">identifying what .NET version you are running</a>.</p>
-        <p>If you do not select the proper framework version, you will see the following errors:</p>
+        <p>If you do not select the proper framework version, you'll see the following errors:</p>
         <ol>
             <li>End users will see the following generic 500 Internal server error screen when navigating to the Process Director URL:</li>
         </ol>
@@ -197,7 +215,7 @@
             <img src="../Resources/Images/InstallationGuide/Process Director Installation_1_14.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
         <ol MadCap:continue="true">
-            <li>If you open the page from localhost, you will see a rather more helpful error page.</li>
+            <li>If you open the page from localhost, you'll see a rather more helpful error page.</li>
         </ol>
         <p>
             <img src="../Resources/Images/InstallationGuide/Process Director Installation_1_15.jpg" style="visibility: visible;mso-wrap-style: square;" />

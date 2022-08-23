@@ -13,11 +13,15 @@
             <li>A Mobile Application that can be downloaded from the <a href="https://play.google.com/store/apps/details?id=com.bplogix.bplogix" target="_blank">Google Play Store</a> or <a href="https://apps.apple.com/us/app/bp-logix/id1568075600" target="_blank">Apple App Store.</a></li>
         </ul>
         <p>Once the license for the Mobile App component is purchased, administrators will be provided with a login to access the Mobile Server at https://mobile.bplogix.com. Additionally, mobile component custom variables will be provided for on-premise customers, or set by BP&#160;Logix for Cloud customers. These custom variables must be configured in the Custom&#160;Variable file prior to using the component, and are documented in the <a href="../DevelopersGuide/Customization File Mobile.htm" target="_blank">Mobile Application Custom Variables</a> topic of the Developer's Guide.</p>
-        <h2><a name="Users"></a>Mobile Application Users <a href="#Users" class="anchor">#</a></h2>
+        <h2>
+            <a name="Users">
+            </a>Mobile Application Users <a href="#Users" class="anchor">#</a></h2>
         <p>Once the Custom Variables for the component have been configured, access to the Mobile Application component is granted from the <span class="ProcessDirectorObject">User Administration</span> section of the <span class="ProcessDirectorObject">IT&#160;Admin</span> Area on the <span class="ControlName">Users </span>page. From the list of users, select the user you'd like to edit by clicking the <span class="UIElement">Edit </span>link to open the <span class="ControlName">User Profile</span> page for that user. Two properties listed in the <span class="ControlName">User Profile</span> page, <span class="ControlName">Mobile Admin User</span> and <span class="ControlName">Mobile App User</span>, as described in the <a href="../SystemAdministratorGuide/Users.htm#Miscella">User Administration topic</a> of the System Administrator's Guide will, when checked, enable the user with appropriate access to the Mobile App.</p>
         <p>To access the mobile server's administrative features, such as importing a Form or  Data Source, a user must be specified as a <span class="ControlName">Mobile Admin User</span>. Access to the Mobile app is granted separately by checking the <span class="ControlName">Mobile App User</span> property. When these properties are checked, the users are automatically added to the mobile server with the appropriate level of access. In most cases, an administrator will need to have <b style="font-style: italic;">both</b> the <span class="ControlName">Mobile Admin User</span> and <span class="ControlName">Mobile App User</span> properties checked.</p>
         <p>Please note that, as a mobile administrator, you should <b style="font-style: italic;">never</b> add or delete users from the mobile server directly. User access should be managed <b style="font-style: italic;">only</b> from the User Administration page in Process Director, and not from within the mobile server itself.</p>
-        <h2><a name="ImpForm"></a>Importing a Form into the Mobile App Component <a href="#ImpForm" class="anchor">#</a></h2>
+        <h2>
+            <a name="ImpForm">
+            </a>Importing a Form into the Mobile App Component <a href="#ImpForm" class="anchor">#</a></h2>
         <p>Form definitions for properly configured installations will display a new action link, labeled <span class="UIElement">Download Field List</span>, on the <span class="UIElement">Properties </span>tab of the Form definition.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile01.png" />
@@ -63,8 +67,10 @@
             <img src="../Resources/Images/ImplementersReference/mobile8.png" />
         </p>
         <p>Now that the form has been published, users of the mobile application will be able to access it.</p>
-        <p>As mentioned above, the <span class="ControlName">Replace Settings</span> property will import the FormID from Process Director. This FormID will be displayed in the Screens page in the <span class="ControlName">External ID</span> column, as shown in the image above<b style="font-style: italic;">. The External ID must match the FormID of the Form in Process Director, or you will <span style="color: #ff0000;">not </span>be able to import the Form instances back into Process Director from the mobile server.</b> The Form will work inside the mobile application, and submissions will be saved to the mobile server, but without the correct Form/External ID reimport to Process Director will not be possible.</p>
-        <h2><a name="MobileApp"></a>Mobile Application <a href="#MobileApp" class="anchor">#</a></h2>
+        <p>As mentioned above, the <span class="ControlName">Replace Settings</span> property will import the FormID from Process Director. This FormID will be displayed in the Screens page in the <span class="ControlName">External ID</span> column, as shown in the image above<b style="font-style: italic;">. The External ID must match the FormID of the Form in Process Director, or you won't<span style="color: #ff0000;"> </span>be able to import the Form instances back into Process Director from the mobile server.</b> The Form will work inside the mobile application, and submissions will be saved to the mobile server, but without the correct Form/External ID reimport to Process Director won't be possible.</p>
+        <h2>
+            <a name="MobileApp">
+            </a>Mobile Application <a href="#MobileApp" class="anchor">#</a></h2>
         <p>The BP&#160;Logix mobile application is available for both Android and iOS mobile devices. When a new Screen is published,  it will be synchronized to  the mobile device of every user. This synchronization will occur the first time the user opens the mobile device in a place where they have Internet connectivity to access the mobile server. Assuming a user has mobile connectivity, the synchronization occurs when the mobile app is opened on the user's device. The amount of time it will take to synchronize depends on the amount of data that must be transferred.</p>
         <p>When synchronization is complete, the new Screen will be available to the user's Mobile App.</p>
         <p>
@@ -83,7 +89,9 @@
             <img src="../Resources/Images/ImplementersReference/mobile15.png" />
         </p>
         <p>If your mobile device has Internet connectivity, the submitted form will be instantly synchronized to the server. Otherwise, the synchronization will occur the next time the mobile application is running with Internet connectivity. The form submission will be stored on the mobile device, if the device is offline, until such time as Internet connectivity is restored.</p>
-        <h2><a name="ImpInsts"></a>Importing Form Instances Back into Process Director <a href="#ImpInsts" class="anchor">#</a></h2>
+        <h2>
+            <a name="ImpInsts">
+            </a>Importing Form Instances Back into Process Director <a href="#ImpInsts" class="anchor">#</a></h2>
         <p>The Mobile Server will store all form submissions it receives. You can see all stored Form submissions on the mobile server by selecting the <span class="UIElement">Data Entries</span> menu, then selecting the <span class="UIElement">Feed View </span>submenu.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile16.png" />
@@ -91,7 +99,9 @@
         <p>These form instances will remain stored on the Mobile Server until they are imported into Process Director.</p>
         <p>In Process Director, a new Custom Task,<span class="ProcessDirectorObject"> <a href="../Custom Tasks2/Form Custom Tasks.htm#MobileForm">Mobile Form Import</a></span>, will import all of the Form instances from the Mobile Server to Process Director, where they will appear as normal form instances. The Custom Task can be run manually or automatically, and requires no user configuration. Instead, the Custom Task uses the Configuration settings that are contained in the Custom Variables folder.</p>
         <p>BP&#160;Logix recommends that you configure the Custom task as the only activity that runs in a Process Timeline, then create a Goal object that runs on a scheduled basis to call the Process Timeline every time the Goal runs. This will automatically import all form instances on the schedule you configure in the Goal.</p>
-        <h2><a name="ImpDS"></a>Importing Data Sources <a href="#ImpDS" class="anchor">#</a></h2>
+        <h2>
+            <a name="ImpDS">
+            </a>Importing Data Sources <a href="#ImpDS" class="anchor">#</a></h2>
         <p>External data that you wish to use in a Screen must be imported to the mobile server as a Data Source. The easiest method for importing this data is to import it via an Excel spreadsheet. In this example, we'll import a simple Excel spreadsheet to use to fill a <span class="NamedControl">Dropdown </span>control on the <span class="ProcessDirectorObject">Webinar Mobile Form Demo</span> Screen we imported in the previous sections, above.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile18.png" />
@@ -108,7 +118,7 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile20.png" />
         </p>
-        <p>You can add rows manually to the data source, but in most cases, you will want to import data, as we will in this example.  Imported data sources must meet some required constraints to be imported:</p>
+        <p>You can add rows manually to the data source, but in most cases, you'll want to import data, as we will in this example.  Imported data sources must meet some required constraints to be imported:</p>
         <ul>
             <li>The Imported data must be in Excel (XLSX) or Comma-Separated Text (CSV) format.</li>
             <li>The first row of your file is assumed to be the data source's column headers and the rest are assumed to be data rows.</li>
@@ -124,7 +134,9 @@
             <img src="../Resources/Images/ImplementersReference/mobile23.png" />
         </p>
         <p>Click the <span class="UIElement">Save </span>button to save the data source information. You can navigate back to the <span class="UIElement">Data Sources</span> menu to see your new data source displayed in the list.</p>
-        <h2><a name="ApplyData"></a>Applying a Data Source to a Screen <a href="#ApplyData" class="anchor">#</a></h2>
+        <h2>
+            <a name="ApplyData">
+            </a>Applying a Data Source to a Screen <a href="#ApplyData" class="anchor">#</a></h2>
         <p>If you navigate to the <span class="UIElement">Screens </span>menu, you can hover your mouse over a Screen in the list to see editing options for that screen. </p>
         <p>
             <img src="../Resources/Images/ImplementersReference/mobile24.png" />

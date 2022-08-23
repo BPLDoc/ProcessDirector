@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head><title></title>
+    <head>
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:concept term="Forms" />
-            <MadCap:concept term="Implementation;Forms" /><a name="_Toc421536196"></a>
+            <MadCap:concept term="Implementation;Forms" />
+            <a name="_Toc421536196">
+            </a>
             <MadCap:keyword term="eForms" />
             <MadCap:keyword term="Form Data Caching" />Form Data Caching</h1>
         <p>Users of Process Director v4.51 and higher may use a feature named Form Data Caching, which BP&#160;Logix has implemented to improve the speed of querying and searching for form data, and to improve performance of the Process Director server. This feature affects the performance of both Knowledge Views and SQL views that you create in the product.</p>
@@ -17,15 +21,18 @@
         <p>In the <span class="ControlName">Options </span>section of the <span class="UIElement">Properties </span>tab for each Form definition, there is check box property named <span class="ControlName">Enable Form Data Cache</span>. Checking the property will enable process Director to create the cache table in the database when you direct a cache to be created. The temporary cache table will be named with the naming convention, tblFDC_<b>GUID</b>, with the GUID portion being the actual GUID of the Form Definition.</p>
         <p>To direct Process Director to create a Form Cache, you can call a page named  "build_form_cache.aspx". This page is located in the root directory of the web site, and can be accessed with the URL, "http://localhost/build_form_cache.aspx", where PDServerName is the base URL of your process Director installation. This page will build the form caches for all of the forms that are configured to use Form Data Caching. The URL does, however, accept the URL parameter "?FORMID=<b>GUID</b>", where, again, the GUID would be the GUID of a specific Form definition that is configured to use Form Data Caching. When you use this URL parameter, Process Director will create the Form Cache only for the form you specify in the parameter, instead of creating the cache for all configured forms.</p>
         <p>To keep the form cache relatively current, you can use the Windows Scheduler to call the bputil.exe utility to run this page on a scheduled basis, by using the commands (Where PATH is the installation directory for Process Director, e.g. c:\Program Files\BP Logix\Process Director\):</p>
-        <p><code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx</code>
+        <p>
+            <code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx</code>
         </p>
         <p>...to create the whole Form Cache</p>
         <p>or</p>
-        <p><code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx?FORMID=<b>GUID</b></code>
+        <p>
+            <code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx?FORMID=<b>GUID</b></code>
         </p>
         <p>...to create the cache table for a single Form.</p>
         <p>For&#160;Process Director v5.39 and higher, an additional URL&#160;parameter, forminstid, will pass a Form Instance ID to update the form cache for a specified form instance.</p>
-        <p><code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx?forminstid=<b>FormInstanceGUID</b></code>
+        <p>
+            <code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx?forminstid=<b>FormInstanceGUID</b></code>
         </p>
         <h2>Querying the Cache</h2>
         <p>You can query the cache in one of two ways:&#160;Using a&#160;Knowledge View, or creating a SQL View.</p>
@@ -34,7 +41,7 @@
                 <MadCap:dropDownHotspot>Using a Knowledge View</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>In the <span class="UIElement">Configure </span>tab of a Knowledge View definition, there is a check box property named <span class="ControlName">This Knowledge View will only use cached Form Instance Data</span>. Assuming that 1) the Knowledge View returns Form instance data, 2) the Form definition has been configured to use caching, and 3) a cache has been created for the Form, the Knowledge View will query the cache for the form, and not <span class="ProcessDirectorObject">tblFormData</span>.  If the form definition does <b>not</b> have the cache check box set, the Knowledge View will ignore the cache configuration setting and query <span class="ProcessDirectorObject">tblFormData</span> instead. If the Form and Knowledge View are configured to use Form Data Caching, but the cache table does not exist, then the user will receive an error message when the Knowledge View runs.  </p>
+                <p>In the <span class="UIElement">Configure </span>tab of a Knowledge View definition, there is a check box property named <span class="ControlName">This Knowledge View will only use cached Form Instance Data</span>. Assuming that 1) the Knowledge View returns Form instance data, 2) the Form definition has been configured to use caching, and 3) a cache has been created for the Form, the Knowledge View will query the cache for the form, and not <span class="ProcessDirectorObject">tblFormData</span>.  If the form definition does <b>not</b> have the cache check box set, the Knowledge View will ignore the cache configuration setting and query <span class="ProcessDirectorObject">tblFormData</span> instead. If the Form and Knowledge View are configured to use Form Data Caching, but the cache table doesn't exist, then the user will receive an error message when the Knowledge View runs.  </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -46,8 +53,8 @@
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2>Some Caveats</h2>
-        <p>Form Data Caching <b style="font-weight: normal; font-style: normal;">may</b> provide significant performance improvements, but the nature of your form data, and its distribution across forms, does play a large part in how much performance improvement you will actually see. If you have a system with many Forms, and with the data more or less regularly distributed between them, then the performance improvement should be noticeable. On the other hand, if you have very few forms—especially if you have a single form that contains the majority of the data—the improvements will be much less noticeable.</p>
-        <p>When you are querying the cache, whether via a Knowledge View or SQL View, you should remember that the data you will see is only as recent as when the cache was actually created. If you haven't created the cache for five days, then the most recent data will be five days old. As an implementer, when you create Knowledge Views that use cached data, you should consider letting your users know that the data may not be current. For instance, in the Knowledge View Definition, you may want to use the <span class="ControlName">HTML Code</span> property to display a message that informs the user that the data they are viewing is cached, rather than live.</p>
+        <p>Form Data Caching <b style="font-weight: normal; font-style: normal;">may</b> provide significant performance improvements, but the nature of your form data, and its distribution across forms, does play a large part in how much performance improvement you'll actually see. If you have a system with many Forms, and with the data more or less regularly distributed between them, then the performance improvement should be noticeable. On the other hand, if you have very few forms—especially if you have a single form that contains the majority of the data—the improvements will be much less noticeable.</p>
+        <p>When you are querying the cache, whether via a Knowledge View or SQL View, you should remember that the data you'll see is only as recent as when the cache was actually created. If you haven't created the cache for five days, then the most recent data will be five days old. As an implementer, when you create Knowledge Views that use cached data, you should consider letting your users know that the data may not be current. For instance, in the Knowledge View Definition, you may want to use the <span class="ControlName">HTML Code</span> property to display a message that informs the user that the data they are viewing is cached, rather than live.</p>
         <p>Creating the cache queries <span class="ProcessDirectorObject">tblFormData </span>and creates a new temporary table for each form, so the cache creation process can impact performance while it's running, especially if you are creating a large number of caches at one time. So, you need to balance your need to have current data in each form cache with the need to create the cache during times of lower system use, to minimize the performance impact on the system.</p>
     </body>
 </html>

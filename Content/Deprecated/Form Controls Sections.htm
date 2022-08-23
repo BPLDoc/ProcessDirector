@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:conditions="General.All Hidden">
-    <head><title></title>
+    <head>
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:concept term="Forms" />
-            <MadCap:concept term="Implementation" /><a name="_Toc421536210"></a>
+            <MadCap:concept term="Implementation" />
+            <a name="_Toc421536210">
+            </a>
             <MadCap:keyword term="Section" />Sections (Word Form Builder)</h1>
         <p>
             <img src="../Resources/Images/ImplementersReference/The radio button input controls_69.jpg" style="visibility: visible;mso-wrap-style: square;" />
@@ -17,15 +21,23 @@
         </p>
         <p>There are two kinds of sections: normal sections and embedded sections. Embedded sections are used to gather various controls on a Form into one group, making it easier to set properties common throughout the group. Embedded sections are not visible to the user. Normal Sections are visible to the user, and are collapsible and expandable.</p>
         <p>All section controls automatically include HTML anchors using the syntax: </p>
-        <p><code>&lt;a name="<span class="CodeOption">SectionName</span>"&gt;&lt;/a&gt;</code>
+        <p>
+            <code>&lt;a name="<span class="CodeOption">SectionName</span>"&gt;&lt;/a&gt;</code>
         </p>
         <p>The anchor has the same name as that of the Section control.&#160; Form designers can give their users the ability to scroll down to any section by providing a link (using the Hotlink control) with the URL:</p>
-        <p><code>#<span class="CodeOption">SectionName</span></code>
+        <p>
+            <code>#<span class="CodeOption">SectionName</span></code>
         </p>
         <p>Simply replace "SectionName" with the actual name of the Section control. You may find the ability to link to document sections useful when designing long forms.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="Section"></a><a href="#Section"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed"></img></a>Section / Section End</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="Section">
+                    </a>
+                    <a href="#Section">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed">
+                        </img>
+                    </a>Section / Section End</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Sections with Titles will look like this on your word document:</p>
@@ -52,7 +64,12 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmbeddedSection"></a><a href="#EmbeddedSection"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmbeddedSection">
+                    </a>
+                    <a href="#EmbeddedSection">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Embedded Section" />Embedded Section / Embedded Section End</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -61,7 +78,7 @@
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_73.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <p>You can edit the section’s name in the properties tab for the section.</p>
-                <p>Embedded sections are useful for conditionally showing and hiding items on a Form. For instance, you can use embedded sections to surround a table row you would like to hide, and set the conditions under which it should be hidden by configuring the Form properties on Process Director.</p>
+                <p>Embedded sections are useful for conditionally showing and hiding items on a Form. For instance, you can use embedded sections to surround a table row you'd like to hide, and set the conditions under which it should be hidden by configuring the Form properties on Process Director.</p>
                 <p>The embedded sections will appear in MS Word as large black brackets. You should place the Embedded Section control at the end of the row before the row that you want to hide, and place the Embedded Section End control at the end of the row you want to hide.</p>
                 <p>
                     <img src="../Resources/Images/embedded row.png" />
@@ -71,28 +88,39 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="ClientSection"></a><a href="#ClientSection"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="ClientSection">
+                    </a>
+                    <a href="#ClientSection">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Client Section" />Client Section/Client Section End</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_74.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>The Client Section control is generated through JavaScript in the browser client, unlike the normal Section control, which is rendered as a server control through ASP.NET. Because the client control is generated on the client, the control can be expanded or contracted without having to perform a postback of the form to the server. The Client Section control, therefore, provides faster performance than the regular Section control. On the other hand, the Client Section control cannot trigger any rules or logic, nor can it support any visibility or enable/disable rules like a regular Section control.</p>
-                <p>The Control Picker does not have a visual placeholder, and is placed on the page in Process Director's markup language as:</p>
-                <p><code>{ClientSection:<span class="CodeOption">ControlName</span>, Text="<span class="CodeOption">Some Text</span>", InitialExpand=<span class="CodeOption">Yes</span>|<span class="CodeOption">No</span>, ExpandDefault=<span class="CodeOption">Yes</span>|<span class="CodeOption">No</span>}<br />&#160;&#160;&#160;&#160;<span class="ControlName">&lt;!--This is content for the Client Section--&gt;</span><br />{ClientSectionEnd}</code>
+                <p>The Client Section control is generated through JavaScript in the browser client, unlike the normal Section control, which is rendered as a server control through ASP.NET. Because the client control is generated on the client, the control can be expanded or contracted without having to perform a postback of the form to the server. The Client Section control, therefore, provides faster performance than the regular Section control. On the other hand, the Client Section control can't trigger any rules or logic, nor can it support any visibility or enable/disable rules like a regular Section control.</p>
+                <p>The Control Picker doesn't have a visual placeholder, and is placed on the page in Process Director's markup language as:</p>
+                <p>
+                    <code>{ClientSection:<span class="CodeOption">ControlName</span>, Text="<span class="CodeOption">Some Text</span>", InitialExpand=<span class="CodeOption">Yes</span>|<span class="CodeOption">No</span>, ExpandDefault=<span class="CodeOption">Yes</span>|<span class="CodeOption">No</span>}<br />&#160;&#160;&#160;&#160;<span class="ControlName">&lt;!--This is content for the Client Section--&gt;</span><br />{ClientSectionEnd}</code>
                 </p>
                 <p>The Client Section control has three attributes:</p>
                 <ul style="list-style-type: disc;margin-left: 36pt;">
                     <li style="list-style-type: disc;">Text: The text that appears in the title bar of the section.</li>
                     <li style="list-style-type: disc;">InitialExpand: Determines whether the control is displayed in expanded mode when initially displayed. Setting this attribute overrides the ExpandDefault attribute. To allow the ExpandDefault to determine whether the section is expanded, do not set this attribute.</li>
-                    <li style="list-style-type: disc;">ExpandDefault: Determines whether the section will be expanded by default. This will determine the initial state of the control when the form is opened for the first time in a browser session. After the initial display, the Client Section's expanded state is stored in a session cookie. If the form is opened again during the same browser session, the Client Section's expanded state will be controlled by the session cookie. In other words, if the Client Section was not expanded when the form was last closed, it will not be expanded if the form is re-opened during the same browser section.</li>
+                    <li style="list-style-type: disc;">ExpandDefault: Determines whether the section will be expanded by default. This will determine the initial state of the control when the form is opened for the first time in a browser session. After the initial display, the Client Section's expanded state is stored in a session cookie. If the form is opened again during the same browser session, the Client Section's expanded state will be controlled by the session cookie. In other words, if the Client Section was not expanded when the form was last closed, it won't be expanded if the form is re-opened during the same browser section.</li>
                 </ul>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="TabStrip"></a><a href="#TabStrip"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="TabStrip">
+                    </a>
+                    <a href="#TabStrip">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="TabStrip;TabStripContent" />Tab Strip</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -121,7 +149,8 @@
                 <p>
                     <img src="../Resources/Images/Capture166.png" />
                 </p>
-                <p><span class="NamedControl">TabStrip </span>and <span class="NamedControl">TabStrip Content</span> controls are both ended with an "End" control, just as sections are.</p>
+                <p>
+                    <span class="NamedControl">TabStrip </span>and <span class="NamedControl">TabStrip Content</span> controls are both ended with an "End" control, just as sections are.</p>
                 <p>If a <span class="NamedControl">Tabstrip</span>'s first tab is hidden, the Form will select the first visible tabby default. You can set the focus to a specific tab in the <span class="NamedControl">TabStrip </span>control by setting the value of the <span class="NamedControl">TabStrip </span>to the ID of the tab you want to display.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>

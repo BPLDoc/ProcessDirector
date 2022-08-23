@@ -10,11 +10,11 @@
         <h2>Customizing the Process Director UI</h2>
         <p>The default language of Process Director is US English. All built-in system strings are stored in the \Program Files\BP Logix\Process Director\website\App_GlobalResources\Resource.resx file (a standard .NET resource file containing strings). To localize these to another language, create a separate file called Resource.[Culture].resx in the same folder (where [Culture] is the language/culture type, as specified in <a href="http://msdn.microsoft.com/en-us/library/system.globalization.cultureinfo(VS.80).aspx" target="_blank">MSDN</a>.). As an example, a file for German localization would be named "Resource.de.resx".This file will contain the translated strings. You only need to include the strings that have been translated into this file. </p>
         <p>At runtime, the system will first try to find a string in the Resource.[Culture].resx file, and then it will try the default Resource.resx file. Since the Resource.resx file is the final fallback file in this hierarchy, this means that you can also create a customized US English resources file to change specific items of the Process Director user interface text by creating a Resource.en-US.resx file. Process Director will check that file first, and use any custom text from that file, before falling back to the main Resource.resx file for the standard UI text items.</p>
-        <p>It is also possible to completely localize the entire Process Director UI by making a copy of the Resource.resx your master translation file. This is, of course a very, very large file, and you would need to also add the custom strings you want to translate to each copy of this file.</p>
+        <p>It is also possible to completely localize the entire Process Director UI by making a copy of the Resource.resx your master translation file. This is, of course a very, very large file, and you'd need to also add the custom strings you want to translate to each copy of this file.</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Do not modify the Resource.resx file; it will be overwritten on any upgrade/patch. </p>
         <p>Each user is able to set their own culture/language in their profile, and the system will use the appropriate resx file to display the customized interface for their selected culture.</p>
-        <p>Once you have edited the RESX&#160;files, you will need to use the <a href="Customization File Administration.htm#Locales">Locales custom variable</a> to add the Cultures to Process Director.</p>
+        <p>Once you have edited the RESX&#160;files, you'll need to use the <a href="Customization File Administration.htm#Locales">Locales custom variable</a> to add the Cultures to Process Director.</p>
         <ul>
             <li>Resource.en-US.resx for US English</li>
             <li>Resource.it.resx for Italian</li>
@@ -39,12 +39,15 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Each time you add a field to a Form, you must create a new culture string for that field's label in the RESX file for each culture. When you do so, it would be wise to create a naming convention for Form Field strings. For example, for a common field, such a "First Name", you might create a resource string name like "FirstName". </p>
-                <p>In the /website/App_GlobalResources folder of your Process Director installation, create a master string file (a standard .NET RESX file) named "strings.resx" that contains all custom strings that you want to use. This file uses the default language for Process Director, which is US English, so there's no need to specifically create a US English-version RESX file, though you will need to create a language specific strings file for other languages, e.g., strings.es.resx for Spanish.</p>
+                <p>In the /website/App_GlobalResources folder of your Process Director installation, create a master string file (a standard .NET RESX file) named "strings.resx" that contains all custom strings that you want to use. This file uses the default language for Process Director, which is US English, so there's no need to specifically create a US English-version RESX file, though you'll need to create a language specific strings file for other languages, e.g., strings.es.resx for Spanish.</p>
                 <p>Every RESX file must have a resource string entry for the field's label, with a different value in each file. So, if you have a RESX file for US English, Spanish, and German the following entries would appear in each RESX file for the FirstName string:</p>
                 <ul>
-                    <li><b>strings.resx (US English):</b> frmCommonFirstName "First Name"</li>
-                    <li><b>strings.es.resx (Spanish):</b> frmCommonFirstName "Nombre de Pila"</li>
-                    <li><b>strings.de.resx (German):</b> frmCommonFirstName "Vorname"</li>
+                    <li>
+                        <b>strings.resx (US English):</b> frmCommonFirstName "First Name"</li>
+                    <li>
+                        <b>strings.es.resx (Spanish):</b> frmCommonFirstName "Nombre de Pila"</li>
+                    <li>
+                        <b>strings.de.resx (German):</b> frmCommonFirstName "Vorname"</li>
                 </ul>
             </MadCap:dropDownBody>
         </MadCap:dropDown>

@@ -1,11 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head><title></title>
+    <head>
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" /><a name="_Toc421536082"></a>
+            <MadCap:concept term="Implementation" />
+            <a name="_Toc421536082">
+            </a>
             <MadCap:keyword term="Content List" />Managing Content</h1>
         <p>Process Director is a content management system that provides control, security and management of your digital data. This topic provides the essentials for managing objects in the database. All dataand documents are typically stored in the database<MadCap:popup><MadCap:popupHead>*</MadCap:popupHead><MadCap:popupBody>Process Director also provides file-based document storage as an alternative to database storage. Consult your system administrator regarding the setup at your site.</MadCap:popupBody></MadCap:popup>, which provides easier administration, higher security, distributed/remote database support, and a standard backup mechanism. </p>
         <p>Process Director provides a database to securely store content objects. These objects include Folders, Documents, Files, Forms, etc. This chapter will provide an overview of folders, documents, and files. For information on Process Timelines, Forms, or Knowledge Views, refer to the respective chapters in this document.</p>
@@ -14,11 +18,13 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/Managing Content.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <h2><a name="_Toc421536083"></a>Content List <a href="#_Toc421536083" class="anchor">#</a></h2>
+        <h2>
+            <a name="_Toc421536083">
+            </a>Content List <a href="#_Toc421536083" class="anchor">#</a></h2>
         <p>The <span class="ProcessDirectorObject">Content List</span> is a hierarchical list of all Process Director objects. The Content List includes all of the objects created in Process Director, such as Forms, Process Timelines, Knowledge Views, etc. In addition, the Content List can include uploaded files such as Excel spreadsheets used to import data, Word documents used as templates for output documents, and any other files that become part of a process definition.</p>
         <p>The <span class="ProcessDirectorObject">Content List</span> consists of a folder structure that is located on the left side of the screen, and a folder/file list that is displayed on the right side of the screen. Navigation through the Content List is done by clicking on a folder on either side of the screen.</p>
         <p>Many users think of the <span class="ProcessDirectorObject">Content List</span> as a file system that users can create inside of Process Director, but this isn't really correct. The Content List organizes Process Director objects in a logical fashion for users who are browsing through the system, but the actual objects in Process Director are not organized in the way that the Content List displays.</p>
-        <p>For instance, in a file system, the file name is the key element for identifying a file. Let's say you have a word document named "sample.docx", and you change the name to "NewSample.docx". If you go into Microsoft Word, and try to open the "sample.docx" file from the list of recent files, you will receive a message telling you that the file can't be found. Changing the name of the file changes the identity of the file on your computer, making any references to the old file name invalid.</p>
+        <p>For instance, in a file system, the file name is the key element for identifying a file. Let's say you have a word document named "sample.docx", and you change the name to "NewSample.docx". If you go into Microsoft Word, and try to open the "sample.docx" file from the list of recent files, you'll receive a message telling you that the file can't be found. Changing the name of the file changes the identity of the file on your computer, making any references to the old file name invalid.</p>
         <p>In Process Director, on the other hand, an object's name doesn't affect the identity of the object. Process Director tracks objects by a unique ID that you, as an end user will rarely, if ever, use. The object name is merely an attribute of the object that you can change at will without Process Director losing track of the object. Here's an example that demonstrates how object tracking works in Process Director.</p>
         <ol style="list-style-type: decimal;margin-left: 36pt;" start="1">
             <li>In this example, you have a business rule named "My Business Rule" and a Form named "My Form".</li>
@@ -45,17 +51,19 @@
             <img src="../Resources/Images/Training/Core/ManagingContent3.png" />
         </p>
         <ol style="list-style-type: decimal;margin-left: 36pt;" start="5">
-            <li>Note that, even though you have a business rule with the name "My Business Rule", Process Director does not use it as the business rule in condition on the Form. Instead, Process Director has updated the Form definition to show the new name you gave to the original Business Rule. </li>
+            <li>Note that, even though you have a business rule with the name "My Business Rule", Process Director doesn't use it as the business rule in condition on the Form. Instead, Process Director has updated the Form definition to show the new name you gave to the original Business Rule. </li>
         </ol>
         <p>
             <img src="../Resources/Images/Training/Core/ManagingContent4.png" />
         </p>
         <p>By the way, you can see the ID that Process Director uses to identify an object by opening the object definition. On a Form, for example, at the bottom of the Form definition screen, you'll see the property for the <span class="ControlName">Form URL</span>, written in a format similar to:</p>
-        <p><code>https://<span class="CodeOption">ServerName.com</span>/form.aspx?pid=<span class="CodeOption">dc1c51ea-612e-48c0-8cc6-4ff9276cbfc9</span>&amp;formid=<span class="CodeOption">aa213c6f-a8aa-454f-a04d-30b56fd2e493</span></code>
+        <p>
+            <code>https://<span class="CodeOption">ServerName.com</span>/form.aspx?pid=<span class="CodeOption">dc1c51ea-612e-48c0-8cc6-4ff9276cbfc9</span>&amp;formid=<span class="CodeOption">aa213c6f-a8aa-454f-a04d-30b56fd2e493</span></code>
         </p>
         <p>The "formid" URL parameter contains the ID that Process Director uses to uniquely identify the Form object, which, in this example, is </p>
-        <p><code>aa213c6f-a8aa-454f-a04d-30b56fd2e493</code>
+        <p>
+            <code>aa213c6f-a8aa-454f-a04d-30b56fd2e493</code>
         </p>
-        <p>Changing the name of the Form, or any other property, does not change this ID. So, you can identify the Form with a name that is easily readable by humans, while Process Director identifies the Form with this ID, which is easily readable by computers.</p>
+        <p>Changing the name of the Form, or any other property, doesn't change this ID. So, you can identify the Form with a name that is easily readable by humans, while Process Director identifies the Form with this ID, which is easily readable by computers.</p>
     </body>
 </html>

@@ -1,12 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" /><a name="_Dropdown_List_Content"></a><a name="_Toc421536109"></a>
+            <MadCap:concept term="Implementation" />
+            <a name="_Dropdown_List_Content">
+            </a>
+            <a name="_Toc421536109">
+            </a>
             <MadCap:keyword term="Datasources" />Microsoft Excel Datasources</h1>
         <p>Process Director can use a Microsoft Excel spreadsheet as a data source, enabling you to check out and edit the spreadsheet whenever needed. Process Director can re-import the data every time you check the spreadsheet back in, to ensure the data always reflects the current values in the spreadsheet.</p>
         <h2>Creating the Structure</h2>
@@ -26,9 +32,9 @@
         <ol style="list-style-type: decimal;margin-left: 36pt;" start="3">
             <p>Each sheet acts as a different table in the database. Each table can have different field names and different data.</p>
         </ol>
-        <p>Process Director will not transform the Excel sheet under the following conditions:</p>
+        <p>Process Director won't transform the Excel sheet under the following conditions:</p>
         <ul class="FirstLevelLessIndentation">
-            <p style="list-style-type: square;">Process Director will ignore default sheet names, like “Sheet1”, “Sheet2”, or any sheet whose name matches the Sheet# pattern, and you cannot use spaces in sheet names. Additionally, sheet names that start with the "#"&#160;character will also be ignored. Process Director will not transform any sheets whose A1 cell is empty. You need to rename the default sheet names, therefore, with meaningful names. The sheet names you provide will be used to create and name database tables, so you should ensure that sheet names, like field names, do not use spaces or special characters, in order to make them compliant with database naming conventions.</p>
+            <p style="list-style-type: square;">Process Director will ignore default sheet names, like “Sheet1”, “Sheet2”, or any sheet whose name matches the Sheet# pattern, and you can't use spaces in sheet names. Additionally, sheet names that start with the "#"&#160;character will also be ignored. Process Director won't transform any sheets whose A1 cell is empty. You need to rename the default sheet names, therefore, with meaningful names. The sheet names you provide will be used to create and name database tables, so you should ensure that sheet names, like field names, do not use spaces or special characters, in order to make them compliant with database naming conventions.</p>
         </ul>
         <p>
             <img src="../Resources/Images/ImplementersReference/Datasource Objects_8.jpg" style="visibility: visible;mso-wrap-style: square;" />
@@ -41,7 +47,7 @@
             <img src="../Resources/Images/ImplementersReference/uploadPage.png" />
         </p>
         <p>On the <span class="ControlName">Upload Document</span> page, click the <span class="UIElement">Browse </span>button and locate the Excel file in your local file system. Double click the file to save and close the browse dialog box, then click the <span class="UIElement">Upload </span>button to upload the file to your partition.</p>
-        <p>The final step is to take the data from the uploaded Excel file and import it into the data source. After the Excel file is uploaded, you will be presented with the object definition screen for the Excel file. Click on the <span class="UIElement">Import Database</span> tab. Click the <span class="ControlName">Destination Data Source</span> property's <span class="ControlName">Build </span>button to select the data source you created earlier. </p>
+        <p>The final step is to take the data from the uploaded Excel file and import it into the data source. After the Excel file is uploaded, you'll be presented with the object definition screen for the Excel file. Click on the <span class="UIElement">Import Database</span> tab. Click the <span class="ControlName">Destination Data Source</span> property's <span class="ControlName">Build </span>button to select the data source you created earlier. </p>
         <p>
             <img src="../Resources/Images/ImplementersReference/ExcelDatasource.png" />
         </p>
@@ -73,7 +79,7 @@
                         <p>Drop database tables before import</p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                        <p>To “DROP” a table is to delete it completely. The difference between “dropping” a table and the “Clear database rows” checkbox is that if you only clear the rows, the format of the information in existing fields (columns) is kept. In other words, in Excel, if you had a date field called “Married” and imported it to the database with date information, Process Director expects date formatted information to be entered in that field. If you opened Excel and altered the “Married” column to be a Boolean (True/False) value, and did not drop the tables when you imported, you would generate an error.</p>
+                        <p>To “DROP” a table is to delete it completely. The difference between “dropping” a table and the “Clear database rows” checkbox is that if you only clear the rows, the format of the information in existing fields (columns) is kept. In other words, in Excel, if you had a date field called “Married” and imported it to the database with date information, Process Director expects date formatted information to be entered in that field. If you opened Excel and altered the “Married” column to be a Boolean (True/False) value, and did not drop the tables when you imported, you'd generate an error.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row1">
@@ -81,7 +87,7 @@
                         <p>Create database tables if needed</p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                        <p>If you have a previously imported Excel spreadsheet and add a new sheet to it in Excel, Process Director will not import the new sheet as a new table unless this checkbox is checked.</p>
+                        <p>If you have a previously imported Excel spreadsheet and add a new sheet to it in Excel, Process Director won't import the new sheet as a new table unless this checkbox is checked.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row2">
@@ -97,7 +103,7 @@
                         <p>Automatically import this Excel file after every check-in or import.</p>
                     </td>
                     <td class="TableStyle-Simple-BodyA-Column1-Row1">
-                        <p>After you have added an Excel spreadsheet to your Process Director instance, you will need to “check out and edit” the file in order to open it and make changes. After your changes are made, you select “upload and check in” and this checkbox will automatically recreate or append the information in your PD database without you having to re-import the file.</p>
+                        <p>After you have added an Excel spreadsheet to your Process Director instance, you'll need to “check out and edit” the file in order to open it and make changes. After your changes are made, you select “upload and check in” and this checkbox will automatically recreate or append the information in your PD database without you having to re-import the file.</p>
                         <p class="PDNote">
                             <img src="../Resources/Images/i2.png" alt="Note" /> When importing a project from an XML file into the Content List, if the project contains an Excel file to import into the database, the database import will <b>not</b> be performed if this property is unchecked.</p>
                     </td>
@@ -105,7 +111,9 @@
             </tbody>
         </table>
         <p>Now you can click the <span class="UIElement">Import Tables Now</span> button to import the Excel data into your Datasource.</p>
-        <h2 MadCap:conditions="General.Not Printed"><a name="Example"></a>Documentation Example <a href="#Example" class="anchor">#</a></h2>
+        <h2 MadCap:conditions="General.Not Printed">
+            <a name="Example">
+            </a>Documentation Example <a href="#Example" class="anchor">#</a></h2>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Video Example</MadCap:dropDownHotspot>
@@ -122,16 +130,19 @@
                 <MadCap:dropDownHotspot>Use the Simulator</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p MadCap:conditions="General.Not Printed"><a href="../Resources/Simulations/Importing Excel Data/story.html" target="_blank" title="Simulator - Import Excel Data" alt="Simulator - Import Excel Data">Click here</a> to use the Simulator to create a datasource and import an Excel file to the Internal User Database (SQL&#160;Server).</p>
+                <p MadCap:conditions="General.Not Printed">
+                    <a href="../Resources/Simulations/Importing Excel Data/story.html" target="_blank" title="Simulator - Import Excel Data" alt="Simulator - Import Excel Data">Click here</a> to use the Simulator to create a datasource and import an Excel file to the Internal User Database (SQL&#160;Server).</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h3><a name="_Toc421536110"></a>Transform Excel Sheet to a Database Table</h3>
+        <h3>
+            <a name="_Toc421536110">
+            </a>Transform Excel Sheet to a Database Table</h3>
         <p>This allows you to use a Microsoft Excel sheet and transform the content to a table and data within a data source specified in Process Director. This is useful when you need to add data to a database without having to use a database management tool. A form that performs these functions can be distributed from BP Logix and is also included in the sample files Process Director.</p>
         <h4>Creating the Excel File</h4>
         <p>It is important to configure your Excel file to these specifications in order for Process Director to transfer the data correctly.</p>
         <ol>
             <li>Create an Excel file using Microsoft Excel.</li>
-            <li>Rename the Excel sheet to the name of the table you would like to create. Please do not name your table starting with “tbl”. The form will result in error.</li>
+            <li>Rename the Excel sheet to the name of the table you'd like to create. Please do not name your table starting with “tbl”. The form will result in error.</li>
             <li>Create column names by adding the names of the column to the first row and in each cell. If you do not specify a type, it will be determined automatically based on the value of the first record. Process Director will attempt to get the cell/column type from the Excel column, and set the DB column type accordingly. For instance, if the column header cell is formatted as a a date/time cell, Process Director will use the Datetime column type.</li>
             <li>Optionally set the data type of the column by appending ":type" to the column name, where type is the native database type (e.g. varchar) or one of the following keywords: bp_string, bp_bool, bp_decimal, bp_int or bp_datetime. The default data type of bp_string for Process Director v5.29 and higher is NVARCHAR(MAX), and is VARCHAR(512) for all older versions. You can override the string size using bp_string(size) to set the string size to a different number of characters.</li>
         </ol>
@@ -191,7 +202,7 @@
             <li>Prefix the destination table name.</li>
             <li>Drop (Delete) tables with the same name</li>
             <li>Clear all rows in table before inserting.</li>
-            <li>Create table if it does not exist.</li>
+            <li>Create table if it doesn't exist.</li>
         </ul>
     </body>
 </html>

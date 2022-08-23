@@ -1,21 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:keyword term="System Administration" />
-            <MadCap:concept term="System Administration" /><a name="_Toc421094510"></a>Users Page</h1>
+            <MadCap:concept term="System Administration" />
+            <a name="_Toc421094510">
+            </a>Users Page</h1>
         <p>Process Director users are created and managed from the <span class="ControlName">Users </span>page of the <span class="ProcessDirectorObject">User Administration</span> section.</p>
-        <h2><a name="Searching"></a>Searching Users <a href="#Searching" class="anchor">#</a></h2>
+        <h2>
+            <a name="Searching">
+            </a>Searching Users <a href="#Searching" class="anchor">#</a></h2>
         <p>The <span class="ControlName">Users </span>page displays a list of users on the system. </p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/Users.png" />
         </p>
         <p>Systems with a large number of users, i.e., more than 100, will see a search box at the upper left corner of the page to search for specific users via User ID. For Process Director v5.44.800 and higher, the search box will, when a value is entered, search all user attributes that are displayed in the User List, such as Group names, to return the matching users, as an improvement to this search feature.</p>
-        <h2><a name="AddingUsers"></a>Adding a New User <a href="#AddingUsers" class="anchor">#</a></h2>
+        <h2>
+            <a name="AddingUsers">
+            </a>Adding a New User <a href="#AddingUsers" class="anchor">#</a></h2>
         <p>This section describes how to add users to Process Director using built-in user accounts. This is not required for users that are created by Windows SSO, synchronization with your LDAP server, or an external authentication system (SAML). </p>
         <p>For built-in users, a User ID and password must be added to the Process Director database before a login can occur. When a user is configured in the Process Director database, additional information such as the user’s email address and alias can be configured.</p>
         <p>On the <span class="ControlName">Users </span>page of the<span class="ControlName"><MadCap:keyword term="System Administration" /> <span class="ProcessDirectorObject">IT&#160;Admin</span> </span>area's <span class="ProcessDirectorObject">User Administration</span> section, click on the<span class="UIElement"> Create User</span> link. This will prompt you to enter a User ID for the new user. Please Note: This will create a built-in user, not a Windows user.</p>
@@ -31,7 +39,9 @@
         <p>The User ID will also serve as the user’s login user name for Process Director. BP Logix highly recommends that administrators ensure that User ID’s are unique to each user. This may not be possible, however, when using SAML authentication for existing users where duplicate user names exist. In this case the SAML authentication must send a unique GUID or identifier for the users. There is a variable in the custom vars file called <a href="../DevelopersGuide/Customization File SAML.htm#fAuthSAMLAllowDuplicateUserIDs">fAuthSAMLAllowDuplicateUserIDs</a> that must be set to “true” to allow this behavior.</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> In many cases, Process Director will return a comma-separated list of users. Since the users are identified by UserName, we strongly recommend that your users names do <b style="font-style: italic;">not</b> include commas as part of the user name.</p>
-        <h2><a name="UserProperties"></a>User Properties <a href="#UserProperties" class="anchor">#</a></h2>
+        <h2>
+            <a name="UserProperties">
+            </a>User Properties <a href="#UserProperties" class="anchor">#</a></h2>
         <p>
             <img src="../Resources/Images/Custom Tasks2/UserAdmin.png" />
         </p>
@@ -45,7 +55,9 @@
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
-            <MadCap:dropDownHead><a name="Miscella"></a>
+            <MadCap:dropDownHead>
+                <a name="Miscella">
+                </a>
                 <MadCap:dropDownHotspot>Miscellaneous Account Settings</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -63,37 +75,44 @@
                     </thead>
                     <tbody>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">User Disabled</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">User Disabled</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Disables the user account, preventing the user from participating in any tasks, and deleting the user's participation from any existing tasks.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Disable Emails for this User	</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">Disable Emails for this User	</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Prevents Process Director emails from being sent to the user.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">User Account Locked</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">User Account Locked</span>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Locks the account, preventing the user from logging in. (This feature is implemented only for “built-in” user account authentication. It does not apply to LDAP, SAML, or Windows user accounts.)</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Locks the account, preventing the user from logging in. (This feature is implemented only for “built-in” user account authentication. It doesn't apply to LDAP, SAML, or Windows user accounts.)</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Force password change at next login</span><![CDATA[
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">Force password change at next login</span><![CDATA[
 ]]></td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Force the user to change their password on the next login attempt.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Change Password</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">Change Password</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">When checked, a text box will appear that enables you to enter a new password for the user.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Mobile App User</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">Mobile App User</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">This setting appears only for installations that are licensed for the <a href="../ImplementersReference/Mobile App.htm">Mobile Application Component</a>, with the appropriate <a href="../DevelopersGuide/Customization File Mobile.htm">mobile app custom variables</a> configured properly. Checking this property indicates that the user will be granted access to the Mobile Application. </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1"><span class="ControlName">Mobile Admin User</span>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <span class="ControlName">Mobile Admin User</span>
                             </td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row1">This setting appears only for installations that are licensed for the <a href="../ImplementersReference/Mobile App.htm">Mobile Application Component</a>, with the appropriate <a href="../DevelopersGuide/Customization File Mobile.htm">mobile app custom variables</a> configured properly. Checking this property indicates that the user will be granted access to the Mobile Server as an administrator.</td>
                         </tr>
@@ -122,37 +141,44 @@
                     </thead>
                     <tbody>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">System Administrator</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">System Administrator</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">The top-level Administrative user, with complete control of the Process Director Installation</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">System Partition Admin</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">System Partition Admin</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">This user type is not technically a system administrator, and has no access to the <span class="ProcessDirectorObject">IT Admin</span> area of the installation. Users who are designated as system partition administrators, however, have full access to the <span class="ProcessDirectorObject">Content List</span> for the partitions to which they are a member, and have permission to create, edit, and delete all  objects, irrespective of the <span class="ProcessDirectorObject">Content List</span> permissions that have been set in that Partition.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">System Configuration Admin</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">System Configuration Admin</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">A subset of the System Administrator user with access only to the <span class="UIElement">Configuration </span>tab.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">System User Admin</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">System User Admin</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">A subset of the System Administrator user, with access only to the<span class="UIElement"> User Administration </span>tab.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">System Install Admin</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">System Install Admin</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">A subset of the System Administrator user, with access only to the<span class="UIElement"> Installation Settings</span> tab.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">System Troubleshooting Admin</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">System Troubleshooting Admin</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">A subset of the System Administrator user, with access only to the <span class="UIElement">Troubleshooting </span>tab.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1"><span class="ControlName">User Impersonation Ability</span>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <span class="ControlName">User Impersonation Ability</span>
                             </td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row1">The ability for this user to impersonate other users.</td>
                         </tr>
@@ -252,75 +278,90 @@
                     </thead>
                     <tbody>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Title </span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">Title </span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's Title.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Description </span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">Description </span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for a Description.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Phone </span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">Phone </span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's phone number.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Manager </span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">Manager </span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">A <span class="NamedControl">UserPicker </span>to choose the user's Manager.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Company </span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">Company </span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's Company.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Office </span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">Office </span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for the user's Office name.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Department </span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">Department </span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's Department.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Business Unit </span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">Business Unit </span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for the user's Business Unit.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Legal Entity</span> </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">Legal Entity</span> </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's Business Entity.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Country </span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">Country </span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for the user's Country.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Location </span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">Location </span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for the user's Location.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Custom String</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">Custom String</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for a custom string value.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Custom String 2</span><![CDATA[
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <span class="ControlName">Custom String 2</span><![CDATA[
 ]]></td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">A text box for a custom string value.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Custom Number</span> </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <span class="ControlName">Custom Number</span> </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">A text box for a custom numeric value.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1"><span class="ControlName">Custom Date</span>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <span class="ControlName">Custom Date</span>
                             </td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row1">A <span class="NamedControl">DatePicker</span> for a custom date value.</td>
                         </tr>

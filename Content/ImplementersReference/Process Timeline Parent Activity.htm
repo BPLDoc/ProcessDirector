@@ -14,8 +14,10 @@
         <p>In Process Director versions 3.45 and higher, additional functionality is available to Parent activity types: Results Concatenation and Looping.</p>
         <p>In addition to the common properties tabs that appear for all Timeline activities, the configuration settings below are unique to this activity type.</p>
         <h2>Results and Result Concatenation</h2>
-        <p>By default, the result of a parent activity is set to the result of the child task whose completion resulted in the completion of the parent (this behavior is implemented in Process Director v3.45 and up. In previous versions, the parent never has a result.). Parent activities have the option of setting the result of the Parent activity to a comma-separated list of all the child results. This list will contain only the results from the immediate child activities of the Parent activity; it will not use results from any Parent activities that have been created under the top-level Parent. If the parent is configured to loop, only the results from the final iteration will be included. If the parent contains other parent activities, only the results from the direct children of that parent will be included; the results from the children of "subparents" will not be included.</p>
-        <h2><a name="Looping"></a>Looping Tab</h2>
+        <p>By default, the result of a parent activity is set to the result of the child task whose completion resulted in the completion of the parent (this behavior is implemented in Process Director v3.45 and up. In previous versions, the parent never has a result.). Parent activities have the option of setting the result of the Parent activity to a comma-separated list of all the child results. This list will contain only the results from the immediate child activities of the Parent activity; it won't use results from any Parent activities that have been created under the top-level Parent. If the parent is configured to loop, only the results from the final iteration will be included. If the parent contains other parent activities, only the results from the direct children of that parent will be included; the results from the children of "subparents" won't be included.</p>
+        <h2>
+            <a name="Looping">
+            </a>Looping Tab</h2>
         <p>Parent activities can also be used to create loops within your Process Timeline. When configured this way, the children are referred to as a “looping segment”, i.e., a segment of your Process Timeline that iterates, or loops. A looping segment will continuously loop through the child activities until a user-defined condition, or set of conditions, is satisfied. </p>
         <p>
             <img src="../Resources/Images/loop.png" alt="Iteration Loop" />
@@ -40,7 +42,7 @@
                 <MadCap:dropDownHotspot>Repeat Loop Until condition is met</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Each time Process Director prepares to execute the looping segment, this condition will be evaluated to determine whether or not to do so. If the condition is not met, the looping segment will start again. If the condition is met, however, the loop will not be repeated, and the parent activity will be marked as complete. Any successive activities in the Process Timeline will now be eligible to run.</p>
+                <p>Each time Process Director prepares to execute the looping segment, this condition will be evaluated to determine whether or not to do so. If the condition is not met, the looping segment will start again. If the condition is met, however, the loop won't be repeated, and the parent activity will be marked as complete. Any successive activities in the Process Timeline will now be eligible to run.</p>
                 <p>The remaining methods of controlling the loop rely on conditions that are evaluated each time any child activity completes. When the relevant condition is met, execution of the loop will be interrupted.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -58,7 +60,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>When the condition specified by the user is met, the current loop will be immediately stopped, and the parent activity will be marked as complete. Any successive activities in the Timeline will now be eligible to run. </p>
-                <p>It is quite possible that you will need to configure all three methods. As an example, let's consider a simple approval process for a request. Suppose that each level of approval can end in one of three results: Approve, Reject, and Terminate. In this case, we might want to configure the segment as follows:</p>
+                <p>It is quite possible that you'll need to configure all three methods. As an example, let's consider a simple approval process for a request. Suppose that each level of approval can end in one of three results: Approve, Reject, and Terminate. In this case, we might want to configure the segment as follows:</p>
                 <ul style="list-style-type: disc;margin-left: 36pt;">
                     <li style="list-style-type: disc;">Stop repeating the loop when all approvers approve the request</li>
                     <li style="list-style-type: disc;">Exit the segment any time an approver chooses the terminate option</li>
@@ -94,29 +96,54 @@
         </p>
         <p>The Iteration SysVars are available from the Timeline Activity branch of the <span class="ProcessDirectorObject">Condition Builder</span>'s System Variables menu, and consist of:</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
-            <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544616" target="_blank">Any Child Activity Result</a>
+            <li style="list-style-type: disc;">
+                <a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544616" target="_blank">Any Child Activity Result</a>
             </li>
-            <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544615" target="_blank">All Children Activity Results</a>
+            <li style="list-style-type: disc;">
+                <a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544615" target="_blank">All Children Activity Results</a>
             </li>
-            <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544621" target="_blank">Last Child Activity Result</a>
+            <li style="list-style-type: disc;">
+                <a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544621" target="_blank">Last Child Activity Result</a>
             </li>
-            <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544624" target="_blank">Parent Activity Iterated</a>
+            <li style="list-style-type: disc;">
+                <a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#_Toc421544624" target="_blank">Parent Activity Iterated</a>
             </li>
-            <li style="list-style-type: disc;"><a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#ParentActivityRestarted">Parent Activity Restarted</a>
+            <li style="list-style-type: disc;">
+                <a href="../SystemVariablesReferenceGuide/Timeline Activity System Variables.htm#ParentActivityRestarted">Parent Activity Restarted</a>
             </li>
         </ul>
         <p>Follow the links above to see a detailed explanation of each System Variable.</p>
         <h2>Other Activity Types</h2>
         <p>To view the documentation for other activity types, you can navigate to them using the Table of Contents displayed in the upper right corner of the page, or by using one of the links below.</p>
-        <p><b><a href="Process Timeline User Activity.htm">User</a>:</b> This activity type assigns a task to a user or users, which must be completed to end the task. </p>
-        <p><b><a href="Process Timeline Notify Activity.htm">Notify</a>:</b> This activity type sends email notifications to users who are not participants in the process.</p>
-        <p><b><a href="Process Timeline Process Activity.htm">Process</a>:</b> This activity type invokes a different process that will run as a separate, synchronous subprocess. </p>
-        <p><b><a href="Process Timeline Script Activity.htm">Script</a>:</b> This activity type enables you to invoke a custom script.</p>
-        <p><b><a href="Process Timeline Custom Task Activity.htm">Custom Task</a>:</b> This activity type invokes a Custom Task to run when the activity starts. </p>
-        <p><b><a href="Process Timeline Form Actions Activity.htm">Form Actions</a>:</b> This activity type enables you to manipulate the Form used for the process.</p>
-        <p><b><a href="#">Branch</a>:</b> This activity type enables you to change the operation of the Process Timeline to invoke a specified activity.</p>
-        <p><b><a href="Process Timeline End Process Activity.htm">End Process</a>:</b> This activity type enables you to conditionally end a process.</p>
-        <p><b><a href="Process Timeline Wait Activity.htm">Wait</a>:</b> This activity type enables you to pause a Process Timeline. </p>
-        <p><b><a href="Process Timeline Case Activity.htm">Case</a>:</b> This activity type enables you to manipulate the Case instance that is associated with the Process Timeline. </p>
+        <p>
+            <b>
+                <a href="Process Timeline User Activity.htm">User</a>:</b> This activity type assigns a task to a user or users, which must be completed to end the task. </p>
+        <p>
+            <b>
+                <a href="Process Timeline Notify Activity.htm">Notify</a>:</b> This activity type sends email notifications to users who are not participants in the process.</p>
+        <p>
+            <b>
+                <a href="Process Timeline Process Activity.htm">Process</a>:</b> This activity type invokes a different process that will run as a separate, synchronous subprocess. </p>
+        <p>
+            <b>
+                <a href="Process Timeline Script Activity.htm">Script</a>:</b> This activity type enables you to invoke a custom script.</p>
+        <p>
+            <b>
+                <a href="Process Timeline Custom Task Activity.htm">Custom Task</a>:</b> This activity type invokes a Custom Task to run when the activity starts. </p>
+        <p>
+            <b>
+                <a href="Process Timeline Form Actions Activity.htm">Form Actions</a>:</b> This activity type enables you to manipulate the Form used for the process.</p>
+        <p>
+            <b>
+                <a href="#">Branch</a>:</b> This activity type enables you to change the operation of the Process Timeline to invoke a specified activity.</p>
+        <p>
+            <b>
+                <a href="Process Timeline End Process Activity.htm">End Process</a>:</b> This activity type enables you to conditionally end a process.</p>
+        <p>
+            <b>
+                <a href="Process Timeline Wait Activity.htm">Wait</a>:</b> This activity type enables you to pause a Process Timeline. </p>
+        <p>
+            <b>
+                <a href="Process Timeline Case Activity.htm">Case</a>:</b> This activity type enables you to manipulate the Case instance that is associated with the Process Timeline. </p>
     </body>
 </html>

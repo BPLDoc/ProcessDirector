@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head><title></title>
+    <head>
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:concept term="Implementation" />
-            <MadCap:keyword term="Windows Scheduler;Activity Check" /><a name="WindowsScheduler"></a>Using the Microsoft <MadCap:keyword term="Windows Scheduler;Utilities" />Windows Scheduler</h1>
+            <MadCap:keyword term="Windows Scheduler;Activity Check" />
+            <a name="WindowsScheduler">
+            </a>Using the Microsoft <MadCap:keyword term="Windows Scheduler;Utilities" />Windows Scheduler</h1>
         <p>To schedule any Process Director task (e.g. an import task) using the Microsoft Windows Scheduled Tasks utility, follow one of the procedures below. One of the most common uses of the Windows Scheduler is <a href="../SystemAdministratorGuide/Activity Check.htm">running the activity check page</a> periodically.</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> For most use cases that involve activities such as starting processes, or other internal Process Director actions, scheduled activities should be implemented through the use of the Goal object, rather than the Windows Scheduler.</p>
@@ -15,7 +19,7 @@
                 <MadCap:dropDownHotspot>Scheduled Tasks Utility (Windows 2008 and earlier)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Open the Windows Start &gt; All Programs &gt; Accessories &gt; System Tools &gt; Scheduled Tasks menu item. This will display the Windows Scheduler. Click on the “Add a Scheduled Task” item and browse for the application to run. Go to the Process Director install directory and choose the program (e.g. bpImport.exe). Then continue with the scheduler indicating that it should run every day. When prompted for user credentials, ensure you enter a user that will not have the password change occur too often, because any change to this password will prevent the scheduled task from running. You can optionally create a new user account to run this task under (ensure the account you choose has the appropriate permissions by logging in as that user and running the bpImport.exe).</p>
+                <p>Open the Windows Start &gt; All Programs &gt; Accessories &gt; System Tools &gt; Scheduled Tasks menu item. This will display the Windows Scheduler. Click on the “Add a Scheduled Task” item and browse for the application to run. Go to the Process Director install directory and choose the program (e.g. bpImport.exe). Then continue with the scheduler indicating that it should run every day. When prompted for user credentials, ensure you enter a user that won't have the password change occur too often, because any change to this password will prevent the scheduled task from running. You can optionally create a new user account to run this task under (ensure the account you choose has the appropriate permissions by logging in as that user and running the bpImport.exe).</p>
                 <p>Once the task has been created, open the advanced properties of the item to configure the task. Change the Run input box to include the appropriate parameters to the command. </p>
                 <p class="CodeBase">"c:\Program Files\BP Logix\Process Director\bpImport.exe" –w "http://localhost" –u "user1" –d "m:\My Docs" --delete</p>
                 <p>The following dialog is displayed when the properties of the task are viewed. This is also where the Windows user account that this task is run as can be changed.</p>
@@ -47,7 +51,7 @@
                 <p>
                     <img src="../Resources/Images/Capture194.png" />
                 </p>
-                <p>To create the schedule for the task, you will need to add a trigger, so select the <span class="UIElement">Trigger </span>tab, then click the <span class="UIElement">New </span>button.</p>
+                <p>To create the schedule for the task, you'll need to add a trigger, so select the <span class="UIElement">Trigger </span>tab, then click the <span class="UIElement">New </span>button.</p>
                 <p>
                     <img src="../Resources/Images/Capture195.png" />
                 </p>

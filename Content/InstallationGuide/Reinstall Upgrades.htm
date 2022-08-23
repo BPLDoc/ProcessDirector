@@ -1,17 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Installation" /><a name="_Toc421172273"></a>
+            <MadCap:concept term="Installation" />
+            <a name="_Toc421172273">
+            </a>
             <MadCap:keyword term="Installation;Upgrade" />Reinstall/Upgrades/Moving Hosts</h1>
         <p>The Process Director can be reinstalled or upgraded with no loss of data. Any database table updates are automatically performed after the install completes.</p>
-        <h2><a name="_Toc421172274"></a>Rolling Back to a Previous Installation <a href="#_Toc421172274" class="anchor">#</a></h2>
+        <h2>
+            <a name="_Toc421172274">
+            </a>Rolling Back to a Previous Installation <a href="#_Toc421172274" class="anchor">#</a></h2>
         <p>After installing a new Process Director patch, you can roll back to the previous version by uninstalling Process Director and then reinstalling the previous version. However, some patches involve changes to Process Director’s database. If a patch has changed the database, new database columns, indices, and tables will need to be removed, and the tblSettings columns “nDBVersion” and “nDBVersionPrev” will need to be reset. If you are reverting to a patch that involves database changes, <a href="https://bplogix.zendesk.com/" target="_blank">contact technical support</a> for instructions on reconfiguring the database.</p>
-        <h2><a name="_Toc421172275"></a>Uninstalling <a href="#_Toc421172275" class="anchor">#</a></h2>
+        <h2>
+            <a name="_Toc421172275">
+            </a>Uninstalling <a href="#_Toc421172275" class="anchor">#</a></h2>
         <p>You may uninstall Process Director by using the Add or Remove Programs in the Control Panel:</p>
         <ol>
             <li>
@@ -28,14 +36,18 @@
             </li>
         </ol>
         <p>The uninstall program will NOT remove the Process Director database, the website, or the virtual directory. </p>
-        <h2><a name="_Toc421172276"></a><a name="Upgrading"></a>Upgrading to a New Version <a href="#_Toc421172276" class="anchor">#</a></h2>
-        <p>The upgrade process for installing new versions of Process Director is very straightforward. Essentially, simply downloading and installing the new version will automatically upgrade your existing version of Process Director, and carry over all of your settings and licensing information. If you are upgrading to Process Director v3.41 or higher from an earlier version, however, you will have to take the additional step of setting the Application Pool to use ASP.NET 4.5.</p>
+        <h2>
+            <a name="_Toc421172276">
+            </a>
+            <a name="Upgrading">
+            </a>Upgrading to a New Version <a href="#_Toc421172276" class="anchor">#</a></h2>
+        <p>The upgrade process for installing new versions of Process Director is very straightforward. Essentially, simply downloading and installing the new version will automatically upgrade your existing version of Process Director, and carry over all of your settings and licensing information. If you are upgrading to Process Director v3.41 or higher from an earlier version, however, you'll have to take the additional step of setting the Application Pool to use ASP.NET 4.5.</p>
         <h3>
             <MadCap:keyword term="AES;Encryption" />Process Director v5.44.700 and Higher</h3>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Process Director v5.44.700 and higher uses AES encryption for all encrypted fields/data. This encryption change provides higher security, but it does affect the migration process the <b style="font-style: italic;">first time</b>--and ONLY the first time--you install v5.44.700 or higher from v5.44.600 or lower. Again, this is a one-time change to the process. Upgrading from v5.44.700 to any higher version requires no special action.</p>
         <h4>Custom Tasks</h4>
-        <p>You will need to update the Custom Tasks for your installation, <span class="Emphasis">prior to upgrading Process Director. </span>Some Custom Tasks include changes to field properties that require updated versions. If you update the Custom Tasks after upgrading Process Director, then you will need to go to the <span class="ControlName">Server Control</span> page of the<span class="ProcessDirectorObject"> IT&#160;Admin</span> area's <span class="ProcessDirectorObject">Troubleshooting </span>section, and click the action link labeled, <span class="UIElement">Encrypt Old Form Data</span>.</p>
+        <p>You will need to update the Custom Tasks for your installation, <span class="Emphasis">prior to upgrading Process Director. </span>Some Custom Tasks include changes to field properties that require updated versions. If you update the Custom Tasks after upgrading Process Director, then you'll need to go to the <span class="ControlName">Server Control</span> page of the<span class="ProcessDirectorObject"> IT&#160;Admin</span> area's <span class="ProcessDirectorObject">Troubleshooting </span>section, and click the action link labeled, <span class="UIElement">Encrypt Old Form Data</span>.</p>
         <h4>Singe-Server Installations</h4>
         <p>Migration to AES encryption occurs automatically for customers, by default, when installing v5.44.700 on a single-server installation. <span class="Emphasis">This migration may significantly increase the time needed to upgrade the system</span>, depending on how extensively your installation uses encrypted fields. It is possible to disable the encryption migration, and migrate manually at a later date. </p>
         <p>To disable the migration during upgrade, use the following procedure:</p>
@@ -76,7 +88,7 @@
         <p>
             <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_3.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>Once the installation files are unpacked and verified, if you are installing v3.4X or above, you will receive a warning notifying you that you must change the application pool settings in IIS to use ASP.NET v4.5.</p>
+        <p>Once the installation files are unpacked and verified, if you are installing v3.4X or above, you'll receive a warning notifying you that you must change the application pool settings in IIS to use ASP.NET v4.5.</p>
         <p>
             <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_4.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
@@ -90,7 +102,7 @@
         <p>
             <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_6.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>Click the Next button again to display the installation location for Process Director. The destination folder cannot be changed for upgrades, so there is nothing for you to do in this pane of the wizard, except click the Next button.</p>
+        <p>Click the Next button again to display the installation location for Process Director. The destination folder can't be changed for upgrades, so there is nothing for you to do in this pane of the wizard, except click the Next button.</p>
         <p>
             <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_7.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
@@ -106,7 +118,7 @@
         <p>
             <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_10.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>The Installation is now complete, but, if you are upgrading to v3.4X or above from an earlier version, Process Director will not work until you reconfigure the Application pool in IIS. If you try to open Process Director at this point, you will receive an error message, most likely "HTTP Error 500.19 - Internal Server Error".</p>
+        <p>The Installation is now complete, but, if you are upgrading to v3.4X or above from an earlier version, Process Director won't work until you reconfigure the Application pool in IIS. If you try to open Process Director at this point, you'll receive an error message, most likely "HTTP Error 500.19 - Internal Server Error".</p>
         <p>Open the Internet Information Service (IIS) Manager.</p>
         <p>
             <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_11.jpg" style="visibility: visible;mso-wrap-style: square;" />
@@ -117,18 +129,20 @@
             <img src="../Resources/Images/InstallationGuide/Reinstall Upgrades_12.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
         <p>This should complete the upgrade process for Process Director.</p>
-        <h2><a name="Multi"></a>Upgrading Multi-Instance Installations <a href="#Multi" class="anchor">#</a></h2>
+        <h2>
+            <a name="Multi">
+            </a>Upgrading Multi-Instance Installations <a href="#Multi" class="anchor">#</a></h2>
         <p>
             <MadCap:keyword term="Multi-Instance" />Upgrading a multi-instance installation of Process Director to a new version is similar to the initial installation; however, you do <span class="Emphasis">not </span>need to run the BP_Multi.exe application again. Once the system is configured for multi-instance use, this application is no longer needed. You will only need to run BPLogixMultiInstance.exe to perform the upgrade on the desired systems. </p>
         <p class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" /> Once you install a newer version of Process Director on a Multi-Instance system, you cannot install an older version again. </p>
+            <img src="../Resources/Images/i.png" alt="Important" /> Once you install a newer version of Process Director on a Multi-Instance system, you can't install an older version again. </p>
         <p>The main difference in running an upgrade is that, because you can run different installation versions on different instances, there are two different upgrade scenarios to account for.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Scenario 1: Upgrading when ALL instances are using the same version</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>You must edit the configuration text file to include <span class="Emphasis">only </span>the instances you wish to update. For example, if you have three instances on a system, all running the same version, and you want to upgrade only instance number two and three, then you would only include those two instances in the configuration text file. In this example, we'll name the file "upgrade.txt", and use the following configuration:</p>
+                <p>You must edit the configuration text file to include <span class="Emphasis">only </span>the instances you wish to update. For example, if you have three instances on a system, all running the same version, and you want to upgrade only instance number two and three, then you'd only include those two instances in the configuration text file. In this example, we'll name the file "upgrade.txt", and use the following configuration:</p>
                 <p class="CodeBase">GROUP=My Server Group<br />NAME=Instance2<br />PATH=c:\wd2<br />NAME=Instance3<br />PATH=c:\wd3<br /></p>
                 <p>Using this configuration, Instance 1 will remain on the older version of Process Director, while Instances 2/3 will be upgraded to the new version.</p>
                 <p>Once the text file has been configured, you can run BPLogixMultiInstance from the command line again, using the file path/names of the upgrade.txt configuration file and new Process Director installation file, e.g.:</p>
@@ -165,7 +179,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <p>To upgrade Instance 1 to v2, you must include all three instances in the configuration text file when upgrading. The installer will uninstall any existing versions of the upgrade, and will not reinstall them, if they are not listed in the configuration file.&#160;Thus, your configuration file, which we'll call "upgrade.txt" again, would need to look like the example below.</p>
+                <p>To upgrade Instance 1 to v2, you must include all three instances in the configuration text file when upgrading. The installer will uninstall any existing versions of the upgrade, and won't reinstall them, if they are not listed in the configuration file.&#160;Thus, your configuration file, which we'll call "upgrade.txt" again, would need to look like the example below.</p>
                 <p class="CodeBase">GROUP=My Server Group<br />NAME=Instance1<br />PATH=c:\wd1<br />NAME=Instance2<br />PATH=c:\wd2<br />NAME=Instance3<br />PATH=c:\wd3</p>
                 <p>Using this configuration, all three instances will run Process Director v2 once the installation completes.</p>
                 <p>Once the text file has been configured, you can run BPLogixMultiInstance.exe from the command line again, using the file path/names of the upgrade.txt configuration file and new Process Director installation file, e.g.:</p>
@@ -173,7 +187,9 @@
                 <p>During the upgrade process, all sites that are currently running the targeted version will be unavailable until the upgrade process concludes.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2><a name="NewHost"></a>Moving Process Director to a New Host <a href="#NewHost" class="anchor">#</a></h2>
+        <h2>
+            <a name="NewHost">
+            </a>Moving Process Director to a New Host <a href="#NewHost" class="anchor">#</a></h2>
         <p>The Process Director installation can be moved to another Windows host. This may be required due to an upgrade to your hardware or copying the system to a test server. To perform the move, follow the instructions below.</p>
         <ol>
             <li> Copy the Process Director database from the other system to the new server.</li>
