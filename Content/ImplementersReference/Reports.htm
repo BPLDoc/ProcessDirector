@@ -285,11 +285,11 @@
         <h3>Datetime </h3>
         <p>Datetime fields in SQL Server are displayed like this: 2007-10-28 22:11:19.7030000. How you display them while creating a report is up to you. You can just use the date or the time, or just the minutes if you wanted to.</p>
         <h3>Nullable vs non-Nullable fields</h3>
-        <p>NULL = “Unknown” or “No value.” There are many fields in a database that do not have values, and some of those have never had values. Some were inserted into the table with the value of “no value” (NULL). What you need to know about null is that null is not the same as a blank field. If a field is null and you filter out the “blank” fields… you are not filtering out fields where the value is NULL. Because if you have an SQL statement and you say:</p>
+        <p>NULL = “Unknown” or “No value.” There are many fields in a database that don't have values, and some of those have never had values. Some were inserted into the table with the value of “no value” (NULL). What you need to know about null is that null is not the same as a blank field. If a field is null and you filter out the “blank” fields… you aren't filtering out fields where the value is NULL. Because if you have an SQL statement and you say:</p>
         <p>
             <code>SELECT * FROM tableName WHERE fieldName &lt;&gt; '';</code>
         </p>
-        <p>You are not filtering out fields where fieldName is NULL. Because NULL is not the same as ‘’ (a zero length string). Instead, use something like this:</p>
+        <p>You aren't filtering out fields where fieldName is NULL. Because NULL is not the same as ‘’ (a zero length string). Instead, use something like this:</p>
         <p>
             <code>SELECT * FROM tableName WHERE fieldName &lt;&gt; '' AND fieldName IS NOT NULL;</code>
         </p>

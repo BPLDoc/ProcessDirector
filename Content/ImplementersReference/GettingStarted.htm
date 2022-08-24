@@ -1,62 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
-        <title>
-        </title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" />
-            <a name="_Toc421536072">
-            </a>Getting Started With Implementation</h1>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536072"></a>Getting Started With Implementation</h1>
         <p>Process Director provides business users with a web-based software solution with the advanced no-code/low-code capabilities they need to provide greater agility and visibility into their business processes, and create applications quickly. Built on an integrated document management and process automation system, Process Director manages, automates and reports on an organization’s business processes and provides powerful storage, categorization and search technologies for all documents, electronic forms (Forms), and processes. </p>
         <p>This document is the Implementer’s Reference Guide for Process Director. To install the product, refer to the Process Director Installation Guide. For an overview of all the documents available, please refer to the <a href="https://doc.bplogix.com/">BP Logix documentation web site</a>. </p>
         <p>This topic provides a quick overview of the product terminology, how to get started, and steps to first login. Subsequent topics will get you started on your way to understanding how Process Director features and components can be utilized in your organization.</p>
-        <h2>
-            <a name="_Toc421536073">
-            </a>Intended Document Audience</h2>
+        <h2><a name="_Toc421536073"></a>Intended Document Audience</h2>
         <p>This Implementer’s Reference Guide describes the advanced features and customization options available for Process Director and contains the information necessary to build your business processes in Process Director.&#160; It is intended as a reference for the users that will be implementing Process Director. The implementers typically are defined as those users that are familiar with the existing business processes inside your company and are familiar with the basic concepts of Process Director, such as Forms, processes and Knowledge Views. </p>
-        <p> This document doesn't address the custom scripting or external APIs that are available for Process Director. Although customization options for Process Director are not required, they are provided to enable the product to perform unique business logic and to integrate into existing systems. Refer to the Process Director Developers Guide for information on the customization options.</p>
-        <h2>
-            <a name="_Toc421536074">
-            </a>Understanding Process Director</h2>
+        <p> This document doesn't address the custom scripting or external APIs that are available for Process Director. Although customization options for Process Director aren't required, they are provided to enable the product to perform unique business logic and to integrate into existing systems. Refer to the Process Director Developers Guide for information on the customization options.</p>
+        <h2><a name="_Toc421536074"></a>Understanding Process Director</h2>
         <p>Process Director can be used for a variety of functions. It is a content management system with integrated workflow, document management, Forms processing, document imaging, knowledge management, business intelligence and reporting. Throughout all processes, users can be assured of secure access to shared documents, digital content and all data stored in the Process Director database. </p>
-        <h3>
-            <a name="_Toc421536075">
-            </a>What is a process?</h3>
+        <h3><a name="_Toc421536075"></a>What is a process?</h3>
         <p>A process is a set of tasks, notifications, or activities that are completed in a specific order. In Process Director, a process is modeled using either a Workflow or Process Timeline. So, the term "process" in the context of Process Director, is really a just a generic term for a Workflow or Process Timeline. Both are processes, and the term "process" can be used interchangeably for either Process Timelines or Workflows.</p>
         <p>Both Workflows and Process Timelines can implement the Run Process task to initiate a second process. The second process will run parallel with the process that starts it. The process that implements the Run Process task is called the parent process. Similarly, the process that is started by the Run Process task is called the child process.</p>
         <p>Any number of child processes can be started by a parent process, and synchronization allows a parent process to wait for the completion of a child process before proceeding. When a process is started, it can optionally contain a copy of all the parent process' references (e.g. document, Forms, etc.) or just a reference to them. Process Timelines can call Workflows as child processes, and vice versa.</p>
         <p>So, let's discuss a scenario where a parent/child process would be necessary, and where the Run Process task might be useful.</p>
         <p>Let's say that there is a specific process for obtaining approval from the organization's financial analysts, such as a requirement to obtain multiple approvals in a specific order. Then, let's assume that all financial approval processes, whether requests for travel, or capital spending, or expense reimbursement, must be approved by the financial analysts if they exceed a certain amount.</p>
         <p>One way to implement this would be to encapsulate Financial Analyst approval into its own process by creating a Workflow or Process Timeline to model it.</p>
-        <p>Once you have done so, you can create your travel, or expenditure request processes separately. In each of these parent processes, you can use the Run Process task to call the financial analyst approval process as a child process if the amount exceeds the threshold requirement.</p>
+        <p>Once you've done so, you can create your travel, or expenditure request processes separately. In each of these parent processes, you can use the Run Process task to call the financial analyst approval process as a child process if the amount exceeds the threshold requirement.</p>
         <p>By creating processes in this modular fashion, you can re-use a process many times as a child of other processes, rather than repetitively modeling it multiple times in different processes.</p>
         <h2>
             <MadCap:keyword term="Parent;Child;Hierarchy;Parents;Children" />Parent and Child Objects</h2>
         <p>There are a number of places in the documentation where the terms "parent" and "child" will be used in various contexts. In general, these terms refer to a hierarchical system of organization where the <span class="KeyTerms">parent </span>object is the higher-level object in the hierarchy, and any object that is lower in the hierarchy is called the <span class="KeyTerms">child</span>. In Process Director the terms "parent" and "child" are used in the following contexts.</p>
-        <p>
-            <b>Content List:</b> In the <span class="ProcessDirectorObject">Content List</span>, the highest-level object is the Partition. The Partition is the parent object, and all objects contained in the Partition are the child objects of the Partition. Most commonly, the child objects at the root level of the Partition are folders. Each folder is also the parent object of its contents, e.g., a subfolder would be the child object of a root-level parent folder. Every folder in the Content List, in turn, is both a child of its parent folder (or the Partition), and is, at the same time, the parent of its folder contents.</p>
-        <p>
-            <b>Object Definitions and Instances:</b> Each object definition is the parent of its object instances. For example, every time a Form is submitted, a Form instance is created. All of these Form instances are considered children of the Form definition, which is the parent.</p>
-        <p>
-            <b>Instances and Attachments:</b> Object instances are the parent object for their child attachments. If you attach a Word document as an attachment to a Form instance, the Form instance is the parent, and the Word document attached to it is the child.</p>
-        <p style="font-weight: bold;">
-            <b>Controls:</b>
-            <span style="font-weight: normal;"> A number of Form controls, such as the <span class="NamedControl">Section </span>control, are containers for other controls. In this context, the <span class="NamedControl">Section </span>control is the parent control, and all controls contained in the <span class="NamedControl">Section </span>are child controls. Indeed, the Form itself is a container for all of the controls, so the Form is the parent object of the <span class="NamedControl">Section </span>control, which is the Form's child.</span>
+        <p><b>Content List:</b> In the <span class="ProcessDirectorObject">Content List</span>, the highest-level object is the Partition. The Partition is the parent object, and all objects contained in the Partition are the child objects of the Partition. Most commonly, the child objects at the root level of the Partition are folders. Each folder is also the parent object of its contents, e.g., a subfolder would be the child object of a root-level parent folder. Every folder in the Content List, in turn, is both a child of its parent folder (or the Partition), and is, at the same time, the parent of its folder contents.</p>
+        <p><b>Object Definitions and Instances:</b> Each object definition is the parent of its object instances. For example, every time a Form is submitted, a Form instance is created. All of these Form instances are considered children of the Form definition, which is the parent.</p>
+        <p><b>Instances and Attachments:</b> Object instances are the parent object for their child attachments. If you attach a Word document as an attachment to a Form instance, the Form instance is the parent, and the Word document attached to it is the child.</p>
+        <p style="font-weight: bold;"><b>Controls:</b><span style="font-weight: normal;"> A number of Form controls, such as the <span class="NamedControl">Section </span>control, are containers for other controls. In this context, the <span class="NamedControl">Section </span>control is the parent control, and all controls contained in the <span class="NamedControl">Section </span>are child controls. Indeed, the Form itself is a container for all of the controls, so the Form is the parent object of the <span class="NamedControl">Section </span>control, which is the Form's child.</span>
         </p>
         <p style="font-weight: bold;">Process Timelines (Parent Activities): <span style="font-weight: normal;">The Process Timeline has an activity type called the Parent activity. The Parent activity is commonly used to create iterating loops in a Process Timeline, but is also used as a container for a set of closely related activities. All of the Process Timeline activities that are subordinate to the Parent activity are child activities. A Parent activity can also contain subordinate Parent activities, which are children of the top-level Parent activity, but are also parents of their subordinate activities.</span></p>
         <p style="font-weight: bold;">Process Timelines (Dependencies): <span style="font-weight: normal;">The Process Timeline organizes activities by dependency, creating finish-to-start dependencies between activities in order to create a critical path dependency tree. We generally refer to higher level objects in the dependency tree as parents, while lower-level objects are referred to as children.</span></p>
-        <p style="font-weight: bold;">
-            <span style="font-weight: normal;">
-                <img src="../Resources/Images/parent-child.png" style="height: auto;width: 450px;" />
-            </span>
+        <p style="font-weight: bold;"><span style="font-weight: normal;"><img src="../Resources/Images/parent-child.png" style="height: auto;width: 450px;" /></span>
         </p>
-        <h2>
-            <a name="_Toc421536076">
-            </a>Content Types</h2>
+        <h2><a name="_Toc421536076"></a>Content Types</h2>
         <p>Process Director supports various content types in the database. The term “object” will be used generically throughout this document to refer to one or more of the content types defined below. Each object icon shown is the default, but can be changed during implementation if desired.</p>
         <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
             <col class="TableStyle-Simple-Column-Column1" style="width: 5rem;" />
@@ -237,8 +217,7 @@ Examples:</p>
                     <td class="TableStyle-Simple-BodyA-Column1-Row2">
                         <p>A Workflow definition is a predefined route for the automation of a process in your environment. Running and completed Workflows are also stored on the server under the workflow definition. </p>
                         <p class="Important">
-                            <img src="../Resources/Images/i.png" alt="Important" style="font-weight: bold;" />
-                            <span style="font-weight: normal;"> <b>BP Logix recommends the use of the Process Timeline due to its superior capabilities.</b> <b>The Workflow object is a process modeling method that predates the Process Timeline and offers fairly robust functionality. While the Workflow is fully supported in its current state, any development of new process functionality has been limited to the Process Timeline since Process Director v4.5.</b></span>
+                            <img src="../Resources/Images/i.png" alt="Important" style="font-weight: bold;" /><span style="font-weight: normal;"> <b>BP Logix recommends the use of the Process Timeline due to its superior capabilities.</b> <b>The Workflow object is a process modeling method that predates the Process Timeline and offers fairly robust functionality. While the Workflow is fully supported in its current state, any development of new process functionality has been limited to the Process Timeline since Process Director v4.5.</b></span>
                         </p>
                     </td>
                 </tr>

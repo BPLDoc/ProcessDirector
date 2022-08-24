@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head>
-        <title>
-        </title>
+    <head><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -29,14 +27,10 @@
             <MadCap:dropDownBody>
                 <p>You have the option to determine the default setting for whether form fields are enabled or disabled, using this dropdown control. The control offers four settings:</p>
                 <ul>
-                    <li>
-                        <b>Form Fields are enabled by default:</b>	All form fields are enabled by default.</li>
-                    <li>
-                        <b>Form Fields are disabled by default:</b>	All form fields are disabled by default.</li>
-                    <li>
-                        <b>Form Fields are enabled only when...:</b>	All form fields are enabled only when a user-defined condition applies. Selecting this option enables you to define a condition or set of conditions that, when true, enable the form fields.</li>
-                    <li>
-                        <b>Form Fields are disabled only when...:</b>	All form fields are disabled only when a user-defined condition applies. Selecting this option enables you to define a condition or set of conditions that, when true, disable the form fields.</li>
+                    <li><b>Form Fields are enabled by default:</b>	All form fields are enabled by default.</li>
+                    <li><b>Form Fields are disabled by default:</b>	All form fields are disabled by default.</li>
+                    <li><b>Form Fields are enabled only when...:</b>	All form fields are enabled only when a user-defined condition applies. Selecting this option enables you to define a condition or set of conditions that, when true, enable the form fields.</li>
+                    <li><b>Form Fields are disabled only when...:</b>	All form fields are disabled only when a user-defined condition applies. Selecting this option enables you to define a condition or set of conditions that, when true, disable the form fields.</li>
                 </ul>
                 <p>These form level-settings can be overridden in the properties for individual controls. For example, if you select "Form Fields are disabled by default", but set an individual control to be enabled, the control setting will override the Form option setting you choose here. The general rule to remember when setting an enabling option is that the setting at the lowest level always wins.</p>
             </MadCap:dropDownBody>
@@ -49,16 +43,14 @@
                 <p>Form definitions can be configured as "read-only". Selecting this option enables you to define a condition or set of conditions that, when true, will cause the form will act as though the user doesn't have modify permission on the form (whether or not that would otherwise be the case). An open form in "read-only" state won't trigger form locking. Unlike the option to enable form fields, this option overrides any "enabled" settings at the control level. The data contained in a read-only form can't be edited, irrespective of the enabled/disabled settings that might be set elsewhere.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="Options">
-            </a>Options Section <a href="#Options" class="anchor">#</a></h2>
+        <h2><a name="Options"></a>Options Section <a href="#Options" class="anchor">#</a></h2>
         <p>This section of the tab contains the general properties of the form. This section enables you to specify the Process Timeline to invoke when the form is submitted, and to associate different objects to the form to make configuring conditions based on those objects easier. Additionally, this section contains properties that enable you to configure the overall operation of the form, and specify general form behaviors.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Automatically start this process after Form is submitted</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The primary method for starting a process in Process Director is to call the process from a Form when the Form is submitted. This option defines the process that will be started, and the <span class="NamedControl">Object Picker</span> control allows you to choose either a Workflow or Process Timeline. Once you have selected the process you desire, then every time a new instance of the Form is submitted, the selected process will start, and the Form and its data will be attached to that process.</p>
+                <p>The primary method for starting a process in Process Director is to call the process from a Form when the Form is submitted. This option defines the process that will be started, and the <span class="NamedControl">Object Picker</span> control allows you to choose either a Workflow or Process Timeline. Once you've selected the process you desire, then every time a new instance of the Form is submitted, the selected process will start, and the Form and its data will be attached to that process.</p>
                 <p>BP&#160;Logix recommends that you use a Process Timeline as the process to start after the form is submitted.</p>
                 <p>In most cases, you'll also want to set the <span class="ControlName">Timelines Associated With Form</span> property to the same process you set here, so that any Form conditions you create that evaluate process data will use this process by default. Setting the association will make configuring Timeline-based conditions much easier and quicker.</p>
             </MadCap:dropDownBody>
@@ -68,7 +60,7 @@
                 <MadCap:dropDownHotspot>Workflows Associated with Form (optional) / Timelines Associated with Form (optional)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>In many cases, you'll need to create conditions that evaluate process data to control the operation of a form. For example, you might wish to show a section of the form only when a specific timeline activity is running. To do so, you need to create a Form condition that returns true or false, based on whether the specified activity is currently running.  When you associate a process via this property, that process will become the default process to use when configuring process-based conditions. If you do not set this property, then you'll have to specify the process every time you configure a condition that evaluates the process. Setting this property, therefore, makes configuring process-based conditions much simpler, and quicker.</p>
+                <p>In many cases, you'll need to create conditions that evaluate process data to control the operation of a form. For example, you might wish to show a section of the form only when a specific timeline activity is running. To do so, you need to create a Form condition that returns true or false, based on whether the specified activity is currently running.  When you associate a process via this property, that process will become the default process to use when configuring process-based conditions. If you don't set this property, then you'll have to specify the process every time you configure a condition that evaluates the process. Setting this property, therefore, makes configuring process-based conditions much simpler, and quicker.</p>
                 <p>Setting the<span class="ControlName"> Automatically start this process...</span> property doesn't create this association. In most cases, you should set both this property and the<span class="ControlName"> Automatically start this process...</span> property to the same Process Timeline.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -101,7 +93,7 @@
                 <MadCap:dropDownHotspot>Select a Content List background image for this form (optional)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This option enables you to select an image you have uploaded to the <span class="ProcessDirectorObject">Content List</span>, and will use that image as a background image for the Form.</p>
+                <p>This option enables you to select an image you've uploaded to the <span class="ProcessDirectorObject">Content List</span>, and will use that image as a background image for the Form.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -165,9 +157,7 @@
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <a name="audit">
-                </a>
+            <MadCap:dropDownHead><a name="audit"></a>
                 <MadCap:dropDownHotspot>Audit Form field changes</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -207,7 +197,7 @@
                 <MadCap:dropDownHotspot>Show only the first validation error (instead of all)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>In a Form contains multiple validation errors (i.e., field values that do not meet the criteria for acceptable data), only the first validation error will be shown when the validation fails if this option is checked.</p>
+                <p>In a Form contains multiple validation errors (i.e., field values that don't meet the criteria for acceptable data), only the first validation error will be shown when the validation fails if this option is checked.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -253,9 +243,7 @@
                 </ul>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h3>
-            <a name="DefaultStylesSection">
-            </a>Default Styles Section <a href="#DefaultStylesSection" class="anchor">#</a></h3>
+        <h3><a name="DefaultStylesSection"></a>Default Styles Section <a href="#DefaultStylesSection" class="anchor">#</a></h3>
         <p>
             <img src="../Resources/Images/ImplementersReference/DefaultStyles.png" />
         </p>
@@ -271,26 +259,12 @@
         <p>For Process Director v5.31 and higher, a custom variable, <a href="../DevelopersGuide/Customization File Administration.htm#EnableFormFieldDownload">EnableFormFieldDownload</a>, will  display a link at the bottom of this tab labeled Download Field List, to enable users to download an Excel Spreasheet containing the list of fields. This feature is primarily relevant to the use of the separately-licensed <a href="Mobile App.htm">Mobile Application&#160;Component</a>.</p>
         <h2>More Configuration Tabs</h2>
         <p>You can view the documentation for each of the other configuration tabs by using the Table of Contents displayed on the upper right corner of the page, or use one of the links below.</p>
-        <p>
-            <b>
-                <a href="Form Definition Edit.htm">Edit</a>:</b> Opens the editor for the form's visual template, the Online Form Designer.</p>
-        <p>
-            <b>
-                <a href="Form Definition Controls.htm">Form Controls</a>:</b> Enables you to set individual properties for each field on the form.</p>
-        <p>
-            <b>
-                <a href="Form Definition CT.htm">Custom Task Event Mapping</a>:</b> Enables you to map Custom Tasks to run on specified form events.</p>
-        <p>
-            <b>
-                <a href="Form Definition Validation.htm">Validation Rules</a>:</b> Enables you to add custom validation to the form. </p>
-        <p>
-            <b>
-                <a href="Form Definition SFD.htm">Set Form Data</a>:</b> Enables you to set the value of Form fields automatically, based on events or conditions you specify.</p>
-        <p>
-            <b>
-                <a href="Form Definition FillDD.htm">Fill Dropdowns</a>:</b> Enables you to automatically set the options available in a dropdown control.</p>
-        <p>
-            <b>
-                <a href="Form Definition Other.htm">Other Tabs</a>:</b> Documentation for the <span class="UIElement">Form Data SQL&#160;View</span>, <span class="UIElement">History</span>, <span class="UIElement">Meta Data</span>, <span class="UIElement">Versions</span>, and <span class="UIElement">Permissions </span>tabs.</p>
+        <p><b><a href="Form Definition Edit.htm">Edit</a>:</b> Opens the editor for the form's visual template, the Online Form Designer.</p>
+        <p><b><a href="Form Definition Controls.htm">Form Controls</a>:</b> Enables you to set individual properties for each field on the form.</p>
+        <p><b><a href="Form Definition CT.htm">Custom Task Event Mapping</a>:</b> Enables you to map Custom Tasks to run on specified form events.</p>
+        <p><b><a href="Form Definition Validation.htm">Validation Rules</a>:</b> Enables you to add custom validation to the form. </p>
+        <p><b><a href="Form Definition SFD.htm">Set Form Data</a>:</b> Enables you to set the value of Form fields automatically, based on events or conditions you specify.</p>
+        <p><b><a href="Form Definition FillDD.htm">Fill Dropdowns</a>:</b> Enables you to automatically set the options available in a dropdown control.</p>
+        <p><b><a href="Form Definition Other.htm">Other Tabs</a>:</b> Documentation for the <span class="UIElement">Form Data SQL&#160;View</span>, <span class="UIElement">History</span>, <span class="UIElement">Meta Data</span>, <span class="UIElement">Versions</span>, and <span class="UIElement">Permissions </span>tabs.</p>
     </body>
 </html>

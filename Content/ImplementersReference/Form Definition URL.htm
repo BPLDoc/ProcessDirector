@@ -49,11 +49,10 @@
         <p>If you wish to set the value in an existing Form, you'll need to use the next method.</p>
         <h5>Setting a Field Value Universally</h5>
         <p>This method enables you to set a field value via URL parameter at any time. For security reasons, however, you must first identify the field by setting the field name as configurable via URL in the Custom Vars file (vars.cs.ascx), using the <a href="../DevelopersGuide/Customization File Misc.htm#FormFieldsAllowDisabledURLUpdate" target="_blank">FormFieldsAllowDisabledURLUpdate</a> method.</p>
-        <p>Once you have specified the field name in the Custom vars file, you can now use a URL&#160;parameter to set the value any time you desire. In the URL&#160;parameter, the field is identified using the prefix "EXT_ ", followed by the field name, to identify the field, e.g., "EXT_FieldName".</p>
+        <p>Once you've specified the field name in the Custom vars file, you can now use a URL&#160;parameter to set the value any time you desire. In the URL&#160;parameter, the field is identified using the prefix "EXT_ ", followed by the field name, to identify the field, e.g., "EXT_FieldName".</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Be sure to URL encode the values you specify in the URL&#160;Parameter.</p>
-        <p>
-            <b>Example:</b>
+        <p><b>Example:</b>
         </p>
         <p>In the Custom Vars file, identify the fields to change via URL&#160;Parameter:</p>
         <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Fields to set via URL&#160;Parameter</span><br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">Field1</span>");<br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">Field2</span>");<br />}</p>

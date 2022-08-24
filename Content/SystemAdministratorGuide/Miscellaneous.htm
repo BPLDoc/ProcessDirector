@@ -53,7 +53,7 @@
                 <p>Windows and SQL Server will natively support .DOC, .XLS and .PPT file types, however to support .DOCX, .XLSX, and .PPTX files, you'll need to install the <a href="http://www.microsoft.com/en-us/download/details.aspx?id=17062" target="_blank">Office Filter pack</a> </p>
                 <p>Refer to the vendor of the document/file format for information on IFilters, or use third party IFilter products for common file types such as ZIP, JPG and TIFF.</p>
                 <p>Refer to the SQL Server documentation for scheduling options and detailed configuration and tuning information for the full-text engine.</p>
-                <p>You should be aware, however, that FTS is not a panacea for all text serch issues. The way FTS is configured by default may result in unexpected search results if you are not aware of the default configuration. For example, when using FTS on SQL Server there is a default list of “Stop Words” that Microsoft identifies as items that are <b style="font-style: italic;">not significant</b> when doing FTS indexing.  So, by default, if you are searching for something like “Activity 1” using FTS, SQL&#160;Server will <b style="font-style: italic;">not</b> find it using the following syntax:</p>
+                <p>You should be aware, however, that FTS is not a panacea for all text serch issues. The way FTS is configured by default may result in unexpected search results if you aren't aware of the default configuration. For example, when using FTS on SQL Server there is a default list of “Stop Words” that Microsoft identifies as items that are <b style="font-style: italic;">not significant</b> when doing FTS indexing.  So, by default, if you are searching for something like “Activity 1” using FTS, SQL&#160;Server will <b style="font-style: italic;">not</b> find it using the following syntax:</p>
                 <p>
                     <code>SELECT tblObject.oDID FROM tblObject WHERE CONTAINS(bObjectData, N'"%Activity 1%*"')</code>
                 </p>
@@ -174,7 +174,7 @@
                     </a>Underscore Bug</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Some versions of Internet Explorer do not support domain names or server names with an underscore in the URL. While general browsing in IE still works, all session and browser cookies are ignored. With cookies ignored, login to Process Director using internal user names doesn't work. The product checks for underscores in the domain name to detect this problem. This is, however, a bug in Microsoft IE, not Process Director. Using Chrome, Firefox, or Safari will allow users to log in properly.</p>
+                <p>Some versions of Internet Explorer don't support domain names or server names with an underscore in the URL. While general browsing in IE still works, all session and browser cookies are ignored. With cookies ignored, login to Process Director using internal user names doesn't work. The product checks for underscores in the domain name to detect this problem. This is, however, a bug in Microsoft IE, not Process Director. Using Chrome, Firefox, or Safari will allow users to log in properly.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -187,7 +187,7 @@
                     </a>Integrated Browser Security Issues</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>There is a known IE problem that happens when some ASP pages in IIS are running “Integrated Browser Security” (NTLM) and other pages are not (the other pages are just using normal anonymous user access). There are bugs in the browser that can cause posted form data to be stripped. In some cases it appears whenever the client cache is cleared (which can happen automatically on occasion, with things like virus scanners). The Microsoft Knowledge base contains an <a href="http://support.microsoft.com/kb/251404/en-us" target="_blank">article discussing  the problem</a>. There are two ways to work around this problem.</p>
+                <p>There is a known IE problem that happens when some ASP pages in IIS are running “Integrated Browser Security” (NTLM) and other pages aren't (the other pages are just using normal anonymous user access). There are bugs in the browser that can cause posted form data to be stripped. In some cases it appears whenever the client cache is cleared (which can happen automatically on occasion, with things like virus scanners). The Microsoft Knowledge base contains an <a href="http://support.microsoft.com/kb/251404/en-us" target="_blank">article discussing  the problem</a>. There are two ways to work around this problem.</p>
                 <h4>Option 1</h4>
                 <p>Use Regedt32 on the client machine and go to this branch:</p>
                 <p>
@@ -244,7 +244,7 @@
         <h2>
             <a name="TIFF">
             </a>TIFF&#160;Files <a href="#TIFF" class="anchor">#</a></h2>
-        <p>TIFF file formats are not natively supported in most browsers. To display a TIFF file in a browser or embedded on a Form you must install a TIFF ActiveX viewer (e.g. www.alternatiff.com, QuickTime, etc.). These viewers are provided by and supported by their respective companies. Once a TIFF viewer is installed on all users PC's, you can configure Process Director to display the TIFF files inline, instead of as a popup window in another application. This is done by adding the following lines to Process Director configuration file named vars.cs.ascx. Add to the PreSetSystemVars() function in vars.cs.ascx</p>
+        <p>TIFF file formats aren't natively supported in most browsers. To display a TIFF file in a browser or embedded on a Form you must install a TIFF ActiveX viewer (e.g. www.alternatiff.com, QuickTime, etc.). These viewers are provided by and supported by their respective companies. Once a TIFF viewer is installed on all users PC's, you can configure Process Director to display the TIFF files inline, instead of as a popup window in another application. This is done by adding the following lines to Process Director configuration file named vars.cs.ascx. Add to the PreSetSystemVars() function in vars.cs.ascx</p>
         <p>
             <p class="CodeBase">bp.Vars.EmbedDocumentTypes.Add("tiff");<br />bp.Vars.EmbedDocumentTypes.Add("tif");</p>
         </p>
