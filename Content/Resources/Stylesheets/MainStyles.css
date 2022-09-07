@@ -621,7 +621,18 @@ ul
 	margin-left: 2.1em;
 	padding: 0;
 	font-family: 'Nunito Sans';
-	list-style-image: url('../Images/BulletSq1.png');
+/*	list-style-image: url('../Images/BulletSq1.png'); */
+	list-style:none;
+	}
+
+ul li::before {
+	content: "\25c9";
+	color: #528bbc;
+	width:1em;
+	list-style-position: outside;
+	margin-left:-1.2em;
+	margin-right: 0.3em;
+
 }
 
 ul.FirstLevelLessIndentation
@@ -941,11 +952,16 @@ ul.navigation ul
 {
 	background-color: rgba(0,0,0,0.5) !important;
 	border-radius:10px;
+	list-style:none;
 }
 
 ul.navigation ul > li {
 	margin:4px;
 	border-radius:10px;
+}
+
+ul.navigation li::before {
+	content:none;
 }
 
 /*
@@ -1214,6 +1230,20 @@ video
 	transition: color .15s ease-in-out, opacity .15s ease-in-out;
 }
 
+.search-filter-content li::before
+{
+	content:none;
+}
+
 ul.menu._Skins_SideMenu.mc-component li > a:hover {
 	border-radius:5px;
+}
+
+ul.menu._Skins_SideMenu.mc-component li::before{
+	content:none;
+}
+
+ul#resultList li::before
+{
+	content:none;
 }

@@ -18,18 +18,10 @@
                     <MadCap:keyword term="TimerSecondsCheckWfAdvance;TimerSecondsCheckWfReminders;TimerSecondsCheckProjAdvance;TimerSecondsCheckProjReminders;fDisableUserPrediction" />Process Director advances processes and send reminders based on recurring activity checks that occur on the system. These activity checks occur when certain process events are initiated, when the <a href="../SystemAdministratorGuide/Activity Check.htm">Activity Check</a> page is run, or at maximum intervals specified by default Custom Variable settings.</p>
                 <p>When the activity check page runs, Process Director will determine which timer processing functions need to occur. (There are a few things like GOALS that will be evaluated EVERY time the activity check runs because they are low-impact.) You can control the timer functions by setting custom variables in the vars.cs customization file. These timer functions are NOT controlled by the frequency that the activity_check.aspx page is scheduled. The following configuration variables control the amount of time to wait between different types of timer processing. The following Custom Variables control the timing of advancing process steps and reminders that are time based:</p>
                 <ul>
-                    <li>
-                        <p><b>TimerSecondsCheckWfAdvance:</b> Checks Workflows to advance time-based steps. The default timing is 6 hours.</p>
-                    </li>
-                    <li>
-                        <p><b>TimerSecondsCheckWfReminders:</b> Checks Workflows to send time-based reminders. The default timing is 1 hour.</p>
-                    </li>
-                    <li>
-                        <p><b>TimerSecondsCheckProjAdvance:</b> Checks Process Timelines to advance time-based Activities. The default timing is 6 hours.</p>
-                    </li>
-                    <li>
-                        <p><b>TimerSecondsCheckProjReminders:</b> Checks Process Timelines to send time-based reminders. The default timing is 1 hour.</p>
-                    </li>
+                    <li><b>TimerSecondsCheckWfAdvance:</b> Checks Workflows to advance time-based steps. The default timing is 6 hours.</li>
+                    <li><b>TimerSecondsCheckWfReminders:</b> Checks Workflows to send time-based reminders. The default timing is 1 hour.</li>
+                    <li><b>TimerSecondsCheckProjAdvance:</b> Checks Process Timelines to advance time-based Activities. The default timing is 6 hours.</li>
+                    <li><b>TimerSecondsCheckProjReminders:</b> Checks Process Timelines to send time-based reminders. The default timing is 1 hour.</li>
                 </ul>
                 <p>For Process Director v5.39 and below, the default timings for TimerSecondsCheckWfAdvance and TimerSecondsCheckProjAdvance are set to 2 hours. This was changed in newer versions as the shorter time limits could use excessive system resources on very active systems.</p>
                 <p>Additionally, the <b>fDisableUserPrediction</b> Custom Variable will, when set to "false", enable more accurate prediction of activity times based on each specific user that has been assigned to an activity. <i>This setting will consume more system resources when being used</i>, so the default value for this variable is "true".  When set to "true", prediction will still occur, but with less predictive accuracy.</p>

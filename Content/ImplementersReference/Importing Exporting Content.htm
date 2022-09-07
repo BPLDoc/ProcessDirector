@@ -10,9 +10,9 @@
         <p>When importing and exporting content, there are a number of vital considerations that need to be kept in mind. While import/export is a routine procedure, it must be done correctly to avoid serious problems. As such, it is important to discuss some best practices—not only in the import and export process itself, but in some basic practices for configuring Process Director objects.</p>
         <p>In an ideal environment, there would be three different Process Director installations:</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
-            <li style="list-style-type: disc;">A <span class="Emphasis">Development </span>system that is relatively open, and can be used for testing and development in a fairly unrestricted atmosphere.</li>
-            <li style="list-style-type: disc;">A <span class="Emphasis">Staging </span>system that exactly mirrors the configuration, users, permissions, and <span class="ProcessDirectorObject">Content List</span> structure of the production server. This server should replicate the production environment so that QA testing can be completed in a copy of the production environment before an implementation is moved to production. Fresh replications of the Production system should be made on the Staging server before any pre-release testing is performed.</li>
-            <li style="list-style-type: disc;">A <span class="Emphasis">Production </span>system where all of the real-world operations are conducted.</li>
+            <li>A <span class="Emphasis">Development </span>system that is relatively open, and can be used for testing and development in a fairly unrestricted atmosphere.</li>
+            <li>A <span class="Emphasis">Staging </span>system that exactly mirrors the configuration, users, permissions, and <span class="ProcessDirectorObject">Content List</span> structure of the production server. This server should replicate the production environment so that QA testing can be completed in a copy of the production environment before an implementation is moved to production. Fresh replications of the Production system should be made on the Staging server before any pre-release testing is performed.</li>
+            <li>A <span class="Emphasis">Production </span>system where all of the real-world operations are conducted.</li>
         </ul>
         <p>
             <img src="../Resources/Images/ImplementersReference/Environment.png" />
@@ -129,12 +129,12 @@
                 <p>The Manager field can refer to the Manager’s User ID, or Process Director’s internal oUID for that user.</p>
                 <p>We can then edit much of the information on the Excel file. We can change the names of the users in the UserName column, or their email addresses in the EmailAddress column. The Culture column specifies which language and time format and number format the user will view, and the TimeZone column specifies the user’s time zone, using <a href="http://technet.microsoft.com/en-us/library/cc749073(v=ws.10).aspx"><span class="Hyperlink">.NET’s list of time zones</span></a>. The column values for some common time zones are as follows:</p>
                 <ul style="list-style-type: disc;margin-left: 36pt;">
-                    <li style="list-style-type: disc;">Pacific Standard Time (US and Canada West Coast, GMT-08:00)</li>
-                    <li style="list-style-type: disc;">US Eastern Standard Time (United States East Coast, GMT-05:00)</li>
-                    <li style="list-style-type: disc;">Greenwich Standard Time (UK, GMT)</li>
-                    <li style="list-style-type: disc;">Central Europe Standard Time (Central Europe, GMT+01:00)</li>
-                    <li style="list-style-type: disc;">Tokyo Standard Time (Japan, GMT+09:00)</li>
-                    <li style="list-style-type: disc;">AUS Eastern Standard Time (Australian East Coast, GMT+10:00)</li>
+                    <li>Pacific Standard Time (US and Canada West Coast, GMT-08:00)</li>
+                    <li>US Eastern Standard Time (United States East Coast, GMT-05:00)</li>
+                    <li>Greenwich Standard Time (UK, GMT)</li>
+                    <li>Central Europe Standard Time (Central Europe, GMT+01:00)</li>
+                    <li>Tokyo Standard Time (Japan, GMT+09:00)</li>
+                    <li>AUS Eastern Standard Time (Australian East Coast, GMT+10:00)</li>
                 </ul>
                 <p> You also disable users and/or specify the date and time of their most recent log in. <span class="ControlName">AuthType </span>determines how the user authenticates, whether it’s through Windows, Process Director, or another method. The Groups column is a comma-separated list of columns to which the group belongs. UserIDs identify the users: they must be unique, as each different UserID specifies a different user.</p>
                 <p>After creating or editing an Excel file, we can import it into Process Director at the same page from which we exported the Excel file. After navigating to <span class="ProcessDirectorObject">IT Admin</span> &gt; <span class="ProcessDirectorObject">User Administration</span> &gt; <span class="ControlName">Users</span>, click on the <span class="UIElement">Import Users</span> link.</p>
@@ -193,18 +193,10 @@
         <p>While the order in which you import objects to a target system is important, the order in which you export the objects from the source system is not.</p>
         <p>To perform complex import operations like these, the Process Director objects should be imported in the following order.</p>
         <ol>
-            <li>
-                <p><b>Partition Meta Data:</b> Meta data can be applied to any Process Director object, which means it sits at the highest level of the Hierarchy.</p>
-            </li>
-            <li>
-                <p><b>Users/Groups:</b> Any new users or groups that have been created on the source system, and that are used in the application, must be imported. Exports of Groups and Users are, unlike other objects, exported and imported as Excel files rather than PDZ files.</p>
-            </li>
-            <li>
-                <p><b>Application Content List Objects:</b> Once the higher-level objects have been imported, you can now import the PDZ file containing the application folder and all its contents.</p>
-            </li>
-            <li>
-                <p><b>Workspaces:</b> Workspaces are usually configured with specific groups or users assigned to them. Similarly, a Workspace may display an application Dashboard or Knowledge View, or have navigation buttons that reference application Forms. Importing Workspaces before importing the required objects will result in an import warning. The Workspace will be imported, but any missing users or groups or application objects will be removed from the Workspace.</p>
-            </li>
+            <li><b>Partition Meta Data:</b> Meta data can be applied to any Process Director object, which means it sits at the highest level of the Hierarchy.</li>
+            <li><b>Users/Groups:</b> Any new users or groups that have been created on the source system, and that are used in the application, must be imported. Exports of Groups and Users are, unlike other objects, exported and imported as Excel files rather than PDZ files.</li>
+            <li><b>Application Content List Objects:</b> Once the higher-level objects have been imported, you can now import the PDZ file containing the application folder and all its contents.</li>
+            <li><b>Workspaces:</b> Workspaces are usually configured with specific groups or users assigned to them. Similarly, a Workspace may display an application Dashboard or Knowledge View, or have navigation buttons that reference application Forms. Importing Workspaces before importing the required objects will result in an import warning. The Workspace will be imported, but any missing users or groups or application objects will be removed from the Workspace.</li>
         </ol>
         <p>Remember, failing to import objects in the proper order will result in import errors that will necessitate re-importing the objects.</p>
     </body>

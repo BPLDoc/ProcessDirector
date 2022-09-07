@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
         <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
@@ -27,20 +27,20 @@
         <p>Another important difference between Workflows and Process Timelines is that Timelines are <span class="KeyTerms">constraint-driven</span>. In a Workflow, tasks don't start until they are prompted to begin when the Workflow follows a specific branch. In a Process Timeline, however, all Timeline activities want to run all the time. The designer's job with a Process Timeline is to apply <i>constraints</i> to each activity to prevent it from running immediately. By default, this makes Process Timelines implicitly parallel. If you add two activities to a new Process Timeline, but don't configure any restraints, then both activities will run immediately, and in parallel, as soon as the Process Timeline instance starts. Conversely, in a Workflow, you must explicitly specify when two steps must run in parallel.</p>
         <p>Business users design Process Timelines by answering three questions that define the activity's constraints, as they add each step to the process:</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
-            <li style="list-style-type: disc;">
+            <li>
                 <b>What activities must complete before this activity begins?</b> We call this the "dependency question". For each Timeline activity, you can specify what other activity, or activities, must complete, before this activity can begin. Process Director constantly evaluates this question, so that activities can start as soon as their dependencies are satisfied. Dependencies are configured on the <span class="UIElement">Start When</span> tab of a Timeline Activity.</li>
-            <li style="list-style-type: disc;">
+            <li>
                 <b>What conditions must apply before this activity can begin?</b> We call this the "eligibility question". You can create a Start When condition or conditions that must be true before the activity can begin, even if the dependencies are complete. This question is also constantly evaluated, in conjunction with the dependency question. The eligibility conditions, or "start when" conditions, are also configured on the <span class="UIElement">Start When</span> tab of a Timeline Activity.</li>
-            <li style="list-style-type: disc;">
+            <li>
                 <b>Is this activity needed?</b> We call this the "necessity question". If both the dependency and eligibility questions are satisfied, Process Director evaluates this Needed When condition, or conditions, once, when the activity begins. If the activity is not needed, Process Director will skip the activity, and automatically move to the next activity.  The necessity conditions are configured on the <span class="UIElement">Needed When</span> tab of a Timeline Activity.</li>
         </ul>
         <p> The Process Timeline's constraint-driven model enables organizations to build robust, complex executable process models within Process Director much more easily than the Workflow model can allow. The result is a solution with many valuable features:</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
-            <li style="list-style-type: disc;">Modeling is greatly simplified. Project owners list each activity, estimate its duration, and then drag-and-drop it onto the activity or activities that must complete before it can begin.</li>
-            <li style="list-style-type: disc;">As many of the activities as possible will run at the same time, without the need to explicitly configure parallel behavior.</li>
-            <li style="list-style-type: disc;">The status of the process can be determined at a glance.</li>
-            <li style="list-style-type: disc;">At any point—even the moment the process is launched—the system can determine which future activities, if any, may not be complete by their due date.</li>
-            <li style="list-style-type: disc;">The system records actual versus predicted execution times each time the process is run, and adjusts its time estimates accordingly.</li>
+            <li>Modeling is greatly simplified. Project owners list each activity, estimate its duration, and then drag-and-drop it onto the activity or activities that must complete before it can begin.</li>
+            <li>As many of the activities as possible will run at the same time, without the need to explicitly configure parallel behavior.</li>
+            <li>The status of the process can be determined at a glance.</li>
+            <li>At any point—even the moment the process is launched—the system can determine which future activities, if any, may not be complete by their due date.</li>
+            <li>The system records actual versus predicted execution times each time the process is run, and adjusts its time estimates accordingly.</li>
         </ul>
         <p>Most activities have a dependence on one or more other activities. Dependence refers to the requirement that an activity can't begin until a predecessor activity, or activities, ends. This type of relationship (often referred to by project managers as finish-to-start) represents the most fundamental starting condition for any activity.</p>
         <p>Below is a sample Process Timeline, consisting of three tasks, or activities.&#160; The Timeline column of the Process Timeline shows the number of days planned for each activity. Initial Approval is scheduled to take three workdays, Finance Approval is expected to take two workdays, and the Submitter Notification will take 0 workdays, as it is an automated process that will be performed by Process Director. The Finance Approval activity is dependent on the Initial Approval. The Submitter Notification, in turn, is dependent on Finance Approval.</p>
