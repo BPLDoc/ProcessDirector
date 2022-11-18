@@ -1,26 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
-        <title>
-        </title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" />
     </head>
     <body>
         <h1>
             <MadCap:keyword term="CUSTOM TASKS" />
-            <MadCap:concept term="Custom Tasks" />
-            <a name="_Toc421015713">
-            </a>Documents Custom Tasks</h1>
+            <MadCap:concept term="Custom Tasks" /><a name="_Toc421015713"></a>Documents Custom Tasks</h1>
         <p>These custom tasks enable you to perform a variety of tasks on documents stored in Process Director.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="ExportArray">
-                    </a>
-                    <a href="#ExportArray">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Export Array to CSV</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="ExportArray"></a><a href="#ExportArray"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Export Array to CSV</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This Form Custom Task exports the contents of an array to a CSV file, and attaches the CSV file to the Form or process.</p>
@@ -77,12 +68,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="FillFieldsFromExcel">
-                    </a>
-                    <a href="#FillFieldsFromExcel">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Fill Fields from Excel</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="FillFieldsFromExcel"></a><a href="#FillFieldsFromExcel"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill Fields from Excel</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This Custom Task fills form field values from data in an Excel spreadsheet. This Excel sheet can exist either as an object in the Content List, or as a reference attached to the Process Timeline, Workflow, or Form associated with this custom task. You can also specify that the Excel sheet be specified by a Form Control if you check the <span class="ControlName">Form Control</span> radio button option.</p>
@@ -202,8 +188,7 @@
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3">
-                                <b>REFERENCES TAB</b>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3"><b>REFERENCES TAB</b>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -219,17 +204,14 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="TransformFormToWord">
-                    </a>
-                    <a href="#TransformFormToWord">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Transform Form to Word</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="TransformFormToWord"></a><a href="#TransformFormToWord"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Transform Form to Word</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This custom task transforms field values in a Form instance into a Microsoft Word document. You can specify how data from the form instance is mapped to the Word document by describing how each field in the form instance maps to each field in the Word document, and you can have all fields in the form instance map to fields with the same names in the Word document.</p>
-                <p>You can create a Word document to use as a template, and place field markers into the document to contain field values.&#160; For instance, if you have a Form field named "FirstName", you can place a field marker into the document in the format:</p>
-                <p>&lt;&lt;FirstName&gt;&gt;</p>
+                <p>This Custom Task does <i style="font-weight: bold;">not</i> use or integrate with Microsoft Word's built-in form creation features. Word's form features can be useful in some contexts, but they print and look differently than the document's other text, which makes them unsuitable for use in pre-formatted letters or memos. Since this Custom Task is designed to integrate Process Director data into <b style="font-style: italic;">any</b> Word document, it relies on specifically formatted text markers to define "fields" in the Word document. Because this is a text-based system, the field markers in the Word document will be converted to normal text, which makes this Custom Task suitable for a wide range of uses.</p>
+                <p>You can create a Word document to use as a template, and place field markers into the document to contain field values.&#160; For instance, if you have a Form field named "FirstName", you can place a field marker into the Word document in the format:</p>
+                <p><code>&lt;&lt;FirstName&gt;&gt;</code>
+                </p>
                 <p>During the conversion process, the field marker will be overwritten by the actual value in the <span class="ControlName">FirstName </span>field on the container Form. Essentially, this is an operation that is very similar to Word's MailMerge function.</p>
                 <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> Fields contained in an array can't be transferred to field markers in a Word document.</p>
@@ -273,7 +255,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Select the Word template object using the picker control</p>
+                                <p>Select the Word template object using the picker control. This is the most commonly used method for designating a template form. It's also the easiest to configure, because selecting a template document from the <span class="ProcessDirectorObject">Content List </span>automatically fills the options for the markers in the Word Template.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -284,7 +266,7 @@
                                 <p>(List of Form Controls)</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>Select the form control from the dropdown.</p>
+                                <p>Select the form control from the dropdown. You can select a document template at run-time by placing a <span class="NamedControl">Content Picker</span> control on the Form, then selecting <span class="ControlName">Form Control</span> for this property. When you do so, an additional property will appear that enables you to select the <span class="NamedControl">Content Picker</span> control on the Form to provide the template source. At run-time, the Form submitter could then choose any Word template in the <span class="ProcessDirectorObject">Content List </span>for use as the document template. In this case, Process Director won't know what fields exist in the document template, so you'll need to <b style="font-style: italic;">manually type</b> in the Word field names in each mapping row.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -295,7 +277,7 @@
                                 <p>Form References<br />Process References</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>The type of reference to use as a template source.</p>
+                                <p>The type of reference to use as a template source. you can use a document attachment as the template source by selecting the <span class="ControlName">References </span>option, then selecting "Form References" or "Process References" to denote where the template is attached. In most cases, this should be to the Process, rather than the Form. In either case, a new tab, <span class="UIElement">References</span>, will appear in the UI. You'll need to configure this tab to specify the attachment's <span class="ControlName">Group Name</span>, i.e., the attachment group for the Word attachment you'll use for the template. Additionally, the <span class="ControlName">Overwrite Template document… </span>property enables you to replace the blank template with the new Word document that will be created when the Custom Task runs. Again, choosing this option means that you'll need to <b style="font-style: italic;">manually specify</b> the Word field names in each mapping row.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -355,8 +337,7 @@
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3">
-                                <b>OUTPUT&#160;OBJECT&#160;TAB</b>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3"><b>OUTPUT&#160;OBJECT&#160;TAB</b>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -380,12 +361,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SendInvite">
-                    </a>
-                    <a href="#SendInvite">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Send Calendar Invitation</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="SendInvite"></a><a href="#SendInvite"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Send Calendar Invitation</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This Form Custom Task sends an Internet Calendar meeting invitation (in <a href="https://en.wikipedia.org/wiki/ICalendar" target="_blank">ICS&#160;format</a>) to configured attendees. Attendees can be configured manually, or can be retrieved from Form fields. The ICS calendar file is fully or partially supported by all major email/calendar systems.</p>
@@ -412,8 +388,7 @@
                     </thead>
                     <tbody>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3">
-                                <b>Participants Section</b>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3"><b>Participants Section</b>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -502,8 +477,7 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Click this button to add additional events to the invitation.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3">
-                                <b>.ICS&#160;Attachment Section</b>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3"><b>.ICS&#160;Attachment Section</b>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -522,12 +496,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="ConvertToLaserfiche">
-                    </a>
-                    <a href="#ConvertToLaserfiche">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Convert to Laserfiche</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="ConvertToLaserfiche"></a><a href="#ConvertToLaserfiche"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Convert to Laserfiche</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This Form Custom Task exports the contents of a Form to a laserfiche-compatible XML&#160;output file.</p>
@@ -578,12 +547,9 @@
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>When the <span class="UIElement">Add Mapping </span>button is clicked, a row of properties will appear that enable you to map form fields to the laserfiche template file's fields:</p>
-                                <p>
-                                    <b>Value Source:</b> The form field to use as the value.</p>
-                                <p>
-                                    <b>Text (may contain system variables):</b>&#160;Arbitrary text to use as the value.</p>
-                                <p>
-                                    <b>Laserfiche Template Field:</b> The XPath of the laserfiche template field to store the value.</p>
+                                <p><b>Value Source:</b> The form field to use as the value.</p>
+                                <p><b>Text (may contain system variables):</b>&#160;Arbitrary text to use as the value.</p>
+                                <p><b>Laserfiche Template Field:</b> The XPath of the laserfiche template field to store the value.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -591,12 +557,9 @@
                             <td class="TableStyle-Simple-BodyB-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row2">
                                 <p>When the <span class="UIElement">Add Document Reference </span>button is clicked, a rows of properties will appear that enable you to reference documents in the output file:</p>
-                                <p>
-                                    <b>Content Type:</b>&#160;The MIME content type of the document.</p>
-                                <p>
-                                    <b>File Extension:</b> The file extension of the document.</p>
-                                <p>
-                                    <b>File Path:</b>&#160;The file path to the document's storage location.</p>
+                                <p><b>Content Type:</b>&#160;The MIME content type of the document.</p>
+                                <p><b>File Extension:</b> The file extension of the document.</p>
+                                <p><b>File Path:</b>&#160;The file path to the document's storage location.</p>
                             </td>
                         </tr>
                     </tbody>

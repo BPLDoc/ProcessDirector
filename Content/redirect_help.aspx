@@ -305,6 +305,9 @@
 				break;
 		
 		//Layout Controls
+		case "OFDCONTAINER":
+				r("implementersreference/form_online_controls_layout.htm#Container");
+				break;
 			case "OFDEMBEDDEDSECTION":
 				r("implementersreference/form_online_controls_layout.htm#EmbeddedSection");
 				break;
