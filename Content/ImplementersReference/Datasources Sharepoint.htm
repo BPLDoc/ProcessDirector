@@ -6,13 +6,15 @@
     <body>
         <h1>
             <MadCap:concept term="Implementation" />
-            <MadCap:keyword term="Datasources;SharePoint" />Sharepoint Data Sources</h1>
+            <MadCap:keyword term="Datasources;SharePoint" />SharePoint Data Sources</h1>
         <p>With the implementation of Microsoft's move to <span class="KeyTerms">Modern Authentication</span>, using the Microsoft identity platform, logging into cloud-based versions of SharePoint is no longer possible by simply using a user name and password. Legacy installations that user older versions of SharePoint may still do so, but SharePoint has largely implemented an OAuth-based authentication scheme, with additional security provided by the use of encryption certificates. </p>
-        <p>In Process Director v5.44.1000 and higher, Modern Authentication for SharePoint is implemented using the <span class="ProcessDirectorObject">SharePoint Oauth </span>Datasource. At the same time, the legacy <span class="ProcessDirectorObject">SharePoint </span>Datasource, which uses the simple username/password authentication scheme, is still available for customers who are using older versions of SharePoint. This legacy authentication method should be relevant to only a very small minority of customers.</p>
+        <p>In Process Director v5.44.1000, Modern Authentication for SharePoint was implemented using the <span class="ProcessDirectorObject">SharePoint OAuth </span>Datasource, which only gives access to SharePoint at the Tenant (organizational) level. </p>
+        <p>For Process Director v5.44.1103, The <span class="ProcessDirectorObject">SharePoint OAuth</span> Datasource was renamed to <span class="ProcessDirectorObject"><a href="#Tenant"><span class="ProcessDirectorObject">SharePoint OAuth (Tenant)</span></a></span>, while a new Datasource <span class="ProcessDirectorObject"><span href="#Site" class="ProcessDirectorObject"><a href="#Site"><span class="ProcessDirectorObject"><span href="#Site" class="ProcessDirectorObject">SharePoint OAuth (Site)</span></span>,</a></span></span> was added to give access to SharePoint at the Site level, rather than at the entire tenant. </p>
+        <p>The existing <span class="ProcessDirectorObject">SharePoint </span>Datasource, which uses the simple username/password authentication scheme, is still available for customers who are using older versions of SharePoint. This legacy authentication method should be relevant to only a very small minority of customers, and has been renamed to <span class="ProcessDirectorObject">Sharepoint (Legacy)</span>.</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> This update to the SharePoint Datasources will require updating the SharePoint Custom Tasks!</p>
-        <h2>Configuring a SharePoint OAuth Datasource</h2>
-        <p>Modern Authentication provides much more secure access to SharePoint, but does require a more complex setup process. To set up Modern Authentication between SharePoint and Process Director, you must complete the following steps:</p>
+        <h2><a name="Tenant"></a>Configuring a SharePoint OAuth (Tenant) Datasource <a href="#Tenant" class="anchor">#</a></h2>
+        <p>Modern Authentication provides much more secure access to SharePoint, but does require a more complex setup process. To set up Modern Authentication between SharePoint and Process Director, you must complete the following steps.</p>
         <ol>
             <li><a href="#cert">Create a certificate</a> to authenticate Process Director with SharePoint Online.<ol style="list-style-type: lower-alpha;"><li>Using Microsoft’s certreq.exe, installed on all modern Windows OS versions.</li><li>Using PowerShell, also included with all  modern Windows OS versions.</li></ol></li>
             <li><a href="#azure">Add Process Director as an application</a> in the Azure Active Directory portal.<ol style="list-style-type: lower-alpha;"><li>Add public key certificate to Process Director application in Azure.</li><li>Configure SharePoint Online permissions.</li></ol></li>
@@ -104,7 +106,7 @@
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h3><a name="azure"></a>Add Process Director to Azure <a href="#azure" class="anchor">#</a></h3>
-        <p>To add Process Director as an application in your Azure Active Directory portal, complete the steps below after signing into  your Azure portal (portal.azure.com):</p>
+        <p>To add Process Director as an application in your Azure Active Directory portal at the Tenant level, complete the steps below after signing into  your Azure portal (portal.azure.com):</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>1. Register Process Director as an Application</MadCap:dropDownHotspot>
@@ -149,7 +151,7 @@
                 </ol>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h3><a name="datasource"></a>Create the SharePoint OAuth Datasource <a href="#datasource" class="anchor">#</a></h3>
+        <h3><a name="datasource"></a>Create the SharePoint OAuth (Tenant) Datasource <a href="#datasource" class="anchor">#</a></h3>
         <p>Now that the application has been fully registered in Azure, you can create the SharePoint OAuth Datasource in Process Director. Be sure to keep the Azure window open, however, as you'll need to transfer some information from Azure to configure the SharePoint OAuth datasource. Ensure you've opened the <span class="ProcessDirectorObject">Azure Active Directory admin center</span> window to the <span class="UIElement">Overview </span>tab of the <span class="ProcessDirectorObject">App registrations</span> page of your Process Director integration app. In this example, we'll use the "Test SharePoint OAuth" application we used in the steps above.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -159,7 +161,7 @@
                 <ol>
                     <li>Navigate to the Process Director folder in which you want to store the new Datasource, then select <span class="UIElement">Data Source</span> from the<span class="UIElement"> Create New</span> menu.<br /><img src="../Resources/Images/ImplementersReference/sharepointoauth7.png" /></li>
                     <li>In the <span class="ControlName">Create New Data Source </span>screen, enter an <span class="ControlName">Name </span>for the Datasource, then click the <span class="UIElement">OK </span>button to create the Datasource and open its configuration screen.</li>
-                    <li>On the <span class="UIElement">Properties </span>tab of the Datasource definition, change the <span class="ControlName">DataSource Type </span>to "SharePoint OAuth".</li>
+                    <li>On the <span class="UIElement">Properties </span>tab of the Datasource definition, change the <span class="ControlName">DataSource Type </span>to "SharePoint OAuth (Tenant)".</li>
                     <li>Set the <span class="ControlName">Sharepoint Site URL</span> to the URL your SharePoint Online server.</li>
                     <li>To set the <span class="ControlName">Client ID</span> property, Go to the Azure window, and using the "Copy to Clipboard" icon, copy the value in the <span class="ControlName">Application (client) ID</span> property, then paste it into the <span class="ControlName">Client ID </span>Property of the Datasource definition.<br /><img src="../Resources/Images/ImplementersReference/sharepointoauth8.png" /></li>
                     <li>Similarly, you'll need to copy the value of the <span class="ControlName">Directory (tenant) ID </span>property in Azure to the<span class="ControlName"> Tenant ID</span> property of the Datasource definition.<br /><img src="../Resources/Images/ImplementersReference/sharepointoauth9.png" /></li>
@@ -170,7 +172,7 @@
                 </ol>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>SharePoint OAuth Datasource Properties</h2>
+        <h4>SharePoint OAuth (Tenant) Datasource Properties</h4>
         <p>
             <img src="../Resources/Images/ImplementersReference/SPOAuthDS.png" />
         </p>
@@ -213,6 +215,53 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>The password that you configured for the certificate (.PFX) file when you created it.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="Site"></a>Configuring the SharePoint OAuth (Site) Datasource <a href="#Site" class="anchor">#</a></h2>
+        <p>Configuring the<span class="ProcessDirectorObject"> SharePoint OAuth (Site) </span>Datasource is far less complex than configuring the tenant-level datasource, and requires no certificate to be created or uploaded to Azure. To add Process Director as an application in your Azure Active Directory portal at the Site level, complete the steps below after signing into  your Azure portal (portal.azure.com):</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>1. Configure SharePoint Site Permissions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ol>
+                    <li>Navigate to the site you want to configure access for in your tenant. This is typically of the form <code>https://mytenant.sharepoint.com</code>, replacing “mytenant” with the appropriate name.</li>
+                    <li>Adjust the URL to <code>https://mytenant.sharepoint.com/_layouts/15/appregnew.aspx</code>.<ol style="list-style-type: lower-alpha;"><li>Click the buttons to generate both a <span class="ControlName">Client Id</span> as well as a<span class="ControlName"> Client Secret</span>.</li><li>Select the the <span class="ControlName">Client Id</span> value, copy the text and store the value somewhere safe to be used in later steps in this guide.</li><li>Select the the <span class="ControlName">Client Secret </span>value, copy the text and store the value somewhere safe to be used in later steps in this guide.</li></ol></li>
+                    <li>Now you need to grant permissions to newly registered app (AKA principal). Navigate to <br /><code>https://mytenant-admin.sharepoint.com/_layouts/15/appinv.aspx</code>. <br />It’s important to note the addition of “-admin” to your site's normal name.<br /><img src="../Resources/Images/ImplementersReference/SPOAuthDS.jpg" /><ol style="list-style-type: lower-alpha;"><li>Add your Client Id as<span class="ControlName"> App Id</span>.</li><li>Add the XML as shown, reproduced here to aid in copy and paste. Note, there are other, more restrictive options that can be considered listed in Table 1 at Microsoft's documentation topic, <a href="https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/add-in-permissions-in-sharepoint" target="_blank">Add-in permissions in SharePoint</a>. Be careful using other values as it may prevent Process Director from working correctly.<br /><code>&lt;AppPermissionRequests AllowAppOnlyPolicy="true"&gt;<br />&#160;&#160;&#160;&#160;&#160;&lt;AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="FullControl" /&gt;<br />&lt;/AppPermissionRequests&gt;</code></li><li>Set the <span class="ControlName">Title </span>to “Process Director”.</li><li>Set <span class="ControlName">App Domain</span> to the fully qualified domain name of you Process Director deployment.</li><li>Set the <span class="ControlName">Redirect URL</span> to the URL of your Process Director deployment.</li></ol></li>
+                    <li>Click <span class="UIElement">Create</span>.</li>
+                    <li>Click <span class="UIElement">Trust It </span>in the follow-up prompt.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>2. Configure the Datasource</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ol>
+                    <li>
+                        <p>In a Process Director <span class="ProcessDirectorObject">Content Lis</span>t folder, select <span class="UIElement">Data Source</span> from the <span class="UIElement">Create New </span>menu.</p>
+                    </li>
+                    <li>
+                        <p>Supply a <span class="ControlName">Name </span>and click <span class="UIElement">OK</span> to open the new Datasource definition.</p>
+                    </li>
+                    <li>
+                        <p>Set  the<span class="ControlName"> Datasource Type </span>drop-down to "SharePoint OAuth (Site)".</p>
+                    </li>
+                    <li>
+                        <p>Add the <span class="ControlName">SharePoint Site URL</span> for your SharePoint Online installation.</p>
+                    </li>
+                    <li>
+                        <p>Add the <span class="ControlName">Client ID</span> (AKA Application Id) and <span class="ControlName">Client Secret </span>from SharePoint that you set aside in the steps for <b>Configure SharePoint Site Permissions</b> above.</p>
+                    </li>
+                    <li>
+                        <p>Click <span class="UIElement">OK </span>then select the <span class="UIElement">Update </span>item from the <span class="UIElement">OK&#160;</span>menu at the top right corner of the page to save the configuration.</p>
+                    </li>
+                    <li>
+                        <p>Click the<span class="UIElement">Test Connection</span> button to test your connection to the SharePoint site.</p>
+                    </li>
+                </ol>
+                <p>A successful test means that your Datasource is correctly configured and is connecting to the SharePoint site correctly.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2>Conclusion</h2>
