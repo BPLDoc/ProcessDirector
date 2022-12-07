@@ -54,7 +54,7 @@
             </a>Creating a Custom Task</h2>
         <p>
             <MadCap:keyword term="Creating a Custom Task;Building the eForm and Script">&#160;</MadCap:keyword>A Custom Task requires a Form created in the .NET environment similar to how a Form is created. To create a Form for a Custom Task, use the Create New menu item in the Content List and select Form Definition in the dropdown. Then select from the template dropdown “Use Empty .ASCX form”.&#160; The Form must be created using the special options in the Form Definition page that is displayed. A Custom Task can be created as a Form-only Custom Task, a Workflow-only Custom Task, or a Custom Task the can be used by both Forms and Workflows. This Form will also display any Custom task configuration.</p>
-        <p>These events are called for eforms and while configuring a Custom Task:</p>
+        <p>These events are called for forms and while configuring a Custom Task:</p>
         <p class="CodeBase">public override void BP_Init()<br />public override void BP_Event(bp.EventType pEventType, string pEventName)<br />public override void BP_Validation()<br />public override void BP_Display()<br />public override void BP_Completed()</p>
         <p>When a custom task is mapped to a Form, the following custom task function will be called:</p>
         <p class="CodeBase">protected override bool CT_RunTask(bp.FormCTMappedTo pMappedTo, string pEventName) </p>
@@ -70,7 +70,7 @@
         <p class="CodeBase">this.FormInfo.FormControl("SomeTextControl").Text = "This is new text";</p>
         <p>While in a custom task run or GUI, use this.ContainerFormInfo to access the containers form info (get/set form fields, etc). For example:</p>
         <p class="CodeBase">this.ContainerFormInfo.FormControl("SomeContainerControl").Required = true;</p>
-        <p>Use this.FormInfo.AddInfoMessage and this.FormInfo.AddErrorMessage to add error or info messages to forms (eg for validation). For example:</p>
+        <p>Use this.FormInfo.AddInfoMessage and this.FormInfo.AddErrorMessage to add error or info messages to forms (e.g., for validation). For example:</p>
         <p class="CodeBase">this.FormInfo.AddInfoMessage(new FormMessageString("This info message<br />&#160;&#160;&#160;&#160;will display on the form!"));</p>
         <p>A custom task may have 2 sections, FormControlCustomTaskConfig and FormControlCustomTaskRun. For example:</p>
         <p class="CodeBase">&lt;bpx:FormControlCustomTaskConfig runat="server"&gt;<br /> &#160;&#160;&#160;<span class="ControlName">&lt;!--This section includes stuff that is shown when a custom task is <br /> &#160;&#160;&#160;being configured--&gt;</span><br />&#160;&#160;&#160;&#160;&lt;asp:TextBox ID="config_text1" runat="server"&gt;&lt;/asp:TextBox&gt;<br />&lt;/bpx:FormControlCustomTaskConfig&gt;<br /><br />&lt;bpx:FormControlCustomTaskRun runat="server"&gt;<br />&#160;&#160;&#160; <span class="ControlName">&lt;!--This section includes stuff that is shown when a custom task is<br />&#160;&#160;&#160; run inside a Form (if CT_RunTask returns true).--&gt;</span><br />&#160;&#160;&#160;&#160;&lt;asp:TextBox ID="run_text1" runat="server"&gt;&lt;/asp:TextBox&gt;<br />&lt;/bpx:FormControlCustomTaskRun&gt;</p>
