@@ -10,8 +10,9 @@
         <p>The <span class="ControlName">Run Email Tests</span> page enables you to configure a number of options for sending a test email. This page enables you to set up an email and have Process Director send it, testing Process Director’s ability to send emails. The email body and content can be configured, as well as the server from which the email is sent.</p>
         <p>From the <span class="ProcessDirectorObject">Troubleshooting </span>section, you can navigate to the<span class="ControlName"> Run Email Tests</span> page by clicking the <span class="UIElement">Run Email Tests</span> button.</p>
         <p>This page is very important when troubleshooting email issues in Process Director. In general, if an email is successfully sent from this page, then you can be relatively certain that the email features of Process Director are operating correctly. If the tests are sent correctly, from this page, but you are still having email delivery issues, you may wish to check other possibilities, such as issues with your email server.</p>
+        <p>For Process Director v5.44.1103, the <span class="ControlName">Run&#160;Email Tests</span> page is configured to use Microsoft Modern Authentication by setting the configuration to <span class="ControlName">Use Specific SMTP&#160;Server</span>, the setting the <span class="ControlName">SMTP&#160;Authentication Type </span>property to "Office 365/Microsoft OAuth".</p>
         <p>
-            <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting_7.jpg" style="visibility: visible;mso-wrap-style: square;" />
+            <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting_7.png" />
         </p>
         <p>There are several configurable properties you can set for each email test you wish to run.</p>
         <MadCap:dropDown>
@@ -79,7 +80,16 @@
                 <ul>
                     <li><b><span class="ControlName">SMTP Server Name or IP Address</span>:</b> The SMTP server you wish to use to send the email.</li>
                     <li><b><span class="ControlName">SMTP Port</span>:</b> The port number to use for sending SMTP email.</li>
+                    <li><b><span class="ControlName">User ID</span>:</b> The UserID for the email inbox to use</li>
+                    <li><b><span class="ControlName">Password</span>:</b> The Password for the email inbox to use.</li>
                 </ul>
+                <p>For Process Director v5.44.1103 and higher, additional OAuth settings are available for use with Microsoft Modern Authentication. If you wish to use the OAuth connection that is set on the <span class="ControlName">Properties </span>page of the <span class="ProcessDirectorObject">Installation Settings</span> section, you do not need to reconfigure them here. You can simply leave the <span class="ControlName">Use Process Director Configured Settings</span> property selected; however, you can use this setting to use a different email server or inbox than the one configured on the <span class="ControlName">Properties </span>page.</p>
+                <ul>
+                    <li><b><span class="ControlName">SMTP&#160;Tenant ID</span>:</b>&#160;The Azure Tenant ID.</li>
+                    <li><b><span class="ControlName">SMTP&#160;Client ID</span>:</b> The Azure Client ID for the Registered AAD App.</li>
+                    <li><b><span class="ControlName">SMTP Secret</span>:</b> The Azure Client Secret.</li>
+                </ul>
+                <p>For more information on configuring Azure for Process Director, Please see the <a href="../ImplementersReference/Datasources Sharepoint.htm">SharePoint Datasources</a> topic.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
