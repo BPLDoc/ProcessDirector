@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
         <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
@@ -17,41 +17,41 @@
         <h2>
             <a name="_Toc421536157">
             </a>What is a Process Timeline Definition?</h2>
-        <p>Process Timeline Definitions in Process Director are a series of logical activities, each with a specific task and assigned participants. The Process Timeline defines the path or route that a Form or document must take. Each activity in the Process Timeline path defines the task type, the participants, and the rules that govern how the Process Timeline will advance or transition to the next activity.</p>
-        <p>The Process Timeline may look familiar to you, because it is presented in Gantt chart format. The Gantt chart is a type of chart that places each activity in a process on a single line that is horizontally marked in some increment of time, usually days. Each activity is marked with a bar that whose left end begins at the task's start date, and ends at the task's end date. This type of chart is widely used in project management.</p>
+        <p>Process Timeline Definitions in Process Director are a series of logical activities, each with a specific task and assigned participants. The Process Timeline defines the path or route that a Form or document must take. Each Activity in the Process Timeline path defines the task type, the participants, and the rules that govern how the Process Timeline will advance or transition to the next Activity.</p>
+        <p>The Process Timeline may look familiar to you, because it is presented in Gantt chart format. The Gantt chart is a type of chart that places each Activity in a process on a single line that is horizontally marked in some increment of time, usually days. Each Activity is marked with a bar that whose left end begins at the task's start date, and ends at the task's end date. This type of chart is widely used in project management.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/TLExample.png" />
         </p>
         <p>Process Director uses this generic Gantt chart format for the Process Timeline, and adds additional functionality for use in modeling and managing business processes. BP Logix developed the Process Timeline to address the need to measure and predict process execution times.</p>
-        <p>Time is not a process driver for a Workflow. Indeed, looking at a Workflow diagram gives you no sense of how long completing the Workflow, or any Workflow Task, will take. The Process Timeline, on the other hand, shows you immediately and graphically how much time your process, and each Process Activity, should take. Because the Process Timeline incorporates time explicitly as a process driver, and records the process times for each Timeline instance, Process Director can, using historical data, predict how long each activity and process will take, and compare that prediction to your configured times. For instance, with the Process Timeline, Process Director can use historical data to predict whether an activity will be early or fail to meet its configured due date, often well in advance of the activity starting. This predictive ability enables Process Director, using the Process Timeline model, to provide you with the earliest possible notification of slippages in the process' scheduled run time.</p>
-        <p>Another important difference between Workflows and Process Timelines is that Timelines are <span class="KeyTerms">constraint-driven</span>. In a Workflow, tasks don't start until they are prompted to begin when the Workflow follows a specific branch. In a Process Timeline, however, all Timeline activities want to run all the time. The designer's job with a Process Timeline is to apply <i>constraints</i> to each activity to prevent it from running immediately. By default, this makes Process Timelines implicitly parallel. If you add two activities to a new Process Timeline, but don't configure any restraints, then both activities will run immediately, and in parallel, as soon as the Process Timeline instance starts. Conversely, in a Workflow, you must explicitly specify when two steps must run in parallel.</p>
-        <p>Business users design Process Timelines by answering three questions that define the activity's constraints, as they add each step to the process:</p>
+        <p>Time is not a process driver for a Workflow. Indeed, looking at a Workflow diagram gives you no sense of how long completing the Workflow, or any Workflow Task, will take. The Process Timeline, on the other hand, shows you immediately and graphically how much time your process, and each Process Activity, should take. Because the Process Timeline incorporates time explicitly as a process driver, and records the process times for each Timeline instance, Process Director can, using historical data, predict how long each Activity and process will take, and compare that prediction to your configured times. For instance, with the Process Timeline, Process Director can use historical data to predict whether an Activity will be early or fail to meet its configured due date, often well in advance of the Activity starting. This predictive ability enables Process Director, using the Process Timeline model, to provide you with the earliest possible notification of slippages in the process' scheduled run time.</p>
+        <p>Another important difference between Workflows and Process Timelines is that Timelines are <span class="KeyTerms">constraint-driven</span>. In a Workflow, tasks don't start until they are prompted to begin when the Workflow follows a specific branch. In a Process Timeline, however, all Timeline activities want to run all the time. The designer's job with a Process Timeline is to apply <i>constraints</i> to each Activity to prevent it from running immediately. By default, this makes Process Timelines implicitly parallel. If you add two activities to a new Process Timeline, but don't configure any restraints, then both activities will run immediately, and in parallel, as soon as the Process Timeline instance starts. Conversely, in a Workflow, you must explicitly specify when two steps must run in parallel.</p>
+        <p>Business users design Process Timelines by answering three questions that define the Activity's constraints, as they add each step to the process:</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
             <li>
-                <b>What activities must complete before this activity begins?</b> We call this the "dependency question". For each Timeline activity, you can specify what other activity, or activities, must complete, before this activity can begin. Process Director constantly evaluates this question, so that activities can start as soon as their dependencies are satisfied. Dependencies are configured on the <span class="UIElement">Start When</span> tab of a Timeline Activity.</li>
+                <b>What activities must complete before this Activity begins?</b> We call this the "dependency question". For each Timeline Activity, you can specify what other Activity, or activities, must complete, before this Activity can begin. Process Director constantly evaluates this question, so that activities can start as soon as their dependencies are satisfied. Dependencies are configured on the <span class="UIElement">Start When</span> tab of a Timeline Activity.</li>
             <li>
-                <b>What conditions must apply before this activity can begin?</b> We call this the "eligibility question". You can create a Start When condition or conditions that must be true before the activity can begin, even if the dependencies are complete. This question is also constantly evaluated, in conjunction with the dependency question. The eligibility conditions, or "start when" conditions, are also configured on the <span class="UIElement">Start When</span> tab of a Timeline Activity.</li>
+                <b>What conditions must apply before this Activity can begin?</b> We call this the "eligibility question". You can create a Start When condition or conditions that must be true before the Activity can begin, even if the dependencies are complete. This question is also constantly evaluated, in conjunction with the dependency question. The eligibility conditions, or "start when" conditions, are also configured on the <span class="UIElement">Start When</span> tab of a Timeline Activity.</li>
             <li>
-                <b>Is this activity needed?</b> We call this the "necessity question". If both the dependency and eligibility questions are satisfied, Process Director evaluates this Needed When condition, or conditions, once, when the activity begins. If the activity is not needed, Process Director will skip the activity, and automatically move to the next activity.  The necessity conditions are configured on the <span class="UIElement">Needed When</span> tab of a Timeline Activity.</li>
+                <b>Is this Activity needed?</b> We call this the "necessity question". If both the dependency and eligibility questions are satisfied, Process Director evaluates this Needed When condition, or conditions, once, when the Activity begins. If the Activity is not needed, Process Director will skip the Activity, and automatically move to the next Activity.  The necessity conditions are configured on the <span class="UIElement">Needed When</span> tab of a Timeline Activity.</li>
         </ul>
         <p> The Process Timeline's constraint-driven model enables organizations to build robust, complex executable process models within Process Director much more easily than the Workflow model can allow. The result is a solution with many valuable features:</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
-            <li>Modeling is greatly simplified. Project owners list each activity, estimate its duration, and then drag-and-drop it onto the activity or activities that must complete before it can begin.</li>
+            <li>Modeling is greatly simplified. Project owners list each Activity, estimate its duration, and then drag-and-drop it onto the Activity or activities that must complete before it can begin.</li>
             <li>As many of the activities as possible will run at the same time, without the need to explicitly configure parallel behavior.</li>
             <li>The status of the process can be determined at a glance.</li>
             <li>At any point—even the moment the process is launched—the system can determine which future activities, if any, may not be complete by their due date.</li>
             <li>The system records actual versus predicted execution times each time the process is run, and adjusts its time estimates accordingly.</li>
         </ul>
-        <p>Most activities have a dependence on one or more other activities. Dependence refers to the requirement that an activity can't begin until a predecessor activity, or activities, ends. This type of relationship (often referred to by project managers as finish-to-start) represents the most fundamental starting condition for any activity.</p>
-        <p>Below is a sample Process Timeline, consisting of three tasks, or activities.&#160; The Timeline column of the Process Timeline shows the number of days planned for each activity. Initial Approval is scheduled to take three workdays, Finance Approval is expected to take two workdays, and the Submitter Notification will take 0 workdays, as it is an automated process that will be performed by Process Director. The Finance Approval activity is dependent on the Initial Approval. The Submitter Notification, in turn, is dependent on Finance Approval.</p>
+        <p>Most activities have a dependence on one or more other activities. Dependence refers to the requirement that an Activity can't begin until a predecessor Activity, or activities, ends. This type of relationship (often referred to by project managers as finish-to-start) represents the most fundamental starting condition for any Activity.</p>
+        <p>Below is a sample Process Timeline, consisting of three tasks, or activities.&#160; The Timeline column of the Process Timeline shows the number of days planned for each Activity. Initial Approval is scheduled to take three workdays, Finance Approval is expected to take two workdays, and the Submitter Notification will take 0 workdays, as it is an automated process that will be performed by Process Director. The Finance Approval Activity is dependent on the Initial Approval. The Submitter Notification, in turn, is dependent on Finance Approval.</p>
         <p>
             <img src="../Resources/Images/InstallationGuide/SampleTimeline.png" />
         </p>
-        <p>An activity may also be a parent or child activity. A parent activity is a container for other, subordinate activities, each of which is referred to as a child activity. Child activities have an implied dependence on their parent, so, absent any additional conditions, the child activities begin when the parent activity begins. Once all of the child activities are complete, the parent is complete. </p>
+        <p>An Activity may also be a parent or child Activity. A parent Activity is a container for other, subordinate activities, each of which is referred to as a child Activity. Child activities have an implied dependence on their parent, so, absent any additional conditions, the child activities begin when the parent Activity begins. Once all of the child activities are complete, the parent is complete. </p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Process Timelines_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>Each activity in the Process Timeline has an Actions column with four icons, each of which enable you to modify one of the activity's properties.</p>
+        <p>Each Activity in the Process Timeline has an Actions column with four icons, each of which enable you to modify one of the Activity's properties.</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
             <thead>
                 <tr class="TableStyle-Simple-Head-Header1">
@@ -71,7 +71,7 @@
                         </p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                        <p>Drag to move under another parent: Drag the activity to a parent activity. The activity you drag will become a child of that parent.</p>
+                        <p>Drag to move under another parent: Drag the Activity to a parent Activity. The Activity you drag will become a child of that parent.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row2">
@@ -81,7 +81,7 @@
                         </p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                        <p>Drag to move order: Change where the activity appears in the Process Timeline. Note: changing the location of the activity doesn't change the behavior of the Process Timeline, which is strictly governed by the rules of dependence and other activity starting conditions.</p>
+                        <p>Drag to move order: Change where the Activity appears in the Process Timeline. Note: changing the location of the Activity doesn't change the behavior of the Process Timeline, which is strictly governed by the rules of dependence and other Activity starting conditions.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row1">
@@ -91,7 +91,7 @@
                         </p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                        <p>Drag to add a dependence: Drag and drop an activity onto another to make the dragged activity dependent upon the target. </p>
+                        <p>Drag to add a dependence: Drag and drop an Activity onto another to make the dragged Activity dependent upon the target. </p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row2">
@@ -101,7 +101,7 @@
                         </p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                        <p>Conditions: Click this icon to open the activity's properties on the Needed When tab.</p>
+                        <p>Conditions: Click this icon to open the Activity's properties on the Needed When tab.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row1">
@@ -111,12 +111,12 @@
                         </p>
                     </td>
                     <td class="TableStyle-Simple-BodyA-Column1-Row1">
-                        <p>Properties: Click this icon to open the activity's properties on the Start When tab.</p>
+                        <p>Properties: Click this icon to open the Activity's properties on the Start When tab.</p>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <p>An activity can be added to the Process Timeline by clicking the<span class="UIElement"> Create Activity</span> action link. When a new activity is added to the Timeline, it will be automatically selected and highlighted. Once an activity has been added, the properties for each activity are presented in a tabbed interface that can be accessed by double-clicking on the activity name, or clicking on the Properties icon for the activity. Each tab in the interface groups similar properties together.</p>
+        <p>An Activity can be added to the Process Timeline by clicking the<span class="UIElement"> Create Activity</span> action link. When a new Activity is added to the Timeline, it will be automatically selected and highlighted. Once an Activity has been added, the properties for each Activity are presented in a tabbed interface that can be accessed by double-clicking on the Activity name, or clicking on the Properties icon for the Activity. Each tab in the interface groups similar properties together.</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
             <thead>
                 <tr class="TableStyle-Simple-Head-Header1">
@@ -134,7 +134,7 @@
                         <p>Activity</p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                        <p>This tab enables the user to select the Activity Type, such as a User, Custom Task, Form Action, etc. It also contains other general activity settings.</p>
+                        <p>This tab enables the user to select the Activity Type, such as a User, Custom Task, Form Action, etc. It also contains other general Activity settings.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row2">
@@ -150,7 +150,7 @@
                         <p>Start When</p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                        <p>This tab enables you to inspect and modify the dependencies and conditions that determine when the activity will start.</p>
+                        <p>This tab enables you to inspect and modify the dependencies and conditions that determine when the Activity will start.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row2">
@@ -158,7 +158,7 @@
                         <p>Completed When</p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                        <p>This tab enables you to inspect and modify the conditions that determine when the activity will complete. Rarely used, as most activities complete organically (such as when a user submits a form, or an automated task completes).</p>
+                        <p>This tab enables you to inspect and modify the conditions that determine when the Activity will complete. Rarely used, as most activities complete organically (such as when a user submits a form, or an automated task completes).</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row1">
@@ -166,7 +166,7 @@
                         <p>Needed When</p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                        <p>This tab enables you to inspect and modify the conditions that determine if an activity will be run once its start conditions have been met. These conditions will be evaluated once when the activity becomes eligible to start.</p>
+                        <p>This tab enables you to inspect and modify the conditions that determine if an Activity will be run once its start conditions have been met. These conditions will be evaluated once when the Activity becomes eligible to start.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row2">
@@ -174,7 +174,7 @@
                         <p>Due Date</p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                        <p>This tab enables you to inspect and modify the due date for the activity, and the actions to take when the activity is not completed by the due date.</p>
+                        <p>This tab enables you to inspect and modify the due date for the Activity, and the actions to take when the Activity is not completed by the due date.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row1">
@@ -182,7 +182,7 @@
                         <p>Notifications</p>
                     </td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                        <p>This tab enables you to configure who is notified about the activity and when notifications should be sent.</p>
+                        <p>This tab enables you to configure who is notified about the Activity and when notifications should be sent.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row2">
@@ -190,7 +190,7 @@
                         <p>Advanced Options</p>
                     </td>
                     <td class="TableStyle-Simple-BodyA-Column1-Row2">
-                        <p>This tab enables you to configure advanced properties, such as how the activity is assigned to user, what steps to take when a user completes the activity, etc.</p>
+                        <p>This tab enables you to configure advanced properties, such as how the Activity is assigned to user, what steps to take when a user completes the Activity, etc.</p>
                     </td>
                 </tr>
             </tbody>
@@ -201,12 +201,12 @@
         <p>A business process may occasionally need to invoke a separate process as a subprocess, or child process, of the main process. This subprocess may need to run synchronously or asynchronously with the main, or parent, process. </p>
         <p>A <span class="KeyTerms">synchronous </span>subprocess pauses the parent process while it is running. Once the subprocess completes, the parent process continues from the point where the synchronous subprocess began. The parent process can't continue until the subprocess is complete. </p>
         <p>An <span class="KeyTerms">asynchronous </span>subprocess, on the other hand, does <span class="Emphasis" style="font-style: italic;">not </span>pause the main process while subprocess runs. Instead, both processes will run in parallel, and both will complete independently of each other.</p>
-        <p>To invoke a subprocess to run synchronously, you can use the <a href="Process Timeline Process Activity.htm"><b>Process</b> activity type</a>. To invoke a subprocess to run asynchronously, you can use the <a href="Process Timeline Custom Task Activity.htm"><b>Custom Task</b> activity type</a>, and use the <a href="../Custom Tasks2/Process Custom Tasks.htm#RunProcess"><span class="ProcessDirectorObject">Run Process</span> custom task</a> to start the desired subprocess.</p>
+        <p>To invoke a subprocess to run synchronously, you can use the <a href="Process Timeline Process Activity.htm"><b>Process</b> Activity Type</a>. To invoke a subprocess to run asynchronously, you can use the <a href="Process Timeline Custom Task Activity.htm"><b>Custom Task</b> Activity Type</a>, and use the <a href="../Custom Tasks2/Process Custom Tasks.htm#RunProcess"><span class="ProcessDirectorObject">Run Process</span> Custom Task</a> to start the desired subprocess.</p>
         <h2>
             <a name="Asynchronous">
             </a>
             <MadCap:keyword term="Asynchronous Operations" />Background Operations <a href="#Asynchronous" class="anchor">#</a></h2>
-        <p>A Timeline Activity of the Custom Task, Script or Process types can be configured to run in the background by checking the <span class="ControlName">Run this activity in the background (if unsure, leave this box unchecked)</span> check box  in the <span class="UIElement">Advanced Options</span> tab. Setting the operation to run in the background can be used to prevent a long-running, machine-centric Activity in the Process Timeline from hanging a user session while the processing occurs. The Activity will be run in a different context from the current user's, even inf the user invoked the transition of the Activity. Additionally, if you have a <a href="../SystemAdministratorGuide/Load Balancing.htm#_Toc421094547">Rendering Server</a> enabled, the background processing will be conducted by the Rendering Server when the option is checked.</p>
+        <p>A Timeline Activity of the Custom Task, Script or Process types can be configured to run in the background by checking the <span class="ControlName">Run this Activity in the background (if unsure, leave this box unchecked)</span> check box  in the <span class="UIElement">Advanced Options</span> tab. Setting the operation to run in the background can be used to prevent a long-running, machine-centric Activity in the Process Timeline from hanging a user session while the processing occurs. The Activity will be run in a different context from the current user's, even inf the user invoked the transition of the Activity. Additionally, if you have a <a href="../SystemAdministratorGuide/Load Balancing.htm#_Toc421094547">Rendering Server</a> enabled, the background processing will be conducted by the Rendering Server when the option is checked.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes.png" />
         </p>

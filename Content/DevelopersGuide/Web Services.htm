@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head><title></title>
+    <head>
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -13,7 +15,9 @@
         <p class="CodeBase">USE [DatabaseName]<br />&#160;&#160;&#160;&#160;GO<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SET ANSI_NULLS ON<br />&#160;&#160;&#160;&#160;GO<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SET QUOTED_IDENTIFIER ON<br />&#160;&#160;&#160;&#160;GO<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ALTER TRIGGER [dbo].[Trigger_TableName]<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ON [dbo].[TableName]<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;AFTER INSERT<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;AS<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;BEGIN<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;SET NOCOUNT ON;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;DECLARE @vPointer INT<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;EXEC sp_OACreate 'MSXML2.ServerXMLHTTP', @vPointer OUTPUT<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;EXEC sp_OAMethod @vPointer, 'open', NULL, 'GET', 'http://servername/<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/Services/wsWorkflow.asmx/Run?WFID=wfid'<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;EXEC sp_OAMethod @vPointer, 'send'<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;EXEC sp_OADestroy @vPointer<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;END</p>
         <p>For confirmation of the web services call, you can declare some additional fields if you want and change the last few lines to:</p>
         <p class="CodeBase">EXEC sp_OAMethod @vPointer, 'responseText'<br />EXEC sp_OAMethod @vPointer, 'Status', @vStatus OUTPUT<br />EXEC sp_OAMethod @vPointer, 'StatusText', @vStatusText OUTPUT<br />EXEC sp_OADestroy @vPointer<br />SELECT @vStatus AS Status, @vStatusText AS StatusText, <br />&#160;&#160;&#160;&#160;@vResponseText AS Response</p>
-        <h2><a name="REST"></a>REST Services <a href="#REST" class="anchor">#</a></h2>
+        <h2>
+            <a name="REST">
+            </a>REST Services <a href="#REST" class="anchor">#</a></h2>
         <p>
             <MadCap:keyword term="Using REST">&#160;</MadCap:keyword>Microsoft natively provides a non-SOAP (REST) interface to some web services, if the service requires no parameters, or only parameters of the primitive types bool, int, or string. To check to see if a particular web service supports a REST interface, you can navigate to the service page for a web servce, e.g., the "services/wsForm.asmx" page, and click on one of the web service calls. If the web service call provides an "HTTP GET" operation, then it can use a REST call to run the service. <b style="font-style: italic;">This is not a feature that is managed or edited by BP&#160;Logix; it is a native feature of web services that has been implemented by Microsoft, and is subject to change at their discretion. </b></p>
         <p>
@@ -25,21 +29,27 @@
         <p>The “bpUserId” and “bpPassword” parameters are necessary to authenticate with Process Director when using REST APIs.</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Be advised that using the bpUSERID or bpPassword parameter requires sending the User ID and Password in clear text, so be mindful of the security implications of transmitting these values and limit the calls to the localhost. Secure the rest calls using the IP address white list in the installation settings.</p>
-        <h2><a name="AuthSettings"></a>Web Service Authentication Settings <a href="#AuthSettings" class="anchor">#</a></h2>
+        <h2>
+            <a name="AuthSettings">
+            </a>Web Service Authentication Settings <a href="#AuthSettings" class="anchor">#</a></h2>
         <p>
             <MadCap:keyword term="Web Service Authentication Settings">&#160;</MadCap:keyword>A web service call can be made without requiring authentication if the web service is being called from a source that is listed as a “Local IP Address” in the installation settings in Process Director.</p>
         <p>If an IP address is listed in the “Web Service Restrictions” than web service calls can only be made from those IP addresses.</p>
         <p>
             <img src="../Resources/Images/DevelopersGuide/Web Services.jpg" style="visibility: visible;mso-wrap-style: square;width: 576px;height: 647px;" />
         </p>
-        <h2><a name="Extending"></a>Extending BP Logix Web Services <a href="#Extending" class="anchor">#</a></h2>
+        <h2>
+            <a name="Extending">
+            </a>Extending BP Logix Web Services <a href="#Extending" class="anchor">#</a></h2>
         <p>
-            <MadCap:keyword term="Extending BP Logix Web Services">&#160;</MadCap:keyword>You can also write new or extend the web services provided by BP Logix by developing your own custom .asmx pages in the custom folder. Your new Web Service, for example, can be a “proxy” to a remote web service that takes a parameter list that the Web Service Custom tasks support. Or you can provide Web Services that search for and return custom data.</p>
+            <MadCap:keyword term="Extending BP Logix Web Services">&#160;</MadCap:keyword>You can also write new or extend the web services provided by BP Logix by developing your own custom .asmx pages in the custom folder. Your new Web Service, for example, can be a “proxy” to a remote web service that takes a parameter list that the Web Service Custom Tasks support. Or you can provide Web Services that search for and return custom data.</p>
         <p>See the sample in the /custom/samples/SampleService.asmx.sample file. Notice that the Web Service is derived from the bpWebService class. This enables you to call any BP Logix SDK API from the new Web Service.</p>
         <p>To extend BP Logix Web Services inside Visual Studio, use the fully functional Visual Studio project installed with the product named bpVS.zip. Refer to the sample file SampleService.asmx.</p>
-        <h2><a name="Other"></a>Calling Other Web Services <a href="#Other" class="anchor">#</a></h2>
+        <h2>
+            <a name="Other">
+            </a>Calling Other Web Services <a href="#Other" class="anchor">#</a></h2>
         <p>
-            <MadCap:keyword term="Calling Other Web Services">&#160;</MadCap:keyword>The easiest way to call Web Services provided by other Enterprise Applications is to use the Web Service custom task. This custom task enables you to call a remote Web Service without writing any code. You can map the inputs and outputs of the Web Service call to Form Fields, system variables, or custom variables.</p>
+            <MadCap:keyword term="Calling Other Web Services">&#160;</MadCap:keyword>The easiest way to call Web Services provided by other Enterprise Applications is to use the Web Service Custom Task. This Custom Task enables you to call a remote Web Service without writing any code. You can map the inputs and outputs of the Web Service call to Form Fields, system variables, or custom variables.</p>
         <p>Additionally, you can use any .NET language to call other Web Services. To do this, use the .NET WSDL compiler to generate the proxy code for the Web Service. Then package the proxy into a .DLL and place it into the /Bin folder of the BP Logix application. Your custom Form, Workflow, or Knowledge View scripts can then call these Web Services.</p>
     </body>
 </html>

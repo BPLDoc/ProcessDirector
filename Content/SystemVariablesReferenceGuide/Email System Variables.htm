@@ -1,15 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head><title></title>
+    <head>
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:keyword term="System Variables" />
-            <MadCap:concept term="System Variables" /><a name="EmailSystemVariables"></a>Email System Variables</h1>
+            <MadCap:concept term="System Variables" />
+            <a name="EmailSystemVariables">
+            </a>Email System Variables</h1>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailAnonTaskList"></a><a href="#EmailAnonTaskList"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailAnonTaskList">
+                    </a>
+                    <a href="#EmailAnonTaskList">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email Anonymous Task List URL" />Email Anonymous Task List URL</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -24,73 +33,111 @@
                     <p class="CodeBase">bp.Vars["<span class="CodeOption">TaskListKV</span>"] = "<span class="CodeOption">KViewID</span>";</p>
                 </p>
                 <p>Once the custom variable has been set, it can be referenced in the "kvid" parameter as:</p>
-                <p><code><MadCap:keyword term="EMAIL_ANON_TASKLIST_URL" />{EMAIL_ANON_TASKLIST_URL, kvid={CUSTOMVAR:<span class="CodeOption">TaskListKV</span>}}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_ANON_TASKLIST_URL" />{EMAIL_ANON_TASKLIST_URL, kvid={CUSTOMVAR:<span class="CodeOption">TaskListKV</span>}}</code>
                 </p>
                 <p>This is the recommended method for setting the KVID.</p>
                 <p>The second method for setting the KVID is simply to pass the KVID directly in the email template. A&#160;Knowledge View with the KVID of "ea89390c-53b7-44dc-b6cb-12938efbc236" could be called by using the syntax:</p>
-                <p><code>{EMAIL_ANON_TASKLIST_URL, kvid=ea89390c-53b7-44dc-b6cb-12938efbc236}</code>
+                <p>
+                    <code>{EMAIL_ANON_TASKLIST_URL, kvid=ea89390c-53b7-44dc-b6cb-12938efbc236}</code>
                 </p>
                 <p>The drawback to this method is that if the variable is widely used in different email templates, and you want to change the partition Knowledge View that displays the Task List, you'll need to replace the old KVID with the new one <i>in every email template where it is used</i>, versus simply changing the value of the variable in the vars file</p>
                 <p>Either way, any time you import the email template from a development to a production system, you'll need to manually edit the KVID, as the ID will be different on the production system.</p>
                 <h3>Modifiers</h3>
-                <p><b>kvid:</b> The Knowledge View ID of the partition Knowledge View that generates the task list for the anonymous user.</p>
+                <p>
+                    <b>kvid:</b> The Knowledge View ID of the partition Knowledge View that generates the task list for the anonymous user.</p>
                 <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> Access to Process Director for unauthenticated or anonymous users is enabled by an optionally licensed component.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailCompleteUrl"></a><a href="#EmailCompleteUrl"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailCompleteUrl">
+                    </a>
+                    <a href="#EmailCompleteUrl">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email Complete URL" />Email Complete URL</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
                 <p>This system variable returns the URL of the page to automatically complete the task.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_COMPLETE_URL" />{EMAIL_COMPLETE_URL, action="<span class="CodeOption">TaskName</span>", Confirm=<span class="CodeOption">1</span>, Comments=<span class="CodeOption">1</span>}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_COMPLETE_URL" />{EMAIL_COMPLETE_URL, action="<span class="CodeOption">TaskName</span>", Confirm=<span class="CodeOption">1</span>, Comments=<span class="CodeOption">1</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>Action:</b> the name of the task to complete. If unspecified, the user will be given a dropdown of the tasks to complete.</p>
-                <p><b>Confirm (Optional):</b> If set to 1, a web page will be shown prompting the user to confirm that he wants to complete the task.&#160;By default, this is set to "0".</p>
-                <p><b>Comments (Optional):</b> If set to 1, a text box will appear allowing the user to enter comments. By default, this is set to "0".</p>
+                <p>
+                    <b>Action:</b> the name of the task to complete. If unspecified, the user will be given a dropdown of the tasks to complete.</p>
+                <p>
+                    <b>Confirm (Optional):</b> If set to 1, a web page will be shown prompting the user to confirm that he wants to complete the task.&#160;By default, this is set to "0".</p>
+                <p>
+                    <b>Comments (Optional):</b> If set to 1, a text box will appear allowing the user to enter comments. By default, this is set to "0".</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailErrorStatus"></a><a href="#EmailErrorStatus"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailErrorStatus">
+                    </a>
+                    <a href="#EmailErrorStatus">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email Error Status" />Email Error Status</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This system variablewill return a string explaining why the a user completing a task via email (via the Email Actions Custom Task) was unable to do so. For example, the sysvar will indicate that the task had already been completed, or was not configured for email approval. {EMAIL_ERROR_STATUS} will be blank if the task succeeded. This sysvar is only available within the Email Actions custom task.</p>
+                <p>This system variablewill return a string explaining why the a user completing a task via email (via the Email Actions Custom Task) was unable to do so. For example, the sysvar will indicate that the task had already been completed, or was not configured for email approval. {EMAIL_ERROR_STATUS} will be blank if the task succeeded. This sysvar is only available within the Email Actions Custom Task.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_ERROR_STATUS" />{EMAIL_ERROR_STATUS}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_ERROR_STATUS" />{EMAIL_ERROR_STATUS}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailFormInstance"></a><a href="#EmailFormInstance"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailFormInstance">
+                    </a>
+                    <a href="#EmailFormInstance">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email Form Instance Url" />Email Form Instance Url</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
                 <p>This system variable returns the URL to the form instance or process activity that sent this email.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_FORM_INSTANCE_URL" />{EMAIL_FORM_INSTANCE_URL, CompletePage="<span class="CodeOption">URL</span>", CompletePagePrompt=<span class="CodeOption">0</span>, CompleteText="<span class="CodeOption">SomeTextString</span>", NoHome=<span class="CodeOption">1</span>, AddProcessID=<span class="CodeOption">ProcessID</span>}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_FORM_INSTANCE_URL" />{EMAIL_FORM_INSTANCE_URL, CompletePage="<span class="CodeOption">URL</span>", CompletePagePrompt=<span class="CodeOption">0</span>, CompleteText="<span class="CodeOption">SomeTextString</span>", NoHome=<span class="CodeOption">1</span>, AddProcessID=<span class="CodeOption">ProcessID</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p>All modifiers for this System Variable are optional.</p>
-                <p><b>CompletePage:</b> The full URL of the page to navigate to after the task is completed.</p>
-                <p><b>CompletePagePrompt:</b> Set to 0 to prevent a confirmation prompt from displaying. By default, this is set to "1".</p>
-                <p><b>CompleteText:</b> text to display after the task is completed</p>
-                <p><b>NoHome:</b> Set to 1 to prevent the home page from displaying when the task link is clicked. By default, this is set to "0".</p>
-                <p><b>AddProcessID:</b> Adds the ID of the process sending this email to the email URL. This allows the link to associate the form instance with the process, such that the correct attachments, routing slip, etc. are displayed. By default, this is set to "0".</p>
+                <p>
+                    <b>CompletePage:</b> The full URL of the page to navigate to after the task is completed.</p>
+                <p>
+                    <b>CompletePagePrompt:</b> Set to 0 to prevent a confirmation prompt from displaying. By default, this is set to "1".</p>
+                <p>
+                    <b>CompleteText:</b> text to display after the task is completed</p>
+                <p>
+                    <b>NoHome:</b> Set to 1 to prevent the home page from displaying when the task link is clicked. By default, this is set to "0".</p>
+                <p>
+                    <b>AddProcessID:</b> Adds the ID of the process sending this email to the email URL. This allows the link to associate the form instance with the process, such that the correct attachments, routing slip, etc. are displayed. By default, this is set to "0".</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailExternalUser"></a><a href="#EmailExternalUser"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailExternalUser">
+                    </a>
+                    <a href="#EmailExternalUser">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email External User" />Email is For External User</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <p>
@@ -100,73 +147,113 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a Boolean value reflecting whether the user being emailed is an external user or not.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_EXT_USER" />{EMAIL_EXT_USER}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_EXT_USER" />{EMAIL_EXT_USER}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailReminderDescription"></a><a href="#EmailReminderDescription"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailReminderDescription">
+                    </a>
+                    <a href="#EmailReminderDescription">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email Reminder Description" />Email Reminder Description</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This variable returns the reason the email reminder has been generated, as configured in the dropdown value of the notification settings in the workflow step/timeline activity.</p>
+                <p>This variable returns the reason the email reminder has been generated, as configured in the dropdown value of the notification settings in the workflow step/Timeline Activity.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_REMINDER_DESC" />{EMAIL_REMINDER_DESC}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_REMINDER_DESC" />{EMAIL_REMINDER_DESC}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailResultLinks"></a><a href="#EmailResultLinks"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailResultLinks">
+                    </a>
+                    <a href="#EmailResultLinks">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email Result Links" />Email Result Links</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
                 <p>This system variable returns a list of the URLs of the branches or activity results from the task that sent this email.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_RESULT_LINKS" />{EMAIL_RESULT_LINKS,comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>, separator="<span class="CodeOption">|</span>", icon=<span class="CodeOption">1</span>}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_RESULT_LINKS" />{EMAIL_RESULT_LINKS,comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>, separator="<span class="CodeOption">|</span>", icon=<span class="CodeOption">1</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p>All modifiers for this System Variable are optional, though <span class="Emphasis">using the Separator option is highly recommended for readability</span>.</p>
-                <p><b>Confirm:</b> If set to 1, which is the default value, prompts a user to confirm that he wants to take this branch.</p>
-                <p><b>Comments:</b> If set to 1, a text box appears allowing the user to enter comments.&#160;The default value is "0".</p>
-                <p><b>Separator:</b> Specifies arbitrary text or HTML to separate each link. HTML tags must be enclosed in square brackets. For example, <code>separator="[br/]"</code> would put a new line between each link. Failing to use a Separator will cause the results text options to display without spaces or other puctuation between each item, which will be confusing to end users.</p>
-                <p><b>Icon:</b> Determines if the link returned links to an icon (if set to 1) or the branch or activity result (if set to 0). The default value is "0".</p>
+                <p>
+                    <b>Confirm:</b> If set to 1, which is the default value, prompts a user to confirm that he wants to take this branch.</p>
+                <p>
+                    <b>Comments:</b> If set to 1, a text box appears allowing the user to enter comments.&#160;The default value is "0".</p>
+                <p>
+                    <b>Separator:</b> Specifies arbitrary text or HTML to separate each link. HTML tags must be enclosed in square brackets. For example, <code>separator="[br/]"</code> would put a new line between each link. Failing to use a Separator will cause the results text options to display without spaces or other puctuation between each item, which will be confusing to end users.</p>
+                <p>
+                    <b>Icon:</b> Determines if the link returned links to an icon (if set to 1) or the branch or activity result (if set to 0). The default value is "0".</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailResultList"></a><a href="#EmailResultList"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailResultList">
+                    </a>
+                    <a href="#EmailResultList">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email Result List" />Email Result List</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
                 <p>This variable returns a list of the potential branches or activity results from this task.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_RESULT_LIST" />{EMAIL_RESULT_LIST, separator=<b>"</b><span class="CodeOption">TextOrHTML</span><b>"</b>}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_RESULT_LIST" />{EMAIL_RESULT_LIST, separator=<b>"</b><span class="CodeOption">TextOrHTML</span><b>"</b>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>Separator:</b> Specifies arbitrary text or HTML to separate each result. HTML tags must be enclosed in square brackets. For example, <code>separator="[br/]"</code> would put a new line between each link.</p>
+                <p>
+                    <b>Separator:</b> Specifies arbitrary text or HTML to separate each result. HTML tags must be enclosed in square brackets. For example, <code>separator="[br/]"</code> would put a new line between each link.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailTaskID"></a><a href="#EmailTaskID"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailTaskID">
+                    </a>
+                    <a href="#EmailTaskID">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email Task ID" />Email Task ID</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
                 <p>Replaced with a tag indicating the task list used to send this email.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_TASK_ID" />{EMAIL_TASK_ID}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_TASK_ID" />{EMAIL_TASK_ID}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailType"></a><a href="#EmailType"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailType">
+                    </a>
+                    <a href="#EmailType">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email Type" />Email Type</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <p>
@@ -176,39 +263,64 @@
                 <h3>Returns</h3>
                 <p>This variable returns an integer that indicates the type of email notification email being sent. The following email types are returned:</p>
                 <ul>
-                    <li><b>0 - NotSet:</b> An email notification sent outside of the context of the process or task.</li>
-                    <li><b>1 - TaskAssignment:</b> An email notification sent when a task is assigned.</li>
-                    <li><b>2 - Reminder:</b>				An email notification sent as a reminder because the task was not completed in time.</li>
-                    <li><b>3 - Timeout:</b> An email notification sent when a timeout occurs.</li>
-                    <li><b>4 - Cancelled:</b> An email notification sent when a user is cancelled, reassigned, or removed from running step.</li>
-                    <li><b>5 - StepStart:</b> An email notification sent when a step or activity is started, but is NOT a Task Assignment notification to the assignee.</li>
-                    <li><b>6 - StepStop:</b> = An email notification sent  when a step or activity is ended.</li>
-                    <li><b>7 - PredictedLate:</b> = This activity is predicted to be late</li>
-                    <li><b>8 - UserCompletes:</b> An email notification sent when the user completes the assigned task.</li>
-                    <li><b>9 - UserDidNotFinish:</b> An email notification sent when a user did not finish a task, e.g., the user was not needed because another user caused the step to complete.</li>
-                    <li><b>10 - CalendarInvite:</b> An email notification sent via the Send Calendar Invite Custom Task.</li>
+                    <li>
+                        <b>0 - NotSet:</b> An email notification sent outside of the context of the process or task.</li>
+                    <li>
+                        <b>1 - TaskAssignment:</b> An email notification sent when a task is assigned.</li>
+                    <li>
+                        <b>2 - Reminder:</b>				An email notification sent as a reminder because the task was not completed in time.</li>
+                    <li>
+                        <b>3 - Timeout:</b> An email notification sent when a timeout occurs.</li>
+                    <li>
+                        <b>4 - Cancelled:</b> An email notification sent when a user is cancelled, reassigned, or removed from running step.</li>
+                    <li>
+                        <b>5 - StepStart:</b> An email notification sent when a step or activity is started, but is NOT a Task Assignment notification to the assignee.</li>
+                    <li>
+                        <b>6 - StepStop:</b> = An email notification sent  when a step or activity is ended.</li>
+                    <li>
+                        <b>7 - PredictedLate:</b> = This activity is predicted to be late</li>
+                    <li>
+                        <b>8 - UserCompletes:</b> An email notification sent when the user completes the assigned task.</li>
+                    <li>
+                        <b>9 - UserDidNotFinish:</b> An email notification sent when a user did not finish a task, e.g., the user was not needed because another user caused the step to complete.</li>
+                    <li>
+                        <b>10 - CalendarInvite:</b> An email notification sent via the Send Calendar Invite Custom Task.</li>
                 </ul>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_TYPE" />{EMAIL_TYPE}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_TYPE" />{EMAIL_TYPE}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailUnsubscribeURL"></a><a href="#EmailUnsubscribeURL"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailUnsubscribeURL">
+                    </a>
+                    <a href="#EmailUnsubscribeURL">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email Unsubscribe URL" />Email Unsubscribe URL</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
                 <p>This system variable returns the URL of the Unsubscribe page that enables users to opt-out of receiving task notification emails for a specified process. Generally, this variable will be added to an email template to enables the user to opt out of further notifications from that process.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_TASK_ID" />{EMAIL_UNSUBSCRIBE_URL}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_TASK_ID" />{EMAIL_UNSUBSCRIBE_URL}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailURL"></a><a href="#EmailURL"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailURL">
+                    </a>
+                    <a href="#EmailURL">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email URL" />Email URL</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -216,25 +328,39 @@
                 <p>This system variable returns the URL of the task to which the email notification refers, if the user is in the context of a task. If the user is not in task context, the returned URL will most likely be the default form instance for the process, which the user can view, but not use to complete a task.. </p>
                 <p>This system variable can be put in HTML tags for use in hyperlinks.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_URL" />{EMAIL_URL, CompletePage="<span class="CodeOption">URL</span>", CompletePagePrompt=<span class="CodeOption">0</span>, CompleteText="<span class="CodeOption">SomeTextString</span>", NoHome=<span class="CodeOption">1</span>}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_URL" />{EMAIL_URL, CompletePage="<span class="CodeOption">URL</span>", CompletePagePrompt=<span class="CodeOption">0</span>, CompleteText="<span class="CodeOption">SomeTextString</span>", NoHome=<span class="CodeOption">1</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p>All modifiers for this System Variable are optional.</p>
-                <p><b>CompletePage:</b> the full URL of the page to navigate to after the task is completed.</p>
-                <p><b>CompletePagePrompt:</b> set to 0 to prevent a confirmation prompt from displaying.</p>
-                <p><b>CompleteText:</b> Text to display after the task is completed.</p>
-                <p><b>NoHome:</b> Set to 1 to prevent the home page from displaying when the task link is clicked.</p>
+                <p>
+                    <b>CompletePage:</b> the full URL of the page to navigate to after the task is completed.</p>
+                <p>
+                    <b>CompletePagePrompt:</b> set to 0 to prevent a confirmation prompt from displaying.</p>
+                <p>
+                    <b>CompleteText:</b> Text to display after the task is completed.</p>
+                <p>
+                    <b>NoHome:</b> Set to 1 to prevent the home page from displaying when the task link is clicked.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailUser"></a><a href="#EmailUser"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /><MadCap:keyword term="Email User" /></a>Email User</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailUser">
+                    </a>
+                    <a href="#EmailUser">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                        <MadCap:keyword term="Email User" />
+                    </a>Email User</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
                 <p>This User system variable returns the user to whom the email message is being sent.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_USER" />{EMAIL_USER}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_USER" />{EMAIL_USER}</code>
                 </p>
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> This system variable should always be used in email templates to return the name of the task user for that email notification. Do not use CURR_USER in email templates for this purpose.</p>
@@ -242,28 +368,45 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="IncomingEmail"></a><a href="#IncomingEmail"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="IncomingEmail">
+                    </a>
+                    <a href="#IncomingEmail">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Incoming Email" />Incoming Email</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
                 <p>This system variable is usable only within the Email Actions Custom Task. When a user responds to a task assignment via email, the Custom Task will processes the email, and will extract the sender's email address, subject, and body. The system variable can return any of the extracted data through the use of the format paramater.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="INCOMING_EMAIL" />{INCOMING_EMAIL, format=<span class="CodeOption">Subject</span>|<span class="CodeOption">From</span>|<span class="CodeOption">To</span>|<span class="CodeOption">Body</span>}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="INCOMING_EMAIL" />{INCOMING_EMAIL, format=<span class="CodeOption">Subject</span>|<span class="CodeOption">From</span>|<span class="CodeOption">To</span>|<span class="CodeOption">Body</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>Format:</b> The Format parameter is used to determine the email data that the system variable returns. The possible formatting options are:</p>
+                <p>
+                    <b>Format:</b> The Format parameter is used to determine the email data that the system variable returns. The possible formatting options are:</p>
                 <ul>
-                    <li><b>Subject:</b> The subject of the email message.</li>
-                    <li><b>From:</b> The sender's email address.</li>
-                    <li style="font-weight: normal;"><b>To:</b> The Recipient's email address.</li>
-                    <li><b>Body:</b> the body text of the email.</li>
+                    <li>
+                        <b>Subject:</b> The subject of the email message.</li>
+                    <li>
+                        <b>From:</b> The sender's email address.</li>
+                    <li style="font-weight: normal;">
+                        <b>To:</b> The Recipient's email address.</li>
+                    <li>
+                        <b>Body:</b> the body text of the email.</li>
                 </ul>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailCompletionOK"></a><a href="#EmailCompletionOK"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailCompletionOK">
+                    </a>
+                    <a href="#EmailCompletionOK">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Email Completion OK" />Task may be completed via Email?</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <p>
@@ -273,13 +416,21 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a Boolean value that specifies whether a task can be completed via email. </p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_COMPLETION_OK" />{EMAIL_COMPLETION_OK}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_COMPLETION_OK" />{EMAIL_COMPLETION_OK}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="EmailInvitationOK"></a><a href="#EmailInvitationOK"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /><MadCap:keyword term="Email Invitation OK" /></a>Task supports invite via Email?</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="EmailInvitationOK">
+                    </a>
+                    <a href="#EmailInvitationOK">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                        <MadCap:keyword term="Email Invitation OK" />
+                    </a>Task supports invite via Email?</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <p>
                 <img src="../Resources/Images/SystemVariablesReferenceGuide/EmailInvitation.png" />
@@ -288,20 +439,28 @@
                 <h3>Returns</h3>
                 <p>This system variable returns a Boolean value that specifies whether a task can be forwarded to another user for assignment.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="EMAIL_INVITATION_OK" />{EMAIL_INVITATION_OK}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="EMAIL_INVITATION_OK" />{EMAIL_INVITATION_OK}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="TaskUserEmail"></a><a href="#TaskUserEmail"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="TaskUserEmail">
+                    </a>
+                    <a href="#TaskUserEmail">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Task User Email;TASK_USER_EMAIL" />Task User Email</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
                 <p>This system variable returns  the email of the current Task List user. This is useful for anonymous user tasks and displaying information in a kview column.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{TASK_USER_EMAIL}</code>
+                <p>
+                    <code>{TASK_USER_EMAIL}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>

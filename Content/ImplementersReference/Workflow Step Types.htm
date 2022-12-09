@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
         <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
@@ -13,7 +13,7 @@
             <a name="_Toc421536128">
             </a>
             <MadCap:keyword term="Processes;Workflows;Workflow Steps" />Workflow Step Task Types</h1>
-        <p>Users are assigned a task when they are added to a Workflow step. A context sensitive web page or Form is displayed that is specific to the task type when the user selects the entry in their <span class="ProcessDirectorObject">Task List</span>, or the link in their email notification. Each task type defines a set of functions or actions that can be performed, as well as custom instructions for the participants. </p>
+        <p>Users are assigned a task when they are added to a Workflow Step. A context sensitive web page or Form is displayed that is specific to the task type when the user selects the entry in their <span class="ProcessDirectorObject">Task List</span>, or the link in their email notification. Each task type defines a set of functions or actions that can be performed, as well as custom instructions for the participants. </p>
         <p class="PDNote">
             <img src="../Resources/Images/i2.png" alt="Note" /> If your process includes tasks for unauthenticated users, please refer to the documentation on <a href="Managing Users.htm#_Toc421536078">Anonymous Users</a> for special concerns that may apply to some settings.</p>
         <p>The Workflow engine embedded within Process Director supports the following tasks:</p>
@@ -23,7 +23,7 @@
         <p>The user task is any actionable item assigned to a user. If a user task has been assigned to a user, a Task will appear in their <span class="ProcessDirectorObject">Task List</span>. They must complete the task before it can be removed from the <span class="ProcessDirectorObject">Task List</span>. A user who is assigned a task will be automatically given permission to any object in the Workflow package so they may complete the task. Examples of this task can be an approval task or update task.</p>
         <p>When a Workflow Step is assigned to a user with an invalid UID or user ID, Process Director will immediately stop the process, and place the Workflow Step into an error state. This is also true for anonymous user assignments if the email address is not a valid format (Process Director can't validate the email address itself, only the format).</p>
         <h3>Participants Tab</h3>
-        <p>A user step in the Workflow can have participants assigned to it. Some Workflow steps can run without any users (e.g. Form Actions, Parallel Tasks, Sub Workflow, etc.).</p>
+        <p>A user step in the Workflow can have participants assigned to it. Some Workflow Steps can run without any users (e.g. Form Actions, Parallel Tasks, Sub Workflow, etc.).</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_18.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
@@ -43,7 +43,7 @@
                 <MadCap:dropDownHotspot>Due Date</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Each step in the Workflow can have unique time limit/due date options. Process Director runs as a virtual directory in IIS and processes all time related events like due dates when activity is present on the system (e.g. a login). To force this activity checking more often, you can schedule a command in the bputil.exe utility.</p>
+                <p>Each step in the Workflow can have unique time limit/due date options. Process Director runs as a virtual directory in IIS and processes all time related events like due dates when Activity is present on the system (e.g. a login). To force this Activity checking more often, you can schedule a command in the bputil.exe utility.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/Workflow2_20.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
@@ -214,7 +214,7 @@
                 <MadCap:dropDownHotspot>Restart Users</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This option determines how participants are assigned to the step when it must be restarted. This is particularly relevant when an implementer changes the participants assigned to an activity in the Workflow definition. An existing instance may have been created when different participants were configured to participate in the task. This option enables you to determine how to handle user assignments when the configured users have changed.</p>
+                <p>This option determines how participants are assigned to the step when it must be restarted. This is particularly relevant when an implementer changes the participants assigned to an Activity in the Workflow definition. An existing instance may have been created when different participants were configured to participate in the task. This option enables you to determine how to handle user assignments when the configured users have changed.</p>
                 <p>It is also important to note that the term "restart" is used for both:</p>
                 <ul>
                     <li>Cases in which a running task is restarted while the task is still running, and</li>
@@ -241,7 +241,7 @@
                                 <p>Start only configured task participants</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>This option will assign the task to the currently configured users, irrespective of which users may have been previously assigned to the activity.</p>
+                                <p>This option will assign the task to the currently configured users, irrespective of which users may have been previously assigned to the Activity.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -265,7 +265,7 @@
                                 <p>Start from last completed user</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>If multiple users are assigned to the activity instance, this option will re-assign the activity to the last user who completed it when it was initially run.</p>
+                                <p>If multiple users are assigned to the Activity instance, this option will re-assign the Activity to the last user who completed it when it was initially run.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -273,7 +273,7 @@
                                 <p>Start users that did not complete previously</p>
                             </td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row1">
-                                <p>If multiple users are assigned to the activity instance, this option will assign the task to users who did not previously complete it. For instance, if the activity uses a round-robin assignment, the activity will be assigned to one of the users who were not assigned it on the initial run.&#160; </p>
+                                <p>If multiple users are assigned to the Activity instance, this option will assign the task to users who did not previously complete it. For instance, if the Activity uses a round-robin assignment, the Activity will be assigned to one of the users who were not assigned it on the initial run.&#160; </p>
                             </td>
                         </tr>
                     </tbody>
@@ -512,7 +512,7 @@
             <img src="../Resources/Images/ImplementersReference/Workflow2_28.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
         <p>The Process step requires that a Workflow or Process Timeline definition be configured. The configured process will be started as a subprocess (child process) of the main (parent) Workflow. A subprocess can consist of a Workflow or a Process Timeline. You may copy objects from the parent process to the child process and vice versa.</p>
-        <p>When a subprocess contains an End Process step, it will return the name of the End Process step as a result for the parent Process activity. Process Timelines and Workflows use the End Process function differently, so the results can be slightly different depending on the type of subprocess that is called by the Process step.</p>
+        <p>When a subprocess contains an End Process step, it will return the name of the End Process step as a result for the parent Process Activity. Process Timelines and Workflows use the End Process function differently, so the results can be slightly different depending on the type of subprocess that is called by the Process step.</p>
         <h3>Workflow </h3>
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_29.jpg" style="visibility: visible;mso-wrap-style: square;" />
@@ -523,7 +523,7 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_30.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>Unlike the End Process step in the Workflow, the End Process activity in a Process Timeline stops the running of the Process Timeline immediately. As such, the End process activity can only run once in a Process Timeline. So, if you have parallel activities running in a Process Timeline, all of the parallel steps must complete before the End Process activity is reached.  Process Timelines with multiple End Process activities will need to have conditions set on each End Process activity to ensure that only one of the End Process Activities runs. When the subprocess completes, the name of the End Process activity that was run will be returned to the parent process as the result of the Process step that started the subprocess.</p>
+        <p>Unlike the End Process step in the Workflow, the End Process Activity in a Process Timeline stops the running of the Process Timeline immediately. As such, the End process Activity can only run once in a Process Timeline. So, if you have parallel activities running in a Process Timeline, all of the parallel steps must complete before the End Process Activity is reached.  Process Timelines with multiple End Process activities will need to have conditions set on each End Process Activity to ensure that only one of the End Process Activities runs. When the subprocess completes, the name of the End Process Activity that was run will be returned to the parent process as the result of the Process step that started the subprocess.</p>
         <h2>
             <a name="_Toc421536134">
             </a>Comment <a href="#_Toc421536134" class="anchor">#</a></h2>
@@ -548,7 +548,7 @@
                 <h5>Script Parameters (optional)</h5>
                 <p>You may enter a parameter string to pass to the selected script.</p>
                 <h5>Use Form In this Step</h5>
-                <p>This property enables a Script Step in a Workflow to specify a different Form to use a current form for the activity. If this property is not configured,  Process Director will revert to passing the script to the current form instance that is associated with the running process.</p>
+                <p>This property enables a Script Step in a Workflow to specify a different Form to use a current form for the Activity. If this property is not configured,  Process Director will revert to passing the script to the current form instance that is associated with the running process.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2>
@@ -574,14 +574,14 @@
         <h2>
             <a name="Custom">
             </a>Custom Task <a href="#Custom" class="anchor">#</a></h2>
-        <p>Process Director Custom tasks can be used as a Workflow step. The different types of custom tasks appear on the left side of the Workflow definition screen, below the Built-In Tasks.</p>
+        <p>Process Director Custom Tasks can be used as a Workflow Step. The different types of Custom Tasks appear on the left side of the Workflow definition screen, below the Built-In Tasks.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/WFCustomTasks1.png" />
         </p>
-        <p>Clicking on a Custom task Type will display the Custom tasks of that type at the top of the sidebar. In the example below, the sidebar displays the Process Custom Tasks.</p>
+        <p>Clicking on a Custom Task Type will display the Custom Tasks of that type at the top of the sidebar. In the example below, the sidebar displays the Process Custom Tasks.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/WFCustomTasks2.png" />
         </p>
-        <p>Simply drag the Custom task onto the flowchart, just as you'd any Built-In Task. Open the properties of the Custom Task, and use the <span class="UIElement">Custom Task Options</span> tab to configure the task. On the <span class="UIElement">Custom Task Options</span> tab, click the <span class="UIElement">Configure </span>button to open the configuration screen for the task. Each custom task will have a specific configuration screen. For details on the configuration settings for a Custom task, please refer to the <a href="../Custom Tasks2/Custom Tasks.htm" target="_blank">Custom Tasks Reference Guide</a>.</p>
+        <p>Simply drag the Custom Task onto the flowchart, just as you'd any Built-In Task. Open the properties of the Custom Task, and use the <span class="UIElement">Custom Task Options</span> tab to configure the task. On the <span class="UIElement">Custom Task Options</span> tab, click the <span class="UIElement">Configure </span>button to open the configuration screen for the task. Each Custom Task will have a specific configuration screen. For details on the configuration settings for a Custom Task, please refer to the <a href="../Custom Tasks2/Custom Tasks.htm" target="_blank">Custom Tasks Reference Guide</a>.</p>
     </body>
 </html>

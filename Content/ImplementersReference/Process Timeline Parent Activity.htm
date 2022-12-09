@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
@@ -10,11 +10,11 @@
             <MadCap:keyword term="Parent Activity" />Parent Activity</h1>
         <p> Parent activities are parent containers for other activities, which are referred to as “Children” or "child activities". </p>
         <p class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" title="Important" /> You shouldn't use any other type of activity as a Parent Activity.</p>
-        <p>In Process Director versions 3.45 and higher, additional functionality is available to Parent activity types: Results Concatenation and Looping.</p>
-        <p>In addition to the common properties tabs that appear for all Timeline activities, the configuration settings below are unique to this activity type.</p>
+            <img src="../Resources/Images/i.png" alt="Important" title="Important" /> You shouldn't use any other type of Activity as a Parent Activity.</p>
+        <p>In Process Director versions 3.45 and higher, additional functionality is available to Parent Activity Types: Results Concatenation and Looping.</p>
+        <p>In addition to the common properties tabs that appear for all Timeline activities, the configuration settings below are unique to this Activity Type.</p>
         <h2>Results and Result Concatenation</h2>
-        <p>By default, the result of a parent activity is set to the result of the child task whose completion resulted in the completion of the parent (this behavior is implemented in Process Director v3.45 and up. In previous versions, the parent never has a result.). Parent activities have the option of setting the result of the Parent activity to a comma-separated list of all the child results. This list will contain only the results from the immediate child activities of the Parent activity; it won't use results from any Parent activities that have been created under the top-level Parent. If the parent is configured to loop, only the results from the final iteration will be included. If the parent contains other parent activities, only the results from the direct children of that parent will be included; the results from the children of "subparents" won't be included.</p>
+        <p>By default, the result of a parent Activity is set to the result of the child task whose completion resulted in the completion of the parent (this behavior is implemented in Process Director v3.45 and up. In previous versions, the parent never has a result.). Parent activities have the option of setting the result of the Parent Activity to a comma-separated list of all the child results. This list will contain only the results from the immediate child activities of the Parent Activity; it won't use results from any Parent activities that have been created under the top-level Parent. If the parent is configured to loop, only the results from the final iteration will be included. If the parent contains other parent activities, only the results from the direct children of that parent will be included; the results from the children of "subparents" won't be included.</p>
         <h2>
             <a name="Looping">
             </a>Looping Tab</h2>
@@ -22,11 +22,11 @@
         <p>
             <img src="../Resources/Images/loop.png" alt="Iteration Loop" />
         </p>
-        <p>Selecting the Parent activity type will display a Looping tab in the designer, from which the iteration conditions can be specified.</p>
+        <p>Selecting the Parent Activity Type will display a Looping tab in the designer, from which the iteration conditions can be specified.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/LoopingTab.png" />
         </p>
-        <p>A parent activity that implements iteration will also display a unique icon in the Process Timeline definition.</p>
+        <p>A parent Activity that implements iteration will also display a unique icon in the Process Timeline definition.</p>
         <p>
             <img src="../Resources/Images/Training/Advanced/Iteration.png" />
         </p>
@@ -42,8 +42,8 @@
                 <MadCap:dropDownHotspot>Repeat Loop Until condition is met</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Each time Process Director prepares to execute the looping segment, this condition will be evaluated to determine whether or not to do so. If the condition is not met, the looping segment will start again. If the condition is met, however, the loop won't be repeated, and the parent activity will be marked as complete. Any successive activities in the Process Timeline will now be eligible to run.</p>
-                <p>The remaining methods of controlling the loop rely on conditions that are evaluated each time any child activity completes. When the relevant condition is met, execution of the loop will be interrupted.</p>
+                <p>Each time Process Director prepares to execute the looping segment, this condition will be evaluated to determine whether or not to do so. If the condition is not met, the looping segment will start again. If the condition is met, however, the loop won't be repeated, and the parent Activity will be marked as complete. Any successive activities in the Process Timeline will now be eligible to run.</p>
+                <p>The remaining methods of controlling the loop rely on conditions that are evaluated each time any child Activity completes. When the relevant condition is met, execution of the loop will be interrupted.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -51,7 +51,7 @@
                 <MadCap:dropDownHotspot>Jump back to the top of the loop when condition is met</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>When the specified condition is met, the current loop will be immediately stopped, and the loop will restart with the first child activity.&#160; </p>
+                <p>When the specified condition is met, the current loop will be immediately stopped, and the loop will restart with the first child Activity.&#160; </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -59,14 +59,14 @@
                 <MadCap:dropDownHotspot>Cancel the remainder of the loop when condition is met</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>When the condition specified by the user is met, the current loop will be immediately stopped, and the parent activity will be marked as complete. Any successive activities in the Timeline will now be eligible to run. </p>
+                <p>When the condition specified by the user is met, the current loop will be immediately stopped, and the parent Activity will be marked as complete. Any successive activities in the Timeline will now be eligible to run. </p>
                 <p>It is quite possible that you'll need to configure all three methods. As an example, let's consider a simple approval process for a request. Suppose that each level of approval can end in one of three results: Approve, Reject, and Terminate. In this case, we might want to configure the segment as follows:</p>
                 <ul style="list-style-type: disc;margin-left: 36pt;">
                     <li>Stop repeating the loop when all approvers approve the request</li>
                     <li>Exit the segment any time an approver chooses the terminate option</li>
                     <li>Jump back to the top of the segment when any approver chooses the reject option, to give earlier reviewers a chance to make changes.</li>
                 </ul>
-                <p>The first method for controlling the loop relies on a condition that is evaluated when your Process Timeline first runs the parent activity, and then again each time the looping segment completes (that is, each time all of the activities in the loop have completed).</p>
+                <p>The first method for controlling the loop relies on a condition that is evaluated when your Process Timeline first runs the parent Activity, and then again each time the looping segment completes (that is, each time all of the activities in the loop have completed).</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -86,7 +86,7 @@
                 <MadCap:dropDownHotspot>Set Activity result to a list of all children or user results</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Selecting this option concatenates the results of all child activities to a comma-separated list of results, which become the result for the Parent activity.</p>
+                <p>Selecting this option concatenates the results of all child activities to a comma-separated list of results, which become the result for the Parent Activity.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2>Related System Variables</h2>
@@ -114,36 +114,36 @@
         </ul>
         <p>Follow the links above to see a detailed explanation of each System Variable.</p>
         <h2>Other Activity Types</h2>
-        <p>To view the documentation for other activity types, you can navigate to them using the Table of Contents displayed in the upper right corner of the page, or by using one of the links below.</p>
+        <p>To view the documentation for other Activity Types, you can navigate to them using the Table of Contents displayed in the upper right corner of the page, or by using one of the links below.</p>
         <p>
             <b>
-                <a href="Process Timeline User Activity.htm">User</a>:</b> This activity type assigns a task to a user or users, which must be completed to end the task. </p>
+                <a href="Process Timeline User Activity.htm">User</a>:</b> This Activity Type assigns a task to a user or users, which must be completed to end the task. </p>
         <p>
             <b>
-                <a href="Process Timeline Notify Activity.htm">Notify</a>:</b> This activity type sends email notifications to users who aren't participants in the process.</p>
+                <a href="Process Timeline Notify Activity.htm">Notify</a>:</b> This Activity Type sends email notifications to users who aren't participants in the process.</p>
         <p>
             <b>
-                <a href="Process Timeline Process Activity.htm">Process</a>:</b> This activity type invokes a different process that will run as a separate, synchronous subprocess. </p>
+                <a href="Process Timeline Process Activity.htm">Process</a>:</b> This Activity Type invokes a different process that will run as a separate, synchronous subprocess. </p>
         <p>
             <b>
-                <a href="Process Timeline Script Activity.htm">Script</a>:</b> This activity type enables you to invoke a custom script.</p>
+                <a href="Process Timeline Script Activity.htm">Script</a>:</b> This Activity Type enables you to invoke a custom script.</p>
         <p>
             <b>
-                <a href="Process Timeline Custom Task Activity.htm">Custom Task</a>:</b> This activity type invokes a Custom Task to run when the activity starts. </p>
+                <a href="Process Timeline Custom Task Activity.htm">Custom Task</a>:</b> This Activity Type invokes a Custom Task to run when the Activity starts. </p>
         <p>
             <b>
-                <a href="Process Timeline Form Actions Activity.htm">Form Actions</a>:</b> This activity type enables you to manipulate the Form used for the process.</p>
+                <a href="Process Timeline Form Actions Activity.htm">Form Actions</a>:</b> This Activity Type enables you to manipulate the Form used for the process.</p>
         <p>
             <b>
-                <a href="#">Branch</a>:</b> This activity type enables you to change the operation of the Process Timeline to invoke a specified activity.</p>
+                <a href="#">Branch</a>:</b> This Activity Type enables you to change the operation of the Process Timeline to invoke a specified Activity.</p>
         <p>
             <b>
-                <a href="Process Timeline End Process Activity.htm">End Process</a>:</b> This activity type enables you to conditionally end a process.</p>
+                <a href="Process Timeline End Process Activity.htm">End Process</a>:</b> This Activity Type enables you to conditionally end a process.</p>
         <p>
             <b>
-                <a href="Process Timeline Wait Activity.htm">Wait</a>:</b> This activity type enables you to pause a Process Timeline. </p>
+                <a href="Process Timeline Wait Activity.htm">Wait</a>:</b> This Activity Type enables you to pause a Process Timeline. </p>
         <p>
             <b>
-                <a href="Process Timeline Case Activity.htm">Case</a>:</b> This activity type enables you to manipulate the Case instance that is associated with the Process Timeline. </p>
+                <a href="Process Timeline Case Activity.htm">Case</a>:</b> This Activity Type enables you to manipulate the Case instance that is associated with the Process Timeline. </p>
     </body>
 </html>

@@ -1,24 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head><title></title>
+    <head>
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h1><a name="_Toc421187293"></a>Implementation</h1>
+        <h1>
+            <a name="_Toc421187293">
+            </a>Implementation</h1>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Use of the Scheduler module has largely been deprecated in the product. BP&#160;Logix recommends using the Goal object for most scheduled operations that were formerly implemented via the Scheduler Module.</p>
         <p>In addition to the components described in the preceding section, a working PDSM implementation will include:</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
             <li>Schedule form containing the schedule picker control</li>
-            <li>Schedule workflow containing the schedule process custom task</li>
+            <li>Schedule workflow containing the schedule process Custom Task</li>
             <li>Audit form (optional)</li>
         </ul>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421187294"></a>Schedule form</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421187294">
+                    </a>Schedule form</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The schedule form definition includes all the fields required by the schedule process custom task, as well as any other information the user might wish to include.&#160; A typical schedule form might look like the example shown below.&#160; In addition to the fields required by the custom task, this form also includes a serial number, the name of the form creator, and other information.</p>
+                <p>The schedule form definition includes all the fields required by the schedule process Custom Task, as well as any other information the user might wish to include.&#160; A typical schedule form might look like the example shown below.&#160; In addition to the fields required by the Custom Task, this form also includes a serial number, the name of the form creator, and other information.</p>
                 <p>A new form instance is created for each different process, or schedule, that has to be run.&#160; For example, if process “A” has to run every Monday and process “B” has to run every Tuesday, there would be two instances of the schedule form created.&#160; In addition, if process “C” has to run every day at noon and again every day at 5pm, there would also need to be two instances of the schedule form: one specifying that the process be run every day at noon, and another specifying 5pm.</p>
                 <p>The form is not configured to launch a process when submitted.</p>
                 <p>
@@ -28,20 +34,24 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421187295"></a>Schedule workflow</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421187295">
+                    </a>Schedule workflow</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="Scheduler" />The schedule process custom task is one step in what is normally a very short workflow.&#160; It is possible to set up this workflow in such a way that it executes the custom task step, then waits, then loops.&#160; However, BP Logix recommends that, instead, you launch the schedule workflow from the Windows Scheduler on a recurring basis.</p>
+                    <MadCap:keyword term="Scheduler" />The schedule process Custom Task is one step in what is normally a very short workflow.&#160; It is possible to set up this workflow in such a way that it executes the Custom Task step, then waits, then loops.&#160; However, BP Logix recommends that, instead, you launch the schedule workflow from the Windows Scheduler on a recurring basis.</p>
                 <p>
                     <img src="../Resources/Images/Scheduler/Implementation_1.png" style="visibility: visible;mso-wrap-style: square;width: 319px;height: 198px;" />
                 </p>
-                <p>Each time the schedule workflow runs, the custom task examines every schedule form instance.&#160; If the current time falls within the specified start date / end date window, it will launch the appropriate process specified in a given instance if (a) the next run time has been reached, or (b) the next run time is blank.&#160; Therefore, one way to force an execution of a scheduled process is to manually clear the next run time field within the relevant form instance.</p>
+                <p>Each time the schedule workflow runs, the Custom Task examines every schedule form instance.&#160; If the current time falls within the specified start date / end date window, it will launch the appropriate process specified in a given instance if (a) the next run time has been reached, or (b) the next run time is blank.&#160; Therefore, one way to force an execution of a scheduled process is to manually clear the next run time field within the relevant form instance.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421187296"></a>Audit Form</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421187296">
+                    </a>Audit Form</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Each time a process is launched via the PDSM, a link to the schedule form instance that caused it to be launched is attached to the new process as a reference.&#160; As noted above, the schedule form sometimes includes information that the new process may need to use, so having the ability to access the information on the form is valuable.&#160; Furthermore, the PDSM uses this connection to determine which processes were started by which schedule form instance.</p>
@@ -54,7 +64,9 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421187297"></a>Workspace</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421187297">
+                    </a>Workspace</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>It is recommended that you create a Workspace that contains the items for the scheduler components. The Workspace should contain a button to the scheduler Form (for creating new scheduled items) and two portlet windows pointing to the "All Scheduled Items" and the "Upcoming Scheduled Items" Knowledge Views.</p>

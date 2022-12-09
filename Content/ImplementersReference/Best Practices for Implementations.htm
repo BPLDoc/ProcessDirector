@@ -1,17 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" /><a name="_Toc421536329"></a>
+            <MadCap:concept term="Implementation" />
+            <a name="_Toc421536329">
+            </a>
             <MadCap:keyword term="Best Practices" />Best Practices for <MadCap:keyword term="Implementations" />Implementations</h1>
         <p>There are a number of Best Practices that you should incorporate into your implementation projects. Following these guidelines will make your implementations work more smoothly, be easier to maintain, and will enable you to make necessary changes more quickly, as personnel or processes change and evolve. In addition to these best practices, you should also familiarize yourself with the basic design concepts that are explained in the <a href="../GettingStartedGuide/Basic Concepts.htm" target="_blank">Getting Started Guide</a>.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421536330"></a>General</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421536330">
+                    </a>General</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <ol>
@@ -19,20 +25,22 @@
                     <li>Always attach objects as Process references instead of Form references, except in those cases where a form-specific attachment is required. Always use a Group Name for attachments. The Group Name is the only reliable handle we have for selecting attached objects.</li>
                     <li>As a general rule, you should create only one data source per database back end, and reuse that Datasource for all relevant implementation projects. Only create multiple data sources when a) you are pointing to two or more databases, or b) You want to specifically restrict a data source to specific objects. For example, you might create a Datasource with a smaller subset of tables for use in a specific project, to ensure a class of users don't have access to more sensitive tables that might be included in the main Datasource.</li>
                     <li>Organize data sources in root folders of the partition, separate from any implementation folders, so that implementers don't have to export data sources when the implementation is exported from development to production. Exports and Imports are name-based, and relative folder position-based. Consequently, the root folder containing database sources should be mirrored on development and production servers, so that both the names and relative folder positions are exactly the same in both environments. If the mirroring is correct, implementations will be imported/exported between development and production without losing contact with the data sources.</li>
-                    <li>When creating conditions that require a specific value, use the "equals" (=) condition rather than the "contains" condition when possible Only use 'contains' when a null value is desired as a return proxy for "show me everything" When building conditions testing matching strings, think hard about when to use “=” versus “contains”. Note that if the right hand side of the condition is blank, then “contains” will match all strings, whereas “=” will match none. Keep in mind that if you are building a condition, for example, testing the result of a Process Timeline activity, and the result might be “Accept” or “Do Not Accept”, then using a condition like “contains ‘accept’” will match either result—probably not what you intended. So it’s also a good idea to avoid results that are substrings of one another, like "Approve" and "Disapprove".</li>
-                    <li>In field properties for objects like Workflow steps and Process Timeline activities, enter actual instructions in the <span class="ControlName">Instructions </span>property, and descriptions into the Description field.</li>
+                    <li>When creating conditions that require a specific value, use the "equals" (=) condition rather than the "contains" condition when possible Only use 'contains' when a null value is desired as a return proxy for "show me everything" When building conditions testing matching strings, think hard about when to use “=” versus “contains”. Note that if the right hand side of the condition is blank, then “contains” will match all strings, whereas “=” will match none. Keep in mind that if you are building a condition, for example, testing the result of a Process Timeline Activity, and the result might be “Accept” or “Do Not Accept”, then using a condition like “contains ‘accept’” will match either result—probably not what you intended. So it’s also a good idea to avoid results that are substrings of one another, like "Approve" and "Disapprove".</li>
+                    <li>In field properties for objects like Workflow Steps and Process Timeline activities, enter actual instructions in the <span class="ControlName">Instructions </span>property, and descriptions into the Description field.</li>
                 </ol>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421536331"></a>Email Templates</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421536331">
+                    </a>Email Templates</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <ol>
                     <li>As a guideline, use fewer email templates by using conditional sections and multiple email data controls, when applicable. </li>
                     <li>Use system variables to display step names, instructions, and descriptions, rather than hard-coding them in the body of the email, so that little customization has to be done to the email template. </li>
-                    <li>Configure a default email template in the Workflow/Process Timeline definition, so that you can override it and create custom email templates if a particular activity requires it.</li>
+                    <li>Configure a default email template in the Workflow/Process Timeline definition, so that you can override it and create custom email templates if a particular Activity requires it.</li>
                 </ol>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -43,7 +51,7 @@
             <MadCap:dropDownBody>
                 <ol>
                     <li>When developing, use real users as assignees for Workflow tasks or Timeline activities. In testing, use impersonation to perform the assignees' tasks. Do not assign tasks to yourself, as you need to see the process as the actual assignees will see the process.</li>
-                    <li>In field properties for objects like Workflow steps and Process Timeline activities, enter actual instructions in the Instructions field, and descriptions into the Description field. (Remember, somebody else might be modifying this project after you—help them out!)</li>
+                    <li>In field properties for objects like Workflow Steps and Process Timeline activities, enter actual instructions in the Instructions field, and descriptions into the Description field. (Remember, somebody else might be modifying this project after you—help them out!)</li>
                     <li>When you delete a form instance, ensure that you delete the corresponding Workflow/Process Timeline instance and vice versa. Failure to do leaves orphaned objects in Process Director, i.e., Form instances without their Timelines. All related instance objects need to be deleted together.</li>
                     <li>You shouldn't ever perform testing in the production environment, except is unusual circumstances. Production systems should be rigorously tested in the development environment, and imported to Production.</li>
                 </ol>
@@ -51,7 +59,9 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421536332"></a>Forms</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421536332">
+                    </a>Forms</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <ol>
@@ -74,11 +84,13 @@
                     <li>Do not use the <span class="ControlName">Otherwise disabled </span>or <span class="ControlName">Otherwise enabled</span> conditional appearance settings in field properties unless you specifically want to override the appearance logic for the parent container in all cases.<ul><li>Setting a control to "Otherwise Xxxxx" when the parent container has its own appearance logic can result in unexpected behavior when the parent container's appearance logic conflicts with that of the control.</li></ul></li>
                 </ul>
                 <ol MadCap:continue="true">
-                    <li><span class="NamedControl">Label </span>control values don't get saved to the database; therefore, labels should be used only to show text on forms. <span class="NamedControl">Label </span>controls are display vehicles only; don’t try to use them in conditions, for example. When possible, associate each label with an <span class="NamedControl">Input </span>control for ADA (Section 508) compliance.</li>
+                    <li>
+                        <span class="NamedControl">Label </span>control values don't get saved to the database; therefore, labels should be used only to show text on forms. <span class="NamedControl">Label </span>controls are display vehicles only; don’t try to use them in conditions, for example. When possible, associate each label with an <span class="NamedControl">Input </span>control for ADA (Section 508) compliance.</li>
                     <li>Hide debug sections and other development conventions in forms from the non-developer form users. Users should never see anything on a form that is not relevant to the process on which they are working.</li>
                     <li>The <span class="NamedControl">Routing Slip </span>should appear below any user action buttons so that users don't have to scroll below the <span class="ControlName">Routing Slip</span> to perform their assigned task.</li>
                     <li>Use the branch/result order properties to ensure that options are presented consistently to users throughout a process. approvals are always displayed first in the button areas.</li>
-                    <li><a href="../SystemVariablesReferenceGuide/Miscellaneous System Variables.htm#SequenceNumber">Sequence numbers</a> should always be formatted as text, and should always use the "digits" formatter. There are a couple of reasons for this. </li>
+                    <li>
+                        <a href="../SystemVariablesReferenceGuide/Miscellaneous System Variables.htm#SequenceNumber">Sequence numbers</a> should always be formatted as text, and should always use the "digits" formatter. There are a couple of reasons for this. </li>
                 </ol>
                 <ul>
                     <li>First, there's a general rule that, if you aren't going to do math on a data item, it's not actually a number, even if all of the characters are numeric. This is why zip codes, or social security numbers are always formatted as text. Additionally, if a data item is formatted as a number, then you can't use the "Contains" operator in the <span class="ProcessDirectorObject">Condition Builder</span>, and can only use the "=" operator. This limitation can be troublesome, because if you leave the value blank in, say, a Knowledge View filter condition that uses the "=" operator, Process Director returns no results, but leaving a "contains" condition blank returns all results. Most of the time, you want to return all results as a default, and then allow the user to filter the results to a smaller set by entering a value for the sequence number, which requires using the "contains" operator in the filter.</li>

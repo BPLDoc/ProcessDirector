@@ -20,11 +20,11 @@
         </ul>
         <p>All of the completion links do essentially the same thing, that is, they direct the user to a task completion page, bypassing the original Form. They each have a slightly different implementation on the email template, however.</p>
         <p>The<span class="NamedControl"> Email Result Links</span> provide the user with a list of all of the possible results for a task, while the <span class="NamedControl">Email Completion Link</span> provides a result link for a single possible result. So, if you want the user to see all of the possible task results, you'd use the<span class="NamedControl"> Email Result Links</span>, while if you only want to show a result for one or two possible results, you'd configure an <span class="NamedControl">Email Completion Link</span> for each of the results you desire to show the user.</p>
-        <p>As an example, let's say that you have three possible results for a Process Timeline activity: Approve, Reject, and Resubmit. For some users, you might want to show the <span class="NamedControl">Email Result Links</span> to display all of the possible results:</p>
+        <p>As an example, let's say that you have three possible results for a Process Timeline Activity: Approve, Reject, and Resubmit. For some users, you might want to show the <span class="NamedControl">Email Result Links</span> to display all of the possible results:</p>
         <p>
             <code>{EMAIL_RESULT_LINKS,comments=1,confirm=1,separator=" | ",icon=1}</code>
         </p>
-        <p>In this example, the<span class="NamedControl"> Email Result Links</span> control tag is configured to require comments (comments=1), require a confirmation dialog for the result (confirm=1), insert a spaced bar character between each result (separator=" | "), and display the icons for each result that was configured in the Process Timeline activity (icon=1).</p>
+        <p>In this example, the<span class="NamedControl"> Email Result Links</span> control tag is configured to require comments (comments=1), require a confirmation dialog for the result (confirm=1), insert a spaced bar character between each result (separator=" | "), and display the icons for each result that was configured in the Process Timeline Activity (icon=1).</p>
         <p>For another user, you might only wish to show the Approve or Resubmit results but not the Reject result:</p>
         <p>
             <code>{EmailCompleteLink,text=<span class="CodeOption">APPROVE</span>, comments=false, confirm=true, action=<span class="CodeOption">APPROVED</span>}</code>
@@ -49,7 +49,7 @@
         <h3>
             <a name="Offline">
             </a>Offline Completion <a href="#Offline" class="anchor">#</a></h3>
-        <p>Allowing a task to be completed from email is called offline completion. Offline completion enables processes to parse an email message, and, based on the contents of the email, complete a task. For offline completion of an activity to work, two portions of the Process Timeline activity must be properly configured. First, in the Advanced Options tab of the Process Timeline activity, you must select the Allow task to be completed from email option.</p>
+        <p>Allowing a task to be completed from email is called offline completion. Offline completion enables processes to parse an email message, and, based on the contents of the email, complete a task. For offline completion of an Activity to work, two portions of the Process Timeline Activity must be properly configured. First, in the Advanced Options tab of the Process Timeline Activity, you must select the Allow task to be completed from email option.</p>
         <p>
             <img src="../Resources/Images/email completion option.png" />
         </p>
@@ -57,8 +57,8 @@
         <p>
             <img src="../Resources/Images/email results config.png" />
         </p>
-        <p>In the example shown in Figure 13, in addition to the "Yes" result itself, the result is also configured to accept "yeah", "sure", or "ok" as a valid "Yes" result for the activity. Any email that contains these optional text strings instead of "Yes" will still complete properly.</p>
-        <p>Once the Process Timeline activity has been configured, you must add an E-mail Action Custom Task to the Process Timeline. When properly configured, the Custom Task will parse the email messages in a specified email inbox for the appropriate result, or send an email to the user for unparsable or ambiguous emails, to prompt the user to resend the completion email.</p>
+        <p>In the example shown in Figure 13, in addition to the "Yes" result itself, the result is also configured to accept "yeah", "sure", or "ok" as a valid "Yes" result for the Activity. Any email that contains these optional text strings instead of "Yes" will still complete properly.</p>
+        <p>Once the Process Timeline Activity has been configured, you must add an E-mail Action Custom Task to the Process Timeline. When properly configured, the Custom Task will parse the email messages in a specified email inbox for the appropriate result, or send an email to the user for unparsable or ambiguous emails, to prompt the user to resend the completion email.</p>
         <p>Finally, the Email Data control that you place on the email notification template must use, as the Reply To address, the email address for the email inbox that the Custom Task uses to parse emails. When the user replies to the notification email, the message will be routed to the proper email inbox, so that the Custom Task can parse it.</p>
         <p>Offline completion generally uses the <a href="Using the bpImportEmail Utility.htm">bpImportEmail utility</a> to retrieve emails for parsing.</p>
     </body>
