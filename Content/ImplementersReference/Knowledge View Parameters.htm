@@ -8,8 +8,10 @@
             <MadCap:keyword term="Knowledge Views;Parameters;Knowledge View Parameters;Business Values" />
             <MadCap:concept term="Implementation" />Knowledge View Parameters</h1>
         <p>Knowledge Views can be <span class="KeyTerms">parametrized</span>; which means configured  to return only data that matches a filter value that is passed to the Knowledge View from an external object, like a form or from a URL&#160;Parameter. Indeed, we saw an example of the latter in the <a href="Knowledge View Exporting and Reporting.htm">Knowledge View Exporting and Reporting</a> topic, in the section titled "Passing Filter Values in a URL". In this topic, we will describe the required components for parametrizing a Knowledge View, and how to use a Business Value to call a parametrized Knowledge View, and only return the information that matches the filter we'd like to specify.</p>
-        <h2><a name="Simple"></a>Simple Parametrization <a href="#Simple" class="anchor">#</a></h2>
-        <p>The most common use case for implementing Knowledge View parameters via a Form is through the use of the Knowledge View control. To implement this use case, your Knowledge View must have a parameter filter. For example, we might need to pass a unique number to the Knowledge View to return items that match a specific form or request number. So, we need to pass that unique number through a query string variable. To do so, we'll configure the query string variable in the filter tab of the Knowledge view, to create a query string named "qs_SequenceNumber".</p>
+        <h2>
+            <a name="Simple">
+            </a>Simple Parametrization <a href="#Simple" class="anchor">#</a></h2>
+        <p>The most common use case for implementing Knowledge View parameters via a Form is through the use of the Knowledge View control. To implement this use case, your Knowledge View must have a parameter filter. For example, we might need to pass a unique number to the Knowledge View to return items that match a specific form or request number. So, we need to pass that unique number through a query string variable. To do so, we'll configure the query string variable in the filter tab of the Knowledge View, to create a query string named "qs_SequenceNumber".</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/KViewParameter.png" />
         </p>
@@ -30,12 +32,14 @@
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2><a name="BV"></a>Parametrization with a Business Value <a href="#BV" class="anchor">#</a></h2>
+        <h2>
+            <a name="BV">
+            </a>Parametrization with a Business Value <a href="#BV" class="anchor">#</a></h2>
         <p>For the purposes of this discussion, we have a simple Knowledge View that returns Form Instances containing some sales data.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/KViewParms.png" />
         </p>
-        <p>We want to build a search that uses this knowledge view to return only records for specified customers, so, we need to parametrize the Knowledge View to accept the customer name from an external source, like a form.</p>
+        <p>We want to build a search that uses this Knowledge View to return only records for specified customers, so, we need to parametrize the Knowledge View to accept the customer name from an external source, like a form.</p>
         <p>The first step to parametrizing a Knowledge View is to create the filter parameter you'd like to apply. In the <span class="UIElement">Filter </span>tab of the Knowledge View definition, you need to create a filter that uses a variable to filter the data.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/KViewParms1.png" />
@@ -44,10 +48,13 @@
         <p>On the left side of the filter condition, add the <span class="ControlName">CustomerName </span>form field, then set the Operator to "Contains". In cases like this, it's a good practice to  use the "Contains" operator so users can a) perform a search using just a part of the customer name, without having to worry about matching the whole name exactly, and b) to return ALL of the records in the Knowledge View if the filter value is blank. </p>
         <p>On the right side of the condition, set the value to a "Variable". When you do so, a text box will appear that will enable you to enter the variable name you want to create. This name is an arbitrary value, so we are going to name the variable, "Cust". Now that we've set up the variable parameter, we can save and close the Knowledge View.</p>
         <p>With a Knowledge View that will accept a parameter, we can access filtered data by passing a value to the Knowledge View from another object, using a Query String. A <span class="KeyTerms">Query String</span> is a simple text phrase that passes the parameter value to the Knowledge View, and it's written with a specific syntax:</p>
-        <p><code><span class="CodeOption">VariableName</span>=<span class="CodeOption">Value</span></code>
+        <p>
+            <code>
+                <span class="CodeOption">VariableName</span>=<span class="CodeOption">Value</span></code>
         </p>
         <p>In the case of our example above, we might have a customer named "Pear Computer". If we wanted to return only sales orders from Pear Computer, therefore, our query string might be:</p>
-        <p><code>Cust=Pear Computer</code>
+        <p>
+            <code>Cust=Pear Computer</code>
         </p>
         <p>Of course, in most cases, we won't be able—or want—to hard-code a customer name. Instead, we'll need to pass the customer name via some sort of system variable, based on the value of, say, a form field. So, to do that, let's continue with this sample Knowledge View, and build a more complicated implementation based on it. </p>
         <p>Let's say that we'd like to create a search form that enables us to enter the customer's name—or, since we're using the Contains operator, the relevant part of a customer's name—and return all the orders from that customer. To build that form, we'll need an input box to serve as the search box into users will enter the name, and an array that contains the rows and fields that the Knowledge View return. Of course, to populate that Array, we'll also need a Business Value that we can bind to the Array to fill out the data.</p>
@@ -55,8 +62,9 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/KViewParms2.png" />
         </p>
-        <p>Notice two things about this sample Business Value. First, in the <span class="ControlName">Parameters </span>section of the Business Value, There is a Parameter named "Customer". This is the parameter we will use to pass the customer name  to the Knowledge view. Second, in the <span class="UIElement">Knowledge View Data Source</span> tab, we have specified the Query String to use in the <span class="ControlName">Knowledge View Filter Data</span> property as:</p>
-        <p><code>Cust={PARAM:Customer}</code>
+        <p>Notice two things about this sample Business Value. First, in the <span class="ControlName">Parameters </span>section of the Business Value, There is a Parameter named "Customer". This is the parameter we will use to pass the customer name  to the Knowledge View. Second, in the <span class="UIElement">Knowledge View Data Source</span> tab, we have specified the Query String to use in the <span class="ControlName">Knowledge View Filter Data</span> property as:</p>
+        <p>
+            <code>Cust={PARAM:Customer}</code>
         </p>
         <p>This Query String will apply the value of the <span class="ControlName">Customer </span>parameter of the Business Value to the <span class="ControlName">Cust </span>variable we created in the Knowledge View.</p>
         <p>Finally, of course, we need to create the Business Value Properties that will store the Knowledge View Columns. Once we've done that, our Business Value is complete, so we can save and close it, and create our form, which is pretty simple.</p>

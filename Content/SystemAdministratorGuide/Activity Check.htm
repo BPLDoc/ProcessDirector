@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
         <title>
@@ -32,13 +32,13 @@
             <li>
                 <b>PRINSTID:</b> A specific Process Timeline instance.</li>
         </ul>
-        <p>For instance, you can do an activity check on a workflow definition by using the command</p>
+        <p>For instance, you can do an activity check on a Workflow definition by using the command</p>
         <p class="CodeBase">PATH\bputil.exe" SU "http://localhost/activity_check.aspx?WFID=XXXXXX"</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" style="width: 10px;height: 10px;" /> The activity check page <b>can't</b> be run from a remote host. It can only be executed from the local server where Process Director is installed, or run remotely when logged in as an administrator. Assuming that the remote host is a secure server, however, you can add the remote server to the list of "local IPs" in the installation settings to cause Process Director to treat the remote host as a local host.</p>
         <p>When the activity check page runs, Process Director will determine which timer processing functions need to occur. (There are a few things like GOALS that will be evaluated EVERY time the activity check runs because they are low-impact.) You can control the timer functions by setting custom variables in the vars.cs customization file. These timer functions are NOT controlled by the frequency that the activity_check.aspx page is scheduled. </p>
         <p>There are several Custom Variables that control the amount of time to wait between different types of timer processing. These Custom Variables, examples of their configuration, and other details, are provided in the <a href="../DevelopersGuide/Customization File System.htm#Activity">Activity Checking Custom Variables topic</a> of the Developers Guide.</p>
-        <p>There are ways for force the timer processing to occur without being governed by the Custom Variables. Instead, you can pass special URL parameters on the activity_check.aspx URL query string. For example, you can pass a workflow definition ID (WFID) on the URL, which tells Process Director to process all timers for all running workflow instances under that definition. This should be used with care to prevent excessive resource utilization if used too often. The following URL&#160;Parameters are available to run timers on specific objects:</p>
+        <p>There are ways for force the timer processing to occur without being governed by the Custom Variables. Instead, you can pass special URL parameters on the activity_check.aspx URL query string. For example, you can pass a Workflow definition ID (WFID) on the URL, which tells Process Director to process all timers for all running Workflow instances under that definition. This should be used with care to prevent excessive resource utilization if used too often. The following URL&#160;Parameters are available to run timers on specific objects:</p>
         <ul>
             <li>STINSTID</li>
             <li>ACTINSTID</li>
