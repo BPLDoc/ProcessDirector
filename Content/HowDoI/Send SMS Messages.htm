@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1>Send SMS Messages<MadCap:keyword term="SMS;Text Message;Mobile;How To;How Do I" /><MadCap:concept term="Implementation" /><MadCap:concept term="Instructional" /></h1>
+        <p>Though Process Director does not have built-in SMS&#160;messaging, all major cellular carriers provide an email-based API that converts emails sent to a specific domain into SMS text messages. To enable Email-to-SMS messages, each cellular carrier provides a specific email domain to which emails can be sent for SMS conversion.</p>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+            <col class="TableStyle-Simple-Column-Column1" style="width: 50%;" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Carrier</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">Email Domain</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">AT&amp;T</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">@txt.att.net</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Metro PCS</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">@metropcs.sms.us</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Nextel</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">@messaging.nextel.com</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Sprint</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">@messaging.sprintpcs.com</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">T-Mobile</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">@tmomail.net</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">U.S. Cellular</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">@email.uscc.net</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Verizon</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">@vtext.com</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Virgin Mobile</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">@vtext.com</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Some constraints apply to email messages sent to these domains, as the number of characters allowed in an SMS message is limited. For instance, messages sent via vtext.com are limited to 160 characters, which includes any email Subject line. Within these constraints, however, email messages sent to these domains will be reliably converted to SMS.</p>
+        <p>In addition to the carrier email domain, you'll also need to supply the phone number of the recipient, using only digits, in order to create an email address in the format: <code>2025552845@vtext.com</code>. So, to create a valid Email-to-SMS message, you'll need to know both the phone number and cellular carrier of the recipient. If either of these two values are incorrect, the recipient <b style="font-style: italic;">won't</b> receive the message.</p>
+        <p>To create a small application that sends text messages from Process Director, you'll need to create four objects.</p>
+        <h2>1. Create a Dropdown Object</h2>
+        <p>We need a Dropdown Object that will supply the carriers and email domains listed above. We'll use it to fill a <span class="NamedControl">Dropdown </span>control on a Form, from which users can select the carrier to use for the SMS message.&#160;We'll also need to set a null/blank item in the Dropdown Object, so we can make the <span class="NamedControl">Dropdown </span>control on the Form a required control.</p>
+        <p>In this example, We've created a Dropdown Object named <span class="ProcessDirectorObject">SMS&#160;Providers </span>and configured it.</p>
+        <p>
+            <img src="../Resources/Images/HowDoI/SMS.jpg" />
+        </p>
+        <h2>2. Create a Form</h2>
+        <p>We'll create a new form named <span class="ProcessDirectorObject">SMS&#160;Form</span>, and add three controls (with the appropriate labels for each control) to the Online Form Designer:</p>
+        <ol>
+            <li>
+                <p>A <span class="NamedControl">Dropdown </span>control named <span class="ControlName">Carrier</span>. Users will select the appropriate cellular provider from this control.</p>
+            </li>
+            <li>
+                <p>An <span class="NamedControl">Input </span>control named <span class="ControlName">Phone</span>. Users will provide the phone number of the recipient in this control.</p>
+            </li>
+            <li>
+                <p>An <span class="NamedControl">Input </span>control named <span class="ControlName">Message</span>, with the <span class="ControlName">Rows </span>property set to <code>3</code>, to make an appropriately-sized message text box.</p>
+            </li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/HowDoI/SMS1.jpg" />
+        </p>
+        <p>Once we've added the controls, we can save and close the Online Form Designer. We can set all three fields as required fields, using the Field Properties setting available to us in the <span class="UIElement">Form Controls </span>tab of the Form Definition.  We can also set the <span class="ControlName">Carrier </span>control's <span class="ControlName">Link to DropDown Object</span> property to the <span class="ProcessDirectorObject">SMS&#160;Providers</span> dropdown object.</p>
+        <p>We'll also need to limit the size of the <span class="ControlName">Message </span>field by setting its <span class="ControlName">Max </span>property to prevent users from entering too many characters into the field. The exact number you set will vary, because Process Director will add a Subject to the email notification, and enclose it in parentheses, followed by a space. This additional text will consume characters from the SMS character limit, i.e., the number of characters in the Subject's text, plus three characters for the parentheses and a trailing space. So, the number we set in the <span class="ControlName">Max </span>property should be 160 characters, minus the number of characters in the email Subject. For instance, in our example, the email Subject and three extra characters will take up 24 characters, so we'll set the <span class="ControlName">Max </span>property of the Message field to <code>136</code>.</p>
+        <h2>3 Create the Email Template</h2>
+        <p>Our email template will be named <span class="ProcessDirectorObject">SMS&#160;Message</span>, and will include two controls. The first control will be a <span class="NamedControl">System Variable </span>control that is set to display the contents of the <span class="ControlName">Message </span>field.</p>
+        <p>
+            <img src="../Resources/Images/HowDoI/SMS2.jpg" />
+        </p>
+        <p>The second control will be an <span class="NamedControl">Email&#160;Data</span> control, which we'll use to set the <span class="ControlName">Subject </span>as <code>From Process Director</code>.</p>
+        <p>
+            <img src="../Resources/Images/HowDoI/SMS3.jpg" />
+        </p>
+        <p>We're setting the subject as a fixed value, because if there is no <span class="NamedControl">Email Data</span> control or no <span class="ControlName">Subject </span>set, Process Director will automatically add a subject with verbiage similar to: <code>Timeline Activity Started - Activity Name</code>. Setting a fixed subject enables us to specify the <span class="ControlName">Max </span>value of the Form's <span class="ControlName">Message </span>field.</p>
+        <h2>4. Creating the Process Timeline</h2>
+        <p>Our Process Timeline will be named <span class="ProcessDirectorObject">Send SMS</span>, and will consist of a single <span class="NamedControl">Notify </span>activity named <span class="ControlName">Send Message</span>. On the notifications tab of the activity, we'll configure the SMS notification message.</p>
+        <p>
+            <img src="../Resources/Images/HowDoI/SMS4.jpg" />
+        </p>
+        <p>The notification will be set to send to <i>External Users</i>, and in the text box provided for the email address, we'll use System Variables to concatenate the <span class="ControlName">Phone </span>and <span class="ControlName">Carrier </span>fields, using the syntax: <code>{:Phone}{:Carrier}</code>.</p>
+        <p>Before we save and close the Process Timeline, we need to set the <span class="ControlName">Form for Timeline </span>property to the <span class="ProcessDirectorObject">SMS Form</span>, and the <span class="ControlName">Default Email Template </span>property to the <span class="ProcessDirectorObject">SMS Message </span>email template.</p>
+        <p>
+            <img src="../Resources/Images/HowDoI/SMS5.jpg" />
+        </p>
+        <h2>5. Linking the Form</h2>
+        <p>Our final step is to open the<span class="ProcessDirectorObject"> SMS Form </span>and navigate to its <span class="UIElement">Properties </span>tab to set the <span class="ControlName">Automatically start this process after Form is submitted</span> property to the <span class="ProcessDirectorObject">Send SMS </span>Process Timeline.</p>
+        <p>
+            <img src="../Resources/Images/HowDoI/SMS6.jpg" />
+        </p>
+        <p>Once we save and close the Form, we're ready to test it.</p>
+        <p>When the Form runs, you should select a carrier, type in the phone number and text message, then submit the form. The specified recipient should see a text message appear that looks similar to this:</p>
+        <p>
+            <img src="../Resources/Images/HowDoI/SMS7.jpg" />
+        </p>
+    </body>
+</html>
