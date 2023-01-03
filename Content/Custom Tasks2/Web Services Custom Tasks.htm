@@ -10,6 +10,112 @@
             <MadCap:concept term="Custom Tasks;Web Services" /><a name="_Toc421015724"></a>Web Services Custom Tasks</h1>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AzureSMS"></a><a href="#AzureSMS"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Azure SMS</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Task will use the Microsoft Azure's built-in SMS capabilities to send an SMS&#160;text message to a specified recipient's mobile phone number(s). For sending SMS, Azure supports up to 100 recipients (destination phone numbers).</p>
+                <h4>SMS&#160;Message Tab</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/AzureSMS2.jpg" />
+                </p>
+                <h4>Advanced Tab</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/AzureSMS1.jpg" />
+                </p>
+                <p>Configuration Options</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p style="font-weight: bold;">SMS&#160;MESSAGE TAB</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Recipient</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Dropdown list of Form Fields<br />OR<br />Text Input</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The mobile number to which to send the SMS&#160;Message. This number can be selected from a Form field, using the dropdown control, or by entering text in the provided text box. If a Form field is selected from the dropdown control, the text box will be hidden. Otherwise, the text field will accept a phone number or a system variable that returns the phone number. Any phone number string must conform to the E.164 format (full country code, starting with “+1” for U.S. numbers) for Azure SMS to accept it.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Body</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The message to be sent via SMS. Be aware that different mobile service providers may have different character limits for SMS&#160;messages, down to 160 characters.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Show Info Text for Success</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">An optional property to specify a message to display when the message is sent successfully.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Test Send</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Button</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This button, when clicked, will test the SMS&#160;Message feature to ensure it can be accepted by Microsoft Azure.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p style="font-weight: bold;">ADVANCED TAB</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>HTTP Endpoint for Sending</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The fully qualified URL&#160;of the Azure SMS endpoint for your Azure installation. For each Cloud customer, the Endpoint URL will almost certainly not change, but the customers with access to configure this Custom Task (i.e. customers on systems that BP Logix does not manage) will need to acquire their own Azure Key and phone number to use this Custom Task.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Azure Key for SMS Operations</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The cryptographic key value required to access Azure SMS. This value must be obtained from Microsoft Azure. The Key field contains a Base64 representation of an Azure Communication Services key, which an Azure customer can find in the Azure Communication Services Portal.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Source Phone Number (SMS "From")</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">The phone number from which the SMS message should be sent, e.g., a valid mobile number for a mobile device to which return messages can be routed. Azure Communication Services provides several methods for provisioning a phone number, including through the Communication Services Portal.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="FillDropdownFromWebService"></a><a href="#FillDropdownFromWebService"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill DropDown from Web Service</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -203,7 +309,7 @@
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/FillDDFromRest2.png" />
                 </p>
-                <h4>Configuration Data</h4>
+                <h4>Configuration Options</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
                     <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
                     <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />

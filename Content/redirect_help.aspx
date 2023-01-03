@@ -650,6 +650,9 @@
 				break;			
 
 		//Web Services
+			case "CTSMSSEND":
+				r("custom_tasks2/web_services_custom_tasks.htm#AzureSMS");
+				break;
 			case "CTFILLDROPDOWNFROMWEBSERVICE":
 				r("custom_tasks2/web_services_custom_tasks.htm#FillDropdownFromWebService");
 				break;
