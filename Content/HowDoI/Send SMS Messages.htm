@@ -76,7 +76,7 @@
             <img src="../Resources/Images/HowDoI/SMS1.jpg" />
         </p>
         <p>Once we've added the controls, we can save and close the Online Form Designer. We can set all three fields as required fields, using the Field Properties setting available to us in the <span class="UIElement">Form Controls </span>tab of the Form Definition.  We can also set the <span class="ControlName">Carrier </span>control's <span class="ControlName">Link to DropDown Object</span> property to the <span class="ProcessDirectorObject">SMS&#160;Providers</span> dropdown object.</p>
-        <p>We'll also need to limit the size of the <span class="ControlName">Message </span>field by setting its <span class="ControlName">Max </span>property to prevent users from entering too many characters into the field. The exact number you set will vary, because Process Director will add a Subject to the email notification, and enclose it in parentheses, followed by a space. This additional text will consume characters from the SMS character limit, i.e., the number of characters in the Subject's text, plus three characters for the parentheses and a trailing space. So, the number we set in the <span class="ControlName">Max </span>property should be 160 characters, minus the number of characters in the email Subject. For instance, in our example, the email Subject and three extra characters will take up 24 characters, so we'll set the <span class="ControlName">Max </span>property of the Message field to <code>136</code>.</p>
+        <p>We'll also need to limit the size of the <span class="ControlName">Message </span>field by setting its <span class="ControlName">Max </span>property to prevent users from entering too many characters into the field. The exact number you set will vary, because Process Director will add a Subject to the email notification, and enclose it in parentheses, followed by a space. This additional text will consume characters from the SMS character limit, i.e., the number of characters in the Subject's text, plus three characters for the parentheses and a trailing space. So, the number we set in the <span class="ControlName">Max </span>property should be 160 characters, minus the number of characters in the email Subject. For instance, in our example, the email Subject and three extra characters will take up 24 characters, so we'll set the <span class="ControlName">Max </span>property of the <span class="ControlName">Message </span>field to <code>136</code>.</p>
         <h2>3 Create the Email Template</h2>
         <p>Our email template will be named <span class="ProcessDirectorObject">SMS&#160;Message</span>, and will include two controls. The first control will be a <span class="NamedControl">System Variable </span>control that is set to display the contents of the <span class="ControlName">Message </span>field.</p>
         <p>
@@ -106,6 +106,8 @@
         <p>When the Form runs, you should select a carrier, type in the phone number and text message, then submit the form. The specified recipient should see a text message appear that looks similar to this:</p>
         <p>
             <img src="../Resources/Images/HowDoI/SMS7.jpg" />
+        </p>
+        <p><i>Attribution: This walkthrough is based on a customer suggestion from Jeff Allen at UWSP.</i>
         </p>
     </body>
 </html>
