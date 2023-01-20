@@ -159,5 +159,21 @@
                 </tr>
             </tbody>
         </table>
+        <h2><a name="NewApp"></a>Creating a New Application <a href="#NewApp" class="anchor">#</a></h2>
+        <p>Most Process Director implementations consist of standalone applications. Each application should reside in a single <span class="ProcessDirectorObject">Content List </span>folder that contains all of the objects that you create as part of the application. Placing your application inside a single folder makes importing and exporting your application between the development and production environment much easier.</p>
+        <p>As a minimum, an working application requires at least two objects, a Form and Process Timeline that, when linked, provide the data used by the application (the Form), and the process the application will use to perform the activities required to operate (the Process Timeline).</p>
+        <p>The Form and Process Timeline must be associated with each other to ensure that 1) the Form, when submitted, starts the Process Timeline properly, and 2) the Process Timeline can reference or evaluate any required Form field values correctly. Together, the linked Form and Process Timeline provide the core of your application, or the "application stub". The application may require the use of other objects, such as Business Rules, Knowledge Views, etc., all of which might reside in the application folder, but the Form and Process Timeline application stub will always be the central operating elements of an application.</p>
+        <p>As explained in the <a href="Importing Exporting Content.htm#Structure">Folder Structure section of the Importing/Exporting Content topic</a>, more complex applications might implement more complex methods of organization, but the general rule of thumb is that most application objects should be included in the application's single parent folder.</p>
+        <p>The Documentation Example below uses software simulation to walk you through the process of creating a new application stub in Process Director.</p>
+        <h2><a name="Example"></a>Documentation Example <a href="#Example" class="anchor">#</a></h2>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Use the Simulator</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><a href="../Resources/Simulations/Create Application Stub/story.html" target="_blank" title="Create an Application Stub" alt="Create an Application Stub">Create an Application Stub</a>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
     </body>
 </html>
