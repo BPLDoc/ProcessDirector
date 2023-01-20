@@ -6,9 +6,7 @@
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" />
-            <a name="_Toc421536188">
-            </a>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536188"></a>
             <MadCap:keyword term="Email Templates" />Creating and Customizing Email Templates</h1>
         <p>Creating an email template requires creating a new Form definition within Process Director.  In the <span class="ControlName">Options </span>section of the <span class="ControlName">Create Form </span>dialog, ensure that you check the <span class="ControlName">Email Template</span> checkbox. If this property is not checked, Process Director will create a normal Form definition, which <b style="font-style: italic;">can't</b> be used as an email template.</p>
         <p>
@@ -16,14 +14,10 @@
         </p>
         <p>You can also use a custom ASCX file for your email template, just like you can when creating a regular Form definition. Simply select the option you desire from the dropdown marked "Online Form Designer". In nearly all use cases, the default choice of the Online Form Designer is the simplest option, but you have the option to  create a custom ASCX control in ASP.NET&#160;using Visual Studio (assuming you have this license option).</p>
         <p>Your email template is now stored in the <span class="ProcessDirectorObject">Content List</span>. You can edit the template by selecting the template to edit and then select the Edit tab.&#160; You can make changes to your template in your preferred editor.</p>
-        <h2>
-            <a name="_Toc421536189">
-            </a>Email Variables <a href="#_Toc421536189" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536189"></a>Email Variables <a href="#_Toc421536189" class="anchor">#</a></h2>
         <p>Variable substitutions are performed when an email file is processed for a process request. System variables can be added to the email, either by typing them in plain text, or by using the <span class="NamedControl">System Variable</span> control. To see the complete list of system variables, please refer to the System Variables guide. Note that not all system variables are available for every event that generates an email.</p>
         <p>The <span class="ControlName">Subject</span>, <span class="ControlName">From Email</span>, <span class="ControlName">Mail Priority</span>, <span class="ControlName">From Display</span>, <span class="ControlName">Send As Attachment</span>, <span class="ControlName">Group Name </span>and <span class="ControlName">Cancel Email </span>properties are contained in each email template as properties of the <span class="NamedControl">Email Data</span> control. </p>
-        <h2>
-            <a name="_Toc421536190">
-            </a>
+        <h2><a name="_Toc421536190"></a>
             <MadCap:keyword term="EmailData" />EmailData Control <a href="#_Toc421536190" class="anchor">#</a></h2>
         <p>The Email Data object enables you to customize various aspects of notification emails such as the email subject, reply-to addresses, etc. Inserting the Email Data control produces this object in your Form:</p>
         <p>
@@ -45,12 +39,9 @@
         <p>This Email Data object will be visible when the email type is “Task Assigned”. There is more about these Email types in the next section, “Email Template Conditional Processing”, below. One more thing to note: when multiple Email Data objects’ conditional statements will evaluate as “true”, then PD will work through the separate Email Data objects&#160; in order, and information in properties input boxes will be replaced by non-blank properties boxes of the next Email Data object. If any of the “Cancel Email” boxes are checked in any displayed Email Data objects, the email won't be sent.</p>
         <p>There is one email type that is sent when a user's task is completed due to a condition that completes the task without the user's involvement. For example, a task may assigned to a group of users, but be set to complete when the first user in the assigned group completes the task. In this case, the default behavior is for all users to receive the task completion email. Essentially, for any function that causes a user to be marked as "Not Required", all assigned users will receive email notifications that the task is complete. If you don't want this behavior, add an <span class="NamedControl">EmailData </span>tag or control to the email template with the "Cancel Email" option set to True. Be sure to place that Email Data control in a section that is visible when the email type is "not needed".</p>
         <h5>ASPX Format</h5>
-        <p>
-            <code>&lt;bpx:EmailData ID="<span class="CodeOption">StepName</span>" runat="server" Subject="<span class="CodeOption">Subject line</span>" MailPriority="<span class="CodeOption">High</span>" <br />&#160;&#160;&#160;&#160;FromEmail="<span class="CodeOption">{CREATE_USER, format=email}</span>" FromDisplay="<span class="CodeOption">{CREATE_USER}</span>" SendAsAttachment="<span class="CodeOption">True</span>"<br />&#160;&#160;&#160;&#160;GroupName="<span class="CodeOption">Group</span>" CancelEmail="<span class="CodeOption">True</span>"&gt;<br />&lt;/bpx:EmailData&gt;</code>
+        <p><code>&lt;bpx:EmailData ID="<span class="CodeOption">StepName</span>" runat="server" Subject="<span class="CodeOption">Subject line</span>" MailPriority="<span class="CodeOption">High</span>" <br />&#160;&#160;&#160;&#160;FromEmail="<span class="CodeOption">{CREATE_USER, format=email}</span>" FromDisplay="<span class="CodeOption">{CREATE_USER}</span>" SendAsAttachment="<span class="CodeOption">True</span>"<br />&#160;&#160;&#160;&#160;GroupName="<span class="CodeOption">Group</span>" CancelEmail="<span class="CodeOption">True</span>"&gt;<br />&lt;/bpx:EmailData&gt;</code>
         </p>
-        <h2>
-            <a name="_Toc421536191">
-            </a>Email Template Conditional Processing <a href="#_Toc421536191" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536191"></a>Email Template Conditional Processing <a href="#_Toc421536191" class="anchor">#</a></h2>
         <p>The email templates can optionally contain Section tags that can control what portions of the email should be displayed under different conditions (e.g. value of a form field).&#160; You can optionally display any control that has an ID which will display in the list of controls on the Form properties page. Conditional processing allows you to display a type of email to use such as the reminder email type. You can conditionally display controls based on the type of email. The following email types are available in Process Director:</p>
         <ul>
             <li>Task Assigned</li>
@@ -61,25 +52,18 @@
             <li>Step Stopped</li>
         </ul>
         <p>Refer to the chapter on Form Definitions for more information on conditional processing. To test email templates that contain Form tags, upload the email template to Process Director as a Form but marked as an Email Template to have the built-in parser validate the use of your Form tags. This will only allow the email template to be validated; it won't be a valid Form.</p>
-        <h2>
-            <a name="_Toc421536192">
-            </a>Task Links in an Email <a href="#_Toc421536192" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536192"></a>Task Links in an Email <a href="#_Toc421536192" class="anchor">#</a></h2>
         <p>The email templates can optionally contain links that allow the user to complete their task. This system tag will add the task URL to the link tag in the HTML email allowing the user to click on it to open in the browser and complete their task.</p>
         <p>In the Online Form Designer:</p>
-        <p>
-            <code>{EMAIL_URL}</code>
+        <p><code>{EMAIL_URL}</code>
         </p>
         <p>In .ascx:</p>
-        <p>
-            <code>&lt;bpx:HTML ID="<span class="CodeOption">ControlName</span>" runat="server" HTMLString="<span class="CodeOption">&lt;a href='{EMAIL_URL}'&gt;Click here to view the process&lt;/a&gt;</span>"&gt;<br />&lt;/bpx:HTML&gt;</code>
+        <p><code>&lt;bpx:HTML ID="<span class="CodeOption">ControlName</span>" runat="server" HTMLString="<span class="CodeOption">&lt;a href='{EMAIL_URL}'&gt;Click here to view the process&lt;/a&gt;</span>"&gt;<br />&lt;/bpx:HTML&gt;</code>
         </p>
         <p>This system tag will return the URL that can be placed within an &lt;A&gt; tag on the HTML email.</p>
-        <h2>
-            <a name="_Toc421536193">
-            </a>Complete Links in an Email <a href="#_Toc421536193" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536193"></a>Complete Links in an Email <a href="#_Toc421536193" class="anchor">#</a></h2>
         <p>Email templates can contain links that allow the user to complete their task without having to view a Form.</p>
-        <p>
-            <code>{EMAIL_RESULT_LINKS, comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>, separator="<span class="CodeOption">&amp;lt;br&gt;</span>", icon=<span class="CodeOption">1</span>}</code>
+        <p><code>{EMAIL_RESULT_LINKS, comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>, separator="<span class="CodeOption">&amp;lt;br&gt;</span>", icon=<span class="CodeOption">1</span>}</code>
         </p>
         <p>This system tag will return the possible branches to take. It creates an HTML link with the URLs for all of the possible branches in a Workflow or results in a Process Timeline Activity assigned to the user.</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
@@ -149,17 +133,12 @@
         </table>
         <h5>Example</h5>
         <p>Possible Branches to Take:</p>
-        <p>
-            <code>{EMAIL_RESULT_LINKS,comments=<span class="CodeOption">1</span>,confirm=<span class="CodeOption">1</span>,separator="<span class="CodeOption">&amp;lt;br&gt;</span>",icon=<span class="CodeOption">1</span>}</code>
-            <code>
-                <br />
-            </code>
+        <p><code>{EMAIL_RESULT_LINKS,comments=<span class="CodeOption">1</span>,confirm=<span class="CodeOption">1</span>,separator="<span class="CodeOption">&amp;lt;br&gt;</span>",icon=<span class="CodeOption">1</span>}</code><code><br /></code>
         </p>
         <p>This system tag will return a comma separated list of all of the possible results from the current branch in a Workflow or a result in a Process Timeline Activity assigned to the user. This tag is useful for reply options the recipient must use. The next process may be scanning to match text in the sent Email.</p>
         <h5>Example</h5>
         <p>Please enter one of these keywords in responding to this Email: </p>
-        <p>
-            <code>{Email_result_list}<br />{EmailCompleteLink, text=<span class="CodeOption">Approve</span>, comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>, action=<span class="CodeOption">Approve</span>}</code>
+        <p><code>{Email_result_list}<br />{EmailCompleteLink, text=<span class="CodeOption">Approve</span>, comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>, action=<span class="CodeOption">Approve</span>}</code>
         </p>
         <p>This System Tag is a link to a web page allowing their user to complete their task. </p>
         <p>Each <span class="NamedControl">EmailCompleteLink </span>System Tag with its arguments corresponds to one branch in a Workflow or a result in a Process Timeline Activity. Remember to name this Email as the “Default Email template” in the Workflow or Process Timeline Activity. </p>
@@ -228,14 +207,11 @@
             </tbody>
         </table>
         <h5>Example</h5>
-        <p>
-            <code>{EmailCompleteLink,text=<span class="CodeOption">APPROVE</span>, comments=<span class="CodeOption">true</span>, confirm=<span class="CodeOption">true</span>, action=<span class="CodeOption">APPROVED</span>}</code>
+        <p><code>{EmailCompleteLink,text=<span class="CodeOption">APPROVE</span>, comments=<span class="CodeOption">true</span>, confirm=<span class="CodeOption">true</span>, action=<span class="CodeOption">APPROVED</span>}</code>
         </p>
-        <p>
-            <code>{EmailCompleteLink,text=<span class="CodeOption">RESUBMIT</span>, comments=<span class="CodeOption">true</span>, confirm=<span class="CodeOption">true</span>, action=<span class="CodeOption">RESUBMIT</span>}</code>
+        <p><code>{EmailCompleteLink,text=<span class="CodeOption">RESUBMIT</span>, comments=<span class="CodeOption">true</span>, confirm=<span class="CodeOption">true</span>, action=<span class="CodeOption">RESUBMIT</span>}</code>
         </p>
-        <p>
-            <code>{EMAIL_COMPLETE_URL, action=<span class="CodeOption">Approve</span>, comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>}</code>
+        <p><code>{EMAIL_COMPLETE_URL, action=<span class="CodeOption">Approve</span>, comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>}</code>
         </p>
         <p>This system tag will return the URL that can be placed within an &lt;A&gt; tag on the HTML email.</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
@@ -302,9 +278,7 @@
                 </tr>
             </tbody>
         </table>
-        <h2>
-            <a name="_Toc421536194">
-            </a>URL Access to the Process Instance <a href="#_Toc421536194" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536194"></a>URL Access to the Process Instance <a href="#_Toc421536194" class="anchor">#</a></h2>
         <h4>Workflow (wd.aspx)</h4>
         <h5>Description</h5>
         <p>This URL can be used for in Workflow emails. It is used to construct a hotlink back to the originating Workflow.</p>
@@ -335,15 +309,8 @@
         </table>
         <h5>Examples</h5>
         <p>This example will create a hotlink in an ASCX Email template which points back to the Workflow's Form</p>
-        <p class="CodeOption">
-            <code>&lt;bpx:HTML runat="server" HTMLString="<span class="CodeOption">&lt;a href='{INTERFACE_URL}wd.aspx?forminstid={FORM_INSTANCE_ID}'&gt;</span></code>
-            <span class="CodeOption">
-                <br />
-            </span>
-            <code>
-                <span class="CodeOption">&#160;&#160;&#160;&#160;Click Here to View the Form Instance&lt;/a&gt;</span>"&gt;</code>
-            <br />
-            <code>&lt;/bpx:HTML&gt;</code>
+        <p class="CodeOption"><code>&lt;bpx:HTML runat="server" HTMLString="<span class="CodeOption">&lt;a href='{INTERFACE_URL}wd.aspx?forminstid={FORM_INSTANCE_ID}'&gt;</span></code><span class="CodeOption"><br /></span><code><span class="CodeOption">&#160;&#160;&#160;&#160;Click Here to View the Form Instance&lt;/a&gt;</span>"&gt;</code>
+            <br /><code>&lt;/bpx:HTML&gt;</code>
         </p>
         <h4>Process Timeline (pd.aspx)</h4>
         <h5>Description</h5>
@@ -375,12 +342,20 @@
         </table>
         <h5>Examples</h5>
         <p>This example will create a hotlink in an ASCX Email template which points back to the Process Timeline&#160; Form</p>
-        <p>
-            <code>&lt;bpx:HTML runat="server" HTMLString="&lt;a href=<span class="CodeOption">'{INTERFACE_URL}pd.aspx?forminstid={FORM_INSTANCE_ID}'&gt;<br></br>&#160;&#160;&#160;&#160;</span></code>
-            <code>
-                <span class="CodeOption">Click Here to View the Form Instance&lt;/a&gt;</span>"&gt;</code>
-            <br />
-            <code>&lt;/bpx:HTML&gt;</code>
+        <p><code>&lt;bpx:HTML runat="server" HTMLString="&lt;a href=<span class="CodeOption">'{INTERFACE_URL}pd.aspx?forminstid={FORM_INSTANCE_ID}'&gt;<br />&#160;&#160;&#160;&#160;</span></code><code><span class="CodeOption">Click Here to View the Form Instance&lt;/a&gt;</span>"&gt;</code>
+            <br /><code>&lt;/bpx:HTML&gt;</code>
         </p>
+        <h2 MadCap:conditions="General.Not Printed"><a name="Example"></a>
+            <MadCap:conditionalText MadCap:conditions="General.Not Printed">Documentation Example</MadCap:conditionalText> <a href="#Example" class="anchor">#</a></h2>
+        <p MadCap:conditions="General.Not Printed">You can use the software simulation below to walk through the process of creating a new email template.</p>
+        <MadCap:dropDown MadCap:conditions="General.Not Printed">
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Use the Simulator</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><a href="../Resources/Simulations/Creating an Email Template/story.html" target="_blank" title="Create an Email Template" alt="Create an Email Template">Create an Email Template</a>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
     </body>
 </html>

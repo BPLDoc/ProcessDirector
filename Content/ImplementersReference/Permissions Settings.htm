@@ -5,9 +5,7 @@
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" />
-            <a name="_Toc421536250">
-            </a>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536250"></a>
             <MadCap:keyword term="Permissions" />Setting Permissions</h1>
         <p>Any object in the Process Director database may contain a list of permission rules that determine who can access the object and what functions they can perform against it. A permission rule only grants a user access. The absence of a permission rule granting a user access to an object will automatically deny access to it. If there are conflicting rules which either grant or deny a user access, the user will be granted access. When the server attempts to determine whether a user has access to an object in the database, it will search through the object's entire permission list until it finds a permission rule that grants the user the requested access, or until the end of the list. The system will apply the <b>highest level of access</b> that has been granted to that user in the list of permissions.</p>
         <p>Different object types in the database have different permissions and options available to them. Objects that can be run (e.g. process definition, Form definition) will have more permissions options available to them, as will objects that can have children objects (e.g. folders, Form definitions, etc.).</p>
@@ -15,9 +13,7 @@
             <img src="../Resources/Images/ImplementersReference/PermissionsSettings1.png" />
         </p>
         <p>The Permissions list is displayed in the lower portion of the permissions screen and will display the user and group names sorted alphabetically. </p>
-        <h2>
-            <a name="_Toc421536251">
-            </a>User Permission Types <a href="#_Toc421536251" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536251"></a>User Permission Types <a href="#_Toc421536251" class="anchor">#</a></h2>
         <p>Permissions are granted to a user. A permission record gives permission to something for a specific object in the Process Director database. Different types of user permissions can be granted. </p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -45,9 +41,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="_Anonymous_Users">
-                    </a>Anonymous Users</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="_Anonymous_Users"></a>Anonymous Users</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Anonymous users aren't authenticated. They don't perform a login and they have no identity in the Process Director database. Only certain functions and objects are available to anonymous users. If an “anonymous” permission is given to an object, authenticated users will automatically be given that same permission.</p>
@@ -69,9 +63,7 @@
                 <p>This is a special permission type only available to objects that can have children (i.e. folders, process definitions, Form definitions). This will automatically give the permissions specified to the author/creator of any child objects that are created. For example, if a user starts a process definition that gives the Object Creator a permission of Modify; that will automatically be converted to the initiator users ID with Modify permission for that specific process instance the user is creating (starting).</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421536252">
-            </a>Object Permission Types <a href="#_Toc421536252" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536252"></a>Object Permission Types <a href="#_Toc421536252" class="anchor">#</a></h2>
         <p>Setting the permissions for a folder doesn't automatically set the permissions for the existing objects contained within it. You have the ability to replicate all permissions of the parent folder to all of the existing child objects in the folder. You have two options for doing so. </p>
         <p>First, you can Replicate permissions to all child objects, which won't only overwrite the existing permissions on definition objects, it will also overwrite permissions on all of the form and process instances—including those instances that are active and in-progress.&#160; This may completely change the ability of users to complete active Process Timeline or Form instances, so you should exercise caution in using this option in the production environment.</p>
         <p>You also have the option, though, to replicate the permissions to child all child objects except for form, process, and Process Timeline instances. This is probably the preferred option for replicating folder permissions in the production environment where there are active processes running. Future process and form instances will be created under the new permissions regime, but existing instances will still run under the permissions regime that was valid when they were created.</p>
@@ -102,9 +94,7 @@
                 <p>This permission allows a user to delete a folder. However, to delete a folder, the user must have Delete permission to all objects and sub-folders under this folder. If any object exists below this folder that the user doesn't have Delete permission to, the delete operation will be canceled and none of the objects will be deleted. A user must have Delete permission to be able to grant Delete permission to another user.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421536253">
-            </a>Document Permission Types <a href="#_Toc421536253" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536253"></a>Document Permission Types <a href="#_Toc421536253" class="anchor">#</a></h2>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>View</MadCap:dropDownHotspot>
@@ -129,9 +119,7 @@
                 <p>This permission gives a user full control over a document. A user with this permission can delete the document. Delete permission is required for a user to perform a rollback to an older version of a document, or to delete any portion of the document history. A user must have Delete permission to be able to grant Delete permission to another user.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421536254">
-            </a>Process Permission Types <a href="#_Toc421536254" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536254"></a>Process Permission Types <a href="#_Toc421536254" class="anchor">#</a></h2>
         <p>Permissions are defined for a process definition, e.g., a Process Timeline. When the process definition is run, a child is created as an instantiation of the process definition. This “running” process is located beneath the process definition in the <span class="ProcessDirectorObject">Content List</span>. This instantiated, running process will inherit the Child Permission settings from the process definition.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -189,9 +177,7 @@
                 <p>This permission gives a user the ability to delete the children of a process definition (e.g. running processes). When a process is started, the running process will copy all of the Delete Children permission rules as Delete permissions. A user must have Delete permission to be able to grant Delete permission to another user.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421536255">
-            </a>Form Permission Types <a href="#_Toc421536255" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536255"></a>Form Permission Types <a href="#_Toc421536255" class="anchor">#</a></h2>
         <p>Permissions are defined for a Form definition. When a Form is filled out and submitted, a child object is created as an instantiation of the completed Form. This completed form is located beneath the Form definition in the <span class="ProcessDirectorObject">Content List</span>. Completed forms will inherit the Child Permissions from the Form definition.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -249,9 +235,7 @@
                 <p>This permission gives a user the ability to delete the children of a Form definition (e.g. completed forms). When a Form is submitted, the completed form will copy all of the Delete Children permission rules as Delete permissions. A user must have Delete permission to be able to grant Delete permission to another user.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421536256">
-            </a>Knowledge View Permission Types <a href="#_Toc421536256" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536256"></a>Knowledge View Permission Types <a href="#_Toc421536256" class="anchor">#</a></h2>
         <p>Knowledge Views display objects contained in the Process Director database. Authenticated and anonymous users can be given access to the objects displayed in a Knowledge View. A user must have at least View permission to an object for it to be displayed in the Knowledge View. </p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -285,9 +269,7 @@
                 <p>This permission is required for a user to be able to run the Knowledge View. If a user doesn't have Run permission to a Knowledge View definition, it won't be displayed on the user’s home page or when they select the Knowledge navigation button.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421536257">
-            </a>Category Permission Types <a href="#_Toc421536257" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536257"></a>Category Permission Types <a href="#_Toc421536257" class="anchor">#</a></h2>
         <p>The category permissions are set in the category schema. To view the category schema use the Administration navigation button and select Meta Data Administration.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -321,21 +303,13 @@
                 <p>This permission is required for a user to be able to assign the category to an object in the database.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421536258">
-            </a>Default Permissions for New Objects <a href="#_Toc421536258" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536258"></a>Default Permissions for New Objects <a href="#_Toc421536258" class="anchor">#</a></h2>
         <p>Any time a new object (e.g. document, Review Set, sub-folder) is added to a folder it will be given the same permissions as the parent folder. If an object is added to the top-most folder (i.e. “&lt;top&gt;”) it will be given the same permissions specified in the default Folder Permissions hotlink. If an object is copied or moved to a folder, it will keep its original permissions.</p>
-        <h2>
-            <a name="_Toc421536259">
-            </a>Administrators <a href="#_Toc421536259" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536259"></a>Administrators <a href="#_Toc421536259" class="anchor">#</a></h2>
         <p>Any user that is checked as the “System Administrator” is given full administrative privileges. A user that is a System Administrator has full permission (View, Modify, and Delete) to all objects in the Process Director database.</p>
-        <h2>
-            <a name="_Toc421536260">
-            </a>Adding/Removing Permissions <a href="#_Toc421536260" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536260"></a>Adding/Removing Permissions <a href="#_Toc421536260" class="anchor">#</a></h2>
         <p>Permission records can be modified for an object by selecting the <span class="UIElement">Permissions </span>button. Each permission record has to be removed or added individually. Existing permission records can't be modified, they must be removed and a new record added. To remove a permission record, click on the checkbox for that entry and select the Delete hotlink. To add a new permission record, select the type of user, the type of permission and click on the “Add New Permission” button. You can't delete a permission record that would eliminate Write permission for yourself; the system will return an error message. If this occurs, add a new permission record granting your User ID Write permission, then delete the other permission record. </p>
-        <h2 MadCap:conditions="General.Not Printed">
-            <a name="Example">
-            </a>Documentation Example <a href="#Example" class="anchor">#</a></h2>
+        <h2 MadCap:conditions="General.Not Printed"><a name="Example"></a>Documentation Example <a href="#Example" class="anchor">#</a></h2>
         <MadCap:dropDown MadCap:conditions="General.Not Printed">
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Video Example</MadCap:dropDownHotspot>
@@ -352,8 +326,8 @@
                 <MadCap:dropDownHotspot>Use the Simulator</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p MadCap:conditions="General.Not Printed">
-                    <a href="../Resources/Simulations/Setting Permissions/story.html" target="_blank" title="Simulator - Setting Permissions" alt="Simulator - Setting Permissions">Click here</a> to use the Simulator to set permissions on a folder.</p>
+                <p MadCap:conditions="General.Not Printed"><a href="../Resources/Simulations/Setting Permissions/story.html" target="_blank" title="Set permissions on a folder" alt="Set permissions on a folder">Set permissions on a folder</a>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>
