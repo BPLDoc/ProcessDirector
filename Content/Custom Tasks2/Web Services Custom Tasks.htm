@@ -533,7 +533,7 @@
                 </p>
                 <h4>Advanced tabs</h4>
                 <p>
-                    <img src="../Resources/Images/Custom Tasks2/FFFromRest2.png" />
+                    <img src="../Resources/Images/HowDoI/FillFromREST.jpg" />
                 </p>
                 <h4>Configuration Data</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
@@ -680,66 +680,71 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">The number of seconds to wait before the REST&#160;call times out.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Use Insecure versions of TLS?</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">By default, Process Director won't use TLS 1.0 for the transport layer for security reasons. Checking this option will enables the use of TLS 1.0 if desired.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Retry Attempts</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Number of retries to attempt</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Added in v2023.01.26 this field is designed to prevent an issue that may occur when REST POST calls to update data fails <i>without an underlying fault in the Payload or service</i>. This property implements a retry mechanism that often resolves the issue, and eliminates the need for an administrator to re-run the Timeline Activity/Form event that invokes the Custom Task.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Base64 Encode</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Use Insecure versions of TLS?</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When selected, will encode attachments using Base64 encoding.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">By default, Process Director won't use TLS 1.0 for the transport layer for security reasons. Checking this option will enables the use of TLS 1.0 if desired.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Headers</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>You can add additional HTTP headers to the call by clicking the Add Row button to create key/value pairs.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Format of Result data</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">XML<br />JSON</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Specifies the format of the result data for multipart web requests.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Fill array with REST service results</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>This option switches between two modes of this Custom Task's execution. When clear, this indicates to make a REST call for each row in an existing array (expecting one value for each field from the call). When set, this indicates to fill an array with the results of the REST call (expecting multiple values for each field from the call).</p>
-                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Base64 Encode</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When selected, will encode attachments using Base64 encoding.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>With multiple results, fill field(s) with only the first result</p>
+                                <p>Headers</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>&#160;</p>
+                                <p>You can add additional HTTP headers to the call by clicking the Add Row button to create key/value pairs.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Do not enter into an error state if REST call fails</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Checking this option will ensure that, if the REST&#160;call fails, the error won't be returned to the form. This is useful when you are using parameters, and a user passes a bad parameter from the form. In that case, you may wish to return nothing and leave the form fields blank, rather than display an error message to the user.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Format of Result data</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">XML<br />JSON</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Specifies the format of the result data for multipart web requests.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Fill array with REST service results</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>This option switches between two modes of this Custom Task's execution. When clear, this indicates to make a REST call for each row in an existing array (expecting one value for each field from the call). When set, this indicates to fill an array with the results of the REST call (expecting multiple values for each field from the call).</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>With multiple results, fill field(s) with only the first result</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Do not enter into an error state if REST call fails</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Checking this option will ensure that, if the REST&#160;call fails, the error won't be returned to the form. This is useful when you are using parameters, and a user passes a bad parameter from the form. In that case, you may wish to return nothing and leave the form fields blank, rather than display an error message to the user.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
                                 <p>Default XPath namespace</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
                                 <p>Global</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
                                 <p>The default namespace is generally correct.</p>
                             </td>
                         </tr>
