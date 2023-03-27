@@ -281,12 +281,12 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="fEnableJavaScriptDev">
-                    </MadCap:keyword>This variable permits form variables to be set or retrieved from Javascript, when set to the default value of "true". Setting this value to "false" disables this behavior.</p>
+                    </MadCap:keyword>This variable permits form variables to be set or retrieved from JavaScript, when set to the default value of "true". Setting this value to "false" disables this behavior.</p>
                 <h5>Vars.cs Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable Javascript access to vars</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableJavaScriptDev = <span class="CodeOption">false</span>;<br />}</p>
-                <h5>Javascript Example </h5>
-                <p>By default, Javascript can be used to get or set form value for controls that aren't contained in a Form array. The best practice for this type of use would most often be to insert the Javascript into an HTML&#160;Control on the Form.</p>
-                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Function call to get form data from a Form via Javascript</span><br />&#160;&#160;&#160;&#160;function getVariable()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = CurrentForm.FormControls["<span class="CodeOption">FORM_VAR</span>"].value;<br />&#160;&#160;&#160;&#160;}<br /><br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Function call to set a Form field value with JavaScript</span><br />&#160;&#160;&#160;&#160;function setFieldValue()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = "<span class="CodeOption">SomeValue</span>";<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["<span class="CodeOption">FORM_VAR</span>"].value = frmValue;<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Disable JavaScript access to vars</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableJavaScriptDev = <span class="CodeOption">false</span>;<br />}</p>
+                <h5>JavaScript Example </h5>
+                <p>By default, JavaScript can be used to get or set form value for controls that aren't contained in a Form array. The best practice for this type of use would most often be to insert the JavaScript into an HTML&#160;Control on the Form.</p>
+                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Function call to get form data from a Form via JavaScript</span><br />&#160;&#160;&#160;&#160;function getVariable()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = CurrentForm.FormControls["<span class="CodeOption">FORM_VAR</span>"].value;<br />&#160;&#160;&#160;&#160;}<br /><br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">// Function call to set a Form field value with JavaScript</span><br />&#160;&#160;&#160;&#160;function setFieldValue()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = "<span class="CodeOption">SomeValue</span>";<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["<span class="CodeOption">FORM_VAR</span>"].value = frmValue;<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -363,7 +363,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="fIgnoreAccessibilityFlag" />This system variable enables Process Director to ignore some settings fos the <span class="NamedControl">Switch </span>control, to improve accessibility for that control. This variable overrides the default <a href="#fEnableAccessibility">fEnableAccessibility</a> setting for the control.</p>
+                    <MadCap:keyword term="fIgnoreAccessibilityFlag" />This system variable enables Process Director to ignore some settings for the <span class="NamedControl">Switch </span>control, to improve accessibility for that control. This variable overrides the default <a href="#fEnableAccessibility">fEnableAccessibility</a> setting for the control.</p>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Ignore accessibility setting to Display the Switch control</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableAccessibility = <span class="CodeOption">true</span>; <br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -1271,7 +1271,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="Custom Workflow Step Colors">&#160;</MadCap:keyword>Process Director enables the the colors for Workflow Branches, Branch Button, Process Timeline Activities, and Activity result buttonsto be customized in the dropdown list of colors. You can add colors to the existing list of colors, or you can create an entirely new list of your own devising.</p>
+                    <MadCap:keyword term="Custom Workflow Step Colors">&#160;</MadCap:keyword>Process Director enables  the colors for Workflow Branches, Branch Button, Process Timeline Activities, and Activity result buttons to be customized in the dropdown list of colors. You can add colors to the existing list of colors, or you can create an entirely new list of your own devising.</p>
                 <p>To create your own list, start by adding the following lines of code to the PreSetSystemVars method in the Custom Vars file:</p>
                 <p class="CodeBase">bp.Vars.WorkflowColors = new List&lt;ColorValue&gt;();<code><br /></code>bp.Vars.WorkflowColors.Add(new ColorValue("Default", "", ""));</p>
                 <p>This will create an entirely new list with a default color value, which will be the standard default color in the interface, e.g., buttons will be the standard gray color. You can then add additional colors to your list using the color addition code described below. </p>

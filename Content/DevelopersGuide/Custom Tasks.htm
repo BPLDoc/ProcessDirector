@@ -32,7 +32,7 @@
         <p>
             <MadCap:keyword term="Configuration vs. Running">&#160;</MadCap:keyword>The Custom Tasks are executed in the following modes:</p>
         <p>ConfigurationThis is when the user is configuring the data needed for the Custom Task to run. During the configuration, it is common to display a list of the form fields in the container Form. This enables fields to be mapped to external sources by the builder of a Form, without requiring them to have any special naming convention for their form fields.</p>
-        <p>Run-time (run)The Custom Task is run when a mapped Form event is trigged or when a Workflow Step. When a Custom Task is run, it has access to the configuration data and the container Form.</p>
+        <p>Run-time (run)The Custom Task is run when a mapped Form event is triggered or when a Workflow Step. When a Custom Task is run, it has access to the configuration data and the container Form.</p>
         <h5>Configuration Data</h5>
         <p>When a Custom Task is configured, a form data instance is created that contains the configuration data entered. This form instance is stored “under” the Form Definition or Workflow Definition, depending on the type of Custom Task. When the Custom Task is run (in a Form or Workflow) it has access to all this configuration data in this form instance. </p>
         <h5>Container Form</h5>
@@ -53,7 +53,7 @@
             <a name="_Toc421270117">
             </a>Creating a Custom Task</h2>
         <p>
-            <MadCap:keyword term="Creating a Custom Task;Building the eForm and Script">&#160;</MadCap:keyword>A Custom Task requires a Form created in the .NET environment similar to how a Form is created. To create a Form for a Custom Task, use the Create New menu item in the Content List and select Form Definition in the dropdown. Then select from the template dropdown “Use Empty .ASCX form”.&#160; The Form must be created using the special options in the Form Definition page that is displayed. A Custom Task can be created as a Form-only Custom Task, a Workflow-only Custom Task, or a Custom Task the can be used by both Forms and Workflows. This Form will also display any Custom Task configuration.</p>
+            <MadCap:keyword term="Creating a Custom Task;Building the eForm and Script">&#160;</MadCap:keyword>A Custom Task requires a Form created in the .NET environment similar to how a Form is created. To create a Form for a Custom Task, use the Create New menu item in the Content List and select Form Definition in the dropdown. Then select from the template dropdown “Use Empty .ASCX form”.&#160; The Form must be created using the special options in the Form Definition page that is displayed. A Custom Task can be created as a Form-only Custom Task, a process-only Custom Task, or a Custom Task that can be used by both Forms and processes. This Form will also display any Custom Task configuration.</p>
         <p>These events are called for forms and while configuring a Custom Task:</p>
         <p class="CodeBase">public override void BP_Init()<br />public override void BP_Event(bp.EventType pEventType, string pEventName)<br />public override void BP_Validation()<br />public override void BP_Display()<br />public override void BP_Completed()</p>
         <p>When a Custom Task is mapped to a Form, the following Custom Task function will be called:</p>
@@ -61,7 +61,7 @@
         <p>This event is called to "run" a Custom Task. It should return "true" to show the Custom Task GUI, or false to continue processing the form.</p>
         <p class="CodeBase">public override bool CT_RunTask(bp.FormCTMappedTo pMappedTo, string pEventName)</p>
         <p>This function should return "true" to show the Custom Task GUI.</p>
-        <p>This is created like any other Custom Task (eform, Workflow), and when the rule is evaluated that uses the CT, this event will be called:</p>
+        <p>This is created like any other Custom Task (Form, Workflow), and when the rule is evaluated that uses the CT, this event will be called:</p>
         <p class="CodeBase">public override DataItem CT_RunRuleTask()</p>
         <p>This is so the Custom Task can return a string, a list of UIDs, etc.</p>
         <p>These events are called for Custom Tasks while running a GUI:</p>
