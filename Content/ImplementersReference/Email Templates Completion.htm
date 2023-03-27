@@ -9,9 +9,7 @@
             <MadCap:keyword term="Email Templates" />
             <MadCap:keyword term="Email Task Completion" />Task Completion Control via Email</h1>
         <p>There are several ways to control task completion via email, each of which prompts different responses in Process Director.</p>
-        <h3>
-            <a name="Email">
-            </a>Email&#160;Complete Link <a href="#Email" class="anchor">#</a></h3>
+        <h3><a name="Email"></a>Email&#160;Complete Link <a href="#Email" class="anchor">#</a></h3>
         <p>There are three types of email links that can be inserted into the email template for completion of a task, each of which direct users to a completion form in Process Director, and not to the original Form:</p>
         <ul>
             <li>Email Result Links</li>
@@ -21,34 +19,27 @@
         <p>All of the completion links do essentially the same thing, that is, they direct the user to a task completion page, bypassing the original Form. They each have a slightly different implementation on the email template, however.</p>
         <p>The<span class="NamedControl"> Email Result Links</span> provide the user with a list of all of the possible results for a task, while the <span class="NamedControl">Email Completion Link</span> provides a result link for a single possible result. So, if you want the user to see all of the possible task results, you'd use the<span class="NamedControl"> Email Result Links</span>, while if you only want to show a result for one or two possible results, you'd configure an <span class="NamedControl">Email Completion Link</span> for each of the results you desire to show the user.</p>
         <p>As an example, let's say that you have three possible results for a Process Timeline Activity: Approve, Reject, and Resubmit. For some users, you might want to show the <span class="NamedControl">Email Result Links</span> to display all of the possible results:</p>
-        <p>
-            <code>{EMAIL_RESULT_LINKS,comments=1,confirm=1,separator=" | ",icon=1}</code>
+        <p><code>{EMAIL_RESULT_LINKS, comments=1, confirm=1, separator=" | ", icon=1}</code>
         </p>
         <p>In this example, the<span class="NamedControl"> Email Result Links</span> control tag is configured to require comments (comments=1), require a confirmation dialog for the result (confirm=1), insert a spaced bar character between each result (separator=" | "), and display the icons for each result that was configured in the Process Timeline Activity (icon=1).</p>
         <p>For another user, you might only wish to show the Approve or Resubmit results but not the Reject result:</p>
-        <p>
-            <code>{EmailCompleteLink,text=<span class="CodeOption">APPROVE</span>, comments=false, confirm=true, action=<span class="CodeOption">APPROVED</span>}</code>
+        <p><code>{EmailCompleteLink, text=<span class="CodeOption">APPROVE</span>, comments=false, confirm=true, action=<span class="CodeOption">APPROVED</span>}</code>
         </p>
-        <p>
-            <code>{EmailCompleteLink,text=<span class="CodeOption">RESUBMIT</span>, comments=true, confirm=true, action=<span class="CodeOption">RESUBMIT</span>}</code>
+        <p><code>{EmailCompleteLink, text=<span class="CodeOption">RESUBMIT</span>, comments=true, confirm=true, action=<span class="CodeOption">RESUBMIT</span>}</code>
         </p>
         <p>In this example, the <span class="NamedControl">Email Complete Links</span> are configured to specify the text to display for the result (text=APPROVE), require comments for the Resubmit result (comments=true), require a confirmation dialog for the results (confirm=true), and specifies the task result, or action, for each result (<code>action=RESUBMIT</code>).</p>
         <p>The<span class="NamedControl"> Email Complete URL</span> control tag, at its simplest, provides a link to the task completion page.</p>
-        <p>
-            <code>{EMAIL_COMPLETE_URL}</code>
+        <p><code>{EMAIL_COMPLETE_URL}</code>
         </p>
         <p>In this example, the user is provided with a link to the completion page, but, since it has no indication of what the result should be, the completion page will present the user with a dropdown control that displays all of the possible results.</p>
         <p>
             <img src="../Resources/Images/taskcompletionpage.png" />
         </p>
         <p>It is possible, however, to fully configure the <span class="NamedControl">Email Complete URL</span> control tag, so that it acts just like an Email Complete Link control:</p>
-        <p>
-            <code>{EMAIL_COMPLETE_URL, action=<span class="CodeOption">Approve</span>, comments=1, confirm=1}</code>
+        <p><code>{EMAIL_COMPLETE_URL, action=<span class="CodeOption">Approve</span>, comments=1, confirm=1}</code>
         </p>
         <p>Using any of the three completion links work best if the process participant doesn’t need to edit any information on the Form, and the only action is to provide a result. If you do wish the user to go to the Form to edit or add information, then you can't use the result links.</p>
-        <h3>
-            <a name="Offline">
-            </a>Offline Completion <a href="#Offline" class="anchor">#</a></h3>
+        <h3><a name="Offline"></a>Offline Completion <a href="#Offline" class="anchor">#</a></h3>
         <p>Allowing a task to be completed from email is called offline completion. Offline completion enables processes to parse an email message, and, based on the contents of the email, complete a task. For offline completion of an Activity to work, two portions of the Process Timeline Activity must be properly configured. First, in the Advanced Options tab of the Process Timeline Activity, you must select the Allow task to be completed from email option.</p>
         <p>
             <img src="../Resources/Images/email completion option.png" />

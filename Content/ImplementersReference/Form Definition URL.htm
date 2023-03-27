@@ -41,7 +41,7 @@
             <img src="../Resources/Images/ImplementersReference/Forms3.png" />
         </p>
         <p>Using the VAR object in a text string enables you to add additional modifiers to the variable. For instance, the syntax <code>{VAR:<span class="CodeOption">VarName</span>, null="<span class="CodeOption">Value if null</span>"}</code> specifies the value to use if the URL parameter is not present.</p>
-        <p>The VAR (Variable) object is an <i>ad-hoc</i> variable whose primary use is to serve as a placeholder for the value passed via the URL&#160;Parameter. This is the same implementation procedure used when <a href="Knowledge View Operations.htm#Filter">passing values to a Knowledge View in a URL</a>.</p>
+        <p>The VAR (Variable) object is an <i>ad hoc</i> variable whose primary use is to serve as a placeholder for the value passed via the URL&#160;Parameter. This is the same implementation procedure used when <a href="Knowledge View Operations.htm#Filter">passing values to a Knowledge View in a URL</a>.</p>
         <p>No matter which of the two methods above that you implement, you can now use the Variable as a URL&#160;parameter. In the case of the above example, the Parameter would be</p>
         <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/form.aspx?pid=<span class="CodeOption">PP</span>&amp;formid=<span class="CodeOption">NN</span>&amp;<span style="background-color: #ffff00;"><span style="background-color: #ffd700;">Stuff=value</span></span></p>
         <p>The default value will be filled with the value specified in the URL parameter. </p>
@@ -52,7 +52,8 @@
         <p>Once you've specified the field name in the Custom vars file, you can now use a URL&#160;parameter to set the value any time you desire. In the URL&#160;parameter, the field is identified using the prefix "EXT_ ", followed by the field name, to identify the field, e.g., "EXT_FieldName".</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Be sure to URL encode the values you specify in the URL&#160;Parameter.</p>
-        <p><b>Example:</b>
+        <p>
+            <b>Example:</b>
         </p>
         <p>In the Custom Vars file, identify the fields to change via URL&#160;Parameter:</p>
         <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Fields to set via URL&#160;Parameter</span><br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">Field1</span>");<br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">Field2</span>");<br />}</p>
