@@ -1,17 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head><title></title>
+    <head>
+        <title>
+        </title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:keyword term="System Variables" />
-            <MadCap:concept term="System Variables" /><a name="_Toc421544626"></a>User System Variables</h1>
+            <MadCap:concept term="System Variables" />
+            <a name="_Toc421544626">
+            </a>User System Variables</h1>
         <p>User system variables return the value of a user, user group, or comma-separated lists of users or groups. Controls like the <span class="NamedControl">User Picker</span> also return a user or users, and system variables referencing a <span class="NamedControl">User Picker</span> or <span class="NamedControl">Invite</span> control also incorporate all of the User system variable attributes. So, any system variable option can be applied to Form system variables that return a user, e.g., <code>{FORM:UserPicker1, format=email}</code> will return the user's email address.</p>
         <h2>Options</h2>
         <p>System variables that return information about a user or users will have the following options:</p>
         <ul style="list-style-type: disc;margin-left: 18pt;">
-            <li><b>AuthType:</b> returns the method by which the user authenticates. This returns a number, 0 through 4. The numbers represent the following authentication methods:</li>
+            <li>
+                <b>AuthType:</b> returns the method by which the user authenticates. This returns a number, 0 through 4. The numbers represent the following authentication methods:</li>
         </ul>
         <ul style="list-style-type: circle;margin-left: 54pt;">
             <li>0: BuiltIn</li>
@@ -21,51 +26,81 @@
             <li>4: SAML</li>
         </ul>
         <ul style="list-style-type: disc;margin-left: 18pt;">
-            <li><b>ShowManager:</b> If set to 1 or True, this option returns the user’s manager. Additionally, using this in conjunction with the "format" option can return additional information about the manager. For instance, the manager's email address for the current user can be returned using the following syntax:<br /><code>{CURR_USER, ShowManager=1, format=email}</code></li>
-            <li><b>ShowDelegate:</b> If the user has delegation turned on and this option is set to 1 or True, then this option returns the identify of the user’s delegate. Otherwise, it will return no value. Additionally, using this in conjunction with the "format" option can return additional information about the delegate. For instance, the delegate's email address for the current user can be returned using the following syntax:<br /><code>{CURR_USER, ShowDelegate=1, format=email}</code><br /></li>
+            <li>
+                <b>ShowManager:</b> If set to 1 or True, this option returns the user’s manager. Additionally, using this in conjunction with the "format" option can return additional information about the manager. For instance, the manager's email address for the current user can be returned using the following syntax:<br /><code>{CURR_USER, ShowManager=1, format=email}</code></li>
+            <li>
+                <b>ShowDelegate:</b> If the user has delegation turned on and this option is set to 1 or True, then this option returns the identify of the user’s delegate. Otherwise, it will return no value. Additionally, using this in conjunction with the "format" option can return additional information about the delegate. For instance, the delegate's email address for the current user can be returned using the following syntax:<br /><code>{CURR_USER, ShowDelegate=1, format=email}</code><br /></li>
         </ul>
         <p>User system variables also have formatting options, which change the format of the data being returned. The format parameter can be set to the following:</p>
         <h3>Example</h3>
-        <p><code>{CURR_USER, format=<span class="CodeOption">FormatOption</span>}</code>
+        <p>
+            <code>{CURR_USER, format=<span class="CodeOption">FormatOption</span>}</code>
         </p>
         <h2>Format Options</h2>
         <ul style="list-style-type: disc;margin-left: 18pt;">
-            <li><b>BusinessUnit:</b> Returns the Business Unit specified in Active Directory.</li>
-            <li><b>Culture:</b> Returns the user’s culture.</li>
-            <li><b>Culture_String:</b> Returns the user’s culture string.</li>
-            <li><b>Custom_Date:</b> Returns the custom date stored in the User’s table entry.</li>
-            <li><b>Custom_Number:</b> Returns the custom number stored in the User’s table entry.</li>
-            <li><b>Custom_String:</b> Returns the custom string stored in the User’s table entry.</li>
-            <li><b>Display:</b> Returns the Display Name of the User.</li>
-            <li><b>Domain:</b> Returns the domain a user is in.</li>
-            <li><b>Email:</b> Returns the user’s email address.</li>
-            <li style="list-style-type: disc;font-weight: normal;"><b>Groups:</b> Returns the list of groups of which the user is a member.</li>
-            <li><b>UID:</b> Returns the User's UID in GUID format.</li>
-            <li><b>ID:</b> Returns the ID of an object or user. </li>
-            <li><b>LAST_LOGIN:</b> Returns the data and time of the specified user's last login.</li>
-            <li><b>LegalEntity:</b> Returns the Legal Entity specified in Active Directory.</li>
-            <li><b>Name:</b> Returns the user’s name.</li>
-            <li><b>NUM_LOGINS:</b> Returns the number of times the given user has logged in.</li>
-            <li><b>Picture:</b> Returns the image of a user.</li>
-            <li><b>Signature:</b> Returns the image of the user’s signature.</li>
-            <li><b>Userid:</b> Returns the user’s User ID.</li>
+            <li>
+                <b>BusinessUnit:</b> Returns the Business Unit specified in Active Directory.</li>
+            <li>
+                <b>Culture:</b> Returns the user’s culture.</li>
+            <li>
+                <b>Culture_String:</b> Returns the user’s culture string.</li>
+            <li>
+                <b>Custom_Date:</b> Returns the custom date stored in the User’s table entry.</li>
+            <li>
+                <b>Custom_Number:</b> Returns the custom number stored in the User’s table entry.</li>
+            <li>
+                <b>Custom_String:</b> Returns the custom string stored in the User’s table entry.</li>
+            <li>
+                <b>Display:</b> Returns the Display Name of the User.</li>
+            <li>
+                <b>Domain:</b> Returns the domain a user is in.</li>
+            <li>
+                <b>Email:</b> Returns the user’s email address.</li>
+            <li style="list-style-type: disc;font-weight: normal;">
+                <b>Groups:</b> Returns the list of groups of which the user is a member.</li>
+            <li>
+                <b>UID:</b> Returns the User's UID in GUID format.</li>
+            <li>
+                <b>ID:</b> Returns the ID of an object or user. </li>
+            <li>
+                <b>LAST_LOGIN:</b> Returns the data and time of the specified user's last login.</li>
+            <li>
+                <b>LegalEntity:</b> Returns the Legal Entity specified in Active Directory.</li>
+            <li>
+                <b>Name:</b> Returns the user’s name.</li>
+            <li>
+                <b>NUM_LOGINS:</b> Returns the number of times the given user has logged in.</li>
+            <li>
+                <b>Picture:</b> Returns the image of a user.</li>
+            <li>
+                <b>Signature:</b> Returns the image of the user’s signature.</li>
+            <li>
+                <b>Userid:</b> Returns the user’s User ID.</li>
         </ul>
         <h5>Example</h5>
-        <p><code>{CURR_USER, format=Email}</code>
+        <p>
+            <code>{CURR_USER, format=Email}</code>
         </p>
         <p>When comparing User system variables, it is important to make sure that you are comparing the same kinds of values. Ensure that the format options for all the User system variables in a comparison are the same, or else you may end up with an unexpected result.</p>
         <h5>Active Directory Fields</h5>
         <p>If users are created on Process Director through synchronization with active directory, certain Active Directory data can be received by Process Director using the following formatting options:</p>
         <ul style="list-style-type: disc;margin-left: 18pt;">
-            <li><b>Phone:</b> returns the user’s phone number</li>
-            <li><b>Office:</b> returns the value of the user’s Office active directory field</li>
-            <li><b>Title:</b> returns the user’s title</li>
-            <li><b>Department:</b> returns the name of the user’s department</li>
-            <li><b>Description:</b>&#160; returns the Active Directory description of the User</li>
-            <li><b>Company:</b> returns the name of the company to which the user belongs</li>
+            <li>
+                <b>Phone:</b> returns the user’s phone number</li>
+            <li>
+                <b>Office:</b> returns the value of the user’s Office active directory field</li>
+            <li>
+                <b>Title:</b> returns the user’s title</li>
+            <li>
+                <b>Department:</b> returns the name of the user’s department</li>
+            <li>
+                <b>Description:</b>&#160; returns the Active Directory description of the User</li>
+            <li>
+                <b>Company:</b> returns the name of the company to which the user belongs</li>
         </ul>
         <h5>Example</h5>
-        <p><code>{CURR_USER, format=Phone}</code>
+        <p>
+            <code>{CURR_USER, format=Phone}</code>
         </p>
         <h2>Return Values</h2>
         <p>User system variables return different default values based on how they are called. In all cases, the system variable will return a string value, but selecting a user variable from the user interface will return the string value of the user ID, while using the "curly brackets" syntax will return the formatted Name property string of the user. For example, let's assume a user named Diana Stuart is the current user, and the following condition exists in the Condition Builder:</p>
@@ -88,7 +123,15 @@
         <p>The following user system variables are available in Process Director.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421544627"></a><a name="CurrentUser"></a><a href="#CurrentUser"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /><MadCap:keyword term="Current User" /></a>Current User</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421544627">
+                    </a>
+                    <a name="CurrentUser">
+                    </a>
+                    <a href="#CurrentUser">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                        <MadCap:keyword term="Current User" />
+                    </a>Current User</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
@@ -97,39 +140,62 @@
                 <h3>Returns</h3>
                 <p>This system variable returns the User ID or Formatted User Name, depending on the method used to call the variable, as described in the Return Values section, above.</p>
                 <p class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /><span class="UIElement" style="font-weight: bold;"> </span>Do not use this system variable in email templates.<span class="UIElement" style="font-weight: bold;"> </span>The correct system variable to use to return the task assignee in an email template is the <a href="Email System Variables.htm#EmailUser">Email User</a> system variable.</p>
+                    <img src="../Resources/Images/i.png" alt="Important" />
+                    <span class="UIElement" style="font-weight: bold;"> </span>Do not use this system variable in email templates.<span class="UIElement" style="font-weight: bold;"> </span>The correct system variable to use to return the task assignee in an email template is the <a href="Email System Variables.htm#EmailUser">Email User</a> system variable.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="CURR_USER" />{CURR_USER}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="CURR_USER" />{CURR_USER}</code>
                 </p>
                 <h3>Modifiers</h3>
                 <p>This system variable can be formatted according to the options available to User system variables.</p>
                 <h3>Alternate Syntax</h3>
-                <p><code>{CURRENT_USER}</code>
+                <p>
+                    <code>{CURRENT_USER}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421544498"></a><a name="CurrentUserGroups"></a><a href="#CurrentUserGroups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421544498">
+                    </a>
+                    <a name="CurrentUserGroups">
+                    </a>
+                    <a href="#CurrentUserGroups">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Current User Groups" />Current User Groups</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
                 <p>This system variable returns a comma-separated list of the groups the current user belongs to.</p>
                 <h3>SysVar Tag</h3>
-                <p><code><MadCap:keyword term="CURR_USER_GROUPS" />{CURR_USER_GROUPS, <span class="CodeOption">format=id</span>, <span class="CodeOption">ShowDelegate=true</span>}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="CURR_USER_GROUPS" />{CURR_USER_GROUPS, <span class="CodeOption">format=id</span>, <span class="CodeOption">ShowDelegate=true</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p><b>format=id:</b> This optional modifier will return the group ID rather than the group name.</p>
-                <p><b>ShowDelegate=true:</b> This optional modifier will return for the user to whom the current user is delegating, rather than the current user.</p>
+                <p>
+                    <b>format=id:</b> This optional modifier will return the group ID rather than the group name.</p>
+                <p>
+                    <b>ShowDelegate=true:</b> This optional modifier will return for the user to whom the current user is delegating, rather than the current user.</p>
                 <h3>Optional Tags</h3>
-                <p><code>{CURRENT_USER_GROUPS}</code>
+                <p>
+                    <code>{CURRENT_USER_GROUPS}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421544628"></a><a name="Group"></a><a href="#Group"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421544628">
+                    </a>
+                    <a name="Group">
+                    </a>
+                    <a href="#Group">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Group" />Group</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -139,17 +205,26 @@
                 <h3>Returns</h3>
                 <p>This system variable allows the user to specify a group to be used in comparisons. Information about a group can be gathered via SysVar tags by referencing a group picker form field.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{FORM:<span class="CodeOption">someGroupPicker</span>}</code>
+                <p>
+                    <code>{FORM:<span class="CodeOption">someGroupPicker</span>}</code>
                 </p>
                 <h3>Parameters</h3>
-                <p><b>someGroupPicker&#160;(required):</b>&#160;The name of a Group Picker on a form.</p>
+                <p>
+                    <b>someGroupPicker&#160;(required):</b>&#160;The name of a Group Picker on a form.</p>
                 <h3>Modifiers</h3>
                 <p>The result of a group picker reference can be formatted according to the options available to form field system variables.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421544629"></a><a name="GroupUsers"></a><a href="#GroupUsers"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421544629">
+                    </a>
+                    <a name="GroupUsers">
+                    </a>
+                    <a href="#GroupUsers">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Group Users" />Group Users</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -157,72 +232,109 @@
                 <p>This system variable returns a comma-separated list of users that belong to a specified group. If no optional formatting parameters are used, the default return format will be the actual name of the user.</p>
                 <h3>SysVar Tags</h3>
                 <h4>Single Group</h4>
-                <p><code>{GROUP_USERS:<span class="CodeOption">GroupName</span>|<span class="CodeOption">GID</span>, format=<span class="CodeOption">userid</span>|<span class="CodeOption">guid</span>|<span class="CodeOption">id</span>|<span class="CodeOption">name</span>}</code>
+                <p>
+                    <code>{GROUP_USERS:<span class="CodeOption">GroupName</span>|<span class="CodeOption">GID</span>, format=<span class="CodeOption">userid</span>|<span class="CodeOption">guid</span>|<span class="CodeOption">id</span>|<span class="CodeOption">name</span>}</code>
                 </p>
                 <h4>Multiple Groups</h4>
-                <p><code>{GROUP_USERS, GROUPS="<span class="CodeOption">GroupName1,Groupname2</span>", format=<span class="CodeOption">ID</span>|<span class="CodeOption">UID</span>|<span class="CodeOption">UserID</span>|<span class="CodeOption">Name</span>, Operator=<span class="CodeOption">AND</span>|<span class="CodeOption">OR</span>}</code>
+                <p>
+                    <code>{GROUP_USERS, GROUPS="<span class="CodeOption">GroupName1,Groupname2</span>", format=<span class="CodeOption">ID</span>|<span class="CodeOption">UID</span>|<span class="CodeOption">UserID</span>|<span class="CodeOption">Name</span>, Operator=<span class="CodeOption">AND</span>|<span class="CodeOption">OR</span>}</code>
                 </p>
                 <h3>Examples:</h3>
                 <h4>Single Group</h4>
-                <p><code><MadCap:keyword term="GROUP_USERS" />{GROUP_USERS:admin, format=userid}</code>
+                <p>
+                    <code>
+                        <MadCap:keyword term="GROUP_USERS" />{GROUP_USERS:admin, format=userid}</code>
                 </p>
                 <h4>Multiple Groups</h4>
-                <p><code>{GROUP_USERS, GROUPS="Finance,admin", Operator=OR}</code>
+                <p>
+                    <code>{GROUP_USERS, GROUPS="Finance,admin", Operator=OR}</code>
                 </p>
                 <h3>Parameters</h3>
-                <p><b>GroupName (Required):</b> The group name for the group from which the users should be returned.</p>
-                <p><i>OR</i>
+                <p>
+                    <b>GroupName (Required):</b> The group name for the group from which the users should be returned.</p>
+                <p>
+                    <i>OR</i>
                 </p>
-                <p><b>GID  (Required):</b> The Group ID for the group from which the users should be returned.</p>
+                <p>
+                    <b>GID  (Required):</b> The Group ID for the group from which the users should be returned.</p>
                 <h3>Modifiers</h3>
-                <p><b>Format:</b> Specifies the type of return value to be received. Possible options are:</p>
+                <p>
+                    <b>Format:</b> Specifies the type of return value to be received. Possible options are:</p>
                 <ul style="list-style-type: disc;margin-left: 18pt;">
-                    <li><b>ID:</b> The unique identifier for the users in the group.</li>
-                    <li><b>UID:</b> The unique identified for the users in the group.</li>
-                    <li><b>userid:</b> The Process Director usernames for the users in the group.</li>
-                    <li><b>name:</b> The actual names of the users in the group.</li>
+                    <li>
+                        <b>ID:</b> The unique identifier for the users in the group.</li>
+                    <li>
+                        <b>UID:</b> The unique identified for the users in the group.</li>
+                    <li>
+                        <b>userid:</b> The Process Director usernames for the users in the group.</li>
+                    <li>
+                        <b>name:</b> The actual names of the users in the group.</li>
                 </ul>
-                <p><b>Groups:</b> To return multiple groups, use a comma-separate list of group names for this Modifier.</p>
-                <p><b>Operator:</b> Specifies how to return users from multiple groups.</p>
+                <p>
+                    <b>Groups:</b> To return multiple groups, use a comma-separate list of group names for this Modifier.</p>
+                <p>
+                    <b>Operator:</b> Specifies how to return users from multiple groups.</p>
                 <ul>
-                    <li><b>AND:</b> Will return <i>only</i> users who are members of <i>all</i> groups listed in the <span class="ControlName">Groups </span>modifier.</li>
-                    <li><b>OR:</b> Will return <i>all</i> members of the groups listed in the <span class="ControlName">Groups </span>modifier.</li>
+                    <li>
+                        <b>AND:</b> Will return <i>only</i> users who are members of <i>all</i> groups listed in the <span class="ControlName">Groups </span>modifier.</li>
+                    <li>
+                        <b>OR:</b> Will return <i>all</i> members of the groups listed in the <span class="ControlName">Groups </span>modifier.</li>
                 </ul>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="IPAddress"></a>
-                    <MadCap:keyword term="IP Address" /><a href="#IPAddress"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>IP&#160;Address</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="IPAddress">
+                    </a>
+                    <MadCap:keyword term="IP Address" />
+                    <a href="#IPAddress">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>IP&#160;Address</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
                 <p>This system variable returns the current user's IP&#160;Address.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{IP_ADDRESS}</code>
+                <p>
+                    <code>{IP_ADDRESS}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="NotifyUsers"></a><a href="#NotifyUsers"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="NotifyUsers">
+                    </a>
+                    <a href="#NotifyUsers">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Notify Users;NOTIFY_USERS" />Notify Users</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h3>Returns</h3>
-                <p>This variable returns a list of all users who will receive a notification for a specified Timeline Activity, regardless of the type of notification they will receive.</p>
+                <p>This variable returns a list of all users who will receive a notification for a specified Timeline Activity, regardless of the type of notificationthey'll receive.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{NOTIFY_USERS:<span class="CodeOption">ActivityName</span>, format=<span class="CodeOption">FormatType</span>}</code>
+                <p>
+                    <code>{NOTIFY_USERS:<span class="CodeOption">ActivityName</span>, format=<span class="CodeOption">FormatType</span>}</code>
                 </p>
                 <h3>Parameters</h3>
-                <p><b>ActivityName (Required):</b> The name of the activity for which you wish to return the list of users who will receive a notification.</p>
+                <p>
+                    <b>ActivityName (Required):</b> The name of the activity for which you wish to return the list of users who will receive a notification.</p>
                 <h3>Modifiers</h3>
                 <p>The result of this System Variable can be formatted according to the options available to User system variables.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421544630"></a><a name="User"></a><a href="#User"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
+                <MadCap:dropDownHotspot>
+                    <a name="_Toc421544630">
+                    </a>
+                    <a name="User">
+                    </a>
+                    <a href="#User">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>
                     <MadCap:keyword term="Notify Users;NOTIFY_USERS" />User</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -232,10 +344,12 @@
                 <h3>Returns</h3>
                 <p>This option allows the user to specify a user to be used for comparisons. This is technically not a system variable, but information about a user can be gathered via SysVar tags by referencing a user picker. This system variable returns the User ID or Formatted User Name, depending on the method used to call the variable, as described in the Return Values section, above.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{FORM:<span class="CodeOption">someUserPicker</span>}</code>
+                <p>
+                    <code>{FORM:<span class="CodeOption">someUserPicker</span>}</code>
                 </p>
                 <h3>Parameters</h3>
-                <p><b>someUserPicker (Required):</b> The name of the user picker whose values you wish to return.</p>
+                <p>
+                    <b>someUserPicker (Required):</b> The name of the user picker whose values you wish to return.</p>
                 <h3>Modifiers</h3>
                 <p>The result of this System Variable can be formatted according to the options available to form field system variables.</p>
             </MadCap:dropDownBody>

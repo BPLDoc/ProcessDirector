@@ -248,7 +248,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="fEnableTransOnKVIEW">&#160;</MadCap:keyword>When true, this option enables running a SQL transaction prior to running the command to run a Knowledge View. Once the Knowledge View has been run, the transaction is rolled back. Running the transaction will aide in database concurrency for complex filtering on the Knowledge View, using the IsolationLevel.ReadUncommitted functionality on SQL Server only. This is not enabled for Oracle because Oracle only supports ReadCommitted and Serializable, which would commit the transaction to the database. The default value for this variable is "true". Setting the value to "false" will prevent the SQL transaction from running.</p>
+                    <MadCap:keyword term="fEnableTransOnKVIEW">&#160;</MadCap:keyword>When true, this option enables running a SQL transaction prior to running the command to run a Knowledge View. Once the Knowledge View has been run, the transaction is rolled back. Running the transaction will aide in database concurrency for complex filtering on the Knowledge View, using the IsolationLevel.ReadUncommitted functionality on SQL Server only. This isn't enabled for Oracle because Oracle only supports ReadCommitted and Serializable, which would commit the transaction to the database. The default value for this variable is "true". Setting the value to "false" will prevent the SQL transaction from running.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="ControlName">&#160;&#160;&#160;&#160;// Disables running the automatic SQL Transaction</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableTransOnKVIEW = <span class="CodeOption">false</span>; <br />}</p>
             </MadCap:dropDownBody>
@@ -363,7 +363,7 @@
                 <p>
                     <MadCap:keyword term="FileExtensionsUseCDMForEdit" />This variable enables you to specify which file extensions should use the Collaborative Document Markup (CDM )feature when using the EDIT link. This feature will enable you to use the Collaborative Document Markup tool for editing specific document types, while retaining the Collaborative Document Authoring (CDA) feature for editing all other document types. For instance, you may wish to specify the CDM&#160;tool for editing PowerPoint presentations, as in the example below, while still retaining the use of CDA for editing Word and Excel Documents.</p>
                 <p>Specifying the use of CDM for editing means that the only editing allowed will be adding annotations, unlike the CDA tool, which enables editing the original document content.</p>
-                <p>This variable is not relevant for installations that aren't licensed with the Collaborative Document features.</p>
+                <p>This variable isn't relevant for installations that aren't licensed with the Collaborative Document features.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Specifies the use of CDM to mark up PowerPoint presentations</span><br />&#160;&#160;&#160;&#160;bp.Vars.FileExtensionsUseCDMForEdit = "<span class="CodeOption">ppt, pptx</span>";<br />}</p>
             </MadCap:dropDownBody>
@@ -380,7 +380,7 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="FileExtensionsUseCheckOutForEdit" />This variable enables you to specify which file extensions should use the default checkout and edit feature, rather than the Collaborative Document Authoring (CDA) feature. File extensions listed in this variable will force the default check out and edit functionality when clicking the EDIT link for attachments.</p>
-                <p>This variable is not relevant for installations that aren't licensed with the Collaborative Document features.</p>
+                <p>This variable isn't relevant for installations that aren't licensed with the Collaborative Document features.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Forces use of the default check out feature for <br />&#160;&#160;&#160;&#160;//&#160;PowerPoint presentations, and not use CDA</span><br />&#160;&#160;&#160;&#160;bp.Vars.FileExtensionsUseCheckOutForEdit = "<span class="CodeOption">xls, xlsx</span>";<br />}</p>
             </MadCap:dropDownBody>
