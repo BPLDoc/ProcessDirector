@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Accessibility" />
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Accessibility;WCAG;Section 508;Accessibility Canada;ECN 301 549" />Accessibility Principle 3 – Understandable</h1>
+        <p>This principle relates to making information and the operation of the user interface  understandable to users.</p>
+        <h4>Guideline 3.1 – Readable</h4>
+        <h6>Make text content readable and understandable.</h6>
+        <h5>3.1.1 Language of Page</h5>
+        <h6>Level A - The default human language of each Web page can be programmatically determined.</h6>
+        <p>Process Director's entire user interface is customizable for culture/language, based on the user's selected culture setting. All forms and other user-viewable objects are also fully customizable for culture as well. Please see the <a href="../DevelopersGuide/Localization.htm">Localization</a> topic of the Developers Guide.</p>
+        <h5>3.1.2 Language of Parts</h5>
+        <h6>Level AA - The human language of each passage or phrase in the content can be programmatically determined except for proper names, technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediately surrounding text.</h6>
+        <p>This is generally not relevant to Process Director, though designers can, through the use of the <span class="NamedControl">HTML </span>control, provide the appropriate language indicators in the raw HTML via the "lang" attribute of an HTML&#160;text tag.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Code Sample</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="CodeBase">&lt;blockquote <b>lang="de"</b>&gt;<br />&#160;&#160;&#160;&#160;&lt;p&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Da dachte der Herr daran, ihn aus dem Futter zu schaffen,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;aber der Esel merkte, daß kein guter Wind wehte, lief fort<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;und machte sich auf den Weg nach Bremen: dort, meinte er,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;könnte er ja Stadtmusikant werden.<br />&#160;&#160;&#160;&#160;&lt;/p&gt;<br />&lt;/blockquote&gt;</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h5>3.1.3 Unusual Words</h5>
+        <h6>Level AAA - A mechanism is available for identifying specific definitions of words or phrases used in an unusual or restricted way, including idioms and jargon.</h6>
+        <p>This isn't generally relevant to Process Director, though designers can, through the use of the HTML control, use the "dfn" tag to specify a definition.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Code Sample</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="CodeBase">&lt;p&gt;The Web Content Accessibility Guidelines require that non-text content has a text alternative. <b>&lt;dfn&gt;</b>Non-text content<b>&lt;/dfn&gt;</b> is content that isn't a sequence of characters that can be programmatically determined or where the sequence isn't expressing something in human language; this includes ASCII Art (which is a pattern of characters), emoticons, leetspeak (which is character substitution), and images representing text .&lt;/p&gt;</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h4>Guideline 3.2 – Predictable</h4>
+        <h6>Make Web pages appear and operate in predictable ways.</h6>
+        <h5>3.2.1 On Focus</h5>
+        <h6>Level A - When any user interface component receives focus, it doesn't initiate a change of context.</h6>
+        <p>This is generally not relevant to Process Director. To the extent context is changed, it is changed as the result of a manual user input, not a result of simply gaining focus.</p>
+        <h5>3.2.2 On Input</h5>
+        <h6>Level A - Changing the setting of any user interface component doesn't automatically cause a change of context unless the user has been advised of the behavior before using the component.</h6>
+        <p>As a best practice, designers should provide users with explanatory text that a change to a user input will change context, so that users understand the result of any input action.</p>
+        <h5>3.2.3 Consistent Navigation</h5>
+        <h6>Level AA - Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same relative order each time they are repeated, unless a change is initiated by the user.</h6>
+        <p>As a best practice, designers should ensure that any navigation scheme they create is consistent, so that the user receives the same experience over time. This is important in form design, particularly in the use of result buttons for user action buttons displayed on a form when the user is in the context of a task. The order of positive and negative result buttons, their colors, and, to the extent possible, their text, should be the same in all forms. In other words, one form shouldn't present the options Approve, Deny, while a different form displays them as Deny, Approve. The user experience should be as consistent as possible.</p>
+        <h5>3.2.4 Consistent Identification</h5>
+        <h6>Level AA - Components that have the same functionality within a set of Web pages are identified consistently.</h6>
+        <p>As a best practice, similar to 3.2.3, above, component definitions and explanations should be consistent.</p>
+        <h4>Guideline 3.3 – Input Assistance</h4>
+        <h6>Help users avoid and correct mistakes.</h6>
+        <h5>3.3.1 Error Identification</h5>
+        <h6>Level A - If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.</h6>
+        <p>In addition to the default test notifications for required fields, wrong data types, etc., Process Director enables designers to create their own custom validation conditions and associated text notifications. As a best practice, always ensure that your validation notifications are helpful and descriptive. By default, error notifications appear in text banners at the top and bottom of the form, though designers can change these locations through the use of the <span class="NamedControl">Form Error/Info String </span>controls in the form.</p>
+        <h5>3.3.2 Labels or Instructions</h5>
+        <h6>Level A - Labels or instructions are provided when content requires user input.</h6>
+        <p>Process Director provides a number of methods for designers to accomplish this. In addition to the Label controls, input fields have an <span class="ControlName">Empty Text</span> property and <span class="ControlName">Tooltip </span>property that should be used to provide brief instructions about what information goes into the field. Additional instructions can also be provided via alert boxes using the Alert Custom Task.</p>
+        <h5>3.3.3 Error Suggestion</h5>
+        <h6>Level AA - If an input error is automatically detected and suggestions for correction are known, then the suggestions are provided to the user, unless it would jeopardize the security or purpose of the content.</h6>
+        <p>As a best practice, designers should include appropriate error correction suggestions in the error message they configure.</p>
+        <h5>3.3.4 Error Prevention (Legal, Financial, Data)</h5>
+        <h6>Level AA - For Web pages that cause legal commitments or financial transactions for the user to occur, that modify or delete user-controllable data in data storage systems, or that submit user test responses, at least one of the following is true:</h6>
+        <h6>Reversible: Submissions are reversible.</h6>
+        <h6>Checked: Data entered by the user is checked for input errors and the user is provided an opportunity to correct them.</h6>
+        <h6>Confirmed: A mechanism is available for reviewing, confirming, and correcting information before finalizing the submission.</h6>
+        <p>While the onus of incorporating this specification lies mainly on the process designer, Process Director provides a number of tools such as alert boxes in the form, confirmation requirements in the <span class="UIElement">Results </span>tab of User Timeline Activities, requiring text comments for a specified results, custom validation rules, and many more. Additionally, the Compliance component enables form field auditing when turned on via the <span class="ControlName">Audit Form field changes</span> property of the Form definition. Implementing this type of error prevention can be complex, so BP&#160;Logix is always ready to offer Direct Assistance for such implementations.</p>
+        <h5>3.3.5 Help</h5>
+        <h6>Level AAA - Context-sensitive help is available.</h6>
+        <p>Process Director provides a number of ways to provide context sensitive help, such as tooltips, empty text for form fields, and callable alert boxes. Designers should, as a best practice, incorporate context-sensitive help appropriately.</p>
+        <h2>Other Accessibility Principles</h2>
+        <p><b><a href="Accessibility Principle Perceivable.htm">Principle 1 - Perceivable</a>:</b> This principle relates to making information and user interface components presentable to users in ways they can perceive.</p>
+        <p><b><a href="Accessibility Principle Operable.htm">Principle 2 - Operable</a>:</b> This principle relates to how user interface components and navigation operate.</p>
+        <p><b><a href="Accessibility Principle Robust.htm">Principle 4 - Robust</a>:</b> This principle relates to making content  robust enough to be interpreted by a wide variety of user agents, including assistive technologies.</p>
+    </body>
+</html>

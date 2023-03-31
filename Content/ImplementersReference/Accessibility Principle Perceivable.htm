@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Accessibility" />
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Accessibility;WCAG;Section 508;Accessibility Canada;ECN 301 549" />Accessibility Principle 1 – Perceivable</h1>
+        <p>This principle relates to making information and user interface components presentable to users in ways they can perceive.</p>
+        <h4>Guideline 1.1 – Text Alternatives</h4>
+        <h6>Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.</h6>
+        <h5>1.1.1 Non-text Content</h5>
+        <h6>Level A - All non-text content that is presented to the user has a text alternative that serves the equivalent purpose.</h6>
+        <p>In the context of a Process Director form or Dashboard, this requirement is primarily applicable to the use of images, including logos and other branding images. Image controls in Process Director's Online Form Designer contain an <span class="ControlName">Alternative Text</span> property. This property should be used to provide descriptive text for all images you display on forms.</p>
+        <p>Similarly, <span class="NamedControl">Button&#160;</span>controls have an <span class="ControlName">Alt Text </span>property that you should use to provide descriptive text to buttons that only present images or icons.</p>
+        <p>All data entry controls should have a <span class="NamedControl">Label </span>control associated with them. In the properties dialog of the <span class="NamedControl">Label </span>control, the <span class="ControlName">Associated Control ID</span> property should contain the <span class="ControlName">Name </span>of the control to which the <span class="NamedControl">Label </span>is associated. For instance, if you have an <span class="NamedControl">Input </span>control with the <span class="ControlName">Name </span>"FirstName", the <span class="ControlName">Associated Control ID </span>of the <span class="NamedControl">Label </span>would be "FirstName".</p>
+        <p>Tables have a <span class="ControlName">Caption </span>property to provide text-based table descriptions in the <span class="ControlName">Table Properties </span>dialog box.</p>
+        <h4>Guideline 1.2 – Time-based Media</h4>
+        <h6>Provide alternatives for time-based media.</h6>
+        <p>This isn't generally relevant to Process Director, as forms don't display video or audio presentations.</p>
+        <h4>Guideline 1.3 – Adaptable</h4>
+        <h6>Create content that can be presented in different ways (for example simpler layout) without losing information or structure.</h6>
+        <h5>1.3.1 Info and Relationships</h5>
+        <h6>Level A - Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.</h6>
+        <p>You should use tables to present tabular data, and use the appropriate table headers. When doing so, Process Director's Online Form Designer will automatically insert the appropriate table, th, tr, td, etc., tags. You can specify the headers as the first row, first column, or both, using the <span class="ControlName">Headers </span>property of the Table's properties Dialog. Additionally, the <span class="ControlName">Cell Properties</span> dialog box has a<span class="ControlName"> Cell Type </span>property you can use to specify if a table is a data or header cell.</p>
+        <p>Process Director automatically provides the HTML "scope" attribute for headers to associate header cells and data cells in data tables.</p>
+        <h5>1.3.2 Meaningful Sequence</h5>
+        <h6>Level A - When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined.</h6>
+        <p>This isn't generally relevant to Process Director.</p>
+        <h5>1.3.3 Sensory Characteristics</h5>
+        <h6>Level A - Instructions provided for understanding and operating content don't rely solely on sensory characteristics of components such as shape, color, size, visual location, orientation, or sound.</h6>
+        <p>You should always provide textual identification of items that otherwise rely only on sensory information to be understood. In other words, image-only buttons, images used as buttons, or other UI conventions should always provide a textual identification in addition to the sensory-based convention, e.g., using explicit text labels for buttons, in addition to images or icons, where possible. There are exceptions when space constraints may not allow the use of such explicit text, in which case you must use the Alt Text property of the object to ensure a text alternative is always available for it.</p>
+        <h5>1.3.4 Orientation</h5>
+        <h6>Level AA - Content doesn't restrict its view and operation to a single display orientation, such as portrait or landscape, unless a specific display orientation is essential.</h6>
+        <p>As a best practice, you shouldn't fix widths for layout elements if doing so isn't essential. By default, for example, the default width of tables in the Online Form Designer is 100%, which enables them to scale to the screen width of the viewport. You shouldn't impose a specific screen size or viewport on your users, or attempt to replicate the exact layout of a printed form. Users who require a larger font, for example, may find such forms more difficult to read or use because of the layout restrictions you've imposed.</p>
+        <h5>1.3.5 Identify Input Purpose</h5>
+        <h6>Level AA - The purpose of each input field collecting information about the user can be programmatically determined</h6>
+        <p>As a best practice, all input fields should have logical, recognizable <span class="ControlName">Name </span>properties that reflect the type of data being collected by the input control, rather than use among conventions that make sense only to developers or other IT personnel. For instance, "FirstName" tells you fairly specifically what the purpose of the input control is, while "frm11a_txt_fname" is substantially more opaque.</p>
+        <h4>Guideline 1.4 – Distinguishable</h4>
+        <h6>Make it easier for users to see and hear content including separating foreground from background.</h6>
+        <h4>1.4.1 Use of Color</h4>
+        <h6>Level A - Color isn't used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.</h6>
+        <p>As a best practice, any information conveyed by color differences should also be available in text. Use of color cues alone to display a status, or prompt a response isn't an acceptable accessibility practice. Color should be an enhancement to, and not the primary method of, communication.</p>
+        <h5>1.4.2 Audio Control</h5>
+        <h6>Level A - If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.</h6>
+        <p>This is generally not relevant to Process Director.</p>
+        <h5>1.4.3 Contrast (Minimum)</h5>
+        <h6>Level AA - The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except the following:</h6>
+        <h6><span style="font-weight: bold;">Large Text:</span> Large-scale text and images of large-scale text have a contrast ratio of at least 3:1;</h6>
+        <h6>Incidental: Text or images of text that are part of an inactive user interface component, that are pure decoration, that aren't visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.</h6>
+        <h6>Logotypes: Text that is part of a logo or brand name has no contrast requirement.</h6>
+        <p>As a best practice, text should be easily distinguishable from any background colors or images through the use of highly contrasting colors. Without sufficient contrast such text will be difficult for to read by users who are visually impaired. The WCAG specification links to <a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G18.html" target="_blank">a number of web-based tools</a> that are available online for analyzing color contrasts to ensure that your design meets the required contrast ratios.</p>
+        <h5>1.4.4 Resize text</h5>
+        <h6>Level AA - Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.</h6>
+        <p>Most modern web browsers have 200%+ text resizing built in. As a form designer, you should remember that the text size in which you are designing the form may not be the size in which your users are viewing it. As a best practice, you should view your form at different text sizes, up to 200%, to ensure that the layout and usability of your form remains intact at high zoom levels. This also relates to the best practice identified for WCAG specification 1.3.4, above, as this requirement affect the proposed layout of your form at high magnifications.</p>
+        <h5>1.4.5 Images of Text</h5>
+        <h6>Level AA - If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text except for the following:</h6>
+        <h6>Customizable: The image of text can be visually customized to the user's requirements;</h6>
+        <h6>Essential: A particular presentation of text is essential to the information being conveyed.</h6>
+        <h6><i>Note 1: Logotypes (text that is part of a logo or brand name) are considered essential.</i>
+        </h6>
+        <p>As a best practice, use text, rather than images of text, wherever possible.</p>
+        <h5>1.4.10 Reflow</h5>
+        <h6>Level AA - Content can be presented without loss of information or functionality, and without requiring scrolling in two dimensions.</h6>
+        <p>Though there are some minor exceptions to this requirement in the WCAG 1.4.10 standard in general, you should ensure that your users don't have to scroll in more than one dimension, i.e., vertical scrolling alone is acceptable, as is horizontal scrolling alone, but requiring users to scroll both vertically and horizontally in a form isn't acceptable. (As a best practice, horizontal scrolling should be eliminated entirely if it is possible to do so.)</p>
+        <p>When using installations with the mobile device component, Process Director will automatically reflow content, such as tables, to ensure it fits within smaller viewports without having to scroll horizontally. Otherwise, some relatively simple CSS styling applied to the form in the <span class="UIElement">Properties </span>tab of the Form Definition can accomplish the same refactoring to control the reflow of a table. A sample of this sort of reflow CSS is provided below.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Code Sample</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="CodeBase">@media<br />only screen and (max-width: 860px),<br />(min-device-width: 860px) and (max-device-width: 1024px)  {<br />&#160;&#160;&#160;&#160;<span class="ControlName">/* Force table to not be like tables anymore */</span><br />&#160;&#160;&#160;&#160;table, thead, tbody, th, td, tr {<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;display: block;<br />&#160;&#160;&#160;&#160;}<br /><br />&#160;&#160;&#160;&#160;<span class="ControlName">/* Hide table headers (but not display: none;, for accessibility) */</span><br />&#160;&#160;&#160;&#160;thead tr {<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;position: absolute;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;top: -9999px;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;left: -9999px;<br />&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;tr {<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;border-top: 1px solid #eeeeee;<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;margin-top:10px;<br />&#160;&#160;&#160;&#160;}<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h5>1.4.11 Non-text Contrast</h5>
+        <h6>Level AA - The visual presentation of the following have a contrast ratio of at least 3:1 against adjacent color(s):</h6>
+        <h6>User Interface Components: Visual information required to identify user interface components and states, except for inactive components or where the appearance of the component is determined by the user agent and not modified by the author;</h6>
+        <h6>Graphical Objects: Parts of graphics required to understand the content, except when a particular presentation of graphics is essential to the information being conveyed.</h6>
+        <p>As a best practice, and as with the text contrast requirements of 1.4.3, above, user interface components and other graphical object must have a relatively high contrast. For example, a button with blue text and a slightly darker blue background might look nice, but will probably not have enough contrast between the button's background color and text to meet the requirements of this specification. In Process Director, button background, text, and icon colors can all be specified b the designer, so ensure that the color contrasts are large enough for visually impaired users to easily differentiate between them. Again refer to the contrast analyzer tools linked in 1.4.3, above.</p>
+        <h5>1.4.12 Text Spacing</h5>
+        <h6>Level AA - In content implemented using markup languages that support the following text style properties, no loss of content or functionality occurs by setting all of the following and by changing no other style property:</h6>
+        <h6>Line height (line spacing) to at least 1.5 times the font size;</h6>
+        <h6>Spacing following paragraphs to at least 2 times the font size;</h6>
+        <h6>Letter spacing (tracking) to at least 0.12 times the font size;</h6>
+        <h6>Word spacing to at least 0.16 times the font size.</h6>
+        <h6>Exception: Human languages and scripts that don't make use of one or more of these text style properties in written text can conform using only the properties that exist for that combination of language and script.</h6>
+        <p>Though this is generally not relevant to Process Director, you should, as a best practice, not make the organization or presentation of information dependent on line , letter, or paragraph spacing. This is also a layout consideration that affects the requirements of both 1.3.4, and 1.4.4, above.</p>
+        <h5>1.4.13 Content on Hover or Focus</h5>
+        <h6>Level AA - Where receiving and then removing pointer hover or keyboard focus triggers additional content to become visible and then hidden, the following are true:</h6>
+        <h6>Dismissible: A mechanism is available to dismiss the additional content without moving pointer hover or keyboard focus, unless the additional content communicates an input error or doesn't obscure or replace other content;</h6>
+        <h6>Hoverable: If pointer hover can trigger the additional content, then the pointer can be moved over the additional content without the additional content disappearing;</h6>
+        <h6>Persistent: The additional content remains visible until the hover or focus trigger is removed, the user dismisses it, or its information is no longer valid.</h6>
+        <h6>Exception: The visual presentation of the additional content is controlled by the user agent and isn't modified by the author.</h6>
+        <p>While not generally relevant to Process Director in the specific context of a mouseover or hover action, there are times when you want information to appear or disappear based on the value of some evaluable condition, or when you select a control. Process Director provides both <span class="NamedControl">Section </span>and <span class="NamedControl">Embedded Section </span>controls that enable you to hide or reveal form areas. When shown, these sections are persistent until the condition changes or it is hidden manually. Also, this hiding or displaying of information is generally done via events other than mouseover, in order to provide both persistence, and user-level manual control over when the information is hidden or displayed. As a general rule, attempting to show or hide information based on the position of the mouse isn't a good practice.</p>
+        <h2>Other Accessibility Principles</h2>
+        <p><b><a href="Accessibility Guidelines Operable.htm">Principle 2 - Operable</a>:</b> This principle relates to how user interface components and navigation operate.</p>
+        <p><b><a href="Accessibility Guidelines Understandable.htm">Principle 3 - Understandable</a>:</b> This principle relates to making information and the operation of the user interface  understandable to users.</p>
+        <p><b><a href="Accessibility Guidelines Robust.htm">Principle 4 - Robust</a>:</b> This principle relates to making content  robust enough to be interpreted by a wide variety of user agents, including assistive technologies.</p>
+    </body>
+</html>

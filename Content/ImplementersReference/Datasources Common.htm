@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536105"></a>
+            <MadCap:keyword term="Datasources" />Common Datasource Types</h1>
+        <p>There are several datasource types you'll commonly use for connections to external data.</p>
+        <h2><a name="SQL"></a>SQL-Based Data Sources <a href="#SQL" class="anchor">#</a></h2>
+        <p>SQL&#160;Server, Oracle, Postgress SQL, Access, etc, are all server-based database system that use connection strings to access the database server. In most cases, you'll need to configure the following fields to create the database connection to the server:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 12em;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>Field</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>Provider</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>The database provider string</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>Connection </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>The database connection string</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/DSTypes.png" />
+        </p>
+        <p>Next to the <span class="ControlName">Provider </span>property, a series of buttons will, when clicked, automatically set the<span class="ControlName"> Datasource Type</span> and <span class="ControlName">Provider </span>properties, and supply a sample connection string in the <span class="ControlName">Connection </span>property. You can then edit this sample connection to the correct settings for the database server.</p>
+        <p>While this is the quickest way of setting up the database connection, you can also manually configure the<span class="ControlName"> Database Type</span>, <span class="ControlName">Provider</span>, and <span class="ControlName">Connection </span>string. For more information on database connection strings please refer to <a href="http://www.connectionstrings.com"><span class="Hyperlink">connectionstrings.com</span></a>.</p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important">
+            </img> Due to a bug in the newer MySQL .NET drivers, the MySQL 6.9.12 or older driver must be used. This is a bug introduced in the MySQL .NET driver version 6.10 and higher (<a href="https://bugs.mysql.com/bug.php?id=89159" target="_blank">MySQL Bug #89159</a>).</p>
+        <h2><a name="Compliance"></a>Compliance Data Source <a href="#Compliance" class="anchor">#</a></h2>
+        <p>The Compliance Datasource is available to users of Process Director v5.15 and above. This type isn't a database connector, but, instead, provides a secure storage for <span class="ControlName">User ID </span>(username) and <span class="ControlName">Password </span>attributes for use elsewhere. These stored attributes can be accessed via the SDK&#160;API in custom scripts to provide the login information needed to access some external data source. Additionally, the attributes can be accessed in Custom Tasks that require user names and passwords, such as Fill Fields from REST, as well as Business Values, to provide required login information, without providing it in the configuration of the Custom Task or Business Value.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/DSTypes2.png" />
+        </p>
+        <p>This Datasource enables you to store the attributes securely, separate from the Custom Task or Business Value, to help prevent a compromise of the login data, while still enabling designers to incorporate secure logins in Custom Tasks or Business Values, without having to know the actual login information.</p>
+        <p>The attributes are <i style="font-weight: bold;">not</i> accessible via system variable, for security reasons.</p>
+        <p>Users of Process Director v5.42 and higher can also add Name/Value pairs to the Datasource, for connections that require additional data in the form of keys (names) and values.</p>
+        <p>A <span class="UIElement">Test as Built-In User</span> button enables you to provide the credentials of a built-in Process Director user account, then test it to ensure the account works properly.</p>
+        <h2><a name="OAuth"></a>OAuth Data Source <a href="#OAuth" class="anchor">#</a></h2>
+        <p>The OAuth Data Source provides a generic OAuth connector for data sources that use this authentication method.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/OAuthDatasource1.png" />
+        </p>
+        <p>When using the OAuth Datasource, you must provide the <span class="ControlName">Client Token</span>, <span class="ControlName">Token Secret</span>, and <span class="ControlName">Access Token</span> for the OAuth authentication. Some OAuth systems enable you to dynamically generate access tokens for each connection, so a property named <span class="ControlName">Use Refresh Token to generate Access Tokens on demand</span> will, when checked, replace the Access Token property with a <span class="ControlName">Refresh Token</span> property, which enables the system to pass the refresh token to the OAuth system to dynamically generate a new access token for each connection instance.</p>
+        <p>Users of Process Director v5.42 and higher can also add Name/Value pairs to the Datasource, for connections that require additional data in the form of keys (names) and values.</p>
+        <h2><a name="_Toc421536108"></a><a name="Internal"></a>Internal Datasources <a href="#Internal" class="anchor">#</a></h2>
+        <p>Process Director provides connection to two different internal <span class="ControlName">Datasource Type</span>s. </p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" alt="Note" /> For Cloud customers, access to these internal Datasources may be restricted, requiring BP&#160;Logix to create the Datasources for you.</p>
+        <p>The <b>Internal Database</b> <span class="ControlName">Datasource Type</span> will connect directly to the Process Director database. No other Properties are necessary when using the Internal Database type. </p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix does NOT recommend the use of the Internal Database Datasource for anyone but highly experienced SQL database specialists. Its use risks altering the core Process Director database, and if you use it, you do so ENTIRELY at your own risk. Be warned!</p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> When a user attempts to create an Internal Database Datasource, the Datasource Type will default to "Other"  if the user doesn't have permission to create an Internal Database connection.</p>
+        <p>The <b>Internal User Database Datasource</b> <span class="ControlName">Datasource Type</span> grants access to a separate database that's included with Process Director, whose purpose is to store data in SQL&#160;format from Excel file imports, or other custom data you might need to use. It contains a few SQL&#160;Views that are exposed from the Process Director Database for administration or system management purposes, but is otherwise empty. This <span class="ControlName">Database Type</span> is designed for your use, to store any data you might desire.</p>
+        <h2><a name="OData"></a>oData Datasources <a href="#OData" class="anchor">#</a></h2>
+        <p>Some datasources that connect to external applications such as Salesforce, MS Dynamics, etc., are provided via the oData database connector. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/DSTypes3.png" />
+        </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/DSTypes4.png" />
+        </p>
+        <p>The properties available for these Datasources may vary slightly, as the two examples above show.</p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> CData, the provider of oData connections, has unique license terms for using these connection types. They are, therefore, licensed separately. Customers using Datasources for Salesforce or MS Dynamics should contact customer support to enable these features in their license.</p>
+        <h2>Other Datasource Types</h2>
+        <p>To see more information about different <span class="ControlName">Datasource Type</span>s and their configuration, please refer top the following topics:</p>
+        <ul>
+            <li><a href="Datasources Excel.htm" style="font-weight: bold;">Excel Datasources</a>
+            </li>
+            <li><a href="Datasources File.htm" style="font-weight: bold;">File Datasources</a>
+            </li>
+            <li><a href="Datasources Sharepoint.htm" style="font-weight: bold;">SharePoint Data Sources</a>
+            </li>
+            <li><a href="Datasources Social.htm" style="font-weight: bold;">Social Datasources</a>
+            </li>
+        </ul>
+    </body>
+</html>
