@@ -1,15 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head>
-        <title>
-        </title>
+    <head><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" />
-            <a name="_Toc421536091">
-            </a>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536091"></a>
             <MadCap:keyword term="Importing;Exporting;Content List" />Importing/Exporting Content</h1>
         <p>When importing and exporting content, there are a number of vital considerations that need to be kept in mind. While import/export is a routine procedure, it must be done correctly to avoid serious problems. As such, it is important to discuss some best practices—not only in the import and export process itself, but in some basic practices for configuring Process Director objects.</p>
         <p>In an ideal environment, there would be three different Process Director installations:</p>
@@ -21,17 +17,13 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/Environment.png" />
         </p>
-        <h2>
-            <a name="Folders">
-            </a>Content List Folders <a href="#Folders" class="anchor">#</a></h2>
+        <h2><a name="Folders"></a>Content List Folders <a href="#Folders" class="anchor">#</a></h2>
         <p>In Process Director, Content List Folders have two purposes. </p>
         <p>First, they make it easier to establish permissions that allow different classes of users to access different <span class="ProcessDirectorObject">Content List</span> objects. The best practice is to set permissions only on folders, and not on individual Forms, Knowledge Views, Business Rules, etc. Permissions are inherited from parent objects, and when new child objects are created, they automatically have the same set of permissions as the folder in which they are contained. (If you change permissions on the folder, however, the permissions on objects within the folder won't be changed unless you click one of the <span class="UIElement">“Replicate Current Permissions...</span> buttons.) </p>
         <p>Different folders might have different permissions to ensure that administrators, process managers, and users are only granted access to objects appropriate to their roles. For example, you might have certain Knowledge Views that only managers can access, while other Knowledge Views can be accessed by any user. In this case, you could create a <span class="ProcessDirectorObject">Manager KViews </span>and a <span class="ProcessDirectorObject">User KViews</span> folder. By setting the permissions of the <span class="ProcessDirectorObject">Manager KViews</span>  folder to allow only Managers to view it, any Knowledge View that you place in the folder will inherit those permissions, and won't be accessible by other users. </p>
         <p>It is important to remember, however, that permissions don't export. The first time you create a folder, manually or via the import process, you must explicitly set its permissions. Once you've done so, however, any new objects created or imported into the folder will automatically inherit the folder's permissions. (Remember to replicate permissions to child objects if the folder already contains objects.) </p>
         <p>To use our example of the <span class="ProcessDirectorObject">Manager KViews</span> folder above, if you create new objects in the <span class="ProcessDirectorObject">Manager KViews</span> folder on Staging, then, when you reimport the folder to Production, all of the new objects will immediately be restricted to the permissions you set on the <span class="ProcessDirectorObject">Manager KViews</span> folder in the Production system. Because permissions don't export, you can set much less restrictive permissions on the <span class="ProcessDirectorObject">Manager KViews </span>folder in the Development environment to allow non-managers to test the system with non-sensitive data. When you re-import the folder to Staging and Production, the full set of access restrictions will be automatically applied to all the objects in the folder on the destination systems.</p>
-        <h3>
-            <a name="Structure">
-            </a>Folder Structure <a href="#Structure" class="anchor">#</a></h3>
+        <h3><a name="Structure"></a>Folder Structure <a href="#Structure" class="anchor">#</a></h3>
         <p>Structuring your folders properly makes it easier to deploy individual projects or implementations. As mentioned in the <a href="Managing Content Creating.htm#NewApp">Creating Applications topic</a>, the best practice for structuring folders is to organize them by application, and include subfolders for various <span class="ProcessDirectorObject">Content List</span> object types contained in the application. For instance, look at the sample structure below.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/ProjectFolderStructure.png" />
@@ -45,16 +37,13 @@
             <img src="../Resources/Images/ImplementersReference/Partition.png" />
         </p>
         <p>Notice that the root folder contains folders for all of the shared objects, as well as the high-level organization for different types of applications the organization has implemented. At the second level, the HR Process folder contains the individual applications for various Human Resource operations. Finally, at the third level, the New Employee Onboarding folder contains folders for all of the <span class="ProcessDirectorObject">Content List</span> objects that are needed to run that specific application. BP Logix recommends that you implement a similar type of folder structure to make importing/exporting projects (not to mention simply finding things) easier.</p>
-        <h2>
-            <a name="Users">
-            </a>Users and Groups <a href="#Users" class="anchor">#</a></h2>
+        <h2><a name="Users"></a>Users and Groups <a href="#Users" class="anchor">#</a></h2>
         <p>Users and User Groups aren't imported or exported in Process Director when exporting applications (though they can, of course, be <a href="../SystemAdministratorGuide/User Export Import.htm#Exporting">imported and exported separately by system administrators</a>, using the procedure described below. So, be sure that any test users or groups to which a project refers in the Development environment also exist in Staging and Production. If you are syncing users in all three systems from Active Directory, this won't usually be a problem. But there may be cases where you've manually created users in the Development system, and in such cases, the users will have to be manually created on, or exported to, the Staging and Production systems prior to the application. </p>
         <p>So, make sure that all users match in your test and production environments. If they do not, and you attempt to import a project with a reference to a user that doesn't exist on the target system, an import error will occur. (Keep in mind, though, that explicit references to individual users within an application's Process Timeline activities aren't a good idea to begin with.)</p>
         <p>Speaking of import errors, if an import throws an error or warning...<b>stop</b>. Fix the problem and try again. There are several errors that are common when importing, such as the user mismatch we just discussed. Another very common error is forgetting to add a Datasource for a dropdown that uses the Fill Dropdown from DB Custom Task. Commonly, the problem arises when you create a new Datasource on the development server, but neglect to create a matching Datasource on the production system before performing the import. The bottom line is that if you see an import error, your project didn't import properly, so you need to fix the problem and try to import it again.</p>
         <p>Another important caution to remember is to avoid manually renaming any <span class="ProcessDirectorObject">Content List</span> object on the target system (such as the Production system) that may ever be updated via import. Doing so can result in no end of problems the next time you perform an import. If you do need to rename an object, you must do that manually on both the destination and source servers prior to doing the import. The development/staging/production objects must all have the same names.</p>
-        <p>To understand why, we need to delve down a bit into how Process Director tracks objects, and how the import process works. Process Director is database-driven, meaning that every single object in Process Director is stored in a database. The database uniquely identifies every object by assigning it a special identifier known as a <span class="KeyTerms">Globally Unique Identifier</span> (GUID).  A <MadCap:popup><MadCap:popupHead>GUID</MadCap:popupHead><MadCap:popupBody>GUIDs generated from random numbers are so large that the probability of the same number being generated randomly twice is negligible. Assuming uniform probability for simplicity, the probability of one duplicate would be about 50% if every person on earth owned 600 million GUIDs. (Wikipedia)</MadCap:popupBody></MadCap:popup> is a128 bit, 36 character value, and is a series of <MadCap:popup><MadCap:popupHead>hexadecimal</MadCap:popupHead><MadCap:popupBody>In mathematics and computing, hexadecimal (also base 16, or hex) is a positional numeral system with a radix, or base, of 16. It uses sixteen distinct symbols, most often the symbols 0–9 to represent values zero to nine, and A, B, C, D, E, F (or alternatively a, b, c, d, e, f) to represent values ten to fifteen. (Wikipedia)</MadCap:popupBody></MadCap:popup> numbers that are created using algorithms that ensure uniqueness. The GUID is generally represented in the format:</p>
-        <p>
-            <code>aa213c6f-a8aa-454f-a04d-30b56fd2e493</code>
+        <p>To understand why, we need to delve down a bit into how Process Director tracks objects, and how the import process works. Process Director is database-driven, meaning that every single object in Process Director is stored in a database. The database uniquely identifies every object by assigning it a special identifier known as a <span class="KeyTerms">Globally Unique Identifier</span> (GUID).  A <MadCap:popup><MadCap:popupHead>GUID</MadCap:popupHead><MadCap:popupBody>GUIDs generated from random numbers are so large that the probability of the same number being generated randomly twice is negligible. Assuming uniform probability for simplicity, the probability of one duplicate would be about 50% if every person on earth owned 600 million GUIDs. (Wikipedia)</MadCap:popupBody></MadCap:popup> is a 128 bit, 36 character value, and is a series of <MadCap:popup><MadCap:popupHead>hexadecimal</MadCap:popupHead><MadCap:popupBody>In mathematics and computing, hexadecimal (also base 16, or hex) is a positional numeral system with a radix, or base, of 16. It uses sixteen distinct symbols, most often the symbols 0–9 to represent values zero to nine, and A, B, C, D, E, F (or alternatively a, b, c, d, e, f) to represent values ten to fifteen. (Wikipedia)</MadCap:popupBody></MadCap:popup> numbers that are created using algorithms that ensure uniqueness. The GUID is generally represented in the format:</p>
+        <p><code>aa213c6f-a8aa-454f-a04d-30b56fd2e493</code>
         </p>
         <p> GUIDs don't mean anything to us humans, of course, so we always provide logical names, like "Manager KViews", that we humans can understand when we create objects. But, in almost every case, Process Director never uses the name. It always uses the GUID. Two important exceptions to GUID-based identification are import/export, and when referencing objects and controls via the system variable syntax, e.g. <code>{RULE:<span class="CodeOption">RuleName</span>}, {:<span class="CodeOption">FieldName</span>}</code>.</p>
         <p>But, <i style="font-weight: bold;">GUIDs can't be exported or imported because they are unique</i>. An object on the Staging system will have a completely different GUID than the parallel object on the Production system. Since that is so, the import process has to try and match the logical name that we have given the object when performing an import. </p>
@@ -78,9 +67,7 @@
         <p>Instead, create a specific Partition Administrator account, and require administrative personnel to log out of their personal accounts and log into the Partition Administrator account before deleting anything. And even then, they should take extraordinary care before deleting an object. There are, in fact, a number of other security options you should consider as well, all of which can be found in the Securing Process Director section of the System Administrator's Guide.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="_Toc421536092">
-                    </a>Importing and Exporting Objects</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="_Toc421536092"></a>Importing and Exporting Objects</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <h4>Exporting Content List Objects</h4>
@@ -94,8 +81,7 @@
                     <img src="../Resources/Images/ImplementersReference/ContentListExports.png" />
                 </p>
                 <p>When you click the <span class="UIElement">Export </span>button, a dialog box will appear than enable you to make changes to the export file name or format. Clicking the <span class="UIElement">OK </span>button will begin the file export, which, for most browsers, will automatically export the file to the default Downloads folder n your local machine.</p>
-                <p>
-                    <span class="ProcessDirectorObject">Content List</span> items and Meta Data must be exported separately.</p>
+                <p><span class="ProcessDirectorObject">Content List</span> items and Meta Data must be exported separately.</p>
                 <h4>Importing Content List Objects</h4>
                 <p>To import a file containing Content List objects, first navigate to the folder in the <span class="ProcessDirectorObject">Content List</span> where you want the imported item(s) to appear. Next, select Import Objects from the Create New dropdown located in the upper right portion of the Content List screen. Selecting this option will open an import dialog box.</p>
                 <p>
@@ -111,9 +97,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="_Toc421536093">
-                    </a>Copying Objects</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="_Toc421536093"></a>Copying Objects</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>To create a copy of a folder within the <span class="ProcessDirectorObject">Content List</span>, first export the folder using the process described above. Doing so will create an XML file containing the exported information.&#160; </p>
@@ -127,9 +111,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="_Toc421536094">
-                    </a>Importing / Exporting Users Using Excel</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="_Toc421536094"></a>Importing / Exporting Users Using Excel</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Users in Process Director can be exported to and imported from a Microsoft Excel spreadsheet. To export Process Director’s users to an Excel file, first ensure that you are logged in as an administrator. Navigate to <span class="ProcessDirectorObject">IT Admin</span> &gt; <span class="ProcessDirectorObject">User Administration</span> &gt; <span class="ControlName">Users</span>, and click on the <span class="UIElement">Export Users</span> link. If you only wish to export specific users, you can select those users by clicking the checkboxes next to their names, and then clicking <span class="UIElement">Export Users</span>.</p>
@@ -166,9 +148,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="_Toc421536095">
-                    </a>Importing Custom Tasks</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="_Toc421536095"></a>Importing Custom Tasks</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Custom Tasks may need to be periodically updated, as BP&#160;Logix updates or adds Custom Tasks on an ongoing basis. Custom Tasks are usually unrelated to any specific version of Process Director, though there are a few exceptions that require a specific product version to work properly. When upgrading the product to a new version, you may wish to upgrade the Custom Tasks after you complete the product upgrade.</p>
@@ -206,27 +186,20 @@
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="Complex">
-            </a>Complex Application Imports <a href="#Complex" class="anchor">#</a></h2>
+        <h2><a name="Complex"></a>Complex Application Imports <a href="#Complex" class="anchor">#</a></h2>
         <p>When creating a new application, there may be other Process Director objects, like Workspaces and Meta Data categories, created as part of the application. Exporting other Process Director Objects, like Workspaces or Partition Meta Data, is done from the<span class="ControlName"> <span class="ProcessDirectorObject">IT Admin</span></span> area of the installation, on the appropriate page for administering those item types. For example, to export a workspace, you must go to the <span class="ControlName">Workspace </span>page of the <span class="ProcessDirectorObject">Configuration </span>section to perform the export.</p>
         <p>The process for exporting these objects is very similar to the method for exporting <span class="ProcessDirectorObject">Content List</span> items. Each object type must be exported separately, and are exported into their own separate PDZ files.</p>
         <p>These associated objects will need to be imported separately from the Application folder, and <span class="Emphasis">the order in which these other objects are imported is critical</span> to avoid import errors. Process Director objects exist in a hierarchy, where lower-level objects can only import correctly if the associated higher-level objects already exist on the system. For instance, if a Form has a Meta Data Category assigned to the Form Definition, you can't import the Form correctly unless that Meta Data category already exists on the target system.</p>
         <p>While the order in which you import objects to a target system is important, the order in which you export the objects from the source system is not.</p>
         <p>To perform complex import operations like these, the Process Director objects should be imported in the following order.</p>
         <ol>
+            <li><b>Partition Meta Data:</b> Meta data can be applied to any Process Director object, which means it sits at the highest level of the Hierarchy.</li>
+            <li><b>Users/Groups:</b> Any new users or groups that have been created on the source system, and that are used in the application, must be imported. Exports of Groups and Users are, unlike other objects, exported and imported as Excel files rather than PDZ files. </li>
             <li>
-                <b>Partition Meta Data:</b> Meta data can be applied to any Process Director object, which means it sits at the highest level of the Hierarchy.</li>
-            <li>
-                <b>Users/Groups:</b> Any new users or groups that have been created on the source system, and that are used in the application, must be imported. Exports of Groups and Users are, unlike other objects, exported and imported as Excel files rather than PDZ files. </li>
-            <li>
-                <p>
-                    <b>Partition-Level Content List Objects:</b> If you have created additional Business Values, Drodpwn Objects, or Business Rules that reside in the partition's "system" folders (e.g., <span class="ProcessDirectorObject">[Business Values]</span>, <span class="ProcessDirectorObject">[Business Rules]</span>, etc.), import them to the appropriate place in the <span class="ProcessDirectorObject">Content List </span>before importing the application. BP&#160;Logix does <b>not</b> recommend importing Datasource objects between systems. Instead, they should be manually created on the Production system, using the same name as they have on the Development/Staging systems. You should have a <span class="ProcessDirectorObject">[Data Sources]</span> folder at the partition root of all systems, which is where all Datasource objects should reside.</p>
+                <p><b>Partition-Level Content List Objects:</b> If you have created additional Business Values, Dropdown Objects, or Business Rules that reside in the partition's "system" folders (e.g., <span class="ProcessDirectorObject">[Business Values]</span>, <span class="ProcessDirectorObject">[Business Rules]</span>, etc.), import them to the appropriate place in the <span class="ProcessDirectorObject">Content List </span>before importing the application. BP&#160;Logix does <b>not</b> recommend importing Datasource objects between systems. Instead, they should be manually created on the Production system, using the same name as they have on the Development/Staging systems. You should have a <span class="ProcessDirectorObject">[Data Sources]</span> folder at the partition root of all systems, which is where all Datasource objects should reside.</p>
             </li>
-            <li>
-                <b>Application Content List Objects:</b> Once the higher-level objects have been imported, you can now import the PDZ file containing the application folder and all its contents.</li>
-            <li>
-                <b>Workspaces:</b> Workspaces are usually configured with specific groups or users assigned to them. Similarly, a Workspace may display an application Dashboard or Knowledge View, or have navigation buttons that reference application Forms. Importing Workspaces before importing the required objects will result in an import warning. The Workspace will be imported, but any missing users or groups or application objects will be removed from the Workspace.</li>
+            <li><b>Application Content List Objects:</b> Once the higher-level objects have been imported, you can now import the PDZ file containing the application folder and all its contents.</li>
+            <li><b>Workspaces:</b> Workspaces are usually configured with specific groups or users assigned to them. Similarly, a Workspace may display an application Dashboard or Knowledge View, or have navigation buttons that reference application Forms. Importing Workspaces before importing the required objects will result in an import warning. The Workspace will be imported, but any missing users or groups or application objects will be removed from the Workspace.</li>
         </ol>
         <p>Remember, failing to import objects in the proper order will result in import errors that will necessitate re-importing the objects.</p>
     </body>

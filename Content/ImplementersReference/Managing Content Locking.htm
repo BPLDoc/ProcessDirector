@@ -1,16 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head>
-        <title>
-        </title>
+    <head><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:concept term="Implementation" />
-            <MadCap:keyword term="Object Locking;Locking" />
-            <a name="ObjectLocking">
-            </a>
+            <MadCap:keyword term="Object Locking;Locking" /><a name="ObjectLocking"></a>
             <MadCap:keyword term="Locking" />Object Locking</h1>
         <p>Process Director v3.49 and above implements a new object locking  system for object definitions (e.g., Business Rules, Knowledge Views, or Process Timeline definitions) to ensure that multiple users can't edit the same object definition at the same time, and thus overwrite each others' changes. Process Director implements object locking by default, but object locking can be turned off by setting the <a href="../DevelopersGuide/Customization File Administration.htm#ObjectLockingEnable">ObjectLockingEnable</a> custom variable to "false" in the Custom Vars file. </p>
         <p>When object locking is enabled, users who edit an object definition can click the object's <span class="UIElement">Lock Object</span> button to ensure that any other user who opens the definition will see the object only in read only mode. The locking user will be the only user with editing capability while the object is locked. </p>
@@ -25,6 +21,6 @@
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> BP Logix recommends requiring object locking.</p>
         <p>When object locking is required, object definitions are opened in "read-only" mode for all users. Any user who wishes to edit the object definition can only do so by checking out the object. When the locking user clicks the object's <span class="UIElement"><span class="UIElement">Lock Object</span> button</span>, the definition will display in edit mode for the locking user, and remain in read-only mode for all other users.  Again, the lock will remain in effect until the locking user manually clicks the object's <span class="UIElement"><span class="UIElement">Release Lock</span> button </span> to release the lock. Once the locking user clicks the <span class="UIElement"><span class="UIElement">Release Lock</span> button </span>, the object definition, when opened, will display in read-only mode for all users.</p>
-        <p>If you lock or release a lock on a folder, the operation will be applied to all of the contents of the folder, assuming that you have the right to lock or unlock the child objects. Process Director will silently skip objects the current user doesn’t have the right to unlock. Locking, similarly, will preserve any existing locks in the folder that are held by someone other than the current user (that is,they'll still be held by the original lock holder). Folder locking will lock all objects recursively in the folder tree, not just the direct children of the folder. The button text for the lock/unlock button will reflect this difference to locking applied to folders.</p>
+        <p>If you lock or release a lock on a folder, the operation will be applied to all of the contents of the folder, assuming that you have the right to lock or unlock the child objects. Process Director will silently skip objects the current user doesn’t have the right to unlock. Locking, similarly, will preserve any existing locks in the folder that are held by someone other than the current user (that is, they'll still be held by the original lock holder). Folder locking will lock all objects recursively in the folder tree, not just the direct children of the folder. The button text for the lock/unlock button will reflect this difference to locking applied to folders.</p>
     </body>
 </html>

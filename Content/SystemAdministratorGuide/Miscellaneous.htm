@@ -6,17 +6,10 @@
     <body>
         <h1>
             <MadCap:keyword term="System Administration" />Miscellaneous Administration Notes</h1>
-        <h2>
-            <a name="SQLServer">
-            </a>SQL&#160;Server Issues <a href="#SQLServer" class="anchor">#</a></h2>
+        <h2><a name="SQLServer"></a>SQL&#160;Server Issues <a href="#SQLServer" class="anchor">#</a></h2>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="Replication">
-                    </a>
-                    <a href="#Replication">
-                        <img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" />
-                    </a>Replication</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="Replication"></a><a href="#Replication"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>Replication</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>SQL Server's running replication may fail if Process Director is upgraded in a way that alters the database schema. This is because an ALTER query can't be performed on the database if replication is enabled. If the upgrade fails, you may see a SqlException error with the following message: “You can only specify the READPAST lock in the READ COMMITTED or REPEATABLE READ isolation levels”.</p>
@@ -30,12 +23,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="FullTextSearch">
-                    </a>
-                    <a href="#FullTextSearch">
-                        <img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" />
-                    </a>Full-Text&#160;Search</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="FullTextSearch"></a><a href="#FullTextSearch"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>Full-Text&#160;Search</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Process Director supports Full Text Searching (FTS) of documents. It utilizes the FTS Indexing in SQL Server. The Full-Text engine must be installed, enabled and configured in SQL Server.</p>
@@ -54,12 +42,10 @@
                 <p>Refer to the vendor of the document/file format for information on IFilters, or use third party IFilter products for common file types such as ZIP, JPG and TIFF.</p>
                 <p>Refer to the SQL Server documentation for scheduling options and detailed configuration and tuning information for the full-text engine.</p>
                 <p>You should be aware, however, that FTS isn't a panacea for all text search issues. The way FTS is configured by default may result in unexpected search results if you aren't aware of the default configuration. For example, when using FTS on SQL Server there is a default list of “Stop Words” that Microsoft identifies as items that are <b style="font-style: italic;">not significant</b> when doing FTS indexing.  So, by default, if you are searching for something like “Activity 1” using FTS, SQL&#160;Server will <b style="font-style: italic;">not</b> find it using the following syntax:</p>
-                <p>
-                    <code>SELECT tblObject.oDID FROM tblObject WHERE CONTAINS(bObjectData, N'"%Activity 1%*"')</code>
+                <p><code>SELECT tblObject.oDID FROM tblObject WHERE CONTAINS(bObjectData, N'"%Activity 1%*"')</code>
                 </p>
                 <p>But if you were searching for “Activity 1A”, that <b style="font-style: italic;">would</b> work using the same syntax:</p>
-                <p>
-                    <code>SELECT tblObject.oDID FROM tblObject WHERE CONTAINS(bObjectData, N'"%Activity 1A%*"')</code>
+                <p><code>SELECT tblObject.oDID FROM tblObject WHERE CONTAINS(bObjectData, N'"%Activity 1A%*"')</code>
                 </p>
                 <p>Why? Because the indexing lists the trailing number (1) in the first example in the ‘system’ Stop Word list, and so does <b style="font-style: italic;">not</b> include the trailing number as part of the search criterion in the first example.</p>
                 <p>To see what Stop Word list is used by tblObject, issue this SQL command:</p>
@@ -74,12 +60,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SQLSlow">
-                    </a>
-                    <a href="#SQLSlow">
-                        <img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" />
-                    </a>SQL&#160;Queries Run&#160;Slowly After Upgrading to SQL&#160;Server 2014</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="SQLSlow"></a><a href="#SQLSlow"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>SQL&#160;Queries Run&#160;Slowly After Upgrading to SQL&#160;Server 2014</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>In SQL Server 2014, Microsoft changed how SQL commands are evaluated. If, while running SQL Server 2008/2012, you created a SQL view that contains array fields for a form definition, this query will run more slowly if you subsequently upgrade your database to SQL&#160;Server 2014. This is <b>only</b> an issue on SQL Server 2014 with views that map columns in an array. Views that map array fields will need to be dropped and recreated after the upgrade to SQL 2014. When you recreate the view from the form definition, it will append a new "trace flags" option that will tell SQL Server 2014 to use the older logic from SQL&#160;Server 2008/2012, and eliminate the performance deficiency.</p>
@@ -87,12 +68,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SQLEscapeBug">
-                    </a>
-                    <a href="#SQLEscapeBug">
-                        <img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" />
-                    </a>SQL&#160;Server Escape Bug</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="SQLEscapeBug"></a><a href="#SQLEscapeBug"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>SQL&#160;Server Escape Bug</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A bug in SQL Server can cause a performance problem with Knowledge Views searching for form data using "contains". To work around this, the product will now match any special wildcard characters in your search filter with any character. You can re-enable the exact matching using special characters by setting the <a href="../DevelopersGuide/Customization File System.htm#fEnableSQLEscape">fEnableSQLEscape Custom Variable</a> that we created to help mitigate this SQL&#160;Server bug to 'true". The new variable exists to enable the ESCAPE, but <span class="Emphasis">ensure your SQL Server version is patched at the appropriate level</span>. The variable can be enabled in the Custom Vars file in the PresetSystemVars() function.</p>
@@ -101,12 +77,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a href="#Indexes">
-                        <img src="../Resources/Images/link.png" alt="Link" />
-                    </a>
-                    <a name="Indexes">
-                    </a>Rebuilding Database Indexes</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a href="#Indexes"><img src="../Resources/Images/link.png" alt="Link" /></a><a name="Indexes"></a>Rebuilding Database Indexes</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>You should, as part of your regular SQL&#160;Server maintenance, have a maintenance plan for rebuilding database indexes and statistics on a recurring basis. We recommend doing this weekly.   For the “Rebuild Index Task” in SQL&#160;Server we recommend that the check box labeled “Keep index online while reindexing” is NOT checked.</p>
@@ -118,22 +89,15 @@
         <h2>IIS&#160;Issues</h2>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SMTP">
-                    </a>
-                    <a href="#SMTP">
-                        <img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" />
-                    </a>SMTP with IIS/Exchange Server</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="SMTP"></a><a href="#SMTP"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>SMTP with IIS/Exchange Server</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>On Windows 2003, the SMTP email notification can use the IIS SMTP server or Microsoft Exchange Server. If you are running Microsoft Exchange Server on Process Director host, this will be used as the SMTP host instead of the IIS SMTP Server. Microsoft Knowledge Base articles Q238956 and Q228465 have additional information regarding the configuration and troubleshooting.</p>
                 <p>To use Exchange Server you still have to install IIS SMTP. After it is installed change the "Pickup" parameter: This IIS command will display the current "Pickup" directory:</p>
-                <p>
-                    <code>%WINDIR%\system32\inetsrv\adminsamples\ADSUTIL set SMTPsvc/1/PickupDirectory</code>
+                <p><code>%WINDIR%\system32\inetsrv\adminsamples\ADSUTIL set SMTPsvc/1/PickupDirectory</code>
                 </p>
                 <p>Use the following command to change the "Pickup" directory to Exchange Server:</p>
-                <p>
-                    <code>%WINDIR%\system32\inetsrv\adminsamples\ADSUTIL set SMTPsvc/1/PickupDirectory X:\exchsrvr\imcdata\Pickup</code>
+                <p><code>%WINDIR%\system32\inetsrv\adminsamples\ADSUTIL set SMTPsvc/1/PickupDirectory X:\exchsrvr\imcdata\Pickup</code>
                 </p>
                 <p>where X: is the drive where Exchange Server is installed. To revert back to the original IIS SMTP configuration run the "set" command again with the directory value displayed on the first command (e.g. c:\inetpub\mailroot\pickup).</p>
                 <p>On Windows 2003, "Smart Host" on the IIS SMTP Server allows the SMTP server to point to another mail server to forward its emails.</p>
@@ -141,37 +105,23 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="IISPerformance">
-                    </a>
-                    <a href="#IISPerformance">
-                        <img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" />
-                    </a>Improving IIS Performance</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="IISPerformance"></a><a href="#IISPerformance"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>Improving IIS Performance</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Occasionally, you may notice that Internet Information Service (IIS) loads Process Director pages very slowly. Normally when IIS starts an Application Pool, it checks the Certificate Revocation List (CRL) for managed assemblies that have an Authenticode signature to confirm that the signature is valid. Performing the CRL check requires the .NET framework to connect to the Internet to access the CRL. This can cause long delays in loading .NET applications in IIS.</p>
                 <p>Edit the Config file for ASP.NET to prevent IIS from checking the Certificate revocation List. . Turning the CRL check option off means that if a signed .NET application has it certificate revoked it will still load. This is usually fine, however, because a) you should already be properly managing the applications that are on your server, and b) anyone who has an access level that allows them to put a revoked application on your server already has enough access to perform far more malicious acts.</p>
                 <p>Open the config file for ASP.NET, which should be located in the root folder of the framework version you are using. For example, if you are running the .NET Framework v2.0, in the 64-bit environment, the config file should be found at:</p>
-                <p>
-                    <code>C:\Windows\Microsoft.NET\Framework64\v2.0.50727\aspnet.config</code>
+                <p><code>C:\Windows\Microsoft.NET\Framework64\v2.0.50727\aspnet.config</code>
                 </p>
                 <p>Edit the Config file to stop the CRL check by adding this tag to the<code> &lt;runtime&gt; </code>section of the config file:</p>
-                <p>
-                    <code>&lt;generatePublisherEvidence enabled="false"/&gt;</code>
+                <p><code>&lt;generatePublisherEvidence enabled="false"/&gt;</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="Browser">
-            </a>Browser Issues <a href="#Browser" class="anchor">#</a></h2>
+        <h2><a name="Browser"></a>Browser Issues <a href="#Browser" class="anchor">#</a></h2>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="Underscore">
-                    </a>
-                    <a href="#Underscore">
-                        <img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" />
-                    </a>Underscore Bug</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="Underscore"></a><a href="#Underscore"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>Underscore Bug</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Some versions of Internet Explorer don't support domain names or server names with an underscore in the URL. While general browsing in IE still works, all session and browser cookies are ignored. With cookies ignored, login to Process Director using internal user names doesn't work. The product checks for underscores in the domain name to detect this problem. This is, however, a bug in Microsoft IE, not Process Director. Using Chrome, Firefox, or Safari will allow users to log in properly.</p>
@@ -179,19 +129,13 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="BrowserSecurity">
-                    </a>
-                    <a href="#BrowserSecurity">
-                        <img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" />
-                    </a>Integrated Browser Security Issues</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="BrowserSecurity"></a><a href="#BrowserSecurity"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>Integrated Browser Security Issues</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>There is a known IE problem that happens when some ASP pages in IIS are running “Integrated Browser Security” (NTLM) and other pages aren't (the other pages are just using normal anonymous user access). There are bugs in the browser that can cause posted form data to be stripped. In some cases it appears whenever the client cache is cleared (which can happen automatically on occasion, with things like virus scanners). The Microsoft Knowledge base contains an <a href="http://support.microsoft.com/kb/251404/en-us" target="_blank">article discussing  the problem</a>. There are two ways to work around this problem.</p>
                 <h4>Option 1</h4>
                 <p>Use Regedt32 on the client machine and go to this branch:</p>
-                <p>
-                    <code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Internet</code>
+                <p><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Internet</code>
                 </p>
                 <p>On the Edit menu, Add Value name DisableNTLMPreAuth as a type REG_DWORD and set the data value to 1 (true).</p>
                 <h4>Option 2</h4>
@@ -200,69 +144,46 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="IEError">
-                    </a>
-                    <a href="#IEError">
-                        <img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" />
-                    </a>"Internet Explorer can't display the webpage" error</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="IEError"></a><a href="#IEError"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>"Internet Explorer can't display the webpage" error</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A user sees the error “Internet Explorer can't display the webpage” on long running web page requests. Either remove the following registry key or set it to decimal 60000 on the CLIENT PC:</p>
-                <p>
-                    <code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ReceiveTimeout</code>
+                <p><code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ReceiveTimeout</code>
                 </p>
                 <p>This may need to be repeated as certain applications may reset this to a 10000 (10 seconds). If this doesn’t work, you may want to try connecting to other, smaller pages and test your internet connection.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="Edge">
-                    </a>
-                    <a href="#Edge">
-                        <img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" />
-                    </a>Microsoft Edge/Windows 10</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="Edge"></a><a href="#Edge"><img src="../Resources/Images/link.png" MadCap:conditions="General.Not Printed" /></a>Microsoft Edge/Windows 10</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A bug in Windows 10 and Microsoft Edge causes new windows to open <i>behind</i> parent windows, rather than on top of them. As a workaround, for Process Director v4.5, we have added the following line to the Custom Variables file:</p>
-                <p>
-                    <code>bp.Vars.nFormOpenProps = FormOpenProps.UseFullScreen;</code>
+                <p><code>bp.Vars.nFormOpenProps = FormOpenProps.UseFullScreen;</code>
                 </p>
                 <p>This will force JavaScript to open the new window in a maximized fashion, therefore pushing the new window to the top of the other windows.</p>
                 <p>This should be an acceptable temporary workaround until Microsoft corrects the bug.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="Virus">
-            </a>Virus Scanners <a href="#Virus" class="anchor">#</a></h2>
+        <h2><a name="Virus"></a>Virus Scanners <a href="#Virus" class="anchor">#</a></h2>
         <p>Some virus scanners that are configured to scan in real-time can cause delays on the system. This tends to happen when they are monitoring the Process Director logs directory. Process Director will write audit logs and internal logs to the log files on disk. For example if you are using Microsoft Security Essentials you may see the CPU being used by “msmpeng.exe” when running Process Director forms and Workflows. If you are seeing this problem, exclude the following folder from the real-time scanning:</p>
-        <p>
-            <code>\Program Files\BP Logix\Process Director\website\App_Data\</code>
+        <p><code>\Program Files\BP Logix\Process Director\website\App_Data\</code>
         </p>
         <p>This is the folder that contains the log files that are being written to when the system is being used.</p>
-        <h2>
-            <a name="TIFF">
-            </a>TIFF&#160;Files <a href="#TIFF" class="anchor">#</a></h2>
+        <h2><a name="TIFF"></a>TIFF&#160;Files <a href="#TIFF" class="anchor">#</a></h2>
         <p>TIFF file formats aren't natively supported in most browsers. To display a TIFF file in a browser or embedded on a Form you must install a TIFF ActiveX viewer (e.g. www.alternatiff.com, QuickTime, etc.). These viewers are provided by and supported by their respective companies. Once a TIFF viewer is installed on all users PC's, you can configure Process Director to display the TIFF files inline, instead of as a popup window in another application. This is done by adding the following lines to Process Director configuration file named vars.cs.ascx. Add to the PreSetSystemVars() function in vars.cs.ascx</p>
         <p>
             <p class="CodeBase">bp.Vars.EmbedDocumentTypes.Add("tiff");<br />bp.Vars.EmbedDocumentTypes.Add("tif");</p>
         </p>
         <p>The vars.asp configuration file is located in the c:\Program Files\BP Logix\Process Director\website\custom\ directory.</p>
-        <h2>
-            <a name="DDEExcel">
-            </a>DDE and Excel <a href="#DDEExcel" class="anchor">#</a></h2>
+        <h2><a name="DDEExcel"></a>DDE and Excel <a href="#DDEExcel" class="anchor">#</a></h2>
         <p>If you are unable to open Excel documents from Process Director or, upon trying to open an Excel document, ensure that DDE is enabled in Microsoft Excel. See  <a href="http://support.microsoft.com/kb/211494" target="_blank">Microsoft's documentation</a> on this error for more information and instructions on how to enable DDE.</p>
         <p>You should also verify that Process Director is listed as a trusted site on Internet Explorer.</p>
-        <h2>
-            <a name="DownloadingIssues">
-            </a>Document Downloading Issues <a href="#DownloadingIssues" class="anchor">#</a></h2>
-        <p>Process Director can store any file type. These files and documents can be viewed in the browser or downloaded to your PC. Windows Server, howerver, won't allow unregistered file types to be downloaded. The browser may display the following message:</p>
+        <h2><a name="DownloadingIssues"></a>Document Downloading Issues <a href="#DownloadingIssues" class="anchor">#</a></h2>
+        <p>Process Director can store any file type. These files and documents can be viewed in the browser or downloaded to your PC. Windows Server, however, won't allow unregistered file types to be downloaded. The browser may display the following message:</p>
         <p>HTTP Error 404 - File or directory not found.</p>
         <p>For information on how to configure new file types in Windows IIS, refer to the <a href="https://www.microsoft.com/technet/prodtechnol/WindowsServer2003/Library/IIS/cd72c0dc-c5b8-42e4-96c2-b3c656f99ead.mspx?mfr=true" target="_blank">Microsoft Knowledge Base article</a> on this issue.</p>
-        <h2>
-            <a name="MultipleIPs">
-            </a>Installation with Multiple IP addresses <a href="#MultipleIPs" class="anchor">#</a></h2>
+        <h2><a name="MultipleIPs"></a>Installation with Multiple IP addresses <a href="#MultipleIPs" class="anchor">#</a></h2>
         <p>Using two NIC’s (IP addresses) that can connect to the product presents configuration choices. The ideal configuration is to have a single DNS name that all users can access. This problem can occur when trying to have different IP’s for the intranet and Internet access.</p>
         <p>Here are some of the configuration options to connect to the product from multiple interfaces:</p>
         <MadCap:dropDown>
@@ -281,38 +202,24 @@
                 <p>Use proxy DNS technique that uses the same name that point to different IP’s depending on where the user is located (e.g. internal users resolve the name to the internal IP, and external users resolve the name to the Internet address).</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="UTC">
-            </a>Coordinated Universal Time (UTC) <a href="#UTC" class="anchor">#</a><MadCap:keyword term="UTC" /></h2>
+        <h2><a name="UTC"></a>Coordinated Universal Time (UTC) <a href="#UTC" class="anchor">#</a><MadCap:keyword term="UTC" /></h2>
         <p>Process Director's internal timekeeping is always conducted in UTC, including all process timekeeping, start/end dates/times, etc. As such, Process Director doesn't store local times. Process Director will generally convert the UTC time to your local time automatically when the dates/times are displayed, but the actual saved dates are in UTC time (Greenwich Mean Time).</p>
-        <h2>
-            <a name="ResourceStrings">
-            </a>Resource Strings <a href="#ResourceStrings" class="anchor">#</a></h2>
+        <h2><a name="ResourceStrings"></a>Resource Strings <a href="#ResourceStrings" class="anchor">#</a></h2>
         <p>Inside the Process Director interface, most control labels are generated by Resource Strings that are located in the Resources.resx file that is located in the %InstalDir%\website \App_GlobalResources folder. Occasionally, after a Windows Update reboot, this file will, for reasons still unknown, be deleted. If this occurs, you'll see an error message similar to the following:</p>
-        <p style="font-family: serif;font-size: 14pt;">
-            <b>Error processing source URL:</b> http://xyz.bplogix.net/admin/admin.aspx</p>
-        <p style="font-family: serif;font-size: 14pt;">
-            <b>Source:</b> System.Web</p>
-        <p style="font-family: serif;font-size: 14pt;">
-            <b>Message:</b> The resource object with key '___somestring___' was not found</p>
+        <p style="font-family: serif;font-size: 14pt;"><b>Error processing source URL:</b> http://xyz.bplogix.net/admin/admin.aspx</p>
+        <p style="font-family: serif;font-size: 14pt;"><b>Source:</b> System.Web</p>
+        <p style="font-family: serif;font-size: 14pt;"><b>Message:</b> The resource object with key '___somestring___' was not found</p>
         <p>The other error you'll occasionally see is an exception accessing a function <code>toString()</code>, which is the system trying to retrieve a string resource from the Resources.resx file that can't be found.</p>
         <p>To recover from these errors, just reinstall Process Director to restore the Resources.resx file.</p>
-        <h2>
-            <a name="WinLDAP">
-            </a>Simultaneous Windows and LDAP&#160;Authentication <a href="#WinLDAP" class="anchor">#</a></h2>
+        <h2><a name="WinLDAP"></a>Simultaneous Windows and LDAP&#160;Authentication <a href="#WinLDAP" class="anchor">#</a></h2>
         <p>You can configure a Process Director installation to have both Windows and LDAP authentication enabled at the same time. To enable this, you have to <b>enable</b> Windows and LDAP authentication, but <b>disable</b> Integrated Windows authentication and <b>disable</b> the function that automatically adds users after they initially authenticate through Windows or LDAP. To configure the system in this way, the following flags must be set in the PreSetSystemVars() method of the custom variable file.</p>
         <p class="CodeBase">bp.Vars.fAuthTryAllAuthTypes = true;<br />bp.Vars.fAuthWindowsIntegrated = false;<br />bp.Vars.fAuthWindowsAutoAdd = false;<br />bp.Vars.fAuthLDAPAutoAdd = false;</p>
-        <h2>
-            <a name="ForceTLS">
-            </a>
+        <h2><a name="ForceTLS"></a>
             <MadCap:keyword term="TLS;Encryption" />Force TLS 1.2 on outgoing HTTP connections <a href="#ForceTLS" class="anchor">#</a></h2>
         <p>For Process Director v5.34 and higher, the default the SSL cipher used for <i>outgoing</i> web requests will use TLS 1.2 instead of 1.0 or 1.1, which have been deprecated for security reasons.  This can be changed back by setting this in the vars:</p>
-        <p class="CodeBase">
-            <code>System.Net.ServicePointManager.SecurityProtocol = <span class="CodeOption">System.Net.SecurityProtocolType.Ssl3</span>|<span class="CodeOption">System.Net.SecurityProtocolType.Tls</span>;</code>
+        <p class="CodeBase"><code>System.Net.ServicePointManager.SecurityProtocol = <span class="CodeOption">System.Net.SecurityProtocolType.Ssl3</span>|<span class="CodeOption">System.Net.SecurityProtocolType.Tls</span>;</code>
         </p>
-        <h2>
-            <a name="AES">
-            </a>
+        <h2><a name="AES"></a>
             <MadCap:keyword term="AES;Encryption" />AES&#160;Encryption for Process Director v5.44.700 and Higher <a href="#AES" class="anchor">#</a></h2>
         <p>Process Director v5.44.700 and higher implements AES encryption. This encryption change provides higher security, but it does affect the migration process the first time--and ONLY the first time--you install v5.44.700 or higher from v5.44.600 or lower (except for load-balanced installations). Upgrading from v5.44.700 to any higher version will require no special action for most customers.</p>
         <p>Please refer to the <a href="../InstallationGuide/Reinstall Upgrades.htm#_Toc421172276">Upgrading to a Newer Version section</a> of the Reinstall/Upgrades/Moving Hosts topic of the Installation guide, which covers the upgrade process for most customers.</p>
