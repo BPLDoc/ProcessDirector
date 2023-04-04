@@ -1,29 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
-        <title>
-        </title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" />
-            <a name="_Toc421536334">
-            </a>
-            <MadCap:keyword term="SharePoint;Processes" />Working with SharePoint</h1>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536334"></a>
+            <MadCap:keyword term="SharePoint;Processes;SharePoint Import;SharePoint Export;Microsoft SharePoint" />Working with SharePoint</h1>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> For SharePoint 365, also known as "Modern SharePoint", web parts pages have been modified by Microsoft to preclude the use of the SharePoint Picker.htm web part. The component, therefore, won't work for those SharePoint Installations. </p>
         <p>Process Director has a number of Custom Tasks that provide interoperability between Process Director and SharePoint. These Custom Tasks allow you to do a number of things. You can pull a document from—or push a document into—a SharePoint document library. You can import and export data between Process Director Forms and SharePoint lists. You can also fill Process Director dropdown controls with data from SharePoint. All of these Custom Tasks can be used inside a Process Director Form, Timeline, or Workflow.</p>
         <p>In this walk-through, we will step through the process of moving documents back and forth between Process Director and SharePoint using two of the Custom Tasks:</p>
-        <ul style="list-style-type: disc;margin-left: 36pt;">
+        <ul>
             <li>Get Files from SharePoint.</li>
             <li>Push File to SharePoint.</li>
         </ul>
         <p>In this walk-through, we will create a simple round-trip document editing process that will allow you to retrieve a document from a SharePoint document library, edit it, then return the new version of the document to the SharePoint document library. All that’s required to complete this process is a simple Process Director Form.</p>
-        <h2>
-            <a name="_Toc421536335">
-            </a>Configuring SharePoint <a href="#_Toc421536335" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536335"></a>Configuring SharePoint <a href="#_Toc421536335" class="anchor">#</a></h2>
         <p>While Process Director has a number of Custom Tasks for working with SharePoint, getting and pushing documents between SharePoint and Process Director requires some work on SharePoint first. You'll need the “SharePoint Picker.htm” file uploaded to SharePoint and you’ll need a web part page to house both it and the library with which you want to work. The “SharePoint Picker.htm” file can be obtained from the "/website/" directory under your Process Director installation directory.</p>
         <p>One of the more convenient places to store the “SharePoint Picker.htm” file is the “Site Assets” library, as this is one of the standard SharePoint libraries, and its purpose is to house assets that may be required throughout the SharePoint instance. As such, it’s a great place to store the file. So, once you have copied the “SharePoint Picker.htm” file, upload it to the Site Assets library.</p>
         <p>Now, you’ll need to build a SharePoint web parts page to which to attach the “SharePoint Picker.htm” file. To create this page in SharePoint, go to “Site Actions &gt;&gt; More Options”. This will bring up the Create dialog box. From here select “Page” from the navigation menu on the left side of the form. This will display various types of SharePoint pages you can create. From the list of page type, click the “Web Part Page” icon, then click the “Create” button.</p>
@@ -54,9 +48,7 @@
             <img src="../Resources/Images/ImplementersReference/Working with SharePoint_5.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
         <p>Make a note of the URL of the completed web part page.&#160; This is your Picker Page URL, and you'll need to use this URL to configure the Process Director Custom Task in the following sections.</p>
-        <h2>
-            <a name="_Toc421536336">
-            </a>Building the Form <a href="#_Toc421536336" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536336"></a>Building the Form <a href="#_Toc421536336" class="anchor">#</a></h2>
         <p>The first thing we have to do is create a new, blank Form to handle our round-trip process. To create the Form, simply navigate to the Process Director folder where you’d like the Form to reside, Once you have selected the folder, create the Form by selecting “Form Definition” from the “Create New” dropdown located in the upper right corner of the Process Director window.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Sharepoint.png" />
@@ -141,9 +133,7 @@
         </p>
         <p>Type in a logical name for the control in the “Name Dialog Box”. Since we won't need to use a Workflow or Timeline for this sample, Change the “Attach Type” dropdown to “Form” in order to show objects attached to the Form, rather than to a process. Finally, check the “Show Edit” check box in the <span class="UIElement">Attach Properties</span> tab. This will show an edit link for the attached documents that will allow us to use Process Director’s check in/check out functionality to edit the attachments, which will provide us with the history and versioning functions for editing the attachment from Process Director. When you are finished, click the <span class="UIElement">OK </span>button to close the dialog box.</p>
         <p>Our Form template should now be finished. Save and close the Form template, and go back to the form definition window.&#160; </p>
-        <h2>
-            <a name="_Toc421536337">
-            </a>Configuring Custom Tasks <a href="#_Toc421536337" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536337"></a>Configuring Custom Tasks <a href="#_Toc421536337" class="anchor">#</a></h2>
         <p>We'll need to set the SharePoint Custom Tasks for the form’s two buttons, so, from the Properties screen, click the <span class="UIElement">Custom Task Event Mapping </span>tab. From this tab, we will add the two SharePoint Custom Tasks that will be called by the buttons we placed on the Form template. When we are finished, the Custom Task setup in this tab will look much like the image below.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Sharepoint11.png" />
@@ -166,16 +156,12 @@
         </p>
         <p>In the “Site Details” section’s “SharePoint Connection” dropdown, select the SharePoint instance where the document will be pushed. Then, select the “Form References” reference type from the references section. Next chose the list you want to use from the “SharePoint List” dropdown. You can also type in the path to the list if you’d like. This also allows you to create a new path by typing the path into the text box, then checking the “Create Folder if it doesn’t already exist” check box. Process Director will create the path location in SharePoint for you automatically. Now, click the “Advanced” tab for the Query Details section. Set the “Action if File exists” dropdown to “Check in new version”, and the “Handling Documents with SharePoint links” dropdown to “Update SharePoint Document, if available”. Once you have done this, click the “OK” button to close the dialog box and save your configuration settings for the Custom Task.</p>
         <p>You should now be back at the Properties Pane for the Form Definition. Click the “Update” button to save the configuration changes you’ve made. Once you have done so, you’re now ready to test your form.</p>
-        <h2>
-            <a name="_Toc421536338">
-            </a>Running the Form <a href="#_Toc421536338" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536338"></a>Running the Form <a href="#_Toc421536338" class="anchor">#</a></h2>
         <p>Run the form by clicking the “Run” button located at the top right of the Form definition page. This will open your newly-completed Form.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Sharepoint14.png" />
         </p>
-        <h3>
-            <a name="_Toc421536339">
-            </a>Doing a Quick Round-Trip of a Document</h3>
+        <h3><a name="_Toc421536339"></a>Doing a Quick Round-Trip of a Document</h3>
         <p>Notice that the “Show Attached Objects” control is hidden. It won’t display until you’ve actually attached a document to the form, so let’s attach one by clicking the button labeled “Get Doc”. This will open the SharePoint Picker Page you specified in the configuration for the Custom Task.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Working with SharePoint_21.jpg" style="visibility: visible;mso-wrap-style: square;" />
@@ -192,14 +178,10 @@
         </p>
         <p>Of you were to go into SharePoint and view the documents history, you'd see that Process Director not only pushed the document back to SharePoint, but the document has also been versioned in SharePoint as well.</p>
         <p>Click “OK” to close and save the Form.</p>
-        <h3>
-            <a name="_Toc421536340">
-            </a>Adding a New Document</h3>
+        <h3><a name="_Toc421536340"></a>Adding a New Document</h3>
         <p>You can also add a brand new document to SharePoint by opening a new instance of the Form, then clicking the “Add New” button.&#160; This will open the standard File dialog box from which you can browse through your file system to select the document you want to push to SharePoint. Once you have selected the document, it will appear in the “Show Attached Objects” control.</p>
         <p>Once again, you can click the “Put Doc” button to push the new document to SharePoint.</p>
-        <h3>
-            <a name="_Toc421536341">
-            </a>Editing a Document from the Form</h3>
+        <h3><a name="_Toc421536341"></a>Editing a Document from the Form</h3>
         <p>Once you have a document attached to the Form, you can edit it from Process Director, using Process Director’s built-in checkout and versioning system. There is an “Edit” link for each document in the “Show Attached Objects” control. If you click the “Edit” link Process Director will open the Edit Document dialog box.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/WorkingWithSharepoint1.png" />

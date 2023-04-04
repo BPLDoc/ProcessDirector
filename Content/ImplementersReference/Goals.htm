@@ -5,10 +5,8 @@
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" />
-            <a name="Goals">
-            </a>
-            <MadCap:keyword term="Goals" />Goals</h1>
+            <MadCap:concept term="Implementation;Goals" />
+            <MadCap:keyword term="Goals;Goal Object;Scheduler;Schedule Process;Schedule Knowledge View;Schedule Timeline;Schedule KView" /><a name="Goals"></a>Goals</h1>
         <p>Goals are used to set a global state in the Process Director system, and to perform actions when a global state change occurs. A Goal returns a value, or set of values, based on conditions that the Goal regularly evaluates, on a schedule that is specified in the Goal definition. For instance, you can set a Goal to execute daily, hourly, etc., and set a global system state  when the execution occurs. </p>
         <p>Goals incorporate two completely distinct components: execution and examination. <span class="KeyTerms">Execution </span>occurs when the Goal evaluates the conditions and sets the state or value that results from the evaluation. <span class="KeyTerms">Examination </span>occurs when a another Process Director object references the Goal to retrieve the value that was set during the execution. Referencing a Goal (the examination) will always produce the result from the last time that Goal was executed. The Goal will return a null string if it has never evaluated, otherwise the examination will always produce the value resulting from the most recent execution.</p>
         <p>Scheduled execution makes the Goal uniquely suited for evaluating conditions that are processor-intensive. Unlike a system variable that is executed when referenced (e.g., when called from a Form or Process Timeline), Goals are only executed on their configured schedule. So, you can schedule a processor-intensive Goal execution at a time when usage is low. When another object references the Goal, the Goal does <i>not</i> re-execute. It merely sends the value that was set during the last scheduled execution. Many different processes, therefore, may use the same Goal without placing a strain on the server, because the Goal will only execute when scheduled.</p>
@@ -19,10 +17,7 @@
         </p>
         <p>The ability to start a process based on a Goal, along with the ability to schedule Goal evaluation, enables Process Director to schedule processes without having to use the Windows Scheduler.</p>
         <p>In addition, results for a Goal can be evaluated from a <a href="Business Values.htm" target="_blank">Business Value</a>, giving you the ability to schedule processes based on information from your outside CRM, ERP, or other systems. For example, you can use a Business Value to return any unprocessed Invoices or POs from your ERP system. The Goal can evaluate the Business Value at a desired interval, and, if there are unprocessed items, automatically start the PO or Invoice process to process the items. Moreover, you can return any required data to update your ERP system during the processing or after the processing is complete. In effect, simply entering a new invoice and PO into the ERP system would automatically start the PO&#160;or Invoice process—and ultimately update your external ERP system—when the Goal is evaluated. In this example, you'd no longer need to manually start the process by filling out and submitting a Form.</p>
-        <p>
-            <span class="Emphasis">Combined with the access to external data available through the </span>
-            <span href="Business Values.htm" target="_blank" class="Emphasis">Business Value</span>
-            <span class="Emphasis"> feature, Process Director is a powerful process automation system, enabling automatic process initialization in response to changes to external systems.
+        <p><span class="Emphasis">Combined with the access to external data available through the </span><span href="Business Values.htm" target="_blank" class="Emphasis">Business Value</span><span class="Emphasis"> feature, Process Director is a powerful process automation system, enabling automatic process initialization in response to changes to external systems.
 </span><![CDATA[        ]]></p>
         <p>To see how to configure a Goal object, please continue to the <a href="Goals Configuration.htm">Configuring Goals topic</a>.</p>
     </body>

@@ -6,21 +6,17 @@
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" />
-            <MadCap:keyword term="Knowledge Views" />Knowledge View Operations</h1>
+            <MadCap:concept term="Implementation;Knowledge Views" />
+            <MadCap:keyword term="Knowledge Views;KViews;KView Definition;Knowledge View Definition;KView URL;Knowledge View URL;URL Filters;KView Parameters;Knowledge View Parameters;KView Filter;Knowledge View Filter" />Knowledge View Operations</h1>
         <p>Knowledge Views are a collection of related objects based on categorization or other criteria. They can be made available to either authenticated or anonymous users depending on the permissions. In addition to displaying Knowledge Views in the UI, such in a workspace or Dashboard portlet, Knowledge Views can be accessed directly via a URL, and can be used to prompt processes on a manual or scheduled basis.</p>
-        <h2>
-            <a name="URL">
-            </a>Knowledge View URLs for External Access <a href="#URL" class="anchor">#</a></h2>
+        <h2><a name="URL"></a>Knowledge View URLs for External Access <a href="#URL" class="anchor">#</a></h2>
         <p> A Knowledge View is represented by a URL that can be displayed outside of the BP Logix environment. The URL for a Knowledge View can be sent in an email, displayed in a web portal, or added to an existing web site. The URL format for an individual Knowledge View is:</p>
         <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/kv.aspx?ext=1&amp;id=<span class="CodeOption">NN</span></p>
         <p>Where <code><span class="CodeOption">ServerName.com</span></code> is the hostname of BP Logix and <code class="CodeOption">NN </code>is the internal ID displayed in the Knowledge View definition you want to use (e.g. <code>ID=ea1f7d30-2c44-4971-ac8a-4654ae2521ff</code>). </p>
         <p>An additional URL parameter, "gkview", can be used to enable a Global Knowledge View to be displayed using the Knowledge View name instead of the ID, but it can only be used to return Global Knowledge Views that are <span class="ProcessDirectorObject">Task Lists</span>, e.g. <code>kv.aspx?gkview=Task List</code>.</p>
         <p>For user of Process Director v5.37 and higher, a URL&#160;Parameter, "canceltext", can be used on a <span class="ProcessDirectorObject">Task List</span> URL and will display the configured text in an alert box when a user clicks on the <span class="UIElement">Cancel </span>button on the form.</p>
         <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/kv.aspx?canceltext="<span class="CodeOption">You clicked the Cancel button.</span>"</p>
-        <h3>
-            <a name="Filter">
-            </a>Passing Filter Values in the URL <a href="#Filter" class="anchor">#</a></h3>
+        <h3><a name="Filter"></a>Passing Filter Values in the URL <a href="#Filter" class="anchor">#</a></h3>
         <p>The Knowledge View can be opened using a URL that is placed on a web site. If the Knowledge View is configured with Filter, you can pass this filter information to the Knowledge View on the URL. Simply set the desired filter result as a variable, then enter the variable name you'd like to use in the URL parameter like the example below: </p>
         <p>
             <img src="../Resources/Images/ImplementersReference/KViewVars.png" />
@@ -31,16 +27,12 @@
         <p>This configuration uses the Variable object in the same way as <a href="Form Definition URL.htm">Form Definition URLs</a>.</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Sometimes, variables must be passed through multiple objects before reaching a Knowledge View, or other object. For instance, you may have a Form that calls a Chart, which, in turn, calls a Knowledge View via a drill-down. The data on the Form is passed to the Chart via a variable that is accessed using the normal<span style="color: #ffffff;"> </span><code style="font-weight: normal;color: #ffffff;">{VAR:ParmName}</code> syntax. However, when the chart does a drill-down to a Knowledge View, the Knowledge View does <b>not</b> have access to the original <code style="font-weight: normal; color: #ffffff;">{VAR:ParmName}</code> variable. Instead you need to append two underscores and the number "2" (<code style="font-weight: normal; color: #ffffff;">__2</code>) to the variable name, e.g. <code style="font-weight: normal; color: #ffffff;">{VAR:ParmName__2}</code>. When you do so, Process Director treats the "<code style="font-weight: normal; color: #ffffff;">{VAR:ParmName__2}</code>" in the in the Knowledge View as a pointer to the original value for <code style="font-weight: normal; color: #ffffff;">{VAR:ParmName}</code>, so that the proper value is automatically available to the Knowledge View.</p>
-        <h2>
-            <a name="Formatting">
-            </a>Knowledge View Formatting <a href="#Formatting" class="anchor">#</a></h2>
+        <h2><a name="Formatting"></a>Knowledge View Formatting <a href="#Formatting" class="anchor">#</a></h2>
         <p>Each Knowledge View can implement a different look and feel by using the<span class="ControlName"> HTML Code</span> property in the <span class="UIElement">Configure </span>tab of the Knowledge View definition. This property enables HTML formatting to be applied to the top of the running Knowledge View. The Knowledge View window can also be framed in HTML frames and use a custom style sheet (CSS).  You can also display the Knowledge View in a form by using the <span class="NamedControl">Knowledge View</span> control.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/HTMLCode.png" />
         </p>
-        <h2>
-            <a name="Processes">
-            </a>
+        <h2><a name="Processes"></a>
             <MadCap:keyword term="Processes" />Running Processes on Knowledge View Results <a href="#Processes" class="anchor">#</a></h2>
         <p>Processes can be run on the results of Knowledge View using two different approaches. One approach will automatically run a process on every item returned, the other approach allows a user to click on a special column to run a process on the selected item.</p>
         <MadCap:dropDown>
@@ -87,9 +79,7 @@
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="Scheduling">
-            </a>Scheduling a Knowledge View <a href="#Scheduling"><a href="#Scheduling" class="anchor">#</a></a></h2>
+        <h2><a name="Scheduling"></a>Scheduling a Knowledge View <a href="#Scheduling"><a href="#Scheduling" class="anchor">#</a></a></h2>
         <p>Knowledge Views can be used to run a process on each of the objects returned by the filter criteria. This can be used, for example, to archive or delete forms or documents that match a certain criteria. Or it can be used to schedule a document review for documents that meet certain criteria. The criteria can be any Knowledge View filter criteria including last updated time, creation date, or any form field data. The actual process run on each object can perform any action or task.</p>
         <p>Knowledge Views can also be used to export results into Excel, CSV, or PDF format. By scheduling this type of Knowledge View, a report will automatically be generated and can be written to a specific path on the server. This folder, for example, can be monitored by the BP Logix import utility, to automatically run a process on the reports. This process can, for example, automatically distribute the report to a pre-defined group of users.</p>
         <p>These Knowledge Views can be run manually, or scheduled to perform an automatic actions. To schedule these Knowledge Views, a web page is run. </p>

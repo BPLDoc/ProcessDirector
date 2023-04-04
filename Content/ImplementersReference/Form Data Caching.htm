@@ -1,18 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head>
-        <title>
-        </title>
+    <head><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:concept term="Forms" />
-            <MadCap:concept term="Implementation;Forms" />
-            <a name="_Toc421536196">
-            </a>
-            <MadCap:keyword term="eForms" />
-            <MadCap:keyword term="Form Data Caching" />Form Data Caching</h1>
+            <MadCap:concept term="Implementation;Forms" /><a name="_Toc421536196"></a>
+            <MadCap:keyword term="Form Data Caching;Forms;Data;Caching;Form Data;Cache;Form Cache" />Form Data Caching</h1>
         <p>Users of Process Director v4.51 and higher may use a feature named Form Data Caching, which BP&#160;Logix has implemented to improve the speed of querying and searching for form data, and to improve performance of the Process Director server. This feature affects the performance of both Knowledge Views and SQL views that you create in the product.</p>
         <h2>tblFormData</h2>
         <p>We often think of the data from a Form instance being stored in its own table, like a spreadsheet, where each data field is a column and each individual form instance is represented by a row in the table or spreadsheet.  Process Director doesn't store form data in that way, however. Instead, there is a single database table named <span class="ProcessDirectorObject">tblFormData </span>that stores the data for every field from every form instance. As you might imagine, over time, this table gets quite large. Even a reasonably-sized installation of Process Director may contain millions of records in <span class="ProcessDirectorObject">tblFormData</span>. So, when you run any query or Knowledge View for form data, Process Director, by default, has to parse through all of the records in <span class="ProcessDirectorObject">tblFormData </span>to return the results you want, which may take an inconveniently long time and a large amount of system resources. The more form instances that exist in your installation, the longer it takes to parse through this ever-growing recordset.</p>
@@ -21,18 +16,15 @@
         <p>In the <span class="ControlName">Options </span>section of the <span class="UIElement">Properties </span>tab for each Form definition, there is check box property named <span class="ControlName">Enable Form Data Cache</span>. Checking the property will enable process Director to create the cache table in the database when you direct a cache to be created. The temporary cache table will be named with the naming convention, tblFDC_<b>GUID</b>, with the GUID portion being the actual GUID of the Form Definition.</p>
         <p>To direct Process Director to create a Form Cache, you can call a page named  "build_form_cache.aspx". This page is located in the root directory of the web site, and can be accessed with the URL, "http://localhost/build_form_cache.aspx", where PDServerName is the base URL of your process Director installation. This page will build the form caches for all of the forms that are configured to use Form Data Caching. The URL does, however, accept the URL parameter "?FORMID=<b>GUID</b>", where, again, the GUID would be the GUID of a specific Form definition that is configured to use Form Data Caching. When you use this URL parameter, Process Director will create the Form Cache only for the form you specify in the parameter, instead of creating the cache for all configured forms.</p>
         <p>To keep the form cache relatively current, you can use the Windows Scheduler to call the bputil.exe utility to run this page on a scheduled basis, by using the commands (Where PATH is the installation directory for Process Director, e.g. c:\Program Files\BP Logix\Process Director\):</p>
-        <p>
-            <code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx</code>
+        <p><code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx</code>
         </p>
         <p>...to create the whole Form Cache</p>
         <p>or</p>
-        <p>
-            <code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx?FORMID=<b>GUID</b></code>
+        <p><code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx?FORMID=<b>GUID</b></code>
         </p>
         <p>...to create the cache table for a single Form.</p>
         <p>For&#160;Process Director v5.39 and higher, an additional URL&#160;parameter, forminstid, will pass a Form Instance ID to update the form cache for a specified form instance.</p>
-        <p>
-            <code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx?forminstid=<b>FormInstanceGUID</b></code>
+        <p><code>"<b>PATH</b>\bputil.exe" SU http://localhost/build_form_cache.aspx?forminstid=<b>FormInstanceGUID</b></code>
         </p>
         <h2>Querying the Cache</h2>
         <p>You can query the cache in one of two ways:&#160;Using a&#160;Knowledge View, or creating a SQL View.</p>
@@ -49,7 +41,7 @@
                 <MadCap:dropDownHotspot>Using a SQL&#160;View</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>You can <a href="../Database Guide1/Create view SQL.htm">create SQL&#160;Views</a> for any form in the <span class="UIElement">Form Data SQL&#160;View</span> tab of a Form Definition, which contains a check box property named <span class="ControlName">Use cached tblFormData table for SQL VIEW?</span>. Assuming that the Form is configured to use Form Data Caching, then, when this property is checked, Process Director will create a SQL&#160;View that queries the cached table rather than <span class="ProcessDirectorObject">tblFormData</span>. If the Form isn't configured to use Form Data Caching, or the cache doesn't exist, any attempt to create the view will fail immediately.</p>
+                <p>You can <a href="Form Definition View.htm">create SQL&#160;Views</a> for any form in the <span class="UIElement">Form Data SQL&#160;View</span> tab of a Form Definition, which contains a check box property named <span class="ControlName">Use cached tblFormData table for SQL VIEW?</span>. Assuming that the Form is configured to use Form Data Caching, then, when this property is checked, Process Director will create a SQL&#160;View that queries the cached table rather than <span class="ProcessDirectorObject">tblFormData</span>. If the Form isn't configured to use Form Data Caching, or the cache doesn't exist, any attempt to create the view will fail immediately.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2>Some Caveats</h2>

@@ -1,94 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
-        <title>
-        </title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="System Variables" />
-            <a name="SystemVariableParameters">
-            </a>
+            <MadCap:concept term="System Variables" /><a name="SystemVariableParameters"></a>
             <MadCap:keyword term="Parameters" />System Variable Modifiers and Parameters</h1>
-        <h2>
-            <a name="Class">
-            </a>Class Types <a href="#Class" class="anchor">#</a></h2>
+        <h2><a name="Class"></a>Class Types <a href="#Class" class="anchor">#</a></h2>
         <p>There are several classes of system variable that are similar, in that they all refer to processes in some form. First, there are the classes that refer to specific process models:</p>
         <ul>
-            <li>
-                <a href="Timeline System Variables.htm" style="font-weight: bold;">Process Timeline</a>
-                <b>:</b> These System Variables refer specifically to Process Timeline definitions and instances.</li>
-            <li style="font-weight: normal;">
-                <b>
-                    <a href="Timeline Activity System Variables.htm">Timeline Activity</a>: </b>These System Variables refer specifically to Timeline Activity definitions and instances.</li>
-            <li style="font-weight: normal;">
-                <b>
-                    <a href="Workflow System Variables.htm">Workflow</a>:</b> These System Variables refer specifically to Workflow definitions and instances.</li>
-            <li style="font-weight: normal;">
-                <b>
-                    <a href="Workflow Step System Variables.htm">Workflow Step</a>:</b> These System Variables refer specifically to Workflow Step definitions and instances.</li>
+            <li><a href="Timeline System Variables.htm" style="font-weight: bold;">Process Timeline</a><b>:</b> These System Variables refer specifically to Process Timeline definitions and instances.</li>
+            <li style="font-weight: normal;"><b><a href="Timeline Activity System Variables.htm">Timeline Activity</a>: </b>These System Variables refer specifically to Timeline Activity definitions and instances.</li>
+            <li style="font-weight: normal;"><b><a href="Workflow System Variables.htm">Workflow</a>:</b> These System Variables refer specifically to Workflow definitions and instances.</li>
+            <li style="font-weight: normal;"><b><a href="Workflow Step System Variables.htm">Workflow Step</a>:</b> These System Variables refer specifically to Workflow Step definitions and instances.</li>
         </ul>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" title="Important" /> BP&#160;Logix recommends the use of Process Timelines for all new development. Workflow is the legacy process model used in earlier versions of the product. Workflows remain in the product for backwards compatibility, are no longer in active development, and have received no new functionality updates since Process Director v.4.5.</p>
         <p style="font-weight: normal;">Process Timelines have definition objects that provide their configuration, and instances that are created each time the definition is invoked. The Process Timeline and Timeline Activity System Variables should be the first choice for referencing attributes of their corresponding objects in <i>most</i> (but not all) cases.</p>
         <p>When a Process Timeline is run, it invokes both a Timeline instance and a Process instance that run concurrently. The Process instance has its own set of System Variable classes.</p>
         <ul>
-            <li>
-                <b>
-                    <a href="Process System Variables.htm">Process</a>:</b> These System Variables refer specifically to existing Process  instances. </li>
-            <li>
-                <b>
-                    <a href="Process Task System Variables.htm">Process Task</a>:</b> These System Variables refer specifically to existing Process Task  instances. </li>
+            <li><b><a href="Process System Variables.htm">Process</a>:</b> These System Variables refer specifically to existing Process  instances. </li>
+            <li><b><a href="Process Task System Variables.htm">Process Task</a>:</b> These System Variables refer specifically to existing Process Task  instances. </li>
         </ul>
         <p>Processes do not have definition objects, only instances. Processes can't be directly configured, and inherit their configuration from the Process Timeline/Workflow that invokes them. A process-based System Variable can only return data from existing instances, and only data that is related to the Process instance. In many cases, the Process and Timeline variables return the same information, but the selection of Process System Variables is more limited than the Process Timeline System Variables. Process Task System Variables are even more limited, since Process Tasks are primarily relevant specifically to user activities.</p>
         <p>Despite the more limited range of Process System Variables, they must sometimes be used to extract unique information that isn't available from the process model's variables. Some information only exists in relation to a Process or Process Task instance, and isn't defined in the Process Timeline/Workflow definition.</p>
         <p>For example,  <a href="../SystemAdministratorGuide/User Delegation.htm">User Delegation</a> is configured at the system level, and isn't accessible from either the Process Timeline or Workflow definitions, or their associated System Variables. Instead, the<a href="Process Task System Variables.htm#TaskOnBehalfOf"><span href="Process Task System Variables.htm#TaskOnBehalfOf" style="font-weight: bold;" class="ControlName">Task on Behalf of</span></a> Process Task System Variable returns the name of the user who delegated a task to another user. User delegation only occurs in the context of a running process, and the <span class="ControlName">Task on Behalf of</span> variable only has a value when the delegation  actually occurs.   Delegation can only be invoked while the Process Task is running, and the identity of the delegator and delegate is only supplied in that context. </p>
         <p class="PDNote">
             <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> The <a href="../ImplementersReference/Process Timeline User Activity.htm#Advanced">Advanced Options tab</a> of a User Timeline Activity does have an <i>Allow Task Sharing</i> property that, when checked, enables a task to use Shared Delegation, but the identity of the possible delegates is, again, configured at the system level. So, while this property <i>enables</i> Shred Delegation for the task, it provides no configuration for it.</p>
-        <h2>
-            <a name="Parameters">
-            </a>Parameters <a href="#Parameters" class="anchor">#</a></h2>
+        <h2><a name="Parameters"></a>Parameters <a href="#Parameters" class="anchor">#</a></h2>
         <p>
             <MadCap:keyword term="System Variables" />System variables will often contain Modifiers or Parameters that control the data the system variable will return. These are specified in SysVar tags using the following syntax:</p>
-        <p>
-            <code>{VARNAME, format=<span class="CodeOption">FormatType</span>}</code>
+        <p><code>{VARNAME, format=<span class="CodeOption">FormatType</span>}</code>
         </p>
-        <p>
-            <code>VARNAME </code>is the name of the system variable, and <code class="CodeOption">FormatType</code> can be one of any member of the set of the relevant formatters, depending on the system variable in which it's used. </p>
+        <p><code>VARNAME </code>is the name of the system variable, and <code class="CodeOption">FormatType</code> can be one of any member of the set of the relevant formatters, depending on the system variable in which it's used. </p>
         <p>System variable Modifiers aren't case sensitive.</p>
         <h3 MadCap:conditions="General.Not Printed">Video Example</h3>
         <p MadCap:conditions="General.Not Printed">
             <object MadCap:HTML5Video="true" MadCap:Param_autoplay="false" src="../Resources/Multimedia/sysvarparams1.mp4" MadCap:Param_controls="true" MadCap:Param_muted="true" MadCap:Param_loop="true" style="width: 100%;height: auto;border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;">
             </object>
         </p>
-        <h2>
-            <a name="Escape">
-            </a>Escape Characters and Defaults <a href="#Escape" class="anchor">#</a></h2>
+        <h2><a name="Escape"></a>Escape Characters and Defaults <a href="#Escape" class="anchor">#</a></h2>
         <p>When Process Director sees a string with text enclosed in curly braces, it will attempt to interpret the enclosed text as a system variable. To prevent it from doing so, add two backslashes and an additional  curly brace before each desired curly brace you want to display as text. For example, the string “<code>\\{{CURR_DATE\\}}</code>”&#160; will display the text “{CURR_DATE}”, instead of displaying the current date.</p>
         <p>System variables for form fields use the locale specified in the form definition when formatting the string. For example, a form field defined as a currency field, and whose locale is specified in the form definition as "Japan", will render its value as Japanese Yen.</p>
         <p>When used in a condition, system variables referring to running Workflow Steps or Process Timeline Activities (e.g., <code>{ACTIVITY_RUN_TIME}</code>), when used without specifying the name of a specific step/activity, will default to the "current" activity. However, if multiple activities are running, the result can be hard to predict. Process Director will now first look at the context in which the condition is being evaluated: for example, if the condition controls visibility on a form, and that form is being viewed in the context of a task, the "current" activity will always be that task.</p>
-        <h2>
-            <a name="Parms">
-            </a>Parameters <a href="#Parms" class="anchor">#</a></h2>
+        <h2><a name="Parms"></a>Parameters <a href="#Parms" class="anchor">#</a></h2>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="ObjectSpec">
-                    </a>
-                    <a href="#ObjectSpec">
-                        <img src="../Resources/Images/link.png" alt="Link" />
-                    </a>Object Name Specifications</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="ObjectSpec"></a><a href="#ObjectSpec"><img src="../Resources/Images/link.png" alt="Link" /></a>Object Name Specifications</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Many System Variables require that you specify the name of a specific Content List object for the System Variable to work properly. For instance, calling the number of times a Timeline Activity has run requires that you specify the name of the activity in the System Variable, using the syntax:</p>
-                <p>
-                    <code>{ACTIVITY_NUM_TIMES_RUN:<span class="CodeOption">ActivityName</span>}</code>
+                <p><code>{ACTIVITY_NUM_TIMES_RUN:<span class="CodeOption">ActivityName</span>}</code>
                 </p>
                 <p>...where <span class="ControlName">ActivityName </span>is the name of the Timeline Activity you are evaluating. If you use spaces in the Activity name, then you must enclose the name in quotation marks, e.g.: </p>
-                <p>
-                    <code>{ACTIVITY_NUM_TIMES_RUN:<span class="CodeOption">"Activity Name"</span>}</code>
+                <p><code>{ACTIVITY_NUM_TIMES_RUN:<span class="CodeOption">"Activity Name"</span>}</code>
                 </p>
                 <p>...to ensure that the name is parsed properly. Activity names that don't contain spaces may be referenced without the quotation marks. </p>
                 <p class="PDNote">
@@ -97,34 +64,22 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="GroupParameter">
-                    </a>
-                    <a href="#GroupParameter">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Group Modifier</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="GroupParameter"></a><a href="#GroupParameter"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Group Modifier</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Most system variables can be configured via the “group” Modifier, which limits the results of a system variable such that it will return only results belonging to the specified group. Use the following syntax to add a group restriction to a SysVar tag:</p>
-                <p>
-                    <code>{SYSTEM_VARIABLE, group=<span class="CodeOption">GroupName</span>}</code>
+                <p><code>{SYSTEM_VARIABLE, group=<span class="CodeOption">GroupName</span>}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="EncodeTypes">
-                    </a>
-                    <a href="#EncodeTypes">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="EncodeTypes"></a><a href="#EncodeTypes"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="Encode Types" />Encode Types</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Encoding types are special characters put inside system variable tags to force the tag to return a certain type. These are often used to prevent improperly encoded values from breaking a query. The format used to specify an encode type is as follows:</p>
-                <p>
-                    <code>{encode-typeSysVar}</code>
+                <p><code>{encode-typeSysVar}</code>
                 </p>
                 <p> Process Director v4.0 and higher can be set to automatically encode all System Variables on a Form as HTML, which eliminates the need to use the "!" encode symbol. To set this behavior as a default, you must set the <a href="../DevelopersGuide/Customization File Defaults.htm#DefaultHTMLEncode">DefaultHTMLEncode custom variable</a> to "true". You can force Process Director not to encode as HTML by using the "|" encode symbol.</p>
                 <p>Where encode-type can be any one of the following symbols:</p>
@@ -139,74 +94,62 @@
                     </thead>
                     <tbody>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;">
-                                <code>!</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;"><code>!</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Encodes the result as HTML</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;">
-                                <code>$</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;"><code>$</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Ensures the result is a valid SQL string</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;">
-                                <code>*</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;"><code>*</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Converts the result into a valid SQL list of strings (e.g. ‘string one’, ‘string two’, ‘string three’)</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;">
-                                <code>#</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;"><code>#</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Ensures the result is a valid SQL number</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;">
-                                <code>&amp;</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;"><code>&amp;</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Converts the result to a URL encoded value</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;">
-                                <code>@</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;"><code>@</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Ensures the result is valid for a calculation control or system variable tag</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;">
-                                <code>+</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;"><code>+</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Ensures the result is a valid SQL Server date</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;">
-                                <code>-</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;"><code>-</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Ensures the result is a valid Oracle date</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;">
-                                <code>^</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;"><code>^</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Returns an LDAP encoded string which can be passed to an LDAP filter</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;">
-                                <code>~</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;"><code>~</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Ensures the result is a valid string when used in LIKE comparisons in a WHERE clause</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;">
-                                <code>&gt;</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;"><code>&gt;</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Ensures the result will render the string into a Windows filename-friendly format. E.g.,&#160; if {FORM:fname} yields "a$b", then {&gt;FORM:fname} yields "a_b".</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2" MadCap:conditions="">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;">
-                                <code>|</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2" style="text-align: center;font-size: 16pt;"><code>|</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>Turns off the automatic HTML&#160;encoding for system variables used on a Form.</p>
@@ -215,8 +158,7 @@
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1" MadCap:conditions="">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;">
-                                <code>`</code>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1" style="text-align: center;font-size: 16pt;"><code>`</code>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Ensures the result is a JSON-encoded <b>datetime</b> value.</td>
                         </tr>
@@ -229,21 +171,17 @@
                 <h3>Examples</h3>
                 <p class="CodeBase">SELECT * FROM MyTable WHERE col1 = '{$:text1}'</p>
                 <p>The $ encode will safely type the value of "text1" from:</p>
-                <p>
-                    <code>Bob's Place </code>
+                <p><code>Bob's Place </code>
                 </p>
                 <p>To:</p>
-                <p>
-                    <code>Bob''s Place.</code>
+                <p><code>Bob''s Place.</code>
                 </p>
                 <p class="CodeBase">SELECT * FROM MyTable WHERE col1 LIKE '%{~:text1}%' ESCAPE '\'</p>
                 <p>When used in in a LIKE statement, the <code>~</code> encode type will perform the same safe encoding as the <code>$</code> does. Additionally, when adding the ESCAPE clause to the SQL statement, values that require escapes for special characters will be added to the encoding. So, for a value of:</p>
-                <p>
-                    <code>100%</code>
+                <p><code>100%</code>
                 </p>
                 <p>The combination of the ~ encode and the ESCAPE clause in the example will produce an encoded value of:</p>
-                <p>
-                    <code>100\%</code>
+                <p><code>100\%</code>
                 </p>
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> In order to reduce security issues, Process Director v4.5 and higher issues a warning for using non-encoded System Variables in the SQL Statements used by Business Values or Custom Tasks. A Custom Variable setting, <a href="../DevelopersGuide/Customization File Administration.htm#fAllowUnencodedSysvarsinBV">fAllowUnencodedSysvarsinBV</a>, will, when set to "false", prevent users from saving any object that has unencoded variables in a SQL&#160;statement.</p>
@@ -251,12 +189,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="PrePostNull">
-                    </a>
-                    <a href="#PrePostNull">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="PrePostNull"></a><a href="#PrePostNull"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="Pre, Post, and Null" />Pre, Post, and Null</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -265,54 +198,39 @@
                     <img src="../Resources/Images/SystemVariablesReferenceGuide/SystemVariablesReferenceGuide.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
                 <p>To specify the Pre, Post, and Null values in a SysVar tag, use the following format:</p>
-                <p>
-                    <code>{<span class="CodeOption">SYSTEM_VARIABLE </span>pre="<span class="CodeOption">Text before Var</span>", post="<span class="CodeOption">Text after Var</span>", null="<span class="CodeOption">Value if Null</span>"}</code>
+                <p><code>{<span class="CodeOption">SYSTEM_VARIABLE </span>pre="<span class="CodeOption">Text before Var</span>", post="<span class="CodeOption">Text after Var</span>", null="<span class="CodeOption">Value if Null</span>"}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="StringCase">
-                    </a>
-                    <a href="#StringCase">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="StringCase"></a><a href="#StringCase"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="String;Cases;Substring" />String Cases and Substrings</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>String system variables can be manipulated by using case and substring Modifiers.</p>
                 <h4>Examples:</h4>
                 <p>The Case Modifier will convert string text into all upper case or lower case as desired.</p>
-                <p>
-                    <code>{:<span class="CodeOption">someFormField</span>, case=<b class="CodeOption" style="font-weight: normal;">upper<code>|</code>lower</b>}</code>
+                <p><code>{:<span class="CodeOption">someFormField</span>, case=<b class="CodeOption" style="font-weight: normal;">upper<code>|</code>lower</b>}</code>
                 </p>
                 <p>The substring Modifier enables you to extract a desired substring by identifying the starting character location with the "subStart" Modifier, and the length of the substring with the "subLength" Modifier. The position of the "subStart" Modifier is zero-based, meaning that the first character position is 0, rather than 1.</p>
-                <p class="CodeBase">
-                    <span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "ghijklmnop".</span>
-                    <br />{:somFormField, subStart=6, subLength=10}</p>
+                <p class="CodeBase"><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "ghijklmnop".</span>
+                    <br />{:someFormField, subStart=6, subLength=10}</p>
                 <p>The Case Modifier can also be used in conjunction with the substring Modifiers.</p>
-                <p class="CodeBase">
-                    <span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "GHIJKLMNOP".</span>
-                    <br />{:somFormField, case=upper, subStart=6, subLength=10}</p>
+                <p class="CodeBase"><span class="ControlName">//This syntax will render the string "abcdefghijklmnop" as "GHIJKLMNOP".</span>
+                    <br />{:someFormField, case=upper, subStart=6, subLength=10}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="PatternReplaceTrim">
-                    </a>
-                    <a href="#PatternReplaceTrim">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="PatternReplaceTrim"></a><a href="#PatternReplaceTrim"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="Pattern;Replace;Trim" />Pattern, Replace, and Trim</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Pattern and Replace are Modifiers that can be added to any system variable. Data in the result of a system variable matching a regular expression specified in the Pattern Modifier will be replaced as specified in the Replace Modifier. See Microsoft’s <a href="http://msdn.microsoft.com/en-us/library/hs600312(v=vs.90).aspx"><span class="Hyperlink">documentation on regular expressions in .NET</span></a> for more information regarding regular expressions. The Trim Modifier can also be added to any system variable. When set to 1, it will trim leading and trailing spaces off the result of the system variable.</p>
                 <h5>Examples:</h5>
                 <p>This Control Tag will replace the text “some text” in a form field with the text “other text”:</p>
-                <p>
-                    <code>{:<span class="CodeOption">someFormField</span>, Pattern="<span class="CodeOption">Some text</span>", Replace="<span class="CodeOption">Other text</span>", Trim=<span class="CodeOption">1</span>}</code>
+                <p><code>{:<span class="CodeOption">someFormField</span>, Pattern="<span class="CodeOption">Some text</span>", Replace="<span class="CodeOption">Other text</span>", Trim=<span class="CodeOption">1</span>}</code>
                 </p>
                 <p>This System Variable tag will remove any semicolons from the current user’s name:</p>
                 <p class="CodeBase">{CURR_USER, Pattern=";", Replace=""}</p>
@@ -324,12 +242,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="IndexOf">
-                    </a>
-                    <a href="#IndexOf">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="IndexOf"></a><a href="#IndexOf"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="Index;String Index" />String Index Position</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -342,12 +255,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="InstanceModifier">
-                    </a>
-                    <a href="#InstanceModifier">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="InstanceModifier"></a><a href="#InstanceModifier"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="Modifiers" />Instance Modifier</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -368,12 +276,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="CSVStrings">
-                    </a>
-                    <a href="#CSVStrings">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="CSVStrings"></a><a href="#CSVStrings"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="CSV;Comma-Separated List" />Comma-Separated List (CSV) Strings</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -382,97 +285,65 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="FormFields">
-                    </a>
-                    <a href="#FormFields">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="FormFields"></a><a href="#FormFields"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="Form Fields" />Form Fields</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A number of general formatting and value options apply to Form Field values.</p>
                 <h4>Format:</h4>
-                <p>
-                    <code>{FORM:<span class="CodeOption">SomeFieldName</span>, format=<span class="CodeOption">Formatter</span>}</code>
+                <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, format=<span class="CodeOption">Formatter</span>}</code>
                 </p>
                 <ul style="list-style-type: disc;margin-left: 18pt;">
-                    <li>
-                        <b>Currency:</b> Formats the system variable into a format representing currency. Applies only to fields configured as a "Number" data type, or to Calculation fields.<br />A field containing the value "2245" would be displayed as "$2,245.00".</li>
-                    <li>
-                        <b>[.NET&#160;Format String]:</b> For  form fields and case properties that are specified as a "Number" data type, you can use a .NET&#160;format string to format a numeric result. Process Director supports the .NET format strings described on MSDN <a href="https://msdn.microsoft.com/en-us/library/0c899ak8(v=vs.110).aspx" target="_blank">here</a> and <a href="https://msdn.microsoft.com/en-us/library/dwhawy9k(v=vs.110).aspx" target="_blank">here</a>. For instance, you can use a format string to display a numeric field to 2 decimal places. In this example, a field value of "32.5675" would be displayed as "32.57" by using the syntax:<br /><code>{FORM:MyNumberField, format="##.##"}</code><br />Similarly, a Calculation field can convert a field value of "0.2557" to "25.57%" by using the syntax:<br /><code>{CALC, formula="{FORM:MyNumberField}*100", format="##.##"}%<br /></code>Additionally, the Microsoft format string specifiers for numeric values can also be used. For instance, a value of "1052.0329112756" can be converted to a scientific (exponential) notation result of 1.052033E+003 by using the syntax:<br /><code>{FORM:MyNumberField, format="E"}</code></li>
-                    <li>
-                        <b>Value:</b> Returns the value of a dropdown selection</li>
-                    <li>
-                        <b>String:</b> Returns the text in a text form field, or the displayed text of a dropdown selection</li>
-                    <li>
-                        <b>Friendly:</b> When used in conjunction with a <span class="NamedControl">Form Field Picker</span>, returns the friendly field name of a form field.</li>
-                    <li>
-                        <b>ClientID:</b> Returns HTML ID of the control suitable for JavaScript </li>
-                    <li>
-                        <b>DisplayString:</b> Returns the displayed text of a dropdown selection</li>
-                    <li>
-                        <b>Length:</b>&#160;Returns the length of a STRING value stored in a form field.</li>
-                    <li>
-                        <b>first_value:</b> Returns the first value saved in the field, <b style="font-style: italic;">when Form Field Auditing is enabled.</b></li>
-                    <li>
-                        <b>prev_value:</b> Returns the immediately previous value saved in the field, <i style="font-weight: bold;">when Form Field Auditing is enabled.</i></li>
-                    <li>
-                        <b>name:</b> For a TabStrip control, this formatter will return the name of the active Tab, instead of the Tab ID.</li>
-                    <li>
-                        <b>count:</b> For Process Director v5.31 and higher, list controls that have multiple selection enabled, such as the <span class="NamedControl">UserPicker </span>and <span class="NamedControl">List Box</span>, as well as <span class="NamedControl">Input </span>controls that display comma-separated lists, can use this formatter to return the number of items in the list.</li>
+                    <li><b>Currency:</b> Formats the system variable into a format representing currency. Applies only to fields configured as a "Number" data type, or to Calculation fields.<br />A field containing the value "2245" would be displayed as "$2,245.00".</li>
+                    <li><b>[.NET&#160;Format String]:</b> For  form fields and case properties that are specified as a "Number" data type, you can use a .NET&#160;format string to format a numeric result. Process Director supports the .NET format strings described on MSDN <a href="https://msdn.microsoft.com/en-us/library/0c899ak8(v=vs.110).aspx" target="_blank">here</a> and <a href="https://msdn.microsoft.com/en-us/library/dwhawy9k(v=vs.110).aspx" target="_blank">here</a>. For instance, you can use a format string to display a numeric field to 2 decimal places. In this example, a field value of "32.5675" would be displayed as "32.57" by using the syntax:<br /><code>{FORM:MyNumberField, format="##.##"}</code><br />Similarly, a Calculation field can convert a field value of "0.2557" to "25.57%" by using the syntax:<br /><code>{CALC, formula="{FORM:MyNumberField}*100", format="##.##"}%<br /></code>Additionally, the Microsoft format string specifiers for numeric values can also be used. For instance, a value of "1052.0329112756" can be converted to a scientific (exponential) notation result of 1.052033E+003 by using the syntax:<br /><code>{FORM:MyNumberField, format="E"}</code></li>
+                    <li><b>Value:</b> Returns the value of a dropdown selection</li>
+                    <li><b>String:</b> Returns the text in a text form field, or the displayed text of a dropdown selection</li>
+                    <li><b>Friendly:</b> When used in conjunction with a <span class="NamedControl">Form Field Picker</span>, returns the friendly field name of a form field.</li>
+                    <li><b>ClientID:</b> Returns HTML ID of the control suitable for JavaScript </li>
+                    <li><b>DisplayString:</b> Returns the displayed text of a dropdown selection</li>
+                    <li><b>Length:</b>&#160;Returns the length of a STRING value stored in a form field.</li>
+                    <li><b>first_value:</b> Returns the first value saved in the field, <b style="font-style: italic;">when Form Field Auditing is enabled.</b></li>
+                    <li><b>prev_value:</b> Returns the immediately previous value saved in the field, <i style="font-weight: bold;">when Form Field Auditing is enabled.</i></li>
+                    <li><b>name:</b> For a TabStrip control, this formatter will return the name of the active Tab, instead of the Tab ID.</li>
+                    <li><b>count:</b> For Process Director v5.31 and higher, list controls that have multiple selection enabled, such as the <span class="NamedControl">UserPicker </span>and <span class="NamedControl">List Box</span>, as well as <span class="NamedControl">Input </span>controls that display comma-separated lists, can use this formatter to return the number of items in the list.</li>
                 </ul>
                 <h4>ROW_NUM:</h4>
-                <p>
-                    <code>{FORM:<span class="CodeOption">SomeFieldName</span>, ROW_NUM=<span class="CodeOption">2</span>}</code>
+                <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, ROW_NUM=<span class="CodeOption">2</span>}</code>
                 </p>
                 <p>If this form control is part of an array, returns the value specified by the ROW_NUM Modifier. The Row Number Modifier can also be specific with a shorthand alias:</p>
-                <p>
-                    <code>{FORM:<span class="CodeOption">SomeFieldName</span>:<span class="CodeOption">2</span>}</code>
+                <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>:<span class="CodeOption">2</span>}</code>
                 </p>
                 <p>In this example, the row number is specified by the "<code>:2</code>" syntax.</p>
                 <h4>Separator</h4>
-                <p>
-                    <code>{FORM:<span class="CodeOption">someColumnFieldName</span>, SEPARATOR=<span class="CodeOption">|</span>}</code>
+                <p><code>{FORM:<span class="CodeOption">someColumnFieldName</span>, SEPARATOR=<span class="CodeOption">|</span>}</code>
                 </p>
                 <p>If this form control is part of an array, a list of users, or a list of groups, this option specifies which character will be used to separate the different values in the different elements of the array. By default, the separator is a comma. The Separator modifier can also be used for any list field that can use the "format=count" formatter.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="NumericalSystemVariables">
-                    </a>
-                    <a href="#NumericalSystemVariables">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="NumericalSystemVariables"></a><a href="#NumericalSystemVariables"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="Numerical System Variables" />Numerical System Variables</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>System variables that return numbers will have the following options:</p>
                 <h4>Format</h4>
-                <p>
-                    <code>{FORM:<span class="CodeOption">SomeFieldName</span>, format=<span class="CodeOption">FormatType</span>}</code>
+                <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, format=<span class="CodeOption">FormatType</span>}</code>
                 </p>
                 <ul style="list-style-type: disc;margin-left: 18pt;">
-                    <li>
-                        <b>Currency:</b> Formats the system variable into a format representing currency (e.g. $22.99).</li>
-                    <li>
-                        <b>Number:</b> Ensures that a system variable returns an integer.</li>
+                    <li><b>Currency:</b> Formats the system variable into a format representing currency (e.g. $22.99).</li>
+                    <li><b>Number:</b> Ensures that a system variable returns an integer.</li>
                 </ul>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="Digits">
-                    </a>
+                <MadCap:dropDownHotspot><a name="Digits"></a>
                     <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
                     <MadCap:keyword term="Digits" />Digits</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>
-                    <code>{FORM:<span class="CodeOption">SomeFieldName</span>, digits=<span class="CodeOption">Number</span>}</code>
+                <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, digits=<span class="CodeOption">Number</span>}</code>
                 </p>
                 <p>Adding the formatter <code>digits=n</code>, where "n" is the number of digits, will return the number formatted as an n-digit number. This Modifier will PAD the form field value with 0's, and it won't truncate. Example usage: A numeric form field using the Modifier<code> {FORM:fieldname, digits=3}</code> and that contains the value "23" will return "023".</p>
                 <p class="PDNote">
@@ -481,116 +352,68 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="DatetimeSystemVariables">
-                    </a>
-                    <a href="#DatetimeSystemVariables">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="DatetimeSystemVariables"></a><a href="#DatetimeSystemVariables"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="DateTime" />DateTime System Variables</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>System variables that return a datetime will have the following options:</p>
                 <ul>
-                    <li>
-                        <b>YEARS: </b>adds a specified number of years to a DateTime or TimeSpan SysVar result.</li>
-                    <li>
-                        <b>MONTHS:</b> adds a specified number of months to a DateTime or TimeSpan SysVar result.</li>
-                    <li>
-                        <b>DAYS:</b> adds a specified number of days to a DateTime or TimeSpan SysVar result.</li>
-                    <li>
-                        <b>HOURS:</b> adds a specified number of hours to a DateTime or TimeSpan SysVar result.</li>
-                    <li>
-                        <b>MINUTES: </b>adds a specified number of minutes to a DateTime or TimeSpan SysVar result.</li>
-                    <li>
-                        <b>SECONDS:</b> adds a specified number of seconds to a DateTime or TimeSpan SysVar result.</li>
-                    <li>
-                        <b>BUSINESS DAYS:</b> adds a specified number of business days to a DateTime or TimeSpan SysVar result, using the syntax BUSINESS_DAYS.</li>
-                    <li>
-                        <b>BUSINESS HOURS: </b>adds a specified number of hours to a DateTime or TimeSpan SysVar result, using the syntax BUSINESS_HOURS. By default, business hours are from 8:00am to 6:00pm, but business hours can be configured in the vars.cs file via the <a href="../DevelopersGuide/Customization File Defaults.htm#BusinessHourStart" target="_blank">BusinessHourStart</a> and <a href="../DevelopersGuide/Customization File Defaults.htm#BusinessHourStop" target="_blank">BusinessHourStop</a> variables.</li>
-                    <li>
-                        <b>FULLYEARS:</b>&#160;Adds the number of full, 365-day years  for a DateTime or Timestamp SysVar result.</li>
-                    <li>
-                        <b>FULLMONTHS:</b>&#160;Adds the number of full, 30.414-day months for a DateTime or Timestamp SysVar result.</li>
-                    <li>
-                        <b>FULLDAYS:</b>&#160;Adds the number of full, 24-hour days for a DateTime or Timestamp SysVar result.</li>
-                    <li>
-                        <b>OR NEAREST BUSINESS DAY: </b>This option instructs all date system variables to return the evaluated date if that date is a business day, and otherwise to return the previous or next business day, as directed. The time portion of the date value is unaffected, only the date portion is (potentially) modified. The syntax is <code>{DATETIME_VARIABLE, OrNearestBusinessDay=<span class="CodeOption">Prev</span>|<span class="CodeOption">Next</span>}</code>.</li>
+                    <li><b>YEARS: </b>adds a specified number of years to a DateTime or TimeSpan SysVar result.</li>
+                    <li><b>MONTHS:</b> adds a specified number of months to a DateTime or TimeSpan SysVar result.</li>
+                    <li><b>DAYS:</b> adds a specified number of days to a DateTime or TimeSpan SysVar result.</li>
+                    <li><b>HOURS:</b> adds a specified number of hours to a DateTime or TimeSpan SysVar result.</li>
+                    <li><b>MINUTES: </b>adds a specified number of minutes to a DateTime or TimeSpan SysVar result.</li>
+                    <li><b>SECONDS:</b> adds a specified number of seconds to a DateTime or TimeSpan SysVar result.</li>
+                    <li><b>BUSINESS DAYS:</b> adds a specified number of business days to a DateTime or TimeSpan SysVar result, using the syntax BUSINESS_DAYS.</li>
+                    <li><b>BUSINESS HOURS: </b>adds a specified number of hours to a DateTime or TimeSpan SysVar result, using the syntax BUSINESS_HOURS. By default, business hours are from 8:00am to 6:00pm, but business hours can be configured in the vars.cs file via the <a href="../DevelopersGuide/Customization File Defaults.htm#BusinessHourStart" target="_blank">BusinessHourStart</a> and <a href="../DevelopersGuide/Customization File Defaults.htm#BusinessHourStop" target="_blank">BusinessHourStop</a> variables.</li>
+                    <li><b>FULLYEARS:</b>&#160;Adds the number of full, 365-day years  for a DateTime or Timestamp SysVar result.</li>
+                    <li><b>FULLMONTHS:</b>&#160;Adds the number of full, 30.414-day months for a DateTime or Timestamp SysVar result.</li>
+                    <li><b>FULLDAYS:</b>&#160;Adds the number of full, 24-hour days for a DateTime or Timestamp SysVar result.</li>
+                    <li><b>OR NEAREST BUSINESS DAY: </b>This option instructs all date system variables to return the evaluated date if that date is a business day, and otherwise to return the previous or next business day, as directed. The time portion of the date value is unaffected, only the date portion is (potentially) modified. The syntax is <code>{DATETIME_VARIABLE, OrNearestBusinessDay=<span class="CodeOption">Prev</span>|<span class="CodeOption">Next</span>}</code>.</li>
                 </ul>
                 <p class="PDNote"> <img src="../Resources/Images/i2.png" /> The Types YEARS, MONTHS, DAYS, HOURS, and MINUTES use "calendar" elapsed times, which is to say that, if a time span crosses a calendar date, it counts as a full increment of the selected calendar Type (Day, Month, etc.). For example, a time span from 11:59 PM on Dec 31 to 12:01 AM on Jan 1 is only a two-minute time span, but it will be counted as 1 day in DAYS, 1 month in MONTHS, or 1 year in YEARS. Any time span which crosses a date will be counted as a full increment of the Type chosen.<br /><br />The Types FULLDAYS, FULLMONTHS, and FULLYEARS compare the time span to a pre-defined length of time. FULLDAYS returns 1 for every actual 24 hours elapsed, FULLMONTHS returns 1 for every 30.416 days, and FULLYEARS returns 1 for every 365 days. Using these Types, the time span from 11:59 PM on Dec 31 to 12:01 AM on Jan 1 would return 0 for all three types.</p>
                 <h4>
                     <MadCap:keyword term="Format" />Format</h4>
                 <p>Datetime system variables also have a format Modifier that can be used to determine how the date and time are displayed. The Format modifier can be set to any combination of the following options:</p>
-                <p>
-                    <code>{FORM:<span class="CodeOption">MyDateField</span>, format=<span class="CodeOption">option</span>, years=<span class="CodeOption">numberOfYears</span>, months=<span class="CodeOption">numberOfMonths...</span>}</code>
+                <p><code>{FORM:<span class="CodeOption">MyDateField</span>, format=<span class="CodeOption">option</span>, years=<span class="CodeOption">numberOfYears</span>, months=<span class="CodeOption">numberOfMonths...</span>}</code>
                 </p>
                 <ul style="list-style-type: disc;margin-left: 18pt;">
-                    <li>
-                        <b>d:</b> displays the current day of the month as a number (1 – 31)</li>
-                    <li>
-                        <b>dd:</b> displays the current day of the month as a number, padding to two digits with a zero if necessary (01 – 31)</li>
-                    <li>
-                        <b>ddd:</b> displays the abbreviated name of the day (Sun. – Sat.)</li>
-                    <li>
-                        <b>dddd:</b> displays the full name of the day (Sunday – Saturday)</li>
-                    <li>
-                        <b>h:</b> displays the hour as 1-12. Without specifying AM or PM, 1:00pm is indistinguishable from 1:00am (and so on) with this formatting option.</li>
-                    <li>
-                        <b>hh:</b> displays the hour as 01-12. Padding using a zero is applied to ensure that the value returned is two characters long. Without specifying AM or PM, 1:00pm is indistinguishable from 1:00am (and so on) with this formatting option.</li>
-                    <li>
-                        <b>H:</b> displays the hour as 0-23.</li>
-                    <li>
-                        <b>HH:</b> displays the hour as 00-23. Padding using a zero is applied to ensure that the value returned is always two characters long.</li>
-                    <li>
-                        <b>m:</b> displays the current minute as a number 0 – 59</li>
-                    <li>
-                        <b>mm:</b> displays the current minute as a number 00 – 59. Left padding using a zero is added to ensure the return value is two characters long</li>
-                    <li>
-                        <b>M:</b> displays the month as a number 1 – 12</li>
-                    <li>
-                        <b>MM:</b> displays the month as a number 01 – 12. Left padding using a zero is added to ensure the return value is two characters long.</li>
-                    <li>
-                        <b>MMM:</b> returns the abbreviated name for the month (Jan. – Dec.)</li>
-                    <li>
-                        <b>MMMM:</b> returns the full name for the month (January – December)</li>
-                    <li>
-                        <b>s:</b> displays the seconds as a number 0 – 59</li>
-                    <li>
-                        <b>ss:</b> displays the seconds as a number 00 – 59. Padding using a zero is added to the left of the return value to ensure it is two characters long.</li>
-                    <li>
-                        <b>t:</b> displays an A if the time is before noon or P if it is after noon</li>
-                    <li>
-                        <b>tt:</b> displays A.M. if the time is before noon. Otherwise displays P.M.</li>
-                    <li>
-                        <b>y:</b> displays the year as a one or two digit number. The first two numbers of the year are always omitted. The third digit of the year is omitted if the year is between ’00 and ’09 (e.g. 1, 17, 93)</li>
-                    <li>
-                        <b>yy:</b> displays the last two digits of the year. (e.g. 48, 67, 73)</li>
-                    <li>
-                        <b>yyyy:</b> displays all four digits of the year. If the year is less than four digits long, zeros are added to pad the year value to four digits (e.g. 1982, 2009)</li>
-                    <li>
-                        <b>separators (/ : “ ‘):</b> quotation marks, apostrophes, colons, and slashes can be added to the datetime formatting. They will displayed literally, and can be used to separate different elements of the datetime string.</li>
-                    <li>
-                        <b>AUTO:</b> This option is valid for TimeSpan values only, and will format the result into the nearest logical unit of time for human consumption. The result will include a number as well as a unit of time. For example, a TimeSpan of 25 hours would evaluate to “1 day”, while a period of 2 hours would evaluate to “2 hours”.</li>
+                    <li><b>d:</b> displays the current day of the month as a number (1 – 31)</li>
+                    <li><b>dd:</b> displays the current day of the month as a number, padding to two digits with a zero if necessary (01 – 31)</li>
+                    <li><b>ddd:</b> displays the abbreviated name of the day (Sun. – Sat.)</li>
+                    <li><b>dddd:</b> displays the full name of the day (Sunday – Saturday)</li>
+                    <li><b>h:</b> displays the hour as 1-12. Without specifying AM or PM, 1:00pm is indistinguishable from 1:00am (and so on) with this formatting option.</li>
+                    <li><b>hh:</b> displays the hour as 01-12. Padding using a zero is applied to ensure that the value returned is two characters long. Without specifying AM or PM, 1:00pm is indistinguishable from 1:00am (and so on) with this formatting option.</li>
+                    <li><b>H:</b> displays the hour as 0-23.</li>
+                    <li><b>HH:</b> displays the hour as 00-23. Padding using a zero is applied to ensure that the value returned is always two characters long.</li>
+                    <li><b>m:</b> displays the current minute as a number 0 – 59</li>
+                    <li><b>mm:</b> displays the current minute as a number 00 – 59. Left padding using a zero is added to ensure the return value is two characters long</li>
+                    <li><b>M:</b> displays the month as a number 1 – 12</li>
+                    <li><b>MM:</b> displays the month as a number 01 – 12. Left padding using a zero is added to ensure the return value is two characters long.</li>
+                    <li><b>MMM:</b> returns the abbreviated name for the month (Jan. – Dec.)</li>
+                    <li><b>MMMM:</b> returns the full name for the month (January – December)</li>
+                    <li><b>s:</b> displays the seconds as a number 0 – 59</li>
+                    <li><b>ss:</b> displays the seconds as a number 00 – 59. Padding using a zero is added to the left of the return value to ensure it is two characters long.</li>
+                    <li><b>t:</b> displays an A if the time is before noon or P if it is after noon</li>
+                    <li><b>tt:</b> displays A.M. if the time is before noon. Otherwise displays P.M.</li>
+                    <li><b>y:</b> displays the year as a one or two digit number. The first two numbers of the year are always omitted. The third digit of the year is omitted if the year is between ’00 and ’09 (e.g. 1, 17, 93)</li>
+                    <li><b>yy:</b> displays the last two digits of the year. (e.g. 48, 67, 73)</li>
+                    <li><b>yyyy:</b> displays all four digits of the year. If the year is less than four digits long, zeros are added to pad the year value to four digits (e.g. 1982, 2009)</li>
+                    <li><b>separators (/ : “ ‘):</b> quotation marks, apostrophes, colons, and slashes can be added to the datetime formatting. They will displayed literally, and can be used to separate different elements of the datetime string.</li>
+                    <li><b>AUTO:</b> This option is valid for TimeSpan values only, and will format the result into the nearest logical unit of time for human consumption. The result will include a number as well as a unit of time. For example, a TimeSpan of 25 hours would evaluate to “1 day”, while a period of 2 hours would evaluate to “2 hours”.</li>
                 </ul>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="TimespanSystemVariables">
-                    </a>
-                    <a href="#TimespanSystemVariables">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="TimespanSystemVariables"></a><a href="#TimespanSystemVariables"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="Timespan" />Timespan System Variables</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Timespan system variables return amounts of elapsed time. They are distinct from Datetime system variables in that they don't return specific points in time, but amounts (durations) of time. For example, let's calculate a Timespan between two dates:</p>
                 <ul>
-                    <li>
-                        <b>Date 1:</b> 1/1/2015 8:00:15 AM</li>
-                    <li>
-                        <b>Date 2:</b> 8/18/2015 1:30:30 PM </li>
+                    <li><b>Date 1:</b> 1/1/2015 8:00:15 AM</li>
+                    <li><b>Date 2:</b> 8/18/2015 1:30:30 PM </li>
                 </ul>
                 <p>The resulting Timespan returned from calculating the difference between these two dates would be "229.05:30:15 ", which is a duration of 229 days, 5 hours, 30 minutes, and 15 seconds.</p>
                 <h4>Format</h4>
@@ -598,39 +421,25 @@
                 <p class="PDNote">
                     <img src="../Resources/Images/i2.png" /> For each option below, we will use the sample Timespan of "229.05:30:15" to calculate the sample values.</p>
                 <ul>
-                    <li>
-                        <b>[d]:</b> the days portion of the timespan ( Sample value: 229).</li>
-                    <li>
-                        <b>[D]:</b> the duration of the timespan expressed in days, padded to two decimal places (Sample value: 229).</li>
-                    <li>
-                        <b>[h]:</b> the hours portion of the timespan (Sample:&#160;If the time is 5:47.21 am, the value will return: 5).</li>
-                    <li>
-                        <b>[H]:</b> the duration of the timespan expressed in hours (Sample value: 5501)</li>
-                    <li>
-                        <b>[m]:</b> the minutes portion of the timespan (Sample:&#160;If the time is 5:47.21 am, the value will return: 47).</li>
-                    <li>
-                        <b>[M]:</b> the duration of the timespan expressed in minutes (Sample value: 330090).</li>
-                    <li>
-                        <b>[s]:</b> the seconds portion of the timespan (Sample:&#160;If the time is 5:47.21 am, the value will return: 21).</li>
-                    <li>
-                        <b>[S]:</b> the duration of the timespan expressed in seconds (Sample value: 19805415).</li>
+                    <li><b>[d]:</b> the days portion of the timespan ( Sample value: 229).</li>
+                    <li><b>[D]:</b> the duration of the timespan expressed in days, padded to two decimal places (Sample value: 229).</li>
+                    <li><b>[h]:</b> the hours portion of the timespan (Sample:&#160;If the time is 5:47.21 am, the value will return: 5).</li>
+                    <li><b>[H]:</b> the duration of the timespan expressed in hours (Sample value: 5501)</li>
+                    <li><b>[m]:</b> the minutes portion of the timespan (Sample:&#160;If the time is 5:47.21 am, the value will return: 47).</li>
+                    <li><b>[M]:</b> the duration of the timespan expressed in minutes (Sample value: 330090).</li>
+                    <li><b>[s]:</b> the seconds portion of the timespan (Sample:&#160;If the time is 5:47.21 am, the value will return: 21).</li>
+                    <li><b>[S]:</b> the duration of the timespan expressed in seconds (Sample value: 19805415).</li>
                 </ul>
                 <p>Each of these options can be modified to pad the variable to two or three characters in length, by changing the format string from [x] to [xx] or [xxx] respectively. For example, to pad the seconds portion of the timespan to three characters in length, you'd use the format string [sss], and to pad the duration of the timespan in days to two characters in length, you could use the format string [DD].</p>
                 <p>Formatting strings can be concatenated into a single formatting string to return complex formatting results for a timespan system variable. For example, a <span class="NamedControl">DateDiff </span>Form field (Form Control tag) formatted as:</p>
-                <p>
-                    <code>{DateDiff:<span class="CodeOption">FieldName</span>, Date1=<span class="CodeOption">Date1</span>, Date2=<span class="CodeOption">Date2</span>,FORMAT=<span class="CodeOption">"[d] days, [h] hours, [m] minutes"</span>}</code>
+                <p><code>{DateDiff:<span class="CodeOption">FieldName</span>, Date1=<span class="CodeOption">Date1</span>, Date2=<span class="CodeOption">Date2</span>,FORMAT=<span class="CodeOption">"[d] days, [h] hours, [m] minutes"</span>}</code>
                 </p>
                 <p>Might return the notional result:<br></br><code>2 days, 4 hours, 23 minutes</code></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="Generic">
-                    </a>
-                    <a href="#Generic">
-                        <img src="../Resources/Images/link.png" alt="Link" />
-                    </a>Generic Variables</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="Generic"></a><a href="#Generic"><img src="../Resources/Images/link.png" alt="Link" /></a>Generic Variables</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Process Director enables you to create custom variable placeholders by using the generic Variable selector, or the generic <code>{VARIABLE:<span class="CodeOption">VarName</span>} </code>syntax.</p>
@@ -642,18 +451,12 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="Attachment">
-                    </a>
-                    <a href="#Attachment">
-                        <img src="../Resources/Images/link.png" alt="Link" />
-                    </a>Attachment Number Variables</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="Attachment"></a><a href="#Attachment"><img src="../Resources/Images/link.png" alt="Link" /></a>Attachment Number Variables</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>For Process Director v5.34 and higher, System Variables that return the number of attachments for Timelines (<code>TIMELINE_ATTACHMENT_NUM</code>), Forms (<code>FORM_ATTACHMENT_NUM</code>), etc., enable the use of wildcards and lists of group names in the system variables. For example, if you have two groups named "Final Drafts" and Final Documents", setting the wildcard for the group name as "Final%" will return attachments in both groups.</p>
                 <h4>Example</h4>
-                <p>
-                    <code>{TIMELINE_ATTACHMENT_NUM, GroupName="Final%"}</code>
+                <p><code>{TIMELINE_ATTACHMENT_NUM, GroupName="Final%"}</code>
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>

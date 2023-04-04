@@ -1,23 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
-        <title>
-        </title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" />
-            <a name="_Toc421536329">
-            </a>
-            <MadCap:keyword term="Best Practices" />Best Practices for <MadCap:keyword term="Implementations" />Implementations</h1>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536329"></a>
+            <MadCap:keyword term="Best Practices;Implementation;Guidelines;Building" />Best Practices for Implementations</h1>
         <p>There are a number of Best Practices that you should incorporate into your implementation projects. Following these guidelines will make your implementations work more smoothly, be easier to maintain, and will enable you to make necessary changes more quickly, as personnel or processes change and evolve. In addition to these best practices, you should also familiarize yourself with the basic design concepts that are explained in the <a href="../GettingStartedGuide/Basic Concepts.htm" target="_blank">Getting Started Guide</a>.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="_Toc421536330">
-                    </a>General</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="_Toc421536330"></a>General</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <ol>
@@ -32,9 +26,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="_Toc421536331">
-                    </a>Email Templates</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="_Toc421536331"></a>Email Templates</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <ol>
@@ -59,9 +51,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="_Toc421536332">
-                    </a>Forms</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="_Toc421536332"></a>Forms</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <ol>
@@ -84,13 +74,11 @@
                     <li>Do not use the <span class="ControlName">Otherwise disabled </span>or <span class="ControlName">Otherwise enabled</span> conditional appearance settings in field properties unless you specifically want to override the appearance logic for the parent container in all cases.<ul><li>Setting a control to "Otherwise Xxxxx" when the parent container has its own appearance logic can result in unexpected behavior when the parent container's appearance logic conflicts with that of the control.</li></ul></li>
                 </ul>
                 <ol MadCap:continue="true">
-                    <li>
-                        <span class="NamedControl">Label </span>control values don't get saved to the database; therefore, labels should be used only to show text on forms. <span class="NamedControl">Label </span>controls are display vehicles only; don’t try to use them in conditions, for example. When possible, associate each label with an <span class="NamedControl">Input </span>control for ADA (Section 508) compliance.</li>
+                    <li><span class="NamedControl">Label </span>control values don't get saved to the database; therefore, labels should be used only to show text on forms. <span class="NamedControl">Label </span>controls are display vehicles only; don’t try to use them in conditions, for example. When possible, associate each label with an <span class="NamedControl">Input </span>control for ADA (Section 508) compliance.</li>
                     <li>Hide debug sections and other development conventions in forms from the non-developer form users. Users should never see anything on a form that isn't relevant to the process on which they are working.</li>
                     <li>The <span class="NamedControl">Routing Slip </span>should appear below any user action buttons so that users don't have to scroll below the <span class="ControlName">Routing Slip</span> to perform their assigned task.</li>
                     <li>Use the branch/result order properties to ensure that options are presented consistently to users throughout a process. approvals are always displayed first in the button areas.</li>
-                    <li>
-                        <a href="../SystemVariablesReferenceGuide/Miscellaneous System Variables.htm#SequenceNumber">Sequence numbers</a> should always be formatted as text, and should always use the "digits" formatter. There are a couple of reasons for this. </li>
+                    <li><a href="../SystemVariablesReferenceGuide/Miscellaneous System Variables.htm#SequenceNumber">Sequence numbers</a> should always be formatted as text, and should always use the "digits" formatter. There are a couple of reasons for this. </li>
                 </ol>
                 <ul>
                     <li>First, there's a general rule that, if you aren't going to do math on a data item, it's not actually a number, even if all of the characters are numeric. This is why zip codes, or social security numbers are always formatted as text. Additionally, if a data item is formatted as a number, then you can't use the "Contains" operator in the <span class="ProcessDirectorObject">Condition Builder</span>, and can only use the "=" operator. This limitation can be troublesome, because if you leave the value blank in, say, a Knowledge View filter condition that uses the "=" operator, Process Director returns no results, but leaving a "contains" condition blank returns all results. Most of the time, you want to return all results as a default, and then allow the user to filter the results to a smaller set by entering a value for the sequence number, which requires using the "contains" operator in the filter.</li>

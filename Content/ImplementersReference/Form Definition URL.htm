@@ -6,7 +6,7 @@
     <body>
         <h1>
             <MadCap:concept term="Implementation;Forms" />
-            <MadCap:keyword term="Forms" />Form Definition URL</h1>
+            <MadCap:keyword term="Forms;Form Definition;Form Properties;Form Configuration;Configuring Forms;Creating Forms;Form Creation;URL;URLs;Form URL" />Form Definition URL</h1>
         <p>Forms can be linked and run from outside of Process Director using a manually-configured URL (for example, linked from your Intranet portal). The default URL can be found on at the bottom of the Form Definition's Properties page, and looks similar to this: </p>
         <p class="CodeBase">https://<span class="CodeOption">ServerName.com</span>/form.aspx?pid=<span class="CodeOption">PP</span>&amp;formid=<span class="CodeOption">NN</span>&amp;nohome=<span class="CodeOption">0</span>&amp;completepageprompt=<span class="CodeOption">0</span>&amp;completepage=&amp;completetext= </p>
         <p>Where <code class="CodeOption">ServerName</code> is the hostname of BP Logix, <code class="CodeOption">PP </code>is the internal ID of the Partition, and <code class="CodeOption">NN </code>is the internal ID of the Form Definition. For users of Process Director v5.12 and higher, the URL is displayed on this tab as a hyperlink.</p>
@@ -52,8 +52,7 @@
         <p>Once you've specified the field name in the Custom vars file, you can now use a URL&#160;parameter to set the value any time you desire. In the URL&#160;parameter, the field is identified using the prefix "EXT_ ", followed by the field name, to identify the field, e.g., "EXT_FieldName".</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Be sure to URL encode the values you specify in the URL&#160;Parameter.</p>
-        <p>
-            <b>Example:</b>
+        <p><b>Example:</b>
         </p>
         <p>In the Custom Vars file, identify the fields to change via URL&#160;Parameter:</p>
         <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">//Fields to set via URL&#160;Parameter</span><br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">Field1</span>");<br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">Field2</span>");<br />}</p>

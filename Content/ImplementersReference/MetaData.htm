@@ -1,23 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head>
-        <title>
-        </title>
+    <head><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Implementation" />
-            <a name="_Toc421536261">
-            </a>
-            <MadCap:keyword term="Meta Data" />Meta Data</h1>
-        <p>
-            <span class="KeyTerms">Knowledge Management</span> is defined as the collection of processes or information that governs the creation, dissemination, and utilization of knowledge. Meta Data is a key component of the Knowledge Management features of Process Director. </p>
+            <MadCap:concept term="Implementation;Meta Data" />
+            <MadCap:keyword term="Meta Data;Metadata;Meta Data Admin;Category;Attribute;Meta Data Categories;Metadata Category;Meta Data Attributes;Metadata Attribute;Schema;Taxonomy" /><a name="_Toc421536261"></a>Meta Data</h1>
+        <p><span class="KeyTerms">Knowledge Management</span> is defined as the collection of processes or information that governs the creation, dissemination, and utilization of knowledge. Meta Data is a key component of the Knowledge Management features of Process Director. </p>
         <p>At the core of Process Director is a management system that contains documents, Forms, images, web pages—essentially, all of your digital content. This management system can be governed by the use of Meta Data. <span class="KeyTerms">Meta Data</span> is loosely defined as “data about data.” Meta Data, for example, is used by libraries in order to classify data about books. If you wanted to know when the book was received by the library, any summaries of the book by critics, or the last time it was checked out, that’s a good description of Meta Data. Each book, of course, has different content, but the attributes of, say, when a book was checked out, is common to all books, and thus, is "book meta data".</p>
         <p>In Process Director, Meta Data can be applied to unrelated objects, so that they can share both a shared set of data and a system of organization that isn't governed by their location in the Content List, or the organizational section that created or uses them. Using Meta Data, objects can be organized and retrieved by any categorization system you desire. Using Meta Data categories and attributes provides a powerful, consistent way to categorize content across an entire partition. </p>
-        <h2>
-            <a name="Power">
-            </a>Power of Meta Data <a href="#Power" class="anchor">#</a></h2>
+        <h2><a name="Power"></a>Power of Meta Data <a href="#Power" class="anchor">#</a></h2>
         <p>The ability to apply the same Meta Data  to completely unrelated objects grants you a power to unify objects in a way that is otherwise unavailable. Normally, in a Knowledge View, your choice is to choose to return either: </p>
         <ul>
             <li>Instances from a single object definition—normally Form instances of a specified Form definition</li>
@@ -27,21 +20,16 @@
         <p>What Meta Data enables you to do is apply the same Meta Data to different objects, anywhere in the partition, then build a Knowledge View to search for and return all instances that share the same Meta Data categories and/or attributes.</p>
         <p>In a large organization, for example, there might be an application that stores policy documents that apply to the entire organization, while other sections of the organization might have their own applications for storing policy documents that are specific to their operations. All of these applications might do similar things, but they’re otherwise unrelated, and without Meta Data, it’s difficult or impossible to create a Knowledge View that will return the documents from all of these separate applications. Applying Meta Data to these different applications enables you to build Knowledge Views that can collate and return all of the documents from all of the applications in a single place.</p>
         <p>Meta Data, therefore, provides an organizational method that enables you to return data in ways that brings together otherwise unrelated object definitions, regardless of who manages them, or their location in the partition.</p>
-        <h2>
-            <a name="Elements">
-            </a>Meta Data Elements <a href="#Elements" class="anchor">#</a></h2>
+        <h2><a name="Elements"></a>Meta Data Elements <a href="#Elements" class="anchor">#</a></h2>
         <p>Process Director provides two main Meta Data elements that can be applied to objects.</p>
-        <p>
-            <span class="KeyTerms">Categories </span>are higher-level classifications that can be applied to any object. To refer to our HR example above, every HR&#160;form might have the Category "HR" or "Human Resources" applied, so that all Human Resources forms can be found easily by searching that Category. Meta Data categories can be organized hierarchically, meaning that every Meta Data Category can have one or more subordinate categories, which enable you to create a branching tree of Meta Data categories. When assigning a lower-level Category to an object, all the higher-level, or parent, categories in the tree are also assigned to the object.</p>
+        <p><span class="KeyTerms">Categories </span>are higher-level classifications that can be applied to any object. To refer to our HR example above, every HR&#160;form might have the Category "HR" or "Human Resources" applied, so that all Human Resources forms can be found easily by searching that Category. Meta Data categories can be organized hierarchically, meaning that every Meta Data Category can have one or more subordinate categories, which enable you to create a branching tree of Meta Data categories. When assigning a lower-level Category to an object, all the higher-level, or parent, categories in the tree are also assigned to the object.</p>
         <p>An <span class="KeyTerms">Attribute </span>is a data element that can be applied to a Category to store additional Meta Data about objects in that Category. For example, we might have a Meta Data Category for policy documents named "Policies". Each policy document will be assigned to the <span class="ProcessDirectorObject">Policies </span>Category. But there's more information we might need about these policy documents. For instance, we might need to know the effective date or expiration date of the policy. So, we might want to create additional attributes for <span class="ProcessDirectorObject">Policies </span>called "Effective Date" and "Expiry Date". Obviously, these dates will be different for each policy document, but each Attribute will be assigned to every policy document for us to store these dates. Assigning an Attribute to an object automatically assigns the Category to which the Attribute belongs.</p>
         <p>So, the Meta Data Category is <span class="KeyTerms">immutable</span>, which is to say that the Category value is the same for every object assigned to it. An Attribute, on the other hand, is <span class="KeyTerms">mutable</span>, which means that, while every object has the same Attribute, the <b>value</b> of that Attribute may be different for every object.</p>
         <h3>Some Caveats</h3>
         <p>Meta Data can be very useful, but Meta Data categories and attributes must be actively managed, and not implemented in an ad hoc manner. Excessive use of Meta Data—or a poorly designed Meta Data schema—can add an excessive administrative burden and may require extensive effort to revise. 
 Use of Meta Data should be planned and implemented with an eye firmly set on the structure of the category hierarchy, and to ensure the ease of maintaining and scaling it over time. 
 </p>
-        <h2>
-            <a name="_Toc421536265">
-            </a>How Meta Data is Applied <a href="#_Toc421536265" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536265"></a>How Meta Data is Applied <a href="#_Toc421536265" class="anchor">#</a></h2>
         <p>There are three main methods you can use to apply Meta Data to categorize Process Director objects like Form or Process Timeline definitions. Implementers can assign data to each object individually, or to folders in the <span class="ProcessDirectorObject">Content List</span>.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -74,20 +62,14 @@ Use of Meta Data should be planned and implemented with an eye firmly set on the
                 <p>Any object instance, such as a Form Instance, can have Meta Data Applied in an <i>ad hoc</i> manner. The Online Form Designer contains both <span class="NamedControl">Category Picker</span> and <span class="NamedControl">Attribute Picker</span> controls that enable you to choose a different Category or Attribute for every Form instance. When using these controls, you must run the <span class="ProcessDirectorObject">Set Meta Data</span> Custom Task to apply any Meta Data changes you make.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="Replication">
-            </a>Meta Data Replication <a href="#Replication" class="anchor">#</a></h2>
+        <h2><a name="Replication"></a>Meta Data Replication <a href="#Replication" class="anchor">#</a></h2>
         <p>When using object and folder assignment, editing or adding Meta Data to the object/folder definition does not affect the Meta Data of existing objects. To apply Meta Data changes to existing child objects, there are two replication buttons on the <span class="UIElement">Meta Data</span> tab. </p>
         <ul>
-            <li>
-                <span class="UIElement" style="font-weight: bold;">Add Meta Data to All Child Items</span> – This button will <b>add</b> the folders categories and attributes to all objects below this folder. It won't overwrite any existing categories or attributes already assigned to those objects.</li>
-            <li>
-                <span class="UIElement" style="font-weight: bold;">Replace Meta Data for All Child Items</span> – This button will <b>remove</b> the categories and attributes for all objects beneath this folder and <b>replace</b> them with the object's current settings.</li>
+            <li><span class="UIElement" style="font-weight: bold;">Add Meta Data to All Child Items</span> – This button will <b>add</b> the folders categories and attributes to all objects below this folder. It won't overwrite any existing categories or attributes already assigned to those objects.</li>
+            <li><span class="UIElement" style="font-weight: bold;">Replace Meta Data for All Child Items</span> – This button will <b>remove</b> the categories and attributes for all objects beneath this folder and <b>replace</b> them with the object's current settings.</li>
         </ul>
         <p>Both of these replication settings will only apply to children of the object for which the Meta Data has been configured.</p>
-        <h2>
-            <a name="_Toc421536267">
-            </a>Importing / Exporting Categories &amp; Attributes <a href="#_Toc421536267" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536267"></a>Importing / Exporting Categories &amp; Attributes <a href="#_Toc421536267" class="anchor">#</a></h2>
         <p>For users of Process Director v4.05 and higher, Meta Data schemas can be exported and imported from the Meta Data Admin screen. This enables you to export the category and attribute definitions and import them onto another system as an XML file. </p>
         <p>Category permissions are also enabled for v4.05 and higher, allowing control over who can modify the schema or use them for assignments. A partition admin has full permissions, but other users may not. The addition of permissions means that a user may not see certain categories or sub-categories based on their permission level, both in the meta data schema builder and in the assignment of categories to objects.</p>
         <p>Import and export functions can now be accessed from the action links at the top of the <span class="ControlName">Meta Data Administration</span> screen. The <span class="UIElement">Import Meta Data Categories</span> action link is available as soon as you open it.</p>
