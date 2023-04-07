@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer;Web Services" />
+            <MadCap:keyword term="Web Services;REST;REST Services;REST Data" />JSONPath&#160;and XPath</h1>
+        <p>In most cases, you'll use a <a href="../ImplementersReference/Business Values.htm">Business Value</a> to request and parse responses from REST Web services. In Process Director, the Business Value provides the easiest and most effective method for making REST requests and using the data that is included in the REST response.</p>
+        <p>Just like a Business Value that returns SQL data, a REST Business value will receive a response containing data field values. You must configure a Business Value property for each data field you wish to access from the REST Response.</p>
+        <p>For each property, the <span class="ControlName">Property Name</span> column is where you'll provide a name for each property, which will be used in the Process Director UI. For each field in the REST Response, the <span class="ControlName">Property Type</span> must be set to <i>REST Data</i> in order to extract the data from a single data field in the REST Response.</p>
+        <p>An additional setting, <i>Entire REST Response</i> will, as the name implies, simply use the entire XML or JSON file content as the property value. This setting may be useful if you need to see the REST Response contents to understand how to parse them to extract individual fields.</p>
+        <p>Parsing the REST Response is very important to ensure you extract the correct data. The <span class="ControlName">Property Value</span> column is where you provide Process Director with the instructions on which REST Response field you wish to extract for each property.</p>
+        <p>Unlike a SQL Business Value, where you simply write the name of a valid database field in this column, a Rest Business Value requires that you provide detailed instructions for parsing the REST Response, to extract the data you want.</p>
+        <p>The parsing syntax you'll need to use will vary, based on whether the REST Response contains data in XML or JSON Format. Parsing an XML REST response requires you to use a parsing format called <span class="KeyTerms">XPath</span>, while parsing a JSON response requires the use of<span class="KeyTerms"> JSONPath</span>.</p>
+        <p>Time and space do not allow us to provide detailed training on these two parsing formats here. There are many freely available resources on the Internet for learning the basics of both XPath and JSONPath. Here are two resources you might find useful, but there are many others:</p>
+        <ul>
+            <li>XPath: <a href="https://www.w3schools.com/xml/xpath_intro.asp" target="_blank" title="W3 Schools XPath Tutorial" alt="W3 Schools XPath Tutorial">W3Schools.Com</a></li>
+            <li>JSONPath: <a href="https://support.smartbear.com/alertsite/docs/monitors/api/endpoint/jsonpath.html" target="_blank" title="SmartBear JSONPath Tutorial" alt="SmartBear JSONPath Tutorial">SmartBear.com</a></li>
+        </ul>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" alt="Note" /> BP Logix does not endorse these resources. They are merely shown here for your convenience.</p>
+        <p>Let's look at some simple XML and JSON REST Responses to see how we'd parse them using each format. For this example, we'll use some sample weather data for San Diego, CA. These REST documents are available on the BP&#160;Logix Documentation portal. Those these are static documents, you can use their URL as the <span class="ControlName">REST&#160;URL</span> of a Business Value, for testing on your Process Director installation.</p>
+        <ul>
+            <li><a href="../Resources/REST/weather.xml">XML&#160;REST&#160;Response</a>
+            </li>
+            <li><a href="../Resources/REST/weather.json">JSON&#160;REST&#160;Response</a>
+            </li>
+        </ul>
+        <p>You can use the URL for either of these documents </p>
+        <h2><a name="XPath"></a>XML&#160;and XPath <a href="#XPath" class="anchor">#</a></h2>
+        <p>The XML REST Response looks like this:</p>
+        <p class="CodeBase">&lt;current&gt;<br />&#160;&#160;&#160;&lt;city id="0" name="San Diego"&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;coord lon="-117.2028" lat="32.7635" /&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;country&gt;US&lt;/country&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;timezone&gt;-25200&lt;/timezone&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;sun rise="2023-04-07T13:29:04" set="2023-04-08T02:12:27" /&gt;<br />&#160;&#160;&#160;&lt;/city&gt;<br />&#160;&#160;&#160;&lt;temperature value="66.67" min="59.76" max="74.79" unit="fahrenheit" /&gt;<br />&#160;&#160;&#160;&lt;feels_like value="65.57" unit="fahrenheit" /&gt;<br />&#160;&#160;&#160;&lt;humidity value="54" unit="%" /&gt;<br />&#160;&#160;&#160;&lt;pressure value="1017" unit="hPa" /&gt;<br />&#160;&#160;&#160;&lt;wind&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;speed value="12.66" unit="mph" name="Moderate breeze" /&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;gusts /&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;direction value="270" code="W" name="West" /&gt;<br />&#160;&#160;&#160;&lt;/wind&gt;<br />&#160;&#160;&#160;&lt;clouds value="75" name="broken clouds" /&gt;<br />&#160;&#160;&#160;&lt;visibility value="10000" /&gt;<br />&#160;&#160;&#160;&lt;precipitation mode="no" /&gt;<br />&#160;&#160;&#160;&lt;weather number="803" value="broken clouds" icon="04d" /&gt;<br />&#160;&#160;&#160;&lt;lastupdate value="2023-04-07T21:39:25" /&gt;<br />&lt;/current&gt;</p>
+        <p>XPath uses the forward slash character (<code>/</code>) to navigate from the highest node to the lowest one. The <code>current </code>node is the top node of the XML REST response, and it contains the <code>city</code>, <code>clouds</code>, and <code>temperature</code> nodes. </p>
+        <p>Part of XML's structured nature is to name each node in the XML structure. At the very top of the response, the first node is named <code>&lt;current&gt;</code>. Since we have to start our XPath expression at the highest node, and we need to add a slash between each node, our XPath expression will begin with:</p>
+        <p><code>current/</code>
+        </p>
+        <p>If we want to find the XML node that tells us whether it's clear or cloudy, we'd need to add the <code>&lt;clouds&gt;</code> node, which is located in the second level of the XML hierarchy:</p>
+        <p><code>current/clouds/</code>
+        </p>
+        <p>The <code>&lt;clouds&gt;</code> node contains two attributes: <code>value</code> and <code>name</code>. We need to get the data in the <code>name</code> attribute. Attributes are identified using the "At sign" (<code>@</code>), which means that this value is an attribute of the previous node. So, we need to add this value to our expression as:</p>
+        <p><code>current/clouds/@name</code>
+        </p>
+        <p>This gives us the full XPath expression to access our data, which should return the value <code>broken clouds</code>.</p>
+        <p>We can use different XPath expressions to return other data from this response, as shown in the table below.</p>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 12em;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Data</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">XPath Expression</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">City</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1"><code>current/city/@name</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2" style="font-weight: normal;">Country</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2" style="font-weight: normal;"><code>current/city/country</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Current Temp</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1"><code>current/temperature/@value</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Low Temp</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2"><code>current/temperature/@min</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">High Temp</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1"><code>current/temperature/@max</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2><a name="JSONPath"></a>JSON and JSONPath <a href="#JSONPath" class="anchor">#</a></h2>
+        <p>The JSON&#160;REST Response looks like this (Though the formatting makes it look like the JSON Response contains more information, it is the same length, 859 characters, as the XML response shown above):</p>
+        <p class="CodeBase">{<br />&#160;&#160;&#160;"coord": {<br />&#160;&#160;&#160;&#160;&#160;&#160;"lon": -117.2028,<br />&#160;&#160;&#160;&#160;&#160;&#160;"lat": 32.7635<br />&#160;&#160;&#160;},<br />&#160;&#160;&#160;"weather": [<br />&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"id": 803,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"main": "Clouds",<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"description": "broken clouds",<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"icon": "04d"<br />&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;],<br />&#160;&#160;&#160;"base": "stations",<br />&#160;&#160;&#160;"main": {<br />&#160;&#160;&#160;&#160;&#160;&#160;"temp": 66.65,<br />&#160;&#160;&#160;&#160;&#160;&#160;"feels_like": 65.55,<br />&#160;&#160;&#160;&#160;&#160;&#160;"temp_min": 59.76,<br />&#160;&#160;&#160;&#160;&#160;&#160;"temp_max": 74.79,<br />&#160;&#160;&#160;&#160;&#160;&#160;"pressure": 1017,<br />&#160;&#160;&#160;&#160;&#160;&#160;"humidity": 54<br />&#160;&#160;&#160;},<br />&#160;&#160;&#160;"visibility": 10000,<br />&#160;&#160;&#160;"wind": {<br />&#160;&#160;&#160;&#160;&#160;&#160;"speed": 12.66,<br />&#160;&#160;&#160;&#160;&#160;&#160;"deg": 270<br />&#160;&#160;&#160;},<br />&#160;&#160;&#160;"clouds": {<br />&#160;&#160;&#160;&#160;&#160;&#160;"all": 75<br />&#160;&#160;&#160;},<br />&#160;&#160;&#160;"dt": 1680903688,<br />&#160;&#160;&#160;"sys": {<br />&#160;&#160;&#160;&#160;&#160;&#160;"type": 2,<br />&#160;&#160;&#160;&#160;&#160;&#160;"id": 2017332,<br />&#160;&#160;&#160;&#160;&#160;&#160;"country": "US",<br />&#160;&#160;&#160;&#160;&#160;&#160;"sunrise": 1680874144,<br />&#160;&#160;&#160;&#160;&#160;&#160;"sunset": 1680919947<br />&#160;&#160;&#160;},<br />&#160;&#160;&#160;"timezone": -25200,<br />&#160;&#160;&#160;"id": 0,<br />&#160;&#160;&#160;"name": "San Diego",<br />&#160;&#160;&#160;"cod": 200<br />}</p>
+        <p>JSON path uses a dollar sign character (<code>$</code>) to denote the top or global level of the JSON response. Each level below that is separated by a period (<code>.</code>)character. </p>
+        <p>In JSON, each data node in the hierarchy is marked by the use of either curly brackets (<code>{}</code>)or square brackets (<code>[]</code>). In general, when counting from the top of the Response, each time we reach a bracket character, we need to use a period (<code>.</code>) to specify a different node.</p>
+        <p>The global JSON Response is always specified by using the dollar sign (<code>$</code>) character. So, that's always the first character of a JSONPath parsing phrase. At the very top of the response is the opening curly bracket that contains the full response. This curly bracket starts the first node of the response, and we have to add a period to the JSONPath expression to indicate we are moving to the next lower node in the hierarchy:</p>
+        <p><code>$.</code>
+        </p>
+        <p>At this level of the response, there are two nodes, <code>coord</code> and <code>weather</code>. If we once again want to extract the data that indicates whether it's clear or cloudy, the data we need is in the <code>weather</code> node, so we need to add it to the JSONPath expresson:</p>
+        <p><code>$.weather</code>
+        </p>
+        <p>The weather portion of the JSON response contains several lower-level nodes. The actual data for current conditions is contained in the <code>main </code>node of the <code>weather </code>portion. But note that, immediately after <code>weather</code>, there is a square bracket, followed by a curly bracket in the JSON response. Each of these brackets requires that we add a period character as a node marker for each of them, in order to properly count the nodes between <code>weather </code>and <code>main</code>. Thus, we end up with our completely parsed path of:</p>
+        <p><code>$.weather..main</code>
+        </p>
+        <p>This gives us the full JSONPath expression to access our data, which should return the value <code>Clouds</code>.</p>
+        <p>We can use different JSON Path expressions to return other data from this response, as shown in the table below.</p>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 12em;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Data</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">JSONPath Expression</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">City</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1"><code>$.name</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2" style="font-weight: normal;">Country</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2" style="font-weight: normal;"><code>$.sys.country</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Current Temp</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1"><code>$.main.temp</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Low Temp</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2"><code>$.main.temp_min</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">High Temp</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1"><code>$.main.temp_max</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>More Information about Rest Services</h2>
+        <p><b><a href="REST Services.htm">REST&#160;Services</a>:</b> An overview of using REST&#160;Web Services.</p>
+        <p><a href="REST JSON XML.htm" style="font-weight: bold;">JSON&#160;and XML for REST</a><b>:</b> How sample XML or JSON REST responses might compare.</p>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer;Web Services" />
+            <MadCap:keyword term="Web Services;REST;REST Services;REST Data" />JSON&#160;and XML for REST</h1>
+        <p>To illustrate the different between JSON and XML data that might be returned from a REST service, let's look at a small data sample, and see how it would be represented in each language. For this example, we'll use a list of file names that might be returned by a REST Service:</p>
+        <ul>
+            <li>Image1.jpg</li>
+            <li>Description.docx</li>
+            <li>Forecast.xlsx</li>
+            <li>Agreement.pdf</li>
+            <li>NetworkDiagram.vsdx</li>
+        </ul>
+        <h2>XML</h2>
+        <p class="CodeBase">&lt;?xml version="1.0"?&gt;<br />&#160;&#160;&#160;&lt;Files&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;item&gt;Image1.jpg&lt;/item&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;item&gt;Description.docx&lt;/item&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;item&gt;Forecast.xlsx&lt;/item&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;item&gt;Agreement.pdf&lt;/item&gt;<br />&#160;&#160;&#160;&#160;&#160;&#160;&lt;item&gt;NetworkDiagram.vsdx&lt;/item&gt;<br />&#160;&#160;&#160;&lt;/Files&gt;</p>
+        <p>The structured nature of XML limits how we can represent this data. We must have a "Files" node that contains all of the files. Each file needs its own "Item" node. Because XML is so highly structured, there are strict limits on how data can be represented.</p>
+        <h2>JSON</h2>
+        <p>JSON is much less structured than XML, and can present this same data in many ways.</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td>
+                        <h4>Single Elements</h4>
+                        <p class="CodeBase">{<br />&#160;&#160;&#160;"Image":"Image1.jpg",<br />&#160;&#160;&#160;"Document1":"Description.docx",<br />&#160;&#160;&#160;"Spreadsheet":"Forecast.xlsx",<br />&#160;&#160;&#160;"PDF":"Agreement.pdf",<br />&#160;&#160;&#160;"Visio":"NetworkDiagram.vsdx"<br />}</p>
+                    </td>
+                    <td>
+                        <h4>Structured Array</h4>
+                        <p class="CodeBase">[<br />&#160;&#160;&#160;{"Files":"Image1.jpg"},<br />&#160;&#160;&#160;{"Files":"Description.docx"},<br />&#160;&#160;&#160;{"Files":"Forecast.xlsx"},<br />&#160;&#160;&#160;{"Files":"Agreement.pdf"},<br />&#160;&#160;&#160;{"Files":"NetworkDiagram.vsdx"}<br />]</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Unstructured Array Elements</h4>
+                        <p class="CodeBase">{<br />&#160;&#160;&#160;"Files":<br />&#160;&#160;&#160;[<br />&#160;&#160;&#160;&#160;&#160;&#160;"Image1.jpg",<br />&#160;&#160;&#160;&#160;&#160;&#160;"Description.docx",<br />&#160;&#160;&#160;&#160;&#160;&#160;"Forecast.xlsx",<br />&#160;&#160;&#160;&#160;&#160;&#160;"Agreement.pdf",<br />&#160;&#160;&#160;&#160;&#160;&#160;"NetworkDiagram.vsdx"<br />&#160;&#160;&#160;]<br />}</p>
+                    </td>
+                    <td>
+                        <h4>Structured Array Elements</h4>
+                        <p class="CodeBase">{<br />&#160;&#160;&#160;"Files":<br />&#160;&#160;&#160;[<br />&#160;&#160;&#160;&#160;&#160;&#160;{"f":"Image1.jpg"},<br />&#160;&#160;&#160;&#160;&#160;&#160;{"f":"Description.docx"},<br />&#160;&#160;&#160;&#160;&#160;&#160;{"f":"Forecast.xlsx"},<br />&#160;&#160;&#160;&#160;&#160;&#160;{"f":"Agreement.pdf"},<br />&#160;&#160;&#160;&#160;&#160;&#160;{"f":"NetworkDiagram.vsdx"}<br />&#160;&#160;&#160;]<br />}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>While this flexibility is nice, it does mean that you need to know, to a much greater degree than with XML, how the specific data you get in a response is structured, in order to parse and use it properly.</p>
+        <p>From an implementer's point of view, you may find XML REST Services easier to work with, if available, especially if you're just starting to use REST services. The structured nature of XML generally makes it more readable, and easier to understand.</p>
+        <h2>More Information about Rest Services</h2>
+        <p><b><a href="REST Services.htm">REST&#160;Services</a>:</b> An overview of using REST&#160;Web Services.</p>
+        <p><a href="REST JSONPath XPath.htm" style="font-weight: bold;">JSONPath&#160;and XPath</a><b>:</b> A comparison of the XPath and JSON&#160;Path syntax needed to parse XML or JSON REST&#160;responses.</p>
+    </body>
+</html>

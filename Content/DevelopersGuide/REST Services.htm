@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer;Web Services" />
+            <MadCap:keyword term="Web Services;REST;REST Services;REST Data" />REST Services</h1>
+        <p><span class="KeyTerms">REST</span> (Representational State Transfer) is a standards-based data architecture for sharing data between computers, using web-based access. Services that use REST are often called RESTful services. A REST service usually transfers data from a server-based data store to a client machine that requests it in a specified format—usually via a specifically configured URL.</p>
+        <p>The important thing to remember about REST services is that the server and client machines are unrelated. The activities on the client are completely unaffected by the activities of the server, and vice versa. Unlike a connection to a database like SQL server, the client machine does not need to store a connection string or maintain a constant connection to the server. Similarly, any changes to the code or operations of either machine have no effect on the other.</p>
+        <p>The only connection that occurs between the two systems is when the client machine sends a request to the server via URL, and the server responds by sending back data in a REST-compliant format. This "connection" is also <span class="KeyTerms">stateless</span>, which is to say that the server and client machines know nothing about each other, outside of a specific REST transaction. A <span class="KeyTerms">REST transaction</span> consists of a <b>request</b> from the client, and a <b>response</b> from the server that contains the requested data. The REST request must provide all of the information necessary for the server to respond to the request properly. The server cannot use any knowledge of past requests to complete the current request and return a response. Each transaction is made as if it was an entirely new request, unrelated to any previous requests.</p>
+        <p>REST is not a programming format. It is purely a set of architectural guidelines for the communications format used between two systems. As long as each machine knows which format to use for requests and responses, data can be shared. Because REST is an architectural construct, it is language-independent. REST services can be constructed in any programming language, and the programming language used by the client and server are irrelevant to each other. As long as both systems use the correct architecture for their communication, they can share data.</p>
+        <h2><a name="Request"></a>The REST&#160;Request <a href="#Request" class="anchor">#</a></h2>
+        <p>A <span class="KeyTerms">REST Request </span>is a message sent to a server that asks for a response containing data. In most cases, a REST request is sent to an available URL. The URL may be publicly available as a service on the internet, or it may be available only inside the same network as the client. As long as the client can access the URL, however, it can request a REST response from the server.</p>
+        <p>The URL contained in the REST request is usually formatted in a specific way, in order to match the way in which the REST service is implemented on the server. For example, the REST service may require the URL be formatted hierarchically. A notional request URL for a publicly available REST Service that returns the current weather might be:</p>
+        <p><code>https://myrestservice.com/current/zip/92111</code>
+        </p>
+        <p>The server would interpret this request as asking for the current weather for the 92111 Zip Code.</p>
+        <p>Alternatively, the URL for the same information might require a URL that uses parameters, such as:</p>
+        <p><code>https://myrestservice.com?type=current&amp;zip=92111</code>
+        </p>
+        <p>Both of these formats can constitute valid requests, as long as the server understands the format.</p>
+        <p>The REST Request may be more complex than shown above, and require additional information such as login credentials, specific HTTP header information sent with the request, and Key/Value pairs to provide parameters, or include other information. In Process Director, much of this additional complexity is hidden, but a fully formatted REST request with header information and Key/Value pairs to provide parameters for the data to return might look like this.</p>
+        <p class="CodeBase">POST https://myrestservice.com/weather HTTP/1.1<br />Host: myrestservice.com<br />Content-Type: application/json<br />Content-Length: 42<br />{"Type":"current","Zip":92111}</p>
+        <p>Business Values have a feature for adding authentication credentials and Key/Value pairs to the HTTP&#160;header, as described in the <a href="../ImplementersReference/Business Values.htm">Business Values topic</a> of the Implementer's Guide.</p>
+        <h2><a name="Response"></a>The REST Response <a href="#Response" class="anchor">#</a></h2>
+        <p>Once the server receives a valid request, the <span class="KeyTerms">REST Response</span> returns the requested data. Even if there's no data to return, the server will still send a response, to note that the request was received and fulfilled. The REST response will be presented in one of two formats, JSON or XML.</p>
+        <p>Both XML and JSON formats are used to represent data, though each one is very different.</p>
+        <p>XML is a highly-structured data language. Each element of data is presented in nodes that are set off by the &lt;&gt; characters, e.g.:</p>
+        <p><code>&lt;temperature value="78.66" min="70.56" max="87.89" unit="fahrenheit"/&gt;</code>
+        </p>
+        <p>JSON, on the other hand, is less highly structured than XML, and data is returned in a JavaScript-based format, e.g.:</p>
+        <p><code>"temperature": {"curr":78.66,"min":70.56,"max":87.89}</code>
+        </p>
+        <p>This format is not JavaScript, though it is based on the JavaScript language structure. Both JSON and XML are language-independent formats, and both are essentially formatted text files, though the formatting is, as we shall see later in this module, very important.</p>
+        <p>There are advantages and disadvantages between the two language formats.</p>
+        <ul>
+            <li>XML, because it's so highly structured, is very good at returning hierarchical data in a more easily comprehensible format. It's easier for humans to parse when, as we'll see later, we need to find specific data in an XML response. On the other hand, XML is relatively verbose, which means that, given the same data, an XML response might be significantly larger and take up more memory, than a JSON response.</li>
+            <li>JSON, being less structured, is more flexible. A JSON response could structure the data in many different ways, while the highly structured nature of XML limits the way in which data can be returned.  On the other hand, this flexibility means that two similar requests might return data that is structured slightly differently, meaning that the method you use to parse one request might not work on a similar one. Also, JSON's variable structure, and lack of a specific node structure can make JSON less readable and harder to parse by humans.</li>
+        </ul>
+        <p>In general, JSON is a more popular format, due in part to its flexibility and versatility, but mainly because JSON responses are generally more lightweight than XML responses. There are still many REST services that return XML, or return both formats. In Process Director, both XML and JSON response formats can be used.</p>
+        <h2>More Information about Rest Services</h2>
+        <p><a href="REST JSON XML.htm" style="font-weight: bold;">JSON&#160;and XML for REST</a><b>:</b> How sample XML or JSON REST responses might compare.</p>
+        <p><a href="REST JSONPath XPath.htm" style="font-weight: bold;">JSONPath&#160;and XPath</a><b>:</b> A comparison of the XPath and JSON&#160;Path syntax needed to parse XML or JSON REST&#160;responses.</p>
+    </body>
+</html>
