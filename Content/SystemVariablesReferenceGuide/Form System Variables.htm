@@ -409,7 +409,71 @@
                 <p><code><MadCap:keyword term="FORM_SUBMIT_DATE" />{FORM_SUBMIT_DATE}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p>This system variable is a DateTime system variable and can use any of the common DateTime modifiers.</p>
+                <p>This system variable is a DateTime system variable and can use any of the common <a href="Parameters.htm#DatetimeSystemVariables">DateTime modifiers</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="DataList"></a>Data List Control <a href="#DataList" class="anchor">#</a></h2>
+        <p>For Process Director v6.1 and higher, a new Form Control, the <span class="NamedControl">Data List</span>, was added to the product, along with appropriate Form field System Variables. The<span class="NamedControl"> Data List </span>control is relatively unique, with properties not relevant to other Form controls, and with unique formatters and modifiers. Each System Variable may return a single value, or a comma-separated list of values depending on what is selected in the <span class="NamedControl">Data List</span>.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="DLControl"></a>
+                    <img src="../Resources/Images/link.png" alt="Link" />
+                    <MadCap:keyword term="Data List;DataList" />Data List</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h3>Returns</h3>
+                <p><b>With a Row Selected:</b> A comma-separated list of all data in the selected row, whether the columns are hidden or visible.</p>
+                <p><b>With a cell selected:</b> The data in the selected cell.</p>
+                <p><b>With nothing selected:</b> N/A</p>
+                <h3>SysVar Tag</h3>
+                <p><code>{Form:<span class="CodeOption">DataListControlName</span>}</code>
+                </p>
+                <p>OR</p>
+                <p><code>{:<span class="CodeOption">DataListControlName</span>}</code>
+                </p>
+                <h3>Parameters</h3>
+                <p><b>DataListControlName (required):</b> The <span class="ControlName">Name </span>of the Data List control.</p>
+                <h3>Modifiers</h3>
+                <p><b>format:</b> This optional modifier specifies the format in which the data will be returned. The following format attributes are acceptable:</p>
+                <ul>
+                    <li><b>Count:</b> Returns the total number of rows in the Data List control.</li>
+                    <li><b>Selected Count:</b> Returns the total number of rows selected in the Data List control. Not applicable to Data Lists that use only cell selection.</li>
+                    <li><b>Visible:</b> Returns a comma-separated list of data from all visible columns in a selected row. Not applicable to Data Lists that use only cell selection.</li>
+                    <li><b>Hidden:</b> Returns a comma-separated list of data from all hidden columns in a selected row. Not applicable to Data Lists that use only cell selection.</li>
+                    <li><b>Visible:</b> Returns a comma-separated list of data from all visible columns in a selected row. Not applicable to Data Lists that use only cell selection.</li>
+                </ul>
+                <h4>Example</h4>
+                <p><code>{:MyDataList, format=count}</code>
+                </p>
+                <p>This syntax will return the row count of the <span class="ControlName">MyDataList </span>Data List control on a Form.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="DLProp"></a><a href="#DLProp"><img src="../Resources/Images/link.png" alt="Link" /></a>Data List Column</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This System variable enables you to return data from a specified column in a Data List control.</p>
+                <h3>Returns</h3>
+                <p><b>With one row selected:</b> The value of the specified column from the selected row.</p>
+                <p><b>With multiple rows selected:</b> A comma-separated list of the specified column from all selected rows.</p>
+                <p><b>With a cell selected:</b> N/A</p>
+                <p><b>With nothing selected:</b> N/A</p>
+                <h3>SysVar Tag</h3>
+                <p><code>{Form:<span class="CodeOption">DataListControlName</span>.<span class="CodeOption">ColumnName</span>}</code>
+                </p>
+                <p>OR</p>
+                <p><code>{:<span class="CodeOption">DataListControlName</span>.<span class="CodeOption">ColumnName</span>}</code>
+                </p>
+                <h3>Parameters</h3>
+                <p><b>DataListControlName (required):</b> The <span class="ControlName">Name </span>of the Data List control.</p>
+                <p><b>ColumnName (required):</b> The <span class="ControlName">Name </span>of the Data List column that contains the desired data.</p>
+                <h3>Modifiers</h3>
+                <p>N/A</p>
+                <h4>Example</h4>
+                <p><code>{:MyDataList.Country}</code>
+                </p>
+                <p>This syntax will return the value or values of the selected row(s) for the <span class="ControlName">Country </span>column.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>
