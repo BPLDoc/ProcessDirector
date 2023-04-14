@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Business Values;BV;Business Value;Parameter;Parameters;External Data" />Business Value Operations</h1>
+        <p>Business Values enables you to perform sophisticated data retrieval via the use of parameters, and mathematical aggregation.</p>
+        <h2><a name="Parameters"></a>Parameters <a href="#Parameters" class="anchor">#</a></h2>
+        <p>An even more powerful way of using Business Values is to use parameters to return values dynamically in your processes. Previously, instead of a Business Value, you'd need to create a Custom Task step in your process, or use a Custom Task in a Form, to return data values to fill fields. As a result, you might have several Custom Tasks, spread out among several applications, each of which would use the same configuration. Any change to the database schema, would require making changes to every single one of those Custom Tasks, making updates tedious and costly in terms of time and effort. While there are certainly times that a database Custom Task will still be needed, the Business Value can replace a Custom Task in nearly all use cases.</p>
+        <p>Let's take a look at a hypothetical case. We'll assume that we have a database table that stores customer information. We can create a Business Value to provide that information. Let's look at how such a Business Value might be configured.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/BusinessValues7.png" alt="Parametrized Business Value" />
+        </p>
+        <p>The SQL Command for this Business Value retrieves records for active customers. If no "CustomerID" parameter is supplied, the command will simply pull every customer record. If the "CustomerID" parameter is supplied, Business Value will return only a single record. In other words, the same Business Value can return a single or scalar value based on the parameter.</p>
+        <p>Next, the Business Value uses the database columns to create three properties: the Name, ID, and Type properties will all contain values extracted from the database, In addition, since the Business Value automatically knows how many records have been returned by the SQL Command, the fourth property, Count, will contain the number of records returned.</p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" alt="Note" /> When a Business Value Property returns no data from a SQL command, it can still be used in a condition, because the value will be set to an empty string, allowing comparisons in the conditions to work correctly.</p>
+        <p>Once we have created the Business Value, it's accessible by all other objects in Process Director. None of your business users or other implementers need to know anything about how the data is configured to use the it, because the Business Value properties are available through the Condition Builder dropdowns. They merely need to select the properties they want, which means that, in most cases, implementers no longer need to create a Custom Task to retrieve the data. They no longer need to know or care about the database schema or the SQL syntax to retrieve the data they want. This functionality greatly reduces the level of technical knowledge that business users and implementers need to conduct relatively sophisticated data retrieval operations. With Business Values, technical details about the data, and how to acquire it, is largely irrelevant to implementers. The only person who needs to have any sort of technical knowledge about the database is the creator of the Business Value itself.</p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" alt="Note" /> Combined with the scheduling and process initiation available in the Goals feature, Process Director is a powerful process automation system, enabling automatic process initialization based on data from external systems.</p>
+        <h2><a name="Mathematical"></a>Mathematical Operations <a href="#Mathematical" class="anchor">#</a></h2>
+        <p>Another function available for Business Values is the ability to perform mathematical operations on a Knowledge View column. When retrieving any numeric column data, Process Director can perform the following calculations on the values:</p>
+        <ul>
+            <li><b>Sum:</b> Returns the sum of all the values in the column.</li>
+            <li><b>Average:</b> Returns an average of all the values in the column.</li>
+            <li><b>Min:</b> Returns the lowest value in the column.</li>
+            <li><b>Max:</b> Returns the highest value in the column.</li>
+            <li><b>Average (ignore 0 values):</b> After eliminating the rows that contain a value of 0 or null, returns an average of all the remaining values in the column.</li>
+            <li><b>First:</b> Returns the first row from the Knowledge View.</li>
+            <li><b>Last:</b> Returns the last row from the Knowledge View.</li>
+            <li><b>Distinct:</b> Returns only unique rows from the Knowledge View, in a manner similar to a SQL Server DISTINCT operator.</li>
+        </ul>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/BusinessValue.png" alt="Buysiness Value Mathematical Operations" />
+        </p>
+        <h2><a name="Other"></a>Other Usages <a href="#Other" class="anchor">#</a></h2>
+        <p>Once a Business Value has been created, it can be selected as a content type from the <span class="NamedControl">Content Picker</span> control when creating Forms.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/bv.png" />
+        </p>
+        <p>Business Values can also be accessed through a System Variable. For an example of using a system variable with a parameter, take a look at the following Business Value configuration for a notional Business Value named "CustomerInfo":</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/bv5.png" />
+        </p>
+        <p>So, in this example, let's say we want to return the <span class="ControlName">Name </span>property for the customer whose Customer ID is "123" via a system variable. In that case, we could use the following syntax:</p>
+        <p style="font-weight: normal;"><code>{BUSINESS_VALUE:CustomerInfo.Name, $CustomerID=123}</code>
+        </p>
+        <p> Please see the documentation on <a href="../SystemVariablesReferenceGuide/Business Values System Variables.htm#BusinessValue">Business Value System Variables</a> for more information.</p>
+        <h2>Related Topics</h2>
+        <p><b><a href="Business Values.htm">Business Values</a>:</b> Additional capabilities of Business Values.</p>
+        <p><b><a href="Business Values Creating.htm">Creating Business Values</a>:</b> Instructions on Business Value configuration.</p>
+    </body>
+</html>

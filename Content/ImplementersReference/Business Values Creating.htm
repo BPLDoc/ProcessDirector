@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Business Values;BV;Business Value;Parameter;Parameters;External Data" />Creating Business Values</h1>
+        <p>To create a new Business Value, navigate to the folder into which you want to create the value, then select <span class="UIElement">Business Value</span> from the <span class="UIElement">Create New</span> dropdown in the upper right corner of the Process Director screen.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Business Value.png" />
+        </p>
+        <p>The <span class="ControlName">Create Business Value</span> screen will appear. Enter a name in the <span class="ControlName">Business Value Name</span> field, then click the <span class="UIElement">OK </span>button to save the new Business Value and open the configuration screen.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/NewBV.png" />
+        </p>
+        <p>There are two main configuration tabs in the <span class="ControlName">Business Value</span> definition that are used to configure it, The <span class="UIElement">Properties </span>and <span class="UIElement">Configure </span>tabs.</p>
+        <h2><a name="Properties"></a>Properties Tab <a href="#Properties" class="anchor">#</a></h2>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/PropertiesBV.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Business Value Description</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The detailed description of the Business Value's purpose, data sources, etc.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Group In Value picker</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The name of the group under which the Business Value's name will be displayed in dropdown menus. This property enables you to organize Business Values into logical groups that will display as submenus in the properties dropdown menus that display in the <span class="ProcessDirectorObject">Condition Builder</span> and elsewhere. This feature operates in the same way as it does for Business Rules.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="ConfigureTab"></a>Configure Tab <a href="#ConfigureTab" class="anchor">#</a></h2>
+        <p>The <span class="UIElement">Configure </span>Tab shows the general properties that apply to the Business Value.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/BusinessValue1.png" />
+        </p>
+        <p>You can select a data source from a SQL database, a Knowledge View, a set of Form Instances, or a REST web service to provide the Business Value. In most cases, you'll choose a single data source, but you can have multiple values extracted from both a SQL and a Knowledge View data source.</p>
+        <h4>SQL Data Source Tab</h4>
+        <p>The <span class="UIElement">SQL Data Source </span>tab enables you to select a SQL&#160;Data Source, and provide a SQL&#160;Command for returning data from a SQL database. The Business Value supports most SQL data types (Char, Varchar, Nvarchar, Integer, Double, Short, Byte), and converts the value to a string for the remaining data types.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/BusinessValue2.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Please Choose Data Source</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A <span class="NamedControl">Content Picker </span>control that enables you to pick the Datasource from which the data will be extracted.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Test Connection Button</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking this button will attempt to connect to the selected Datasource to confirm that the connection to the Datasource works.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Database Table</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Once a valid Datasource has been selected, a list of database tables associated with the Datasource will fill the dropdown. If you select a table from the dropdown, a list of table columns will appear on the right side of the <span class="ControlName">SQL&#160;Command</span> text box, in the <span class="ControlName">Database Column</span> field.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SQL&#160;Command</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enter the SQL command that will select the data to be set as the Business Value.</p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> While the system will accept any valid SQL&#160;command, BP&#160;Logix <b style="font-style: italic;">very strongly recommends</b><i> </i>that you limit the use of Business Values to SELECT commands. Updating, deleting, and inserting data should be done separately, through the appropriate Custom Task/Datasource.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Database Column</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Displays a list of database columns in the table selected from the <span class="ControlName">Database Table </span>dropdown.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Show/Hide Columns Button</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking this button will show or hide the columns in the <span class="ControlName">Database Column</span> property.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Test Query Button</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking this button will run the SQL query in the <span class="ControlName">SQL&#160;Command</span> property against the database to confirm that the query works properly.</p>
+                <p>For Process Director v5.44.703 and higher, the <span class="UIElement">Test Query</span> button will display up to 100 rows of sample data from a SQL Datasource in the Business Value definition. The data will be displayed in a<span class="ControlName"> SQL&#160;Test Results</span> section on the page. This section is hidden until the <span class="UIElement">Test Query</span> button is clicked.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/BusinessValue3.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Add Columns as Properties Button</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For Process Director v5.44.703 and higher, this button will automatically add every column returned by the SQL statement as a Business Value property in the <span class="ControlName">Properties </span>section of the page. This feature eliminates the need to manually create each property.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h4>Knowledge View Data Source Tab</h4>
+        <p>The <span class="UIElement">Knowledge View Data Source</span> tab enables you to select a Knowledge View and apply a filter for returning data from a Knowledge View. </p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" alt="Note" /> All Knowledge View columns are available to the Business Value, including those that are marked not to display in the Knowledge View Definition. Also, Knowledge Views that contain sorting criteria will be presented with the same sort order in the Business Value. For v5.32 and higher, a Knowledge View that uses folder navigation to filter the results can now be used as the data source for a Business Value to return all data, and ignore the folder navigation filter.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/BusinessValues4.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Pick Kview</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A <span class="NamedControl">Content Picker </span>control that enables you to pick the Knowledge View from which the data will be extracted.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Knowledge View Filter Data</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If the Business Value (and underlying Knowledge View) uses a filter Parameter, the Parameter has to be passed to the Knowledge View as a filter string, using the same  format you'd use to pass filter strings from a Knowledge View control on a Form, e.g.:</p>
+                <p><code><span class="CodeOption">KViewFilter1</span>={PARAMETER:<span class="CodeOption">Parameter1Name</span>}</code>. </p>
+                <p>If you are passing more than one filter parameter, then each parameter passed should be on its own line in the <span class="ControlName">Knowledge View Filter Data</span> text box, e.g.:</p>
+                <p><code><span class="CodeOption">KViewFilter1</span>={PARAMETER:<span class="CodeOption">Parameter1Name</span>}<br /></code><code><span class="CodeOption">KViewFilter2</span>={PARAMETER:<span class="CodeOption">Parameter2Name</span>}</code>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Execute Knowledge View under this user context</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A <span class="NamedControl">User Picker </span>control that enables you to pick the user under whose permissions the Knowledge View will be run. Since regular users may not have permissions to view the Knowledge View, you must pick a user who has appropriate permissions to run the Knowledge View. This will enable users with a lower permissions level to access the Knowledge View data for the Business Value.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Test Knowledge View Button</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking this button will run the Knowledge View to confirm that it works properly.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h4>Form Instances Tab</h4>
+        <p>For users of Process Director v5.13 and higher, Business Values may also use Form Instances as data sources, to retrieve a list of form instances, or form field values. This tab won't appear in earlier versions of the product. For users of Process 5.26 and higher, the Form Instances data source won't return canceled or incomplete form instances, but it will return form instances that were saved for later, or attached to a process.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/BVFormInstancesTab.png" />
+        </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Form Definition</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>An <span class="NamedControl">Object Picker</span> control that enables you to select the form definition whose instances will be retrieved.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Include Form Instance when</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property will use the <span class="ProcessDirectorObject">Condition Builder</span> to enable you to filter the Business Value to return only form instances that match the specified condition.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Test Form Conditions</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This button will, when form conditions have been configured, display the number of form instances that match the configured condition.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h4>REST&#160;Data Source Tab</h4>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/RESTBusinessValues.png" />
+        </p>
+        <p>The <span class="UIElement">Rest Data Source</span> tab enables you to type a URL for a REST data source into the <span class="ControlName">REST&#160;URL</span> text box.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Parse REST&#160;Response As</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property enables you to choose how Process Director will parse the REST&#160;Response. By default. Process Director will parse both JSON and XML responses as XML, enabling you to use XPath to parse the response. Some JSON, however, can't be converted to XML. In that case, parsing using JSONPath will be required. For Process Director v5.25 and higher, Business Values that use JSONPath to target data from a REST call can use expressions that return a JSON node rather than a string or scalar value.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Please Choose Compliance (Credentials) Data Source</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property enables you to select a Compliance Datasource that contains the credentials needed to authenticate with the REST service that supplies the data.</p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> This property name was changed to "Compliance" from "Credentials" in v5.44.1000.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Add HTTP&#160;Header</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Users of Process Director v4.42 and higher also have an <span class="UIElement">Add HTTP&#160;Header </span>button that, when clicked, will add one or more rows of <span class="ControlName">Name</span>/<span class="ControlName">Value </span>pairs that will be sent via HTTP&#160;header to the REST&#160;service. </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Test Rest Call</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The <span class="UIElement">Test REST Call</span> button will run the Web&#160;Service REST&#160;call to confirm that it works properly.</p>
+                <p>XPath queries can be used against REST data in Business Values, so that Business Value properties can be assigned values returned in the XML response to the query. For instance, let's say you have a REST&#160;call to return Zip Codes from a particular city and state, and REST response returned the following XML data:</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/RESTData.png" />
+                </p>
+                <p>Using the XPath syntax <code>results/result/zip</code>, you could return a list of the zip codes as a data column in the Business Value, as shown below:</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/RESTBV.png" />
+                </p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> Business Values also support JSON returns and JSONPath, as well.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>For more information about XML or JSON REST Services, and how to use XPath and JSONPath to parse REST Responses, please refer to the <a href="../DevelopersGuide/REST Services.htm">REST Services topic</a> of the Developer's Guide.</p>
+        <h3>Properties Section</h3>
+        <p>Once you've selected the appropriate data source for the Business Value from the configuration tabs, you can fill out this section by adding the properties that contain the desired Business Value or Values. Simply click the <span class="UIElement">Add Property</span> button to add a value property. The value property contains a number of fields that must be configured.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/PropertiesSectionBV.png" />
+        </p>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 20%;" />
+            <col class="TableStyle-Simple-Column-Column1" style="width: 25%;" />
+            <col class="TableStyle-Simple-Column-Column1" style="width: 501px;" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Property</th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">Options</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Property Name</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">The property name will appear as the Business Value property when selecting Business Values from the <span class="ProcessDirectorObject">Condition Builder</span> dropdown menus.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Property Type</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>Database Column<br />Number of Database Rows<br />Form Field<br />Form Instance<br />Knowledge View Column<br />Number of Knowledge View Rows<br />REST&#160;Data<br />Entire REST&#160;Response<br />System Variable<br />Dropdown<br /></p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">The type of object from which the value is extracted.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Property Value (Fields)</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">List of available fields</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>This dropdown control appears when the Database Column, Form Field, or Knowledge View Column Property Type is selected. </p>
+                        <p>For the Database Column, the field will appear as a text box into which you can type the desired database column name. </p>
+                        <p>For the Form Field, a <span class="NamedControl">Content Picker</span> will be displayed that you can use to select the form field to use for the property.</p>
+                        <p>For the Knowledge View Column data type, it will be displayed as a dropdown containing a list of Knowledge View columns from which you can select the desired column containing the value.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Property Value (Operators)</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <p>Column Data<br />Sum<br />Average<br />Min</p>
+                        <p>Max<br />Average (Ignore 0 values)</p>
+                        <p>From First KVIew Result</p>
+                        <p>From Last KView Result</p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                        <p>The type of calculation desired to produce the value. Selecting Column Data provides the raw value of each row, which will result in a multi-row Business Value. The remaining calculation operators will produce a single value, such as a Sum or Average of all values in the returned rows.</p>
+                        <p>Additionally, If the Data Source is a Knowledge View you can return the first or the last record in the Knowledge View as a scalar (single) value. This is primarily useful when the Knowledge View results are sorted in the Knowledge View definition.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" /> The Form Field and Form Instance data types are only available for users of Process Director v5.12.02 and higher.</p>
+        <p>The properties returned can be  ordered by using the UP and Down arrow icons, and deleted by clicking the red "X" icon.</p>
+        <p>
+            <img src="../Resources/Images/Capture57.png" />
+        </p>
+        <p>Each property can be accessed in the <span class="ProcessDirectorObject">Condition Builder</span> via the value dropdown menu.</p>
+        <p>
+            <img src="../Resources/Images/Capture100.png" />
+        </p>
+        <h3>Parameters Section</h3>
+        <p>The <span class="ControlName">Parameters </span>section enables you to add Parameters to your queries, and in the case of Business Values based on SQL Datasources, supply a test value to apply when the query is tested. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/BusinessValue5.png" />
+        </p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" alt="Note" /> For Process Director v5.26 and higher, Parameters can also be used as column values in both the SQL statement, and the Parameter  as a Property Value. For instance, A SQL&#160;statement such as "<code style="font-weight: normal;">SELECT {$PARAMETER:column} from TABLENAME</code>" can be used to return a column for a Property that uses"{PARAMETER:column}" as the Property Value. Thus, the Parameter can supply the column name for both the SQL&#160;Statement and be used as the value of the Property itself. Please note that the Property Name must still be a static value. Similarly, System Variables may be used in the Property values for REST&#160;data sources. This enables users to build parameterized filter expressions that can be used to filter the JSONPath/XPath results, e.g.:<br /><code style="font-weight: normal;">$.components[?(@.classification &gt;= /Graded/I &amp;&amp; @.section = {$PARM:section})].section</code></p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Name</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The <span class="ControlName">Name </span>column enables you to specify a parameter name.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Test Value</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The <span class="ControlName">Test Value </span>column will only display when the <span class="UIElement">SQL Data Source </span>tab is selected, as only the SQL&#160;Datasource supports passing test values to the SQL&#160;command. In this column, type the test value you'd like to use when testing the query. Once you've entered a test parameter, you can click the <span class="UIElement">Test Query</span> button on the<span class="UIElement"> SQL&#160;Data Source</span> tab to test the query with the test parameters you entered.</p>
+                <p>Note that, in the example above, the SQL statement uses the parameter in the WHERE clause, with the syntax <code>{$Parameter:Year}</code>. The "$" in the system variable instructs Process Director to format the parameter value as a SQL-encoded string.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Add Parameter</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Click this button to add a new parameter.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>Once you've added parameters to a query, every place where you choose the Business Value from the <span class="ControlName">Choose System Variable</span> dialog box, the parameter will display  in its own section of the dialog, below the Business Value you select. You can use the parameter portion to  select from where the parameter’s value will be derived.</p>
+        <h4>Parameter Example</h4>
+        <p>For instance, let's say there's a Form that has a <span class="ControlName">VendorName </span>dropdown control for picking a vendor, which uses the Vendor's name as the display text, and the VendorID as the value. Using the Business Value, you can automatically fill one or more fields with the Vendor's company information by using the <span class="ControlName">VendorName </span> field as the Vendor parameter, and passing the parameter to the Business Value.</p>
+        <p>In this example, the <span class="UIElement">Set&#160;Form Data</span> tab on the Form is configured to set the value of several form fields when the <span class="ControlName">VendorName </span>changes.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SetFormDataBV.png" />
+        </p>
+        <p> If we click on the <span class="UIElement">Build </span>button of the <span class="ControlName">Type </span>property to open the <span class="ControlName">Choose System Variable</span> dialog, we can see the parameter has been set to the value of the <span class="ControlName">ExistingVendor </span>field.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/FormConfigBV.png" />
+        </p>
+        <p>The Type property is identified in the Dropdown menu, and, below the dropdown, we set the "CustomerID" parameter to the value of the <span class="ControlName">CompanyName </span>form field. In this case, the Business Value will return the Customer Type for that specific customer.</p>
+        <p>In this simple example, we are only returning the Customer Type from the database. We could, however, return any other type of needed information, such as the address, point of contact, phone number, etc., as part of the Business Value as well.</p>
+        <h2><a name="Example"></a>Documentation Examples <a href="#Example" class="anchor">#</a></h2>
+        <p MadCap:conditions="General.Not Printed">There are two software simulations in this example. The first will walk you through the process of building a Business Value that returns data from an external SQL database. The second will walk through using a Business Value to fill a <span class="NamedControl">Dropdown </span>control with Selectable options from a Business Value, then, based on the selection made in the <span class="NamedControl">Dropdown </span>control, call a second Business Value to fill other Form fields with Business Value data via the Form's <span class="UIElement">Set Form Data </span>tab.</p>
+        <MadCap:dropDown MadCap:conditions="General.Not Printed">
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Use the Simulator</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p><a href="../Resources/Simulations/Creating a SQL Business Value/Simulation.html" target="_blank" title="Creating a New SQL Business Value" alt="Creating a New SQL Business Value">Creating a New SQL Business Value</a>
+                </p>
+                <p><a href="../Resources/Simulations/Filling Dropdowns and Fields From a Business Value/Simulation.html" target="_blank" title="Using Business Values on the Fill Dropdowns and Set Form Data tabs of a Form" alt="Using Business Values on the Fill Dropdowns and Set Form Data tabs of a Form">Using Business Values on the <span class="UIElement">Fill Dropdowns </span>and <span class="UIElement">Set Form Data</span> tabs of a Form</a>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Related Topics</h2>
+        <p><b><a href="Business Values.htm">Business Values</a>:</b> Introduction to the Business Value object.</p>
+        <p><b><a href="Business Values Operations.htm">Business Value Operations</a>:</b> Additional capabilities of Business Values.</p>
+    </body>
+</html>

@@ -111,20 +111,6 @@
                 <p>This is a check box that, when checked, designates the result as the default result for the Timeline Activity. When setting a Completed When condition, you <b>must</b> specify a default result, or the Activity will either not end as expected, or will go into an error state.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h4>Results of a Process Activity</h4>
-        <p>The Process step requires that a Workflow or Process Timeline definition be configured. The configured process will be started as a subprocess (child process) of the main (parent) process. A subprocess can consist of a Workflow or a Process Timeline. You may copy objects from the parent process to the child process and vice versa.</p>
-        <p>When a subprocess contains an End Process step or Activity, it will return the name of the End Process step as a result for the parent Process Activity. Process Timelines and Workflows use the End Process function differently, so the results can be slightly different depending on the type of subprocess that is called by the Process Activity.</p>
-        <h5>Workflow </h5>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/Workflow2_29.jpg" style="visibility: visible;mso-wrap-style: square;" />
-        </p>
-        <p>In the example above, the Workflow's End Process step is named "Completed".&#160; If this Workflow runs as a subprocess, then, when the process reaches this step and completes, the name "Complete" will be passed to the parent Workflow as the result of the Process step that started the sub-process.</p>
-        <p>Workflows do NOT automatically end when an End process step is reached. Workflows end when all of the required steps in a Workflow have completed. You can have two Workflow paths running concurrently, or in parallel, each of which may have its own End Process step. If a Workflow contains two parallel paths that each have a different End Process step, then, when the subprocess completes, it will return a comma-separated string containing the names of BOTH end process steps. In the parent Process Timeline, the returned string will then be set as the result of the Process Activity that started the subprocess.</p>
-        <h5>Timeline</h5>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities6.png" />
-        </p>
-        <p>Unlike the End Process step in the Workflow, the End Process Activity in a Process Timeline stops the running of the Process Timeline immediately. As such, the End Process Activity can only run once in a Process Timeline. So, if you have parallel activities running in a Process Timeline, all of the parallel steps must complete before the End Process Activity is reached.&#160; Process Timelines with multiple End Process activities will need to have conditions set on each End Process Activity to ensure that only one of the End Process Activities runs. When the subprocess completes, the name of the End Process Activity that was run will be returned to the parent process as the result of the Process Activity that started the subprocess.</p>
         <h3><a name="_Toc421536166"></a>Options Tab</h3>
         <p>This is one of the two tabs displayed for each results configuration settings. The Options Tab includes the following controls.</p>
         <p>

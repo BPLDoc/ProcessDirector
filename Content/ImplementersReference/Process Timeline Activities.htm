@@ -69,6 +69,15 @@
                 <p>This field contains an option to set the duration of the Activity. This property consists of a text box to enter a number of time increments, and a dropdown to specify the increments to measure. So, if you wanted an Activity to last for two weeks, you'd enter "2" in the text box, then select "Weeks" from the dropdown control.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <h2><a name="Results"></a>Results Tab <a href="#Results" class="anchor">#</a></h2>
+        <p>The <span class="UIElement">Results </span>tab appears for User and Wait activities, where the results are configured explicitly. Other activities, however, have results, even if they are not configured directly by the designer. For instance, the Parent activity's results are, by default, the result of the last child activity, though this can be configured to use a comma-separated list of all child activity results, if desired.</p>
+        <h4>Subprocesses and End Process Activities</h4>
+        <p>The Process activity type requires that a  Process Timeline definition be configured. The configured process will be started as a subprocess (child process) of the main (parent) process. You may copy objects from the parent process to the child process and vice versa.</p>
+        <p>When a subprocess contains an End Process activity, it will return the name of the End Process step as a result for the parent Timeline Activity.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities6.png" />
+        </p>
+        <p>The End Process Activity in a Process Timeline stops the running of the Process Timeline immediately. As such, the End Process Activity can only run once in a Process Timeline. So, if you have parallel activities running in a Process Timeline, all of the parallel steps must complete before the End Process Activity is reached.&#160; Process Timelines with multiple End Process activities will need to have conditions set on each End Process Activity to ensure that only one of the End Process Activities runs. When the subprocess completes, the name of the End Process Activity that was run will be returned to the parent process as the result of the Process Activity that started the subprocess.</p>
         <h3><a name="_Toc421536167"></a>Start When Tab <a href="#_Toc421536167" class="anchor">#</a></h3>
         <p>
             <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities7.png" />

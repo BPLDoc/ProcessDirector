@@ -1,25 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
-        <title>
-        </title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:concept term="Workflows" />
-            <MadCap:concept term="Implementation" />
-            <a name="_Toc421536128">
-            </a>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536128"></a>
             <MadCap:keyword term="Processes;Workflows;Workflow Steps" />Workflow Step Task Types</h1>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> The Workflow object is the legacy process model used in early versions of Process Director.  BP&#160;Logix recommends the use of the <a href="Process Timelines.htm">Process Timeline</a> object, and not the Workflow object. The Workflow object remains in the product for backwards compatibility, but doesn't receive any new functionality updates, other than required bug fixes. No new features have been added to this object since Process Director v4.5. <span class="Emphasis">All new process-based functionality is solely added to the Process Timeline.</span></p>
         <p>Users are assigned a task when they are added to a Workflow Step. A context sensitive web page or Form is displayed that is specific to the task type when the user selects the entry in their <span class="ProcessDirectorObject">Task List</span>, or the link in their email notification. Each task type defines a set of functions or actions that can be performed, as well as custom instructions for the participants. </p>
         <p class="PDNote">
             <img src="../Resources/Images/i2.png" alt="Note" /> If your process includes tasks for unauthenticated users, please refer to the documentation on <a href="Managing Users.htm#_Toc421536078">Anonymous Users</a> for special concerns that may apply to some settings.</p>
         <p>The Workflow engine embedded within Process Director supports the following tasks:</p>
-        <h2>
-            <a name="_Toc421536129">
-            </a>User Task <a href="#_Toc421536129" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536129"></a>User Task <a href="#_Toc421536129" class="anchor">#</a></h2>
         <p>The user task is any actionable item assigned to a user. If a user task has been assigned to a user, a Task will appear in their <span class="ProcessDirectorObject">Task List</span>. They must complete the task before it can be removed from the <span class="ProcessDirectorObject">Task List</span>. A user who is assigned a task will be automatically given permission to any object in the Workflow package so they may complete the task. Examples of this task can be an approval task or update task.</p>
         <p>When a Workflow Step is assigned to a user with an invalid UID or user ID, Process Director will immediately stop the process, and place the Workflow Step into an error state. This is also true for anonymous user assignments if the email address isn't a valid format (Process Director can't validate the email address itself, only the format).</p>
         <h3>Participants Tab</h3>
@@ -186,9 +182,7 @@
                 <p>This is an optional email template to use when sending email notifications to users in this step. If this isn't specified, the default email template will be used that is shipped with Process Director. For more information on email templates refer to the section named Using Email Templates in this guide. </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h3>
-            <a name="AdvancedOptions">
-            </a>Advanced Options Tab</h3>
+        <h3><a name="AdvancedOptions"></a>Advanced Options Tab</h3>
         <p>Depending on the task type for the step different options will be available. Some of these options will appear under the Advanced Options tab, others will appear under a tab that is unique to the task type.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/UserTask.png" />
@@ -484,56 +478,42 @@
                 <p>This field contains an optional color of this step. This can be used by the Workflow builder to document help visualize the Workflow process.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421536130">
-            </a>Decision Task <a href="#_Toc421536130" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536130"></a>Decision Task <a href="#_Toc421536130" class="anchor">#</a></h2>
         <p>The Decision Step is used to take a single branch coming out of this step. Assign conditions on the actual branches (use right-click Properties on the actual branches). Only a single branch can be taken. You can designate a single branch to be the default if (Default Branch property of the branch) the conditions of multiple branches could evaluate to true.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_25.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <h2>
-            <a name="_Toc421536131">
-            </a>Form Actions <a href="#_Toc421536131" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536131"></a>Form Actions <a href="#_Toc421536131" class="anchor">#</a></h2>
         <p>The Form Options task allows the Workflow package to control which Form will be the default when multiple forms are contained within the Workflow and allows new forms to be attached. </p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_26.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <h2>
-            <a name="_Toc421536132">
-            </a>Parallel Tasks <a href="#_Toc421536132" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536132"></a>Parallel Tasks <a href="#_Toc421536132" class="anchor">#</a></h2>
         <p>This allows you to run your steps in parallel. The Parallel Task Step will start all branches coming out of this step at once. You can optionally add conditions to any branches. The Wait step can be used to wait for all parallel branches to complete.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_27.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <h2>
-            <a name="_Toc421536133">
-            </a>Process <a href="#_Toc421536133" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536133"></a>Process <a href="#_Toc421536133" class="anchor">#</a></h2>
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_28.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <p>The Process step requires that a Workflow or Process Timeline definition be configured. The configured process will be started as a subprocess (child process) of the main (parent) Workflow. A subprocess can consist of a Workflow or a Process Timeline. You may copy objects from the parent process to the child process and vice versa.</p>
+        <h3>Subprocesses and End Process Steps</h3>
+        <p>The Process step requires that a Workflow definition be configured. The configured process will be started as a subprocess (child process) of the main (parent) Workflow. A subprocess can consist of a Workflow or a Process Timeline. You may copy objects from the parent process to the child process and vice versa.</p>
         <p>When a subprocess contains an End Process step, it will return the name of the End Process step as a result for the parent Process Activity. Process Timelines and Workflows use the End Process function differently, so the results can be slightly different depending on the type of subprocess that is called by the Process step.</p>
-        <h3>Workflow </h3>
+        <h4>Workflow </h4>
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_29.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
         <p>In the example above, the Workflow End Process step is named completed.&#160; If this Workflow runs as a subprocess, then, when the process reaches this step and completes, the name "Complete" will be passed to the parent Workflow as the result of the Process step that started the sub-process.</p>
         <p>Workflows do NOT automatically end when an End process step is reached. Workflows end when all of the required steps in a Workflow have completed. This enables you to have two Workflow paths running concurrently, or in parallel, each of which may have its own End Process step. If a Workflow contains two parallel paths that each have a different End Process step, then, when the subprocess completes, it will return a comma-separated string containing the names of BOTH end process steps. In the parent Workflow, the returned string will then be set as the result of the Process step that started the subprocess.</p>
-        <h3>Timeline</h3>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/Workflow2_30.jpg" style="visibility: visible;mso-wrap-style: square;" />
-        </p>
-        <p>Unlike the End Process step in the Workflow, the End Process Activity in a Process Timeline stops the running of the Process Timeline immediately. As such, the End process Activity can only run once in a Process Timeline. So, if you have parallel activities running in a Process Timeline, all of the parallel steps must complete before the End Process Activity is reached.  Process Timelines with multiple End Process activities will need to have conditions set on each End Process Activity to ensure that only one of the End Process Activities runs. When the subprocess completes, the name of the End Process Activity that was run will be returned to the parent process as the result of the Process step that started the subprocess.</p>
-        <h2>
-            <a name="_Toc421536134">
-            </a>Comment <a href="#_Toc421536134" class="anchor">#</a></h2>
+        <h4>Timeline</h4>
+        <p>For information on how Process Timelines work in this configuration, please refer to <a href="Process Timeline Activities.htm#Results">the Results Tab section</a> of the Process Timeline Activities topic.</p>
+        <h2><a name="_Toc421536134"></a>Comment <a href="#_Toc421536134" class="anchor">#</a></h2>
         <p>This task type is only for documenting the Workflow. It allows text to be entered that can be used to describe the Workflow process.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_31.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <h2>
-            <a name="_Toc421536135">
-            </a>Script <a href="#_Toc421536135" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536135"></a>Script <a href="#_Toc421536135" class="anchor">#</a></h2>
         <p>The Script task supports the ability to call custom script functions. For more information on the custom scripts refer to the Scripting section of this guide.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/ScriptStepAdvancedOptions.png" />
@@ -551,16 +531,12 @@
                 <p>This property enables a Script Step in a Workflow to specify a different Form to use a current form for the Activity. If this property isn't configured,  Process Director will revert to passing the script to the current form instance that is associated with the running process.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>
-            <a name="_Toc421536136">
-            </a>Meta Data <a href="#_Toc421536136" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536136"></a>Meta Data <a href="#_Toc421536136" class="anchor">#</a></h2>
         <p>The purpose of this task is to assign Meta Data to the Workflow objects. The Meta Data is extracted from the default form instance, and can be applied to all Workflow objects, or to objects in a specific group.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_33.jpg" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <h2>
-            <a name="_Toc421536137">
-            </a>Wait <a href="#_Toc421536137" class="anchor">#</a></h2>
+        <h2><a name="_Toc421536137"></a>Wait <a href="#_Toc421536137" class="anchor">#</a></h2>
         <p>This task will wait for certain conditions before completing (e.g. Parallel Tasks to complete, Sub-Workflows to complete, etc.). This can also be used for Workflow synchronization to synchronize events between different processes.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Workflow2_34.jpg" style="visibility: visible;mso-wrap-style: square;" />
@@ -571,9 +547,7 @@
             <li>If Wait for Sub Processes to Complete is checked, all child sub-processes (or a specific sub-process) must be complete.</li>
             <li>If Wait for event string to be posted is checked it will wait until that event is posted (from an external source or process).<br /><i>Or</i><br />The Stop Waiting When Any Branch Condition Is Met is checked, and the condition on any branch leaving the wait task is satisfied (note: if no conditions are specified on the branch, this will cause the wait task to complete immediately).<br /><i>Or</i><br />If the Set maximum date to wait from form field occurs before the wait event is satisfied the step will be canceled and it will automatically advance to the next step in the Workflow.<br /><i>Or</i><br />If the time the step has waited exceeded the result of the value specified in the Set maximum date to wait from system variable field, the step will be canceled and the Workflow will automatically advance to the next step.</li>
         </ul>
-        <h2>
-            <a name="Custom">
-            </a>Custom Task <a href="#Custom" class="anchor">#</a></h2>
+        <h2><a name="Custom"></a>Custom Task <a href="#Custom" class="anchor">#</a></h2>
         <p>Process Director Custom Tasks can be used as a Workflow Step. The different types of Custom Tasks appear on the left side of the Workflow definition screen, below the Built-In Tasks.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/WFCustomTasks1.png" />
