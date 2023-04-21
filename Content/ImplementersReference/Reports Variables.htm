@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Reports;Report Object;Report Designer;Advanced Reporting;Reporting Component;Report Writer;Advanced Reports;Create Report;Configure Report;Make Report;Report Configuration;Add Report" />Report Variables</h1>
+        <p>The <span class="UIElement">Variables </span>tab of the report definition enables you to specify variables to use in a Report. Once a variable has been added, it can be used to specify the data returned from the Report's data source, prompt users to supply the variable's value, or accept the variable value as a parameter from a Form control on a Form that uses the <span class="NamedControl">Show Report </span>control.</p>
+        <p>Please refer to the <a href="Reports.htm#Variables">Variables Tab section</a> of the reports topic to see the property values that can be configured for a Report variable.</p>
+        <h2>Variable Examples</h2>
+        <p>For the examples that follow, we'll use a report that returns information about object instances in the system. This report uses an internal User Database datasource to retrieve the data from the database. This datasource stores a list of Form and Process Timeline instances. Our goal with this example is to create a variable that can be used as a parameter that we can pass to the data source to return all items, only Form Instances, or only Process Timeline Instances. We'll demonstrate two different use cases for using the variable to return the data we want: prompting for the data in the Report when it runs, and passing the variable's value to the report from a Form control. These two use cases will each require a slightly different configuration for the Variable.</p>
+        <h4>Variable and Datasource</h4>
+        <p>The source data we'll use returns both Form and Timeline Instances. Our goal is to create a variable that will enable us to return all objects by default, then based on a value we enter, return only Forms or Process Timelines.</p>
+        <p>The first thing we need to do is create the variable. The detailed configuration for the variable depends on how we're going to get the variable's value from the user. We don't need to discuss that yet, but we do need to create the Variable and set its <span class="ControlName">Name </span>and <span class="ControlName">Data Type</span>. For this example, we'll create a string variable named <span class="ProcessDirectorObject">ObjectType</span>.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ReportVars.png" />
+        </p>
+        <p>In the sections below, we'll come back to configure the <span class="ControlName">Default Value</span>, <span class="ControlName">Prompt</span>, and <span class="ControlName">Prompt Text</span> values, depending on our use case. Form now, though, our variable has been created, so we need to update the Report definition, then navigate to the <span class="UIElement">Data Sources</span> tab.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ReportVars1.png" />
+        </p>
+        <p>In this case, our datasource returns data from a table named <span class="ProcessDirectorObject">Training_Report_Data</span>. By default, it returns all data in that table, so we'll need to modify this data source to use our variable. To do so, we'll need to check the property labeled, <span class="ControlName">Show Advanced SQL</span>, to edit the SQL statement that returns the data from the table.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ReportVars2.png" />
+        </p>
+        <p>As you can see, this SQL statement returns all of the table data. We'll need to add a WHERE clause to this SQL statement to return the specific data that matches the value provided by the user.</p>
+        <p><code>WHERE [Object Type] LIKE '%{$VAR:ObjectType}%'</code>
+        </p>
+        <p>The <span class="ControlName">Object Type </span>field for each record will contain one of two values: "Form Instance" or "Timeline Instance".</p>
+        <p>Using the <code>LIKE </code>operator in our where clause, as well as the <code>%</code> wildcard character, will enable us to enter a filter value such as "form" to return Form instances, or "time" to return Timeline instances. If no value is provided for the variable, this syntax will return all records by default.</p>
+        <p>The <code>{$VAR:ObjectType}</code> system variable uses the <code>$</code> encoding character to ensure that the value we pass to the database is SQL-safe, and identifies the <span class="ProcessDirectorObject">ObjectType </span>variable we created on the <span class="UIElement">Variables </span>tab as the source of the data to pass as a parameter to our SQL statement.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ReportVars3.png" />
+        </p>
+        <p>Once we've configured the <span class="UIElement">Data Sources</span> tab with the edited SQL statement, we'll need to update the Report definition again to save our changes.</p>
+        <p>Now, we'll need to return to the <span class="UIElement">Variables </span>tab to configure our <span class="NamedControl">ObjectType </span>variable properly for the use cases below.</p>
+        <h4>Prompting for the Variable</h4>
+        <p>A report can prompt the user to provide a variable's value when the report runs. To make this work, we'll need to configure the <span class="ProcessDirectorObject">ObjectType</span> variable to prompt the user.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ReportVars4.png" />
+        </p>
+        <p>For this use case, we need to check the <span class="ControlName">Prompt </span>property to require the report to prompt the user for the value, then add the<span class="ControlName"> Prompt Text</span> we want to use to provide instructions to the user. Once we've done so, we can update the report and run it.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ReportVars5.png" />
+            <br />
+        </p>
+        <p>When the Report first opens, no value has been supplied for the ObjectType variable, so the report returns all objects, and is 6 pages long.</p>
+        <p>At the top of the report, the prompt we configured is displayed, along with a text box that enables us to enter the value we want to pass as a parameter. A <span class="UIElement">Run </span>button will, once we enter the desired value, run the report to return the data we specify. If we enter the value "time" in the text box, then click the <span class="UIElement">Run </span>button, we'll get the specific data that matches our parameter.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ReportVars6.png" />
+        </p>
+        <p>As we can see, the report is now only three pages long, and returns only Timeline instances.</p>
+        <h4>Passing a Parameter from a Form</h4>
+        <p>If a report is displayed on a Form using the <span class="NamedControl">Show Report</span> control, we'll need to configure the Form to provide the prompt from a Form control, rather than from the report itself.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ReportVars7.png" />
+        </p>
+        <p>In this simple example, our form has two controls. An <span class="NamedControl">Input </span>control named <span class="ControlName">ObjectType</span>, and a <span class="NamedControl">ShowReport </span>control named <span class="ControlName">Report2</span>. The <span class="ControlName">ObjectType </span>field is configured as an <span class="ControlName">Event Field</span>, to prompt the report to reload any time we change the field's value. The <span class="ControlName">Report2 </span>field has the <span class="ControlName">Default Value </span>of its Field properties configured to show the <span class="ProcessDirectorObject">Datasource Report </span>definition from the <span class="UIElement">Content Item </span>selection.</p>
+        <p>Now, we have to set up the control properties for <span class="ControlName">Report2 </span>to pass the value of the <span class="ControlName">ObjectType </span>control to the Report.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ReportVars8.png" />
+        </p>
+        <p>In the <span class="ControlName">QueryString Parms </span>property of the Report2 control, we'll create a query string to pass to the report, using the syntax:</p>
+        <p><code>qs_Obj={:ObjectType}</code>
+        </p>
+        <p>This syntax creates a QueryString named <span class="ControlName">qs_Obj</span>, with a value set to the value of the <span class="ControlName">ObjectType </span>control, via a Form field System Variable. With the QueryString set, we need to configure the <span class="UIElement">Variables </span>tab of the report definition to accept it. So, we'll save and close the Form, open the Report, and edit its <span class="UIElement">Variables </span>tab appropriately.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ReportVars9.png" />
+        </p>
+        <p>In this use case, we need to set the <span class="ControlName">Default Value</span> of the variable to use the the <span class="ControlName">qs_Obj</span> QueryString value that the Form will pass to the report. Since a QueryString is a variable, we'll use the VAR system variable to supply the default value, i.e., <code>{VAR:qs_Obj}</code>. We can now save and close our report, and run the Form.</p>
+        <p>When the Form first opens, it'll display the report showing all of the objects, but if we enter "time" into the <span class="ControlName">ObjectType </span>field on the form, the Report will, once again, show us only Timeline instances.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/ReportVars10.png" />
+        </p>
+    </body>
+</html>

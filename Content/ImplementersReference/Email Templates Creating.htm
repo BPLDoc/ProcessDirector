@@ -65,7 +65,7 @@
         <p>Email templates can contain links that allow the user to complete their task without having to view a Form.</p>
         <p><code>{EMAIL_RESULT_LINKS, comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>, separator="<span class="CodeOption">&amp;lt;br&gt;</span>", icon=<span class="CodeOption">1</span>}</code>
         </p>
-        <p>This system tag will return the possible branches to take. It creates an HTML link with the URLs for all of the possible branches in a Workflow or results in a Process Timeline Activity assigned to the user.</p>
+        <p>This system tag will return the possible branches to take. It creates an HTML link with the URLs for all of the possible results in a Process Timeline Activity assigned to the user.</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
             <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
             <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
@@ -125,7 +125,7 @@
                         <p>true(default)/false</p>
                     </td>
                     <td class="TableStyle-Simple-BodyA-Column1-Row2">
-                        <p>Optional icons/images from the Workflow branches or Timeline Activity results appear next to each of the links. </p>
+                        <p>Optional icons/images from the Timeline Activity results appear next to each of the links. </p>
                         <p>NOTE: Process Timeline results don't have image icons.</p>
                     </td>
                 </tr>
@@ -135,13 +135,13 @@
         <p>Possible Branches to Take:</p>
         <p><code>{EMAIL_RESULT_LINKS, comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>, separator="<span class="CodeOption">&amp;lt;br&gt;</span>", icon=<span class="CodeOption">1</span>}</code><code><br /></code>
         </p>
-        <p>This system tag will return a comma separated list of all of the possible results from the current branch in a Workflow or a result in a Process Timeline Activity assigned to the user. This tag is useful for reply options the recipient must use. The next process may be scanning to match text in the sent Email.</p>
+        <p>This system tag will return a comma separated list of all of the possible results from  a result in a Process Timeline Activity assigned to the user. This tag is useful for reply options the recipient must use. The next process may be scanning to match text in the sent Email.</p>
         <h5>Example</h5>
         <p>Please enter one of these keywords in responding to this Email: </p>
         <p><code>{Email_Result_List}<br />{EmailCompleteLink, text=<span class="CodeOption">Approve</span>, comments=<span class="CodeOption">1</span>, confirm=<span class="CodeOption">1</span>, action=<span class="CodeOption">Approve</span>}</code>
         </p>
         <p>This System Tag is a link to a web page allowing their user to complete their task. </p>
-        <p>Each <span class="NamedControl">EmailCompleteLink </span>System Tag with its arguments corresponds to one branch in a Workflow or a result in a Process Timeline Activity. Remember to name this Email as the “Default Email template” in the Workflow or Process Timeline Activity. </p>
+        <p>Each <span class="NamedControl">EmailCompleteLink </span>System Tag with its arguments corresponds to one  result in a Process Timeline Activity. Remember to name this Email Template as the “Default Email template” in the  Process Timeline definition. </p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
             <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
             <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
@@ -201,7 +201,7 @@
                         <p>string</p>
                     </td>
                     <td class="TableStyle-Simple-BodyA-Column1-Row2">
-                        <p>The Workflow branch name or the Process Timeline Activity result (e.g.  Approve, Resubmit, Reject)</p>
+                        <p>The Process Timeline Activity result (e.g.  Approve, Resubmit, Reject)</p>
                     </td>
                 </tr>
             </tbody>
@@ -273,13 +273,15 @@
                         <p>string</p>
                     </td>
                     <td class="TableStyle-Simple-BodyA-Column1-Row2">
-                        <p>The Workflow branch name or the Process Timeline Activity result (e.g.  Approve, Resubmit, Reject)</p>
+                        <p>The Process Timeline Activity result (e.g.  Approve, Resubmit, Reject)</p>
                     </td>
                 </tr>
             </tbody>
         </table>
         <h2><a name="_Toc421536194"></a>URL Access to the Process Instance <a href="#_Toc421536194" class="anchor">#</a></h2>
         <h4>Workflow (wd.aspx)</h4>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" alt="Important" /> The Workflow object is the legacy process model used in early versions of Process Director. BP&#160;Logix recommends the use of the <a href="Process Timelines.htm">Process Timeline</a> object, and not the Workflow object. The Workflow object remains in the product for backwards compatibility, but doesn't receive any new functionality updates, other than required bug fixes. No new features have been added to this object since Process Director v4.5. <span class="Emphasis">All new process-based functionality is solely added to the Process Timeline.</span></p>
         <h5>Description</h5>
         <p>This URL can be used for in Workflow emails. It is used to construct a hotlink back to the originating Workflow.</p>
         <h5>Parameters</h5>
