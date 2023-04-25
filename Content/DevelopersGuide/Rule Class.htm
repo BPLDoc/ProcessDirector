@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
         <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
@@ -7,13 +7,9 @@
     <body>
         <h1>
             <MadCap:concept term="Developer" />
-            <MadCap:keyword term="Rule Class" />
-            <a name="RuleClass">
-            </a>Rule Class</h1>
+            <MadCap:keyword term="Rule Class" /><a name="RuleClass"></a>Rule Class</h1>
         <p>This object represents a Business Rule. </p>
-        <h2>
-            <a name="Properties">
-            </a>
+        <h2><a name="Properties"></a>
             <MadCap:keyword term="Properties" />Properties</h2>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width:100%;" class="TableStyle-Simple" cellspacing="0">
             <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
@@ -43,131 +39,87 @@
             </tbody>
         </table>
         <p>In addition to Properties, Business Rules use the SystemVariableContext object to specify the various context properties for the Business Rule. Please see the <a href="SystemVariableContext Class.htm">SystemVariableContext topic</a> for more information.</p>
-        <h2>
-            <a name="Methods">
-            </a>
+        <h2><a name="Methods"></a>
             <MadCap:keyword term="Methods" />Methods</h2>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="Evaluate">
-                    </a>
-                    <a href="#Evaluate">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Evaluate</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="Evaluate"></a><a href="#Evaluate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Evaluate</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="Evaluate" />This API will call the evaluation of the Business Rule, returning the appropriate data for that rule. This is an overloaded method with the following possible declarations:</p>
-                <p>
-                    <code>public string Evaluate()</code>
+                <p><code>public string Evaluate()</code>
                 </p>
-                <p>
-                    <code>public string Evaluate(IEnumerable&lt;NameValue&gt; <span class="CodeOption">Variables</span>)</code>
+                <p><code>public string Evaluate(IEnumerable&lt;NameValue&gt; <span class="CodeVariable">Variables</span>)</code>
                 </p>
-                <p>
-                    <code>public string Evaluate(SysVarClass.IContextReadonly <span class="CodeOption">Context</span>) </code>
+                <p><code>public string Evaluate(SysVarClass.IContextReadonly <span class="CodeVariable">Context</span>) </code>
                 </p>
-                <p>
-                    <code>public string Evaluate(SystemVariableContextReadonly <span class="CodeOption">Context</span>)</code>
+                <p><code>public string Evaluate(SystemVariableContextReadonly <span class="CodeVariable">Context</span>)</code>
                 </p>
-                <p>
-                    <code>public string Evaluate(SystemVariableContextReadonly <span class="CodeOption">Context</span>,<br />&#160;&#160;&#160;&#160;IEnumerable&lt;NameValue&gt; <span class="CodeOption">Variables</span>)</code>
+                <p><code>public string Evaluate(SystemVariableContextReadonly <span class="CodeVariable">Context</span>,<br />&#160;&#160;&#160;&#160;IEnumerable&lt;NameValue&gt; <span class="CodeVariable">Variables</span>)</code>
                 </p>
                 <h4>Parameters</h4>
-                <p>
-                    <b>Variables:</b> An IEnumerable object containing the variables to pass to the Business Rule.</p>
-                <p>
-                    <b>Context:</b> A SystemVariableContext object containing the context settings for the Business Rule.</p>
+                <p><b>Variables:</b> An IEnumerable object containing the variables to pass to the Business Rule.</p>
+                <p><b>Context:</b> A SystemVariableContext object containing the context settings for the Business Rule.</p>
                 <h4>Returns</h4>
-                <p>
-                    <b>String:</b> The result of the Business Rule's evaluation.</p>
+                <p><b>String:</b> The result of the Business Rule's evaluation.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oRule = Rule.GetRuleByID(bp, "RuleID");<br />string result = oRule.Evaluate();</p>
+                <p class="CodeBase">var <span class="CodeVariable">oRule </span>= Rule.GetRuleByID(bp, "<span class="CodeOption">RuleID</span>");<br />string <span class="CodeVariable">result </span>= <span class="CodeVariable">oRule</span>.Evaluate();</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="GetRuleByID">
-                    </a>
-                    <a href="#GetRuleByID">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>GetRuleByID (Static Method)</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="GetRuleByID"></a><a href="#GetRuleByID"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>GetRuleByID (Static Method)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="GetRuleByID" />This API will get a Business Rule object from the specified ID. </p>
                 <h4>Parameters</h4>
-                <p>
-                    <b>BP:</b> The bp environment.</p>
-                <p>
-                    <b>RuleID:</b> The string ID of the partition to retrieve.</p>
+                <p><b>BP:</b> The bp environment.</p>
+                <p><b>RuleID:</b> The string ID of the partition to retrieve.</p>
                 <h4>Returns</h4>
-                <p>
-                    <b>Rule Object:</b> Will return null if the Business Rule isn't found.</p>
+                <p><b>Rule Object:</b> Will return null if the Business Rule isn't found.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">
-                    <span class="ControlName">// Normally not used directly</span>
-                    <br />var oRule = Rule.GetRuleByID(bp, "<span class="CodeOption">RuleID</span>");</p>
+                <p class="CodeBase"><span class="CodeComment">// Normally not used directly</span>
+                    <br />var <span class="CodeVariable">oRule </span>= Rule.GetRuleByID(bp, "<span class="CodeOption">RuleID</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="GetRuleByName">
-                    </a>
-                    <a href="#GetRuleByName">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>GetRuleByName (Static Method)</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="GetRuleByName"></a><a href="#GetRuleByName"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>GetRuleByName (Static Method)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="GetRuleByName" />This API will return a Business Rule object from the specified Rule Name. This is an overloaded method with the following possible declarations:</p>
-                <p>
-                    <code>public static Rule GetRuleByName(bp BP, string <span class="CodeOption">PID</span>, string <span class="CodeOption">RuleName</span>)</code>
+                <p><code>public static Rule GetRuleByName(bp BP, string <span class="CodeVariable">PID</span>, string <span class="CodeVariable">RuleName</span>)</code>
                 </p>
-                <p>
-                    <code>public static Rule GetRuleByName(bp BP, string <span class="CodeOption">PID</span>, string <span class="CodeOption">RuleName</span>, string <span class="CodeOption">Group</span>)</code>
+                <p><code>public static Rule GetRuleByName(bp BP, string <span class="CodeVariable">PID</span>, string <span class="CodeVariable">RuleName</span>, string <span class="CodeVariable">Group</span>)</code>
                 </p>
                 <h4>Parameters</h4>
-                <p>
-                    <b>BP:</b> The bp environment.</p>
-                <p>
-                    <b>PID:</b> The ID of the partition on which the Business Rule is located.</p>
-                <p>
-                    <b>RuleName:</b>&#160;The string name of the Business Rule.</p>
-                <p>
-                    <b>Group:</b>&#160;The string Group name of the Business Rule.</p>
+                <p><b>BP:</b> The bp environment.</p>
+                <p><b>PID:</b> The ID of the partition on which the Business Rule is located.</p>
+                <p><b>RuleName:</b>&#160;The string name of the Business Rule.</p>
+                <p><b>Group:</b>&#160;The string Group name of the Business Rule.</p>
                 <h4>Returns</h4>
-                <p>
-                    <b>Rule:</b> Will return null if partition isn't found.</p>
+                <p><b>Rule:</b> Will return null if partition isn't found.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var oRule = Rule.GetRuleByName(bp, "<span class="CodeOption">PartitionID</span>", "<span class="CodeOption">RuleName</span>");</p>
+                <p class="CodeBase">var <span class="CodeVariable">oRule </span>= Rule.GetRuleByName(bp, "<span class="CodeOption">PartitionID</span>", "<span class="CodeOption">RuleName</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SetRuleGroup">
-                    </a>
-                    <a href="#SetRuleGroup">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>SetRuleGroup</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="SetRuleGroup"></a><a href="#SetRuleGroup"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>SetRuleGroup</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="SetRuleGroup" />This API will set a Group name for a Business Rule object. </p>
                 <h4>Parameters</h4>
-                <p>
-                    <b>Group:</b> The string Group name to set.</p>
+                <p><b>Group:</b> The string Group name to set.</p>
                 <h4>Returns</h4>
-                <p>
-                    <b>Rule Object:</b> Will return null if the Business Rule isn't found.</p>
+                <p><b>Rule Object:</b> Will return null if the Business Rule isn't found.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">
-                    <span class="ControlName">// Normally not used directly</span>
-                    <br />var oRule = Rule.GetRuleByID(bp, "RuleID");<br />oRule.SetRuleGroup("<span class="CodeOption">GroupName</span>");</p>
+                <p class="CodeBase"><span class="CodeComment">// Normally not used directly</span>
+                    <br />var <span class="CodeVariable">oRule </span>= Rule.GetRuleByID(bp, "<span class="CodeOption">RuleID</span>");<br /><span class="CodeVariable">oRule</span>.SetRuleGroup("<span class="CodeOption">GroupName</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

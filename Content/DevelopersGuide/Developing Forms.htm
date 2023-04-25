@@ -5,27 +5,21 @@
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Developer" />
-            <a name="_Toc421269946">
-            </a>Developing a Form in the .NET environment</h1>
+            <MadCap:concept term="Developer" /><a name="_Toc421269946"></a>Developing a Form in the .NET environment</h1>
         <p>
             <MadCap:keyword term="Developing an eForm in the .NET environment" />There are two ways to develop Forms within Process Director. The first uses the <a href="../ImplementersReference/Form Online Builder.htm">Online Form Designer</a> that's documented in the Implementers Reference. The other approach is to develop native ASP.NET forms, which is described here.</p>
         <p>To develop Forms inside Visual Studio, use the fully functional Visual Studio project installed with the product named bpVS.zip. Refer to the sample files eform_*.aspx.</p>
         <p>This section will provide you the basics of developing your Form in Visual Studio 2008. Developing in this environment requires the knowledge to program in ASP.NET. You'll be able to use ASP.NET controls as well as extended controls created by BP Logix.</p>
         <p>When creating a Form for Process Director, you are actually creating a custom control (.ascx). You create your Form just as if you were creating in the ..ASPX page. Below you'll see the basic structure of the Form.</p>
         <p class="CodeBase">&lt;%@ Control Language="C#" AutoEventWireup="true" Inherits="BPLogix.WorkflowDirector.SDK.bpFormASCX"%&gt;<br />&lt;script runat="server"&gt;<br /><span class="ControlName">// Add any events here that will be called as part of the Form <br></br>// life-cycle<br></br>// See the Custom Scripting / Form Scripts section for more information</span><br />&lt;/script&gt;</p>
-        <h2>
-            <a name="_Toc421269952">
-            </a>Include Files</h2>
+        <h2><a name="_Toc421269952"></a>Include Files</h2>
         <p>
             <MadCap:keyword term="Include Files" />This enables common functions to be called from other script files. To include a file in your Form use the following syntax:</p>
         <p class="CodeBase">&lt;!--#include file="~/Custom/MyScripts/script.ascx"--&gt;</p>
         <p> The .ascx must exist on the server file system and isn't controlled by Process Director (via the Content List). A good location for an include file is the /custom/ folder in the Process Director web site installation directory.</p>
-        <h2>
-            <a name="_Toc421269953">
-            </a>Using a .DLL file with Your Scripts</h2>
+        <h2><a name="_Toc421269953"></a>Using a .DLL file with Your Scripts</h2>
         <p>
-            <MadCap:keyword term="Using a .DLL file with Your Scripts" />This is an approach to call code from custom scripts. Developers can make a “normal” .NET .dll and place it into the \Program Files\BP Logix\Workflow Process Director\website\bin folder on the server. Then they can reference the classes in that .dll through any script code in the Process Director application. You can use the GAC, but it is easier to use the bin folder (assuming the code wouldn't be used “outside” of the Process Director environment). DLLs in this folder are accessible only to the Process Director application.</p>
+            <MadCap:keyword term="Using a .DLL file with Your Scripts" />This is an approach to call code from custom scripts. Developers can make a “normal” .NET .dll and place it into the \Program Files\BP Logix\Process Director\website\bin folder on the server. Then they can reference the classes in that .dll through any script code in the Process Director application. You can use the GAC, but it is easier to use the bin folder (assuming the code wouldn't be used “outside” of the Process Director environment). DLLs in this folder are accessible only to the Process Director application.</p>
         <p>In your module placing the public classes into a namespace, such as:</p>
         <p class="CodeBase">namespace companyname.custom<br />{<br />&#160;&#160;&#160;&#160;public class MyClass()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// … your methods, properties, etc</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;public static void MyFunc()<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}<br />}</p>
         <p>Then inside a form script call this function using:</p>

@@ -1,82 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head>
-        <title>
-        </title>
+    <head><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Developer" />
-            <a name="_Toc421270111">
-            </a>Custom Tasks</h1>
+            <MadCap:concept term="Developer" /><a name="_Toc421270111"></a>Custom Tasks</h1>
         <p>
-            <MadCap:keyword term="CUSTOM TASKS">&#160;</MadCap:keyword>Custom Tasks can be written in Process Director and used by Forms and Workflow definitions. A Custom Task enables common business logic to be packaged in a reusable way and made available to users that are building Forms and Workflows. You should be familiar with writing custom scripts for Forms and Workflows before writing a Custom Task. There are two types of Custom Tasks; Form Custom Tasks and Workflow Custom Tasks. </p>
-        <h2>
-            <a name="_Toc421270112">
-            </a>What Custom Tasks Can Be Used For</h2>
+            <MadCap:keyword term="CUSTOM TASKS">&#160;</MadCap:keyword>Custom Tasks can be written in Process Director and used by Forms and Process Timeline definitions. A Custom Task enables common business logic to be packaged in a reusable way and made available to users that are building Forms and Process Timelines. You should be familiar with writing custom scripts for Forms and Process Timelines before writing a Custom Task. There are two types of Custom Tasks; Form Custom Tasks and Process Custom Tasks. </p>
+        <h2><a name="_Toc421270112"></a>What Custom Tasks Can Be Used For</h2>
         <p>
-            <MadCap:keyword term="What Custom Tasks Can Be Used For">&#160;</MadCap:keyword>Custom Tasks can provide various types of business functions that are unique to your environment, or common functions that can be used across multiple Forms and Workflow definitions. For sample Custom Tasks contact BP Logix.</p>
-        <h4>Form Custom Tasks</h4>
-        <p>The Form Custom Tasks can be used for various business logic. It can assist in the pre-population of form data from external sources (e.g. database). A Custom Task can be triggered when an event occurs (e.g. change to a dropdown), and use the information in the form fields to make additional external queries, mapping the returned data to the main Form. The Custom Task can access and modify any of the fields on the main Form it is mapped to. </p>
-        <h4>Workflow Custom Tasks</h4>
-        <p>The Workflow Custom Tasks can be used to perform functions like making calls to external systems or reading/writing information in an external database. Workflow Custom Tasks can also be used to encapsulate logic for sending emails to external users, custom PDF creation logic, exporting a document to an external source (e.g. file system), or dynamically assigning users to Workflow Steps when the Workflow is running.</p>
-        <h2>
-            <a name="_Toc421270113">
-            </a>How Custom Tasks Work</h2>
+            <MadCap:keyword term="What Custom Tasks Can Be Used For">&#160;</MadCap:keyword>Custom Tasks can provide various types of business functions that are unique to your environment, or common functions that can be used across multiple Form and Process Timeline definitions. For sample Custom Tasks contact BP Logix.</p>
+        <h2><a name="_Toc421270116"></a>Form Custom Tasks</h2>
         <p>
-            <MadCap:keyword term="How Custom Tasks Work">&#160;</MadCap:keyword>Custom Tasks in Process Director provide a way to package reusable functions for Form builders and Workflow implementers. They consist of a Form and a script file. This enables your business logic to be placed in the script, and the Form is used to collect configuration information for the script, and optionally can display an interface (Form Custom Tasks only). a Form Custom Task can be mapped to different events (e.g. form display, button, etc.) on a standard Form and are run when the event occurs. Workflow Custom Tasks automatically appear in the Workflow Builder toolbar as a new task type that can be dragged and dropped on the Workflow palette.</p>
-        <h3>
-            <a name="_Toc421270114">
-            </a>Configuration vs. Running</h3>
+            <MadCap:keyword term="eForm Custom Tasks">&#160;</MadCap:keyword>A Form Custom Task provides users that are building Forms the ability to execute custom business logic when the end-user is filling out the Form. A Custom Task is mapped to an event on the Form (e.g., a button). When the end-user triggers this event, the Form Custom Task script will be executed. A Form Custom Task can provide a mapping of external fields (e.g. database) to the fields on a Form.</p>
+        <p>When the script for a Form Custom Task is run, it can optionally display an interface to the user. The Custom Task script can query and/or set any of the form data on the container Form.</p>
+        <h2><a name="_Toc421270115"></a>Process Custom Tasks</h2>
+        <p>
+            <MadCap:keyword term="Workflow Custom Tasks">&#160;</MadCap:keyword>A Process Custom Task provides users that are building processes the ability to use custom business logic in the Process Timeline definition. The Custom Tasks will display a Form interface to the user building the Process Timeline that enables them to configure the data required for the Custom Task. This configuration form is available from the <span class="UIElement">Custom Task</span> tab of a Process Timeline activity of the Custom Task <span class="ControlName">Activity Type</span>. This configuration data will be available to the Custom Task script when the Timeline Activity is run. The Custom Task script will run in a similar environment to a Timeline script and has access to all Timeline objects and their data.</p>
+        <p>A Process Custom Task can't display an interface to the end-user participating in the process. The only interface displayed is during the configuration of the Custom Task in the Process Timeline definition.</p>
+        <h2><a name="_Toc421270113"></a>How Custom Tasks Work</h2>
+        <p>
+            <MadCap:keyword term="How Custom Tasks Work">&#160;</MadCap:keyword>Custom Tasks in Process Director provide a way to package reusable functions for Form builders and process implementers. They consist of a Form and a script file. This enables your business logic to be placed in the script, and the Form is used to collect configuration information for the script, and optionally can display an interface (Form Custom Tasks only). a Form Custom Task can be mapped to different events (e.g. form display, button, etc.) on a standard Form and are run when the event occurs. </p>
+        <h3><a name="_Toc421270114"></a>Configuration vs. Running</h3>
         <p>
             <MadCap:keyword term="Configuration vs. Running">&#160;</MadCap:keyword>The Custom Tasks are executed in the following modes:</p>
         <p>ConfigurationThis is when the user is configuring the data needed for the Custom Task to run. During the configuration, it is common to display a list of the form fields in the container Form. This enables fields to be mapped to external sources by the builder of a Form, without requiring them to have any special naming convention for their form fields.</p>
-        <p>Run-time (run)The Custom Task is run when a mapped Form event is triggered or when a Workflow Step. When a Custom Task is run, it has access to the configuration data and the container Form.</p>
+        <p>Run-time (run)The Custom Task is run when a mapped Form event is triggered or when aCustom Task Timeline Activity has been invoked. When a Custom Task is run, it has access to the configuration data and the container Form.</p>
         <h5>Configuration Data</h5>
-        <p>When a Custom Task is configured, a form data instance is created that contains the configuration data entered. This form instance is stored “under” the Form Definition or Workflow Definition, depending on the type of Custom Task. When the Custom Task is run (in a Form or Workflow) it has access to all this configuration data in this form instance. </p>
+        <p>When a Custom Task is configured, a form data instance is created that contains the configuration data entered. This form instance is stored “under” the Form definition or Process Timeline definition, depending on the type of Custom Task. When the Custom Task is run (whether in a Form or Process Timeline), it has access to all this configuration data in this form instance. </p>
         <h5>Container Form</h5>
-        <p>A Custom Task can have a “container Form”. This is the standard Form that is displayed to the user. a Form Custom Task is mapped to an event on the container Form. A container Form is optional for a Workflow Custom Task, but can be specified as part of the step configuration in the Workflow builder. The Form and script part of a Custom Tasks has access to the container form data.</p>
-        <h3>
-            <a name="_Toc421270115">
-            </a>Workflow Custom Tasks</h3>
-        <p>
-            <MadCap:keyword term="Workflow Custom Tasks">&#160;</MadCap:keyword>A Workflow Custom Task provides users that are building Workflows the ability to use custom business logic in the Workflow definition. A Workflow Custom Task can be dragged to the Workflow palette just as built-in Workflow task can. The Custom Tasks will display a Form interface to the user building the Workflow that enables them to configure the data required for the Custom Task. This configuration data will be available to the Custom Task script when the Workflow Step is run. The Custom Task script will run in a similar environment to a Workflow script and has access to all Workflow objects and their data.</p>
-        <p>A Workflow Custom Task can't display an interface to the end-user participating in the Workflow process. The only interface displayed is during the configuration of the Custom Task in the Workflow builder.</p>
-        <h3>
-            <a name="_Toc421270116">
-            </a>Form Custom Tasks</h3>
-        <p>
-            <MadCap:keyword term="eForm Custom Tasks">&#160;</MadCap:keyword>a Form Custom Task provides users that are building Forms the ability to execute custom business logic when the end-user is filling out the form. A Custom Task is mapped to an event on the Form (e.g. button). When the end-user triggers this event, the Form Custom Task script will be executed. A Custom Form Task can provide a mapping of external fields (e.g. database) to the fields on a Form.</p>
-        <p>When the script for a Form Custom Task is run, it can optionally display an interface to the user. The Custom Task script can query and/or set any of the form data on the container Form.</p>
-        <h2>
-            <a name="_Toc421270117">
-            </a>Creating a Custom Task</h2>
+        <p>A Custom Task can have a “container Form”. This is the standard Form that is displayed to the user. a Form Custom Task is mapped to an event on the container Form. A container Form is optional for a Process Custom Task, but can be specified as part of the step configuration on  the<span class="UIElement"> Custom Task</span> tab of the Timeline Activity's definition. The Form and script part of a Custom Tasks has access to the container form data.</p>
+        <h2><a name="_Toc421270117"></a>Creating a Custom Task</h2>
         <p>
             <MadCap:keyword term="Creating a Custom Task;Building the eForm and Script">&#160;</MadCap:keyword>A Custom Task requires a Form created in the .NET environment similar to how a Form is created. To create a Form for a Custom Task, use the Create New menu item in the Content List and select Form Definition in the dropdown. Then select from the template dropdown “Use Empty .ASCX form”.&#160; The Form must be created using the special options in the Form Definition page that is displayed. A Custom Task can be created as a Form-only Custom Task, a process-only Custom Task, or a Custom Task that can be used by both Forms and processes. This Form will also display any Custom Task configuration.</p>
         <p>These events are called for forms and while configuring a Custom Task:</p>
-        <p class="CodeBase">public override void BP_Init()<br />public override void BP_Event(bp.EventType pEventType, string pEventName)<br />public override void BP_Validation()<br />public override void BP_Display()<br />public override void BP_Completed()</p>
+        <p class="CodeBase">public override void BP_Init()<br />public override void BP_Event(bp.EventType <span class="CodeVariable">pEventType</span>, string <span class="CodeVariable">pEventName</span>)<br />public override void BP_Validation()<br />public override void BP_Display()<br />public override void BP_Completed()</p>
         <p>When a Custom Task is mapped to a Form, the following Custom Task function will be called:</p>
-        <p class="CodeBase">protected override bool CT_RunTask(bp.FormCTMappedTo pMappedTo, string pEventName) </p>
+        <p class="CodeBase">protected override bool CT_RunTask(bp.FormCTMappedTo <span class="CodeVariable">pMappedTo</span>, string <span class="CodeVariable">pEventName</span>) </p>
         <p>This event is called to "run" a Custom Task. It should return "true" to show the Custom Task GUI, or false to continue processing the form.</p>
-        <p class="CodeBase">public override bool CT_RunTask(bp.FormCTMappedTo pMappedTo, string pEventName)</p>
+        <p class="CodeBase">public override bool CT_RunTask(bp.FormCTMappedTo <span class="CodeVariable">pMappedTo</span>, string <span class="CodeVariable">pEventName</span>)</p>
         <p>This function should return "true" to show the Custom Task GUI.</p>
-        <p>This is created like any other Custom Task (Form, Workflow), and when the rule is evaluated that uses the CT, this event will be called:</p>
+        <p>This is created like any other Custom Task (Form, Process), and when the rule is evaluated that uses the CT, this event will be called:</p>
         <p class="CodeBase">public override DataItem CT_RunRuleTask()</p>
         <p>This is so the Custom Task can return a string, a list of UIDs, etc.</p>
         <p>These events are called for Custom Tasks while running a GUI:</p>
-        <p class="CodeBase">public override void CT_Init()<br />public override void CT_Event(bp.EventType pEventType, string pEventName)<br />public override bool CT_Validation()<br />public override void CT_Display()<br />public override void CT_Completed()</p>
+        <p class="CodeBase">public override void CT_Init()<br />public override void CT_Event(bp.EventType <span class="CodeVariable">pEventType</span>, string <span class="CodeVariable">pEventName</span>)<br />public override bool CT_Validation()<br />public override void CT_Display()<br />public override void CT_Completed()</p>
         <p>Use this.FormInfo to access the current Form info. For example:</p>
-        <p class="CodeBase">this.FormInfo.FormControl("SomeTextControl").Text = "This is new text";</p>
+        <p class="CodeBase">this.FormInfo.FormControl("<span class="ProcessDirectorObject">SomeTextControl</span>").Text = "<span class="CodeOption">This is new text</span>";</p>
         <p>While in a Custom Task run or GUI, use this.ContainerFormInfo to access the containers form info (get/set form fields, etc). For example:</p>
-        <p class="CodeBase">this.ContainerFormInfo.FormControl("SomeContainerControl").Required = true;</p>
+        <p class="CodeBase">this.ContainerFormInfo.FormControl("<span class="ProcessDirectorObject">SomeContainerControl</span>").Required = <span class="CodeOption">true</span>;</p>
         <p>Use this.FormInfo.AddInfoMessage and this.FormInfo.AddErrorMessage to add error or info messages to forms (e.g., for validation). For example:</p>
-        <p class="CodeBase">this.FormInfo.AddInfoMessage(new FormMessageString("This info message<br />&#160;&#160;&#160;&#160;will display on the form!"));</p>
+        <p class="CodeBase">this.FormInfo.AddInfoMessage(new FormMessageString("<span class="CodeOption">This info message<br></br>&#160;&#160;&#160;&#160;will display on the form!</span>"));</p>
         <p>A Custom Task may have 2 sections, FormControlCustomTaskConfig and FormControlCustomTaskRun. For example:</p>
-        <p class="CodeBase">&lt;bpx:FormControlCustomTaskConfig runat="server"&gt;<br /> &#160;&#160;&#160;<span class="ControlName">&lt;!--This section includes stuff that is shown when a Custom Task is <br /> &#160;&#160;&#160;being configured--&gt;</span><br />&#160;&#160;&#160;&#160;&lt;asp:TextBox ID="config_text1" runat="server"&gt;&lt;/asp:TextBox&gt;<br />&lt;/bpx:FormControlCustomTaskConfig&gt;<br /><br />&lt;bpx:FormControlCustomTaskRun runat="server"&gt;<br />&#160;&#160;&#160; <span class="ControlName">&lt;!--This section includes stuff that is shown when a Custom Task is<br />&#160;&#160;&#160; run inside a Form (if CT_RunTask returns true).--&gt;</span><br />&#160;&#160;&#160;&#160;&lt;asp:TextBox ID="run_text1" runat="server"&gt;&lt;/asp:TextBox&gt;<br />&lt;/bpx:FormControlCustomTaskRun&gt;</p>
-        <h2>
-            <a name="_Toc421270118">
-            </a>Web Service Custom Tasks</h2>
+        <p class="CodeBase">&lt;bpx:FormControlCustomTaskConfig runat="server"&gt;<br /> &#160;&#160;&#160;<span class="CodeComment">&lt;!--This section includes stuff that is shown when a Custom Task is <br /> &#160;&#160;&#160;being configured--&gt;</span><br />&#160;&#160;&#160;&#160;&lt;asp:TextBox ID="<span class="CodeOption">config_text1</span>" runat="server"&gt;&lt;/asp:TextBox&gt;<br />&lt;/bpx:FormControlCustomTaskConfig&gt;<br /><br />&lt;bpx:FormControlCustomTaskRun runat="server"&gt;<br />&#160;&#160;&#160; <span class="ControlName"><span class="CodeComment">&lt;!--This section includes stuff that is shown when a Custom Task is<br />&#160;&#160;&#160; run inside a Form (if CT_RunTask returns true).--&gt;</span></span><br />&#160;&#160;&#160;&#160;&lt;asp:TextBox ID="<span class="CodeOption">run_text1</span>" runat="server"&gt;&lt;/asp:TextBox&gt;<br />&lt;/bpx:FormControlCustomTaskRun&gt;</p>
+        <h2><a name="_Toc421270118"></a>Web Service Custom Tasks</h2>
         <p>
             <MadCap:keyword term="Web Service Custom Tasks">&#160;</MadCap:keyword>Some of the Custom Tasks can utilize Web Services (e.g. calling a remote Web Service to look up employee information from an employee ID stored on a form). Only certain types of Web Services are directly supported. These Web Services must use primitive data types such as numbers and strings as parameters. Other, more complex Web Services, can be supported by "wrapping" them in a proxy Web Service. This proxy Web Service calls the actual web service, but exposes it using primitive data types that the Custom Tasks support. </p>
         <p>An example of a Web Service wrapper is installed in the "C:\Program Files\BP Logix\Process Director" folder as bpProxy.zip. This file contains a complete Visual Studio project creating both a .ASMX Web Service, and a .DLL that has the web reference to the complex Web Service. This Web Service wrapper can be deployed on any IIS server. It can also easily be deployed in the Process Director web site by copying the .DLL to the "C:\Program Files\BP Logix\Process Director\website\bin" folder, and the .ASMX to the "C:\Program Files\BP Logix\Process Director\website\custom\services" folder. After they are deployed, then can be reference like any other web service.</p>

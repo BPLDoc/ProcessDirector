@@ -43,8 +43,8 @@
                 <h4>Returns</h4>
                 <p><b>int:</b> An integer representing the value of the difference between the two dates in the specified units.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// Should return the value '4'</span>
-                    <br />int days = bp.DateDiff(bp, <span class="CodeOption">DateTime.Parse("2022-03-05")</span>, <br />&#160;&#160;&#160;&#160;<span class="CodeOption">DateTime.Parse("2022-03-09")</span>,<br />&#160;&#160;&#160;&#160;<span class="CodeOption">BPLogix.WorkflowDirector.SDK.FormControls.DateDiffType.Days)</span>; <br /></p>
+                <p class="CodeBase"><span class="CodeComment">// Should return the value '4'</span>
+                    <br />int <span class="CodeVariable">days </span>= bp.DateDiff(bp, DateTime.Parse("<span class="CodeOption">2022-03-05</span>"), <br />&#160;&#160;&#160;&#160;DateTime.Parse("<span class="CodeOption">2022-03-09</span>"),<br />&#160;&#160;&#160;&#160;BPLogix.WorkflowDirector.SDK.FormControls.DateDiffType.Days); <br /></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -60,8 +60,8 @@
                 <h4>Returns</h4>
                 <p><span class="Emphasis">boolean:</span> This property returns true if the Process Director database has been successfully opened.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// Called after database initialized</span>
-                    <br />public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Before we make SDK calls that access the database, <br />&#160;&#160;&#160;&#160;// ensure DB has been opened</span><br />&#160;&#160;&#160;&#160;if (bp.DBOpenComplete)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// Routine to perform if true</span><br />&#160;&#160;&#160;&#160;}<br />}</p>
+                <p class="CodeBase"><span class="CodeComment">// Called after database initialized</span>
+                    <br />public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Before we make SDK calls that access the database, <br />&#160;&#160;&#160;&#160;// ensure DB has been opened</span><br />&#160;&#160;&#160;&#160;if (bp.DBOpenComplete)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// Routine to perform if true</span><br />&#160;&#160;&#160;&#160;}<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -76,7 +76,7 @@
                 <h4>Returns</h4>
                 <p><b>string:</b> The object formatted in a currency (depending on locale)</p>
                 <h4>Example</h4>
-                <p class="CodeBase">string TempString;<br /><br /><span class="ControlName">// Returns $100.00 (assuming USA locale)</span><br />TempString = bp.FormatCurr("<span class="CodeOption">100</span>");<br /><span class="ControlName">// Returns $10.10 (assuming USA locale)</span><br />TempString = bp.FormatCurr(<span class="CodeOption">10.1</span>);<br /><span class="ControlName">// Returns ""</span><br />TempString = bp.FormatCurr("<span class="CodeOption">Bad Value</span>");</p>
+                <p class="CodeBase">string <span class="CodeVariable">TempString</span>;<br /><br /><span class="CodeComment">// Returns $100.00 (assuming USA locale)</span><br /><span class="CodeVariable">TempString </span>= bp.FormatCurr("<span class="CodeOption">100</span>");<br /><span class="CodeComment">// Returns $10.10 (assuming USA locale)</span><br /><span class="CodeVariable">TempString </span>= bp.FormatCurr(<span class="CodeOption">10.1</span>);<br /><span class="CodeComment">// Returns ""</span><br /><span class="CodeVariable">TempString </span>= bp.FormatCurr("<span class="CodeOption">Bad Value</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -94,8 +94,8 @@
                 <h4>Returns</h4>
                 <p><b>list&lt;bpExcelRow&gt;:</b> List of excel rows, or null if any error</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// This will import an Excel file </span>
-                    <br />var Rows = bp.GetExcelRows( "<span class="CodeOption">C:\\db_import.xlsx</span>", <span class="ControlName">// The file path to import</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">null</span>,&#160;&#160;<span class="ControlName">// null since we are using a file path</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">0</span>,&#160; <span class="ControlName">// The first sheet in the workbook</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">null</span>);&#160;&#160;<span class="ControlName">// Null since we are using SheetNumber <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// instead of SheetName</span><br />&#160;&#160;&#160;&#160;if (Rows != null)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;foreach (var Row in Rows)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;foreach (var Col in Row.Columns)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0("<span class="CodeOption">Column value: </span>" + Col.Value + "<span class="CodeOption">, Column type: </span>" <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;+ Col.Type);<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}</p>
+                <p class="CodeBase"><span class="CodeComment">// This will import an Excel file </span>
+                    <br />var <span class="CodeVariable">Rows </span>= bp.GetExcelRows( "<span class="CodeOption">C:\\db_import.xlsx</span>", <span class="CodeComment">// The file path to import</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">null</span>,&#160;&#160;<span class="CodeComment">// null since we are using a file path</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">0</span>,&#160; <span class="CodeComment">// The first sheet in the workbook</span><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">null</span>);&#160;&#160;<span class="CodeComment">// Null since we are using SheetNumber <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;// instead of SheetName</span><br />&#160;&#160;&#160;&#160;if (<span class="CodeVariable">Rows </span>!= null)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;foreach (var <span class="CodeVariable">Row </span>in <span class="CodeVariable">Rows</span>)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;foreach (var <span class="CodeVariable">Col </span>in <span class="CodeVariable">Row</span>.Columns)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0("<span class="CodeOption">Column value: </span>" + <span class="CodeVariable">Col</span>.Value + "<span class="CodeOption">, Column type: </span>" <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;+ <span class="CodeVariable">Col</span>.Type);<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -120,7 +120,7 @@
                 <h4>Returns</h4>
                 <p><b>string:</b> The string of a unique temporary file name and path.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var TempFileName = bp.GetTempFilePath("<span class="CodeOption">begin</span>","<span class="CodeOption">end</span>");</p>
+                <p class="CodeBase">var <span class="CodeVariable">TempFileName </span>= bp.GetTempFilePath("<span class="CodeOption">begin</span>","<span class="CodeOption">end</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -148,8 +148,8 @@
                 <h4>Returns</h4>
                 <p><b>string:</b> Appropriate encoded or decoded value</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// Returns "You &amp;amp; me"</span>
-                    <br />string test1 = bp.HTMLEncode("<span class="CodeOption">You &amp; me</span>");<br /><span class="ControlName">// Returns "You &amp; me"</span><br />string test2 = bp.HTMLDecode("<span class="CodeOption">You &amp;amp; me</span>");</p>
+                <p class="CodeBase"><span class="CodeComment">// Returns "You &amp;amp; me"</span>
+                    <br />string <span class="CodeVariable">test1 </span>= bp.HTMLEncode("<span class="CodeOption">You &amp; me</span>");<br /><span class="CodeComment">// Returns "You &amp; me"</span><br />string <span class="CodeVariable">test2 </span>= bp.HTMLDecode("<span class="CodeOption">You &amp;amp; me</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -164,8 +164,8 @@
                 <h4>Returns</h4>
                 <p style="font-weight: normal;"><b>string: </b>The HTML content of the web page.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// This will load the web page from google.com into a string variable</span>
-                    <br />string Result = bp.HTTPRequest("<span class="CodeOption">http://google.com</span>");</p>
+                <p class="CodeBase"><span class="CodeComment">// This will load the web page from google.com into a string variable</span>
+                    <br />string <span class="CodeVariable">Result </span>= bp.HTTPRequest("<span class="CodeOption">http://google.com</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -180,8 +180,8 @@
                 <h4>Returns</h4>
                 <p><b>byte array: </b>URL contents</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// This will load the web page from google.com into a byte array variable</span>
-                    <br />var Result = bp.HTTPRequestBytes("<span class="CodeOption">http://google.com</span>");</p>
+                <p class="CodeBase"><span class="CodeComment">// This will load the web page from google.com into a byte array variable</span>
+                    <br />var <span class="CodeVariable">Result </span>= bp.HTTPRequestBytes("<span class="CodeOption">http://google.com</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -196,7 +196,7 @@
                 <h4>Returns</h4>
                 <p>N/A</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// This will POST a certain web page</span>
+                <p class="CodeBase"><span class="CodeComment">// This will POST a certain web page</span>
                     <br />bp.HTTPPoke("<span class="CodeOption">http://myserver.com/pagetopost.aspx</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -213,7 +213,7 @@
                 <h4>Returns</h4>
                 <p><b>string:</b> String variable containing response from page – typically in XML.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// This will POST a request and get back the response</span>
+                <p class="CodeBase"><span class="CodeComment">// This will POST a request and get back the response</span>
                     <br />bp.HTTPRest("<span class="CodeOption">http://myserver.com/pagetopost.aspx</span>","<span class="CodeOption">&lt;API&gt;1&lt;/API&gt;</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -248,8 +248,8 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// This will import an Excel file into the database</span>
-                    <br />bp.ImportExcelDatabase(bp, <br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">dbConnection</span>, &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// The database to insert the Excel data</span><br />&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">C:\\db_import.xlsx</span>", <span class="ControlName">// The file path to import</span><br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">null</span>, &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// null since we are using a file path</span><br />&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">USER_</span>", &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// All tables created will have USER_ prefix</span><br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">true</span>, &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// drop existing tables first</span><br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">true</span>, &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// create all tables in database</span><br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">false</span>); &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// no need to delete rows – <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//&#160;entire tables were dropped</span></p>
+                <p class="CodeBase"><span class="CodeComment">// This will import an Excel file into the database</span>
+                    <br />bp.ImportExcelDatabase(bp, <br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">dbConnection</span>, &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// The database to insert the Excel data</span><br />&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">C:\\db_import.xlsx</span>", <span class="CodeComment">// The file path to import</span><br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">null</span>, &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// null since we are using a file path</span><br />&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">USER_</span>", &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// All tables created will have USER_ prefix</span><br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">true</span>, &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// drop existing tables first</span><br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">true</span>, &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// create all tables in database</span><br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">false</span>); &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// no need to delete rows – <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;//&#160;entire tables were dropped</span></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -264,8 +264,8 @@
                 <h4>Returns</h4>
                 <p>Appropriate data type depending on method.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// returns 10</span>
-                    <br />int TempInt = bp.Int("<span class="CodeOption">10</span>");<br /><span class="ControlName">// returns DateTime object</span><br />DateTime TempDate = bp.bpDateTime("<span class="CodeOption">1/1/2010</span>");</p>
+                <p class="CodeBase"><span class="CodeComment">// returns 10</span>
+                    <br />int <span class="CodeVariable">TempInt </span>= bp.Int("<span class="CodeOption">10</span>");<br /><span class="CodeComment">// returns DateTime object</span><br />DateTime <span class="CodeVariable">TempDate </span>= bp.bpDateTime("<span class="CodeOption">1/1/2010</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -281,11 +281,13 @@
                     <li>ImportProfilesXML: reads the XML file into a profile definition.</li>
                 </ul>
                 <p>The method declarations are as follows:</p>
-                <p style="text-align: left;"><code>public bool ImportXML(string <span class="CodeOption">XMLPath</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">XMLDID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;byte[] <span class="CodeOption">XMLData</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">PID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">ParentFolderID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;out List&lt;string&gt; <span class="CodeOption">RetMsg</span>)</code>
+                <p style="text-align: left;"><code>public bool ImportXML(string <span class="CodeVariable">XMLPath</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">XMLDID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;byte[] <span class="CodeVariable">XMLData</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">PID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">ParentFolderID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;out List&lt;string&gt; <span class="CodeVariable">RetMsg</span>)</code>
                 </p>
-                <p style="text-align: left;"><code>public bool ImportGlobalKViewXML(string <span class="CodeOption">XMLPath</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">XMLDID</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;byte[] <span class="CodeOption">XMLData</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;out List&lt;string&gt; <span class="CodeOption">RetMsg</span>)</code>
+                <p style="text-align: left;">&#160;</p>
+                <p style="text-align: left;"><code>public bool ImportGlobalKViewXML(string <span class="CodeVariable">XMLPath</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">XMLDID</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;byte[] <span class="CodeVariable">XMLData</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;out List&lt;string&gt; <span class="CodeVariable">RetMsg</span>)</code>
                 </p>
-                <p style="text-align: left;"><code>public bool ImportProfilesXML(string <span class="CodeOption">XMLPath</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">XMLDID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;byte[] <span class="CodeOption">XMLData</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;out List&lt;string&gt; <span class="CodeOption">RetMsg</span>)</code><![CDATA[       ]]></p>
+                <p style="text-align: left;">&#160;</p>
+                <p style="text-align: left;"><code>public bool ImportProfilesXML(string <span class="CodeVariable">XMLPath</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">XMLDID</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;byte[] <span class="CodeVariable">XMLData</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;out List&lt;string&gt; <span class="CodeVariable">RetMsg</span>)</code><![CDATA[       ]]></p>
                 <h4>Parameters</h4>
                 <p><b>string XMLPath:</b> The file path of the XML file.</p>
                 <p><b>string XMLDID:</b> The document ID of the XML file.</p>
@@ -296,8 +298,8 @@
                 <h4>Returns</h4>
                 <p><b>boolean:</b> This function returns true if, and only if, the import is successful.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">//imports XML File</span>
-                    <br />List&lt;string&gt; returnMessages = new List&lt;string&gt;();<br />bool success = someBP.ImportXML("<span class="CodeOption">someXMLFile.xml</span>", "<span class="CodeOption">1234</span>", "<span class="CodeOption">1234</span>", <br />&#160;&#160;&#160;&#160;returnMessages); </p>
+                <p class="CodeBase"><span class="CodeComment">//imports XML File</span>
+                    <br />List&lt;string&gt; <span class="CodeVariable">returnMessages </span>= new List&lt;string&gt;();<br />bool <span class="CodeVariable">success </span>= someBP.ImportXML("<span class="CodeOption">someXMLFile.xml</span>", "<span class="CodeOption">1234</span>", "<span class="CodeOption">1234</span>", <br />&#160;&#160;&#160;&#160;<span class="CodeVariable">returnMessages</span>); </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -331,7 +333,7 @@
                 <h4>Returns</h4>
                 <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// This will login the user from the edit fields on a form</span>
+                <p class="CodeBase"><span class="CodeComment">// This will login the user from the edit fields on a form</span>
                     <br />bp.Login(bp, CurrentForm.FormControl("<span class="CodeOption">userid</span>"),<br />&#160;&#160;&#160;&#160;CurrentForm.FormControl("<span class="CodeOption">password</span>"));</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -356,8 +358,8 @@
                     <img src="../Resources/Images/Capture46.png" />
                 </p>
                 <p>The RunKView method will pass the filter value in the Filter parameter, which is identified by the "infilter" variable in the code snippet below.</p>
-                <p class="CodeBase"><span class="ControlName">// Run a Knowledge View, then log the results</span>
-                    <br />var infilter = new List&lt;NameValue&gt;();<br />infilter.Add(new NameValue("Filter1","value"));<br />List&lt;bp.KViewResult&gt; rows;<br />var res = bp.RunKView(<span class="CodeOption">CurrentForm.FormControl("kview_picker")</span>, <span class="CodeOption">infilter</span>, <br />&#160;&#160;&#160;&#160;<span class="CodeOption">null</span>, <span class="CodeOption">null</span>, out rows);<br />if (res)<br />{<br />&#160;&#160;&#160;&#160;foreach (var row in rows)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0("ID: " + row.ID + " type: " + row.ObjectType);<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;foreach (var col in row.Columns)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0("column name: " + col.Name + " value: " + col.Value);<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}<br />}</p>
+                <p class="CodeBase"><span class="CodeComment">// Run a Knowledge View, then log the results</span>
+                    <br />var infilter = new List&lt;NameValue&gt;();<br />infilter.Add(new NameValue("Filter1","value"));<br />List&lt;bp.KViewResult&gt; <span class="CodeVariable">rows</span>;<br />var <span class="CodeVariable">res </span>= bp.RunKView(<span class="CodeOption">CurrentForm.FormControl("kview_picker")</span>, <span class="CodeOption">infilter</span>, <br />&#160;&#160;&#160;&#160;<span class="CodeOption">null</span>, <span class="CodeOption">null</span>, out <span class="CodeVariable">rows</span>);<br />if (res)<br />{<br />&#160;&#160;&#160;&#160;foreach (var <span class="CodeVariable">row </span>in <span class="CodeVariable">rows</span>)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0("ID: " + <span class="CodeVariable">row</span>.ID + " type: " + <span class="CodeVariable">row</span>.ObjectType);<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;foreach (var <span class="CodeVariable">col </span>in <span class="CodeVariable">row</span>.Columns)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0("column name: " + <span class="CodeVariable">col</span>.Name + " value: " + <span class="CodeVariable">col</span>.Value);<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<br />&#160;&#160;&#160;&#160;}<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -367,10 +369,11 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="SendEmail (Static Method)" />This API will send an email. This is an overloaded method, and the method declarations are as follows:</p>
-                <p><code>public static bool SendEmail(bp BP, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pFORMID</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pFORMINSTID</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;List&lt;ContentObject&gt; <span class="CodeOption">pAttachments</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pSubject</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pToEmailUID</span>,
-      <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pFromEmailAddress</span></code>
+                <p><code>public static bool SendEmail(bp BP, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">pFORMID</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">pFORMINSTID</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;List&lt;ContentObject&gt; <span class="CodeVariable">pAttachments</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">pSubject</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">pToEmailUID</span>,
+      <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">pFromEmailAddress</span></code>
                 </p>
-                <p><code>public static bool SendEmail(bp BP,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pFORMID</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pFORMINSTID</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;List&lt;ContentObject&gt; <span class="CodeOption" style="font-style: normal;">pAttachments</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pSubject</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pToEmailAddress</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pToEmailDisplay</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pFromEmailAddress</span>)</code>
+                <p>&#160;</p>
+                <p><code>public static bool SendEmail(bp BP,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">pFORMID</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">pFORMINSTID</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;List&lt;ContentObject&gt; <span class="CodeVariable" style="font-style: normal;">pAttachments</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">pSubject</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">pToEmailAddress</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">pToEmailDisplay</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">pFromEmailAddress</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>BP:</b> The bp environment.</p>
@@ -383,7 +386,7 @@
                 <h4>Returns</h4>
                 <p><b>boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">bp.SendEmail(bp,<br />&#160;&#160;&#160;&#160;<span class="CodeOption">oMyFORM.ID</span>,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// The email template</span><br />&#160;&#160;&#160;&#160;<span class="CodeOption">oMyFORMINST.ID</span>,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// The form instance</span><br />&#160;&#160;&#160;&#160;<span class="CodeOption">null</span>,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// list of attachments</span><br />&#160;&#160;&#160;&#160;"<span class="CodeOption">My Email Subject</span>",&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// Subject</span><br />&#160;&#160;&#160;&#160;<span class="CodeOption">newuser.UID</span>,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="ControlName">// The ID of the “to” for the email</span><br />&#160;&#160;&#160;&#160;“<span class="CodeOption">from_email@company.com</span>”);&#160;<span class="ControlName">// The “from” email address</span>/</p>
+                <p class="CodeBase">bp.SendEmail(bp,<br />&#160;&#160;&#160;&#160;<span class="CodeOption">oMyFORM.ID</span>,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// The email template</span><br />&#160;&#160;&#160;&#160;<span class="CodeOption">oMyFORMINST.ID</span>,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// The form instance</span><br />&#160;&#160;&#160;&#160;<span class="CodeOption">null</span>,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// list of attachments</span><br />&#160;&#160;&#160;&#160;"<span class="CodeOption">My Email Subject</span>",&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// Subject</span><br />&#160;&#160;&#160;&#160;<span class="CodeOption">newuser.UID</span>,&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeComment">// The ID of the “to” for the email</span><br />&#160;&#160;&#160;&#160;“<span class="CodeOption">from_email@company.com</span>”);&#160;<span class="CodeComment">// The “from” email address</span>/</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
@@ -17,9 +17,9 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Creates a reviewable PDF for a specified document. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public static bool CreatePDFForDocument(bp BP, Document <span class="CodeOption">Document</span>)</code>
+                <p><code>public static bool CreatePDFForDocument(bp BP, Document <span class="CodeVariable">Document</span>)</code>
                 </p>
-                <p><code>public static bool CreatePDFForDocument(bp BP, Document <span class="CodeOption">Document</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeOption">OnlyIfNeeded</span>)</code>
+                <p><code>public static bool CreatePDFForDocument(bp BP, Document <span class="CodeVariable">Document</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeVariable">OnlyIfNeeded</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>BP:</b> The BP&#160;Logix Object.</p>
@@ -130,8 +130,8 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> Returns false if the operation fails.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// Create the string to convert</span>
-                    <br />StringBuilder sb = new StringBuilder();<br />sb.Append("This is the string.");<br />sb.Append("This string will be converted to PDF.");<br /><br /><span class="ControlName">// Convert the string to PDF</span><br />CreatePDFFromString(bp, <span class="CodeOption">sb.ToString()</span>, <br />&#160;&#160;&#160;&#160;"<span class="CodeOption">C://File/Path/DocumentName.pdf</span>");</p>
+                <p class="CodeBase"><span class="CodeComment">// Create the string to convert</span>
+                    <br />StringBuilder <span class="CodeVariable">sb </span>= new StringBuilder();<br /><span class="CodeVariable">sb</span>.Append("<span class="CodeOption">This is the string.</span>");<br /><span class="CodeVariable">sb</span>.Append("<span class="CodeOption">This string will be converted to PDF.</span>");<br /><br /><span class="CodeComment">// Convert the string to PDF</span><br />CreatePDFFromString(bp, <span class="CodeOption"><span class="CodeVariable">sb</span>.ToString()</span>, <br />&#160;&#160;&#160;&#160;"<span class="CodeOption">C://File/Path/DocumentName.pdf</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -183,8 +183,8 @@
                 <p><b>Boolean:</b> Returns false if the operation fails.</p>
                 <p><b>List:</b> The List object containing all of the form fields in the PDF document.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">//The list to store the controls</span>
-                    <br />List&lt;string&gt; myControls = new List&lt;string&gt;();<br /><br /><span class="ControlName">//Get the form fields to fill the list</span><br />GetFormFields(bp, "<span class="CodeOption">C://File/Path/DocumentName.pdf"</span>, <span class="CodeOption">myControls</span>);</p>
+                <p class="CodeBase"><span class="CodeComment">//The list to store the controls</span>
+                    <br />List&lt;string&gt; <span class="CodeVariable">myControls </span>= new List&lt;string&gt;();<br /><br /><span class="CodeComment">//Get the form fields to fill the list</span><br />GetFormFields(bp, "<span class="CodeOption">C://File/Path/DocumentName.pdf"</span>, <span class="CodeVariable">myControls</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -194,9 +194,9 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Merges multiple PDF files into a single PDF file. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public static bool MergePDFs(bp BP, IEnumerable&lt;string&gt; <span class="CodeOption">InputPDFPaths</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">OutputPDFPath</span>)</code>
+                <p><code>public static bool MergePDFs(bp BP, IEnumerable&lt;string&gt; <span class="CodeVariable">InputPDFPaths</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">OutputPDFPath</span>)</code>
                 </p>
-                <p><code>public static bool MergePDFs(bp BP, IEnumerable&lt;string&gt; <span class="CodeOption">InputPDFPaths</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">OutputPDFPath</span>, bool <span class="CodeOption">DeleteInputs</span>)</code>
+                <p><code>public static bool MergePDFs(bp BP, IEnumerable&lt;string&gt; <span class="CodeVariable">InputPDFPaths</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">OutputPDFPath</span>, bool <span class="CodeVariable">DeleteInputs</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>BP:</b> The BP&#160;Logix Object.</p>
@@ -206,8 +206,8 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> Returns false if the operation fails.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// The list to store the PDF&#160;locations</span>
-                    <br />List&lt;string&gt; MyFiles = new List&lt;string&gt;();<br />MyFiles.Add("C://File/Path/Document1Name.pdf");<br />MyFiles.Add("C://File/Path/Document2Name.pdf");<br /><br /><span class="ControlName">// Merge the PDFs</span><br />MergePDFs(bp, <span class="CodeOption">MyFiles</span>, "<span class="CodeOption">C://File/Path/MergedDocumentName.pdf</span>");</p>
+                <p class="CodeBase"><span class="CodeComment">// The list to store the PDF&#160;locations</span>
+                    <br />List&lt;string&gt; <span class="CodeVariable">MyFiles </span>= new List&lt;string&gt;();<br /><span class="CodeVariable">MyFiles</span>.Add("<span class="CodeOption">C://File/Path/Document1Name.pdf</span>");<br /><span class="CodeVariable">MyFiles</span>.Add("<span class="CodeOption">C://File/Path/Document2Name.pdf</span>");<br /><br /><span class="CodeComment">// Merge the PDFs</span><br />MergePDFs(bp, <span class="CodeVariable">MyFiles</span>, "<span class="CodeOption">C://File/Path/MergedDocumentName.pdf</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -227,8 +227,8 @@
                 <p><b>Boolean:</b> Returns false if the operation fails.</p>
                 <p><b>List:</b> The List object containing all of the form fields in the PDF document.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="ControlName">// The Dictionary to store the controls</span>
-                    <br />Dictionary&lt;string, string&gt; myFields = new Dictionary&lt;string, string&gt;();<br />myFields.Add("Field1", "Value1");<br />myFields.Add("Field2", "Value2");<br />myFields.Add("Field3", "Value3");<br /><br /><span class="ControlName">// Create the filled PDF form from the template</span><br />SetFormFields(bp, <span class="CodeOption">myFields</span>, "<span class="CodeOption">C://File/Path/Template.pdf</span>", <br />&#160;&#160;&#160;&#160;"<span class="CodeOption">C://File/Path/Output.pdf</span>");</p>
+                <p class="CodeBase"><span class="CodeComment">// The Dictionary to store the controls</span>
+                    <br />Dictionary&lt;string, string&gt; <span class="CodeOption">myFields </span>= new Dictionary&lt;string, string&gt;();<br /><span class="CodeVariable">myFields</span>.Add("<span class="CodeOption">Field1</span>", "<span class="CodeOption">Value1</span>");<br /><span class="CodeVariable">myFields</span>.Add("<span class="CodeOption">Field2</span>", "<span class="CodeOption">Value2</span>");<br /><span class="CodeVariable">myFields</span>.Add("<span class="CodeOption">Field3</span>", "<span class="CodeOption">Value3</span>");<br /><br /><span class="CodeComment">// Create the filled PDF form from the template</span><br />SetFormFields(bp, <span class="CodeVariable">myFields</span>, "<span class="CodeOption">C://File/Path/Template.pdf</span>", <br />&#160;&#160;&#160;&#160;"<span class="CodeOption">C://File/Path/Output.pdf</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

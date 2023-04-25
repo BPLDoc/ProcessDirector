@@ -1,460 +1,316 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head>
-        <title>
-        </title>
+    <head><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:concept term="Developer" />
-            <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword>
-            <a name="SAML">
-            </a>SAML Custom&#160;Variables</h1>
+            <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword><a name="SAML"></a>SAML Custom&#160;Variables</h1>
         <p>Custom variables in this section of the documentation can be used to customize a variety of settings associated with Using SAML/Federated Identity when working with SAML&#160;providers.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="AddSAMLGroups">
-                    </a>
-                    <a href="#AddSAMLGroups">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="AddSAMLGroups"></a><a href="#AddSAMLGroups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="AddSAMLGroups" />AddSAMLGroups</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether Process Director should add any Groups from a SAML login that Process Director doesn't already have.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Automatically create new SAML&#160;groups</span><br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroups = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Automatically create new SAML&#160;groups</span><br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroups = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="AddSAMLGroupsIgnore">
-                    </a>
-                    <a href="#AddSAMLGroupsIgnore">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="AddSAMLGroupsIgnore"></a><a href="#AddSAMLGroupsIgnore"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="AddSAMLGroupsIgnore" />AddSAMLGroupsIgnore</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This variable consists of a list of Group names to ignore in the auto-add logic (<a href="#AddSAMLGroups">AddSAMLGroups</a> )on the SAML login. E.g. if the SAML login includes an "admin" group, but you don’t want a SAML login to automatically add anyone to the pre-existing "admin" group in Process Director.</p>
                 <h5>Examples</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// SAML&#160;Groups to ignore in the SAML import</span><br />&#160;&#160;&#160;&#160;List&lt;string&gt; IgnoreGroups = new List&lt;string&gt;();<br />&#160;&#160;&#160;&#160;IgnoreGroups.Add(@"<span class="CodeOption">admin</span>");<br />&#160;&#160;&#160;&#160;IgnoreGroups.Add(@"<span class="CodeOption">Administrators</span>");<br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroupsIgnore= IgnoreGroups;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Groups to ignore in the SAML import</span><br />&#160;&#160;&#160;&#160;List&lt;string&gt; <span class="CodeVariable">IgnoreGroups </span>= new List&lt;string&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">IgnoreGroups</span>.Add(@"<span class="CodeOption">admin</span>");<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">IgnoreGroups</span>.Add(@"<span class="CodeOption">Administrators</span>");<br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroupsIgnore= <span class="CodeVariable">IgnoreGroups</span>;<br />}</p>
                 <p>OR</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// SAML&#160;Groups to ignore in the SAML import</span><br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroupsIgnore = new List&lt;string&gt; { "<span class="CodeOption">admin</span>", "<span class="CodeOption">Administrators</span>" };<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Groups to ignore in the SAML import</span><br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroupsIgnore = new List&lt;string&gt; { "<span class="CodeOption">admin</span>", "<span class="CodeOption">Administrators</span>" };<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="EXT_User_AutoCreate">
-                    </a>
-                    <a href="#EXT_User_AutoCreate">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="EXT_User_AutoCreate"></a><a href="#EXT_User_AutoCreate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="EXT_User_AutoCreate" />EXT_User_AutoCreate</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether Process Director should automatically create user accounts for externally authenticated users. The default value is "true". Setting the variable to "false" will prevent the automatic creation of user accounts.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Automatically create user accounts for externally authenticated users</span><br />&#160;&#160;&#160;&#160;bp.Vars.EXT_User_AutoCreate = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Automatically create user accounts for externally authenticated users</span><br />&#160;&#160;&#160;&#160;bp.Vars.EXT_User_AutoCreate = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="EXT_User_AutoCreateDisabled">
-                    </a>
-                    <a href="#EXT_User_AutoCreateDisabled">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="EXT_User_AutoCreateDisabled"></a><a href="#EXT_User_AutoCreateDisabled"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="EXT_User_AutoCreateDisabled" />EXT_User_AutoCreateDisabled</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether the user accounts that are automatically created from external authentication should be initially set as disabled. The default value is "false". Setting the variable to "true" will initially set automatically created user accounts as disabled.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Initially set automatically created user accounts as disabled</span><br />&#160;&#160;&#160;&#160;bp.Vars.EXT_User_AutoCreateDisabled = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Initially set automatically created user accounts as disabled</span><br />&#160;&#160;&#160;&#160;bp.Vars.EXT_User_AutoCreateDisabled = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="fAuthSAMLAllowDuplicateUserIDs">
-                    </a>
-                    <a href="#fAuthSAMLAllowDuplicateUserIDs">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>fAuthSAMLAllowDuplicateUserIDs</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="fAuthSAMLAllowDuplicateUserIDs"></a><a href="#fAuthSAMLAllowDuplicateUserIDs"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAuthSAMLAllowDuplicateUserIDs</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="fAuthSAMLAllowDuplicateUserIDs">&#160;</MadCap:keyword>This variable, when set to true, enables the use of duplicate User ID's when using SAML authentication. This requires that the SAML assertion send a unique GUID or identifier for the users. The default value for this variable is false. </p>
                 <p>Please note that the use of duplicate userIDs isn't recommended.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// If set to true, duplicate UserIDs will be allowed<br />&#160;&#160;&#160;&#160;// when using SAML authentication</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAuthSAMLAllowDuplicateUserIDs = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// If set to true, duplicate UserIDs will be allowed<br />&#160;&#160;&#160;&#160;// when using SAML authentication</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAuthSAMLAllowDuplicateUserIDs = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="MatchSAMLGroups">
-                    </a>
-                    <a href="#MatchSAMLGroups">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>MatchSAMLGroups</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="MatchSAMLGroups"></a><a href="#MatchSAMLGroups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>MatchSAMLGroups</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="MatchSAMLGroups" />This variable, when set to true, will, when group membership is specified in the SAML assertion, match the group assignments of an imported user to existing groups on the Process Director installation. When activated, the following import actions will occur to accomplish the group matching:</p>
                 <ol>
-                    <li>Users will be removed from group membership in existing groups that don't exist in the SAML assertion, <b style="font-style: italic;">with the exception of</b> groups that do <b style="font-style: italic;">not</b> have <span class="ControlName">AuthType </span>set to <code>SAML</code>.</li>
-                    <li>Users will be added to groups of which they aren't currently a member if the group exists in the SAML assertion. Users will be added to the groups, even if the group does <b style="font-style: italic;">not</b> have <span class="ControlName">AuthType </span>set to <code>SAML</code>.</li>
+                    <li>Users will be removed from group membership in existing groups that don't exist in the SAML assertion, <b style="font-style: italic;">with the exception of</b> groups that do <b style="font-style: italic;">not</b> have <span class="CodeComment">AuthType </span>set to <code>SAML</code>.</li>
+                    <li>Users will be added to groups of which they aren't currently a member if the group exists in the SAML assertion. Users will be added to the groups, even if the group does <b style="font-style: italic;">not</b> have <span class="CodeComment">AuthType </span>set to <code>SAML</code>.</li>
                 </ol>
-                <p>In other words, if a Process Director User Group exists that has the same name as a SAML group contained in the assertion, but the existing group does <b style="font-style: italic;">not</b> have <span class="ControlName">AuthType </span>set to <code>SAML</code>, the user import will ensure the user is always  added to, but never removed from, the existing group.</p>
+                <p>In other words, if a Process Director User Group exists that has the same name as a SAML group contained in the assertion, but the existing group does <b style="font-style: italic;">not</b> have <span class="CodeComment">AuthType </span>set to <code>SAML</code>, the user import will ensure the user is always  added to, but never removed from, the existing group.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Match SAML&#160;groups  with PD group membership</span><br />&#160;&#160;&#160;&#160;bp.Vars.MatchSAMLGroups = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Match SAML&#160;groups  with PD group membership</span><br />&#160;&#160;&#160;&#160;bp.Vars.MatchSAMLGroups = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Enable">
-                    </a>
-                    <a href="#SAML_Enable">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Enable"></a><a href="#SAML_Enable"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Enable" />SAML_Enable</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether to require that SAML&#160;login. Setting the value to "true" will require the SAML login. The default value is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Require SAML&#160;login</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Enable = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Require SAML&#160;login</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Enable = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_URL">
-                    </a>
-                    <a href="#SAML_URL">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_URL"></a><a href="#SAML_URL"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_URL" />SAML_URL</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the URL of the SAML identity provider.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// SAML&#160;IDP URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_URL = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;IDP URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_URL = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_URL_Destination">
-                    </a>
-                    <a href="#SAML_URL_Destination">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_URL_Destination"></a><a href="#SAML_URL_Destination"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_URL_Destination" />SAML_URL_Destination</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional Destination URL of the SAML Identity Provider, i.e., the URL in SAML request Destination field.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// SAML&#160;Destination URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_URL_Destination = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Destination URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_URL_Destination = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Artifact_URL">
-                    </a>
-                    <a href="#SAML_Artifact_URL">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Artifact_URL"></a><a href="#SAML_Artifact_URL"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Artifact_URL" />SAML_Artifact_URL</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional Identity Provider artifact URL.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// SAML&#160;Optional IDP URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Artifact_URL = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Optional IDP URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Artifact_URL = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_NextURLInRelayState">
-                    </a>
-                    <a href="#SAML_NextURLInRelayState">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_NextURLInRelayState"></a><a href="#SAML_NextURLInRelayState"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_NextURLInRelayState" />SAML_NextURLInRelayState</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether the "next URL" is set inside the relay state variable. The default value is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Enable URL&#160;relay</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_NextURLInRelayState = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Enable URL&#160;relay</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_NextURLInRelayState = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_My_PFX">
-                    </a>
-                    <a href="#SAML_My_PFX">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_My_PFX"></a><a href="#SAML_My_PFX"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_My_PFX" />SAML_My_PFX</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional path to the PFX file used to sign SAML requests.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// PFX&#160;file location</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_My_PFX = "<span class="CodeOption">C:\File\Path</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// PFX&#160;file location</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_My_PFX = "<span class="CodeOption">C:\File\Path</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_My_PFXPassword">
-                    </a>
-                    <a href="#SAML_My_PFX">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_My_PFXPassword"></a><a href="#SAML_My_PFX"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_My_PFXPassword" />SAML_My_PFXPassword</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional password of the PFX file used to sign SAML requests.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// PFX file password</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_My_PFXPassword = "<span class="CodeOption">password</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// PFX file password</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_My_PFXPassword = "<span class="CodeOption">password</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_My_Certificate">
-                    </a>
-                    <a href="#SAML_My_Certificate">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_My_Certificate"></a><a href="#SAML_My_Certificate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_My_Certificate" />SAML_My_Certificate</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional path to <b>your</b> public certificate used for SAML requests.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Certificate path</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_My_Certificate =<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Certificate path</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_My_Certificate =<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_IP_Certificate">
-                    </a>
-                    <a href="#SAML_IP_Certificate">
-                        <img src="../Resources/Images/link.png" alt="Link" style="width: 21px;height: 16px;" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_IP_Certificate"></a><a href="#SAML_IP_Certificate"><img src="../Resources/Images/link.png" alt="Link" style="width: 21px;height: 16px;" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_IP_Certificate" />SAML_IP_Certificate</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional path to the identity provider's public certificate used to validate the entire SAML response.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// IDP&#160;certificate path</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_IP_Certificate = <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// IDP&#160;certificate path</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_IP_Certificate = <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_IP_AssertionCertificate">
-                    </a>
-                    <a href="#SAML_IP_AssertionCertificate">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_IP_AssertionCertificate"></a><a href="#SAML_IP_AssertionCertificate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_IP_AssertionCertificate" />SAML_IP_AssertionCertificate</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional path to the identity provider's public certificate used to validate the assertions in the SAML response.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Assertion certificate path</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_IP_AssertionCertificate =<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Assertion certificate path</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_IP_AssertionCertificate =<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Attrib_GUID">
-                    </a>
-                    <a href="#SAML_Attrib_GUID">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Attrib_GUID"></a><a href="#SAML_Attrib_GUID"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Attrib_GUID" />SAML_Attrib_GUID</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing the User GUID.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// GUID&#160;attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_GUID = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// GUID&#160;attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_GUID = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Attrib_UserID">
-                    </a>
-                    <a href="#SAML_Attrib_UserID">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Attrib_UserID"></a><a href="#SAML_Attrib_UserID"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Attrib_UserID" />SAML_Attrib_UserID</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing the UserID.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// User ID attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserID = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// User ID attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserID = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Attrib_UserName">
-                    </a>
-                    <a href="#SAML_Attrib_UserName">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Attrib_UserName"></a><a href="#SAML_Attrib_UserName"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Attrib_UserName" />SAML_Attrib_UserName</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing the UserName.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Username attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserName= "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Username attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserName= "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Attrib_Email">
-                    </a>
-                    <a href="#SAML_Attrib_Email">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Attrib_Email"></a><a href="#SAML_Attrib_Email"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Attrib_Email" />SAML_Attrib_Email</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing the User's email address.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Email attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Email = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Email attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Email = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Attrib_CustomString">
-                    </a>
-                    <a href="#SAML_Attrib_CustomString">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Attrib_CustomString"></a><a href="#SAML_Attrib_CustomString"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Attrib_CustomString" />SAML_Attrib_CustomString</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing a Custom String.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Custom string attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomString = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom string attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomString = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Attrib_CustomString2">
-                    </a>
-                    <a href="#SAML_Attrib_CustomString">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Attrib_CustomString2"></a><a href="#SAML_Attrib_CustomString"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Attrib_CustomString2" />SAML_Attrib_CustomString2</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing a second Custom String.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Custom string 2 attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomString2 = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom string 2 attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomString2 = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Attrib_CustomNumber">
-                    </a>
-                    <a href="#SAML_Attrib_CustomNumber">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Attrib_CustomNumber"></a><a href="#SAML_Attrib_CustomNumber"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Attrib_CustomNumber" />SAML_Attrib_CustomNumber</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing a  Custom Number.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Custom number attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomNumber = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom number attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomNumber = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Attrib_CustomDate">
-                    </a>
-                    <a href="#SAML_Attrib_CustomDate">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Attrib_CustomDate"></a><a href="#SAML_Attrib_CustomDate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Attrib_CustomDate" />SAML_Attrib_CustomDate</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing a Custom&#160;Date.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Custom date attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomDate = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom date attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomDate = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Attrib_Groups">
-                    </a>
-                    <a href="#SAML_Attrib_Groups">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Attrib_Groups"></a><a href="#SAML_Attrib_Groups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Attrib_Groups" />SAML_Attrib_Groups</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing the User Groups.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// User groups attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Groups = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// User groups attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Groups = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_Issuer">
-                    </a>
-                    <a href="#SAML_Issuer">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_Issuer"></a><a href="#SAML_Issuer"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_Issuer" />SAML_Issuer</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>An optional string variable that sets the ID of the SAML issuer. This ID is sometimes the same as the EntityId.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// SAML Issuer ID attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Issuer = "<span class="CodeOption">IssuerID</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML Issuer ID attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Issuer = "<span class="CodeOption">IssuerID</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_ProviderName">
-                    </a>
-                    <a href="#SAML_ProviderName">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_ProviderName"></a><a href="#SAML_ProviderName"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_ProviderName" />SAML_ProviderName</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>An optional string variable that sets the ProviderName of the SAML issuer.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// SAML provider name attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_ProviderName = "<span class="CodeOption">ProviderName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML provider name attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_ProviderName = "<span class="CodeOption">ProviderName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SAML_NoLoginButton">
-                    </a>
-                    <a href="#SAML_NoLoginButton">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>
+                <MadCap:dropDownHotspot><a name="SAML_NoLoginButton"></a><a href="#SAML_NoLoginButton"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="SAML_NoLoginButton" />SAML_NoLoginButton</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether the SAML login button will be removed from the home page. The default value is "false". Setting the variable to "true" will hide the login button.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="ControlName">// Hide the SAML login button</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_NoLoginButton = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Hide the SAML login button</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_NoLoginButton = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>
