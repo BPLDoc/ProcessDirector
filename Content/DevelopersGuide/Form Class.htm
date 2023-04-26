@@ -207,9 +207,9 @@
                     <MadCap:keyword term="AddErrorMessage" />This API will add an error message to the form which will be displayed to the user. If an error message is added, the user won't be able to submit the form. This is an overloaded method with the following possible declarations:</p>
                 <p><code>public void AddErrorMessage(FormMessageString <span class="CodeVariable">pMessage</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;params object[] <span class="CodeVariable">pParams</span>)</code>
                 </p>
-                <p><code>public void AddErrorMessage(string <span class="CodeVariable">pFormat</span>,&#160;params object[] <span class="CodeVariable">pParams</span></code><code>)<br />public T AddErrorMessage&lt;T&gt;(T ret, string <span class="CodeVariable">pFormat</span>, params object[] <span class="CodeVariable">pParams</span>)</code>
+                <p><code>public void AddErrorMessage(string <span class="CodeVariable">pFormat</span>,&#160;params object[] <span class="CodeVariable">pParams</span></code><code>)<br />public T AddErrorMessage&lt;T&gt;(T <span class="CodeVariable">ret</span>, string <span class="CodeVariable">pFormat</span>, params object[] <span class="CodeVariable">pParams</span>)</code>
                 </p>
-                <p><code>public T AddErrorMessage&lt;T&gt;(T ret, FormMessageString <span class="CodeVariable">pMessage</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;params object[] <span class="CodeVariable">pParams</span>)</code>
+                <p><code>public T AddErrorMessage&lt;T&gt;(T <span class="CodeVariable">ret</span>, FormMessageString <span class="CodeVariable">pMessage</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;params object[] <span class="CodeVariable">pParams</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>pMessage:</b> The error message to return (this can be a string or the FormMessageString class).</p>
@@ -321,7 +321,7 @@
                 <p><b>String:</b> The resultant string after converting every system variable.</p>
                 <h4>Examples</h4>
                 <p class="CodeBase"><span class="CodeComment">// Returns "USER1 editing this form on 2008-01-01"</span>
-                    <br />bp.log0(CurrentForm.ConvertSysVarsInString("<span class="CodeOption">{CURR_USER} editing this form <br />&#160;&#160;&#160;&#160;on {CURR_DATE}</span>")); <br />var <span class="CodeVariable">cText </span>= CurrentForm.FormControl("<span class="CodeOption">Item</span>", <span class="CodeOption">2</span>);<br /><br /><span class="CodeComment">// Returns "Row number: 2"</span><br />string <span class="CodeVariable">result2 </span>= CurrentForm.ConvertSysVarsInString("<span class="CodeOption">Row number: {ROW_NUM}</span>", <span class="CodeVariable">cText</span>); </p>
+                    <br /><span class="CodeVariable">bp</span>.log0(CurrentForm.ConvertSysVarsInString("<span class="CodeOption">{CURR_USER} editing this form <br />&#160;&#160;&#160;&#160;on {CURR_DATE}</span>")); <br />var <span class="CodeVariable">cText </span>= CurrentForm.FormControl("<span class="CodeOption">Item</span>", <span class="CodeOption">2</span>);<br /><br /><span class="CodeComment">// Returns "Row number: 2"</span><br />string <span class="CodeVariable">result2 </span>= CurrentForm.ConvertSysVarsInString("<span class="CodeOption">Row number: {ROW_NUM}</span>", <span class="CodeVariable">cText</span>); </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -380,7 +380,7 @@
                 <h4>Returns</h4>
                 <p><b>List:</b> A list object containing the form controls.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">List <span class="CodeVariable">myList </span>= FindControlInForms(bp, "<span class="CodeOption">CodeComment</span>", "<span class="CodeOption">ControlValue</span>");</p>
+                <p class="CodeBase">List <span class="CodeVariable">myList </span>= FindControlInForms(<span class="CodeVariable">bp</span>, "<span class="CodeOption">ControlName</span>", "<span class="CodeOption">ControlValue</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -443,7 +443,7 @@
                 <h4>Returns</h4>
                 <p><b>FormControl:</b> The form control instance.</p>
                 <h4>Examples</h4>
-                <p class="CodeBase">var <span class="CodeVariable">cPicker </span>= CurrentForm.FormControl("<span class="CodeOption">CodeComment</span>").Value; <br /><span class="CodeComment">// If "ControlsPick" is a ControlPicker on the Form<br />// set the form control's text to "Add Another"</span><br />CurrentForm.FormControlByID(<span class="CodeVariable">cPicker</span>).Text = "<span class="CodeOption">Add Another</span>";<br />var <span class="CodeVariable">cPick2 </span>= CurrentForm.FormControl("<span class="CodeOption">CodeComment2</span>").Value;<br /><span class="CodeComment">// Increment the control's value by 1</span><br />CurrentForm.FormControlByID(<span class="CodeVariable">cPick2</span>).<span class="CodeOption">Number += 1</span>;<br /><span class="CodeComment">// Disable the whole column of the control</span><br />CurrentForm.FormControlByID(<span class="CodeVariable">cPick2</span>).Display.Enabled = false;</p>
+                <p class="CodeBase">var <span class="CodeVariable">cPicker </span>= CurrentForm.FormControl("<span class="CodeOption">CodeComment</span>").Value; <br /><span class="CodeComment">// If "ControlsPick" is a ControlPicker on the Form<br />// set the form control's text to "Add Another"</span><br />CurrentForm.FormControlByID(<span class="CodeVariable">cPicker</span>).Text = "<span class="CodeOption">Add Another</span>";<br /><br />var <span class="CodeVariable">cPick2 </span>= CurrentForm.FormControl("<span class="CodeOption">CodeComment2</span>").Value;<br /><span class="CodeComment">// Increment the control's value by 1</span><br />CurrentForm.FormControlByID(<span class="CodeVariable">cPick2</span>).<span class="CodeOption">Number += 1</span>;<br /><span class="CodeComment">// Disable the whole column of the control</span><br />CurrentForm.FormControlByID(<span class="CodeVariable">cPick2</span>).Display.Enabled = false;</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -461,7 +461,7 @@
                 <h4>Returns</h4>
                 <p>None.</p>
                 <h4>Examples</h4>
-                <p class="CodeBase">public virtual void FormNavigate(BPLogix.WorkflowDirector.SDK.bp bp, string URL)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Your custom page navigation code here.</span><br />}</p>
+                <p class="CodeBase">public virtual void FormNavigate(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>, string <span class="CodeVariable">URL</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Your custom page navigation code here.</span><br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -477,7 +477,7 @@
                 <p><b>List&lt;FormMessageString&gt;:</b> The list of form error messages.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// This example will be called after built-in validation has occurred</span>
-                    <br />protected override void BP_Validation_Post()<br />{<br />&#160;&#160;&#160;&#160;var <span class="CodeVariable">ErrorList </span>= CurrentForm.GetErrorMessages();<br />&#160;&#160;&#160;&#160;if (<span class="CodeVariable">ErrorList</span>.Count &gt; 5)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.AddInfoMessage("<span class="CodeOption">More than 5 errors!</span>");<br />&#160;&#160;&#160;&#160;}<br />}</p>
+                    <br />protected override void BP_Validation_Post()<br />{<br />&#160;&#160;&#160;&#160;var <span class="CodeVariable">ErrorList </span>= CurrentForm.GetErrorMessages();<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Check to see if there are more than 5 error messages</span><br />&#160;&#160;&#160;&#160;if (<span class="CodeVariable">ErrorList</span>.Count &gt; <span class="CodeOption">5</span>)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.AddInfoMessage("<span class="CodeOption">More than 5 errors!</span>");<br />&#160;&#160;&#160;&#160;}<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -494,7 +494,7 @@
                 <p><b>Form:</b> An instance of the form object, or null if it couldn't be found.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// This example will get a form instance, and log its name</span>
-                    <br />var <span class="CodeVariable">OtherForm </span>= Form.GetFormByFORMID(bp, "<span class="CodeOption">123</span>4");<br />bp.log0(<span class="CodeOption">"The form instance name is: " + OtherForm.Name</span>);</p>
+                    <br />var <span class="CodeVariable">OtherForm </span>= Form.GetFormByFORMID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">123</span>4");<br /><span class="CodeVariable">bp</span>.log0(<span class="CodeOption">"The form instance name is: " + <span class="CodeVariable">OtherForm</span>.Name</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -511,7 +511,7 @@
                 <p><b>Form:</b> An instance of the form object, or null if it couldn't be found.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// This example will get a form instance, and log its name</span>
-                    <br />var <span class="CodeVariable">OtherForm </span>= Form.GetFormByFORMINSTID(bp, "<span class="CodeOption">123</span>");<br />bp.log0(<span class="CodeOption">"The form instance name is: " + OtherForm.Name</span>);</p>
+                    <br />var <span class="CodeVariable">myForm </span>= Form.GetFormByFORMINSTID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">123</span>");<br /><span class="CodeVariable">bp</span>.log0(<span class="CodeOption">"The form instance name is: " + <span class="CodeVariable">myForm</span>.</span>Name);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -543,7 +543,7 @@
                 <p><b>List&lt;FormMessageString&gt;:</b> The list of form error messages.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// This example will be called immediately prior to displaying the form</span>
-                    <br />protected override void BP_Display()<br />{<br />&#160;&#160;&#160;&#160;var <span class="CodeVariable">InfoList </span>= CurrentForm.GetInfoMessages();<br />&#160;&#160;&#160;&#160;foreach (<span class="CodeVariable">var </span>info in <span class="CodeVariable">InfoList</span>)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bp.log0(<span class="CodeOption">"INFO MESSAGE: " + info</span>);<br />&#160;&#160;&#160;&#160;}<br />}</p>
+                    <br />protected override void BP_Display()<br />{<br />&#160;&#160;&#160;&#160;var <span class="CodeVariable">InfoList </span>= CurrentForm.GetInfoMessages();<br />&#160;&#160;&#160;&#160;foreach (<span class="CodeVariable">var info </span>in <span class="CodeVariable">InfoList</span>)<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.log0("<span class="CodeOption">INFO MESSAGE: </span>" +<span class="CodeOption"> <span class="CodeVariable">info</span></span>);<br />&#160;&#160;&#160;&#160;}<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -580,7 +580,7 @@
                 <p><b>Form:</b> An instance of the form object, or null if it couldn't be found.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// This example will create a new form instance</span>
-                    <br />var <span class="CodeVariable">NewFormInstance </span>= Form.Instantiate(bp, <span class="CodeOption">ContentObject.GetObjectByPathName(bp, <br />&#160;&#160;&#160;&#160;“Partition1”</span>, <br />&#160;&#160;&#160;&#160;<span class="CodeOption">“/My Project/My Form Definition”).ID</span>);<br />bp.log0(<span class="CodeOption">"The form instance name is: " + NewFormInstance.Name</span>);</p>
+                    <br />var <span class="CodeVariable">NewFormInstance </span>= Form.Instantiate(<span class="CodeVariable">bp</span>, <span class="CodeOption">ContentObject.GetObjectByPathName(bp, <br />&#160;&#160;&#160;&#160;“Partition1”</span>, <br />&#160;&#160;&#160;&#160;<span class="CodeOption">“/My Project/My Form Definition”).ID</span>);<br /><span class="CodeVariable">bp</span>.log0("<span class="CodeOption">The form instance name is: </span>" +<span class="CodeOption"> </span><span class="CodeVariable">NewFormInstance</span>.Name);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -606,8 +606,8 @@
                 <h4>Returns</h4>
                 <p>The number of rows in the array.</p>
                 <h4>Examples</h4>
-                <p class="CodeBase"><span class="CodeComment">// Save the number of rows in the array named MyArray </span>
-                    <br />int <span class="CodeVariable">rows </span>= CurrentForm.FormControl("<span class="CodeOption">ArrayName</span>").RowCount();</p>
+                <p class="CodeBase"><span class="CodeComment">// Save the number of rows in the array named 'MyArray' </span>
+                    <br />int <span class="CodeVariable">rows </span>= CurrentForm.FormControl("<span class="CodeOption">MyArray</span>").RowCount();</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

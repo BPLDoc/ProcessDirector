@@ -57,7 +57,7 @@
             </tbody>
         </table>
         <p class="CodeBase"><span class="CodeComment">// Gets a list of the users in Group 1</span>
-            <br />var <span class="CodeVariable">Users </span>= Group.GetGroupByName(bp, "<span class="CodeOption">Group 1</span>").Users;</p>
+            <br />var <span class="CodeVariable">Users </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Group 1</span>").Users;</p>
         <h2><a name="_Toc421269988"></a>
             <MadCap:keyword term="Methods" />Methods</h2>
         <MadCap:dropDown>
@@ -78,7 +78,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(bp, "<span class="CodeOption">User 1</span>");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(bp, "<span class="CodeOption">Group 1</span>");<br /><br /><span class="CodeComment">// The following two calls do the same thing <br />// (add "User 1" to "Group 1")</span><br /><span class="CodeVariable">oGroup</span>.AddUser(<span class="CodeVariable">oUser</span>); <span class="CodeComment">// Call with the User object</span><br /><span class="CodeVariable">oGroup</span>.AddUser(<span class="CodeVariable">oUser</span>.<span class="CodeOption">UID</span>); <span class="CodeComment">// Call with the User ID</span></p>
+                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">User 1</span>");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Group 1</span>");<br /><br /><span class="CodeComment">// The following two calls do the same thing <br />// (add "User 1" to "Group 1")</span><br /><span class="CodeVariable">oGroup</span>.AddUser(<span class="CodeVariable">oUser</span>); <span class="CodeComment">// Call with the User object</span><br /><span class="CodeVariable">oGroup</span>.AddUser(<span class="CodeVariable">oUser</span>.<span class="CodeOption">UID</span>); <span class="CodeComment">// Call with the User ID</span></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -94,7 +94,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">oGroup </span>= Group.CreateGroup(bp, "<span class="CodeOption">Group 1</span>");</p>
+                <p class="CodeBase">var <span class="CodeVariable">oGroup </span>= Group.CreateGroup(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Group 1</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -109,7 +109,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(bp, "Group 1");<br /><span class="CodeVariable">oGroup</span>.Delete();</p>
+                <p class="CodeBase">var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Group 1</span>");<br /><span class="CodeVariable">oGroup</span>.Delete();</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -125,7 +125,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> Returns false of the operation fails.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">bool <span class="CodeVariable">deleted </span>= DeleteGroup(bp, "<span class="CodeOption">GroupName</span>");</p>
+                <p class="CodeBase">bool <span class="CodeVariable">deleted </span>= DeleteGroup(<span class="CodeVariable">bp</span>, "<span class="CodeOption">GroupName</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -140,7 +140,7 @@
                 <h4>Returns</h4>
                 <p><b>List&lt;Group&gt;:</b> A Group object representation of the group</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">allGroups </span>= Group.GetAllGroups(bp);</p>
+                <p class="CodeBase">var <span class="CodeVariable">allGroups </span>= Group.GetAllGroups(<span class="CodeVariable">bp</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -157,7 +157,7 @@
                 <p><b>Group:</b> A Group object representation of the group</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// Normally not used directly</span>
-                    <br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByID(bp, "<span class="CodeOption">1234</span>");</p>
+                    <br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">1234</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -173,7 +173,7 @@
                 <h4>Returns</h4>
                 <p><b>Group:</b> A Group object representation of the group</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(bp, "<span class="CodeOption">Group 1</span>");</p>
+                <p class="CodeBase">var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Group 1</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -194,7 +194,7 @@
                 <h4>Returns</h4>
                 <p><b>True/False:</b> Whether or not the specified user exists in the group</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(bp, "<span class="CodeOption">User 1</span>");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(bp, "<span class="CodeOption">Group 1</span>");<br /><br /><span class="CodeComment">// The following two conditional tests test the same thing<br />// (is "User 1" in "Group 1")</span><br />if(<span class="CodeVariable">oGroup</span>.HasUser(<span class="CodeVariable">oUser</span>))<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do action</span><br />}<br /><span class="CodeComment">// OR</span><br />if(<span class="CodeVariable">oGroup</span>.HasUser(<span class="CodeOption"><span class="CodeVariable">oUser</span>.UID</span>))<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do action</span><br />}</p>
+                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">User 1</span>");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Group 1</span>");<br /><br /><span class="CodeComment">// The following two conditional tests test the same thing<br />// (is "User 1" in "Group 1")</span><br />if(<span class="CodeVariable">oGroup</span>.HasUser(<span class="CodeVariable">oUser</span>))<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do action</span><br />}<br /><span class="CodeComment">// OR</span><br />if(<span class="CodeVariable">oGroup</span>.HasUser(<span class="CodeOption"><span class="CodeVariable">oUser</span>.UID</span>))<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do action</span><br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -204,13 +204,13 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This API will convert a comma-separated string or DataItem containing a list of Groups into a normalized List object. This is an overloaded method with the following possible declarations:</p>
-                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, string <span class="CodeVariable">pGroupList</span>)</code>
+                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp <span class="CodeVariable">BP</span>, string <span class="CodeVariable">pGroupList</span>)</code>
                 </p>
-                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, string <span class="CodeVariable">pGroupList</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeVariable">ReturnNullOnInvalid</span>)</code>
+                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp <span class="CodeVariable">BP</span>, string <span class="CodeVariable">pGroupList</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeVariable">ReturnNullOnInvalid</span>)</code>
                 </p>
-                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, ref DataItem <span class="CodeVariable">pGroups</span>)</code>
+                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp <span class="CodeVariable">BP</span>, ref DataItem <span class="CodeVariable">pGroups</span>)</code>
                 </p>
-                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp BP, ref DataItem <span class="CodeVariable">pGroups</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeVariable">ReturnNullOnInvalid</span>)</code>
+                <p><code>		public static List&lt;Group&gt; NormalizeGroupList(bp <span class="CodeVariable">BP</span>, ref DataItem <span class="CodeVariable">pGroups</span>,<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;bool <span class="CodeVariable">ReturnNullOnInvalid</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>BP:</b> The BP&#160;Logix environment.</p>
@@ -220,7 +220,7 @@
                 <h4>Returns</h4>
                 <p><b>List:</b> A&#160;List object containing the groups.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">groupList </span>= NormalizeGroupList(bp, "<span class="CodeOption">Group1,Group2,Group3</span>");</p>
+                <p class="CodeBase">var <span class="CodeVariable">groupList </span>= NormalizeGroupList(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Group1,Group2,Group3</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -241,7 +241,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(bp, "<span class="CodeOption">User 1</span>");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(bp, "<span class="CodeOption">Group 1</span>");<br /><span class="CodeVariable">oGroup</span>.RemoveUser(<span class="CodeVariable">oUser</span>);</p>
+                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">User 1</span>");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Group 1</span>");<br /><span class="CodeVariable">oGroup</span>.RemoveUser(<span class="CodeVariable">oUser</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

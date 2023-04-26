@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
         <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
@@ -204,7 +204,7 @@
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// Set the Process and content object</span>
-                    <br />var <span class="CodeVariable">oProcess </span>= Project.GetProcessByID(bp, "<span class="CodeOption">ProcessID</span>");<br />var <span class="CodeVariable">oObject </span>= Form.GetFormByFORMID("<span class="CodeOption">FormID</span>");<br /><br /><span class="CodeComment">// Add the object to the process</span><br /><span class="CodeVariable">oProcess</span>.AddToProcess(<span class="CodeVariable">oObject</span>);</p>
+                    <br />var <span class="CodeVariable">oProcess </span>= Project.GetProcessByID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">ProcessID</span>");<br />var <span class="CodeVariable">oObject </span>= Form.GetFormByFORMID("<span class="CodeOption">FormID</span>");<br /><br /><span class="CodeComment">// Add the object to the process</span><br /><span class="CodeVariable">oProcess</span>.AddToProcess(<span class="CodeVariable">oObject</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -219,7 +219,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True if operation succeeds</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="CodeVariable">oProcessInst</span>.Cancel();</p>
+                <p class="CodeBase">var <span class="CodeVariable">oProcessInst </span>= Project.GetProcessByInstID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">PRINSTID</span>");<span class="CodeVariable"><br />oProcessInst</span>.Cancel();</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -234,7 +234,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Examples</h4>
-                <p class="CodeBase">bp.log0(<span class="CodeVariable">oProcessInst</span>.CheckForAdvance());</p>
+                <p class="CodeBase">var <span class="CodeVariable">oProcessInst </span>= Project.GetProcessByInstID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">PRINSTID</span>");<br />bp.log0(<span class="CodeVariable">oProcessInst</span>.CheckForAdvance());</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -250,7 +250,7 @@
                 <h4>Returns</h4>
                 <p><b>String:</b> The resultant string after converting every system variable.</p>
                 <h4>Examples</h4>
-                <p class="CodeBase">bp.log0(<span class="CodeVariable">oProcessInst</span>.ConvertSysVarsInString("<span class="CodeOption">Created on {CREATE_DATE}</span>"));</p>
+                <p class="CodeBase">var <span class="CodeVariable">oProcessInst </span>= Project.GetProcessByInstID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">PRINSTID</span>");<br />bp.log0(<span class="CodeVariable">oProcessInst</span>.ConvertSysVarsInString("<span class="CodeOption">Created on {CREATE_DATE}</span>"));</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -267,8 +267,7 @@
                 <h4>Returns</h4>
                 <p><b>List&lt;ContentObject&gt;:</b> List of ContentObjects or null if the operation fails.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="CodeComment">// Gets all items in the group named “Group 1”</span>
-                    <br />var <span class="CodeVariable">MyChildren </span>= <span class="CodeVariable">oProcessInst</span>.GetChildren("<span class="CodeOption">Group 1</span>");</p>
+                <p class="CodeBase">var <span class="CodeVariable">oProcessInst </span>= Project.GetProcessByInstID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">PRINSTID</span>");<span class="CodeComment"><br />// Gets all items in the group named “Group 1”</span><br />var <span class="CodeVariable">MyChildren </span>= <span class="CodeVariable">oProcessInst</span>.GetChildren("<span class="CodeOption">Group 1</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -285,7 +284,7 @@
                 <p><b>ProcessObject:</b> Will return null if object isn't found.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// Normally not used directly</span>
-                    <br />var <span class="CodeVariable">oObject </span>= <span class="CodeVariable">oProcessInst</span>.GetProcessByID(bp, "<span class="CodeOption">1234</span>" );</p>
+                    <br />var <span class="CodeVariable">oObject </span>= Project.GetProcessByID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">PID</span>" );</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -302,7 +301,7 @@
                 <p><b>ProcessInstanceObject:</b> Will return null if object isn't found.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// Normally not used directly</span>
-                    <br />var <span class="CodeVariable">oObject </span>= <span class="CodeVariable">oProcessInst</span>.GetProcessByInstID(bp, "<span class="CodeOption">1234</span>" );</p>
+                    <br />var <span class="CodeVariable">oObject </span>= Process.GetProcessByInstID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">INSTID</span>" );</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -317,7 +316,7 @@
                 <h4>Returns</h4>
                 <p><b>Process:</b> List of sub processes.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">SubProces </span>= CurrentProject.GetSubProcesses();<br />foreach (var <span class="CodeVariable">sub </span>in <span class="CodeVariable">SubProces</span>)<br />{<br />&#160;&#160;&#160;&#160;bp.log0("<span class="CodeOption">Sub process: </span>" + <span class="CodeVariable">sub</span>.Name);<br />}</p>
+                <p class="CodeBase">var <span class="CodeVariable">SubProcess </span>= CurrentProject.GetSubProcesses();<br />foreach (var <span class="CodeVariable">sub </span>in <span class="CodeVariable">SubProcess</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.log0("<span class="CodeOption">Sub process: </span>" + <span class="CodeVariable">sub</span>.Name);<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -332,7 +331,7 @@
                 <h4>Returns</h4>
                 <p><b>ProcessTask:</b> The actual ProcessTask or null if the operation fails.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">Approve </span>= oProcessInst.GetTaskByName("<span class="CodeOption">TaskName</span>");</p>
+                <p class="CodeBase">var <span class="CodeVariable">oProcess </span>= Project.GetProcessByID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">PID</span>");<br />var <span class="CodeVariable">Approve </span>= <span class="CodeVariable">oProcess</span>.GetTaskByName("<span class="CodeOption">TaskName</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -356,7 +355,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">oProcess </span>= Project.GetProcessByID(bp, "<span class="CodeOption">ProcessID</span>");<br /><span class="CodeVariable">oProcess</span>.Instantiate();<br /><span class="CodeComment">// Add items to Timeline package here</span><br /><span class="CodeVariable">oProcess</span>.Start();</p>
+                <p class="CodeBase">var <span class="CodeVariable">oProcess </span>= Project.GetProcessByID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">PID</span>");<br /><span class="CodeVariable">oProcess</span>.Instantiate();<br /><span class="CodeComment">// Add items to Timeline package here</span><br /><span class="CodeVariable">oProcess</span>.Start();</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -376,7 +375,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">PostEvent(bp, "<span class="CodeOption">ProcessInstanceID</span>", "<span class="CodeOption">EventName</span>");</p>
+                <p class="CodeBase">PostEvent(<span class="CodeVariable">bp</span>, "<span class="CodeOption">PID</span>", "<span class="CodeOption">EventName</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -392,7 +391,7 @@
                 <p>None.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// Re-generates the name of the Process Instance</span>
-                    <br /><span class="CodeVariable">oProcessInst</span>.RecalcInstanceName();</p>
+                    <br />var <span class="CodeVariable">oProcessInst </span>= Project.GetProcessByInstID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">INSTID</span>");<br /><span class="CodeVariable">oProcessInst</span>.RecalcInstanceName();</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -415,7 +414,7 @@
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// Restarts the Process instance</span>
-                    <br /><span class="CodeVariable">oProcessInst</span>.ReStart();</p>
+                    <br />var <span class="CodeVariable">oProcessInst </span>= Project.GetProcessByInstID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">INSTID</span>");<br /><span class="CodeVariable">oProcessInst</span>.ReStart();</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -443,7 +442,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase"><span class="CodeVariable">oProcessDefinition</span>.Run("<span class="CodeOption">1234</span>", <span class="CodeOption">ObjectType.Document</span>);</p>
+                <p class="CodeBase">var <span class="CodeVariable">oProcess </span>= Project.GetProcessByID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">PID</span>");<span class="CodeVariable"><br />oProcess</span>.Run();</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -464,7 +463,7 @@
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// Set the specified form instance as the current form instance</span>
-                    <br /><span class="CodeVariable">oProcessInst</span>.SetCurrentFormInstance("<span class="CodeOption">FORMINSTID</span>");</p>
+                    <br />var <span class="CodeVariable">oProcessInst </span>= Project.GetProcessByInstID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">INSTID</span>");<br /><span class="CodeVariable">oProcessInst</span>.SetCurrentFormInstance("<span class="CodeOption">FORMINSTID</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -479,7 +478,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> True if the operation succeeds.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">oProcess </span>= Process.GetProcessByInstID("<span class="CodeOption">InstanceID</span>");<br /><span class="CodeVariable">oProcess</span>.SetPriority(<span class="CodeOption">1</span>);</p>
+                <p class="CodeBase">var <span class="CodeVariable">oProcessInst </span>= Process.GetProcessByInstID("<span class="CodeOption">PRINSTID</span>");<br /><span class="CodeVariable">oProcessInst</span>.SetPriority(<span class="CodeOption">1</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
