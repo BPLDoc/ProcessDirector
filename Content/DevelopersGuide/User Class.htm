@@ -188,7 +188,7 @@
                     </td>
                     <td class="TableStyle-Simple-BodyE-Column1-Row2">List Object</td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                        <p>The list of groups to which the user belongs, returned as List&lt;Group&gt;. If you need to check whether a large number of users are in a specific group, it may be more efficient to use the Group.HasUser() function.</p>
+                        <p>The list of groups to which the user belongs, returned as List&lt;Group&gt;. If you need to check whether a large number of users are in a specific group, it may be more efficient to use the <code>Group.HasUser()</code> function.</p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row1">
@@ -247,7 +247,7 @@
                     </td>
                     <td class="TableStyle-Simple-BodyE-Column1-Row1">Dictionary Object</td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                        <p>Returns a dictionary of attributes that can associated with this user while logged in, returned as a Dictionary&lt;Key,Value&gt;</p>
+                        <p>Returns a dictionary of attributes that can associated with this user while logged in, returned as a <code>Dictionary&lt;Key,Value&gt;</code></p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row2">
@@ -256,7 +256,7 @@
                     </td>
                     <td class="TableStyle-Simple-BodyE-Column1-Row2">List Object</td>
                     <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                        <p>Returns the list of Tasks for the user, returned as a List&lt;task&gt;</p>
+                        <p>Returns the list of Tasks for the user, returned as a <code>List&lt;task&gt;</code></p>
                     </td>
                 </tr>
                 <tr class="TableStyle-Simple-Body-Row1">
@@ -345,7 +345,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">UID</span>");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Group 1</span>");<br /><br /><span class="CodeComment">// The following two calls do the same thing (add "User 1" to "Group 1")</span><br /><span class="CodeVariable">oUser</span>.AddToGroup(<span class="CodeVariable">oGroup</span>); <span class="CodeComment">// Call with the Group object</span><br /><span class="CodeVariable">oUser</span>.AddToGroup(<span class="CodeOption"><span class="CodeVariable">oGroup</span>.</span>GID; <span class="CodeComment">// Call with the Group ID</span></p>
+                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">UID</span>");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">GroupName</span>");<br /><br /><span class="CodeComment">// The following two calls do the same thing (add "oUser" to "oGroup")</span><br /><span class="CodeVariable">oUser</span>.AddToGroup(<span class="CodeVariable">oGroup</span>); <span class="CodeComment">// Call with the Group object</span><br /><span class="CodeVariable">oUser</span>.AddToGroup(<span class="CodeOption"><span class="CodeVariable">oGroup</span>.</span>GID; <span class="CodeComment">// Call with the Group ID</span></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -690,7 +690,7 @@
                 <p><b>String:</b> The result of the import operation.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// Import the users in the "Users.XLSX" file in the sheet named "Sheet1"</span>
-                    <br />var <span class="CodeVariable">DID </span>= ContentObject.GetObjectByPathName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Partition1</span>",<br />&#160;&#160;&#160;&#160;"<span class="CodeOption">/Users.XLSX</span>");<br />var <span class="CodeVariable">RES </span>= BPLogix.WorkflowDirector.SDK.User.ImportUsersFromExcel(<span class="CodeVariable">bp</span>, <br />&#160;&#160;&#160;&#160;<span class="CodeOption"><span class="CodeVariable">DID</span></span>.ID, "<span class="CodeOption">Sheet1</span>");</p>
+                    <br />var <span class="CodeVariable">DID </span>= ContentObject.GetObjectByPathName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">PartitionName</span>",<br />&#160;&#160;&#160;&#160;"<span class="CodeOption">/Users.XLSX</span>");<br />var <span class="CodeVariable">RES </span>= BPLogix.WorkflowDirector.SDK.User.ImportUsersFromExcel(<span class="CodeVariable">bp</span>, <br />&#160;&#160;&#160;&#160;<span class="CodeOption"><span class="CodeVariable">DID</span></span>.ID, "<span class="CodeOption">Sheet1</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -706,7 +706,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> Whether or not the user exists in the specified group.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">UID</span>");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Group 1</span>");<br /><span class="CodeComment">// The following two conditional tests the same thing (is "User 1" <br />// in "Group 1")</span><br />if(<span class="CodeVariable">oUser</span>.InGroup(<span class="CodeVariable">oGroup</span>))<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do action</span><br />}<br />if(<span class="CodeVariable">oUser</span>.InGroup(<span class="CodeOption"><span class="CodeVariable">oGroup</span>.</span>GID))<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do action</span><br />}</p>
+                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">UID</span>");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">GroupName</span>");<br /><span class="CodeComment">// The following two conditionals test the same thing (is "oUser" <br />// in "oGroup")</span><br />if(<span class="CodeVariable">oUser</span>.InGroup(<span class="CodeVariable">oGroup</span>))<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do action</span><br />}<br />if(<span class="CodeVariable">oUser</span>.InGroup(<span class="CodeOption"><span class="CodeVariable">oGroup</span>.</span>GID))<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do action</span><br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -758,7 +758,7 @@
                 <h4>Returns</h4>
                 <p>None</p>
                 <h4>Example</h4>
-                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(<span class="CodeVariable">bp</span>, "UID");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">Group 1</span>");<br /><span class="CodeVariable">oUser</span>.RemoveFromGroup(<span class="CodeVariable">oGroup</span>);</p>
+                <p class="CodeBase">var <span class="CodeVariable">oUser </span>= User.GetUserByUserID(<span class="CodeVariable">bp</span>, "UID");<br />var <span class="CodeVariable">oGroup </span>= Group.GetGroupByName(<span class="CodeVariable">bp</span>, "<span class="CodeOption">GroupName</span>");<br /><span class="CodeVariable">oUser</span>.RemoveFromGroup(<span class="CodeVariable">oGroup</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

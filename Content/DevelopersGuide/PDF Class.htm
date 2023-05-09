@@ -62,7 +62,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> Returns false if the operation fails.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">CreatePDFFromDocument(<span class="CodeVariable">bp</span>, <span class="CodeOption">oDocument</span>, "<span class="CodeOption">C://File/Path/DocumentName.pdf</span>");</p>
+                <p class="CodeBase">var <span class="CodeVariable">oDocument </span>= Document.GetDocumentbyDID(<span class="CodeVariable">bp</span>, "<span class="CodeOption">DID</span>");<br />CreatePDFFromDocument(<span class="CodeVariable">bp</span>, <span class="CodeVariable">oDocument</span>, "<span class="CodeOption">C://File/Path/DocumentName.pdf</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -79,7 +79,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> Returns false if the operation fails.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">CreatePDFFromForm(<span class="CodeVariable">bp</span>, "<span class="CodeOption">FormInstanceID</span>", <br />&#160;&#160;&#160;&#160;"<span class="CodeOption">C://File/Path/DocumentName.pdf</span>");</p>
+                <p class="CodeBase">CreatePDFFromForm(<span class="CodeVariable">bp</span>, "<span class="CodeOption">FORMINSTID</span>", <br />&#160;&#160;&#160;&#160;"<span class="CodeOption">C://File/Path/DocumentName.pdf</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -113,7 +113,7 @@
                 <h4>Returns</h4>
                 <p><b>Boolean:</b> Returns false if the operation fails.</p>
                 <h4>Example</h4>
-                <p class="CodeBase">CreatePDFFromRoutingSlip(<span class="CodeVariable">bp</span>, "<span class="CodeOption">FormInstanceID</span>", <br />&#160;&#160;&#160;&#160;"<span class="CodeOption">C://File/Path/DocumentName.pdf</span>");</p>
+                <p class="CodeBase">CreatePDFFromRoutingSlip(<span class="CodeVariable">bp</span>, "<span class="CodeOption">FORMINSTID</span>", <br />&#160;&#160;&#160;&#160;"<span class="CodeOption">C://File/Path/DocumentName.pdf</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -194,9 +194,9 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Merges multiple PDF files into a single PDF file. This is an overloaded method with the following possible declarations:</p>
-                <p><code>public static bool MergePDFs(bp BP, IEnumerable&lt;string&gt; <span class="CodeVariable">InputPDFPaths</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">OutputPDFPath</span>)</code>
+                <p><code>public static bool MergePDFs(bp <span class="CodeVariable">BP</span>, IEnumerable&lt;string&gt; <span class="CodeVariable">InputPDFPaths</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">OutputPDFPath</span>)</code>
                 </p>
-                <p><code>public static bool MergePDFs(bp BP, IEnumerable&lt;string&gt; <span class="CodeVariable">InputPDFPaths</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">OutputPDFPath</span>, bool <span class="CodeVariable">DeleteInputs</span>)</code>
+                <p><code>public static bool MergePDFs(bp <span class="CodeVariable">BP</span>, IEnumerable&lt;string&gt; <span class="CodeVariable">InputPDFPaths</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeVariable">OutputPDFPath</span>, bool <span class="CodeVariable">DeleteInputs</span>)</code>
                 </p>
                 <h4>Parameters</h4>
                 <p><b>BP:</b> The BP&#160;Logix Object.</p>
@@ -207,7 +207,7 @@
                 <p><b>Boolean:</b> Returns false if the operation fails.</p>
                 <h4>Example</h4>
                 <p class="CodeBase"><span class="CodeComment">// The list to store the PDF&#160;locations</span>
-                    <br />List&lt;string&gt; <span class="CodeVariable">MyFiles </span>= new List&lt;string&gt;();<br /><span class="CodeVariable">MyFiles</span>.Add("<span class="CodeOption">C://File/Path/Document1Name.pdf</span>");<br /><span class="CodeVariable">MyFiles</span>.Add("<span class="CodeOption">C://File/Path/Document2Name.pdf</span>");<br /><br /><span class="CodeComment">// Merge the PDFs</span><br />MergePDFs(bp, <span class="CodeVariable">MyFiles</span>, "<span class="CodeOption">C://File/Path/MergedDocumentName.pdf</span>");</p>
+                    <br />List&lt;string&gt; <span class="CodeVariable">MyFiles </span>= new List&lt;string&gt;();<br /><span class="CodeVariable">MyFiles</span>.Add("<span class="CodeOption">C://File/Path/Document1Name.pdf</span>");<br /><span class="CodeVariable">MyFiles</span>.Add("<span class="CodeOption">C://File/Path/Document2Name.pdf</span>");<br /><br /><span class="CodeComment">// Merge the PDFs</span><br />MergePDFs(<span class="CodeVariable">bp</span>, <span class="CodeVariable">MyFiles</span>, "<span class="CodeOption">C://File/Path/MergedDocumentName.pdf</span>");</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
