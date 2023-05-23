@@ -5,12 +5,34 @@
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Developer" />
-            <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword><a name="_Toc421270092"></a>User Info SlideOut</h1>
+            <MadCap:concept term="Developer;Users" />
+            <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword><a name="_Toc421270092"></a>User Info SlideOut Custom Variables</h1>
         <p>The User Info Slideout is a control that appears when you click the upper left corner of the Process Director screen. It contains a variety of information about the logged-in user, and can include the Name, email address, image, and other items that can be customized by using the custom variables in this section of the documentation.</p>
         <p>
             <img src="../Resources/Images/DevelopersGuide/userinfobox.png" alt="User Information Box" />
         </p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="fDisableUserProfileEmailChange" /><a name="fDisableUserProfileEmailChange"></a><a href="#fDisableUserProfileEmailChange"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDisableUserProfileEmailChange</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This variable, when set to "true" disables all end users' ability to change their email addresses via the User Profile page. The default value for this variable is "false".</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent users from changing their email addresses</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableUserProfileEmailChange = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fTurnOffUserProfileTimeZone"></a><a href="#fTurnOffUserProfileTimeZone"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTurnOffUserProfileTimeZone</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fTurnOffUserProfileTimeZone">&#160;</MadCap:keyword>By default, users are allowed to control the time zone setting in their user profile. Setting this variable to “true” disables this ability.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent users from setting time zones</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffUserProfileTimeZone= <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>UserInfoShowSignOut</MadCap:dropDownHotspot>
@@ -20,6 +42,39 @@
                     <MadCap:keyword term="UserInfoShowSignOut">&#160;</MadCap:keyword>Setting this system variable to true enables you to show the <span class="UIElement">Sign Out</span> button on the user info slide panel.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Hide the user info slideout</span><br />&#160;&#160;&#160;&#160;bp.Vars.UserInfoShowSignOut = <span class="CodeOption">false</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="fEnableDenyPermissions" /><a name="fTurnOffDelegation"></a><a href="#fTurnOffDelegation"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTurnOffDelegation</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This variable , when set to "true" will remove the ability for users to perform delegation from their User Profile page. The default value for this variable is "false".</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will disable user delegation in the user profile.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffDelegation = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="fTurnOffSharedDelegation" /><a name="fTurnOffSharedDelegation"></a><a href="#fTurnOffSharedDelegation"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTurnOffSharedDelegation</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This variable , when set to "true" will remove the ability for users to perform shared delegation from their user profile page. The default value for this variable is "false".</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will disable shared delegation ability in the user profile.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffSharedDelegation = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fTurnOffUserProfileEmail"></a><a href="#fTurnOffUserProfileEmail"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTurnOffUserProfileEmail</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fTurnOffUserProfileEmail">&#160;</MadCap:keyword>By default, users are allowed to disable their email from their user profile. Setting this variable to “true” disables this ability.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent users from disabling email</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffUserProfileEmail= <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

@@ -10,29 +10,6 @@
         <p>There are a variety of miscellaneous custom variables that you can set to determine how some Process Director features or functions work.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="AllowRichTextTemplate">
-                    </MadCap:keyword><a name="AllowRichTextTemplate"></a><a href="#AllowRichTextTemplate"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>AllowRichTextTemplate</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>When this flag is set to true, Process Director will attempt to transfer Rich Text content into PDF form fields that are set to accept Rich Text content. There are limitations to this ability, which are explained in the <a href="../Custom Tasks2/PDF Custom Tasks.htm#RichTextSupport">PDF Rich Text Field Support</a> section of the PDF&#160;Custom Tasks topic.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.AllowRichTextTemplate = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="DisableParentRefreshForm"></a><a href="#DisableParentRefreshForm"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>DisableParentRefreshForm</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="DisableParentRefreshForm">&#160;</MadCap:keyword>This variable enables you to disable the auto refreshing of the parent browser when forms are completed.</p>
-                <p>Example</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.DisableParentRefreshForm = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="fAllowV6Import"></a><a href="#fAllowV6Import"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAllowV6Import</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -44,113 +21,13 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fCancelSubWorkflows"></a><a href="#fCancelSubWorkflows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fCancelSubWorkflows</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fCancelSubWorkflows">&#160;</MadCap:keyword>If this system variable is set to false, cancelling a process or process task won't cancel their associated sub-processes.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Cancellations of tasks or processes won't cancel sub-<br />&#160;&#160;&#160;&#160;// processes</span><br />&#160;&#160;&#160;&#160;bp.Vars.fCancelSubWorkflows = <span class="CodeOption">false</span>; <br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fCloseEditAfterUpload"></a><a href="#fCloseEditAfterUpload"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fCloseEditAfterUpload</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fCloseEditAfterUpload">&#160;</MadCap:keyword>If this system variable is set to true, the popup that appears after a check-in will close automatically when the upload completes.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// the popup appearing after a successful check-in will not<br />&#160;&#160;&#160;&#160;// close while fCloseEditAfterUpload is set to false<br /></span>&#160;&#160;&#160;&#160;bp.Vars.fCloseEditAfterUpload = <span class="CodeOption">false</span>; <br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fCONTAINSUseValueSearchOnly"></a><a href="#fCloseEditAfterUpload"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fCONTAINSUseValueSearchOnly</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="fCONTAINSUseValueSearchOnly"></a><a href="#fCONTAINSUseValueSearchOnly"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fCONTAINSUseValueSearchOnly</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="fCONTAINSUseValueSearchOnly" />When using full-text search operators, such as (Contains (Lexical) search operations may take a long time, especially when searching many records containing long text fields. This custom variable can speed up the operation of full text searches by limiting the search to the first 256 characters of the field being searched. While this may substantially speed up the search operation, it also reduces the accuracy of the search results, as search terms that aren't included in the first 256 characters of the field will be ignored.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Speed up full-text searching</span><br />&#160;&#160;&#160;&#160;bp.Vars.fCONTAINSUseValueSearchOnly = <span class="CodeOption">true</span>; <br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fCopyRefsFromRealProcessToKViewProcess"></a><a href="#fCloseEditAfterUpload"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fCopyRefsFromRealProcessToKViewProcess</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fCopyRefsFromRealProcessToKViewProcess" />When starting a process from a Knowledge View against returned form instances, the system will copy all attachment references from the original process associated with the form instance to the process instance that is being started by the Knowledge View. This enables Custom Tasks like <span class="ProcessDirectorObject">Convert to PDF</span> and <span class="ProcessDirectorObject">Export Items</span> to work with the original documents/form instances that are in the original process. The default behavior can be disabled by setting this custom variable to "false".</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Disable copying of original attachments when a process<br />&#160;&#160;&#160;&#160;// is initiated via Knowledge View</span><br />&#160;&#160;&#160;&#160;bp.Vars.fCopyRefsFromRealProcessToKViewProcess = <span class="CodeOption">false</span>; <br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fDeleteDocOnRemove"></a><a href="#fDeleteDocOnRemove"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDeleteDocOnRemove</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fDeleteDocOnRemove">&#160;</MadCap:keyword>When true, this option immediately deletes documents when not referenced by any other Form instance. When false, documents are marked for deletion, and actually deleted during normal clean-up processing.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;//Deletes documents immediately when they are removed</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDeleteDocOnRemove = <span class="CodeOption">true</span>; <br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fDisableDetailedAttach"></a><a href="#fDisableDetailedAttach"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDisableDetailedAttach</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fDisableDetailedAttach">&#160;</MadCap:keyword>This variable enables you to control whether the show the detailed option for attaching documents to forms.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Disable the detailed attach on upload</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableDetailedAttach = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fDisableExcelImport"></a><a href="#fDisableExcelImport"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDisableExcelImport</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fDisableExcelImport">&#160;</MadCap:keyword>This variable enables you to control whether the Excel files can be used to automatically populate SQL databases.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Disable the auto-excel import feature</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableExcelImport = <span class="CodeOption">false</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fDisableImageResize"></a><a href="#fDisableImageResize"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDisableImageResize</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fDisableImageResize">&#160;</MadCap:keyword>When true, this option disables automatic image resizing and rotating. Images are, by default, resized and rotated to display properly on mobile devices and when embedded in frames. </p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// disables automatic image resizing and rotating</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableImageResize = <span class="CodeOption">true</span>; <br />}</p>
-                <p>Occasionally, When using Process Director, you may encounter a generic GDI+ error when attempting to display a PNG file.Setting fDisableImageResize to false will prevent the error from occurring.</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fDocRemovedInPopup"></a><a href="#fDocRemovedInPopup"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDocRemovedInPopup</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>This variable changes the system behavior when the user clicks on the download link on a document that has had its binary data removed, but the document artifact remains in the system. The default behavior is to replace the currently displayed Form with a custom error page in the same window.</p>
-                <p>
-                    <MadCap:keyword term="fDisableImageResize">&#160;</MadCap:keyword>When setting this variable to "true", the custom error page identified in the sCustomURL_DocRemoved variable will open in a new window instead of replacing the current Form in the same window. </p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Cause the page that displayed the document error<br />&#160;&#160;&#160;&#160;// message to occur in a popup, the default is false</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDocRemovedInPopup = <span class="CodeOption">true</span>;&#160; <br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fEnableKViewFilterOnSavedForLater"></a><a href="#fEnableKViewFilterOnSavedForLater"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fEnableKViewFilterOnSavedForLater</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fEnableKViewFilterOnSavedForLater" />By default, incomplete forms that have been saved for later display in Task List Knowledge Views, irrespective of filters that may be applied to the Knowledge View. This Boolean variable, when set to "true," enables Process Director to filter incomplete forms and hide them from the Task List results.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Enable Task List filtering for saved/incomplete forms</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableKViewFilterOnSavedForLater = <span class="CodeOption">true</span>; <br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -243,31 +120,6 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="FileExtensionsUseCDMForEdit"></a><a href="#FileExtensionsUseCDMForEdit"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>FileExtensionsUseCDMForEdit</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="FileExtensionsUseCDMForEdit" />This variable enables you to specify which file extensions should use the Collaborative Document Markup (CDM )feature when using the EDIT link. This feature will enable you to use the Collaborative Document Markup tool for editing specific document types, while retaining the Collaborative Document Authoring (CDA) feature for editing all other document types. For instance, you may wish to specify the CDM&#160;tool for editing PowerPoint presentations, as in the example below, while still retaining the use of CDA for editing Word and Excel Documents.</p>
-                <p>Specifying the use of CDM for editing means that the only editing allowed will be adding annotations, unlike the CDA tool, which enables editing the original document content.</p>
-                <p>This variable isn't relevant for installations that aren't licensed with the Collaborative Document features.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Specifies the use of CDM to mark up PowerPoint presentations</span><br />&#160;&#160;&#160;&#160;bp.Vars.FileExtensionsUseCDMForEdit = "<span class="CodeOption">ppt, pptx</span>";<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="FileExtensionsUseCheckOutForEdit"></a><a href="#FileExtensionsUseCheckOutForEdit"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>FileExtensionsUseCheckOutForEdit</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="FileExtensionsUseCheckOutForEdit" />This variable enables you to specify which file extensions should use the default checkout and edit feature, rather than the Collaborative Document Authoring (CDA) feature. File extensions listed in this variable will force the default check out and edit functionality when clicking the EDIT link for attachments.</p>
-                <p>This variable isn't relevant for installations that aren't licensed with the Collaborative Document features.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Forces use of the default check out feature for <br />&#160;&#160;&#160;&#160;//&#160;PowerPoint presentations, and not use CDA</span><br />&#160;&#160;&#160;&#160;bp.Vars.FileExtensionsUseCheckOutForEdit = "<span class="CodeOption">xls, xlsx</span>";<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="fListenToEmailSetting"></a><a href="#fPDFCreateOtherAsAttachments"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fListenToEmailSetting</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -302,68 +154,13 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fPreventTaskCompleteIfCheckout"></a><a href="#fPreventTaskCompleteIfCheckout"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fPreventTaskCompleteIfCheckout</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fPreventTaskCompleteIfCheckout">&#160;</MadCap:keyword>When set to true, this option prevents a user from completing a task if he checked out a document while working on that task, and hasn't yet checked it in.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Prevents user from completing a task<br />&#160;&#160;&#160;&#160;// if he performed a check out on a<br />&#160;&#160;&#160;&#160;// document and hasn't checked it in</span><br />&#160;&#160;&#160;&#160;bp.Vars.fPreventTaskCompleteIfCheckout = <span class="CodeOption">true</span>; <br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="fReAuthFillUserID"></a><a href="#fReAuthFillUserID"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fReAuthFillUserID</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="fReAuthFillUserID">&#160;</MadCap:keyword>When set to true, a Process Director user will have to reenter his User ID when prompted for re-authentication. This variable is set to false by default, which means that the User ID is filled in automatically on a Form’s {reauth} control.</p>
+                    <MadCap:keyword term="fReAuthFillUserID">&#160;</MadCap:keyword>When set to true, a Process Director user will have to reenter his User ID when prompted for re-authentication. This variable is set to false by default, which means that the User ID is filled in automatically on a Form’s <span class="NamedControl">Re-Authenticate</span> control.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Force reauthentication</span><br />&#160;&#160;&#160;&#160;bp.Vars.fReAuthFillUserID = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fSendEmailOnWfAdmin"></a><a href="#fReAuthFillUserID"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fSendEmailOnWfAdmin</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fSendEmailOnWfAdmin" />When set to true, This variable will force an email to be sent when a user is added to a running step/activity by an administrator. The default value is false.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Send an email on administrative user additions to a task</span><br />&#160;&#160;&#160;&#160;bp.Vars.fSendEmailOnWfAdmin = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fSharedDelegationNextTask"></a><a href="#fShowDisabledUsers"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fSharedDelegationNextTask</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fSharedDelegationNextTask" />Setting this variable to true will, when <a href="../SystemAdministratorGuide/User Delegation.htm#SharedDelegation">shared delegation</a> is enabled, display the next task to the delegate automatically, if the principal assignee of the current task is also the principal assignee of the next task. This variable is set to false by default.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Automatically display the next task to the delegate</span><br />&#160;&#160;&#160;&#160;bp.Vars.fSharedDelegationNextTask = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fShowDisabledUsers"></a><a href="#fShowDisabledUsers"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fShowDisabledUsers</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fReAuthFillUserID">&#160;</MadCap:keyword>When set to true,&#160; Process Director will display disabled users in all dialogs and user pickers. This variable is set to false by default.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Display disabled users</span><br />&#160;&#160;&#160;&#160;bp.Vars.fShowDisabledUsers = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fShowProcessCancelReasonOnUser"></a><a href="#fShowDisabledUsers"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fShowProcessCancelReasonOnUser</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fShowProcessCancelReasonOnUser" />When a process or activity/step is canceled, and that results in a user being canceled, the administrative comment will be added to the user record in the Routing Slip indicating why it was canceled if this variable is set to "true". The default value for this variable is "false".</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Show cancellation reason on Routing Slip</span><br />&#160;&#160;&#160;&#160;bp.Vars.fShowProcessCancelReasonOnUser = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -408,28 +205,6 @@
                     <MadCap:keyword term="fWebServiceAllowCredentialsURL">&#160;</MadCap:keyword>This variable enables callers of web services using REST to pass authentication credentials on the URL. The default value of this variable is "true". If this variable is set to "false", the <a href="Customization File Administration.htm#fWebServiceAuth">fWebServiceAuth</a> custom variable will also have to be set to false, as there will be no way to pass credentials for authorization.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable Authentication credentials<br></br>&#160;&#160;&#160;&#160;// Requires also setting the fWebServiceAuth var to false</span><br />&#160;&#160;&#160;&#160;bp.Vars.fWebServiceAllowCredentialsURL = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="InlineDocumentTypes"></a><a href="#InlineDocumentTypes"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>InlineDocumentTypes</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="InlineDocumentTypes">&#160;</MadCap:keyword>This variable enables you to control document types are displayed “inline” in the browser. You can inspect or modify this list.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Add the ZIP file type as one to display “inline”</span><br />&#160;&#160;&#160;&#160;bp.Vars.InlineDocumentTypes.Add("<span class="CodeOption">ZIP</span>");<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nAsyncSubProcessWaitSecs"></a><a href="#nAsyncSubProcessWaitSecs"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nAsyncSubProcessWaitSecs</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nArchiveLogDays">&#160;</MadCap:keyword>This variable enables you to control the number of seconds that Process Director should wait for an asynchronous subprocess to complete. On some systems, when starting a subprocess using the "Run Asynchronously" and the "Wait for subprocess to complete" options, the system can mark the calling task as complete before the called subprocess completes. This may be especially true if the subprocess contains complex rendering operations. This variable adds a 5-second wait time as a default, to help ensure the subprocess has time to complete.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Wait 5 seconds before marking the <br />&#160;&#160;&#160;&#160;// calling task as complete</span><br />&#160;&#160;&#160;&#160;bp.Vars.nAsyncSubProcessWaitSecs = <span class="CodeOption">5</span>; <span class="CodeComment"><br /></span>}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -480,85 +255,6 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nPDFPageWidth"></a><a href="#nPDFPageWidth"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nPDFPageWidth</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nPDFPageWidth">&#160;</MadCap:keyword>This variable enables you to control the width in pixels of forms converted into PDF. 0 sets the width automatically.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// 1024 pixel width for converted PDFs</span><br />&#160;&#160;&#160;&#160;bp.Vars.nPDFPageWidth = <span class="CodeOption">1024</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nTaskCompleteDialogWidth"></a><a href="#nTaskCompleteDialogWidth"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nTaskCompleteDialogWidth</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nTaskCompleteDialogWidth" />This variable sets the width of the "Completing Task" popup that appears when a task is completed from the Task List. In most cases, this setting will never need to be adjusted.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// The width of the popup that says "completing task"</span>.<br />&#160;&#160;&#160;&#160;bp.Vars.nTaskCompleteDialogWidth = <span class="CodeOption">20</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nTaskCompleteDialogHeight"></a><a href="#nTaskCompleteDialogHeight"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nTaskCompleteDialogHeight</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nTaskCompleteDialogHeight" />This variable sets the height of the "Completing Task" popup that appears when a task is completed from the Task List. In most cases, this setting will never need to be adjusted.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// The height of the popup that says "completing task"</span>.<br />&#160;&#160;&#160;&#160;bp.Vars.nTaskCompleteDialogHeight = <span class="CodeOption">20</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nTaskCompletePromptDialogWidth"></a><a href="#nTaskCompleteDialogWidth"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nTaskCompletePromptDialogWidth</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nTaskCompletePromptDialogWidth" />This variable sets the width of the dialog box that prompts the user to enter task completion comments when a task is completed from the Task List. In most cases, this setting will never need to be adjusted.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// The width of the popup that PROMPTS the user to enter completion comments.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nTaskCompletePropmtDialogWidth= <span class="CodeOption">500</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nTaskCompletePromptDialogHeight"></a><a href="#nTaskCompleteDialogWidth"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nTaskCompletePromptDialogHeight</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nTaskCompletePromptDialogHeight" />This variable sets the height of the dialog box that prompts the user to enter task completion comments when a task is completed from the Task List. In most cases, this setting will never need to be adjusted.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// The width of the popup that PROMPTS the user to enter completion comments.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nTaskCompletePromptDialogHeight= <span class="CodeOption">250</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nTimelineLoopCountStarts"></a><a href="#nTimelineLoopCountStarts"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nTimelineLoopCountStarts</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nTimelineLoopCountStarts" />If a Process Timeline instance is determined to be in an endless loop condition, the problem activity will be placed into an error state. This detection logic to define an endless loop is controlled through the <a href="Customization File Administration.htm#nMaxActivityStarts">nMaxActivityStarts</a>, <a href="Customization File Administration.htm#nMaxActivityStartsInLastSecs">nMaxActivityStartsInLastSecs</a>,  and nTimelineLoopCountStarts variables.</p>
-                <p>This variable sets the number of activities that may be started in one pass of a process. The default is 100.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Set max number of allowable loops to 50</span><br />&#160;&#160;&#160;&#160;bp.Vars.nTimelineLoopCountStarts = <span class="CodeOption">50</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="NTLM_NoLoginButton"></a><a href="#NTLM_NoLoginButton"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>NTLM_NoLoginButton</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="NTLM_NoLoginButton">
-                    </MadCap:keyword>This variable enables you to remove the NTLM login button on the home page.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.NTLM_NoLoginButton = <span class="CodeOption">true</span>;&#160;<span class="CodeComment">//Removes the Windows login button</span><br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="nWSTimeout"></a><a href="#nWSTimeout"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nWSTimeout</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -566,28 +262,6 @@
                     <MadCap:keyword term="nWSTimeout">&#160;</MadCap:keyword>This system variable specifies the time, in milliseconds, that a web service call should wait before timing out.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// The default timeout time is 10 minutes</span><br />&#160;&#160;&#160;&#160;bp.Vars.nWSTimeout = <span class="CodeOption">1000 * 60 * 10</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="sCustomURL_DocRemoved"></a><a href="#sCustomURL_DocRemoved"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sCustomURL_DocRemoved</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="sDisableNavigationScroll">&#160;</MadCap:keyword>This string variable enables you to provide a custom URL to which the user should be redirected when trying to navigate to a document that has been removed from a process.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will send the user to a custom error URL when trying to <br />&#160;&#160;&#160;&#160;// open a document that has been removed from the system.</span><br />&#160;&#160;&#160;&#160;bp.Vars.sCustomURL_DocRemoved = "<span class="CodeOption">http://servername/customUrl.htm</span>";<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="sDisableNavigationScroll"></a><a href="#sDisableNavigationScroll"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sDisableNavigationScroll</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="sDisableNavigationScroll">&#160;</MadCap:keyword>This variable enables you to disable the system navigation scrolling.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// This will disable the scrolling of system navigation</span><br />&#160;&#160;&#160;&#160;bp.Vars.sDisableNavigationScroll = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -603,33 +277,11 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="sSkipAuditFields"></a><a href="#sSkipAuditFields"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sSkipAuditFields</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="sSkipAuditFields">&#160;</MadCap:keyword>This system variable can be set to a comma separated list of form fields. Form fields specified in the value of this system variable won't be audited.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Add field names you don't want audited</span><br />&#160;&#160;&#160;&#160;bp.Vars.sSkipAuditFields = "<span class="CodeOption">SomeField, SomeOtherField</span>";<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="sStyleDisabled"></a><a href="#sStyleDisabled"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sStyleDisabled</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="sStyleDisabled">&#160;</MadCap:keyword>This variable enables you to set the system default style for disabled form fields.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the default style for disabled form fields to a<br />&#160;&#160;&#160;&#160;// gray background</span><br />&#160;&#160;&#160;&#160;bp.Vars.sStyleDisabled = "<span class="CodeOption">background-color:#CCCCCC;</span>";<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="sUploadAddCookie"></a><a href="#sUploadAddCookie"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sUploadAddCookie</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="sUploadAddCookie">&#160;</MadCap:keyword>This variable enables you to identify an http cookie that should be added to the document and Form upload web service call. Some session managers require a cookie for all page access. If this variable is specified, the named cookie will be copied to the upload requests using obj_upload.aspx.</p>
+                    <MadCap:keyword term="sUploadAddCookie">&#160;</MadCap:keyword>This variable enables you to identify an HTTP cookie that should be added to the document and Form upload web service call. Some session managers require a cookie for all page access. If this variable is specified, the named cookie will be copied to the upload requests using obj_upload.aspx.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// SiteMinder requires the SMSESSION cookie</span><br />&#160;&#160;&#160;&#160;bp.Vars.sUploadAddCookie = "<span class="CodeOption">SMSESSION</span>";<br />}</p>
             </MadCap:dropDownBody>

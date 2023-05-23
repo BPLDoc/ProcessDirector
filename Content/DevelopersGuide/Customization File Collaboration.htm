@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Developer" />Collaborative Markup Custom Variables</h1>
+            <MadCap:concept term="Developer" />Collaborative Features Custom Variables</h1>
         <p>Process Director v5.13 and higher enables <a href="../ImplementersReference/Form Online Controls Attachments Markup.htm">Collaborative Document Markup</a> and <a href="../ImplementersReference/Form Online Controls Attachments Authoring.htm">Collaborative Document Authoring</a> as optionally licensed components. Installations with these components licensed can use the Custom Variables listed below.</p>
         <p class="PDNote">
             <img src="../Resources/Images/i2.png" alt="Note" /> Collaborative Document Authoring is available only on Cloud installations, so Custom Variables related to this feature aren't editable by the customer.</p>
@@ -20,6 +20,31 @@
                 <p>When this flag is set to false, Process Director will disable Collaborative Document Markup. The default value for this variable is true.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Disable Collaborative Document Annotation</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableFDFAnnotations = <span class="CodeOption">false</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="FileExtensionsUseCDMForEdit"></a><a href="#FileExtensionsUseCDMForEdit"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>FileExtensionsUseCDMForEdit</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="FileExtensionsUseCDMForEdit" />This variable enables you to specify which file extensions should use the Collaborative Document Markup (CDM )feature when using the EDIT link. This feature will enable you to use the Collaborative Document Markup tool for editing specific document types, while retaining the Collaborative Document Authoring (CDA) feature for editing all other document types. For instance, you may wish to specify the CDM&#160;tool for editing PowerPoint presentations, as in the example below, while still retaining the use of CDA for editing Word and Excel Documents.</p>
+                <p>Specifying the use of CDM for editing means that the only editing allowed will be adding annotations, unlike the CDA tool, which enables editing the original document content.</p>
+                <p>This variable isn't relevant for installations that aren't licensed with the Collaborative Document features.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Specifies the use of CDM to mark up PowerPoint presentations</span><br />&#160;&#160;&#160;&#160;bp.Vars.FileExtensionsUseCDMForEdit = "<span class="CodeOption">ppt, pptx</span>";<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="FileExtensionsUseCheckOutForEdit"></a><a href="#FileExtensionsUseCheckOutForEdit"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>FileExtensionsUseCheckOutForEdit</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="FileExtensionsUseCheckOutForEdit" />This variable enables you to specify which file extensions should use the default checkout and edit feature, rather than the Collaborative Document Authoring (CDA) feature. File extensions listed in this variable will force the default check out and edit functionality when clicking the EDIT link for attachments.</p>
+                <p>This variable isn't relevant for installations that aren't licensed with the Collaborative Document features.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Forces use of the default check out feature for <br />&#160;&#160;&#160;&#160;//&#160;PowerPoint presentations, and not use CDA</span><br />&#160;&#160;&#160;&#160;bp.Vars.FileExtensionsUseCheckOutForEdit = "<span class="CodeOption">xls, xlsx</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

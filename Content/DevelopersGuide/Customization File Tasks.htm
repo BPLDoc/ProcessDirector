@@ -10,6 +10,28 @@
         <p>Custom variables in this section of the documentation can be used to customize a variety of settings associated with user tasks.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="AlwaysFindTaskForForms"></a><a href="#AlwaysFindTaskForForms"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>AlwaysFindTaskForForms</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="AlwaysFindTaskForForms">&#160;</MadCap:keyword>When this flag is set to true, forms will attempt to associate with a task when opened. If this is left as the default (false), forms will only associate with a task when opened from a task list Knowledge View.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.AlwaysFindTaskForForms = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fCancelSubWorkflows"></a><a href="#fCancelSubWorkflows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fCancelSubWorkflows</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fCancelSubWorkflows">&#160;</MadCap:keyword>If this system variable is set to false, cancelling a process or process task won't cancel their associated sub-processes.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Cancellations of tasks or processes won't cancel sub-<br />&#160;&#160;&#160;&#160;// processes</span><br />&#160;&#160;&#160;&#160;bp.Vars.fCancelSubWorkflows = <span class="CodeOption">false</span>; <br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>
                     <MadCap:keyword term="fEnableUndelegationRestart" /><a name="fEnableUndelegationRestart"></a><a href="#fEnableUndelegationRestart"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fEnableUndelegationRestart</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
@@ -18,6 +40,39 @@
                 <p>This variable should be set in the PreSetSystemVars() function of the customization file.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Original user will be restarted when the delegation is removed <br />&#160;&#160;&#160;&#160;// from a running task.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableUndelegationRestart = <span class="CodeOption">true</span>; <br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fForceInviteEmail"></a><a href="#fForceInviteEmail"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fForceInviteEmail</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fForceInviteEmail" />This system variable, when set to "false", enables you to prevent the standard task assignment email notification from being sent to users who are invited to a task using the email invite feature. The default value for this variable is "true".</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Prevent assignment emails from being sent to invited task assignees</span><br />&#160;&#160;&#160;&#160;bp.Vars.fForceInviteEmail = <span class="CodeOption">false</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fPreventTaskCompleteIfCheckout"></a><a href="#fPreventTaskCompleteIfCheckout"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fPreventTaskCompleteIfCheckout</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fPreventTaskCompleteIfCheckout">&#160;</MadCap:keyword>When set to true, this option prevents users from completing a task if they've checked out a document while working on that task, and haven't yet checked it in.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Prevents user from completing a task<br />&#160;&#160;&#160;&#160;// if he performed a check out on a<br />&#160;&#160;&#160;&#160;// document and hasn't checked it in</span><br />&#160;&#160;&#160;&#160;bp.Vars.fPreventTaskCompleteIfCheckout = <span class="CodeOption">true</span>; <br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fSendEmailOnWfAdmin"></a><a href="#fSendEmailOnWfAdmin"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fSendEmailOnWfAdmin</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fSendEmailOnWfAdmin" />When set to true, This variable will force an email to be sent when a user is added to a running step/activity by an administrator. The default value is false.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Send an email on administrative user additions to a task</span><br />&#160;&#160;&#160;&#160;bp.Vars.fSendEmailOnWfAdmin = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -91,13 +146,12 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="TaskDueReminderTimes"></a><a href="#TaskDueReminderTimes"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>TaskDueReminderTimes</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="TaskDueReminderTimes">&#160;</MadCap:keyword><a name="TaskDueReminderTimes"></a><a href="#TaskDueReminderTimes"><img src="../Resources/Images/link.png" alt="Link" /></a>Task Due Reminder Times</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="TaskDueReminderTimes">&#160;</MadCap:keyword>This variable enables you to add an option to the reminder dropdown in a Timeline Activity that will remind the user he has been assigned an activity a given number of seconds after the task is due. Making the number of seconds a negative value will allow you to remind the user on a recurring basis.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Add new reminder times</span><br />&#160;&#160;&#160;&#160;bp.Vars.TaskDueReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (10 * 60),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Ten minutes after task is due."</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.TaskDueReminderTimes.Add(<span class="CodeOption">new TimeValue(-1 * (10 * 60),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every ten minutes after task is due."</span>);<br />}</p>
+                <p>Task Due reminder Times are times that reminders should be sent after a task's due date has passed. In the example below, the reminder times add additional reminder options to the standard list, and once added, will also appear in the dropdown control as selectable options.</p>
+                <p class="CodeBase">bp.Vars.TaskDueReminderTimes.Add(<span class="CodeOption">new TimeValue(-1 * (24 * (60 * 60)), <br />&#160;&#160;&#160;&#160;"Every 1 day after task is due")</span>);<br />bp.Vars.TaskDueReminderTimes.Add(<span class="CodeOption">new TimeValue(-2 * (24 * (60 * 60)), <br />&#160;&#160;&#160;&#160;"Every 2 days after task is due")</span>);<br />bp.Vars.TaskDueReminderTimes.Add(<span class="CodeOption">new TimeValue(-3 * (24 * (60 * 60)), <br />&#160;&#160;&#160;&#160;"Every 3 days after task is due")</span>);<br />bp.Vars.TaskDueReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (10 * 60),<br />&#160;&#160;&#160;&#160;"Ten minutes after task is due."</span>);<br />bp.Vars.TaskDueReminderTimes.Add(<span class="CodeOption">new TimeValue(-1 * (10 * 60),<br />&#160;&#160;&#160;&#160;"Every ten minutes after task is due."</span>);</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

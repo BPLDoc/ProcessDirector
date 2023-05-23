@@ -1,44 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head><title></title>
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>
             <MadCap:concept term="Developer" /><a name="_Toc421270082"></a>
             <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword>Administration Custom&#160;Variables</h1>
-        <p>Process Director 's Administrative functions can be customized by editing the custom variables in this section.</p>
+        <p>Process Director 's Administrative settings can be customized by editing the custom variables in this section.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="DefaultNewUsersToDayPass" /><a name="DefaultNewUsersToDayPass"></a><a href="#DefaultNewUsersToDayPass"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>DefaultNewUsersToDayPass</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="Activity"></a><a href="#Activity"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Activity Checking Custom Variables</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Variable, when set to "true", will automatically create all new users as Day Pass users. The default value of this variable is "false". This variable is relevant only if you have the Day Passes license component.</p>
+                <p>
+                    <MadCap:keyword term="TimerSecondsCheckWfAdvance;TimerSecondsCheckWfReminders;TimerSecondsCheckProjAdvance;TimerSecondsCheckProjReminders;fDisableUserPrediction" />Process Director advances processes and send reminders based on recurring activity checks that occur on the system. These activity checks occur when certain process events are initiated, when the <a href="../SystemAdministratorGuide/Activity Check.htm">Activity Check</a> page is run, or at minimum intervals specified by default Custom Variable settings.</p>
+                <p>When the activity check page runs, Process Director will determine which timer processing functions need to occur. (There are a few things like GOALS that will be evaluated EVERY time the activity check runs because they are low-impact.) You can control the timer functions by setting custom variables in the vars.cs customization file. These timer functions are NOT controlled by the frequency that the activity_check.aspx page is scheduled. The following configuration variables control the amount of time to wait between different types of timer processing. The following Custom Variables control the timing of advancing process steps and reminders that are time based:</p>
+                <ul>
+                    <li><b>TimerSecondsCheckWfAdvance:</b> Checks Workflows to advance time-based steps. The default timing is 6 hours.</li>
+                    <li><b>TimerSecondsCheckWfReminders:</b> Checks Workflows to send time-based reminders. The default timing is 1 hour.</li>
+                    <li><b>TimerSecondsCheckProjAdvance:</b> Checks Process Timelines to advance time-based Activities. The default timing is 6 hours.</li>
+                    <li><b>TimerSecondsCheckProjReminders:</b> Checks Process Timelines to send time-based reminders. The default timing is 1 hour.</li>
+                </ul>
+                <p>For Process Director v5.39 and below, the default timings for TimerSecondsCheckWfAdvance and TimerSecondsCheckProjAdvance are set to 2 hours. This was changed in newer versions as the shorter time limits could use excessive system resources on very active systems.</p>
+                <p>Additionally, the <b>fDisableUserPrediction</b> Custom Variable will, when set to "false", enable more accurate prediction of activity times based on each specific user that has been assigned to an activity. <i>This setting will consume more system resources when being used</i>, so the default value for this variable is "true".  When set to "true", prediction will still occur, but with less predictive accuracy.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Make all new users day pass users.</span><br />&#160;&#160;&#160;&#160;bp.Vars.DefaultNewUsersToDayPass = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Default to 6 hours between checking projects for advance<br />&#160;&#160;&#160;&#160;// AND prediction calculations (e.g. completed/start when<br />&#160;&#160;&#160;&#160;// conditions, due dates, etc.)</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckProjAdvance = <span class="CodeOption">60 * 60 * 6</span>;<br /><br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// default to 1 hour between checking projects for email reminders</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckProjReminders = <span class="CodeOption">60 * 60 * 1</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Less accurate user predictions for task completion,<br />&#160;&#160;&#160;&#160;// but fewer system resources used</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableUserPrediction = <span class="CodeOption">true</span>;<br /><br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="DelegationAdminGroups"></a><a href="#DelegationAdminGroups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>DelegationAdminGroups</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="AllowedExportLocations"></a><a href="#AllowedExportLocations"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>AllowedExportLocations</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="DelegationAdminGroups">&#160;</MadCap:keyword>If a user is in any of the groups specified by this variable, the user will be able to access the delegation administration page, even without the “User Admin” setting enabled in his user profile.</p>
+                    <MadCap:keyword term="AllowedExportLocations" />The AllowedExportLocations variable is a list of strings that contains all of the folder locations to where a file export via Knowledge View URL is allowed. This variable enables you to control the locations to which a KView can export documents when <a href="../ImplementersReference/Knowledge View Operations.htm#URL">called via a URL</a>. Calling a Knowledge View via URL will accept a URL&#160;Parameter named <span class="CodeComment">exportname</span> that enables the Knowledge View to export a file to a specified file path/file name. To prevent users from exporting files to unwanted locations, or overwriting existing files, this variable MUST be set. Any attempt to export a file from a Knowledge View to any folder not listed in this variable will fail.</p>
+                <p>The locations listed in this system variable will be treated as parent-level folders, which means that you can write documents to any location or subfolder <i>below</i> the specified folder location.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.DelegationAdminGroups = "<span class="CodeOption">Delegation Users</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Create List values</span><br />&#160;&#160;&#160;&#160;List&lt;string&gt; <span class="CodeVariable">MyExportLocations </span>= new List&lt;string&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">MyExportLocations</span>.Add(@"<span class="CodeOption">C:\FilePath</span>");<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">MyExportLocations</span>.Add(@"<span class="CodeOption">C:\FilePath\Subfolder</span>");<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Apply List values to the Custom Variable</span><br />&#160;&#160;&#160;&#160;bp.Vars.AllowedExportLocations = <span class="CodeVariable">MyExportLocations</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="ErrorPage"></a><a href="#ErrorPage"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>ErrorPage</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="fEnableEncryptionMigration"></a><a href="#fEnableEncryptionMigration"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fEnableEncryptionMigration</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This string variable enables you to set the URL of a custom error page to display when a Process Director error occurs. The custom error page should be placed into the /custom folder at the website root to ensure that they aren't overwritten during an upgrade of the product. An HTML&#160;and ASPX sample error page are included in the /custom folder by default.</p>
+                    <MadCap:keyword term="fEnableEncryptionMigration" />This variable, when set to "false", will disable the migration to AES encryption when upgrading to Process Director v5.44.700 or higher from v5.44.600 or lower. The default value for this variable is "true". </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> The encryption system used by Process Director prior to v.5.44.600 has been deprecated. Setting this value to "false" will prevent encrypted fields from being upgraded to full AES encryption, and  existing encrypted fields will use the deprecated encryption system, which is being replaced by AES.</p>
+                <p>When this value is set to "false", though migration of existing encrypted values won't occur on upgrade,<span class="Emphasis"> new encrypted values will still be created using AES</span>, e.g., submitting a new form instance with encrypted form controls. </p>
+                <p>Any time data that uses the deprecated encryption is accessed, an ERROR log message will be generated as a reminder that migration hasn't yet been performed (I.e., "ERROR: Deprecated encrypted value detected, please upgrade using Administration pages."). There won't be any data-loss or corruption, as the system will recognize both AES and deprecated encryption.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will set the URL of the custom error page.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ErrorPage = "<span class="CodeOption">http://servername.com/custom/error.htm</span>";<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Turn off AES&#160;Encryption Migration</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableEncryptionMigration= <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -47,38 +62,11 @@
                     <MadCap:keyword term="fAllowCustomUserString" /><a name="fAllowCustomUserString"></a><a href="#fAllowCustomUserString"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAllowCustomUserString</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Variable, when set to "true", enables you to call the custom functions called UserDisplayString and UserDisplayString2 in the vars.cs.ascx Customization File. These functions enable you to control what the display string looks like for a user in the product. </p>
-                <p>The UserDisplayString function sets the display string universally in the product. </p>
-                <p>The UserDisplayString2 function returns the Display string to the location/object from which it is being called, to give you the flexibility to only change the display string for the user in a specific place instead of in the whole product.</p>
+                <p>This Custom Variable, when set to "true", enables you to call the custom functions called <code>UserDisplayString() </code>and <code>UserDisplayString2() </code>in the vars.cs.ascx Customization File. These functions enable you to control what the display string looks like for a user in the product. </p>
+                <p>The <code>UserDisplayString()</code> function sets the display string universally in the product. </p>
+                <p>The <code>UserDisplayString2()</code> function returns the Display string to the location/object from which it is being called, to give you the flexibility to only change the display string for the user in a specific place instead of in the whole product.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Enables you to call the UserDisplayString and UserDisplayString2 functions.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowCustomUserString = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="fAllowUnencodedSysvarsinBV" /><a name="fAllowUnencodedSysvarsinBV"></a><a href="#fAllowUnencodedSysvarsinBV"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAllowUnencodedSysvarsinBV</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>This variable disables the ability for users to configure a Custom Task or Business Value using SQL&#160;Commands that do <b style="font-style: italic;">not</b> use the proper SQL encoding for variables contained in the SQL&#160;Statements. When set to "false", Process Director won't allow the Custom Task or Business Value to be saved until all of the variables used in the SQL&#160;statement have been given the appropriate SQL-safe&#160;encodings <a href="../SystemVariablesReferenceGuide/Parameters.htm#EncodeTypes">specified in the system Variables Reference Guide</a>. For example, using a parameter in a Business Value's SQL&#160;statement might require the SQL-safe encoding symbol "$" in the parameter variable like this:</p>
-                <p><code>SELECT * FROM Training_Vendor WHERE VendorName LIKE '%{<b>$</b>PARAMETER:Vendor}%'</code>
-                </p>
-                <p>The default value for this custom variable is "true". When set to "true", Process Director will issue a warning to the user that variables aren't properly encoded, but <b style="font-style: italic;">will</b> allow them to save the configuration.</p>
-                <p class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix recommends that you set this custom variable to "false", if possible. You may—indeed, probably—have existing Custom Tasks or Business Values whose variable values aren't properly encoded, so you should <b style="font-style: italic;">not</b> set this value to "false" until you've ensured that all of your existing Custom Tasks and Business Values use the proper encodings.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent saving CT&#160;or BV&#160;configurations that don't use SQL-safe<br />&#160;&#160;&#160;&#160;// encodings for variable values.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowUnencodedSysvarsinBV = <span class="CodeOption">false</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="fAuditAnonAccesses" /><a name="fAuditAnonAccesses"></a><a href="#fAuditAnonAccesses"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAuditAnonAccesses</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>This variable enables Process Director to log various events in the audit logs that are specific to anonymous access to Process Director. In most cases, the Process Director installation won't be accessed by outside users with anonymous access, so this variable is set to "false" by default. Setting this variable to "true" will turn on the audit logging for these events.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will turn on audit logging for anonymous access.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAuditAnonAccesses = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -107,24 +95,24 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="fDisableCSVNumberStringLogic" /><a name="fDisableCSVNumberStringLogic"></a><a href="#fDisableCSVNumberStringLogic"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDisableCSVNumberStringLogic</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="fAutoDST"></a><a href="#fAutoDST"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAutoDST</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Prior to v5.31, when importing a CSV with numbers and strings in a column, the system, by default, looked at the first row of the CSV file to determine the data type. This could result in a data type error when the first row contains a number and subsequent rows contain character strings. For v5.31 and higher, data imported will default to the String datatype, unless a different datatype is specified in the header row.  This variable, when set to "true", will disable the new logic, and revert to the pre-v5.31 conversion logic. The default value for this variable is "false".</p>
+                <p>
+                    <MadCap:keyword term="fAutoDST">&#160;</MadCap:keyword>This variable enables you to override whether daylight savings is used in the time zone.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Revert to the old CSV&#160;field type logic</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableCSVNumberStringLogic = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Use CST for everyone</span><br />&#160;&#160;&#160;&#160;bp.Vars.sTimeZoneID = "<span class="CodeOption">Pacific Standard Time</span>";<br /><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Do not use daylight savings time adjustments</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAutoDST = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fDisableImplicitPartitionGroupUsers"></a><a href="#fDisableImplicitPartitionGroupUsers"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDisableImplicitPartitionGroupUsers</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="fDisableExcelImport"></a><a href="#fDisableExcelImport"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDisableExcelImport</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="fDisableImplicitPartitionGroupUsers" />Users in groups are automatically added to a partition when the group is added to the partition. They are implicitly added through their group membership. This option, when set to "true" will prevent this implicit user addition, which means that users will have to be explicitly added to a partition to be part of it. </p>
+                    <MadCap:keyword term="fDisableExcelImport">&#160;</MadCap:keyword>This variable enables you to control whether the Excel files can be used to automatically populate SQL databases.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;//Disables adding users to a partition implicitly.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableImplicitPartitionGroupUsers= <span class="CodeOption">true</span>; <br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Disable the auto-excel import feature</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableExcelImport = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -153,17 +141,6 @@
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="fEnableDatabaseLogs" /><a name="fEnableDatabaseLogs"></a><a href="#fEnableDatabaseLogs"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fEnableDatabaseLogs</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>Process Director v4.55 and higher logs XML import events, goal evaluations, and Active Directory syncs by default, which means that the default value for this variable is "true". This logging can be turned off by setting this variable to false.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Turn off database logging for imports, AD Syncs, etc.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableDatabaseLogs = <span class="CodeOption">false</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
                     <MadCap:keyword term="fEnableDenyPermissions" /><a name="fEnableDenyPermissions"></a><a href="#fEnableDenyPermissions"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fEnableDenyPermissions</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -181,19 +158,6 @@
                 <p>This variable, when set to "true" enables users to download the form fields in an excel file, from a link on the Properties tab of the Form Definition. The default value is "false".</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Allow form field downloads in Excel.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableFormFieldDownload = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="EnableFormThemes" /><a name="EnableFormThemes"></a><a href="#EnableFormThemes"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>EnableFormThemes</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>This variable, when set to "false" enables the <span class="NamedControl">Dropdown </span>control to properly display type-ahead functionality. The default value is "true".</p>
-                <p class="PDNote">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> This variable was previously used to enable Telerik themes for forms, but this functionality has been deprecated.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Revert to unthemed operation, and enable<br />&#160;&#160;&#160;&#160;// dropdown type-ahead.</span><br />&#160;&#160;&#160;&#160;bp.Vars.EnableFormThemes = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -231,19 +195,6 @@
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="fKeepADSyncInfoLogs" /><a name="fKeepADSyncInfoLogs"></a><a href="#fKeepADSyncInfoLogs"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fKeepADSyncInfoLogs</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>This variable, when set to "false", will prevent the <a href="../SystemAdministratorGuide/Creating an AD Sync Profile.htm#SyncLogHistory">Active Directory Sync Log History</a> from from logging most events at the "info" level (i.e., it will only log warnings and errors). This should substantially reduce the number of logs in the tblLogs table in the database, but you may still want to clear out the old logs prior to setting this variable. You can do so by adjusting the <a href="#nImportLogSyncDays">nImportLogSyncDays</a> variable to 0, then running the global timer routines in the Troubleshooting window. Once complete, you can reset <a href="#nImportLogSyncDays">nImportLogSyncDays</a> to the desired value. This Variable can be used in conjunction with the <a href="#nMaxADSyncLogEvents">nMaxADSyncLogEvents</a> variable to control the length of AD&#160;synchronization audit logs. The default value for this variable is "true".</p>
-                <p class="PDNote">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> Prior to Process Director v5.3, clearing out the old logs requires resetting the nImportLogDays Custom Variable. The nImportLogDays was deprecated in v5.3 and replaced with nImportLogSyncDays.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent detailed AD&#160;Sync logging</span><br />&#160;&#160;&#160;&#160;Vars.fKeepADSyncInfoLogs = <span class="CodeOption">false</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
                     <MadCap:keyword term="fRemoveSavedInstForOldUsers" /><a name="fRemoveSavedInstForOldUsers"></a><a href="#fRemoveSavedInstForOldUsers"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fRemoveSavedInstForOldUsers</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -267,17 +218,6 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="fLoginBgRand" /><a name="fLoginBgRand"></a><a href="#fSharedDelegationAllProcesses"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fLoginBgRand</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>This variable , when set to "true" will display a random background image on the login page. The default value for this variable is "false".</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Enable random background images for login page</span><br />&#160;&#160;&#160;&#160;bp.Vars.fLoginBgRand = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="ForceSecureCookies"></a><a href="#ForceSecureCookies"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>ForceSecureCookies</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -290,57 +230,25 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="fEnableDenyPermissions" /><a name="fTurnOffDelegation"></a><a href="#fTurnOffDelegation"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTurnOffDelegation</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>This variable , when set to "true" will remove the ability for users to perform delegation from their user profile page. The default value for this variable is "false".</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will disable user delegation in the user profile.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffDelegation = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="fTurnOffSharedDelegation" /><a name="fTurnOffSharedDelegation"></a><a href="#fTurnOffSharedDelegation"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTurnOffSharedDelegation</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>This variable , when set to "true" will remove the ability for users to perform shared delegation from their user profile page. The default value for this variable is "false".</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will disable shared delegation ability in the user profile.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffSharedDelegation = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fTurnOffUserProfileEmail"></a><a href="#fTurnOffUserProfileEmail"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTurnOffUserProfileEmail</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="sMobileWebServerURL"></a><a href="#sMobileWebServerURL"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sMobileWebServerURL</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="fTurnOffUserProfileEmail">&#160;</MadCap:keyword>By default, users are allowed to disable their email from their user profile. Setting this variable to “true” disables this ability.</p>
+                    <MadCap:keyword term="sMobileWebServerURL" />This string variable enables customers who have licensed the offline Appenate server to configure the custom URL&#160;of their mobile server for use by Custom Tasks and other features. This feature is unavailable for versions prior to Process Director v5.45, and who have not also licensed the offline mobile feature.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent users from disabling email</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffUserProfileEmail= <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Mobile App server URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.sMobileWebServerURL = "<span class="CodeOption">http://mobile.bplogix.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fTurnOffUserProfileTimeZone"></a><a href="#fTurnOffUserProfileTimeZone"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTurnOffUserProfileTimeZone</MadCap:dropDownHotspot>
+            <MadCap:dropDownHead><a name="fTestMod"></a>
+                <MadCap:dropDownHotspot><a name="fTestMode"></a><a href="#fTestMode"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTestMode</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="fTurnOffUserProfileTimeZone">&#160;</MadCap:keyword>By default, users are allowed to control the time zone setting in their user profile. Setting this variable to “true” disables this ability.</p>
+                    <MadCap:keyword term="fTestMode">&#160;</MadCap:keyword>These variables allow you to set the system into a test mode. In this mode, Windows Integrated authentication is disabled. This mode enables anyone to log into the server without a password. Use this setting with caution. It should only be used on non-production systems to test processes and Forms. </p>
+                <p>For more information, see the <a href="../SystemAdministratorGuide/Test Server Methodology.htm">Test Server Methodology</a> topic in the System Administrator's Guide.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent users from setting time zones</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOffUserProfileTimeZone= <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fTurnOnDelegationGroups"></a><a href="#fTurnOnDelegationGroups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTurnOnDelegationGroups</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="fTurnOnDelegationGroups" />By default, users are allowed to delegate tasks to any other user. Setting this variable to “true” restricts the user's ability to set delegations, and limits delegations only to other users who belong to the same group as the delegating user.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Restrict delegation to the same group as delegator</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOnDelegationGroups = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the test email user</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmails = User.GetUserByUserID(bp, "<span class="CodeOption">my_test_id</span>");<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ===OR===<br /><br />&#160;&#160;&#160;&#160;// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER EMAIL ADDRESS FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the test email user</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmailAddress = "<span class="CodeOption">username@domain.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -350,7 +258,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This variable, when set to "true", will cause the users session GUID to be cleared any time a new login occurs. This setting will automatically relog a user who signs in using same user ID, even if that login is still active on the same computer in a different browser window. Relogging the user will clear all existing session data, including session variables, and will initiate a new session for the user.</p>
-                <p><i>This variable is configured in the <code>PreSetSystemVars() </code>function.</i>
+                <p><i>This variable is configured in the </i><code>PreSetSystemVars()</code><i> function.</i>
                 </p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will clear an existing users active session if the user logs in again</span><br />&#160;&#160;&#160;&#160;bp.Vars.fUseNewLoginSessionGUID = <span class="CodeOption">true</span>;<br />}</p>
@@ -385,122 +293,10 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="LoginMessage"></a><a href="#LoginMessage"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>LoginMessage</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="LoginMessage">&#160;</MadCap:keyword>This variable enables you to set a string on the login page. This string can contain HTML syntax.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set HTML&#160;message on login page</span><br />&#160;&#160;&#160;&#160;bp.Vars.LoginMessage = "<span class="CodeOption">Welcome to Process Director.<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;a href='http://bplogix.com/' "+<br />&#160;&#160;&#160;  &#160;&#160;&#160;&#160;"target='_blank'&gt;Click Here&lt;/a&gt;for the BP Logix web site.</span>";<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="MaxUploadSize"></a><a href="#MaxUploadSize"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>MaxUploadSize</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="MaxUploadSize" />This string variable enables you to set the maximum size, in bytes, for file uploads and attachments.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set max upload size to 1MB.</span><br />&#160;&#160;&#160;&#160;CV.MaxUploadSize = <span class="CodeOption">1000000</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nArchiveLogDays"></a><a href="#nArchiveLogDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nArchiveLogDays</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nArchiveLogDays">&#160;</MadCap:keyword>This variable enables you to control the number of days that Process Director should retain its logs. Logs will be archived in the /App_Data/log_archive/ folder. This custom variable is available only with users who have the Compliance edition for on-site installations, or a cloud installation.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nArchiveLogDays = <span class="CodeOption">7</span>; <span class="CodeComment">// archives logs for a week</span><br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="nImportLogDays" /><a name="nImportLogDays"></a><a href="#nImportLogDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogDays</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> This Custom Variable has been deprecated in Process Director v5.3.</p>
-                <p>Process Director v4.55 and higher logs XML import events, goal evaluations, and Active Directory syncs by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep logs for 45 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogDays = <span class="CodeOption">45</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="nImportLogDays" /><a name="nImportLogGoalDays"></a><a href="#nImportLogGoalDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogGoalDays</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>Process Director v5.3 and higher logs goal evaluations by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep Goal logs for 2 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogGoalDays = <span class="CodeOption">2</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="nImportLogImportDays" /><a name="nImportLogImportDays"></a><a href="#nImportLogImportDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogImportDays</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>Process Director v5.3 and higher logs XML&#160;imports by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep XML import logs for 15 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogImportDays = <span class="CodeOption">15</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="nImportLogKVRunDays" /><a name="nImportLogKVRunDays"></a><a href="#nImportLogKVRunDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogKVRunDays</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>Process Director v5.3 and higher logs Knowledge View executions by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep KV&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogKVRunDays = <span class="CodeOption">5</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="nImportLogMLPublishDays" /><a name="nImportLogMLPublishDays"></a><a href="#nImportLogMLPublishDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogMLPublishDays</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>Process Director v5.3 and higher logs Machine Learning object publications by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep ML&#160;Pub logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogMLPublishDays = <span class="CodeOption">5</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="nImportLogSArunDays" /><a name="nImportLogSArunDays"></a><a href="#nImportLogSArunDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogSArunDays</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>Process Director v5.3 and higher logs Stream Action runs by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep SA&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogSArunDays = <span class="CodeOption">5</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <MadCap:keyword term="nImportLogSyncDays" /><a name="nImportLogSyncDays"></a><a href="#nImportLogSyncDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogSyncDays</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>Process Director v5.3 and higher logs Active Directory synchronizations by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep AD Sync logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogSyncDays = <span class="CodeOption">5</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="nMaxActivityStarts"></a><a href="#nMaxActivityStarts"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxActivityStarts</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>If a Process Timeline instance is determined to be in an endless loop condition, the problem activity will be placed into an error state. This detection logic to define an endless loop is controlled through the nMaxActivityStarts, <a href="#nMaxActivityStartsInLastSecs">nMaxActivityStartsInLastSecs</a>, and <a href="Customization File Misc.htm#nTimelineLoopCountStarts">nTimelineLoopCountStarts</a> variables.</p>
+                <p>If a Process Timeline instance is determined to be in an endless loop condition, the problem activity will be placed into an error state. This detection logic to define an endless loop is controlled through the nMaxActivityStarts, <a href="#nMaxActivityStartsInLastSecs">nMaxActivityStartsInLastSecs</a>, and <a href="#nTimelineLoopCountStarts">nTimelineLoopCountStarts</a> variables.</p>
                 <p>
                     <MadCap:keyword term="nMaxActivityStarts">
                     </MadCap:keyword>This variable sets how many times a step restarts in the number of seconds set in the nMaxActivityStartsInLastSecs variable before considering it in a loop. The default value is 100.</p>
@@ -515,7 +311,7 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="nMaxActivityStartsInLastSecs">
-                    </MadCap:keyword>If a Process Timeline instance is determined to be in an endless loop condition, the problem activity will be placed into an error state. This detection logic to define an endless loop is controlled through the <a href="#nMaxActivityStarts">nMaxActivityStarts</a>, nMaxActivityStartsInLastSecs, and <a href="Customization File Misc.htm#nTimelineLoopCountStarts">nTimelineLoopCountStarts</a> variables.</p>
+                    </MadCap:keyword>If a Process Timeline instance is determined to be in an endless loop condition, the problem activity will be placed into an error state. This detection logic to define an endless loop is controlled through the <a href="#nMaxActivityStarts">nMaxActivityStarts</a>, nMaxActivityStartsInLastSecs, and <a href="#nTimelineLoopCountStarts">nTimelineLoopCountStarts</a> variables.</p>
                 <p>This variable sets how many seconds to use in loop calculations performed by the nMaxActivityStarts variable. The default is 60.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMaxActivityStartsInLastSecs = <span class="CodeOption">60</span>;<br />}</p>
@@ -523,147 +319,14 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nMaxAdminAuditRows"></a><a href="#nMaxAdminAuditRows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxAdminAuditRows</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="nTimelineLoopCountStarts"></a><a href="#nTimelineLoopCountStarts"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nTimelineLoopCountStarts</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="nMaxAdminAuditRows">
-                    </MadCap:keyword>This variable enables you to set the maximum number of audit rows to display. The default is 1000.</p>
+                    <MadCap:keyword term="nTimelineLoopCountStarts" />If a Process Timeline instance is determined to be in an endless loop condition, the problem activity will be placed into an error state. This detection logic to define an endless loop is controlled through the <a href="#nMaxActivityStarts">nMaxActivityStarts</a>, <a href="#nMaxActivityStartsInLastSecs">nMaxActivityStartsInLastSecs</a>,  and nTimelineLoopCountStarts variables.</p>
+                <p>This variable sets the number of activities that may be started in one pass of a process. The default is 100.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will set the maximum number of audit rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminAuditRows = <span class="CodeOption">1000</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nMaxAdminPermRows"></a><a href="#nMaxAdminPermRows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxAdminPermRows</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nMaxAdminPermRows">
-                    </MadCap:keyword>This variable enables you to set the maximum number of administrative permissions rows to display. The default is 1000.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will set the maximum number of admin permissions rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminPermRows = <span class="CodeOption">1000</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nMaxAdminRows"></a><a href="#nMaxAdminRows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxAdminRows</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nMaxAdminRows">&#160;</MadCap:keyword>This variable enables you to set the maximum number of rows in the Admin section for any list. The default is 100.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the maximum number of rows to 400 in any list of<br />&#160;&#160;&#160;&#160;// the admin section.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminRows = <span class="CodeOption">100</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nMaxAdminRowsGroupFilter"></a><a href="#nMaxAdminRowsGroupFilter"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxAdminRowsGroupFilter</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nMaxAdminRows">&#160;</MadCap:keyword>On the User Admin page, there is a search box that will enable you to search for a specific user by typing in a text string. By default, Process Director will include Group names in that search. However, for a large number of users, searching the Group names as part of this search adds unacceptable overhead to the search function. If the number of users in the system exceeds this value, the search function on the User Admin page will stop using Group names as part of the search. The default value is 10000.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the maximum number of rows before stopping<br />&#160;&#160;&#160;&#160;// the use of Group names as a search criteria in User Admin.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminRows = <span class="CodeOption">10000</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nMaxADSyncLogEvents"></a><a href="#nMaxADSyncLogEvents"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxADSyncLogEvents</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nMaxADSyncLogEvents" />This variable sets the maximum number of synchronization log events that will be displayed on the <a href="../SystemAdministratorGuide/Creating an AD Sync Profile.htm#SyncLogHistory">Active Directory Sync Log History</a> page.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;//Default is 200 </span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxADSyncLogEvents = <span class="CodeOption">100</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nMaxBusinessValueRows"></a><a href="#nMaxBusinessValueRows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxBusinessValueRows</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nMaxBusinessValueRows" />This variable sets the maximum number of rows that will be returned by a Business Value. The default is 200.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;//Default is 200 </span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxBusinessValueRows = <span class="CodeOption">100</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nMaxGroupDropdownRows"></a><a href="#nMaxGroupDropdownRows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxGroupDropdownRows</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nMaxGroupDropdownRows" />This variable enables you to set the maximum number of dropdown rows that appear in a <span class="NamedControl">Group Picker</span> control that is displayed as a dropdown control. </p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will set the maximum number of user dropdown rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxGroupDropdownRows = <span class="CodeOption">15</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nMaxProfileButtons"></a><a href="#nMaxProfileButtons"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxProfileButtons</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This variable enables you to set the maximum number of buttons an administrator can configure in a profile. These buttons are show at the top of each user’s home page, and the default is 12.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the maximum number of buttons an admin can<br />&#160;&#160;&#160;&#160;// configure.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxProfileButtons = <span class="CodeOption">12</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nMaxUserDropdownRows"></a><a href="#nMaxUserDropdownRows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxUserDropdownRows</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nMaxUserDropdownRows" />This variable enables you to set the maximum number of dropdown rows that appear in a <span class="NamedControl">User Picker </span>control that is displayed as a dropdown control. </p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will set the maximum number of user dropdown rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxUserDropdownRows = <span class="CodeOption">15</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nMaxUserPermsRows"></a><a href="#nMaxUserPermsRows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxUserPermsRows</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This variable enables you to set the maximum number of user permissions rows to display. The default is 1000.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the maximum number of user permissions rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxUserPermsRows = <span class="CodeOption">1000</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="nUserInactivityTimeoutSecs"></a><a href="#nUserInactivityTimeoutSecs"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nUserInactivityTimeoutSecs</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nUserInactivityTimeoutSecs" />This variable enables you to set the maximum number of seconds to elapse prior to automatically logging out a user for inactivity. Once the configured time limit expires, the user will be logged off, and will be forced to re-authenticate to access the system again.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the maximum inactivity time to 2 hours.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nUserInactivityTimeoutSecs = 60*60*2;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="ObjectLockingEnable"></a><a href="#ObjectLockingEnable"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>ObjectLockingEnable</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This boolean variable enables you to turn off <a href="../ImplementersReference/Managing Content Locking.htm">object locking</a> by setting the value to "false". The default value is "true".</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will enable object locking.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ObjectLockingEnable = <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="ObjectLockingForce"></a><a href="#ObjectLockingForce"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>ObjectLockingForce</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This boolean variable enables you to require <a href="../ImplementersReference/Managing Content Locking.htm">object locking</a> when set to "true". The default value is "false".</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will require object locking when set to true.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ObjectLockingForce = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Set max number of allowable loops to 50</span><br />&#160;&#160;&#160;&#160;bp.Vars.nTimelineLoopCountStarts = <span class="CodeOption">50</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -679,13 +342,382 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="sPickupDirectoryLocation"></a><a href="#ObjectLockingForce"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sPickupDirectoryLocation </MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="sPickupDirectoryLocation"></a><a href="#sPickupDirectoryLocation"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sPickupDirectoryLocation </MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="sPickupDirectoryLocation" />IIS in Windows 2008 R2 and higher requires a path to be configured to the mail pickup directory when using the local SMTP server to send email. This is set using the sPickupDirectoryLocation custom variable. For Process Director v5.31 and higher, Process Director defaults this pickup directory to the Windows default of C:\Inetpub\mailroot\Pickup\ so it only needs to be set when it is in a different location. Additionally, the setting of this variable won't force emails to use the local SMTP server when an SMTP Host is specified in the installation settings.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Change the mail pickup directory to a non-default location.</span><br />&#160;&#160;&#160;&#160;bp.Vars.sPickupDirectoryLocation = "<span class="CodeOption">C:\nonDefault\directory</span>";<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="sTimeZoneID"></a><a href="#sTimeZoneID"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sTimeZoneID</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="sTimeZoneID">&#160;</MadCap:keyword>This variable enables you to set the default time zone for the server and for all users. A time zone configured in a user profile will override this variable for that user. This string should be set to the Time Zone ID specified by the .NET environment. Leave this variable null to use the system time zone.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Use CST for everyone</span><br />&#160;&#160;&#160;&#160;bp.Vars.sTimeZoneID = "<span class="CodeOption">Central Standard Time</span>";<br /><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Automatically adjust for daylight savings</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAutoDST = <span class="CodeOption">true</span>;<br />}</p>
+                <p>The list below shows the possible time zone values as defined by .NET:</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width:100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 34%;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 33%;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 33%;" class="TableStyle-Simple-Column-Column1" />
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Morocco Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>GMT Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Romance Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>W. Europe Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Central Europe Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Namibia Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Central European Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>W. Central Africa Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Middle East Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Jordan Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>GTB Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>South Africa Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Egypt Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Syria Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>E. Europe Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>FLE Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Israel Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Russian Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Arabic Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Arab Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Arabian Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>E. Africa Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Iran Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Georgian Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Azerbaijan Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Mauritius Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Ekaterinburg Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Caucasus Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Afghanistan Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>India Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Pakistan Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>West Asia Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Central Asia Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Sri Lanka Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Nepal Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Myanmar Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Bangladesh Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>N. Central Asia Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>China Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>SE Asia Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>North Asia Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>W. Australia Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>North Asia East Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Singapore Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Tokyo Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Taipei Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Ulaanbaatar Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Cen. Australia Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Korea Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Yakutsk Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>AUS Eastern Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>AUS Central Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>E. Australia Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Vladivostok Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>West Pacific Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Tasmania Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>New Zealand Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Magadan Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Central Pacific Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Tonga Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Fiji Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Kamchatka Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Mid-Atlantic Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Azores Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Cape Verde Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>SA Eastern Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>E. South America Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Argentina Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Newfoundland Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Greenland Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Montevideo Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Central Brazilian Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Paraguay Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Atlantic Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Venezuela Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>SA Western Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Pacific SA Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>US Eastern Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>SA Pacific Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Eastern Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Central Standard Time (Mexico)</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Central America Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Central Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Mountain Standard Time (Mexico)</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Canada Central Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>US Mountain Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Pacific Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Mountain Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Pacific Standard Time (Mexico)</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Samoa Standard Time</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Alaskan Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Hawaiian Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">&#160;</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Dateline Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Greenwich Standard Time</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -697,6 +729,39 @@
                     <MadCap:keyword term="sLocalIPs">&#160;</MadCap:keyword>This variable is used to set the optional list of local IP addresses on the server. This is used so that any browser request from one of the local IP addresses will be able to access all administration functions.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the following IP addresses as "local" IP<br />&#160;&#160;&#160;&#160;// addresses for this multi-NIC server</span><br />&#160;&#160;&#160;&#160;bp.Vars.sLocalIPs = "<span class="CodeOption">10.1.5.14,10.1.5.32</span>";<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="TestModeIPs"></a><a href="#TestModeIPs"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>TestModeIPs</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="TestModeIPs" />This variable enables you specify the IP addresses that are allowed to connect to a Process Director Server that has been placed in Test mode, via the <a href="#fTestMode">fTestMode</a> custom variable. This is required to allow access to a server that is in test mode. If accessing the server locally, the IP address doesn't need to be listed.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = true;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the IP Addresses allowed to access the server</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestModeIPs.Add("<span class="CodeOption">10.1.1.1</span>");<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead><a name="TestUser"></a>
+                <MadCap:dropDownHotspot><a name="TestUserEmailAddress"></a><a href="#TestUserEmailAddress"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>TestUserEmailAddress</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="TestUserEmailAddress">&#160;</MadCap:keyword>This variable enables you to route all process emails (task list emails, notifications, etc.) to a single email address. This system variable doesn't require a database connection.&#160; Use this setting with caution. It should only be used on non-production systems to test process and Forms. If your installation is configured to enable users to retrieve forgotten passwords, via the <a href="Customization File Users.htm#fAllowRetrievePassword">fAllowRetrievePassword</a> custom variable, the TestUserEmailAddress won't receive password reset request emails.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Set test email</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmailAddress = "<span class="CodeOption">demo@bplogix.com</span>";<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead><a name="TestUser2"></a>
+                <MadCap:dropDownHotspot><a name="TestUserEmails"></a><a href="#TestUserEmails"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>TestUserEmails</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="TestUserEmails">&#160;</MadCap:keyword>This variable enables you to route all process emails (task list emails, notifications, etc) to a single user. Use this setting with caution. It should only be used on non-production systems to test processes and Forms. </p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Specify user to use for test emails</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmails = User.GetUserByUserID(bp, "<span class="CodeOption">my_test_id</span>");<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

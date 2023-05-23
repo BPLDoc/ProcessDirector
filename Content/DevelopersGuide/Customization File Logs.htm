@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer" />
+            <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword>Logs Custom&#160;Variables</h1>
+        <p>These Custom Variables enable you to specify settings to control how Process Director's logging features operate.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="fEnableDatabaseLogs" /><a name="fEnableDatabaseLogs"></a><a href="#fEnableDatabaseLogs"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fEnableDatabaseLogs</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Process Director v4.55 and higher logs XML import events, goal evaluations, and Active Directory syncs by default, which means that the default value for this variable is "true". This logging can be turned off by setting this variable to false.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Turn off database logging for imports, AD Syncs, etc.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableDatabaseLogs = <span class="CodeOption">false</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="fKeepADSyncInfoLogs" /><a name="fKeepADSyncInfoLogs"></a><a href="#fKeepADSyncInfoLogs"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fKeepADSyncInfoLogs</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This variable, when set to "false", will prevent the <a href="../SystemAdministratorGuide/Creating an AD Sync Profile.htm#SyncLogHistory">Active Directory Sync Log History</a> from from logging most events at the "info" level (i.e., it will only log warnings and errors). This should substantially reduce the number of logs in the tblLogs table in the database, but you may still want to clear out the old logs prior to setting this variable. You can do so by adjusting the <a href="#nImportLogSyncDays">nImportLogSyncDays</a> variable to 0, then running the global timer routines in the Troubleshooting window. Once complete, you can reset <a href="#nImportLogSyncDays">nImportLogSyncDays</a> to the desired value. This Variable can be used in conjunction with the <a href="#nMaxADSyncLogEvents">nMaxADSyncLogEvents</a> variable to control the length of AD&#160;synchronization audit logs. The default value for this variable is "true".</p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> Prior to Process Director v5.3, clearing out the old logs requires resetting the nImportLogDays Custom Variable. The nImportLogDays was deprecated in v5.3 and replaced with nImportLogSyncDays.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent detailed AD&#160;Sync logging</span><br />&#160;&#160;&#160;&#160;Vars.fKeepADSyncInfoLogs = <span class="CodeOption">false</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nArchiveLogDays"></a><a href="#nArchiveLogDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nArchiveLogDays</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nArchiveLogDays">&#160;</MadCap:keyword>This variable enables you to control the number of days that Process Director should retain its logs. Logs will be archived in the /App_Data/log_archive/ folder. This custom variable is available only with users who have the Compliance edition for on-site installations, or a cloud installation.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nArchiveLogDays = <span class="CodeOption">7</span>; <span class="CodeComment">// archives logs for a week</span><br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="nImportLogDays" /><a name="nImportLogDays"></a><a href="#nImportLogDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogDays</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> This Custom Variable has been deprecated in Process Director v5.3.</p>
+                <p>Process Director v4.55 and higher logs XML import events, goal evaluations, and Active Directory syncs by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep logs for 45 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogDays = <span class="CodeOption">45</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="nImportLogDays" /><a name="nImportLogGoalDays"></a><a href="#nImportLogGoalDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogGoalDays</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Process Director v5.3 and higher logs goal evaluations by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep Goal logs for 2 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogGoalDays = <span class="CodeOption">2</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="nImportLogImportDays" /><a name="nImportLogImportDays"></a><a href="#nImportLogImportDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogImportDays</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Process Director v5.3 and higher logs XML&#160;imports by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep XML import logs for 15 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogImportDays = <span class="CodeOption">15</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="nImportLogKVRunDays" /><a name="nImportLogKVRunDays"></a><a href="#nImportLogKVRunDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogKVRunDays</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Process Director v5.3 and higher logs Knowledge View executions by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep KV&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogKVRunDays = <span class="CodeOption">5</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="nImportLogMLPublishDays" /><a name="nImportLogMLPublishDays"></a><a href="#nImportLogMLPublishDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogMLPublishDays</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Process Director v5.3 and higher logs Machine Learning object publications by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep ML&#160;Pub logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogMLPublishDays = <span class="CodeOption">5</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="nImportLogSArunDays" /><a name="nImportLogSArunDays"></a><a href="#nImportLogSArunDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogSArunDays</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Process Director v5.3 and higher logs Stream Action runs by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep SA&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogSArunDays = <span class="CodeOption">5</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="nImportLogSyncDays" /><a name="nImportLogSyncDays"></a><a href="#nImportLogSyncDays"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nImportLogSyncDays</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Process Director v5.3 and higher logs Active Directory synchronizations by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep AD Sync logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogSyncDays = <span class="CodeOption">5</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nMaxADSyncLogEvents"></a><a href="#nMaxADSyncLogEvents"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxADSyncLogEvents</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nMaxADSyncLogEvents" />This variable sets the maximum number of synchronization log events that will be displayed on the <a href="../SystemAdministratorGuide/Creating an AD Sync Profile.htm#SyncLogHistory">Active Directory Sync Log History</a> page.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;//Default is 200 </span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxADSyncLogEvents = <span class="CodeOption">100</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nMaxLogBackups"></a><a href="#nMaxLogBackups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxLogBackups</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nMaxLogBackups">&#160;</MadCap:keyword>This variable enables you to set the maximum number of log files. After a log file reaches the size configured by nMaxLogFileSize, it will “wrap” in a circular log file queue.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep a maximum of 20 wrapping log files</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxLogBackups = <span class="CodeOption">20</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nMaxLogFileSize"></a><a href="#nMaxLogFileSize"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxLogFileSize</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nMaxLogFileSize">&#160;</MadCap:keyword>This variable enables you to set the maximum size of the wrapping log files. Specify this value in kilobytes.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will set the maximum log file size to 3 meg.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxLogFileSize = <span class="CodeOption">3000</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

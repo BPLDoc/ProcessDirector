@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
@@ -8,6 +8,17 @@
             <MadCap:concept term="Developer" /><a name="_Toc421270083"></a>
             <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword>Auditing Custom Variables</h1>
         <p>You can alter some of the auditing functions of Process Director by editing the custom variables listed in this section.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="fAuditAnonAccesses" /><a name="fAuditAnonAccesses"></a><a href="#fAuditAnonAccesses"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAuditAnonAccesses</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This variable enables Process Director to log various events in the audit logs that are specific to anonymous access to Process Director. In most cases, the Process Director installation won't be accessed by outside users with anonymous access, so this variable is set to "false" by default. Setting this variable to "true" will turn on the audit logging for these events.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will turn on audit logging for anonymous access.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAuditAnonAccesses = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="fAuditFormAPICalls"></a><a href="#fAuditFormAPICalls"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAuditFormAPICalls</MadCap:dropDownHotspot>
@@ -54,6 +65,18 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nMaxAdminAuditRows"></a><a href="#nMaxAdminAuditRows"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nMaxAdminAuditRows</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nMaxAdminAuditRows">
+                    </MadCap:keyword>This variable enables you to set the maximum number of audit rows to display. The default is 1000.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will set the maximum number of audit rows.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxAdminAuditRows = <span class="CodeOption">1000</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="sAuditFieldStyle"></a><a href="#sAuditFieldStyle"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>sAuditFieldStyle</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -69,7 +92,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="nAuditLogDays">&#160;</MadCap:keyword>This string variable enables you to optionally list field manes for fields you wish to skip when auditing. This will also allow you to skip all fields in an array or section.</p>
+                    <MadCap:keyword term="nAuditLogDays">&#160;</MadCap:keyword>This string variable enables you to optionally list field names for fields you wish to skip when auditing by providing a comma-separated list of field names. This will also enable you to skip all fields in an array or section.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.sSkipAuditFields = "<span class="CodeOption">fieldname1</span>, <span class="CodeOption">fieldName2</span>";<br />}</p>
             </MadCap:dropDownBody>

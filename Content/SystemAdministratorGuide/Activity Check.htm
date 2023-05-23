@@ -1,19 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head>
-        <title>
-        </title>
+    <head><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h1>
-            <a name="_Toc421172278">
-            </a>
-            <MadCap:keyword term="Windows Scheduler;Activity Check;System Administration" />
-            <a href="#_Toc421172278">
-                <MadCap:concept term="System Administration" />
-                <img src="../Resources/Images/link.png" alt="Link" />
-            </a>Activity Check Page</h1>
+        <h1><a name="_Toc421172278"></a>
+            <MadCap:keyword term="Windows Scheduler;Activity Check;System Administration" /><a href="#_Toc421172278"><MadCap:concept term="System Administration" /><img src="../Resources/Images/link.png" alt="Link" /></a>Activity Check Page</h1>
         <p>Process Director runs as a virtual directory in IIS and processes all time-related events like due dates when activity is present on the system (e.g. Users are actively working on the system). But, Process Director doesn't have a constantly running timer service, <b>it is only active when IIS is active and it is processing web page requests</b>. If there are no active users, IIS goes inactive and shuts down after 20 minutes of inactivity. We want to avoid that during business hours, but still leave some time for IIS to restart on its own during a period of inactivity. So, we have provided an activity check page in the installation folder, named activity_check.aspx.</p>
         <p>The activity check page does a couple things. First, it keeps IIS active so it doesn't shut down and need to restart during the business day. Second, it tells Process Director that timer process should NOT occur under the context of a user, but only occur in the context of the activity_check.aspx page. If timer processing occurs under the context of a user, they may see their session hang while the processing is occurring, but setting the timer context to the activity check page will avoid this.</p>
         <p class="Important">
@@ -23,21 +15,17 @@
         <p>In this example, PATH is the installation directory for Process Director (e.g. c:\Program Files\BP Logix\Process Director\).</p>
         <p>There are a number of URL parameters that you can apply to the URL for the activity check page above that will enable the activity check to check specific  processes. Only one of these URL parameters can be used at any time.</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
-            <li>
-                <b>WFID:</b> A specific Workflow definition.</li>
-            <li>
-                <b>WFINSTID:</b> A specific Workflow instance.</li>
-            <li>
-                <b>PRID:</b> A specific Process Timeline definition.</li>
-            <li>
-                <b>PRINSTID:</b> A specific Process Timeline instance.</li>
+            <li><b>WFID:</b> A specific Workflow definition.</li>
+            <li><b>WFINSTID:</b> A specific Workflow instance.</li>
+            <li><b>PRID:</b> A specific Process Timeline definition.</li>
+            <li><b>PRINSTID:</b> A specific Process Timeline instance.</li>
         </ul>
         <p>For instance, you can do an activity check on a Workflow definition by using the command</p>
         <p class="CodeBase">PATH\bputil.exe" SU "http://localhost/activity_check.aspx?WFID=XXXXXX"</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" style="width: 10px;height: 10px;" /> The activity check page <b>can't</b> be run from a remote host. It can only be executed from the local server where Process Director is installed, or run remotely when logged in as an administrator. Assuming that the remote host is a secure server, however, you can add the remote server to the list of "local IPs" in the installation settings to cause Process Director to treat the remote host as a local host.</p>
         <p>When the activity check page runs, Process Director will determine which timer processing functions need to occur. (There are a few things like GOALS that will be evaluated EVERY time the activity check runs because they are low-impact.) You can control the timer functions by setting custom variables in the vars.cs customization file. These timer functions are NOT controlled by the frequency that the activity_check.aspx page is scheduled. </p>
-        <p>There are several Custom Variables that control the amount of time to wait between different types of timer processing. These Custom Variables, examples of their configuration, and other details, are provided in the <a href="../DevelopersGuide/Customization File System.htm#Activity">Activity Checking Custom Variables topic</a> of the Developers Guide.</p>
+        <p>There are several Custom Variables that control the amount of time to wait between different types of timer processing. These Custom Variables, examples of their configuration, and other details, are provided in the <a href="../DevelopersGuide/Customization File Administration.htm#Activity">Activity Checking Custom Variables topic</a> of the Developers Guide.</p>
         <p>There are ways for force the timer processing to occur without being governed by the Custom Variables. Instead, you can pass special URL parameters on the activity_check.aspx URL query string. For example, you can pass a Workflow definition ID (WFID) on the URL, which tells Process Director to process all timers for all running Workflow instances under that definition. This should be used with care to prevent excessive resource utilization if used too often. The following URL&#160;Parameters are available to run timers on specific objects:</p>
         <ul>
             <li>STINSTID</li>

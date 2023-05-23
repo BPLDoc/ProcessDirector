@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer;Users" />
+            <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword><a name="_Toc421270092"></a>User Custom Variables</h1>
+        <p>These Custom Variables enable you to specify various user-related settings in Process Director.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>
+                    <MadCap:keyword term="DefaultNewUsersToDayPass" /><a name="DefaultNewUsersToDayPass"></a><a href="#DefaultNewUsersToDayPass"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>DefaultNewUsersToDayPass</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Variable, when set to "true", will automatically create all new users as Day Pass users. The default value of this variable is "false". This variable is relevant only if you have the Day Passes license component.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Make all new users day pass users.</span><br />&#160;&#160;&#160;&#160;bp.Vars.DefaultNewUsersToDayPass = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="DelegationAdminGroups"></a><a href="#DelegationAdminGroups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>DelegationAdminGroups</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="DelegationAdminGroups">&#160;</MadCap:keyword>If a user is in any of the groups specified by this variable, the user will be able to access the delegation administration page, even without the “User Admin” setting enabled in his user profile.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.DelegationAdminGroups = "<span class="CodeOption">Delegation Users</span>";<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fAllowLoginRememberMe"></a><a href="#fAllowLoginRememberMe"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAllowLoginRememberMe</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fAllowLoginRememberMe">&#160;</MadCap:keyword>This variable enables you to control whether built-in users can ask Process Director to remember their session so they don’t have to log in each time they visit Process Director.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Allow users to use 'Remember Me' option</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowLoginRememberMe = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fAllowRetrievePassword"></a><a href="#fAllowRetrievePassword"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fAllowRetrievePassword</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fAllowRetrievePassword">&#160;</MadCap:keyword>This variable enables you to control whether built-in users can retrieve their passwords if they are forgotten. If set to true, a prompt will appear on the login page. Development systems that use the <a href="Customization File Administration.htm#TestUserEmailAddress">TestUserEmailAddress</a> won't send password reset request email to the TestUserEmailAddress, but will, instead, send them to the requesting user.</p>
+                <h5>Example</h5>
+                <p>
+                    <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Allow users to retrieve passwords</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowRetrievePassword = <span class="CodeOption">true</span>;<br />}</p>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fDisableImplicitPartitionGroupUsers"></a><a href="#fDisableImplicitPartitionGroupUsers"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDisableImplicitPartitionGroupUsers</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fDisableImplicitPartitionGroupUsers" />Users in groups are automatically added to a partition when the group is added to the partition. They are implicitly added through their group membership. This option, when set to "true" will prevent this implicit user addition, which means that users will have to be explicitly added to a partition to be part of it. </p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;//Disables adding users to a partition implicitly.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableImplicitPartitionGroupUsers= <span class="CodeOption">true</span>; <br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fDisableUserRenameOnDisable"></a><a href="#fDisableUserRenameOnDisable"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fDisableUserRenameOnDisable</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fDisableUserRenameOnDisable" />This variable will, when set to "true", prevent a disabled user from being renamed and preventing a new GUID from being applied during an update/synchronization. The default value for this variable is "false".</p>
+                <h5>Example</h5>
+                <p>
+                    <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Prevent disabled users from being renamed</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableUserRenameOnDisable = <span class="CodeOption">true</span>;<br />}</p>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fSharedDelegationNextTask"></a><a href="#fSharedDelegationNextTask"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fSharedDelegationNextTask</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fSharedDelegationNextTask" />Setting this variable to true will, when <a href="../SystemAdministratorGuide/User Delegation.htm#SharedDelegation">shared delegation</a> is enabled, display the next task to the delegate automatically, if the principal assignee of the current task is also the principal assignee of the next task. This variable is set to false by default.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Automatically display the next task to the delegate</span><br />&#160;&#160;&#160;&#160;bp.Vars.fSharedDelegationNextTask = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fTurnOnDelegationGroups"></a><a href="#fTurnOnDelegationGroups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTurnOnDelegationGroups</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="fTurnOnDelegationGroups" />By default, users are allowed to delegate tasks to any other user. Setting this variable to “true” restricts the user's ability to set delegations, and limits delegations only to other users who belong to the same group as the delegating user.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Restrict delegation to the same group as delegator</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTurnOnDelegationGroups = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nUserInactivityTimeoutSecs"></a><a href="#nUserInactivityTimeoutSecs"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>nUserInactivityTimeoutSecs</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="nUserInactivityTimeoutSecs" />This variable enables you to set the maximum number of seconds to elapse prior to automatically logging out a user for inactivity. Once the configured time limit expires, the user will be logged off, and will be forced to re-authenticate to access the system again.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the maximum inactivity time to 2 hours.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nUserInactivityTimeoutSecs = 60*60*2;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>
