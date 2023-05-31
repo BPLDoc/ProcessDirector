@@ -33,16 +33,143 @@
             <li>The system records actual versus predicted execution times each time the process is run, and adjusts its time estimates accordingly.</li>
         </ul>
         <p>Most activities have a dependence on one or more other activities. Dependence refers to the requirement that an Activity can't begin until a predecessor Activity, or activities, ends. This type of relationship (often referred to by project managers as finish-to-start) represents the most fundamental starting condition for any Activity.</p>
-        <p>Below is a sample Process Timeline, consisting of three tasks, or activities.&#160; The Timeline column of the Process Timeline shows the number of days planned for each Activity. Initial Approval is scheduled to take three workdays, Finance Approval is expected to take two workdays, and the Submitter Notification will take 0 workdays, as it is an automated process that will be performed by Process Director. The Finance Approval Activity is dependent on the Initial Approval. The Submitter Notification, in turn, is dependent on Finance Approval.</p>
+        <p>Below is a sample Process Timeline, consisting of several activities.&#160; The Timeline column of the Process Timeline shows the number of days planned for each Activity.<span class="ProcessDirectorObject"> Faculty Advisor Approval </span>is scheduled to take two workdays, Department Approval is expected to take three workdays, and so forth. All of the activities will be tracked for start times and due dates, and successor, or dependent, activities will begin as soon as their predecessor activities end, via the  automated process that's governed by Process Director. The Finance Approval Activity is dependent on the Initial Approval. The Submitter Notification, in turn, is dependent on Finance Approval.</p>
         <p>
-            <img src="../Resources/Images/InstallationGuide/SampleTimeline.png" />
+            <img src="../Resources/Images/ImplementersReference/SampleTL.png" />
         </p>
         <p>An Activity may also be a parent or child Activity. A parent Activity is a container for other, subordinate activities, each of which is referred to as a child Activity. Child activities have an implied dependence on their parent, so, absent any additional conditions, the child activities begin when the parent Activity begins. Once all of the child activities are complete, the parent is complete. </p>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/Process Timelines_1.jpg" style="visibility: visible;mso-wrap-style: square;" />
-        </p>
-        <p>Each Activity in the Process Timeline has an Actions column with four icons, each of which enable you to modify one of the Activity's properties.</p>
-        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+        <h4>Activity Types</h4>
+        <p>Each Activity in the Process Timeline has a <span class="ControlName">Type </span>column that displays an icon to identify the activity type. Each activity type displays a unique icon. In the example above, the <span class="ProcessDirectorObject">Department Approval</span> Activity's Type icon indicates that the Activity is a User Activity Type that is assigned to a Group of users, While the <span class="ProcessDirectorObject">Registrar Change of Major</span> Activity's icon indicates the activity is a user activity assigned to a single user. We'll discuss each <span class="ControlName">Activity Type </span>in detail in the documentation topic for each type, but the available icons you might see in this column are shown below.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 4em;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>ICON</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>Type</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>
+                            <img src="../Resources/Images/ImplementersReference/TypeIcons2.png" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Parent Activity without Looping Conditions</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>
+                            <img src="../Resources/Images/ImplementersReference/TypeIcons3.png" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Parent Activity with Looping Conditions</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>
+                            <img src="../Resources/Images/ImplementersReference/TypeIcons5.png" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">User Activity - Single User</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <p>
+                            <img src="../Resources/Images/ImplementersReference/TypeIcons6.png" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">User Activity - Group of Users</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <p>
+                            <img src="../Resources/Images/ImplementersReference/TypeIcons7.png" />
+                        </p>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <p>User Activity - Chosen from Form Field</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <img src="../Resources/Images/ImplementersReference/TypeIcons8.png" />
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">User Activity - Chosen via System Variable</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <img src="../Resources/Images/ImplementersReference/TypeIcons10.png" />
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">User Activity - Chosen via Business Rule</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <img src="../Resources/Images/ImplementersReference/TypeIcons11.png" />
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">User Activity - Timeline Initiator</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <img src="../Resources/Images/ImplementersReference/TypeIcons12.png" />
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Notify Activity</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <img src="../Resources/Images/ImplementersReference/TypeIcons13.png" />
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Process Activity</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <img src="../Resources/Images/ImplementersReference/TypeIcons14.png" />
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Script Activity</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <img src="../Resources/Images/ImplementersReference/TypeIcons16.png" />
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Form Actions Activity</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <img src="../Resources/Images/ImplementersReference/TypeIcons17.png" />
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Branch Activity</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <img src="../Resources/Images/ImplementersReference/TypeIcons18.png" />
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">End Process Activity</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <img src="../Resources/Images/ImplementersReference/TypeIcons19.png" />
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Wait Activity</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                        <img src="../Resources/Images/ImplementersReference/TypeIcons20.png" />
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2">Case Activity</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>An additional <span class="ControlName">Activity Type</span>, the Custom Task Activity, does not have a specific display icon. Instead, this Activity type will display an icon in the <span class="ControlName">Type </span>column that is specific to the Custom Task that's configured to run in the activity.</p>
+        <h4>Activity Actions</h4>
+        <p>Similarly, each Activity in the Process Timeline has an <span class="ControlName">Actions </span>column with four icons, each of which enable you to modify one of the Activity's properties.</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 4em;" />
+            <col />
             <thead>
                 <tr class="TableStyle-Simple-Head-Header1">
                     <th class="TableStyle-Simple-HeadE-Column1-Header1">
