@@ -34,11 +34,17 @@
         <p>When you are ready, you have an additional option to use production data on your Test server by importing your existing Production database into the Test database. This will provide an exact mirror of your Production installation, however, it may expose sensitive data to users in the test environment. </p>
         <p><span class="UIElement" style="font-weight: bold;">Exercise extreme caution when selecting this option, to avoid a breach of sensitive data.</span>
         </p>
-        <p>To reproduce your production data on the Test database:</p>
+        <p>To reproduce your production data on the Test database for Process Director <b>v5.44.700 and higher</b> follow the steps below. For versions <b>below v5.44.700</b>, steps 1, 3, 6, and 7 are not needed, as those version do not implement AES encryption.</p>
         <ol>
+            <li>Be sure web access to the test system is disabled during this process to prevent any users from accessing the system during this process.</li>
             <li>Backup the database on the test server and save Process Director license key and token.</li>
+            <li>Backup your existing bpProperties.xml file in the App_Data folder. <ol style="list-style-type: lower-alpha;"><li>Save the value for Database Connection String from /admin/db.aspx. Using the UI allows you to view the un-encrypted value.</li></ol></li>
             <li>Turn off email notifications on the test server by setting the <a href="../DevelopersGuide/Customization File Administration.htm#TestUser2">TestUserEmails</a>  flag in the installation's vars.cs.ascx file. This variable allows you to route all process emails (task list emails, notifications, etc) to a single user. Do this prior to copying over the Production database to ensure that users don't receive a plethora of notifications from the Test database when the import is complete.</li>
             <li>Copy the Process Director production database to the test server. This WILL overwrite your existing test database, if applicable. All of your existing process director objects in the Production database will be available in the Test database.</li>
+            <li>Copy the sEncryptionKeyDoNotModify and sCheckValue XML elements from the production bpProperties.xml to the test server bpProperties.xml.<ol style="list-style-type: lower-alpha;"><li>You will need to set all the following values to empty (if used) and then reconfigure them in the administrative UI because you are changing the system's encryption key: sSMTPPassword2, sSMTPSecret, sSMTPClientID, sSMTPTenantID. Once configured, these values can be restored using the IT Admin pages AFTER saving bpProperties.xml.</li></ol></li>
+            <li>
+                <p>After saving bpProperties.xml, restore the value of the Database Connection String from 3(a) using /admin/db.aspx page.</p>
+            </li>
             <li>If you are storing documents on a Windows file system instead of the Process Director database, ensure you make a copy of that file system to the appropriate location for the new system.</li>
             <li>Copy any other Custom variables you are using in the Production installation's custom vars file to the Test server's custom vars file. Do NOT copy the vars file itself, just the text of the vars settings from the Production vars file to the Test vars file.<br /></li>
             <li>Copy any other customized process scripts or other file-based customizations from these production directories to the test server:<br /><code>\Program Files\BP Logix\Process Director\website\custom\*.*</code></li>
