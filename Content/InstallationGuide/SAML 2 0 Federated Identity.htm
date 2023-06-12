@@ -1,16 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
-        <title>
-        </title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" />
     </head>
     <body>
         <h1>
-            <MadCap:concept term="Installation" />
-            <a name="_Toc421172286">
-            </a>
+            <MadCap:concept term="Installation" /><a name="_Toc421172286"></a>
             <MadCap:keyword term="Installation;SAML" />SAML 2.0 (Federated Identity) Support</h1>
         <p>Process Director supports SAML-based authentication for web single sign-on (SSO).&#160; SAML is an XML-based framework for communicating user authentication, entitlement, and attribute information. </p>
         <p>Process Director accepts SAML 2.0 assertions regarding the identity, attributes, and entitlements of a user, from a federated Identity Provider (e.g. OpenAM or the open source version of OpenSSO).</p>
@@ -19,20 +15,14 @@
         <p>
             <img src="../Resources/Images/InstallationGuide/SAML 2 0 Federated Identity.png" style="visibility: visible;mso-wrap-style: square;" />
         </p>
-        <h2>
-            <a name="_Toc421172287">
-            </a>Authentication Options <a href="#_Toc421172287" class="anchor">#</a></h2>
+        <h2><a name="_Toc421172287"></a>Authentication Options <a href="#_Toc421172287" class="anchor">#</a></h2>
         <p>Process Director supports federated authentication. Federated authentication doesn't validate the user's actual password on Process Director. Instead, Process Director receives a SAML assertion in an HTTP POST request. The SAML assertion has a limited validity period, contains a unique identifier, and can be digitally signed. If the assertion is still within its validity period, has an identifier that hasn't been used before, and has a valid signature from a trusted identity provider, the user is granted access. If the assertion fails for any reason, the user is informed that their credentials are invalid.</p>
-        <h2>
-            <a name="_Toc421172288">
-            </a>Implementation Details <a href="#_Toc421172288" class="anchor">#</a></h2>
+        <h2><a name="_Toc421172288"></a>Implementation Details <a href="#_Toc421172288" class="anchor">#</a></h2>
         <p>The transaction from an identity provider (IP) to Process Director is called a SAML assertion. Process Director assumes that all data contained in the assertion from the identity provider is valid. The structure of the SAML assertion is defined by an XML schema that is specified by the OASIS SAML standard and contains header information, the subject and statements about the subject in the form of attributes and conditions such as a start and logout URL. The SAML assertions will contain a Federated ID from the identity provider; this must be mapped to a user in Process Director (see below for more information on this mapping). </p>
         <p>There is an online SAML&#160;tool that will assist you in creating the XML metadata file that can be consumed by your IP. This tool is located at <a href="https://www.samltool.com/sp_metadata.php" target="_blank">https://www.samltool.com/sp_metadata.php</a>.</p>
         <p>Web browser SSO is SAML's most widely used feature and is typically used in conjunction with the HTTP POST binding and authentication request protocol. There are two important use cases for SAML: Identity Provider Initiated Login, where a user starts directly at their identity provider, logs in, and is then redirected to a landing page at the service provider; and Service Provider Initiated Login, where a user starts by clicking a link to the service provider (e.g. bookmark, email link, etc) and is temporarily redirected to the identity provider for authentication, then returned to the link they initially requested. </p>
         <p>Process Director supports Service Provider Initiated Logins, where a user starts by clicking a link to a Process Director object (e.g. home page, Form, etc) and is temporarily redirected to the identity provider for authentication, then returned to the link within Process Director they initially requested. </p>
-        <h2>
-            <a name="_Toc421172289">
-            </a>Process Director Configuration Settings <a href="#_Toc421172289" class="anchor">#</a></h2>
+        <h2><a name="_Toc421172289"></a>Process Director Configuration Settings <a href="#_Toc421172289" class="anchor">#</a></h2>
         <p>The user authentication configuration options support the SAML SSO configuration. The SAML configuration information includes:</p>
         <ul style="list-style-type: disc;margin-left: 36pt;">
             <li>SAML Issuer</li>
@@ -45,39 +35,29 @@
         </ul>
         <p>For Process Director, these are the possible ACS URL configurations:</p>
         <ul>
-            <li>
-                <code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=&amp;reauth=&amp;f=</code>
+            <li><code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=&amp;reauth=&amp;f=</code>
             </li>
-            <li>
-                <code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=1&amp;reauth=&amp;f=</code>
+            <li><code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=1&amp;reauth=&amp;f=</code>
             </li>
-            <li>
-                <code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=4&amp;reauth=&amp;f=</code>
+            <li><code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=4&amp;reauth=&amp;f=</code>
             </li>
         </ul>
         <p>If using re-authentication as part of the electronic signatures these additional URLs are needed:</p>
         <ul>
-            <li>
-                <code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=&amp;reauth=1&amp;f=</code>
+            <li><code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=&amp;reauth=1&amp;f=</code>
             </li>
-            <li>
-                <code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=1&amp;reauth=1&amp;f=</code>
+            <li><code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=1&amp;reauth=1&amp;f=</code>
             </li>
-            <li>
-                <code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=4&amp;reauth=1&amp;f=</code>
+            <li><code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=4&amp;reauth=1&amp;f=</code>
             </li>
         </ul>
         <p>Additional information is configured to establish the trust relationship with the identity provider. This configuration specifies what element in the SAML assertion identifies the user, and how that user ID will be mapped to the Process Director users.</p>
-        <h2>
-            <a name="_Toc421172290">
-            </a>User Mappings <a href="#_Toc421172290" class="anchor">#</a></h2>
+        <h2><a name="_Toc421172290"></a>User Mappings <a href="#_Toc421172290" class="anchor">#</a></h2>
         <p>When setting up SAML authentication, you'll establish an association between the identity provider and Process Director, forming a federation. When configuring the identity provider, you must determine the unique identifier that will be passed to Process Director as part of the assertion. This is what will uniquely identify the user to Process Director.</p>
         <p>This value must be unique for all users in Process Director. Process Director also must be able to determine if this user is held by that part of company's identity infrastructure (e.g. AD, LDAP server) synchronized to the server. If so, then all needed information about the user will already be known.</p>
         <p>If the user isn't found, it can be automatically be created in the Process Director database. If there is any information contained in the SAML assertion that indicates the source of this user (e.g. from an AD server), Process Director can use that information to populate the users email address and user name. If that information doesn't exist, this user information will have to be entered from within the Process Director administrative interfaces.</p>
         <p>When SAML integration is enabled, any request to a protected page or login to Process Director will automatically be redirected to the SAML Identity Provider. To use built-in or Windows authentication while SAML support is enabled, add the URL parameter skipsaml=1 to the login.aspx page. When this parameter is present, SAML integration won't be used for that login.</p>
-        <h2>
-            <a name="_Toc421172291">
-            </a>Configuration <a href="#_Toc421172291" class="anchor">#</a></h2>
+        <h2><a name="_Toc421172291"></a>Configuration <a href="#_Toc421172291" class="anchor">#</a></h2>
         <p>To configure SAML support, the following variables can be configured in the Process Director custom vars file at /custom/vars.cs.ascx, in the PreSetSystemVars section. Attribute names can be configured using the Form Name or the Friendly Name.</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
             <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
@@ -255,9 +235,13 @@
             </tbody>
         </table>
         <p>A sample configuration in the custom vars file might look as follows:</p>
-        <p class="CodeBase">
-            <span class="ControlName">// Called BEFORE database initialized</span>
-            <br />public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Enable = true;<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_IP_Certificate = @"C:\Program Files\BP Logix\cert.cer";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_URL =<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"https://adfs.company.com/adfs/ls/idpinitiatedsignon.aspx?logintoRP=<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;https%3a%2f%2fcloud.bplogix.net";<br />&#160;&#160;&#160;&#160;bp.Vars.CustomLogoffPage = "https://signin.company.com/";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Request_Type = SAMLReqType.HTTPRedirect;<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Response_Type = SAMLRespType.HTTPPost;<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Issuer = "https://cloud.bplogix.net";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_ProviderName = "https://cloud.bplogix.net";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_GUID = "SAM-Account-Name";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserID = "SAM-Account-Name";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserName = "DisplayName";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Email = "Email";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Groups = "Groups";<br />}
-        </p>
+        <p class="CodeBase"><span class="ControlName">// Called BEFORE database initialized</span>
+            <br />public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Enable = <span class="CodeOption">true</span>;<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_IP_Certificate = @"<span class="CodeOption">C:\Program Files\BP Logix\cert.cer</span>";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_URL =<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://adfs.company.com/adfs/ls/idpinitiatedsignon.aspx?logintoRP=<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;https%3a%2f%2fcloud.bplogix.net</span>";<br />&#160;&#160;&#160;&#160;bp.Vars.CustomLogoffPage = "<span class="CodeOption">https://signin.company.com/</span>";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Request_Type = SAMLReqType.HTTPRedirect;<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Response_Type = SAMLRespType.HTTPPost;<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Issuer = "<span class="CodeOption">https://cloud.bplogix.net</span>";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_ProviderName = "<span class="CodeOption">https://cloud.bplogix.net</span>";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_GUID = "<span class="CodeOption">SAML-Account-ID</span>";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserID = "<span class="CodeOption">SAML-Account-Nam</span>e";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserName = "<span class="CodeOption">DisplayName</span>";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Email = "<span class="CodeOption">Email@email.address</span>";<br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Groups = "<span class="CodeOption">Groups</span>";<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// For Azure Single Sign-Out (PD v6.0.100 and higher)</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Enable_SLO = <span class="CodeOption">true</span>;<br />}
+</p>
+        <h2><a name="SLO"></a>Azure Single Sign-Out <a href="#SLO" class="anchor">#</a></h2>
+        <p>For Process Director v6.0.100 and higher, Azure Single Sign-Out has been implemented for installations that use Azure Based SAML logins. This feature will, when logging out of Process Director, also completely log the user off the SAML Identity Provider (Azure). A new Custom Variable, <code href="../DevelopersGuide/Customization File SAML.htm#SAML_Enable_SLO" style="text-decoration: underline;">SAML_Enable_SLO</code>, is used to implement the Single Sign-Out feature.</p>
+        <p>To fully implement this feature, the <span class="ControlName">LogoutURL </span>setting in Azure must be set to:</p>
+        <p> <code>https://&lt;processDirectorUrl&gt;/login.aspx?skipsaml=1</code></p>
+        <p>...to specify where to be redirected after logging out of SAML.</p>
     </body>
 </html>

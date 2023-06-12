@@ -32,7 +32,20 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes2.png" />
         </p>
-        <p>When multiple users are assigned to a task,  a sub task can be automatically created for each user. You must have a form field that specifies the name of each desired subtask. For instance, you might assign a task called "Approvals" to two users, in sequence. In that case, you'd need two form fields, one of which has a default value of "Approval 1", and the other "Approval 2". When the users complete their task, Both the Task Name and Sub Task name will be assigned to each user, so that you can track both the task, and sub tasks for each user, as they are completed.</p>
+        <p>When multiple users are assigned to a task,  a Subtask can be created for each user. You must have a form field that specifies the name of each desired subtask. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SubtaskDueDates3.png" />
+        </p>
+        <p>In this example, each user is assigned a Subtask Name from a different form field, i.e., <span class="ControlName">Subtask1Name</span>, <span class="ControlName">Subtask2Name</span>, and <span class="ControlName">Subtask3Name</span>. When the users are assigned their task, Both the Task Name (which is the Activity's <span class="ControlName">Name</span>) and <span class="ControlName">Sub Task Name </span>will be assigned to them, so that you can track both the task and subtask for each user as they are completed.</p>
+        <p>For Process Director v 6.0.100 and higher, each subtask can have a unique due date, assigned via a System Variable. Unlike prior versions, where a single due date was assigned to both the Timeline Activity and all of it's included subtasks, you can now configure a Business Rule to return a unique Due Date for each subtask, based on any evaluable condition, such as the <span class="ControlName">Sub Task Name</span>.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SubtaskDueDates1.png" />
+        </p>
+        <p>In this example, the Business Rule, named <span class="ProcessDirectorObject">SubtaskDueDatesBR</span>, will return one of three different due dates, based on the name of the Subtask, e.g. "Subtask1", "Subtask2", or "Subtask3". On the <span class="UIElement">Due Date</span> tab of the Timeline Activity, this Business Rule is reverenced in the <span class="ControlName">Set due date from system Variable</span> property to provide the appropriate due dates for each subtask.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SubtaskDueDates2.png" />
+        </p>
+        <p>Since each subtask is assigned to as different user, Process Director will pass the <span class="ControlName">Sub Task Name </span>for that user to the Business Rule when the subtask is assigned, which will return the unique due date for each subtask participant.</p>
         <h2><a name="Results"></a>Results Tab <a href="#Results" class="anchor">#</a></h2>
         <p>The <span class="UIElement">Results </span>Tab appears when either the User or Wait Activity Types are selected. The Process Activity also has a result, which is generated automatically, and is explained in the "Results of a Process Activity" section below.</p>
         <p>
