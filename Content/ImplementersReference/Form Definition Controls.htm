@@ -227,6 +227,23 @@
                     <img src="../Resources/Images/i2.png" alt="Note" /> Validation and required fields work together in an important way, because Process Director will only validate a field if it contains a value. Process Director will <b>not</b> validate a blank field,  even a field that you want specifically formatted using a Regular Expression. Setting a field as required tells Process Director that the field must contain a value, and will impose validation on a blank field. <i>The fact that you specify a data type or regular expression for a field doesn't indicate to Process Director that the field must contain a value.</i> So, if you want to ensure that Process Director validates a field, even if it's blank, then the field must be a required field.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <h2><a name="Deleting"></a>Deleting Controls and Form Fields <a href="#Deleting" class="anchor">#</a></h2>
+        <p>Deleting a Form field requires two different actions to remove them from the Form's design.</p>
+        <ol>
+            <li>
+                <p>First, you must delete the Form control from the design surface of the Online Form Designer, then save your changes. The field data for deleted controls will, by default, remain as data in the Form instances that were created when the Form originally existed. This data is orphaned, because the original Form control is no longer present on the form. </p>
+            </li>
+            <li>
+                <p>The second step, therefore, is to navigate to the <span class="UIElement">Form Controls</span> tab of the Form definition to specify how to handle this orphaned Form field data. Controls that have been removed from the design surface of the Form are shown as being marked for deletion on the <span class="UIElement">Form Controls</span> tab.</p>
+            </li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/DeleteField.png" />
+        </p>
+        <p>You have two option links for handling this orphaned Form data: <span class="UIElement">Delete </span>or <span class="UIElement">Remap</span>. </p>
+        <p>If you click the <span class="UIElement">Delete </span>option, Process Director will first display a warning dialog box that requires you to click <span class="UIElement">OK </span>to confirm that you wish to delete the field, or <span class="UIElement">Cancel </span>to cancel the action. If you click the <span class="UIElement">OK </span>button, Process Director will completely erase the field and all of its stored data for all Form instances. <b style="font-style: italic;">This action cannot be undone,</b> and the Form field data is completely and permanently erased.</p>
+        <p>If you need the data in the deleted field to remain accessible on the Form, you can choose to move the field data to a different Form field. To do so, first select the Form field into which you wish to move the data from the provided dropdown, then click the <span class="UIElement">Remap </span>link. The existing data from the old Form instances will be remapped to the field you selected for all existing instances. It's best to remap the data to a <b style="font-style: italic;">new</b> Form field. If you remap the data to an existing field, any Form data in the existing field will be overwritten by the remapped data. Like deletion, remapping cannot be undone.</p>
+        <p>In the example shown in the screen shot above, the <span class="ControlName">NewField </span>has been selected for remapping the data from <span class="ControlName">DeletedField2</span>. Clicking the <span class="UIElement">Remap </span>link will complete the remapping operation, and the existing data will be transferred into <span class="ControlName">NewField</span>.</p>
         <h2>More Configuration Tabs</h2>
         <p>You can view the documentation for each of the other configuration tabs by using the Table of Contents displayed on the upper right corner of the page, or use one of the links below.</p>
         <p><b><a href="Form Definition Properties.htm">Properties</a>:</b>&#160;General Form definition properties.</p>
