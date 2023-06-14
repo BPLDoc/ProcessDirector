@@ -10,9 +10,6 @@
         <p>Process Director provides you with a convenient way to find and list information called Knowledge Views, or KViews, for short. The Knowledge View can display all types of information stored in Process Director, such as Forms, Process Timelines, Attachments, documents, etc.&#160; </p>
         <p>Knowledge View definitions are stored in Process Director and provide a “window” into the database showing related information. These are similar to predefined searches. Knowledge Views form the foundation for intelligent navigation, searching, reporting, retrieval, and ultimately delivery of information to the user community. A Knowledge View allows authenticated or anonymous users to navigate and retrieve related information based on the data classification.</p>
         <p>Knowledge Views will display all matching documents, Forms, processes, etc. based on the criteria specified. Knowledge View definitions can also be created that will prompt users for input information to locate information faster.</p>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/KviewDef8.png" />
-        </p>
         <p>Knowledge Views also provide the foundation for the reporting component. The results of a search can:</p>
         <ul>
             <li>be displayed in the browser</li>
@@ -21,6 +18,15 @@
             <li><a href="Knowledge View Operations.htm#Processes">run a process on each of the results</a>
             </li>
         </ul>
+        <p>For Process Director v6.0 and higher, running Knowledge Views are presented with a "flat" UI design by default:</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViews.png" />
+        </p>
+        <p>This UI can be reverted to the UI displayed in previous versions of Process Director by unchecking the <span class="ControlName">Use Process Director 6.0 style </span>property on the <span class="UIElement">Configure </span>tab of the Knowledge View definition. This property is checked by default, but when unchecked, the UI displayed will be the same as it appeared in Process Director 5.X and below.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/KViews1.png" />
+        </p>
+        <p>This change is purely visual, and has no effect on the operation of the Knowledge View.</p>
         <h2><a name="_Toc421536225"></a>How Knowledge Views Work</h2>
         <p>To understand how Knowledge Views work, we must first understand what Process Director does with definition objects like Form definitions, Process Timeline definitions, etc. The definition object contains no actual data, but merely defines what data will be stored. For example, the Form definition describes the data fields that the user will fill out to enter data. Similarly, the Process Timeline definition describes when activities will start and end, or when a user task will become due, based on when the process begins. </p>
         <p>Regular, non-administrative users never interact with any of the definition objects directly. Instead, when a user wants to, say, fill out a Form, The Form definition makes a copy of itself, called an <span class="KeyTerms">instance</span>, that the user will fill with data in the fields specified in the Form definition. This instance object is what actually contains the data entered by the user. If ten different people fill out a Form, Process Director creates an instance for each person, so that there are ten instances of the Form, each of which contains the data filled out by one of the ten users.</p>
