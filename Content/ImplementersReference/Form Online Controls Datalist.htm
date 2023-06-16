@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Forms;Online Form Designer;Implementation;Form Definition;Controls" />
+            <MadCap:keyword term="Data List Controls;Forms;Form Controls;Online Form Designer;Datalist;Data List" />Data List Controls</h1>
+        <p>For Process Director v6.0.100 and higher, a new control dropdown menu, the <span class="UIElement">Data List</span> menu will appear. This menu will contain the selection for the <span class="NamedControl">Data List</span> Form control, as well as additional features that BP&#160;Logix plans to add to this Form control over time.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Datalist"></a><a href="#Datalist"><img src="../Resources/Images/link.png" alt="Link" /></a>Data List</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/DataList.png" />
+                </p>
+                <p>The <span class="NamedControl">Data List </span>control enables the display of table data of nearly any size for display on a Process Director Form. Prior to Process Director v6.0.100, the only method of displaying tabular data was through the use of <a href="Form Online Controls Arrays.htm">Array controls</a>. Array controls, however, can only display relatively large sets of tabular data when the array controls are disabled and displayed only as text. Otherwise, the use of a large number of active controls in a Form array uses excessive system resources, and will make the form nonfunctional after a certain number of fields.</p>
+                <p>The <span class="NamedControl">Data List </span>control, on the other hand, completely solves the issue of presenting and using large data sets on a Form. Data can be selected by cell or by row, and transferred from the <span class="NamedControl">Data List</span> cell or row to a separate set of Form fields (either regular or Array fields). For example, in the screen shot below, the <span class="NamedControl">Data List </span>is displaying a recordset containing 1,369 rows of data on a Form, with no perceptible loss of Form performance or resource usage.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/DataList1.png" />
+                </p>
+                <p>The following fields are available to configure the Data List control.</p>
+                <p><span class="ControlName">Name</span>: The Control's name.</p>
+                <p><span class="ControlName">No Selection</span> / <span class="ControlName">Cell Selection</span> / <span class="ControlName">Row Selection</span>: This property enables you to specify the method, if any, that will be used to select data in the control. <span class="ControlName">Cell Selection </span>will, when selected, enable users to select a specific cell in the list, in order to extract the cell's data. <span class="ControlName">Row selection</span> will, as the name implies, select the entire data row, to extract data from all of the cells in the selected row.</p>
+                <p><span class="ControlName">Width</span>:&#160;Sets the display width of the control on the form, in either percent or pixels. In most cases, a setting of 100% is the appropriate value for this property.</p>
+                <p><span class="ControlName">Height</span>: Sets the display width of the control on the form, in either percent or pixels. In most cases, this property should <b style="font-style: italic;">not</b> be set, unless  the vertical height of the data to be displayed is fixed and known beforehand. Since this control enables pagination, and thus provides end users with the ability to select a different number of rows to display, the height of the control should be left free for the display height to vary automatically, as different pagination options are selected. Similarly, changes in screen width when the control is displayed may cause the data in each cell to wrap at smaller screen widths, increasing the overall height of the data's cell, and, by extension, the entire control's vertical height. Thus, in most cases, you'll want to leave this property blank.</p>
+                <p><span class="ControlName">Pagination</span>: Enables the pagination feature to enable users to page through the data, rather than displaying it in a long, unbroken table. End users can elect to display 10, 20, or 50 records per page when Pagination is enabled.</p>
+                <p><span class="ControlName">Grouping</span>: Enables the grouping feature. Users can select a specific column to group all records, in alphabetical order, by the value in the selected column.</p>
+                <p><span class="ControlName">Sorting</span>: Enables the sorting feature, to allow users to sort the table data in ascending or descending order by clicking on the column header of the desired column they wish to sort.</p>
+                <p><span class="ControlName">Column Filtering</span>: Enables users to filter the contents of the list, by adding a text box and filtering criteria to the header of each column.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/DataList2.png" />
+                </p>
+                <p>Users can filter the data by one or more columns by adding the desired filter term in the text box, then selecting a filter type from the adjacent dropdown menu button. The following filter methods are available from the dropdown menu:</p>
+                <ul>
+                    <li>No Filter: Removes the filter from the column.</li>
+                    <li>Contains: The column data contains the specified text.</li>
+                    <li>Does Not Contain: The column does not contain the specified text.</li>
+                    <li>Starts With: The column data begins with the specified text.</li>
+                    <li>Ends With: The column data ends with the specified text.</li>
+                    <li>Equal To: The column data exactly matches the specified text.</li>
+                    <li>Not Equal To: The column data does not exactly match the specified text.</li>
+                    <li>Greater Than: For numerical values, the column data returns only values greater than the specified number.</li>
+                    <li>Less Than: For numerical values, the column data returns only values less than the specified number.</li>
+                    <li>Greater Than or Equal To: For numerical values, the column data returns only values greater than or equal to the specified number.</li>
+                    <li>Less Than or Equal To: For numerical values, the column data returns only values less than or equal to the specified number.</li>
+                    <li>Between: For numerical values, when the text box is supplied with two different numbers, separated by a space, e.g., "60 70", the filter will return data where the values are between 60 and 70 (including 60 and 70).</li>
+                    <li>Not Between: For numerical values, when the text box is supplied with two different numbers, separated by a space, e.g., "60 70", the filter will return data where the values are not between 60 and 70 (including 60 and 70).</li>
+                    <li>Is Empty: Returns column data where the field value is NULL, or has no value.</li>
+                    <li>Not Is Empty: Returns column data where the field value is not NULL,  or has a value.</li>
+                    <li>Is Null: Returns column data where the field value is NULL.</li>
+                    <li>Not Is Null: Returns column data where the field value is not NULL.</li>
+                </ul>
+                <p><span class="ControlName">Virtualization</span>: Enables data virtualization for the list data.</p>
+                <p><span class="ControlName">Static Header</span>: Fixes the position of the column headers, so that they don't scroll with the rest of the data when scrolling the list vertically.</p>
+                <p><span class="ControlName">Export to CSV</span>:&#160;Displays an CSV&#160;export icon that, when clicked, will export the list data to a CSV file.</p>
+                <p><span class="ControlName">Export to PDF</span>:&#160;Displays a PDF export icon that, when clicked, will export the list data to a PDF file.</p>
+                <p><span class="ControlName">Refresh</span>: Displays a refresh icon that, when clicked, will refresh the list data. This property is useful for list data that may change with greater frequency than usual.</p>
+                <h4>Configuring the List Data</h4>
+                <p>The Field Properties for the data list control are accessible from the <span class="UIElement">Form Controls </span>tab of the Form definition and, for appropriately licensed installations, from the Design Console of the Online Form Designer. One of the <span class="NamedControl">Data List</span> control's Field Properties, the <span class="ControlName">Default Value</span> property, <b style="font-style: italic;">must</b> be set to an appropriate <span class="ProcessDirectorObject">Content List</span> item, usually a Business Value.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/DataList3.png" />
+                </p>
+                <p>In this example, the <span class="ControlName">Default Value</span> is provided via a Business Value named <span class="ProcessDirectorObject">SampleProductBV</span>. When the Form first opens, the <span class="ProcessDirectorObject">SampleProductBV </span>will be called, and the <span class="NamedControl">Data List</span> will be automatically populated with the data returned by this Business Value. The data will be cached in memory until the Form is closed. Only clicking the <span class="ControlName">Refresh </span>icon, if it's displayed, or closing and re-opening the form, will refresh the data displayed in the <span class="NamedControl">Data List </span>control.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2>Other Control Tools</h2>
+        <p>You can view the documentation for all tools available in the Online Form Designer by using the Table of Contents on the upper right corner of the page, or by clicking one of the links below.</p>
+        <p><b><a href="Form Online Controls Input.htm">Input Controls</a>:</b> Controls that are commonly used to collect data, but are a bit less widely used than the basic controls.</p>
+        <p><b><a href="Form Online Controls Other Input.htm">Other Input Controls</a></b>: Additional Input controls, consisting mainly of the different content picker controls.</p>
+        <p><b><a href="Form Online Controls Actions.htm">Actions</a>:</b> These controls enable you to control form actions, like placing buttons, or choosing objects via a picker,</p>
+        <p><b><a href="Form Online Controls Other.htm">Other Controls</a>:</b> Controls that perform miscellaneous tasks like adding HTML content, or labels.</p>
+        <p><b><a href="Form Online Controls Layout.htm">Layout</a>:</b> Controls that are used to govern the control layout for the template, such as tabs and sections.</p>
+        <p><b><a href="Form Online Controls Responsive.htm">Responsive Layout</a>:</b> Controls that implement Bootstrap form layout objects.</p>
+        <p><b><a href="Form Online Controls Arrays.htm">Arrays</a>:</b> Controls that enable to you create and control arrays on the Form.</p>
+        <p><b><a href="Form Online Controls Attachments.htm">Attachments</a>:</b> Controls that enable you to add and show attachments, such as documents or images, to the Form.</p>
+        <p><a href="Form Control Tags.htm" style="font-weight: bold;">Form Control Tags</a>: System Variables used to add controls to a Form, instead of using the UI controls.</p>
+    </body>
+</html>
