@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+    </head>
+    <body>
+        <h1>Create an Application Template</h1>
+        <p>In Process Director, the <span class="ProcessDirectorObject">[Template Library]</span> folder contains some pre-built application templates for specific types of request. As discussed in the <a href="../ImplementersReference/Template Library.htm" title="Template Library" alt="Template Library">Template Library topic</a> of the Implementer's Guide, this folder can also be used to create your own application templates. One of the first templates you might wish to make, therefore, is a generic application template, or application stub, that contains the basic application objects you might need for creating any new application.</p>
+        <p>Creating an application stub enables you to implement universal application items that you might want to see on all of your organization's applications, such as:</p>
+        <ul>
+            <li>Branding and styling on Forms and Email Templates</li>
+            <li>Pre-built application objects that are used for all applications, such as Forms and Process Timelines.</li>
+            <li>Common process steps with their basic configurations already implemented.</li>
+            <li>The method of application organization you prefer.</li>
+        </ul>
+        <p>One of the key benefits of having an application stub is that it enables you to skip the largely tedious process of creating the same application objects from scratch every time you want to create a new application.</p>
+        <p>In this topic, we'll describe the process for making a universal application stub that can be used as the starting point for any new application you create. We'll cover the following steps:</p>
+        <ol>
+            <li>Creating the application folder.</li>
+            <li>Creating the application's organizational scheme.</li>
+            <li>Creating and linking the base objects.</li>
+            <li>Configuring the base objects.</li>
+        </ol>
+        <p>We'll start with creating the application folder.</p>
+        <h2>Creating the Application Folder</h2>
+        <p>In the <span class="ProcessDirectorObject">[Template Library]</span> folder of your Process Director installation, there are several subfolders, each of which contains an entire template application, such as the <span class="ProcessDirectorObject">Checklist Request</span> or <span class="ProcessDirectorObject">IT&#160;Request</span> applications. By design, the top-level subfolders of the <span class="ProcessDirectorObject">[Template Library]</span> folder are automatically considered to be the parent folders of an application. So, we'll need to create a new subfolder in the <span class="ProcessDirectorObject">[Template Library]</span> folder. In this example we'll create a subfolder named <span class="ProcessDirectorObject">Application</span>.</p>
+        <p>We'll call this folder <span class="ProcessDirectorObject">Application </span>because, when you create a new application with this template, you'll be asked to provide a name that will be prepended to the word "Application" as the name of the new application you'll create. So, if you provide the name "Mobile Device Issue", the new application created from this template will be placed in an application folder named <span class="ProcessDirectorObject">Mobile Device Issue Application</span>. Similarly, the value you provided will be prepended to all of the object names—though not to subfolder names—that exist in the application folder, so we'll provide similarly generic named for or Form, Process Timeline, etc., when we create them.</p>
+        <p>So, to create the application template folder, navigate to the <span class="ProcessDirectorObject">[Template Library]</span> folder, then select <span class="UIElement">Folder </span>from the <span class="UIElement">Create New</span> menu. The <span class="ControlName">Create Folder </span>screen will appear, and in the <span class="ControlName">Folder Name</span> property, enter the word "Application", then click the <span class="UIElement">OK </span>button. The new folder will be created, and you'll navigate to it automatically. </p>
+        <p>You'll want to add some customization to the folder, so click the <span class="ControlName">Properties </span>Icon for the folder to open its <span class="ControlName">Properties </span>page. As a Best Practice, you should select the appropriate icon for the folder. You'll probably change the application folder Icon for any new applications you make from this template, so, for now, choose an appropriately generic application icon. Next, you'll need to provide a <span class="ControlName">Description </span>for this application, using text that signifies this is a generic application stub for creating new applications.</p>
+        <p>
+            <img src="../Resources/Images/HowDoI/AppTemplate1.png" />
+        </p>
+        <p>Once you're finished, you can click the <span class="UIElement">OK&#160;</span>menu button to close the <span class="ControlName">Properties </span>page. You'll automatically navigate back to  the <span class="ProcessDirectorObject">[Template Library]</span> folder, where your new <span class="ProcessDirectorObject">Application </span>folder will be displayed.</p>
+        <p>
+            <img src="../Resources/Images/HowDoI/AppTemplate.png" />
+        </p>
+        <h2>Creating the Application's Organizational Scheme</h2>
+        <p>As a best practice, all objects in a Process Director application should be organized in subfolders of the main <span class="ProcessDirectorObject">Application </span>folder. The specific method of organization depends on your organization's specific needs, but, as a basic rule, different object types, such as Knowledge Views should be grouped together. </p>
+        <p>
+            <img src="../Resources/Images/HowDoI/AppTemplate2.png" />
+        </p>
+        <p>In this example, we have several subfolders, each of which is designed to store specific types of object, e.g., a folder for Forms, Business Rules, etc. The specific organizational method you use should, as a best practice, generally follow this example, though the specific organizational method will be up to you. It's important, though, that you impose some sort of logical order on your application's structure, rather than just storing every object at the root of the <span class="ProcessDirectorObject">Application </span>folder. Choose a method of organization that makes sense to you.</p>
+        <p>In many cases, the example above might be more organized than is necessary, for a couple of reasons. For example, you might dispense with a <span class="ProcessDirectorObject">Business Values</span> folder, since many of your general Business Values will already be stored in a <span class="ProcessDirectorObject">[Business Values]</span> folder at the root of the Partition. Similarly, unless you'll be importing some data that is specific to your application, such as an Excel spreadsheet, the <span class="ProcessDirectorObject">Data </span>folder will be unnecessary for most applications. Indeed, if your applications commonly use only a single form, you might not need a <span class="ProcessDirectorObject">Forms </span>folder either.</p>
+        <p>On the other hand, you might want to add a <span class="ProcessDirectorObject">Management KViews</span> folder, specifically for storing Knowledge Views for the application that only managers should be allowed to access. In your new application, you could set permissions on this folder to only allow access by specific groups, and let permissions inheritance provide the appropriate permissions for each Knowledge View you create in the <span class="ProcessDirectorObject">Management KViews</span> folder.</p>
+        <p>Indeed, you might not want to use an object-based method of organization at all, and divide the subfolders by function, and name them<span class="ProcessDirectorObject"> Users</span>, <span class="ProcessDirectorObject">Support</span>, <span class="ProcessDirectorObject">Management</span>, etc., placing your application objects in the folder based on their usage. In general, BP&#160;Logix believes that object type-based organization is more understandable, but you're free to create the organizational method that works best for your organization. Just remember that <b style="font-style: italic;">all new applications you make will use the organizational method you impose in the template, so think carefully about your choices.</b></p>
+        <p>Implement your organizational method by creating the appropriate subfolders in your <span class="ProcessDirectorObject">Application </span>folder, again using the <span class="UIElement">Folder </span>selection of the <span class="UIElement">Create New</span> menu.</p>
+        <h2>Creating and Linking the Base Objects</h2>
+        <p>As a minimum, you'll need to create three Process Director objects somewhere in the <span class="ProcessDirectorObject">Application </span>folder: A Form, a Process Timeline, and an Email Template. You can create them in the appropriate subfolders, or at the root level of the <span class="ProcessDirectorObject">Application </span>folder. Where you place the three objects is up to you, though a good argument can be made for placing these three objects at the root of the <span class="ProcessDirectorObject">Application </span>folder. Mainly, it's an argument of convenience. As you being building the new application, you'll probably be navigating between the Form and Process Timeline, and perhaps the email template, fairly frequently. Having to navigate between different subfolders all the time could get a bit tedious. For an application with multiple Forms and Process Timelines, it might make sense to place the objects in a <span class="ProcessDirectorObject">Forms </span>or <span class="ProcessDirectorObject">Processes </span>subfolder, but most applications use a single Form and Process Timeline, so it's probably unnecessary to organize the objects so aggressively.</p>
+        <p>Placing the three base objects at the root folder makes a lot of sense for ease of use.</p>
+        <p>
+            <img src="../Resources/Images/HowDoI/AppTemplate3.png" />
+        </p>
+        <p>When we create our objects, using the <span class="UIElement">Create New</span> menu, we'll give them very generic names, as in the example above. i.e., <span class="ProcessDirectorObject">Email Template</span>, <span class="ProcessDirectorObject">Form</span>, and <span class="ProcessDirectorObject">Timeline</span>. Again, we're doing this because when we name our new application at design time, the name will be prepended to the object name, e.g., <span class="ProcessDirectorObject">Mobile Device Issue Form</span>, to use the example we discussed previously.</p>
+        <p>Once the objects are created, you need to link them. </p>
+        <p>In the <span class="ProcessDirectorObject">Form</span>, open the <span class="ControlName">Options </span>section of the <span class="UIElement">Properties </span>tab. Set the <span class="ControlName">Automatically start this process after Form is submitted</span> and <span class="ControlName">Timelines Associated with Form</span> properties to the <span class="ProcessDirectorObject">Timeline </span>Process Timeline. </p>
+        <p>
+            <img src="../Resources/Images/HowDoI/AppTemplate4.png" />
+            <br />
+        </p>
+        <p>When you're done, close and save the <span class="ProcessDirectorObject">Form </span>definition.</p>
+        <p>Next, open the <span class="ProcessDirectorObject">Timeline</span>, and open the <span class="ControlName">Options </span>section of its <span class="ControlName">Properties </span>tab. Set the <span class="ControlName">Form for Timeline </span>property to the <span class="ProcessDirectorObject">Form</span>, and the <span class="ControlName">Default Email Template in this Timeline</span> property to<span class="ProcessDirectorObject"> Email Template</span>.</p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/AppTemplate.png" />
+        </p>
+        <p>When you're done, save and close the <span class="ProcessDirectorObject">Timeline </span>definition.</p>
+        <p>All of our objects are now linked together in the application template, so we won't have to recreate these settings every time be use it to create a new application.</p>
+        <h2>Configuring the Base Objects</h2>
+        <p>Depending on your organization's needs, there might be a wide variety of basic configurations you want to implement. You certainly don't want to go overboard here, because we are, after all, creating very generic base objects. On the other hand, and configurations we create here will already be done when we create a new application from this template. Where to draw that line is very much up to you.</p>
+        <p>What we can do, however, is give you an example of a template application we might use at BP Logix, to give you some ideas to think about as you make the basic configuration you want to apply to all new applications.</p>
+        <p>Feel free to treat this section as a list of suggestions, rather than instructions.</p>
+        <h4>Process Timeline Configuration</h4>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/AppTemplate1.png" />
+        </p>
+        <p>Our sample process timeline has some basic activities already configured, with their dependencies set:</p>
+        <ol>
+            <li><b>Set Req Num:</b> This activity is a Custom Task activity that invokes the <span class="ProcessDirectorObject">Set Form Data</span> Custom Task. At BP&#160;Logix, we generally have three administrative fields on every form, one of which is a unique request number, in a field named, appropriately enough, <span class="ControlName">RequestNumber</span>. This activity sets the value of the RequestNumber to a unique value, using the <a href="../SystemVariablesReferenceGuide/Miscellaneous System Variables.htm#SequenceNumber">Sequence Number</a> System Variable. We want to generate this number only after the process has begun. We could use the Set Form Data function that's already built into the Process Timeline, but we've configured it as a separate activity to make it more visible to anyone who needs to come in later and alter it. Creating the Sequence number in it's own timeline activity makes it more visible.</li>
+            <li><b>Approval Loop:</b>&#160;A parent activity with looping conditions already built in to exit the loop if any of its child tasks end with a <span class="ControlName">Deny </span>result.</li>
+            <li><b>Approval 1/Approval 2:</b> Child activities of the <span class="ProcessDirectorObject">Approval Loop</span>, whose only real configuration is the <span class="ControlName">Approve </span>and <span class="ControlName">Deny </span>results on the <span class="UIElement">Results </span>tab of each activity. Most applications are approval requests of one kind or another, so, in most cases, an application needs these approval loop activities.</li>
+            <li><b>Result Notification:</b> This notification activity sends an email notification to the requestor.</li>
+        </ol>
+        <p>All of these activities have minimal configuration, and even those may have to be altered for most applications, such as more activities needed, etc. They're just there to provide a very basic set of preconfigured activities to save time when configuring the new application.</p>
+        <h4>Form Configuration</h4>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/AppTemplate2.png" />
+        </p>
+        <p>In the Online Form Designer , we've added the basic design at the top, to include the BP&#160;Logix logo, and the space for the Form's title.</p>
+        <p>Immediately below that are three fields we place on every Form at BP&#160;Logix, all of which are disabled to prevent editing by end users:</p>
+        <ul>
+            <li><b>Submitter:</b>&#160;A <span class="NamedControl">User Picker</span> whose <span class="ControlName">Default Value</span> is set to the Form Submit User.</li>
+            <li><b>SubmissionDate:</b> A <span class="NamedControl">Date Picker</span> whose <span class="ControlName">Default Value</span> is set to the Form Submit Date.</li>
+            <li><b>RequestNumber:</b> An <span class="NamedControl">Input </span>field whose value is set by the <span class="ProcessDirectorObject">Set Req Num </span>activity of the <span class="ProcessDirectorObject">Timeline</span>, as we saw previously.</li>
+        </ul>
+        <p>These three fields also enable us to configure a default <span class="ControlName">Instantiated Form Name</span> on the <span class="UIElement">Properties </span>tab of the Form definition, which is set to:</p>
+        <p><code>Request #{:RequestNumber} from {:Submitter} on {:SubmissionDate}</code>
+        </p>
+        <p>Next we have an empty <span class="NamedControl">Section </span>control, labeled, "Request Information" where we can insert our Form's request fields.</p>
+        <p>Below that is a <span class="NamedControl">Button Area</span> control, followed by a <span class="NamedControl">Routing Slip</span>.</p>
+        <p>This configuration implements both the graphical elements we want on every Form, as well as the basic, standard fields we want to use in every application.</p>
+        <h4>Email Template Configuration</h4>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/AppTemplate4.png" />
+        </p>
+        <p>The <span class="ProcessDirectorObject">Email Template</span>, again, has the very basic email message controls needed to send a valid message. Unlike the Form, there's no logo at the top of the template, since Outlook will generally strip images from emails, so it fairly pointless to include them. There are three controls on the email template:</p>
+        <ol>
+            <li>A <span class="NamedControl">System Variable</span> control on the first line of text, which is set to the <a href="../SystemVariablesReferenceGuide/Email System Variables.htm#EmailUser">Email User System Variable</a>, to provide the addressing.</li>
+            <li>A <span class="NamedControl">Hotlink </span>control on the second line, which uses the <a href="../SystemVariablesReferenceGuide/Email System Variables.htm#EmailURL">Email&#160;URL System Variable</a> to provide a clickable link to the task form.</li>
+            <li>An<span class="NamedControl"> Email Data</span> control, with a generic <span class="ControlName">Subject </span>configured, e.g., <code>Status for Request #{:RequestNumber}</code>.</li>
+        </ol>
+        <p>Of course, in most applications, this template will require you to add various Form field system variables or other information. </p>
+        <h2>Using the Template Application</h2>
+        <p>Once we've completed the four configuration steps above, our application stub is ready for use. All we have to do is navigate the location where we desire to create the new application, then select<span class="UIElement"> [Start from Template]</span> from the <span class="UIElement">Create New</span> menu, name our new application, then select the <span class="ProcessDirectorObject">Application </span>template to create it.</p>
+        <p>The new application will contain all of the organization and configuration we implemented in the template. This will save much of the repetitive activity that always goes into creating a new application from scratch, and standardizes the look and feel of our Forms and email notifications.</p>
+    </body>
+</html>

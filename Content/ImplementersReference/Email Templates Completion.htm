@@ -8,7 +8,7 @@
             <MadCap:concept term="Implementation;Email Templates" />
             <MadCap:keyword term="Email Templates;Email Task Completion;Email Complete Link;Email Offline Completion;Email Result Link;EMAIL_RESULT_LINKS;EMAIL_COMPLETE_URL;Email Complete URL;Email Results;Notifications;Task Notification;Emails" />Task Completion Control via Email</h1>
         <p>There are several ways to control task completion via email, each of which prompts different responses in Process Director.</p>
-        <h3><a name="Email"></a>Email&#160;Complete Link <a href="#Email" class="anchor">#</a></h3>
+        <h3><a name="Email"></a>Email&#160;Completion Links <a href="#Email" class="anchor">#</a></h3>
         <p>There are three types of email links that can be inserted into the email template for completion of a task, each of which direct users to a completion form in Process Director, and not to the original Form:</p>
         <ul>
             <li>Email Result Links</li>
@@ -39,17 +39,70 @@
         </p>
         <p>Using any of the three completion links work best if the process participant doesn’t need to edit any information on the Form, and the only action is to provide a result. If you do wish the user to go to the Form to edit or add information, then you can't use the result links.</p>
         <h3><a name="Offline"></a>Offline Completion <a href="#Offline" class="anchor">#</a></h3>
-        <p>Allowing a task to be completed from email is called offline completion. Offline completion enables processes to parse an email message, and, based on the contents of the email, complete a task. For offline completion of an Activity to work, two portions of the Process Timeline Activity must be properly configured. First, in the Advanced Options tab of the Process Timeline Activity, you must select the Allow task to be completed from email option.</p>
+        <p>Allowing a task to be completed from email is called offline completion. Offline completion enables processes to parse an email message, and, based on the contents of the email, complete a task. Offline email completion requires several specific configuration elements:</p>
+        <ol>
+            <li>A properly configured Timeline Activity.</li>
+            <li>A properly configured Email notification template.</li>
+            <li>An email import process.</li>
+            <li>A properly configured import folder into which emails can be imported to prompt the email import process.</li>
+            <li>A method of importing the email messages into the specified import folder.</li>
+        </ol>
+        <p>We'll discuss each of these methods in more detail below.</p>
+        <h4>1. Configuring the Process Timeline Activity</h4>
+        <p>For offline completion of an Activity to work, the Process Timeline Activity must be properly configured. First, in the <span class="UIElement">Advanced Options</span> tab of the Process Timeline Activity, you must select the <span class="ControlName">Allow task to be completed from email </span>property.</p>
         <p>
             <img src="../Resources/Images/email completion option.png" />
         </p>
-        <p>As a default, Process Director will search the email message for the text of the configured result. You can add additional strings to search for to meet the result by using the <span class="ControlName">Optional list of strings for email complete</span> property to enter a text string or comma-separated list of strings that, if found, also constitute a valid result. </p>
+        <p>When this property is checked, Process Director will search an imported email message for the task for which the result must be set, and the text of the configured result. By default, Process Director will search for the text configured on the <span class="UIElement">Results </span>tab as the <span class="ControlName">Result Name</span> for all of the configured results.  You can also add additional strings to search for to meet the result by using the <span class="ControlName">Optional list of strings for email complete</span> property to enter a text string or comma-separated list of strings that, if found, will also constitute a valid result. </p>
         <p>
-            <img src="../Resources/Images/email results config.png" />
+            <img src="../Resources/Images/ImplementersReference/EmailCompletion8.png" />
         </p>
-        <p>In the example shown in Figure 13, in addition to the "Yes" result itself, the result is also configured to accept "yeah", "sure", or "ok" as a valid "Yes" result for the Activity. Any email that contains these optional text strings instead of "Yes" will still complete properly.</p>
-        <p>Once the Process Timeline Activity has been configured, you must add an E-mail Action Custom Task to the Process Timeline. When properly configured, the Custom Task will parse the email messages in a specified email inbox for the appropriate result, or send an email to the user for unparsable or ambiguous emails, to prompt the user to resend the completion email.</p>
-        <p>Finally, the Email Data control that you place on the email notification template must use, as the Reply To address, the email address for the email inbox that the Custom Task uses to parse emails. When the user replies to the notification email, the message will be routed to the proper email inbox, so that the Custom Task can parse it.</p>
-        <p>Offline completion generally uses the <a href="Using the bpImportEmail Utility.htm">bpImportEmail utility</a> to retrieve emails for parsing.</p>
+        <p>In the example shown above, in addition to the "Approve" result, the result is also configured to accept "Approved", "Approves", "Yes", or "OK" as a valid "Approve" result for the Activity. Any email that contains these optional text strings instead of "Approve" will still complete properly, and the result "Approve" will be applied to the activity.</p>
+        <p>You must repeat this configuration for all of the results of the Timeline activity. For example, the "Deny" result in this example is configured as:</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EmailCompletion9.png" />
+        </p>
+        <h4>2. Configuring the Email Notification Template</h4>
+        <p>In order for Process Director to correctly associate the email message with the task that needs to be completed, the email notification must use the <a href="../SystemVariablesReferenceGuide/Email System Variables.htm#EmailTaskID"><span class="ControlName">Email Task ID</span> System Variable</a> (<code>{EMAIL_TASK_ID}</code>) somewhere in the body of the email notification.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EmailCompletion.png" />
+        </p>
+        <p>In this example, a <span class="NamedControl">System Variable</span> control has been placed on the notification message template to invoke the <span class="ControlName">Email Task ID</span> system variable at run time, and place the GUID identifier for the task as text in the email message. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EmailCompletion10.png" />
+        </p>
+        <p>The value placed in the email by this system variable should <b style="font-style: italic;">never</b> be edited, or the parsing and completion process will fail, so it's important that end users, when replying to the email notification, do <b style="font-style: italic;">not</b> edit this value.</p>
+        <p>Finally, the <span class="NamedControl">Email Data</span> control that you place on the email notification template must use, as the<span class="ControlName"> Reply To </span>address, the email inbox that will be used to store email responses until they're imported into Process Director. When the user replies to the notification email, the message will be routed to this email inbox, where it will wait until imported.</p>
+        <h4>3. Configuring the Email Import Process</h4>
+        <p>You'll need to create a Process Timeline that has a single Custom Task activity that invokes the <span class="ProcessDirectorObject">Email Action</span> Custom Task. In this example, the Process Timeline has been named <span class="ProcessDirectorObject">Email Action</span>, which you'll need later when configuring the import folder.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EmailCompletion2.png" />
+        </p>
+        <p>This is the Process Timeline that will import the email, parse it for the Task ID and completion text string, then apply the parsed result to the specified user task/activity.</p>
+        <p>The <span class="ProcessDirectorObject">Email Action</span> Custom Task must be configured with the following settings.</p>
+        <p>First, the <span class="ControlName">Set Container Form</span> property for the Custom Task must be configured with the main process Form for the Timeline activity you wish to complete, which, in this example, is named <span class="ProcessDirectorObject">Process Form</span>.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EmailCompletion3.png" />
+        </p>
+        <p>Once set, you can then configure the Custom Task, primarily its <span class="ControlName">Data From&#160;Message</span> section, which specifies how to parse the email response.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EmailCompletion4.png" />
+        </p>
+        <p>In this example, the Custom Task is configured to look for the result text in the first line of the email message, and any signature comments in the second line of the message, e.g.:</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EmailCompletion11.png" />
+        </p>
+        <p>This is probably the easiest method to use for parsing the imported email message.</p>
+        <p>While this basic configuration is sufficient, you may wish to also configure whether to include the parsed email as a process attachment, or configure simple notifications for success or failure of the email import, to let the user know the result of the import. Please see the <span class="ProcessDirectorObject"><a href="../Custom Tasks2/Process Custom Tasks.htm#EmailAction"><span class="ProcessDirectorObject">Email Action</span> Custom task documentation</a></span> for more details on configuring this Custom Task.</p>
+        <p>When properly configured, the Custom Task will parse the email messages in a specified email inbox for the appropriate result, and send an email to the user for unparsable or ambiguous emails, to prompt the user to resend the completion email.</p>
+        <h4>4. Configuring the Import Folder</h4>
+        <p>Email messages must be imported from the specified email inbox into a Process Director <span class="ProcessDirectorObject">Content List</span> folder for processing. This folder, named <span class="ProcessDirectorObject">Emails </span>in the example below, must be configured with the <span class="ControlName">Automatically start this process when objects are created in this folder</span> property set to invoke the import process you configured previously.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/EmailCompletion6.png" />
+        </p>
+        <p>In this example, the <span class="ProcessDirectorObject">Email Action</span> process Timeline that we configured in Step 3 will be invoked every time an email message is imported (or uploaded) to the <span class="ProcessDirectorObject">Emails </span>folder. </p>
+        <h4>5. Importing the Email Messages</h4>
+        <p>Offline completion generally uses the <a href="Using the bpImportEmail Utility.htm">bpImportEmail utility</a> to retrieve emails from the email inbox on a scheduled basis, and import them into the specified folder for automatic parsing. You should know, however, that you can also manually upload email messages into the folder as well, if needed. Irrespective of how the email message is placed in the folder, the<span class="ProcessDirectorObject"> Email Action</span> Process Timeline will run for each email message when it's placed there.</p>
+        <p>Keep in mind that scheduling the email import imposes some delay on the processing of the email message, since the email message will be stored in the <span class="ControlName">Reply To</span> inbox until the next scheduled run of the bpEmailImport utility. For example, if you run bpEmailImport every 8 hours, there will be a delay of up to 8 hours before the email message is imported into the folder and parsed.</p>
     </body>
 </html>
