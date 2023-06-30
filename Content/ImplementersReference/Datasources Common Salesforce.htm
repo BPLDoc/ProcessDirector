@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536105"></a>
+            <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Business Value;Business Values" />Salesforce Licensing and Datasources</h1>
+        <p>Customers who wish to use data connections to Salesforce, using the appropriate Datasource object, must first obtain an appropriate Open Data (oData) connector to SalesForce from CData. Salesforce oData licenses can be purchased from <a href="https://www.cdata.com/drivers/salesforce/order/ado/#server" target="_blank">CData's web site</a>, using the <span class="UIElement">Server Licensing</span> tab.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SalesForce.png" />
+        </p>
+        <p>Once the license has been purchased, you will receive the appropriate installation and licensing files. In addition, your <b>Account Settings</b> section of the CData web site will give you access to a Security Token for account, as well as the ability to create or reset Security Tokens. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SalesForce1.png" />
+        </p>
+        <p>You <b style="font-style: italic;">must</b> have a valid Security Token from CData in order for your Salesforce Data Source object to connect with your data. In addition you <b style="font-style: italic;">must</b> also request API Access from Salesforce, separately, since API&#160;Access is <b style="font-style: italic;">disabled by default</b> in the Professional Edition of SalesForce. Please refer to the <a href="https://salesforce.stackexchange.com/questions/159764/developer-edition-the-rest-api-is-not-enabled-for-this-organization/159766#159766" target="_blank">SalesForce web site</a> for more information about requesting API Access.</p>
+        <h2>Installing the SalesForce License</h2>
+        <p> Depending on whether you're a Cloud or On-Premise customer, the installation process will differ.</p>
+        <h4>Cloud Customer Installation Process</h4>
+        <p>Cloud customers must provide BP&#160;Logix with all of the installation and licensing files received from CData. BP&#160;Logix will install the license(s) on the appropriate cloud installation(s) for you.</p>
+        <h4>On-Premise Installation Process</h4>
+        <p>On-Premise customers will have to install the connector on their own Process Director servers, using the process below.</p>
+        <ol>
+            <li>Run the installation file on your Process Director server.</li>
+            <li>Follow the steps provided by CData to install your license. If given options on which binary to use, use the version in <code>C:\Program Files\CData\CData ADO.NET Provider for Salesforce 2023\lib\netstandard2.0</code>.</li>
+            <li>Copy all files <b style="font-style: italic;">except</b> the <span class="KeyTerms">install-license.dll</span> file from <code>C:\Program Files\CData\CData ADO.NET Provider for Salesforce 2023\lib\netstandard2.0</code> to the <code>bin</code> folder of your Process Director website folder, which for a default installation, will be <code>C:\Program Files\BP Logix\Process Director-5.44.600\website\bin</code>.</li>
+            <li>Open the <span class="KeyTerms">web.config</span> file of your Process Director installation for editing.</li>
+            <li>Locate the following line, which is located under <code>configuration\system.data\DbProviderFactories</code>:<br /></li>
+        </ol>
+        <p class="CodeBase">&lt;add name="CData ADO.NET Provider for Salesforce" invariant="System.Data.CData.Salesforce"<br />&#160;&#160;&#160;&#160;description="CData ADO.NET Provider for Salesforce"<br />&#160;&#160;&#160;&#160;type="System.Data.CData.Salesforce.SalesforceProviderFactory, System.Data.CData.Salesforce, <br />&#160;&#160;&#160;&#160;Version=15.0.0.40, Culture=neutral, PublicKeyToken=cdc168f89cffe9cf" /&gt;</p>
+        <ol MadCap:continue="true">
+            <li>Change this line to read as follows:</li>
+        </ol>
+        <p class="CodeBase">&lt;add name="CData ADO.NET Provider for Salesforce 2023 (.NET Standard 2.0)" <br />&#160;&#160;&#160;&#160;invariant="System.Data.CData.Salesforce" <br />&#160;&#160;&#160;&#160;description="CData ADO.NET Provider for Salesforce 2023 (.NET Standard 2.0)" <br />&#160;&#160;&#160;&#160;type="System.Data.CData.Salesforce.SalesforceProviderFactory, System.Data.CData.Salesforce" /&gt;</p>
+        <ol MadCap:continue="true">
+            <li>Save and close the <span class="KeyTerms">web.config</span> file.</li>
+            <li>
+                <p>Restart the Process Director App Pool in Internet Information&#160;Server (IIS).</p>
+            </li>
+        </ol>
+        <h2>Creating the Data Source Object</h2>
+        <p>To create a Salesforce Data Source object, navigate to the folder location where you'd like the Data Source object to reside. BP&#160;Logix recommends that Data Sources be created in a <span class="ProcessDirectorObject">[Data Sources]</span> folder at the root of your installation partition.</p>
+        <ol>
+            <li>From the <span class="UIElement">Create New</span> menu, select <span class="UIElement">Data Source</span> to open the<span class="ControlName"> Create Data Source</span> screen.</li>
+            <li>In the<span class="ControlName"> Create Data Source</span> screen, provide a <span class="ControlName">Data Source Name</span>, e.g., "Salesforce Connector", then click the <span class="UIElement">OK </span>button to create the Data Source.</li>
+        </ol>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SalesForce4.png" />
+        </p>
+        <ol MadCap:continue="true">
+            <li>Set the <span class="ControlName">Datasource Type </span>property to <i>SalesForce.com</i>.</li>
+            <li>Set the <span class="ControlName">UserID </span>property to the account User ID that's associated with the Security Token you obtained from your SalesForce account, and the <span class="ControlName">Password </span>property to the password used by the account.</li>
+            <li>Enter the valid SalesForce Security Token into the <span class="ControlName">Security Token</span> property.</li>
+            <li>Click the <span class="UIElement">Update </span>menu button to save your settings.</li>
+            <li>Click the <span class="UIElement">Test Connection</span> button to test the connection to your SalesForce data. Assuming you have both a) correctly configured the properties of the Data Source and b) been grated API access from SalesForce, and specified above, the connection test should display a success message. You can now close the Data Source object.</li>
+        </ol>
+        <p>If you have not requested API Access from SalesForce, an error message will be displayed.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SalesForce5.png" />
+        </p>
+        <p>You'll need to be granted API&#160;Access before continuing, in order to successfully test and use your SalesForce Data Source.</p>
+        <h2>Other Datasources</h2>
+        <p>To see more information about different <span class="ControlName">Datasource Type</span>s and their configuration, please refer top the following topics:</p>
+        <ul>
+            <li><a href="Datasources Excel.htm" style="font-weight: bold;">Excel Datasources</a>
+            </li>
+            <li><a href="Datasources File.htm" style="font-weight: bold;">File Datasources</a>
+            </li>
+            <li><a href="Datasources Sharepoint.htm" style="font-weight: bold;">SharePoint Data Sources</a>
+            </li>
+            <li><a href="Datasources Social.htm" style="font-weight: bold;">Social Datasources</a>
+            </li>
+        </ul>
+    </body>
+</html>
