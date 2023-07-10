@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" /><a name="_Toc421536096"></a>
+            <MadCap:keyword term="bpImport;Utilities;Import Objects;Import documents;Import Utility;File Import;Scheduled Import" />Using the bpUtil Utility</h1>
+        <p>Process Director provides a utility, bpUtil, for passing commands to Process Director, usually on a scheduled basis. For customers, nearly all use cases only use a single command ,<code>SU</code>, which calls a URL. There are several reason why you might wish to do this, such as scheduling an Active Directory synchronization, or scheduling a Knowledge View to export an Excel or CSV file, or to run a process for each row of the Knowledge view.</p>
+        <p>You should use bpUtil to run all scheduled commands on Process Director. <b style="font-style: italic;">You should not call a Process Director URL directly from the Windows Scheduler Utility.</b> The Windows Scheduler will not release the page after running, and keep it in memory, which can cause performance issues. bpUtil, on the other hand, will call the page and release it immediately after it runs. This utility was specifically constructed for this reason.</p>
+        <p>So, instead of calling the page directly through the Windows Scheduler, you would use Windows Scheduler to call bpUtil, passing the <code>SU</code> command and the fully qualified URL as a parameter. For example to schedule an Active Directory synchronization, you would place the following command into the Windows Scheduler:</p>
+        <p><code>"<span class="CodeOption">LocalPath</span>\bputil.exe" SU "http://localhost/WD/admin/ad_sync.aspx?ads=<span class="CodeOption">ProfileName</span>"</code>
+        </p>
+        <p>...Where <code class="CodeOption">LocalPath </code>is the drive path on the local computer where bpUtil is located, and <code class="CodeOption">ProfileName</code> is the name of the actual AD Synchronization Profile to run when the page is called.</p>
+        <p>This command calls bpUtil from the Windows Scheduler. bpUtil, in turn, will call the page to run the appropriate synchronization profile, then release the page from memory when the synchronization begins. </p>
+        <p>The appropriate Windows Scheduler command used to call bpUtil is provided in the documentation for each Process Director object to which it is relevant.</p>
+        <p>Like the bpImport or bpEmailImport utilities, bpUtil can be installed on any computer. Unlike the other utilities, bpUtil does not have a graphical user interface. It is generally only addressed via Windows Scheduler commands.</p>
+    </body>
+</html>
