@@ -14,12 +14,14 @@
                 <MadCap:dropDownHotspot><a name="CopyFormData"></a><a href="#CopyFormData"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Copy Form Data</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task enables you to create a new instance of a specified Form, then copy data to it from a different Form instance. This Custom Task always creates a new Form instance before copying the data, and does not copy data between two existing form instances.</p>
+                <p>This Custom Task enables you to create a new instance of a specified Form, then copy data to it from a different Form instance. This Custom Task <i>always</i> creates a new Form instance before copying the data, and does not copy data between two existing form instances.</p>
+                <p>When invoked on a Form, the Custom Task assumes the Form will be used as the <span class="KeyTerms">Container Form</span>, which is to say the Form that contains the original data to be copied. When invoked from a Process Timeline as a Custom Task activity, the <span class="UIElement">Custom Task</span> tab of the activity will contain a property named <span class="ControlName">Set Container Form</span>. This property enables you to choose the Form that will be used as the Container Form for the Custom Task. This Custom Task cannot be configured without a Container Form set.</p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/CopyFormCT.png" />
                 </p>
-                <p>Under the “” field, select the form template that you want to copy the data into. To select the fields you want to add to, click on the “Add Mapping” button and select destination and source form control fields. Alternatively, you can tell the Custom Task to map to all Forms except ones that you specify. This will automatically copy data from the source form to the corresponding fields in the destination form.</p>
-                <p>Other options can be set to specify how the form is displayed and under what groups and instance types it is created. You can specify the group name of the new form, and what kind of reference it will be classified as. You can click on the “Attach Source” checkbox to attach the source form as a reference to the destination form, specifying a new group name for the attachment.</p>
+                <p>The<span class="ControlName"> Form to create </span>property enables you to select the form template into which you wish to copy the data. When the Custom Task runs, a new instance of the selected Form will be created to receive the data. </p>
+                <p>To select the fields into which you want to copy the data, click on the <span class="UIElement">Add Mapping</span> button to create a new mapping row for each field you wish to copy. For each mapping row, select destination and source Form fields. Alternatively, you can tell the Custom Task to map to all Forms except ones that you specify. This setting will automatically copy data from the source form to the corresponding fields in the destination form, excluding the fields you specify.</p>
+                <p>Other options can be set to specify how the form is displayed and under what groups and instance types it is created. You can specify the group name of the new form, and what kind of reference it will be, e.g., a Form or Process reference. You can click on the <span class="ControlName">Attach Source</span> checkbox to attach the source Form to the destination form, specifying a new group name for the attachment. Similarly, you can copy of all of the Container Form's document attachments to the new Form.</p>
                 <h4>Configuration Options</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
                     <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
@@ -218,7 +220,9 @@
                 <MadCap:dropDownHotspot><a name="FillFromBV"></a><a href="#FillFromBV"><img src="../Resources/Images/link.png" alt="Link" /></a>Fill Fields from Business Value</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>For users of Process Director v4.02 and higher, the Fill&#160;Fields from Business Value Custom Task enables you to use a Business Value to fill Form fields. This CT provides this functionality in addition to the Set Form Data Tab on a Form Definition or Timeline Activity. This Custom Task was largely deprecated in Process Director v4.5 with the addition of the Set Form Data tab to the Form Definition.</p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" title="Important" alt="Important" /> This Custom Task was largely deprecated in Process Director v4.5 with the addition of the <i>Set Form Data</i> tab to both Form and Process Timeline definitions, which enable you to fill fields directly from a Business Value without invoking a Custom Task.</p>
+                <p>For users of Process Director v4.02 and higher, the Fill&#160;Fields from Business Value Custom Task enables you to use a Business Value to fill Form fields. </p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/FillFieldsFromBusinessValue1.png" />
                 </p>
@@ -270,17 +274,18 @@
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="ManipulateArrayData"></a><a href="#ManipulateArrayData"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Manipulate Array Data</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
+            <p>This Custom Task will perform a variety of useful operations with Form arrays:</p>
+            <ul>
+                <li>Sort data in arrays.</li>
+                <li>Remove duplicate rows in an array.</li>
+                <li>Remove array rows based on conditions</li>
+                <li>Copy data in an array to fields in another array.</li>
+            </ul>
             <MadCap:dropDownBody>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/ManipulateArray.png" />
                 </p>
-                <p>This Custom Task will perform a variety of useful operations with Form arrays:</p>
-                <ul>
-                    <li>Sort data in arrays.</li>
-                    <li>Remove duplicate rows in an array.</li>
-                    <li>Remove array rows based on conditions</li>
-                    <li>Copy data in an array to fields in another array.</li>
-                </ul>
+                <p>When invoked on a Form, the Custom Task assumes the Form will be used as the <span class="KeyTerms">Container Form</span>, which is to say the Form that contains the original data to be copied. When invoked from a Process Timeline as a Custom Task activity, the <span class="UIElement">Custom Task</span> tab of the activity will contain a property named <span class="ControlName">Set Container Form</span>. This property enables you to choose the Form that will be used as the Container Form for the Custom Task. This Custom Task cannot be configured without a Container Form set.</p>
                 <h4>Configuration Options</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
                     <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
@@ -379,9 +384,12 @@ Copy Data From Control</td>
                 <MadCap:dropDownHotspot><a name="SetFormData"></a><a href="#SetFormData"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Set Form Data</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task will set control data on a Form. Select the Form Fields to receive the data and the SysVar-enabled string which will determine the data to set. </p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" title="Important" alt="Important" /> This Custom Task was largely deprecated in Process Director v4.5 with the addition of the <i>Set Form Data</i> tab to both Form and Process Timeline definitions, which enable you to set Form Data directly, without invoking a Custom Task.</p>
+                <p>This Custom Task will set the value of fields on a Form. You can select the <span class="ControlName">Form Control</span> who's value you wish to set, then use System Variable or plain text in the <span class="ControlName">Set Data To</span> property to set the value of the specified <span class="ControlName">Form Control</span>. </p>
+                <p>Clicking the <span class="UIElement">Add Control </span>button enables you create additional control mapping rows for additional controls.</p>
                 <p>
-                    <img src="../Resources/Images/Custom Tasks2/Form Data Mapping Custom Tasks_1.jpg" style="visibility: visible;mso-wrap-style: square;width: 576px;height: 148px;" />
+                    <img src="../Resources/Images/Custom Tasks2/FormDataCT.png" />
                 </p>
                 <h4>Configuration Options</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">

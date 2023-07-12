@@ -1,37 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
-        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
-        <title>
-        </title>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h2>
             <MadCap:keyword term="CUSTOM TASKS" />
-            <MadCap:concept term="Custom Tasks;Forms" />
-            <a name="_Toc421015714">
-            </a>Form Custom Tasks</h2>
+            <MadCap:concept term="Custom Tasks;Forms" /><a name="_Toc421015714"></a>Form Custom Tasks</h2>
         <p>These Custom Tasks perform various Form operations.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="AddJavascript">
-                    </a>
-                    <a href="#AddJavascript">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Add JavaScript</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="AddJavascript"></a><a href="#AddJavascript"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Add JavaScript to Form</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task will add JavaScript to run a client-side script in the Form.</p>
+                <p>This Custom Task will add JavaScript to run a client-side script in the Form. This JavaScript can run on various HTML DOM events, as well as on Process Director Form events. This CT can only be configured for a Form definition. The JavaScript can include System Variables.</p>
                 <p>
-                    <img src="../Resources/Images/Capture40.png" />
+                    <img src="../Resources/Images/Custom Tasks2/FormCT.png" />
                 </p>
                 <h4>Configuration Options</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
                     <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
-                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
-                    <col style="width: 726px;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 8rem;" />
+                    <col class="TableStyle-Simple-Column-Column1" />
                     <thead>
                         <tr class="TableStyle-Simple-Head-Header1">
                             <th class="TableStyle-Simple-HeadE-Column1-Header1">
@@ -54,7 +45,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>When this check box is selected, Process Director will parse the JavaScript for System Variables.</p>
+                                <p>When this check box is selected, Process Director will parse the JavaScript text for System Variables and replace them with the appropriate values.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -66,19 +57,14 @@
                         </tr>
                     </tbody>
                 </table>
-                <p> Additionally, this Custom Task solves an issue with Internet Explorer where the browser looses focus on the Form after a Set Form Data Custom Task is run. Simply insert the following JavaScript line in the JavaScript text box:</p>
+                <p> Additionally, this Custom Task solves an issue with Internet Explorer where the browser looses focus on the Form after a <span class="ProcessDirectorObject">Set Form Data</span> Custom Task is run. Simply insert the following JavaScript line in the JavaScript text box:</p>
                 <p class="CodeBase">bpSetWindowFocus();</p>
                 <p>Set this Custom Task to run immediately after the <span class="ProcessDirectorObject">Set Form Data</span> Custom Task to reapply focus to the Form.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="AdvAlert">
-                    </a>
-                    <a href="#AdvAlert">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Advanced Show Alert</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="AdvAlert"></a><a href="#AdvAlert"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Advanced Show Alert</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This Custom Task will show an Alert Box on a form, and enables you to configure several advanced options for the appearance and function of the Alert Box.</p>
@@ -231,15 +217,10 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="FillDropdownWithFormData">
-                    </a>
-                    <a href="#FillDropdownWithFormData">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Fill Dropdown from Form Data</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="FillDropdownWithFormData"></a><a href="#FillDropdownWithFormData"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill Dropdown from Form Data</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Form Custom Task will fill a dropdown control on a form with Form field values from an array contained on the Form.</p>
+                <p>This Form Custom Task will fill a <span class="NamedControl">Dropdown </span>control on a form with the Form field values of an array contained on the Form. If called after adding or removing rows from the array, the available options in the <span class="NamedControl">Dropdown </span>will change. Be advised that if the value of the <span class="NamedControl">Dropdown </span>is set to an option that is subsequently removed from the array, the value will be orphaned from the updated options, which could result in unexpected behavior.</p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/FillDDFromForm2.bmp" />
                 </p>
@@ -305,25 +286,15 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="FormSave">
-                    </a>
-                    <a href="#FormSave">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Form Save</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="FormSave"></a><a href="#FormSave"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Form Save</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Form Custom Task will save the form in its current state whenever it is called by an event. There are no configuration options for this Custom Task.</p>
+                <p>This Form Custom Task will save the Form in its current state whenever it is called by an event. There are no configuration options for this Custom Task.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="GetGeolocation">
-                    </a>
-                    <a href="#GetGeolocation">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Get geolocation</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="GetGeolocation"></a><a href="#GetGeolocation"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Get geolocation</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This Custom Task  fills form fields with location (latitude/longitude) data derived from the browser. The fields selected must not be hidden using rules in Process Director. If you don't want the text fields visible, add the style “display:none;” to either</p>
@@ -381,12 +352,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="MobileForm">
-                    </a>
-                    <a href="#MobileForm">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Mobile Form Import</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="MobileForm"></a><a href="#MobileForm"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Mobile Form Import</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p class="Important">
@@ -401,12 +367,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="RandomCode">
-                    </a>
-                    <a href="#RandomCode">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Random Code Generator</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="RandomCode"></a><a href="#RandomCode"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Random Code Generator</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This Custom Task generates a random code based upon a pattern, and copies the generated code into a specified Form control.</p>
@@ -457,8 +418,7 @@
                     </tbody>
                 </table>
                 <h4>Configuring the Code Pattern</h4>
-                <p>The code generated by this Custom Task will conform to specifications you configure in the <span class="ControlName">Code Pattern</span> property. You configure the desired pattern using a set of wildcard characters. The available wildcards are shown below:</p>
-                <p>1 - Number greater than zero, * - Any</p>
+                <p>The code generated by this Custom Task will conform to the specifications you configure in the <span class="ControlName">Code Pattern</span> property. You configure the desired pattern using a set of wildcard characters. The available wildcards are shown below:</p>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
                     <col style="width: 6rem;" class="TableStyle-Simple-Column-Column1" />
                     <col class="TableStyle-Simple-Column-Column1" />
@@ -505,29 +465,22 @@
                 </table>
                 <p>Thus, using a <span class="ControlName">Code Pattern</span> of <code>Aa?#1*</code> could result in the following values randomly generated from this pattern:</p>
                 <ul>
-                    <li>
-                        <code>It!88J</code>
+                    <li><code>It!88J</code>
                     </li>
-                    <li>
-                        <code>Ge^07j</code>
+                    <li><code>Ge^07j</code>
                     </li>
-                    <li>
-                        <code>Yp:46Q</code>
+                    <li><code>Yp:46Q</code>
                     </li>
-                    <li>
-                        <code>Gb)260</code>
+                    <li><code>Gb)260</code>
                     </li>
                 </ul>
                 <p>For instance, you could set a 10-character autogenerated password using the <span class="ControlName">Code Pattern</span> <code>**********</code>, which might result in values such as:</p>
                 <ul>
-                    <li>
-                        <code>ueL;5('*6q</code>
+                    <li><code>ueL;5('*6q</code>
                     </li>
-                    <li>
-                        <code>e@s=Udsu86</code>
+                    <li><code>e@s=Udsu86</code>
                     </li>
-                    <li>
-                        <code>j&lt;#q;7ra`%</code>
+                    <li><code>j&lt;#q;7ra`%</code>
                     </li>
                     <li>...and so forth.</li>
                 </ul>
@@ -536,32 +489,25 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="SetFocus">
-                    </a>
-                    <a href="#SetFocus">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Set Focus</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="SetFocus"></a><a href="#SetFocus"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Set Focus</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task enables designers to determine which Form field should have the focus after a form field event is fired. Form field events generally cause a page refresh, during which control focus is lost. The <span class="ProcessDirectorObject">Set Focus</span> Custom Task will reset the Form's control focus to the field configured by the designer.</p>
+                <p>This Custom Task enables designers to determine which Form field should have the focus after a Form field event is fired. Form field events generally cause a page refresh, during which control focus is lost. Losing the control focus restarts the Form's tab order at the beginning. </p>
+                <p>For example, you may wish to prompt a calculation on the value of two Form fields, <span class="ControlName">FieldA </span>and <span class="ControlName">FieldB</span>, any time the value of either field changes. You could then run this Custom Task on the <span class="ControlName">FieldA </span>event to set the focus to the <span class="ControlName">FieldB </span>control, which would be next in the normal tab order. Similarly, on the event for <span class="ControlName">FieldB</span>, you would run this Custom Task to set the focus on whatever field would normally come next in the tab order for the form.</p>
+                <p>By default, controls are automatically sorted into tab order from left to right then from top to bottom. Process Director does not enable you to specify a custom tab order for Form controls.</p>
+                <p>The <span class="ProcessDirectorObject">Set Focus</span> Custom Task will reset the Form's control focus to the field configured by the designer.</p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/SetFocusCT.png" />
                 </p>
-                <p>To configure the Custom Task, select the field that should receive focus after the Form control event fires.</p>
+                <p>To configure the Custom Task, set the <span class="ControlName">Form Control</span> property to the field that should receive focus after the Form control event fires. This Custom Task can only be configured in a Form definition.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="ShowAlert">
-                    </a>
-                    <a href="#ShowAlert">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Show Alert</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="ShowAlert"></a><a href="#ShowAlert"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Show Alert</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task will show a JavaScript alert box on a Form. </p>
+                <p>This Custom Task will show a JavaScript alert box on a Form. You can specify the Title, text and icon that are displayed in the alert box.</p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/ShowAlert.png" />
                 </p>
@@ -611,22 +557,18 @@
                 </table>
                 <p class="Important">
                     <img src="../Resources/Images/i.png" title="Important!" alt="Important!" /> A move away from using a JavaScript alert was made for technical reasons. This change was necessary though it prevents the Show Alert CT from showing a message when a form completes. At present there is no way to show a message when a form completes.</p>
+                <p>This Custom Task can only be configured in a Form definition.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="ShowMapOnForm">
-                    </a>
-                    <a href="#ShowMapOnForm">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Show Map on Form</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="ShowMapOnForm"></a><a href="#ShowMapOnForm"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Show Map on Form</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task will place a map on a Form from a set of coordinates. For the map to persist on the Form, you must map this Custom Task to the [Form Display] Event.</p>
+                <p>This Custom Task will place a map image on a Form when given a set of coordinates. For the map to persist on the Form, you must map this Custom Task to the <span class="KeyTerms">[Form Display]</span> Event. The creation and display of the Map image is dynamic, so refreshing the page will always remove the map image until the Custom Task is called again. Setting this custom task to the <span class="KeyTerms">[Form Display] </span>event ensures the map image is regenerated any time a form event fires and refreshes the page.</p>
                 <p>The Custom Task also enables you to add multiple markers to a map. If you set the Latitude and Longitude properties to an array field, Process director will automatically display a marker for each row in the array.</p>
                 <p>
-                    <img src="../Resources/Images/Custom Tasks2/ShowMapOnForm2.png" />
+                    <img src="../Resources/Images/Custom Tasks2/FormCT1.png" />
                 </p>
                 <h4>Configuration Options</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
@@ -741,15 +683,11 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="ValidateForm">
-                    </a>
-                    <a href="#ValidateForm">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Validate Form</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="ValidateForm"></a><a href="#ValidateForm"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Validate Form</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task runs Form validation <span class="Emphasis">before </span>attempting to submit the Form. You may choose to validate the entire form or, for Custom Task v2019.09.16 and higher, only fields within a specified container control, like a <span class="NamedControl">Section </span>or <span class="NamedControl">TabStrip </span>control.</p>
+                <p>This Custom Task runs Form validation <span class="Emphasis">before </span>attempting to submit the Form. Normally, Form field values are only validated when the Form is submitted. This Custom task enables you to run Form field validation whenever you choose. For example, if the value of <span class="ControlName">FieldA </span>determines the options that might be displayed in a Dropdown control, you might want to run this Custom Task on the <span class="ControlName">FieldA </span>event to ensure the value in <span class="ControlName">FieldA </span>is valid before allowing the user to continue filling out the Form. If the Form does not validate, the appropriate validation error messages will be displayed to the user.</p>
+                <p>You may choose to validate the entire form or, for Custom Task v2019.09.16 and higher, only fields within a specified container control, like a <span class="NamedControl">Section </span>or <span class="NamedControl">TabStrip </span>control.</p>
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> The use of v2019.09.16 or higher of this Custom Task requires Process Director v5.26 or higher.</p>
                 <p>
@@ -798,7 +736,7 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Choose field to save the number of errors</p>
+                                <p>Optional: Choose field to save the number of errors</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>(List of Form Controls)</p>
@@ -818,15 +756,10 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>
-                    <a name="ValidateFormField">
-                    </a>
-                    <a href="#ValidateFormField">
-                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
-                    </a>Validate Form Field</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="ValidateFormField"></a><a href="#ValidateFormField"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Validate Form Field</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task will validate a form field using a regular expression</p>
+                <p>This Custom Task will validate a form field using a Regular Expression. Only the specified Form field will be validated, and the validation will only check to ensure that the value of the Form field matches the specified Regular Expression. This Custom Task does not substitute for or interfere with, normal Form validation.</p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/Form Custom Tasks_4.jpg" style="visibility: visible;mso-wrap-style: square;width: 576px;height: 164px;" />
                 </p>

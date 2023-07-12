@@ -8,15 +8,15 @@
         <h1>
             <MadCap:concept term="Custom Tasks" /><a name="_Toc421015711"></a>
             <MadCap:keyword term="Content Actions" />Content Actions Custom Tasks</h1>
-        <p>These Custom Tasks perform a variety of operations on Process Director objects.</p>
+        <p>These Custom Tasks perform a variety of operations on Process Director <span class="ProcessDirectorObject">Content List</span> objects.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="AttachDocument"></a><a href="#AttachDocument"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Attach&#160;Document</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task will attach a document from the content list to a specific Form or Process instance.</p>
+                <p>This Custom Task will attach a document from the <span class="ProcessDirectorObject">Content List</span> to a specific Form or Process instance. This Custom Task enables you to provide documents such as fillable PDF Forms, instructional documents, images, or other attachments to a running Form or Process. The document you attach must reside in the <span class="ProcessDirectorObject">Content List</span>.</p>
                 <p>
-                    <img src="../Resources/Images/Capture59.png" />
+                    <img src="../Resources/Images/Custom Tasks2/ContentActionsCT.png" />
                 </p>
                 <h4>Configuration Options</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
@@ -43,20 +43,25 @@
                                 <p>Content Picker</p>
                                 <p>Content List path string</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The document to attach can be selected via a Content Picker control, or the user may type in the Content List Path to the document.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to specify the method to use the choose the document to attach. In most use cases, the default selection, Content Picker, will be the best choice.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Group Name to Assign to File</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">File to Attach</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The desired Group Name for the attached file.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The document to attach can be selected via a Content Picker control when Content Picker is selected as the <span class="ControlName">Choose File by</span> property. If Content List path string is selected, a text box will appear to enable you to type in the <span class="ProcessDirectorObject">Content List </span>path to the document. Again, in most cases, you'll use the Content Picker.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Attach To</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
-                                <p>Form</p>
-                                <p>Process</p>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Group Name to Assign to File</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The desired Group Name for the attached file.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Attach To</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">
+                                <p>Current Form</p>
+                                <p>Current Process</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row1">Select the appropriate option to attach the document in the Content List to the process instance, or the current instance of the default Form.</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Select the appropriate option to attach the document in the Content List to the current process instance, or the current instance of the default Form. In most cases, attaching the document to the Current Process is the best option.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -67,7 +72,7 @@
                 <MadCap:dropDownHotspot><a name="QRCode"></a><a href="#QRCode"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Create QR&#160;Code</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task will generate a QR&#160;Code image when used in conjunction with an Image control. This Custom Task requires Process Director v5.44.500 or higher to work, since some additional application files are required for the product to produce the QR&#160;code image. </p>
+                <p>This Custom Task will generate a QR&#160;Code image when used in conjunction with a BP&#160;Logix <span class="NamedControl">Image </span>control. This Custom Task requires Process Director v5.44.500 or higher to work, since some additional application files are required for the product to produce the QR&#160;code image. </p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/QRCode.png" />
                 </p>
@@ -139,7 +144,7 @@
                 <MadCap:dropDownHotspot><a name="EmailImport"></a><a href="#EmailImport"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Email Import</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task allows you to import text from an email and map it to a field in a Form. To do so, you'll need to identify the container form in the Process Timeline Activity.</p>
+                <p>This Custom Task enables you to import text from an email and map it to a field in a Form. To do so, you'll need to identify the container form in the Process Timeline activity. Additionally, the Custom Task can be configured to move any email attachment documents to the Form or Process as attachments. You can find information to extract from the email massage by using specific keywords found in the email body, or by specifying a Regular Expression to use to parse the entire text of an email message for text that matches it. Additionally, you can return data from specific email header values.</p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/EmailActions7.png" />
                 </p>
@@ -220,7 +225,7 @@
                 <MadCap:dropDownHotspot><a name="ExportFilesToFilesystem"></a><a href="#ExportFilesToFilesystem"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Export Files to <MadCap:keyword term="Filesystem" />Filesystem</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task enables a user to export objects from Process Director to outside file systems. In most cases, this Custom Task should be used instead of the older Export Items Custom Task.</p>
+                <p>This Custom Task enables a user to export objects from Process Director to outside file systems. In most cases, this Custom Task should be used instead of the older <span class="ProcessDirectorObject">Export Items</span> Custom Task.</p>
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important!" /> Security enhancements for Process Director v5.0 disable the use of System Variables to configure the <span class="ControlName">Destination Folder</span> property. Additionally, the requirement was imposed that all export paths must be explicitly listed in the Custom Variables file, through the use of the <a href="../DevelopersGuide/Customization File Administration.htm#AllowedExportLocations">AllowedExportLocations</a> Custom Variable.</p>
                 <h4>Export Tab</h4>
@@ -352,6 +357,8 @@
                 <MadCap:dropDownHotspot><a name="ExportItems"></a><a href="#ExportItems"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Export Items</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> This Custom&#160;task has been deprecated in favor of using the Export Files to Filesystem Custom Task.</p>
                 <p>This Custom Task exports items (Documents, Forms, Form Data, etc.) to the Content List or File System. Ensure the folder has full permission to write the data.</p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/Content Actions Custom Tasks_2.jpg" style="visibility: visible;mso-wrap-style: square;width: 566px;height: 342px;" />
@@ -462,7 +469,7 @@
                 <MadCap:dropDownHotspot><a name="ImportFilesFromFilesystem"></a><a href="#ImportFilesFromFilesystem"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Import files from <MadCap:keyword term="Filesystem" />Filesystem</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task allows a user to import objects from outside file systems to Process Director.</p>
+                <p>This Custom Task enables a user to import files from any accessible file system folder to Process Director. You can select an import folder on the file system and import all files in that folder, including any subfolders, into Process Director. Alternatively, you can specify filters to import only the desired files from the folder, such as limiting the import to files of a certain size or file type.</p>
                 <h4>Import/Destination Tabs</h4>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/ImportFilesFromFilesystem.png" />
@@ -629,7 +636,7 @@
                 <MadCap:dropDownHotspot><a name="ItemActions"></a><a href="#ItemActions"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Item Actions</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task allows you to move, delete, or rename an item from within a process. </p>
+                <p>This Custom Task allows you to move, delete, and/or rename a Process Director object or file attachment contained in the current process. For instance, you might wish to copy a document attachment from the process into a specific <span class="ProcessDirectorObject">Content List </span>folder. Additionally, you can use this Custom Task to set or change permissions for an object.</p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/ItemActions4.png" />
                 </p>
@@ -801,7 +808,7 @@
                     <MadCap:keyword term="Run Report" /><a href="#RunReport"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Run <MadCap:keyword term="Report" />Report</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The Custom Task enables you to export a Report to a specific file format (PDF, PNG, etc.).</p>
+                <p>The Custom Task enables you to run a Report in the background, then export the completed Report to a specific file format (PDF, PNG, etc.).</p>
                 <h4>Report Data/Output Options Tabs</h4>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/Content Actions Custom Tasks_6.jpg" style="visibility: visible;mso-wrap-style: square;width: 493px;height: 164px;" />
