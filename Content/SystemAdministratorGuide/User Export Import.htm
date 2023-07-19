@@ -6,10 +6,12 @@
     </head>
     <body>
         <h1>
-            <MadCap:concept term="System Administration" /><a name="Exporting"></a>
+            <MadCap:concept term="System Administration" />
             <MadCap:keyword term="Export Users;Import Users" />
             <MadCap:concept term="Users" />Exporting/Importing Users</h1>
-        <p>Users can be exported or imported between systems using Excel files (.XLS, .XLSX or .CSV). To export users, select one or more users from the User List, then click on the <span class="UIElement">Export Users</span> action link. An export box will appear that enables you to specify the name of the Excel file to which the list of selected users will be exported. A default name will be provided, but you can edit the default, at your discretion. </p>
+        <p>Users can be exported or imported between systems using Excel files (.XLS, .XLSX or .CSV). </p>
+        <h2><a name="Exporting"></a>Exporting Users <a href="#Exporting" class="anchor">#</a></h2>
+        <p>To export users, select one or more users from the User List, then click on the <span class="UIElement">Export Users</span> action link. An export box will appear that enables you to specify the name of the Excel file to which the list of selected users will be exported. A default name will be provided, but you can edit the default, at your discretion. </p>
         <p>
             <img src="../Resources/Images/ImplementersReference/ExportUsers.png" />
         </p>
@@ -17,8 +19,6 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/ExportUsers1.png" />
         </p>
-        <p>Once the file has been exported, you can use the Excel file to import the users to another system by transferring the Excel file between the systems, then, in the target system, click the Import Users action link. You'll be prompted for the Excel file to import. Once you have selected the import file, all of the users will be imported to the target system.</p>
-        <p>You may wish to edit certain attributes of the Excel file before importing it. When exporting/importing  Built-in users between systems, the PasswordChange column, will, when set to 1", force the user to change the password on their next login. </p>
         <p>The available columns in the exported Excel file are described below.</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
             <col class="TableStyle-Simple-Column-Column1" style="width: 12em;" />
@@ -366,12 +366,25 @@
                 </tr>
             </tbody>
         </table>
-        <p>Only the UserID column is required.</p>
+        <h2><a name="Importing"></a>Importing Users <a href="#Importing" class="anchor">#</a></h2>
+        <p>Once the Excel file has been exported, you can import the users to another system by transferring the Excel file between the systems.You may wish to edit certain attributes of the Excel file before importing it. When exporting/importing  Built-in users between systems, the PasswordChange column, will, when set to 1", force the user to change the password on their next login. </p>
+        <p> Similarly, you can use your own Excel or CSV file  to import new users. If you are importing users via your own Excel or CSV file, you must, as a minimum, have a <span class="KeyTerms">UserID </span>column for each record, but BP&#160;Logix recommends that you have the following columns in your file, with the appropriate data for the users in each row:</p>
+        <ul>
+            <li>UserID</li>
+            <li>UserName</li>
+            <li>EmailAddress</li>
+        </ul>
+        <p>When using an Excel file for the import, the user data must be on a worksheet named "Users".</p>
+        <p>To import the file into the target system, navigate to the <span class="ControlName">Users </span>page again. Once there, click the <span class="UIElement">Import Users </span>action link. You'll be prompted for the Excel or CSV file to import. </p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/userimport.png" />
+        </p>
         <p>When importing an Excel file with users there are a couple options available.</p>
         <ul>
             <li>Create groups as needed during import</li>
             <li>Remove users from groups not listed in import file</li>
         </ul>
         <p>The first option will automatically create and groups in  the “Groups” column if they don't exist. The default is to add users to groups that exist, but not to create the groups.  The second option will remove a user from an group that isn't listed in their “Groups” column.</p>
+        <p>Once you have selected the import file and set the desired properties for the import, click the <span class="UIElement">OK </span>button to begin the import. All of the users in the import file will be imported to the target system.</p>
     </body>
 </html>

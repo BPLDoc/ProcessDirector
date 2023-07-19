@@ -40,7 +40,7 @@
                 <MadCap:dropDownHotspot>= (Equals)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This operator requires that the system variable and the desired value match exactly.</p>
+                <p>This operator requires that the system variable and the desired value match <b style="font-style: italic;">exactly</b>. You should only use the <code>=</code> operator when you're using fixed, predictable values. For example, you shouldn't use this operator when comparing dates, unless you're sure that both the date and time values will always match, to the second. Otherwise the data comparison will always return <code>false</code> for the date evaluation.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -393,5 +393,16 @@
             <li>Buttons</li>
             <li>Sections</li>
         </ul>
+        <h2><a name="Date"></a>Date Comparison Issues <a href="#Date" class="anchor">#</a></h2>
+        <p>First of all, using the "=" operator is usually a bad idea for date comparisons. Date fields—even those where you don't explicitly set a time—<b>always</b> have a time value. The database default time for DateTime fields is always precisely 12AM, e.g., <code>1 Jan 2023 00:00:00</code>. Obviously, if you use a <span class="NamedControl">DateTime Picker </span>control, the time element will be whatever is explicitly set. In either case, the date will always have a time value as part of the data. Since the "=" operator always requires that two values match <b>exactly</b>, if the two time elements are even one second off when the evaluation occurs, a date comparison that uses the "=" operator will always return <code>false</code>. The "=" operator can only return <code>true </code>at a single second in time. Date comparisons should use either the "&lt;" or "&gt;" operators.</p>
+        <p>Next, while comparing two known dates is relatively simple, date comparisons in conditions can use a variety of date calculations such as "Days Ago", "Weeks Ago", etc., which also enable you to specify the number of days or weeks. Making these types of date comparisons in conditions are slightly more complicated than one might think.</p>
+        <p>Let's say you wish to create a condition to see of the start date of a Process Timeline activity was more than 2 days ago. To properly set this condition, your condition would look like:</p>
+        <p><code>(Activity Start Date [<span class="CodeOption">ActivityName</span>] &lt; 2 Days Ago)</code>
+        </p>
+        <p>Note that this condition uses the Less Than (<code>&lt;</code>) operator and <b>not</b> the Greater Than (<code>&gt;</code>)operator. Why is this, if I'm looking to see if the Activity start date is "greater" than 2 days ago? Well, it's because the <code>2 Days Ago</code> element doesn't take the Activity Start Date and calculate to see if it's now more than two days later. Instead, the <code>2 Days Ago</code> element independently returns whatever the datetime value was exactly two days before the evaluation. </p>
+        <p>You're not really asking if the Activity Start Date was more than 2 days ago. What you're actually asking is whether the Activity Start date is <b>earlier</b> than whatever date is returned by the <code>2 Days Ago</code> element.</p>
+        <p>For example, let's say the Activity Start Date was <code>1 Jan 2023 09:00:00</code>. If you were to evaluate the <code>2 Days Ago</code> element at exactly the same time the Activity started, it would return <code>29 Dec 2022 09:00:00</code> as the date. </p>
+        <p><code>1 Jan 2023 09:00:00</code> is <b>later</b> (<code>&gt;</code>) than <code>29 Dec 2022 09:00:00</code>. Since that is so, the condition will evaluate as <code>false</code>, which is what we want.</p>
+        <p>On the other hand, if the <code>2 Days Ago</code> evaluation is performed at 9:01AM on 3 Jan 2023, the <code>2 Days Ago</code> element will return <code>1 Jan 2023 09:01:00</code>, The Activity Start Date of <code>1 Jan 2023 09:00:00</code> is now one minute <b>earlier</b> (<code>&lt;</code>) than<code>1 Jan 2023 09:01:00</code>. Our condition will  evaluate as <code>true</code>, therefore, on at any time after 9AM on 3 Jan 2023, as the Activity Start Date will now always be earlier (<code>&lt;</code>) than the date returned by the <code>2 Days Ago</code> element of the condition.</p>
     </body>
 </html>
