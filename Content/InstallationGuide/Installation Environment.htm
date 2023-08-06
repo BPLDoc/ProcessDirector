@@ -1,25 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
-    <head>
-        <title>
-        </title>
+    <head><title></title>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" />
     </head>
     <body>
         <h1>
             <MadCap:keyword term="Installation" />
-            <MadCap:concept term="Installation" />
-            <a name="_Toc421172251">
-            </a>Installation Environment</h1>
+            <MadCap:concept term="Installation" /><a name="_Toc421172251"></a>Installation Environment</h1>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" title="Important" />  Please review the <a href="Installation Overview.htm#InstallationProcess" target="_blank">Installation Process</a> section of the documentation to see an overview of the steps required to properly install Process Director.</p>
         <p>Process Director can be installed on a standalone Windows host, or an existing host that is running other applications. The best practice for initial implementations is to install Process Director on a standalone host and use all of the installation program defaults. Many advanced configuration options exist (different port numbers, multiple IP addresses, address translation, etc.) but are only needed in special installation environments. </p>
         <p>Please note that your server hardware should be compatible with your purchased license.</p>
-        <h2>
-            <a name="_Toc421172253">
-            </a>Hardware Recommendations</h2>
+        <h2><a name="_Toc421172253"></a>Hardware Recommendations</h2>
         <p>Many factors affect hardware requirements, such as the number of users, the number of objects in the repository (documents, Forms etc.), the number of running processes, frequency of searches, how often data is modified, etc. You can install the database server on the same host but separating the database server from Process Director will provide better performance.</p>
         <p>Disk space usage increases as objects (documents, Forms, folders) are added to the repository. Databases are efficient with disk space, but we still recommend that you provide ample space for the database to grow over time. Documents generally take up most of the storage, so calculate the number of documents the system will hold and the average number of timesthey'll be updated. If you are storing a lot of documents, or very large documents, consider changing the <a href="../SystemAdministratorGuide/Installation Settings.htm">installation settings</a> to <a href="../SystemAdministratorGuide/Storing Attachments.htm">store the documents on the file system</a> instead of in the database.</p>
         <p>For the Process Director web server we recommend a minimum of 8GB of memory. Your database server should have much more memory and should be running with SSD drives.</p>
+        <h2><a name="FIPS"></a>Windows FIPS Mode</h2>
+        <p>Starting with v5.44.700, Process Director will not function in environments where <a href="https://learn.microsoft.com/en-US/windows/security/threat-protection/fips-140-validation" target="_blank">FIPS mode is enabled in Windows</a>. If Process Director is installed on a Windows server that has been configured to run in FIPS mode, typically for US Government environments, BP&#160;Logix recommends that you <b>do not</b> update beyond Process Director v5.44.602 at this time. We are currently working to provide a solution and will provide updated guidance when available.</p>
     </body>
 </html>

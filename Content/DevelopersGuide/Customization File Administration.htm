@@ -101,7 +101,7 @@
                 <p>
                     <MadCap:keyword term="fAutoDST">&#160;</MadCap:keyword>This variable enables you to override whether daylight savings is used in the time zone.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Use CST for everyone</span><br />&#160;&#160;&#160;&#160;bp.Vars.sTimeZoneID = "<span class="CodeOption">Pacific Standard Time</span>";<br /><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Do not use daylight savings time adjustments</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAutoDST = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Use CST for everyone</span><br />&#160;&#160;&#160;&#160;bp.Vars.sTimeZoneID = "<span class="CodeOption">Pacific Standard Time</span>";<br /><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Do not use daylight savings time adjustments</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAutoDST = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -359,7 +359,7 @@
                 <p>
                     <MadCap:keyword term="sTimeZoneID">&#160;</MadCap:keyword>This variable enables you to set the default time zone for the server and for all users. A time zone configured in a user profile will override this variable for that user. This string should be set to the Time Zone ID specified by the .NET environment. Leave this variable null to use the system time zone.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Use CST for everyone</span><br />&#160;&#160;&#160;&#160;bp.Vars.sTimeZoneID = "<span class="CodeOption">Central Standard Time</span>";<br /><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Automatically adjust for daylight savings</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAutoDST = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Use CST for everyone</span><br />&#160;&#160;&#160;&#160;bp.Vars.sTimeZoneID = "<span class="CodeOption">Central Standard Time</span>";<br /><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Automatically adjust for daylight savings</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAutoDST = <span class="CodeOption">true</span>;<br />}</p>
                 <p>The list below shows the possible time zone values as defined by .NET:</p>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width:100%;" class="TableStyle-Simple" cellspacing="0">
                     <col style="width: 34%;" class="TableStyle-Simple-Column-Column1" />
