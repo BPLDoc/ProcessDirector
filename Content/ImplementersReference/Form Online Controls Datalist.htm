@@ -10,6 +10,9 @@
         <p class="PDNote">
             <img src="../Resources/Images/i2.png" alt="Note" /> This topic is a work in progress for the future release of Process Director v6.0.100. It is subject to change without notice until release.</p>
         <p>For Process Director v6.0.100 and higher, a new control dropdown menu, <span class="UIElement">Data List</span>, will appear. This menu will contain the selection for the <span class="NamedControl">Data List</span> Form control, and its associated controls.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Datalist10.png" />
+        </p>
         <p>Unlike other types of Form field, the contents of the <span class="NamedControl">Data List</span> control do not get saved with the Form instance as Form data. Instead, the <span class="NamedControl">Data List</span> control is largely a display control that presents large datasets from external sources on the Form. The data displayed in the <span class="NamedControl">Data List</span> can be selected and transferred to other Form fields for saving as Form data when desired. </p>
         <div>As an example, you might have a long list of products that you present in a <span class="NamedControl">Data List</span> on a product order form. When ordering products, a user could select the desired products from the <span class="NamedControl">Data List</span>, which, when selected, could be stored in array fields on the Form. When submitted, the selected products would be stored as part of the order. Please see the <a href="#Usage">Usage</a> section below for an example of this use case.</div>
         <MadCap:dropDown>
@@ -18,12 +21,12 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/DataList8.png" />
+                    <img src="../Resources/Images/ImplementersReference/Datalist9.png" />
                 </p>
                 <p>The <span class="NamedControl">Data List </span>control enables the display of table data of nearly any size for display on a Process Director Form. Prior to Process Director v6.0.100, the only method of displaying tabular data was through the use of <a href="Form Online Controls Arrays.htm">Array controls</a>. Array controls, however, can only display relatively large sets of tabular data when the array controls are disabled and displayed only as text. Otherwise, the use of a large number of active controls in a Form array uses excessive system resources, and will make the form nonfunctional after a certain number of fields.</p>
-                <p>The <span class="NamedControl">Data List </span>control, on the other hand, completely solves the issue of presenting and using large data sets on a Form. Data can be selected by cell or by row, and transferred from the <span class="NamedControl">Data List</span> cell or row to a separate set of Form fields (either regular or Array fields). For example, in the screen shot below, the <span class="NamedControl">Data List </span>is displaying a recordset containing 1,369 rows of data on a Form, with no perceptible loss of Form performance or resource usage.</p>
+                <p>The <span class="NamedControl">Data List </span>control, on the other hand, completely solves the issue of presenting and using large data sets on a Form. Data can be selected by cell or by row, and transferred from the <span class="NamedControl">Data List</span> cell or row to a separate set of Form fields (either regular or Array fields). For example, in the screen shot below, the <span class="NamedControl">Data List </span>is displaying a recordset containing 826 rows of data on a Form, with no perceptible loss of Form performance or resource usage.</p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/DataList1.png" />
+                    <img src="../Resources/Images/ImplementersReference/Datalist11.png" />
                 </p>
                 <p>The following fields are available to configure the Data List control.</p>
                 <p><span class="ControlName">Name</span>: The Control's name.</p>
@@ -40,33 +43,46 @@
                     <li><i>None</i>: All records are rendered when the <span class="ControlName">Data List</span> is displayed. For a large dataset, this selection will use much more memory, since all records have to be retrieved and rendered when the control displays on the page. Thus, for data that contains more than 50 rows, it's best to use <i>Visible Rows</i> or <i>Pagination</i> to display the data, to minimize the resources needed to display it. Using this selection for large datasets eliminates the memory and resource savings provided by virtualization, and thus largely undercuts the control's purpose, which is to display large datasets with minimal resource usage.</li>
                 </ul>
                 <p><span class="ControlName">Width</span>:&#160;Sets the display width of the control on the form, in either percent or pixels. In most cases, a setting of 100% is the appropriate value for this property.</p>
-                <p><span class="ControlName">Height</span>: Sets the display width of the control on the form, in either percent or pixels. The setting you select here will vary, depending on the <span class="ControlName">Virtualization Type</span> you select. <i>Pagination</i> enables users to set different page sizes, thus, the actual height of the control at run time won't be known, in which case it might be best to leave this property blank, and let the page size selected by the user to govern the control's actual height. On the other hand, <i>Visible Rows</i> will attempt to display many of the rows in the recordset in an unbroken table, so setting an appropriate <span class="ControlName">Height </span>is the best choice.</p>
+                <p><span class="ControlName">Height</span>: Sets the display width of the control on the form, in pixels. </p>
                 <p><span class="ControlName">Grouping</span>: Enables the grouping feature. Users can select a specific column to group all records, in alphabetical order, by the value in the selected column.</p>
                 <p><span class="ControlName">Sorting</span>: Enables the sorting feature, to allow users to sort the table data in ascending or descending order by clicking on the column header of the desired column they wish to sort.</p>
                 <p><span class="ControlName">Column Filtering</span>: Enables users to filter the contents of the list, by adding a text box and filtering criteria to the header of each column.</p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/DataList2.png" />
+                    <img src="../Resources/Images/ImplementersReference/Datalist12.png" />
                 </p>
-                <p>Users can filter the data by one or more columns by adding the desired filter term in the text box, then selecting a filter type from the adjacent dropdown menu button. The following filter methods are available from the dropdown menu:</p>
-                <ul>
-                    <li>No Filter: Removes the filter from the column.</li>
-                    <li>Contains: The column data contains the specified text.</li>
-                    <li>Does Not Contain: The column does not contain the specified text.</li>
-                    <li>Starts With: The column data begins with the specified text.</li>
-                    <li>Ends With: The column data ends with the specified text.</li>
-                    <li>Equal To: The column data exactly matches the specified text.</li>
-                    <li>Not Equal To: The column data does not exactly match the specified text.</li>
-                    <li>Greater Than: For numerical values, the column data returns only values greater than the specified number.</li>
-                    <li>Less Than: For numerical values, the column data returns only values less than the specified number.</li>
-                    <li>Greater Than or Equal To: For numerical values, the column data returns only values greater than or equal to the specified number.</li>
-                    <li>Less Than or Equal To: For numerical values, the column data returns only values less than or equal to the specified number.</li>
-                    <li>Between: For numerical values, when the text box is supplied with two different numbers, separated by a space, e.g., "60 70", the filter will return data where the values are between 60 and 70 (including 60 and 70).</li>
-                    <li>Not Between: For numerical values, when the text box is supplied with two different numbers, separated by a space, e.g., "60 70", the filter will return data where the values are not between 60 and 70 (including 60 and 70).</li>
-                    <li>Is Empty: Returns column data where the field value is NULL, or has no value.</li>
-                    <li>Not Is Empty: Returns column data where the field value is not NULL,  or has a value.</li>
-                    <li>Is Null: Returns column data where the field value is NULL.</li>
-                    <li>Not Is Null: Returns column data where the field value is not NULL.</li>
-                </ul>
+                <p>Users can filter the data by one or more columns by adding the desired filter term in the text box, then selecting a filter type from the adjacent dropdown menu button. Filters are case-sensitive. The following filter methods are available from the dropdown menu:</p>
+                <table style="width: 100%;">
+                    <col />
+                    <col style="width: 220px;" />
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>No Filter: Removes the filter from the column.</li>
+                                    <li>Contains: The column data contains the specified text.</li>
+                                    <li>Does Not Contain: The column does not contain the specified text.</li>
+                                    <li>Starts With: The column data begins with the specified text.</li>
+                                    <li>Ends With: The column data ends with the specified text.</li>
+                                    <li>Equal To: The column data exactly matches the specified text.</li>
+                                    <li>Not Equal To: The column data does not exactly match the specified text.</li>
+                                    <li>Greater Than: For numerical values, the column data returns only values greater than the specified number.</li>
+                                    <li>Less Than: For numerical values, the column data returns only values less than the specified number.</li>
+                                    <li>Greater Than or Equal To: For numerical values, the column data returns only values greater than or equal to the specified number.</li>
+                                    <li>Less Than or Equal To: For numerical values, the column data returns only values less than or equal to the specified number.</li>
+                                    <li>Between: For numerical values, when the text box is supplied with two different numbers, separated by a space, e.g., "60 70", the filter will return data where the values are between 60 and 70 (including 60 and 70).</li>
+                                    <li>Not Between: For numerical values, when the text box is supplied with two different numbers, separated by a space, e.g., "60 70", the filter will return data where the values are not between 60 and 70 (including 60 and 70).</li>
+                                    <li>Is Empty: Returns column data where the field value is NULL, or has no value.</li>
+                                    <li>Not Is Empty: Returns column data where the field value is not NULL,  or has a value.</li>
+                                    <li>Is Null: Returns column data where the field value is NULL.</li>
+                                    <li>Not Is Null: Returns column data where the field value is not NULL.</li>
+                                </ul>
+                            </td>
+                            <td style="text-align: center;">
+                                <img src="../Resources/Images/ImplementersReference/Datalist17.png" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <p><span class="ControlName">Static Header</span>: Fixes the position of the column headers, so that they don't scroll with the rest of the data when scrolling the list vertically.</p>
                 <p><span class="ControlName">Export to CSV</span>:&#160;Displays an CSV&#160;export icon that, when clicked, will export the list data to a CSV file.</p>
                 <p><span class="ControlName">Export to PDF</span>:&#160;Displays a PDF export icon that, when clicked, will export the list data to a PDF file.</p>
@@ -74,30 +90,27 @@
                 <h4>Configuring the List Data</h4>
                 <p>The Field Properties for the data list control are accessible from the <span class="UIElement">Form Controls </span>tab of the Form definition and, for appropriately licensed installations, from the Design Console of the Online Form Designer. One of the <span class="NamedControl">Data List</span> control's Field Properties, the <span class="ControlName">Default Value</span> property, <b style="font-style: italic;">must</b> be set to an appropriate <span class="ProcessDirectorObject">Content List</span> item, usually a Business Value.</p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/DataList3.png" />
+                    <img src="../Resources/Images/ImplementersReference/Datalist13.png" />
                 </p>
-                <p>In this example, the <span class="ControlName">Default Value</span> is provided via a Business Value named <span class="ProcessDirectorObject">SampleProductBV</span>. When the Form first opens, the <span class="ProcessDirectorObject">SampleProductBV </span>will be called, and the <span class="NamedControl">Data List</span> will be automatically populated with the data returned by this Business Value. The data will be cached in memory until the Form is closed. Only clicking the <span class="ControlName">Refresh </span>icon, if it's displayed, or closing and re-opening the form, will refresh the data displayed in the <span class="NamedControl">Data List </span>control.</p>
+                <p>In this example, the <span class="ControlName">Default Value</span> is provided via a Business Value named <span class="ProcessDirectorObject">Airports</span>. When the Form first opens, <span class="ProcessDirectorObject">Airports </span>will be called, and the <span class="NamedControl">Data List</span> will be automatically populated with the data returned by this Business Value. The data will be cached in memory until the Form is closed. Only clicking the <span class="ControlName">Refresh </span>icon, if it's displayed, or closing and re-opening the form, will refresh the data displayed in the <span class="NamedControl">Data List </span>control.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="Usage"></a>Usage <a href="#Choose" class="anchor">#</a></h2>
-        <p>The <span class="NamedControl">Data List</span> control, because of it's data-related nature, has been added to the <span class="UIElement">Form</span> menu of the <span class="ControlName">Choose System Variable</span> dialog box with it's own <span class="UIElement">Form Data List</span> submenu, and is not addresses through the <span class="UIElement">Form Field</span> menu selection like other Form fields.</p>
+        <p>The <span class="NamedControl">Data List</span> control, because of it's data-related nature, has been added to the <span class="UIElement">Form</span> menu of the <span class="ControlName">Choose System Variable</span> dialog box with it's own <span class="UIElement">Form Data List</span> submenu, and is not addressed through the <span class="UIElement">Form Field</span> menu selection like other Form fields.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/DataList4.png" />
+            <img src="../Resources/Images/ImplementersReference/Datalist14.png" />
         </p>
-        <p>The <span class="UIElement">Form Data List </span>submenu will only appear on Forms that have a <span class="NamedControl">Data List</span> control. Each <span class="NamedControl">Data List</span> control will have its own submenu that displays the name of the control, and mousing over it will display a submenu that lists all of the columns in the selected control. In the example above, therefore, the <span class="ControlName">Datalist2 </span>control is displayed with its associated columns: <span class="ControlName">Category</span>, <span class="ControlName">Designer</span>, <span class="ControlName">ID</span>, etc. This display convention is the same as the one used for Business Values, and operates similarly. </p>
+        <p>The <span class="UIElement">Form Data List </span>submenu will only appear on Forms that have a <span class="NamedControl">Data List</span> control. Each <span class="NamedControl">Data List</span> control will have its own submenu that displays the name of the control, and mousing over it will display a submenu that lists all of the columns in the selected control. In the example above, therefore, the <span class="ControlName">Datalist2 </span>control is displayed with its associated columns: <span class="ControlName">Code</span>, <span class="ControlName">Continent</span>, <span class="ControlName">Country</span>, etc. This display convention is the same as the one used for Business Values, and operates similarly. </p>
         <p>For example, the <span class="UIElement">Set Form Data</span> tab can be configured to set the value of Form fields to the value of a selected record or records in a <span class="NamedControl">Data List</span> control, just as you would a Business Value.</p>
+        <p>In this example, when a <span class="NamedControl">Data List</span> is configured to perform <span class="ControlName">Row Selection</span>, the<span class="UIElement"> Set Form Data</span> tab is configured to set the value of the <span class="ControlName">AID</span>, <span class="ControlName">Airport</span>, <span class="ControlName">Location</span>, and <span class="ControlName">Alt </span>Form fields to the value of the <span class="ControlName">Code</span>, <span class="ControlName">Name</span>, <span class="ControlName">City</span>, and <span class="ControlName">Elevation </span>columns, respectively, of the selected <span class="NamedControl">Data List</span> row.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/DataList5.png" />
+            <img src="../Resources/Images/ImplementersReference/Datalist15.png" />
         </p>
-        <p>In this example, when a <span class="NamedControl">Data List</span> is configured to perform <span class="ControlName">Row Selection</span>, the<span class="UIElement"> Set Form Data</span> tab is configured to set the value of the <span class="ControlName">Product </span>and <span class="ControlName">Quantity </span>Form fields to the value of the <span class="ControlName">Product </span>and <span class="ControlName">Qty </span>columns, respectively, of the selected <span class="NamedControl">Data List</span> row.</p>
+        <p>Like Business Values, array fields can also be set to the value of selected <span class="NamedControl">Data List</span> rows. When one or more rows of data is selected in the <span class="NamedControl">Data List</span>, the data from the selected row(s) will be automatically appended to the array fields. </p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/DataList6.png" />
+            <img src="../Resources/Images/ImplementersReference/Datalist16.png" />
         </p>
-        <p>Like Business Values, array fields can also be set to the value of selected <span class="NamedControl">Data List</span> rows. When one or more rows of data is selected in the <span class="NamedControl">Data List</span>, the data from the selected row(s) will be automatically appended to the array fields. As mentioned above, this might be useful on an product order Form, where users could select the products that they wish to add to their order. </p>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/DataList7.png" />
-        </p>
-        <p>As shown above, the four products selected by the user have been added to the order, using a set of array fields to store the selected row values.</p>
+        <p>As shown above, the four airports selected by the user have been added to the Form, using a set of array fields to store the selected row values.</p>
         <p>This feature enables you to take any desired data from the <span class="UIElement">Data List</span> control and transfer it to Form fields for saving as Form data.</p>
         <h2>Documentation Samples</h2>
         <MadCap:dropDown>
