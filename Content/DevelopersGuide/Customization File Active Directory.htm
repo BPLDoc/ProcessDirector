@@ -17,8 +17,7 @@
                 <p>
                     <MadCap:keyword term="ADAuthNoDomain">&#160;</MadCap:keyword>Certain Active Directory installations can't accept a domain as part of the credential validation. This flag can be set to ensure the domain isn't passed to the Active Directory validation.</p>
                 <h5>Example</h5>
-                <p class="CodeBase"><span class="CodeComment">// Do not use the domain on the credential validation</span>
-                    <br />bp.Vars.ADAuthNoDomain = <span class="CodeOption">true</span>;</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do not use the domain on the credential validation</span><br /><span class="CodeVariable">&#160;&#160;&#160;&#160;bp</span>.Vars.ADAuthNoDomain = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -29,8 +28,7 @@
                 <p>
                     <MadCap:keyword term="ADAuthSettings">&#160;</MadCap:keyword>This variable enables you to configure specific authentication settings for each domain for validating users at login. The account used for each domain must have permission to open the Active Directory and validate credentials.</p>
                 <h5>Example</h5>
-                <p class="CodeBase"><span class="CodeComment">// Configure specific administrator accounts to use to validate <br />//logins for 2 domains.</span>
-                    <br />bp.Vars.ADAuthSettings.Add(new ADAuthSetting("<span class="CodeOption">MY_DOMAIN_1</span>", "<span class="CodeOption">AD_Admin</span>", "<span class="CodeOption">pwd1</span>"));<br />bp.Vars.ADAuthSettings.Add(new ADAuthSetting("<span class="CodeOption">MY_DOMAIN_2</span>", "<span class="CodeOption">AD_Admin</span>", "<span class="CodeOption">pwd2</span>"));</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Configure specific administrator accounts to use to validate <br />&#160;&#160;&#160;&#160;//logins for 2 domains.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ADAuthSettings.Add(new ADAuthSetting("<span class="CodeOption">MY_DOMAIN_1</span>", "<span class="CodeOption">AD_Admin</span>", "<span class="CodeOption">pwd1</span>"));<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ADAuthSettings.Add(new ADAuthSetting("<span class="CodeOption">MY_DOMAIN_2</span>", "<span class="CodeOption">AD_Admin</span>", "<span class="CodeOption">pwd2</span>"));<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -95,8 +93,7 @@
                     </tbody>
                 </table>
                 <h5>Example</h5>
-                <p class="CodeBase"><span class="CodeComment">// The default<br />// This will enable adding the user to every security group <br />// (even hierarchical) of which they are a member.</span>
-                    <br />bp.Vars.ADGrouphierarchy = <span class="CodeOption">ADGroupHierarchyOptions.AllAuthGroups</span>;<br /><br /><span class="CodeComment">// This will enable adding the user to every group (security AND<br />// distribution, even hierarchical) of which they are a member.</span><br />bp.Vars.ADGrouphierarchy = <span class="CodeOption">ADGroupHierarchyOptions.AllGroups</span>;<br /><br /><span class="CodeComment">// This setting will only add the users to the groups of which they are <br />// directly a member</span><br />bp.Vars.ADGrouphierarchy = <span class="CodeOption">ADGroupHierarchyOptions.None</span>;</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// The default<br />&#160;&#160;&#160;&#160;// This will enable adding the user to every security group <br />&#160;&#160;&#160;&#160;// (even hierarchical) of which they are a member.</span><br /><span class="CodeVariable">&#160;&#160;&#160;&#160;bp</span>.Vars.ADGrouphierarchy = <span class="CodeOption">ADGroupHierarchyOptions.AllAuthGroups</span>;<br /><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will enable adding the user to every group (security AND<br />&#160;&#160;&#160;&#160;// distribution, even hierarchical) of which they are a member.</span><br /><span class="CodeVariable">&#160;&#160;&#160;&#160;bp</span>.Vars.ADGrouphierarchy = <span class="CodeOption">ADGroupHierarchyOptions.AllGroups</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This setting will only add the users to the groups of which they are <br />&#160;&#160;&#160;&#160;// directly a member</span><br /><span class="CodeVariable">&#160;&#160;&#160;&#160;bp</span>.Vars.ADGrouphierarchy = <span class="CodeOption">ADGroupHierarchyOptions.None</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -114,8 +111,7 @@
                     </li>
                 </ul>
                 <h5>Example</h5>
-                <p class="CodeBase"><span class="CodeComment">// Set the flags for options for Active Directory</span>
-                    <br />bp.Vars.AD_NormalOptions = <br />&#160;&#160;&#160;&#160;<span class="CodeOption">System.DirectoryServices.AccountManagement.ContextOptions.Negotiate</span>;</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the flags for options for Active Directory</span><br /><span class="CodeVariable">&#160;&#160;&#160;&#160;bp</span>.Vars.AD_NormalOptions = <br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">System.DirectoryServices.AccountManagement.ContextOptions.Negotiate</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -132,8 +128,7 @@
                     </li>
                 </ul>
                 <h5>Example</h5>
-                <p class="CodeBase"><span class="CodeComment">// Set the flags for SSL options for Active Directory</span>
-                    <br />bp.Vars.AD_SSLOptions = <br />&#160;&#160;&#160;&#160;<span class="CodeOption">System.DirectoryServices.AccountManagement.ContextOptions.SecureSocketLayer</span>;</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the flags for SSL options for Active Directory</span><br /><span class="CodeVariable">&#160;&#160;&#160;&#160;bp</span>.Vars.AD_SSLOptions = <br />&#160;&#160;&#160;&#160;&#160;<span class="CodeOption">System.DirectoryServices.AccountManagement.ContextOptions.SecureSocketLayer</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -143,8 +138,7 @@
             <MadCap:dropDownBody>
                 <p>Can be used to disable group recursion for Active Directory synchronization, if needed. The default value for this variable is "true", and should usually remain so. An issue with Microsoft Windows 2016, however, may cause synchronization to fail when limiting synchronization to a specific user or group. Setting this value to "false" can serve as a workaround for this issue.</p>
                 <h5>Example</h5>
-                <p class="CodeBase"><span class="CodeComment">// Disable group recursion for Active Directory synchronization</span>
-                    <br />bp.Vars.AD_SyncUsersByGroupRecurse = <span class="CodeOption">false</span>;</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable group recursion for Active Directory synchronization</span><br /><span class="CodeVariable">&#160;&#160;&#160;&#160;bp</span>.Vars.AD_SyncUsersByGroupRecurse = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -155,7 +149,7 @@
                 <p>
                     <MadCap:keyword term="fADSyncAllowManagerOtherOU" />This boolean variable, when set to "true" enables you to sync a manager with a user if the manager is synced from a different OU (AD&#160;Root Path) than the user. The default value of this variable is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Sync managers from a different OU than the users they manage</span><br />&#160;&#160;&#160;&#160;bp.Vars.fADSyncAllowManagerOtherOU = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Sync managers from a different OU than the users they manage</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fADSyncAllowManagerOtherOU = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -166,7 +160,7 @@
                 <p>
                     <MadCap:keyword term="fReenableUsersOnSync">&#160;</MadCap:keyword>This integer variable determines what happens to pre-existing disabled users on an AD Sync.&#160; If set, the sync will re-enable these users, but won't if the flag isn't set.&#160; The default value of this flag is ‘true’.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fReenableUsersOnSync = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fReenableUsersOnSync = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -178,7 +172,7 @@
                     <MadCap:keyword term="fSyncExtraLog">
                     </MadCap:keyword>This Boolean variable sets whether to turn on extra, Level 0 logging when a sync is performed. The default value of this variable is False.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fSyncExtraLog = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fSyncExtraLog = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -190,7 +184,7 @@
                     <MadCap:keyword term="nMaxUsersToDisableOnSync">
                     </MadCap:keyword>This integer variable sets the maximum number of users to disable on an Active Directory Synchronization. The default value of this setting is 30.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMaxUsersToDisableOnSync = <span class="CodeOption">30</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nMaxUsersToDisableOnSync = <span class="CodeOption">30</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -202,7 +196,7 @@
                     <MadCap:keyword term="nMaxPercentUsersToDisableOnSync">
                     </MadCap:keyword>This double variable sets the maximum percentage of users to disable on an Active Directory Synchronization. The default value of this setting is .10, which is 10%.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMaxPercentUsersToDisableOnSync = <span class="CodeOption">.10</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nMaxPercentUsersToDisableOnSync = <span class="CodeOption">.10</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -213,7 +207,7 @@
                 <p>
                     <MadCap:keyword term="nMinLDAPUsersWithGroupsBeforeDisable" />This integer variable sets the minimum number of users that need to have groups before Process Director removes any group memberships during an Active Directory synchronization. The default value of this variable is 10.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMinLDAPUsersWithGroupsBeforeDisable = <span class="CodeOption">10</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nMinLDAPUsersWithGroupsBeforeDisable = <span class="CodeOption">10</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

@@ -16,7 +16,7 @@
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether Process Director should add any Groups from a SAML login that Process Director doesn't already have.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Automatically create new SAML&#160;groups</span><br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroups = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Automatically create new SAML&#160;groups</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.AddSAMLGroups = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -27,9 +27,9 @@
             <MadCap:dropDownBody>
                 <p>This variable consists of a list of Group names to ignore in the auto-add logic (<a href="#AddSAMLGroups">AddSAMLGroups</a> )on the SAML login. E.g. if the SAML login includes an "admin" group, but you don’t want a SAML login to automatically add anyone to the pre-existing "admin" group in Process Director.</p>
                 <h5>Examples</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Groups to ignore in the SAML import</span><br />&#160;&#160;&#160;&#160;List&lt;string&gt; <span class="CodeVariable">IgnoreGroups </span>= new List&lt;string&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">IgnoreGroups</span>.Add(@"<span class="CodeOption">admin</span>");<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">IgnoreGroups</span>.Add(@"<span class="CodeOption">Administrators</span>");<br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroupsIgnore= <span class="CodeVariable">IgnoreGroups</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Groups to ignore in the SAML import</span><br />&#160;&#160;&#160;&#160;List&lt;string&gt; <span class="CodeVariable">IgnoreGroups </span>= new List&lt;string&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">IgnoreGroups</span>.Add(@"<span class="CodeOption">admin</span>");<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">IgnoreGroups</span>.Add(@"<span class="CodeOption">Administrators</span>");<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.AddSAMLGroupsIgnore= <span class="CodeVariable">IgnoreGroups</span>;<br />}</p>
                 <p>OR</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Groups to ignore in the SAML import</span><br />&#160;&#160;&#160;&#160;bp.Vars.AddSAMLGroupsIgnore = new List&lt;string&gt; { "<span class="CodeOption">admin</span>", "<span class="CodeOption">Administrators</span>" };<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Groups to ignore in the SAML import</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.AddSAMLGroupsIgnore = new List&lt;string&gt; { "<span class="CodeOption">admin</span>", "<span class="CodeOption">Administrators</span>" };<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -40,7 +40,7 @@
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether Process Director should automatically create user accounts for externally authenticated users. The default value is "true". Setting the variable to "false" will prevent the automatic creation of user accounts.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Automatically create user accounts for externally authenticated users</span><br />&#160;&#160;&#160;&#160;bp.Vars.EXT_User_AutoCreate = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Automatically create user accounts for externally authenticated users</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.EXT_User_AutoCreate = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -51,7 +51,7 @@
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether the user accounts that are automatically created from external authentication should be initially set as disabled. The default value is "false". Setting the variable to "true" will initially set automatically created user accounts as disabled.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Initially set automatically created user accounts as disabled</span><br />&#160;&#160;&#160;&#160;bp.Vars.EXT_User_AutoCreateDisabled = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Initially set automatically created user accounts as disabled</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.EXT_User_AutoCreateDisabled = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -63,7 +63,7 @@
                     <MadCap:keyword term="fAuthSAMLAllowDuplicateUserIDs">&#160;</MadCap:keyword>This variable, when set to true, enables the use of duplicate User ID's when using SAML authentication. This requires that the SAML assertion send a unique GUID or identifier for the users. The default value for this variable is false. </p>
                 <p>Please note that the use of duplicate userIDs isn't recommended.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// If set to true, duplicate UserIDs will be allowed<br />&#160;&#160;&#160;&#160;// when using SAML authentication</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAuthSAMLAllowDuplicateUserIDs = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// If set to true, duplicate UserIDs will be allowed<br />&#160;&#160;&#160;&#160;// when using SAML authentication</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fAuthSAMLAllowDuplicateUserIDs = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -79,7 +79,7 @@
                 </ol>
                 <p>In other words, if a Process Director User Group exists that has the same name as a SAML group contained in the assertion, but the existing group does <b style="font-style: italic;">not</b> have <span class="CodeComment">AuthType </span>set to <code>SAML</code>, the user import will ensure the user is always  added to, but never removed from, the existing group.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Match SAML&#160;groups  with PD group membership</span><br />&#160;&#160;&#160;&#160;bp.Vars.MatchSAMLGroups = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Match SAML&#160;groups  with PD group membership</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.MatchSAMLGroups = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -90,7 +90,7 @@
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether to require that SAML&#160;login. Setting the value to "true" will require the SAML login. The default value is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Require SAML&#160;login</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Enable = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Require SAML&#160;login</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Enable = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -101,7 +101,7 @@
             <MadCap:dropDownBody>
                 <p>For Process Director v6.0.100 and higher, this Boolean variable determines whether to enable Azure Single Sign-Out for SAML. Setting the value to "true" will when logging out of Process Director, also completely log the user off the SAML Identity Provider (Azure). The default value is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Enable SAML&#160;Single Sign-Out for Azure</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Enable_SLO = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Enable SAML&#160;Single Sign-Out for Azure</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Enable_SLO = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -112,7 +112,7 @@
             <MadCap:dropDownBody>
                 <p>A string variable that sets the URL of the SAML identity provider.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;IDP URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_URL = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;IDP URL</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_URL = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -123,7 +123,7 @@
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional Destination URL of the SAML Identity Provider, i.e., the URL in SAML request Destination field.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Destination URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_URL_Destination = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Destination URL</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_URL_Destination = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -134,7 +134,7 @@
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional Identity Provider artifact URL.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Optional IDP URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Artifact_URL = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML&#160;Optional IDP URL</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Artifact_URL = "<span class="CodeOption">http://www.SAMLProviderURL.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -145,7 +145,7 @@
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether the "next URL" is set inside the relay state variable. The default value is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Enable URL&#160;relay</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_NextURLInRelayState = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Enable URL&#160;relay</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_NextURLInRelayState = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -156,7 +156,7 @@
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional path to the PFX file used to sign SAML requests.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// PFX&#160;file location</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_My_PFX = "<span class="CodeOption">C:\File\Path</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// PFX&#160;file location</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_My_PFX = "<span class="CodeOption">C:\File\Path</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -167,7 +167,7 @@
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional password of the PFX file used to sign SAML requests.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// PFX file password</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_My_PFXPassword = "<span class="CodeOption">password</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// PFX file password</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_My_PFXPassword = "<span class="CodeOption">password</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -178,7 +178,7 @@
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional path to <b>your</b> public certificate used for SAML requests.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Certificate path</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_My_Certificate =<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Certificate path</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_My_Certificate =<br />&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -189,7 +189,7 @@
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional path to the identity provider's public certificate used to validate the entire SAML response.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// IDP&#160;certificate path</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_IP_Certificate = <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// IDP&#160;certificate path</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_IP_Certificate = <br />&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -200,7 +200,7 @@
             <MadCap:dropDownBody>
                 <p>A string variable that sets the optional path to the identity provider's public certificate used to validate the assertions in the SAML response.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Assertion certificate path</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_IP_AssertionCertificate =<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Assertion certificate path</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_IP_AssertionCertificate =<br />&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">https://www.certificateURL.com/path/certificate.cer</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -210,7 +210,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing the User GUID.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// GUID&#160;attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_GUID = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// GUID&#160;attribute</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Attrib_GUID = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -220,7 +220,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing the UserID.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// User ID attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserID = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// User ID attribute</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Attrib_UserID = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -230,7 +230,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing the UserName.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Username attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_UserName= "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Username attribute</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Attrib_UserName= "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -240,7 +240,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing the User's email address.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Email attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Email = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Email attribute</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Attrib_Email = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -250,7 +250,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing a Custom String.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom string attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomString = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom string attribute</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Attrib_CustomString = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -260,7 +260,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing a second Custom String.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom string 2 attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomString2 = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom string 2 attribute</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Attrib_CustomString2 = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -270,7 +270,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing a  Custom Number.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom number attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomNumber = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom number attribute</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Attrib_CustomNumber = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -280,7 +280,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing a Custom&#160;Date.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom date attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_CustomDate = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom date attribute</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Attrib_CustomDate = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -290,7 +290,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>A string variable that sets the name of the attribute containing the User Groups.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// User groups attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Attrib_Groups = "<span class="CodeOption">AttributeName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// User groups attribute</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Attrib_Groups = "<span class="CodeOption">AttributeName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -300,7 +300,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>An optional string variable that sets the ID of the SAML issuer. This ID is sometimes the same as the EntityId.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML Issuer ID attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_Issuer = "<span class="CodeOption">IssuerID</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML Issuer ID attribute</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_Issuer = "<span class="CodeOption">IssuerID</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -310,7 +310,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>An optional string variable that sets the ProviderName of the SAML issuer.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML provider name attribute</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_ProviderName = "<span class="CodeOption">ProviderName</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// SAML provider name attribute</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_ProviderName = "<span class="CodeOption">ProviderName</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -321,7 +321,7 @@
             <MadCap:dropDownBody>
                 <p>A Boolean variable that determines whether the SAML login button will be removed from the home page. The default value is "false". Setting the variable to "true" will hide the login button.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Hide the SAML login button</span><br />&#160;&#160;&#160;&#160;bp.Vars.SAML_NoLoginButton = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Hide the SAML login button</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.SAML_NoLoginButton = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

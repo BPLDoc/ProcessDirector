@@ -16,7 +16,7 @@
                 <p>
                     <MadCap:keyword term="EmbedDocumentTypes">&#160;</MadCap:keyword>This variable enables you to control document types are displayed using the EMBED tag in the browser. You can inspect or modify this list.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Add the MP4 file type as one to display using the EMBED tag</span><br />&#160;&#160;&#160;&#160;bp.Vars.EmbedDocumentTypes.Add("<span class="CodeOption">mp4</span>");<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Add the MP4 file type as one to display using the EMBED tag</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.EmbedDocumentTypes.Add("<span class="CodeOption">mp4</span>");<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -32,7 +32,7 @@
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> BP&#160;Logix recommends that you set this custom variable to "false", if possible. You may—indeed, probably—have existing Custom Tasks or Business Values whose variable values aren't properly encoded, so you should <b style="font-style: italic;">not</b> set this value to "false" until you've ensured that all of your existing Custom Tasks and Business Values use the proper encodings.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent saving CT&#160;or BV&#160;configurations that don't use SQL-safe<br />&#160;&#160;&#160;&#160;// encodings for variable values.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowUnencodedSysvarsinBV = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent saving CT&#160;or BV&#160;configurations that don't use SQL-safe<br />&#160;&#160;&#160;&#160;// encodings for variable values.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fAllowUnencodedSysvarsinBV = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -43,7 +43,7 @@
                 <p>
                     <MadCap:keyword term="fCloseEditAfterUpload">&#160;</MadCap:keyword>If this system variable is set to true, the popup that appears after a check-in will close automatically when the upload completes.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// the popup appearing after a successful check-in will not<br />&#160;&#160;&#160;&#160;// close while fCloseEditAfterUpload is set to false<br /></span>&#160;&#160;&#160;&#160;bp.Vars.fCloseEditAfterUpload = <span class="CodeOption">false</span>; <br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// the popup appearing after a successful check-in will not<br />&#160;&#160;&#160;&#160;// close while fCloseEditAfterUpload is set to false<br /></span>&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fCloseEditAfterUpload = <span class="CodeOption">false</span>; <br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -54,7 +54,7 @@
                 <p>
                     <MadCap:keyword term="fCopyRefsFromRealProcessToKViewProcess" />When starting a process from a Knowledge View against returned form instances, the system will copy all attachment references from the original process associated with the form instance to the process instance that is being started by the Knowledge View. This enables Custom Tasks like <span class="ProcessDirectorObject">Convert to PDF</span> and <span class="ProcessDirectorObject">Export Items</span> to work with the original documents/form instances that are in the original process. The default behavior can be disabled by setting this custom variable to "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Disable copying of original attachments when a process<br />&#160;&#160;&#160;&#160;// is initiated via Knowledge View</span><br />&#160;&#160;&#160;&#160;bp.Vars.fCopyRefsFromRealProcessToKViewProcess = <span class="CodeOption">false</span>; <br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Disable copying of original attachments when a process<br />&#160;&#160;&#160;&#160;// is initiated via Knowledge View</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fCopyRefsFromRealProcessToKViewProcess = <span class="CodeOption">false</span>; <br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -65,7 +65,7 @@
                 <p>
                     <MadCap:keyword term="fDeleteDocOnRemove">&#160;</MadCap:keyword>When true, this option immediately deletes documents when not referenced by any other Form instance. When false, documents are marked for deletion, and actually deleted during normal clean-up processing.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;//Deletes documents immediately when they are removed</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDeleteDocOnRemove = <span class="CodeOption">true</span>; <br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;//Deletes documents immediately when they are removed</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fDeleteDocOnRemove = <span class="CodeOption">true</span>; <br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -76,7 +76,7 @@
             <MadCap:dropDownBody>
                 <p>Prior to v5.31, when importing a CSV with numbers and strings in a column, the system, by default, looked at the first row of the CSV file to determine the data type. This could result in a data type error when the first row contains a number and subsequent rows contain character strings. For v5.31 and higher, data imported will default to the String datatype, unless a different datatype is specified in the header row.  This variable, when set to "true", will disable the new logic, and revert to the pre-v5.31 conversion logic. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Revert to the old CSV&#160;field type logic</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableCSVNumberStringLogic = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Revert to the old CSV&#160;field type logic</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fDisableCSVNumberStringLogic = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -87,7 +87,7 @@
                 <p>
                     <MadCap:keyword term="fAllowRetrievePassword">&#160;</MadCap:keyword>This variable permits the name of a document object in the content list to be changed to match the name of the document being checked in, when set to "true". The default value is "false", i.e., that the name in the content list is retained even if the document being checked in has a different name.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Turn on object renaming</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDocRenameLogicOff = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Turn on object renaming</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fDocRenameLogicOff = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -99,10 +99,10 @@
                     <MadCap:keyword term="fEnableJavaScriptDev">
                     </MadCap:keyword>This variable permits form variables to be set or retrieved from JavaScript, when set to the default value of "true". Setting this value to "false" disables this behavior.</p>
                 <h5>Vars.cs Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable JavaScript access to vars</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableJavaScriptDev = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable JavaScript access to vars</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fEnableJavaScriptDev = <span class="CodeOption">false</span>;<br />}</p>
                 <h5>JavaScript Example </h5>
                 <p>By default, JavaScript can be used to get or set form value for controls that aren't contained in a Form array. The best practice for this type of use would most often be to insert the JavaScript into an HTML&#160;Control on the Form.</p>
-                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Function call to get form data from a Form via JavaScript</span><br />&#160;&#160;&#160;&#160;function getVariable()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = CurrentForm.FormControls["<span class="CodeOption">FORM_VAR</span>"].value;<br />&#160;&#160;&#160;&#160;}<br /><br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Function call to set a Form field value with JavaScript</span><br />&#160;&#160;&#160;&#160;function setFieldValue()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var frmValue = "<span class="CodeOption">SomeValue</span>";<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["<span class="CodeOption">FORM_VAR</span>"].value = frmValue;<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
+                <p class="CodeBase">&lt;script&gt;<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Function call to get form data from a Form via JavaScript</span><br />&#160;&#160;&#160;&#160;function getVariable()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var <span class="CodeVariable">frmValue </span>= CurrentForm.FormControls["<span class="CodeOption">FORM_VAR</span>"].value;<br />&#160;&#160;&#160;&#160;}<br /><br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Function call to set a Form field value with JavaScript</span><br />&#160;&#160;&#160;&#160;function setFieldValue()<br />&#160;&#160;&#160;&#160;{<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;var <span class="CodeVariable">frmValue </span>= "<span class="CodeOption">SomeValue</span>";<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;CurrentForm.FormControls["<span class="CodeOption">FORM_VAR</span>"].value = <span class="CodeVariable">frmValue</span>;<br />&#160;&#160;&#160;&#160;}<br />&lt;/script&gt;</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -113,7 +113,7 @@
                 <p>
                     <MadCap:keyword term="fEnableSQLEscape" />When you run a SELECT statement that contains a LIKE operator and an ESCAPE clause in SQL Server 2008 R2, SQL Server 2012, or SQL&#160;Server 2014, SQL Server may use an inefficient query plan for the statement. Additionally, the performance of the statement is low. This SQL&#160;Server bug can cause a performance problem with Knowledge Views searching for form data using "contains", especially when using the "contains" operator with wildcard characters. This Custom variable, when set to "true", alters the operation of these queries to improve performance and help mitigate this SQL&#160;Server bug. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Mitigate SQL&#160;Server bug for LIKE/Wildcard queries</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableSQLEscape = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Mitigate SQL&#160;Server bug for LIKE/Wildcard queries</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fEnableSQLEscape = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -124,7 +124,7 @@
                 <p>
                     <MadCap:keyword term="FileUploadBlacklist" />This property accepts a comma-separated string of file extension that, when set, will prevent files with those file extensions from being uploaded via any attachment control. This property is a universal blacklist of file uploads for files with the listed extensions.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disables upload of listed file types</span><br />&#160;&#160;&#160;&#160;bp.Vars.FileUploadBlacklist = "<span class="CodeOption">dotx, xltx, dot, xlt</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disables upload of listed file types</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.FileUploadBlacklist = "<span class="CodeOption">dotx, xltx, dot, xlt</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -135,7 +135,7 @@
                 <p>
                     <MadCap:keyword term="FileUploadBlacklistAlternateText" />This property enables you to universally set the <span class="CodeComment">Allowed File Alternate Text</span> property of <span class="NamedControl"><a href="../ImplementersReference/Form Online Controls Attachments.htm#AttachObjects"><span class="NamedControl">Attach Object</span> controls</a></span>, instead of setting the property individually in the control.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disables upload of listed file types</span><br />&#160;&#160;&#160;&#160;bp.Vars.FileUploadBlacklistAlternateText = <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">Word Documents, Excel Spreadsheets, Word Templates, Excel Templates</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disables upload of listed file types</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.FileUploadBlacklistAlternateText = <br />&#160;&#160;&#160;&#160;&#160;"<span class="CodeOption">Word Documents, Excel Spreadsheets, Word Templates, Excel Templates</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -146,7 +146,7 @@
                 <p>
                     <MadCap:keyword term="Custom Workflow Step Colors">&#160;</MadCap:keyword>Process Director enables the addition of locales by editing the vars.cs file. </p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// If you comment out the first line, <br />&#160;&#160;&#160;&#160;// it will append new values to the default list</span><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Otherwise a new list will be created</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">Locales </span>= new List&lt;NameValue&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">Locales</span>.Add(new NameValue(<span class="CodeOption">"English", "en"</span>));<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// If you comment out the first line, <br />&#160;&#160;&#160;&#160;// it will append new values to the default list</span><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Otherwise a new list will be created</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">Locales </span>= new List&lt;NameValue&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">Locales</span>.Add(new NameValue(<span class="CodeOption">"English", "en"</span>));<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -157,7 +157,7 @@
                 <p>
                     <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This boolean variable enables you to turn off <a href="../ImplementersReference/Managing Content Locking.htm">object locking</a> by setting the value to "false". The default value is "true".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will enable object locking.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ObjectLockingEnable = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will enable object locking.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ObjectLockingEnable = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -168,7 +168,7 @@
                 <p>
                     <MadCap:keyword term="nMaxProfileButtons">&#160;</MadCap:keyword>This boolean variable enables you to require <a href="../ImplementersReference/Managing Content Locking.htm">object locking</a> when set to "true". The default value is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will require object locking when set to true.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ObjectLockingForce = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will require object locking when set to true.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ObjectLockingForce = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -179,7 +179,7 @@
                 <p>
                     <MadCap:keyword term="Custom Timeline Reminder Times;ProjectReminderTimes" />This variable enables you to customize the  default reminder times that are displayed in a Timeline Activity's <span class="UIElement">Notifications </span>tab.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Activity Reminder times<br />&#160;&#160;&#160;&#160;// If you comment out this next line, it will append new values to<br />&#160;&#160;&#160;&#160;// the default list<br />&#160;&#160;&#160;&#160;// Otherwise, a new list will be created</span><br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes= new List&lt;TimeValue&gt;();<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(-1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"1 Day Before Due")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(-2 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"2 Days Before Due")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 4),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Hours")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Day")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(4 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Days")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(7 * (60 * 60 * 24),<br></br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Week")</span>);<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Activity Reminder times<br />&#160;&#160;&#160;&#160;// If you comment out this next line, it will append new values to<br />&#160;&#160;&#160;&#160;// the default list<br />&#160;&#160;&#160;&#160;// Otherwise, a new list will be created</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ProjectReminderTimes= new List&lt;TimeValue&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(-1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;"1 Day Before Due")</span>);<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(-2 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;"2 Days Before Due")</span>);<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 4),<br />&#160;&#160;&#160;&#160;&#160;"Every 4 Hours")</span>);<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;"Every Day")</span>);<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(4 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;"Every 4 Days")</span>);<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ProjectReminderTimes.Add(<span class="CodeOption">new TimeValue(7 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;"Every Week")</span>);<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -190,7 +190,7 @@
                 <p>
                     <MadCap:keyword term="TestUserEmails">&#160;</MadCap:keyword>This variable enables you to specify a folder to use as a temporary folder when using the Multi-File Upload functionality with the <span class="NamedControl">AttachObjects </span>control. The default system temp path may not release large file uploads properly. Setting your own folder in the folder system can alleviate this issue.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the temporary path for large file uploads</span><br />&#160;&#160;&#160;&#160;CV.UploadTempPath = @"<span class="CodeOption">m:\tempupload</span>";<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the temporary path for large file uploads</span><br />&#160;&#160;&#160;&#160;CV.UploadTempPath = @"<span class="CodeOption">m:\tempupload</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -203,7 +203,7 @@
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> The Workflow object has largely been deprecated by the Process Timeline. BP&#160;Logix recommends the use of the Process Timeline as the process model for all new development.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Step Reminder times<br />&#160;&#160;&#160;&#160;// If you comment out this next line, it will append new values to <br />&#160;&#160;&#160;&#160;// the default list</span><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Otherwise, a new list will be created</span><br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes = new List&lt;TimeValue&gt;();<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(-1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"1 Day Before Due")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(-2 * (60 * 60 * 24), <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"2 Days Before Due")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 4),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Hours")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Day")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(4 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every 4 Days")</span>);<br />&#160;&#160;&#160;&#160;bp.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(7 * (60 * 60 * 24),<br></br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"Every Week")</span>);<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Step Reminder times<br />&#160;&#160;&#160;&#160;// If you comment out this next line, it will append new values to <br />&#160;&#160;&#160;&#160;// the default list</span><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Otherwise, a new list will be created</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.StepReminderTimes = new List&lt;TimeValue&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(-1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;"1 Day Before Due")</span>);<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(-2 * (60 * 60 * 24), <br />&#160;&#160;&#160;&#160;&#160;"2 Days Before Due")</span>);<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 4),<br />&#160;&#160;&#160;&#160;&#160;"Every 4 Hours")</span>);<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(1 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;"Every Day")</span>);<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(4 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;"Every 4 Days")</span>);<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.StepReminderTimes.Add(<span class="CodeOption">new TimeValue(7 * (60 * 60 * 24),<br />&#160;&#160;&#160;&#160;&#160;"Every Week")</span>);<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

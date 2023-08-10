@@ -26,7 +26,7 @@
                 <p>For Process Director v5.39 and below, the default timings for TimerSecondsCheckWfAdvance and TimerSecondsCheckProjAdvance are set to 2 hours. This was changed in newer versions as the shorter time limits could use excessive system resources on very active systems.</p>
                 <p>Additionally, the <b>fDisableUserPrediction</b> Custom Variable will, when set to "false", enable more accurate prediction of activity times based on each specific user that has been assigned to an activity. <i>This setting will consume more system resources when being used</i>, so the default value for this variable is "true".  When set to "true", prediction will still occur, but with less predictive accuracy.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Default to 6 hours between checking projects for advance<br />&#160;&#160;&#160;&#160;// AND prediction calculations (e.g. completed/start when<br />&#160;&#160;&#160;&#160;// conditions, due dates, etc.)</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckProjAdvance = <span class="CodeOption">60 * 60 * 6</span>;<br /><br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// default to 1 hour between checking projects for email reminders</span><br />&#160;&#160;&#160;&#160;bp.Vars.TimerSecondsCheckProjReminders = <span class="CodeOption">60 * 60 * 1</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Less accurate user predictions for task completion,<br />&#160;&#160;&#160;&#160;// but fewer system resources used</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableUserPrediction = <span class="CodeOption">true</span>;<br /><br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Default to 6 hours between checking projects for advance<br />&#160;&#160;&#160;&#160;// AND prediction calculations (e.g. completed/start when<br />&#160;&#160;&#160;&#160;// conditions, due dates, etc.)</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.TimerSecondsCheckProjAdvance = <span class="CodeOption">60 * 60 * 6</span>;<br /><br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// default to 1 hour between checking projects for email reminders</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.TimerSecondsCheckProjReminders = <span class="CodeOption">60 * 60 * 1</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Less accurate user predictions for task completion,<br />&#160;&#160;&#160;&#160;// but fewer system resources used</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fDisableUserPrediction = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -38,7 +38,7 @@
                     <MadCap:keyword term="AllowedExportLocations" />The AllowedExportLocations variable is a list of strings that contains all of the folder locations to where a file export via Knowledge View URL is allowed. This variable enables you to control the locations to which a KView can export documents when <a href="../ImplementersReference/Knowledge View Operations.htm#URL">called via a URL</a>. Calling a Knowledge View via URL will accept a URL&#160;Parameter named <span class="CodeComment">exportname</span> that enables the Knowledge View to export a file to a specified file path/file name. To prevent users from exporting files to unwanted locations, or overwriting existing files, this variable MUST be set. Any attempt to export a file from a Knowledge View to any folder not listed in this variable will fail.</p>
                 <p>The locations listed in this system variable will be treated as parent-level folders, which means that you can write documents to any location or subfolder <i>below</i> the specified folder location.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Create List values</span><br />&#160;&#160;&#160;&#160;List&lt;string&gt; <span class="CodeVariable">MyExportLocations </span>= new List&lt;string&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">MyExportLocations</span>.Add(@"<span class="CodeOption">C:\FilePath</span>");<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">MyExportLocations</span>.Add(@"<span class="CodeOption">C:\FilePath\Subfolder</span>");<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Apply List values to the Custom Variable</span><br />&#160;&#160;&#160;&#160;bp.Vars.AllowedExportLocations = <span class="CodeVariable">MyExportLocations</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Create List values</span><br />&#160;&#160;&#160;&#160;List&lt;string&gt; <span class="CodeVariable">MyExportLocations </span>= new List&lt;string&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">MyExportLocations</span>.Add(@"<span class="CodeOption">C:\FilePath</span>");<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">MyExportLocations</span>.Add(@"<span class="CodeOption">C:\FilePath\Subfolder</span>");<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Apply List values to the Custom Variable</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.AllowedExportLocations = <span class="CodeVariable">MyExportLocations</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -53,7 +53,7 @@
                 <p>When this value is set to "false", though migration of existing encrypted values won't occur on upgrade,<span class="Emphasis"> new encrypted values will still be created using AES</span>, e.g., submitting a new form instance with encrypted form controls. </p>
                 <p>Any time data that uses the deprecated encryption is accessed, an ERROR log message will be generated as a reminder that migration hasn't yet been performed (I.e., "ERROR: Deprecated encrypted value detected, please upgrade using Administration pages."). There won't be any data-loss or corruption, as the system will recognize both AES and deprecated encryption.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Turn off AES&#160;Encryption Migration</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableEncryptionMigration= <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Turn off AES&#160;Encryption Migration</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fEnableEncryptionMigration= <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -66,7 +66,7 @@
                 <p>The <code>UserDisplayString()</code> function sets the display string universally in the product. </p>
                 <p>The <code>UserDisplayString2()</code> function returns the Display string to the location/object from which it is being called, to give you the flexibility to only change the display string for the user in a specific place instead of in the whole product.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Enables you to call the UserDisplayString and UserDisplayString2 functions.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAllowCustomUserString = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Enables you to call the UserDisplayString and UserDisplayString2 functions.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fAllowCustomUserString = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -78,7 +78,7 @@
                     <MadCap:keyword term="fAuthWindows" />This variable, when set to true, enables the use of Windows login security. The default value for this variable is "false", and is set in the XSD file.</p>
                 <p>You usually don't turn on this feature on by changing the value of this System Variable. Instead, this feature is enabled in the product in the <a href="../SystemAdministratorGuide/User Authentication Settings.htm">User Authentication settings</a> by setting the Enable Windows Authentication dropdown to "True" .Windows login security can't be implemented until the Enable Windows Authentication setting is set to "True".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Windows authentication is disabled</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAuthWindows = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Windows authentication is disabled</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fAuthWindows = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -90,7 +90,7 @@
                     <MadCap:keyword term="fAuthWindowsIntegrated" />This variable, when set to true, enables the use of NTLM integration. The default value for this variable is "true", and is set in the XSD file.</p>
                 <p>While this variable is set to "true" by default, Windows Integrated Security is set to "false' by default. You usually turn on this feature in the product in the <a href="../SystemAdministratorGuide/User Authentication Settings.htm">User Authentication settings</a> by setting the Enable Windows Authentication dropdown to "True". Even though the fAuthWindowsIntegrated variable is set to true by default, windows login security can't be implemented until the Enable Windows Authentication setting is set to "true".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;// <span class="CodeComment">NTLM&#160;Integration is disabled.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAuthWindowsIntegrated = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;// <span class="CodeComment">NTLM&#160;Integration is disabled.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fAuthWindowsIntegrated = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -101,7 +101,7 @@
                 <p>
                     <MadCap:keyword term="fAutoDST">&#160;</MadCap:keyword>This variable enables you to override whether daylight savings is used in the time zone.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Use CST for everyone</span><br />&#160;&#160;&#160;&#160;bp.Vars.sTimeZoneID = "<span class="CodeOption">Pacific Standard Time</span>";<br /><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Do not use daylight savings time adjustments</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAutoDST = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Use CST for everyone</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.sTimeZoneID = "<span class="CodeOption">Pacific Standard Time</span>";<br /><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Do not use daylight savings time adjustments</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fAutoDST = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -112,7 +112,7 @@
                 <p>
                     <MadCap:keyword term="fDisableExcelImport">&#160;</MadCap:keyword>This variable enables you to control whether the Excel files can be used to automatically populate SQL databases.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Disable the auto-excel import feature</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableExcelImport = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Disable the auto-excel import feature</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fDisableExcelImport = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -123,7 +123,7 @@
             <MadCap:dropDownBody>
                 <p>This variable, when set to "true", will disable application level caching in the Knowledge Views when using a Load Balanced system. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable application-level caching for load balancing</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisableKViewAppCaches = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable application-level caching for load balancing</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fDisableKViewAppCaches = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -135,7 +135,7 @@
                 <p>This variable, when set to "true", will disable the time-consuming update of the sValueSearch field that takes place during some upgrades. This option enables the system to be updated and work without using the sValueSearch field. Upgrades that require this field update can take up to 24 hours. The sValueSearch field was added to the database to significantly improve search performance. It must be populated, however, which can be a very time-consuming process. This population, by default, happens during the upgrade cycle, which can cause the upgrade to take a very long time.</p>
                 <p>You can, when this value is set to "true", skip the field update during the upgrade, and populate it later using the <span class="ProcessDirectorObject">Troubleshooting </span>section in the <span class="ProcessDirectorObject">IT Admin</span> area in DEBUG mode. There is a link to update the search value column in tblFormData. This command could take 24 hours to run, depending on the speed of your database. It can be run and re-run and, each time, will pickup where it left off, until the entire update is complete. This feature enables you to perform the update during non-work hours. Once the update has no more records to process you can remove this variable setting from the vars file to have the searches start using the new sValueSearch column.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable the update to the sValueSearch field</span><br />&#160;&#160;&#160;&#160;bp.Vars.fDisable_sValueSearch = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable the update to the sValueSearch field</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fDisable_sValueSearch = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -146,7 +146,7 @@
             <MadCap:dropDownBody>
                 <p>This variable enables Process Director to implement a "Deny" permissions model, so that users can be specifically denied access to objects. In most cases, the default Process Director permissions model is adequately hardened, so this variable is set to "false" by default. There are, however, some use cases for adding specific denial records. Setting this variable to "true" will turn on the denial permissions model, but the extra permissions checking that the denial model requires may have some impact on system performance.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will enable denial permissions.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableDenyPermissions = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will enable denial permissions.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fEnableDenyPermissions = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -157,7 +157,7 @@
             <MadCap:dropDownBody>
                 <p>This variable, when set to "true" enables users to download the form fields in an excel file, from a link on the Properties tab of the Form Definition. The default value is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Allow form field downloads in Excel.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableFormFieldDownload = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Allow form field downloads in Excel.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fEnableFormFieldDownload = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -168,7 +168,7 @@
             <MadCap:dropDownBody>
                 <p>This variable, when set to "true", enables custom forms to pass JavaScript to be executed after a form completes. The default value for this variable is "false". For users of Process Director v4.54 and below, this variable must be set to "true" to enable the <a href="../Custom Tasks2/Form Data Mapping Custom Tasks.htm#CopyFormData">Copy Form Data Custom Task</a> to close one form and open another, when configured to do so.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will enable custom forms to pass JavaScript to be executed<br />&#160;&#160;&#160;&#160;// after the form completes.</span><br />&#160;&#160;&#160;&#160;Vars.fEnableJSURL = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will enable custom forms to pass JavaScript to be executed<br />&#160;&#160;&#160;&#160;// after the form completes.</span><br />&#160;&#160;&#160;&#160;Vars.fEnableJSURL = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -179,7 +179,7 @@
             <MadCap:dropDownBody>
                 <p>This variable, when set to "true", disables the Group Name wildcard functionality for ShowAttach controls. The default value for this variable is "false". </p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable wildcards for ShowAttach control Group Names</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableOldShowAttach = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable wildcards for ShowAttach control Group Names</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fEnableOldShowAttach = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -189,7 +189,7 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="fEnableThumbnails" />This Boolean variable, when set to "true," enables Process Director to screen for Cross-Site Request Forgery (CSRF) by ensuring that the HTTP Referrer header is valid. CSRF is a type of malicious exploit of a website where unauthorized commands are transmitted from a user that the website trusts. The default value for this variable is "false".</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// HTML&#160;header validation to protect against CSRF</span><br />&#160;&#160;&#160;&#160;Vars.fEnableReferrerProtection = <span class="CodeOption">true</span>; <br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// HTML&#160;header validation to protect against CSRF</span><br />&#160;&#160;&#160;&#160;Vars.fEnableReferrerProtection = <span class="CodeOption">true</span>; <br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -202,7 +202,7 @@
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> Caution should be used when implementing this feature, as removing or disabling a user will delete all historical form data for the user.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Remove form instances for deleted/disabled users</span><br />&#160;&#160;&#160;&#160;bp.Vars.fRemoveSavedInstForOldUsers = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Remove form instances for deleted/disabled users</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fRemoveSavedInstForOldUsers = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -213,7 +213,7 @@
             <MadCap:dropDownBody>
                 <p>This variable , when set to "true" will implement <a href="../SystemAdministratorGuide/User Delegation.htm#SharedDelegation">Shared Delegation</a> for all processes. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will enable shared delegation for all processes.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fSharedDelegationAllProcesses = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will enable shared delegation for all processes.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fSharedDelegationAllProcesses = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -225,7 +225,7 @@
                     <MadCap:keyword term="ForceSecureCookies">
                     </MadCap:keyword>This string variable enables you to set cookies to transmit using only the Secure Sockets Layer (SSL).</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Force cookies to transmit only via SSL.</span><br />&#160;&#160;&#160;&#160;bp.Vars.ForceSecureCookies = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Force cookies to transmit only via SSL.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ForceSecureCookies = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -236,7 +236,7 @@
                 <p>
                     <MadCap:keyword term="sMobileWebServerURL" />This string variable enables customers who have licensed the offline Appenate server to configure the custom URL&#160;of their mobile server for use by Custom Tasks and other features. This feature is unavailable for versions prior to Process Director v5.45, and who have not also licensed the offline mobile feature.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Mobile App server URL</span><br />&#160;&#160;&#160;&#160;bp.Vars.sMobileWebServerURL = "<span class="CodeOption">http://mobile.bplogix.com</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Mobile App server URL</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.sMobileWebServerURL = "<span class="CodeOption">http://mobile.bplogix.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -248,7 +248,7 @@
                     <MadCap:keyword term="fTestMode">&#160;</MadCap:keyword>These variables allow you to set the system into a test mode. In this mode, Windows Integrated authentication is disabled. This mode enables anyone to log into the server without a password. Use this setting with caution. It should only be used on non-production systems to test processes and Forms. </p>
                 <p>For more information, see the <a href="../SystemAdministratorGuide/Test Server Methodology.htm">Test Server Methodology</a> topic in the System Administrator's Guide.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the test email user</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmails = User.GetUserByUserID(bp, "<span class="CodeOption">my_test_id</span>");<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ===OR===<br /><br />&#160;&#160;&#160;&#160;// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER EMAIL ADDRESS FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the test email user</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmailAddress = "<span class="CodeOption">username@domain.com</span>";<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the test email user</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.TestUserEmails = User.GetUserByUserID(bp, "<span class="CodeOption">my_test_id</span>");<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ===OR===<br /><br />&#160;&#160;&#160;&#160;// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER EMAIL ADDRESS FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the test email user</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.TestUserEmailAddress = "<span class="CodeOption">username@domain.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -261,7 +261,7 @@
                 <p><i>This variable is configured in the </i><code>PreSetSystemVars()</code><i> function.</i>
                 </p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will clear an existing users active session if the user logs in again</span><br />&#160;&#160;&#160;&#160;bp.Vars.fUseNewLoginSessionGUID = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will clear an existing users active session if the user logs in again</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fUseNewLoginSessionGUID = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -272,7 +272,7 @@
                 <p>
                     <MadCap:keyword term="fWebServiceAllowCredentialsURL">&#160;</MadCap:keyword>This boolean determines whether authorization is required for Web Service users. The default value is true.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do not require web service authorization</span><br />&#160;&#160;&#160;&#160;bp.Vars.fWebServiceAuth = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do not require web service authorization</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fWebServiceAuth = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -288,7 +288,7 @@
                     <li><b>pValue:</b> The string value used to identify the culture, in one of the standard culture formats, e.g. "es". Process Director will use this value to identify the Culture name used on the name of the RESX file, e.g., "strings.es.resx".</li>
                 </ul>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Add Cultures to process Director</span><br />&#160;&#160;&#160;&#160;bp.Vars.Locales.Add(new NameValue("<span class="CodeOption">Spanish", "es</span>"));<br />&#160;&#160;&#160;&#160;bp.Vars.Locales.Add(new NameValue("<span class="CodeOption">German", "de</span>"));<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Add Cultures to process Director</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.Locales.Add(new NameValue("<span class="CodeOption">Spanish", "es</span>"));<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.Locales.Add(new NameValue("<span class="CodeOption">German", "de</span>"));<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -301,7 +301,7 @@
                     <MadCap:keyword term="nMaxActivityStarts">
                     </MadCap:keyword>This variable sets how many times a step restarts in the number of seconds set in the nMaxActivityStartsInLastSecs variable before considering it in a loop. The default value is 100.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMaxActivityStarts = <span class="CodeOption">100</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nMaxActivityStarts = <span class="CodeOption">100</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -314,7 +314,7 @@
                     </MadCap:keyword>If a Process Timeline instance is determined to be in an endless loop condition, the problem activity will be placed into an error state. This detection logic to define an endless loop is controlled through the <a href="#nMaxActivityStarts">nMaxActivityStarts</a>, nMaxActivityStartsInLastSecs, and <a href="#nTimelineLoopCountStarts">nTimelineLoopCountStarts</a> variables.</p>
                 <p>This variable sets how many seconds to use in loop calculations performed by the nMaxActivityStarts variable. The default is 60.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nMaxActivityStartsInLastSecs = <span class="CodeOption">60</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nMaxActivityStartsInLastSecs = <span class="CodeOption">60</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -326,7 +326,7 @@
                     <MadCap:keyword term="nTimelineLoopCountStarts" />If a Process Timeline instance is determined to be in an endless loop condition, the problem activity will be placed into an error state. This detection logic to define an endless loop is controlled through the <a href="#nMaxActivityStarts">nMaxActivityStarts</a>, <a href="#nMaxActivityStartsInLastSecs">nMaxActivityStartsInLastSecs</a>,  and nTimelineLoopCountStarts variables.</p>
                 <p>This variable sets the number of activities that may be started in one pass of a process. The default is 100.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Set max number of allowable loops to 50</span><br />&#160;&#160;&#160;&#160;bp.Vars.nTimelineLoopCountStarts = <span class="CodeOption">50</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Set max number of allowable loops to 50</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nTimelineLoopCountStarts = <span class="CodeOption">50</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -337,7 +337,7 @@
                 <p>
                     <MadCap:keyword term="sPDFInterfaceURL" />This variable is used to set the optional interface URL to use for converting PDF files.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the interface URL to use for converting files to PDF.</span><br />&#160;&#160;&#160;&#160;bp.Vars.sPDFInterfaceURL = "<span class="CodeOption">http://localhost/</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the interface URL to use for converting files to PDF.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.sPDFInterfaceURL = "<span class="CodeOption">http://localhost/</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -348,7 +348,7 @@
                 <p>
                     <MadCap:keyword term="sPickupDirectoryLocation" />IIS in Windows 2008 R2 and higher requires a path to be configured to the mail pickup directory when using the local SMTP server to send email. This is set using the sPickupDirectoryLocation custom variable. For Process Director v5.31 and higher, Process Director defaults this pickup directory to the Windows default of C:\Inetpub\mailroot\Pickup\ so it only needs to be set when it is in a different location. Additionally, the setting of this variable won't force emails to use the local SMTP server when an SMTP Host is specified in the installation settings.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Change the mail pickup directory to a non-default location.</span><br />&#160;&#160;&#160;&#160;bp.Vars.sPickupDirectoryLocation = "<span class="CodeOption">C:\nonDefault\directory</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Change the mail pickup directory to a non-default location.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.sPickupDirectoryLocation = "<span class="CodeOption">C:\nonDefault\directory</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -359,7 +359,7 @@
                 <p>
                     <MadCap:keyword term="sTimeZoneID">&#160;</MadCap:keyword>This variable enables you to set the default time zone for the server and for all users. A time zone configured in a user profile will override this variable for that user. This string should be set to the Time Zone ID specified by the .NET environment. Leave this variable null to use the system time zone.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Use CST for everyone</span><br />&#160;&#160;&#160;&#160;bp.Vars.sTimeZoneID = "<span class="CodeOption">Central Standard Time</span>";<br /><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Automatically adjust for daylight savings</span><br />&#160;&#160;&#160;&#160;bp.Vars.fAutoDST = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Use CST for everyone</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.sTimeZoneID = "<span class="CodeOption">Central Standard Time</span>";<br /><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Automatically adjust for daylight savings</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fAutoDST = <span class="CodeOption">true</span>;<br />}</p>
                 <p>The list below shows the possible time zone values as defined by .NET:</p>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width:100%;" class="TableStyle-Simple" cellspacing="0">
                     <col style="width: 34%;" class="TableStyle-Simple-Column-Column1" />
@@ -728,7 +728,7 @@
                 <p>
                     <MadCap:keyword term="sLocalIPs">&#160;</MadCap:keyword>This variable is used to set the optional list of local IP addresses on the server. This is used so that any browser request from one of the local IP addresses will be able to access all administration functions.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the following IP addresses as "local" IP<br />&#160;&#160;&#160;&#160;// addresses for this multi-NIC server</span><br />&#160;&#160;&#160;&#160;bp.Vars.sLocalIPs = "<span class="CodeOption">10.1.5.14,10.1.5.32</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will set the following IP addresses as "local" IP<br />&#160;&#160;&#160;&#160;// addresses for this multi-NIC server</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.sLocalIPs = "<span class="CodeOption">10.1.5.14,10.1.5.32</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -739,7 +739,7 @@
                 <p>
                     <MadCap:keyword term="TestModeIPs" />This variable enables you specify the IP addresses that are allowed to connect to a Process Director Server that has been placed in Test mode, via the <a href="#fTestMode">fTestMode</a> custom variable. This is required to allow access to a server that is in test mode. If accessing the server locally, the IP address doesn't need to be listed.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = true;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the IP Addresses allowed to access the server</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestModeIPs.Add("<span class="CodeOption">10.1.1.1</span>");<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Set the IP Addresses allowed to access the server</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.TestModeIPs.Add("<span class="CodeOption">10.1.1.1</span>");<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -750,7 +750,7 @@
                 <p>
                     <MadCap:keyword term="TestUserEmailAddress">&#160;</MadCap:keyword>This variable enables you to route all process emails (task list emails, notifications, etc.) to a single email address. This system variable doesn't require a database connection.&#160; Use this setting with caution. It should only be used on non-production systems to test process and Forms. If your installation is configured to enable users to retrieve forgotten passwords, via the <a href="Customization File Users.htm#fAllowRetrievePassword">fAllowRetrievePassword</a> custom variable, the TestUserEmailAddress won't receive password reset request emails.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Set test email</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmailAddress = "<span class="CodeOption">demo@bplogix.com</span>";<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Set test email</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.TestUserEmailAddress = "<span class="CodeOption">demo@bplogix.com</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -761,7 +761,7 @@
                 <p>
                     <MadCap:keyword term="TestUserEmails">&#160;</MadCap:keyword>This variable enables you to route all process emails (task list emails, notifications, etc) to a single user. Use this setting with caution. It should only be used on non-production systems to test processes and Forms. </p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;bp.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Specify user to use for test emails</span><br />&#160;&#160;&#160;&#160;bp.Vars.TestUserEmails = User.GetUserByUserID(bp, "<span class="CodeOption">my_test_id</span>");<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Specify user to use for test emails</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.TestUserEmails = User.GetUserByUserID(bp, "<span class="CodeOption">my_test_id</span>");<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

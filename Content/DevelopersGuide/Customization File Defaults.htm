@@ -33,7 +33,7 @@
                 <p><code>bp.Vars.BusinessHolidays.Add(new DateTime(2021, 5, 12).Date);</code>
                 </p>
                 <h5>Sample Code Block</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />//===========Add Holidays to the Default Calendar==============</span><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Christmas Eve, 2020</span><br />&#160;&#160;&#160;&#160;bp.Vars.BusinessHolidays.Add(new DateTime(<span class="CodeOption">2020</span>, <span class="CodeOption">12</span>, <span class="CodeOption">24</span>).Date);<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Boxing Day (Canada, UK), 2020</span><br />&#160;&#160;&#160;&#160;bp.Vars.BusinessHolidays.Add(new DateTime(<span class="CodeOption">2020</span>, <span class="CodeOption">12</span>, <span class="CodeOption">26</span>).Date);<br /><span class="CodeComment">//=============================================================</span><br /><br /><span class="CodeComment">//===========Create a New Holiday Calendar=====================</span><br />&#160;&#160;&#160;&#160;<span class="CodeComment">//&#160;Add a completely new Holiday calendar and overwrite the default<br />&#160;&#160;&#160;&#160;//&#160;US&#160;holidays. You must declare the  namespace (i.e. <br />&#160;&#160;&#160;&#160;// Using System.Collections.Generic)or use the namespace inline <br />&#160;&#160;&#160;&#160;// to create a new HashSet</span><br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Create the new HashSet to overwrite the default holidays</span><br />&#160;&#160;&#160;&#160;bp.Vars.BusinessHolidays = new HashSet&lt;DateTime&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Add the new holidays</span><br />&#160;&#160;&#160;&#160;<span class="CodeComment">//New Year's Day</span><br />&#160;&#160;&#160;&#160;bp.Vars.BusinessHolidays.Add(new DateTime(<span class="CodeOption">2020</span>, <span class="CodeOption">1</span>, <span class="CodeOption">1</span>).Date);<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Canada Day</span><br />&#160;&#160;&#160;&#160;bp.Vars.BusinessHolidays.Add(new DateTime(<span class="CodeOption">2020</span>, <span class="CodeOption">7</span>, <span class="CodeOption">1</span>).Date);<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Independence Day (US)</span><br />&#160;&#160;&#160;&#160;bp.Vars.BusinessHolidays.Add(new DateTime(<span class="CodeOption">2020</span>, <span class="CodeOption">7</span>, <span class="CodeOption">4</span>).Date);<br /><span class="CodeComment">//=============================================================</span><br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<span class="CodeComment"><br />//===========Add Holidays to the Default Calendar==============</span><br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Christmas Eve, 2020</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.BusinessHolidays.Add(new DateTime(<span class="CodeOption">2020</span>, <span class="CodeOption">12</span>, <span class="CodeOption">24</span>).Date);<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Boxing Day (Canada, UK), 2020</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.BusinessHolidays.Add(new DateTime(<span class="CodeOption">2020</span>, <span class="CodeOption">12</span>, <span class="CodeOption">26</span>).Date);<br /><span class="CodeComment">//=============================================================</span><br /><br /><span class="CodeComment">//===========Create a New Holiday Calendar=====================</span><br />&#160;&#160;&#160;&#160;<span class="CodeComment">//&#160;Add a completely new Holiday calendar and overwrite the default<br />&#160;&#160;&#160;&#160;//&#160;US&#160;holidays. You must declare the  namespace (i.e. <br />&#160;&#160;&#160;&#160;// Using System.Collections.Generic)or use the namespace inline <br />&#160;&#160;&#160;&#160;// to create a new HashSet</span><br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Create the new HashSet to overwrite the default holidays</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.BusinessHolidays = new HashSet&lt;DateTime&gt;();<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Add the new holidays</span><br />&#160;&#160;&#160;&#160;<span class="CodeComment">//New Year's Day</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.BusinessHolidays.Add(new DateTime(<span class="CodeOption">2020</span>, <span class="CodeOption">1</span>, <span class="CodeOption">1</span>).Date);<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Canada Day</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.BusinessHolidays.Add(new DateTime(<span class="CodeOption">2020</span>, <span class="CodeOption">7</span>, <span class="CodeOption">1</span>).Date);<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Independence Day (US)</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.BusinessHolidays.Add(new DateTime(<span class="CodeOption">2020</span>, <span class="CodeOption">7</span>, <span class="CodeOption">4</span>).Date);<br /><span class="CodeComment">//=============================================================</span><br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -44,7 +44,7 @@
                 <p>
                     <MadCap:keyword term="BusinessHourStart" />This variable enables you to control when business hours start, and is used in calculations of process due dates. The default value is "8" (8:00 AM).</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This organization's business day starts at 7am</span><br />&#160;&#160;&#160;&#160;bp.Vars.BusinessHourStart = <span class="CodeOption">7</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This organization's business day starts at 7am</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.BusinessHourStart = <span class="CodeOption">7</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -55,7 +55,7 @@
                 <p>
                     <MadCap:keyword term="BusinessHourStop">&#160;</MadCap:keyword>This variable enables you to control when business hours end, and is used in calculations of process due dates.  The default Value is "17" (5:00 PM).</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This organization's business day ends at 4pm</span><br />&#160;&#160;&#160;&#160;bp.Vars.BusinessHourStop = <span class="CodeOption">16</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This organization's business day ends at 5pm</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.BusinessHourStop = <span class="CodeOption">17</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -66,7 +66,7 @@
                 <p>
                     <MadCap:keyword term="CheckReminderBusinessHours">&#160;</MadCap:keyword>This variable enables you to control if process reminders should be sent ONLY during business hours. The default value for this variable is "true".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Only send reminders during business hours</span><br />&#160;&#160;&#160;&#160;bp.Vars.CheckReminderBusinessHours = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Only send reminders during business hours</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.CheckReminderBusinessHours = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -77,7 +77,7 @@
                 <p>
                     <MadCap:keyword term="DefaultHTMLEncode" />This variable enables you to set HTML as the default <a href="../SystemVariablesReferenceGuide/Parameters.htm#EncodeTypes">encode type</a> for Form system variables.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Set HTML as the default encode type for Form System variables.</span><br />&#160;&#160;&#160;&#160;bp.Vars.DefaultHTMLEncode = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Set HTML as the default encode type for Form System variables.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.DefaultHTMLEncode = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -88,7 +88,7 @@
                 <p>
                     <MadCap:keyword term="DefaultInviteEmail">&#160;</MadCap:keyword>This variable enables you to set your own .ascx file as the default invite email</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom ASCX file to use as invite email</span><br />&#160;&#160;&#160;&#160;bp.Vars.DefaultInviteEmail = "<span class="CodeOption">~/custom/YourCustomInviteEmail.ascx</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom ASCX file to use as invite email</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.DefaultInviteEmail = "<span class="CodeOption">~/custom/YourCustomInviteEmail.ascx</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -99,7 +99,7 @@
                 <p>
                     <MadCap:keyword term="DefaultPasswordEmail">&#160;</MadCap:keyword>This variable enables you to set your own .ascx file as the default password reminder email</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom ASCX file to use as password reminder email</span><br />&#160;&#160;&#160;&#160;bp.Vars.DefaultPasswordEmail = "<span class="CodeOption">~/custom/YourCustomPasswordEmail.ascx</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom ASCX file to use as password reminder email</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.DefaultPasswordEmail = "<span class="CodeOption">~/custom/YourCustomPasswordEmail.ascx</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -110,7 +110,7 @@
                 <p>
                     <MadCap:keyword term="DefaultTimelineEmail">&#160;</MadCap:keyword>This variable enables you to set your own .ascx file as the default Timeline email.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom ASCX file to use as Timeline email</span><br />&#160;&#160;&#160;&#160;bp.Vars.DefaultTimelineEmail =  "<span class="CodeOption">~/custom/YourCustomDefaultEmail.ascx</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom ASCX file to use as Timeline email</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.DefaultTimelineEmail =  "<span class="CodeOption">~/custom/YourCustomDefaultEmail.ascx</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -121,7 +121,7 @@
                 <p>
                     <MadCap:keyword term="DefaultWorkflowEmail">&#160;</MadCap:keyword>This variable enables you to set your own .ascx file as the default process email template.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /> &#160;&#160;&#160;<span class="CodeComment">// Custom ASCX file to use as process email template</span><br />&#160;&#160;&#160;&#160;bp.Vars.DefaultWorkflowEmail="<span class="CodeOption">~/custom/YourCustomDefaultEmail.ascx</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /> &#160;&#160;&#160;<span class="CodeComment">// Custom ASCX file to use as process email template</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.DefaultWorkflowEmail="<span class="CodeOption">~/custom/YourCustomDefaultEmail.ascx</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -134,7 +134,7 @@
                 <p>
                     <MadCap:keyword term="DisabledTabsDisabled" />This variable, when set to "true", enables users to disable individual tabs in form definitions that use the TabStrip/TabContent controls. The default for this option is "False".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Enable Tab Control disabling</span><br />&#160;&#160;&#160;&#160;Vars.DisabledTabsDisabled = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Enable Tab Control disabling</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.DisabledTabsDisabled = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -145,7 +145,7 @@
                 <p>
                     <MadCap:keyword term="ForceMobileAdvanced" />This variable, when set to "true", will make every connection to Process Director a mobile device connection. Even Desktop connections will be presented as mobile connections. This can he helpful for preventing some mobile devices from trying to use the Desktop UI for Process Director.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Force mobile connection</span><br />&#160;&#160;&#160;&#160;bp.Vars.ForceMobileAdvanced = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Force mobile connection</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ForceMobileAdvanced = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -157,7 +157,7 @@
                     <MadCap:keyword term="ForceHttpOnlyCookies" />This variable, when set to "true", will force the the “HttpOnly” attribute be used on session cookies in the browser. The default value for this variable is "false".</p>
                 <p class="PDNote"> <img src="../Resources/Images/i2.png" alt="Note" /> Enabling this setting will prevent the use of the BP Logix plugin for editing Word-based forms.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Force HttpOnly attribute for session cookies</span><br />&#160;&#160;&#160;&#160;bp.Vars.ForceHttpOnlyCookies = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Force HttpOnly attribute for session cookies</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ForceHttpOnlyCookies = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -169,7 +169,7 @@
                     <MadCap:keyword term="ForceSecureCookies" />This variable, when set to "true", will force the “Secure” attribute be used on session cookies in the browser. The default value for this variable is "false".</p>
                 <p class="PDNote"> <img src="../Resources/Images/i2.png" alt="Note" /> This setting is only valid for https sessions.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Force secure cookies for HTTPS</span><br />&#160;&#160;&#160;&#160;bp.Vars.ForceSecureCookies = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Force secure cookies for HTTPS</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ForceSecureCookies = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -180,7 +180,7 @@
                 <p>
                     <MadCap:keyword term="RefreshParentWorkspaces" />This variable, when set to the default value of "true", enables the home workspace to be refreshed after completing tasks from an email. To disable this feature, set the value to "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Turn off workspace refresh</span><br />&#160;&#160;&#160;&#160;bp.Vars.RefreshParentWorkspaces = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Turn off workspace refresh</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.RefreshParentWorkspaces = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -191,7 +191,7 @@
                 <p>
                     <MadCap:keyword term="RemoveSIDFromJS" /> By default, this variable is set to "true" which prevents the Windows Session ID from being transmitted via JavaScript. Some older versions of Internet Explorer, however, require Session IDs to be passed on the URL for popup windows that are opened via JavaScript. So, if you encounter this scenario, set this variable to "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Pass the SID via JavaScript to popup windows</span><br />&#160;&#160;&#160;&#160;bp.Vars.RemoveSIDFromJS = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Pass the SID via JavaScript to popup windows</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.RemoveSIDFromJS = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

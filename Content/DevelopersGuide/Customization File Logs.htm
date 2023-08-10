@@ -16,7 +16,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v4.55 and higher logs XML import events, goal evaluations, and Active Directory syncs by default, which means that the default value for this variable is "true". This logging can be turned off by setting this variable to false.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Turn off database logging for imports, AD Syncs, etc.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableDatabaseLogs = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Turn off database logging for imports, AD Syncs, etc.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fEnableDatabaseLogs = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -29,7 +29,7 @@
                 <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> Prior to Process Director v5.3, clearing out the old logs requires resetting the nImportLogDays Custom Variable. The nImportLogDays was deprecated in v5.3 and replaced with nImportLogSyncDays.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent detailed AD&#160;Sync logging</span><br />&#160;&#160;&#160;&#160;Vars.fKeepADSyncInfoLogs = <span class="CodeOption">false</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent detailed AD&#160;Sync logging</span><br />&#160;&#160;&#160;&#160;Vars.fKeepADSyncInfoLogs = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -40,7 +40,7 @@
                 <p>
                     <MadCap:keyword term="nArchiveLogDays">&#160;</MadCap:keyword>This variable enables you to control the number of days that Process Director should retain its logs. Logs will be archived in the /App_Data/log_archive/ folder. This custom variable is available only with users who have the Compliance edition for on-site installations, or a cloud installation.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.nArchiveLogDays = <span class="CodeOption">7</span>; <span class="CodeComment">// archives logs for a week</span><br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nArchiveLogDays = <span class="CodeOption">7</span>; <span class="CodeComment">// archives logs for a week</span><br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -53,7 +53,7 @@
                     <img src="../Resources/Images/i.png" alt="Important" /> This Custom Variable has been deprecated in Process Director v5.3.</p>
                 <p>Process Director v4.55 and higher logs XML import events, goal evaluations, and Active Directory syncs by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep logs for 45 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogDays = <span class="CodeOption">45</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep logs for 45 days</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nImportLogDays = <span class="CodeOption">45</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -64,7 +64,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs goal evaluations by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep Goal logs for 2 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogGoalDays = <span class="CodeOption">2</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep Goal logs for 2 days</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nImportLogGoalDays = <span class="CodeOption">2</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -75,7 +75,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs XML&#160;imports by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep XML import logs for 15 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogImportDays = <span class="CodeOption">15</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep XML import logs for 15 days</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nImportLogImportDays = <span class="CodeOption">15</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -86,7 +86,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs Knowledge View executions by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep KV&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogKVRunDays = <span class="CodeOption">5</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep KV&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nImportLogKVRunDays = <span class="CodeOption">5</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -97,7 +97,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs Machine Learning object publications by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep ML&#160;Pub logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogMLPublishDays = <span class="CodeOption">5</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep ML&#160;Pub logs for 5 days</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nImportLogMLPublishDays = <span class="CodeOption">5</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -108,7 +108,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs Stream Action runs by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep SA&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogSArunDays = <span class="CodeOption">5</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep SA&#160;run logs for 5 days</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nImportLogSArunDays = <span class="CodeOption">5</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -119,7 +119,7 @@
             <MadCap:dropDownBody>
                 <p>Process Director v5.3 and higher logs Active Directory synchronizations by default, and stores the logs for 30 days. This variable enables you to change the duration from 30 days, to a number of days of your choice.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep AD Sync logs for 5 days</span><br />&#160;&#160;&#160;&#160;bp.Vars.nImportLogSyncDays = <span class="CodeOption">5</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep AD Sync logs for 5 days</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nImportLogSyncDays = <span class="CodeOption">5</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -130,7 +130,7 @@
                 <p>
                     <MadCap:keyword term="nMaxADSyncLogEvents" />This variable sets the maximum number of synchronization log events that will be displayed on the <a href="../SystemAdministratorGuide/Creating an AD Sync Profile.htm#SyncLogHistory">Active Directory Sync Log History</a> page.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;//Default is 200 </span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxADSyncLogEvents = <span class="CodeOption">100</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars (BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;//Default is 200 </span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nMaxADSyncLogEvents = <span class="CodeOption">100</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -141,7 +141,7 @@
                 <p>
                     <MadCap:keyword term="nMaxLogBackups">&#160;</MadCap:keyword>This variable enables you to set the maximum number of log files. After a log file reaches the size configured by nMaxLogFileSize, it will “wrap” in a circular log file queue.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep a maximum of 20 wrapping log files</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxLogBackups = <span class="CodeOption">20</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Keep a maximum of 20 wrapping log files</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nMaxLogBackups = <span class="CodeOption">20</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -152,7 +152,7 @@
                 <p>
                     <MadCap:keyword term="nMaxLogFileSize">&#160;</MadCap:keyword>This variable enables you to set the maximum size of the wrapping log files. Specify this value in kilobytes.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will set the maximum log file size to 3 meg.</span><br />&#160;&#160;&#160;&#160;bp.Vars.nMaxLogFileSize = <span class="CodeOption">3000</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// This will set the maximum log file size to 3 meg.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nMaxLogFileSize = <span class="CodeOption">3000</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>

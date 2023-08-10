@@ -16,7 +16,7 @@
                 <p>
                     <MadCap:keyword term="fAllowV6Import">&#160;</MadCap:keyword>This variable enables you to control whether the iMarkup Server V6 import option appears in the Content List.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fAllowV6Import = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fAllowV6Import = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -27,7 +27,7 @@
                 <p>
                     <MadCap:keyword term="fCONTAINSUseValueSearchOnly" />When using full-text search operators, such as (Contains (Lexical) search operations may take a long time, especially when searching many records containing long text fields. This custom variable can speed up the operation of full text searches by limiting the search to the first 256 characters of the field being searched. While this may substantially speed up the search operation, it also reduces the accuracy of the search results, as search terms that aren't included in the first 256 characters of the field will be ignored.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Speed up full-text searching</span><br />&#160;&#160;&#160;&#160;bp.Vars.fCONTAINSUseValueSearchOnly = <span class="CodeOption">true</span>; <br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<span class="CodeComment"><br />&#160;&#160;&#160;&#160;// Speed up full-text searching</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fCONTAINSUseValueSearchOnly = <span class="CodeOption">true</span>; <br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -37,7 +37,7 @@
             <MadCap:dropDownBody>
                 <p>
                     <MadCap:keyword term="fEnableMultFormFieldsInCols" />This Boolean variable enables Knowledge View designers to mix the use of the form field chooser from the <span class="CodeComment">Choose System Variable</span> dialog box and FORM system variables in Knowledge View columns in Knowledge Views that return results from multiple Form Definitions. The default value for this variable is "True". Setting this variable to "False" will require that all fields be chosen from the Field Chooser.</p>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Allows mixing methods for choosing form fields in KView Columns.</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableMultFormFieldsInCols = <span class="CodeOption">true</span>; <br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Allows mixing methods for choosing form fields in KView Columns.</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fEnableMultFormFieldsInCols = <span class="CodeOption">true</span>; <br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -48,7 +48,7 @@
                 <p>
                     <MadCap:keyword term="fEnableTransOnKVIEW">&#160;</MadCap:keyword>When true, this option enables running a SQL transaction prior to running the command to run a Knowledge View. Once the Knowledge View has been run, the transaction is rolled back. Running the transaction will aide in database concurrency for complex filtering on the Knowledge View, using the IsolationLevel.ReadUncommitted functionality on SQL Server only. This isn't enabled for Oracle because Oracle only supports ReadCommitted and Serializable, which would commit the transaction to the database. The default value for this variable is "true". Setting the value to "false" will prevent the SQL transaction from running.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Disables running the automatic SQL Transaction</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableTransOnKVIEW = <span class="CodeOption">false</span>; <br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Disables running the automatic SQL Transaction</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fEnableTransOnKVIEW = <span class="CodeOption">false</span>; <br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -60,7 +60,7 @@
                     <MadCap:keyword term="fEnableTransOnSELECT">&#160;</MadCap:keyword>Knowledge Views use a transaction that will aide in database concurrency for complex filtering on the Knowledge View. This is done by having a transaction around the KVIEW SELECT. The default is to enable this functionality, but it can be turned off by setting this in the custom vars:</p>
                 <p>This function is only applicable on SQL Server (not Oracle).</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Disables running the automatic SQL Transaction</span><br />&#160;&#160;&#160;&#160;bp.Vars.fEnableTransOnSELECT = <span class="CodeOption">false</span>; <br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Disables running the automatic SQL Transaction</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fEnableTransOnSELECT = <span class="CodeOption">false</span>; <br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -71,7 +71,7 @@
                 <p>
                     <MadCap:keyword term="fFormDataTrans">&#160;</MadCap:keyword>When true, this system variable enables database transactions for certain form field updates.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Enables transactions for some form field updates</span><br />&#160;&#160;&#160;&#160;bp.Vars.fFormDataTrans = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Enables transactions for some form field updates</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fFormDataTrans = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -82,7 +82,7 @@
                 <p>
                     <MadCap:keyword term="fFormSaveUpdatesOnly">&#160;</MadCap:keyword>When true, this system variable ensures that, when saving (submitting) Forms, only modified fields will be updated in the database. This option's default setting is "true". This setting enhances system performance.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fFormSaveUpdatesOnly = <span class="CodeOption">true</span>;<span class="CodeComment"> // Saves only updated form data</span><br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fFormSaveUpdatesOnly = <span class="CodeOption">true</span>;<span class="CodeComment"> // Saves only updated form data</span><br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -93,7 +93,7 @@
                 <p>
                     <MadCap:keyword term="fFormSkipDisableFieldsSave" />When set to "true", this system variable ensures that disabled form fields can't be edited via client JavaScript, and only set via server directives, when additional security is desired. For Cloud installations of Process Director, the default value for this variable has been set to "true". For all other versions, the default value of this variable is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disables JavaScript changes to disabled fields</span><br />&#160;&#160;&#160;&#160;bp.Vars.fFormSkipDisableFieldsSave = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disables JavaScript changes to disabled fields</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fFormSkipDisableFieldsSave = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -104,7 +104,7 @@
                 <p>
                     <MadCap:keyword term="fFormSkipHiddenFieldsSave" />When set to "true", this variable ensures that hidden form fields can't be edited via client JavaScript, and only set via server directives, when additional security is desired. For Cloud installations of Process Director, the default value for this variable has been set to "true". For all other versions, the default value of this variable is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disables JavaScript changes to hidden fields</span><br />&#160;&#160;&#160;&#160;bp.Vars.fFormSkipHiddenFieldsSave = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disables JavaScript changes to hidden fields</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fFormSkipHiddenFieldsSave = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -115,7 +115,7 @@
                 <p>
                     <MadCap:keyword term="fHideLabelsFromConditions" />For Process Director v5.33 and higher, setting this variable to "true" hides certain controls (Comment Log, Buttons, Button Area, Embedded Sections, Routing Slip, Labels) from the condition builder. These fields are generally not used to store data, so may not be needed in the Condition Builder. The default value for this variable is "false".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Hides non-data fields from the Condition Builder</span><br />&#160;&#160;&#160;&#160;bp.Vars.fHideLabelsFromConditions = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Hides non-data fields from the Condition Builder</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fHideLabelsFromConditions = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -126,7 +126,7 @@
                 <p>
                     <MadCap:keyword term="fListenToEmailSetting" />This variable when set to true, will force the activity/step to use the "participants when activity starts" checkbox to determine if an email should be sent. Previously an email was unconditionally sent when a user was added/reassigned in a running step/activity by an administrator. The default value for this variable is false.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Use the task's email setting for administrative task change notifications</span><br />&#160;&#160;&#160;&#160;bp.Vars.fListenToEmailSetting = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Use the task's email setting for administrative task change notifications</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fListenToEmailSetting = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -137,7 +137,7 @@
                 <p>
                     <MadCap:keyword term="fPDFCreateOtherAsAttachments">&#160;</MadCap:keyword>This variable enables you to control whether the CreatePDFFromDocument API will create a container PDF file for documents that can't be converted directly to a PDF file.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Create container PDF&#160;file for non-convertible documents</span><br />&#160;&#160;&#160;&#160;bp.Vars.fPDFCreateOtherAsAttachments = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Create container PDF&#160;file for non-convertible documents</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fPDFCreateOtherAsAttachments = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -149,7 +149,7 @@
                     <MadCap:keyword term="FormFieldsAllowDisabledURLUpdate" />This method is configured in the PreSetSystemVars method of the Custom.Vars file. It enables you to specify the field names for fields whose values you wish to  set using a URL&#160;parameter. Any field name specified by this method can have the value modified by a URL&#160;parameter on any Form that uses a field with the specified name.</p>
                 <p>For instructions on implementing this method, see the <a href="../ImplementersReference/Form Definition URL.htm" target="_blank">Form Definition URL</a> topic in the Implementer's Reference.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Fields to set via URL&#160;Parameter</span><br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">FieldName1</span>");<br />&#160;&#160;&#160;&#160;bp.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">FieldName2</span>");<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Fields to set via URL&#160;Parameter</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">FieldName1</span>");<br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.FormFieldsAllowDisabledURLUpdate.Add("<span class="CodeOption">FieldName2</span>");<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -160,7 +160,7 @@
                 <p>
                     <MadCap:keyword term="fReAuthFillUserID">&#160;</MadCap:keyword>When set to true, a Process Director user will have to reenter his User ID when prompted for re-authentication. This variable is set to false by default, which means that the User ID is filled in automatically on a Form’s <span class="NamedControl">Re-Authenticate</span> control.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Force reauthentication</span><br />&#160;&#160;&#160;&#160;bp.Vars.fReAuthFillUserID = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Force reauthentication</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fReAuthFillUserID = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -171,7 +171,7 @@
                 <p>
                     <MadCap:keyword term="fSkipNextPageCheck">&#160;</MadCap:keyword>When a user tries to view a page in Process Director while not logged in, he will be redirected to a login page. After he logs in, he will be directed back to the original page he was attempting to view. This variable is set to false by default. If it is set to false, then the user won't be redirected after logging in if the URL interface parameter is invalid. This flag may need to be set to true if the users are navigating through a firewall that changes the URL.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Redirect users after login</span><br />&#160;&#160;&#160;&#160;bp.Vars.fSkipNextPageCheck = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Redirect users after login</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fSkipNextPageCheck = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -182,7 +182,7 @@
                 <p>
                     <MadCap:keyword term="fSkipWhereUsedCheck">&#160;</MadCap:keyword>This variable prevents all usage checking upon the deletion of an object on the Content List. When set to true, Process Director won't check for the locations in which an object is used. This variable need only be set to true if Process Director takes too long to present a user with a dialogue showing him where the object is used upon deletion.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do not check for object locations</span><br />&#160;&#160;&#160;&#160;bp.Vars.fSkipWhereUsedCheck = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Do not check for object locations</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fSkipWhereUsedCheck = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -193,7 +193,7 @@
                 <p>
                     <MadCap:keyword term="fUseAsyncUpload" />By default, file uploads for Form attachments occur synchronously with Form submissions, meaning that the Form submission can't complete until all files are uploaded. Setting this value to "true" enables the form to be submitted while a separate process performs the file uploads . This can prevent Form submissions from hanging as they wait for large file uploads, or low bandwidth.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;<span class="CodeComment">&#160;&#160;// Enables files uploads to be processed separately<br />&#160;&#160;&#160; // from Form submissions</span><br />&#160;&#160;&#160;&#160;bp.Vars.fUseAsyncUpload = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;<span class="CodeComment">&#160;&#160;// Enables files uploads to be processed separately<br />&#160;&#160;&#160; // from Form submissions</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fUseAsyncUpload = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -204,7 +204,7 @@
                 <p>
                     <MadCap:keyword term="fWebServiceAllowCredentialsURL">&#160;</MadCap:keyword>This variable enables callers of web services using REST to pass authentication credentials on the URL. The default value of this variable is "true". If this variable is set to "false", the <a href="Customization File Administration.htm#fWebServiceAuth">fWebServiceAuth</a> custom variable will also have to be set to false, as there will be no way to pass credentials for authorization.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable Authentication credentials<br></br>&#160;&#160;&#160;&#160;// Requires also setting the fWebServiceAuth var to false</span><br />&#160;&#160;&#160;&#160;bp.Vars.fWebServiceAllowCredentialsURL = <span class="CodeOption">true</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Disable Authentication credentials<br />&#160;&#160;&#160;&#160;// Requires also setting the fWebServiceAuth var to false</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fWebServiceAllowCredentialsURL = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -215,7 +215,7 @@
                 <p>
                     <MadCap:keyword term="nDBCommandTimeout">&#160;</MadCap:keyword>This variable enables you to set the default database timeout value (normally 30 seconds).</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Set the DB&#160;timeout to 60 seconds</span><br />&#160;&#160;&#160;&#160;bp.Vars.nDBCommandTimeout = <span class="CodeOption">60</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Set the DB&#160;timeout to 60 seconds</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nDBCommandTimeout = <span class="CodeOption">60</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -227,7 +227,7 @@
                     <MadCap:keyword term="nDBTransIsolationLevel">
                     </MadCap:keyword>This variable enables you to override the default database transaction isolation level if set to any value other than "0" or "-1". The default is "0".</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Override the default database transaction isolation level</span><br />&#160;&#160;&#160;&#160;bp.Vars.nDBTransIsolationLevel = <span class="CodeOption">1</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// Override the default database transaction isolation level</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nDBTransIsolationLevel = <span class="CodeOption">1</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -239,7 +239,7 @@
                     <MadCap:keyword term="nDebugProcessTimeFactor">&#160;</MadCap:keyword>This system variable enables you to multiply the configured lengths of Timeline activities by a given factor. This can be used for test purposes, to shorten the duration of timeline activities relative to their configured due dates. Set this system variable to the factor by which you wish to multiply the configured activity durations.</p>
                 <p>This only works for due dates configured as relative times (e.g. 5 business days). It has no effect on setting due dates to a form field or a system variable. Use of this feature will also trigger the internal timer processing and activity checks on all pages which may hinder performance when enabled.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Activities will take 10% as long as they are <br />&#160;&#160;&#160;&#160;// configured to take</span><br />&#160;&#160;&#160;&#160;bp.Vars.nDebugProcessTimeFactor = <span class="CodeOption">0.1</span>; <br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars (BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Activities will take 10% as long as they are <br />&#160;&#160;&#160;&#160;// configured to take</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nDebugProcessTimeFactor = <span class="CodeOption">0.1</span>; <br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -250,7 +250,7 @@
                 <p>
                     <MadCap:keyword term="nLimitSearchToChars" />This variable  limits the number of characters to be searched in a form field. This optional setting only applies when searching for form data using "contains" form data in the filter. The default is no limit. This variable can provide a performance improvement when searching for form data on systems with millions of rows.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars (BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//&#160;Limit the search to only the first 256 characters in the form data fields.</span><br />&#160;&#160;&#160;&#160;Vars.nLimitSearchToChars = <span class="CodeOption">256</span>;<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars (BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//&#160;Limit the search to only the first 256 characters in the form data fields.</span><br />&#160;&#160;&#160;&#160;Vars.nLimitSearchToChars = <span class="CodeOption">256</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -261,7 +261,7 @@
                 <p>
                     <MadCap:keyword term="nWSTimeout">&#160;</MadCap:keyword>This system variable specifies the time, in milliseconds, that a web service call should wait before timing out.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// The default timeout time is 10 minutes</span><br />&#160;&#160;&#160;&#160;bp.Vars.nWSTimeout = <span class="CodeOption">1000 * 60 * 10</span>;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// The default timeout time is 10 minutes</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.nWSTimeout = <span class="CodeOption">1000 * 60 * 10</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -272,7 +272,7 @@
                 <p>
                     <MadCap:keyword term="sMobileAdvancedTypes" />This variable will enable process director to detect additional browser strings for mobile devices.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will add additional browser agent strings for mobile devices</span><br />&#160;&#160;&#160;&#160;bp.Vars.sMobileAdvancedTypes = "<span class="CodeOption">Android 10, iOS 13, [Some Other Browser Type]</span>";<br />}</p>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// This will add additional browser agent strings for mobile devices</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.sMobileAdvancedTypes = "<span class="CodeOption">Android 10, iOS 13, [Some Other Browser Type]</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -283,7 +283,7 @@
                 <p>
                     <MadCap:keyword term="sUploadAddCookie">&#160;</MadCap:keyword>This variable enables you to identify an HTTP cookie that should be added to the document and Form upload web service call. Some session managers require a cookie for all page access. If this variable is specified, the named cookie will be copied to the upload requests using obj_upload.aspx.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// SiteMinder requires the SMSESSION cookie</span><br />&#160;&#160;&#160;&#160;bp.Vars.sUploadAddCookie = "<span class="CodeOption">SMSESSION</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br /><span class="CodeComment">&#160;&#160;&#160;&#160;// SiteMinder requires the SMSESSION cookie</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.sUploadAddCookie = "<span class="CodeOption">SMSESSION</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -294,7 +294,7 @@
                 <p>
                     <MadCap:keyword term="ValidationPhonePattern">&#160;</MadCap:keyword>This variable contains a regular expression used to validate form fields containing phone numbers. See the example for the default value of this variable:</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Regular expression to use for validating phone numbers</span><br />&#160;&#160;&#160;&#160;bp.Vars.ValidationPhonePattern =  <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;@"<span class="CodeOption">^(?:(?:[\+]?(?&lt;CountryCode&gt;[\d]{1,3}(?:[ ]+|[\-<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;.])))?[(]?(?&lt;AreaCode&gt;[\d]{3})[\-/)]?(?:[ ]+)?)?<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;(?&lt;Number&gt;[a-zA-Z2-9][a-zA-Z0-9 \-.]{6,})(?:(?:[<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;]+|[xX]|(i:ext[\.]?)){1,2}(?&lt;Ext&gt;[\d]{1,5}))?$</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Regular expression to use for validating phone numbers</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ValidationPhonePattern =  <br />&#160;&#160;&#160;&#160;&#160;@"<span class="CodeOption">^(?:(?:[\+]?(?&lt;CountryCode&gt;[\d]{1,3}(?:[ ]+|[\-<br />&#160;&#160;&#160;&#160;&#160;.])))?[(]?(?&lt;AreaCode&gt;[\d]{3})[\-/)]?(?:[ ]+)?)?<br />&#160;&#160;&#160;&#160;&#160;(?&lt;Number&gt;[a-zA-Z2-9][a-zA-Z0-9 \-.]{6,})(?:(?:[<br />&#160;&#160;&#160;&#160;&#160;]+|[xX]|(i:ext[\.]?)){1,2}(?&lt;Ext&gt;[\d]{1,5}))?$</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -305,7 +305,7 @@
                 <p>
                     <MadCap:keyword term="ValidationURLPattern">&#160;</MadCap:keyword>This variable contains a regular expression used to validate URL strings. See the example for the default value of this variable:</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Regular expression to use for validating URLs</span><br />&#160;&#160;&#160;&#160;bp.Vars.ValidationUrlPattern = @"<span class="CodeOption">^(http|https|ftp)\://<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&amp;amp;%\$#\=~])*$</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Regular expression to use for validating URLs</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ValidationUrlPattern = @"<span class="CodeOption">^(http|https|ftp)\://<br />&#160;&#160;&#160;&#160;&#160;[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)<br />&#160;&#160;&#160;&#160;&#160;?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&amp;amp;%\$#\=~])*$</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -316,7 +316,7 @@
                 <p>
                     <MadCap:keyword term="ValidationZipCodePattern">&#160;</MadCap:keyword>This variable contains a regular expression used to validate form fields containing ZIP codes. See the example for the default value of this variable:</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp bp)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Regular expression to use for validating zip codes</span><br />&#160;&#160;&#160;&#160;bp.Vars.ValidationZipCodePattern = @"<span class="CodeOption">^(\d{5}-\d{4}|\d{5}\d{9})$</span>";<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Regular expression to use for validating zip codes</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.ValidationZipCodePattern = @"<span class="CodeOption">^(\d{5}-\d{4}|\d{5}\d{9})$</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>
