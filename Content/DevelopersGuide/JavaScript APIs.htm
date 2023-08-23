@@ -7,6 +7,8 @@
         <h1>
             <MadCap:concept term="Developer" />
             <MadCap:keyword term="JavaScript APIs" />JavaScript APIs</h1>
+        <p>Process Director uses some JavaScript APIs to perform operations to manipulate Form data, or to Open Forms in special circumstances as described below.</p>
+        <h2><a name="Form"></a>Form Data <a href="#Form" class="anchor">#</a></h2>
         <p>Process Director enables you to get or set Form&#160;Field values through JavaScript. Using the JavaScript API enables you to use the appropriate JavaScript Input field attributes for the field type you wish to set. For instance, the value of a text box can be set using the ".value" attribute, while the value of a checkbox can be set using the "checked" attribute.</p>
         <p>When using JavaScript, you can get or set the value of a field using the following syntax:</p>
         <p><code>CurrentForm.FormControls["<span class="CodeOption">FieldName</span>"].valueattribute</code>
@@ -15,5 +17,41 @@
         <p class="CodeBase"><span class="CodeComment">// Set the Value of a Text Box</span>
             <br />CurrentForm.FormControls["<span class="CodeOption">Text1</span>"].value = "<span class="CodeOption">MyValue</span>";<br /><br /><span class="CodeComment">//Get the value of a text box</span><br /><code>var <span class="CodeVariable">myValue </span>= CurrentForm.FormControls["<span class="CodeOption">Text1</span></code>"].value;<br /><span class="CodeComment"><br />// Set the value of a checkbox</span><br />CurrentForm.FormControls["<span class="CodeOption">Checkbox1</span>"].checked = <span class="CodeOption">true</span>;<br /><br /><span class="CodeComment">// Get the Value of a checkbox</span><br /><code>var <span class="CodeVariable">myValue </span></code>= CurrentForm.FormControls["<span class="CodeOption">Checkbox1</span>"].checked;</p>
         <p>JavaScript can be used directly on the Form by inserting an HTML&#160;control on the Form and erasing the <span class="ControlName">Name </span>property of the HTML control.</p>
+        <h2><a name="iPopupSimple"></a>
+            <MadCap:keyword term="iPopupSimple" />iPopupSimple Command <a href="#iPopupSimple" class="anchor">#</a></h2>
+        <p>When creating a Workspace for a new application, it's possible to display a Process Director form as the primary portlet for the Workspace. You might wish to do this when you want the workspace to have a highly customized display and layout, rather than displaying the standard Knowledge Views/Task List in the standard workspace portlets. Using a Form in this manner enables you to design a workspace with custom colors, object locations, branding, etc.</p>
+        <p>There is one drawback to this method of UI design, in that Forms do not call other forms directly in Process Director. In most cases, the purpose of a Form is to collect data about a specific process instance, which can be submitted and used to view/update the data used in the process instance. This Form usage assumes that the primary form will not call additional Forms and, if additional forms are needed, they can be added to the Process Timeline via the <b>Form Actions</b> Timeline Activity. Indeed one can switch back and forth between Forms using this Timeline Activity type.</p>
+        <p>Using a Form as the primary dashboard UI for a Workspace, therefore, represents a unique challenge, in that you will probably want users to have the ability to open Forms, Knowledge Views, or other objects, which is a capability that forms don't have. To enable this feature, a JavaScript command, <span class="KeyTerms">iPopupSimple</span>, enables you to configure a Form button to open a new object instance in a popup window directly from the Form. This JavaScript command takes a single parameter, which is the URL of the Process Director object you wish to open, e.g.:</p>
+        <p><code>iPopupSimple('URLToOpen');</code>
+        </p>
+        <p>This command is conceptually very simple, but using it in an integration, especially when you'd like to use different buttons to open different Process Director objects, ads a fair amount of complexity. Since that's so, let's take a look at how to implement <code>iPopupSimple</code> using an implementation example.</p>
+        <p>First, the Workspace for our sample application is set to use a single portlet for the workspace that displays the Form we wish to use as the Workspace Dashboard.</p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/iPopupSimple.png" />
+        </p>
+        <p>In this example, the <span class="ProcessDirectorObject">Submitter Dashboard</span> is a Process Director Form that will display the application UI. When displayed to the end user, it will look like this:</p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/iPopupSimple1.png" />
+        </p>
+        <p>All of the objects the user sees are designed into the Form. There are several buttons on this form, so for the purposes of this example, let's concentrate solely on the <span class="UIElement">CreatePub</span> button at the top of the Form, which is labeled <span class="ControlName">Create Publication</span>. This button must, when clicked, open a new Form that the user can fill out and submit. Let's take a close look at top portion of the <span class="ProcessDirectorObject">Submitter Dashboard</span> Form in the Online Form Designer.</p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/iPopupSimple2.png" />
+        </p>
+        <p>In addition to the <span class="UIElement">CreatePub</span> button, there's also a <span class="NamedControl">Content Picker</span> control on the left side of the page, named <span class="ControlName">CreateForm</span>. The <span class="ControlName">CreateForm </span>control enables us to specify the Form we want to open when the <span class="UIElement">CreatePub</span> button is clicked. We do this by setting the <span class="ControlName">Default Value</span> property of the <span class="ControlName">CreateForm </span>control to a Content Item, and choosing the <span class="ProcessDirectorObject">Publication Project</span> Form as the Content Item.</p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/iPopupSimple3.png" />
+        </p>
+        <p>We'll use the value of the <span class="ControlName">CreateForm </span>control to help construct the URL we need to call with the <code>iPopupSimple</code> command.</p>
+        <p>The <span class="UIElement">CreatePub </span>button is a simple <span class="NamedControl">Button </span>control. In this case, since we'll be using it to call the <code>iPopupSimple </code>JavaScript command, we'll use its <span class="ControlName">OnClientClick </span>property to call <code>iPopupSimple </code>by placing the command in that property box.</p>
+        <p>
+            <img src="../Resources/Images/DevelopersGuide/iPopupSimple4.png" />
+        </p>
+        <p>Normally, clicking a <span class="NamedControl">Button </span>control prompts a reload of the Form to perform some sort of server-side action. We don't want to do that in this case, so we're using the <span class="ControlName">OnClientClick </span>property to capture the button click event on the client side, which is to say, in the browser, rather than prompting a server-side event.</p>
+        <p>The full syntax of the <code>iPopupSimple </code>command we're using is:</p>
+        <p><code>iPopupSimple('{Interface_URL}form.aspx?formid={:CreateForm,format=ID}');</code>
+        </p>
+        <p>To shorten the URL we need to provide, the JavaScript URL parameter we're passing uses two system variables. <code>INTERFACE_URL</code> provides the base URL of our Process Director Installation, ending in a forward slash, e.g., <code>HTTPS://publications.bplogix.com/</code>. The Form System Variable for the <span class="ControlName">CreateForm </span><span class="NamedControl">Content Picker </span>is formatted to return the FormID of the Form we want to open as a new instance. At run-time, this configuration ensures that, when the <span class="UIElement">CreatePub </span>button is clicked, the <span class="ProcessDirectorObject">Publication Project</span> Form is opened in a new popup window, just as Forms normally open in Process Director.</p>
+        <p>Technically, we don't need to use either of these two system variables to construct the URL parameter that we're passing to <code>iPopupSimple</code>. We could simply hard-code the Form URL into the command. But, that would require typing a long, complex URL into the <span class="ControlName">OnClientClick </span>property box. Moreover, should we need to change the Form we want to open with this button, such as after an update to the application, we'd need to come back and re-type a different (long and complex) URL again. With this configuration, if we need to change the Form we want to open, we just have to change the <span class="ControlName">Default Value</span> of the <span class="ControlName">CreateForm </span><span class="NamedControl">Content Picker</span> to a different Form to update the URL parameter automatically.</p>
+        <p>In this example, we've only discussed opening a Form instance, but using the same process, we can also open Knowledge Views, Charts, or other Content List objects as well. All we need to do is provide the appropriate <span class="NamedControl">Content Picker</span> and <span class="NamedControl">Button </span>controls, and configure the <span class="ControlName">onClientClick </span>property for each of the buttons we need.</p>
     </body>
 </html>
