@@ -181,17 +181,19 @@
                 <MadCap:dropDownHotspot>SMTP Authentication Type</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Form Process Director v5.44.1103, this property enables an OAuth-based connection to Azure services by setting this property to "Office365/Microsoft OAuth".</p>
-                <p>When set to this value, three additional properties will appear to store the appropriate OAuth properties for authenticating with Microsoft Azure services:</p>
+                <p>For Process Director v5.44.1103, this property enables an OAuth-based connection to Azure services by setting this property to "Office365/Microsoft OAuth". When set to this authentication type, three additional settings will appear:</p>
                 <ul>
-                    <li><b><span class="ControlName">SMTP&#160;Tenant ID</span>:</b>&#160;The Azure Tenant ID.</li>
-                    <li><b><span class="ControlName">SMTP&#160;Client ID</span>:</b> The Azure Client ID for the Registered AAD App.</li>
-                    <li><b><span class="ControlName">SMTP Secret</span>:</b> The Azure Client Secret.</li>
+                    <li><span class="ControlName">SMTP&#160;Tenant ID</span>
+                    </li>
+                    <li><span class="ControlName">SMTP Client ID</span>
+                    </li>
+                    <li><span class="ControlName">SMTP Secret</span>
+                    </li>
                 </ul>
                 <p>
                     <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting_7a.png" />
                 </p>
-                <p>For more information on configuring Azure for Process Director, Please see the <a href="../ImplementersReference/Datasources Sharepoint.htm">SharePoint Datasources</a> topic.</p>
+                <p>Please see the <a href="#oauth">Microsoft OAuth for SMTP</a> section at the bottom of this page for more information on the configuration and use of this <span class="ControlName">Authentication Type</span> and its associated properties.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -278,16 +280,54 @@
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="oauth"></a>Microsoft OAuth for SMTP <a href="#oauth" class="anchor">#</a></h2>
-        <p>For Process Director v5.44.1100, additional properties have been added to enable the SMTP settings to access an Azure Exchange365 server using Microsoft's OAuth-based Modern Authentication method.</p>
+        <p>To configure integration between Azure and Process Director, you'll first need to create and register an Azure Active Directory (AAD) Application, if you do not have one. Please see the <a href="Configuring Azure.htm">Configuring Azure for Process Director Integration</a> topic for instructions on how to create and register an AAD Application.</p>
+        <p>Once the AAD&#160;Application has been registered, you'll need to perform some additional configuration to the AAD&#160;Application's settings in Azure.</p>
+        <ol>
+            <li>
+                <p>In the <span class="ControlName">Microsoft Graph </span>section of the <span class="UIElement">API&#160;Permissions</span> area, you'll need to set the <span class="ControlName">Delegated Microsoft Graph</span> property to <code>SMTP.AccessAsUser.All</code></p>
+            </li>
+            <li>
+                <p>In the <span class="UIElement">Authentication </span>area, you'll need to set the <span class="ControlName">Allow public client flows</span> property to: <code>Yes (On)</code></p>
+            </li>
+        </ol>
+        <p>Once configured, you'll need to get the following properties from the AAD Application's settings to transfer to the corresponding OAuth settings for the "Office365/Microsoft OAuth" <span class="ControlName">SMTP&#160;Authentication Type</span>:</p>
         <p>
-            <img src="../Resources/Images/u27.jpg" alt="OAuth SMTP Properties" />
+            <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting_7a.png" />
         </p>
-        <p>Access to Exchange365 can be configured by setting a new dropdown property, <span class="ControlName">SMTP Authentication Type</span>, to "Office365/Microsoft OAuth". When set to this value, three additional properties will be displayed to enable connection to Exchange365, assuming that the appropriate AAD Registered app has been created in Azure.:</p>
-        <ul>
-            <li><span class="ControlName" style="font-weight: bold;">SMTP Tenant ID</span><b>:</b> The Azure Directory (tenant) ID.</li>
-            <li><span class="ControlName" style="font-weight: bold;">SMTP Client ID</span><b>:</b> The Azure Application (client) ID</li>
-            <li><span class="ControlName" style="font-weight: bold;">SMTP Secret</span><b>:</b> The secret or application password the administrator created to use with the AAD Registered App.</li>
-        </ul>
-        <p>Adding these property values will, in addition to the other SMTP account properties for the specific email account you wish to use, will enable connection the specified Exchange365 email account.</p>
+        <ol>
+            <li>
+                <p><span class="ControlName">SMTP Tenant ID</span>
+                </p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>
+                        <p>The ID of the Azure Tenant in which the AAD Registered App resides (Creation of an AAD Registered App requires the existence of a Tenant)</p>
+                    </li>
+                    <li>
+                        <p>The Tenant ID is displayed as the <span class="ControlName">Directory (tenant) ID </span>property on the <span class="UIElement">Overview </span>page of your AAD&#160;Application in Azure, but this value will also be displayed following <code>login.microsoft.com/...</code> in the Endpoint URLs that the App references</p>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <p><span class="ControlName">SMTP Client ID</span>
+                </p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>
+                        <p>The ID of the AAD Registered App</p>
+                    </li>
+                    <li>
+                        <p>This value is displayed as the <span class="ControlName">Application (client) ID</span> property on the <span class="UIElement">Overview </span>page of your AAD Application.</p>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <p><span class="ControlName">SMTP Secret</span>
+                </p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>
+                        <p>The client secret or application password the administrator created to use with the AAD Registered App.</p>
+                    </li>
+                </ol>
+            </li>
+        </ol>
     </body>
 </html>
