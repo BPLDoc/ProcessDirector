@@ -9,7 +9,7 @@
             <MadCap:keyword term="Data List Controls;Forms;Form Controls;Online Form Designer;Datalist;Data List" />Data List Controls</h1>
         <p class="PDNote">
             <img src="../Resources/Images/i2.png" alt="Note" /> This topic is a work in progress for the future release of Process Director v6.0.100. It is subject to change without notice until release.</p>
-        <p>For Process Director v6.0.100 and higher, a new control dropdown menu, <span class="UIElement">Data List</span>, will appear. This menu will contain the selection for the <span class="NamedControl">Data List</span> Form control, and its associated controls.</p>
+        <p>For Process Director v6.0.200 and higher, a new control dropdown menu, <span class="UIElement">Data List</span>, will appear. This menu will contain the selection for the <span class="NamedControl">Data List</span> Form control, and its associated controls.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/Datalist10.png" />
         </p>
@@ -21,7 +21,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/Datalist9.png" />
+                    <img src="../Resources/Images/ImplementersReference/Datalist18.png" />
                 </p>
                 <p>The <span class="NamedControl">Data List </span>control enables the display of table data of nearly any size for display on a Process Director Form. Prior to Process Director v6.0.100, the only method of displaying tabular data was through the use of <a href="Form Online Controls Arrays.htm">Array controls</a>. Array controls, however, can only display relatively large sets of tabular data when the array controls are disabled and displayed only as text. Otherwise, the use of a large number of active controls in a Form array uses excessive system resources, and will make the form nonfunctional after a certain number of fields.</p>
                 <p>The <span class="NamedControl">Data List </span>control, on the other hand, completely solves the issue of presenting and using large data sets on a Form. Data can be selected by cell or by row, and transferred from the <span class="NamedControl">Data List</span> cell or row to a separate set of Form fields (either regular or Array fields). For example, in the screen shot below, the <span class="NamedControl">Data List </span>is displaying a recordset containing 826 rows of data on a Form, with no perceptible loss of Form performance or resource usage.</p>
@@ -29,24 +29,24 @@
                     <img src="../Resources/Images/ImplementersReference/Datalist11.png" />
                 </p>
                 <p>The following fields are available to configure the Data List control.</p>
-                <p><span class="ControlName">Name</span>: The Control's name.</p>
-                <p><span class="ControlName">Selection Mode</span>: This property enables you to specify the method, if any, that will be used to select data in the control. There are three selection options:</p>
+                <p><span class="ControlName" style="font-weight: bold;">Name</span><b>:</b> The Control's name.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Selection Mode</span><b>:</b> This property enables you to specify the method, if any, that will be used to select data in the control. There are three selection options:</p>
                 <ul>
                     <li><i>No Selection</i>: No data will be selected. This is the default option.</li>
                     <li><i>Cell Selection</i>: This option enables users to select one or more specific cells in the list, in order to extract their data. </li>
-                    <li style="font-style: normal;">Row Selection: This option will select one or more data rows, in order to extract data from all of the cells in the selected row(s).</li>
+                    <li style="font-style: normal;"><i>Row Selection</i>: This option will select one or more data rows, in order to extract data from all of the cells in the selected row(s).</li>
                 </ul>
-                <p><span class="ControlName">Virtualization Type</span>: In order for the <span class="NamedControl">Data List </span>control to handle large numbers of records without affecting performance or using excessive memory, the <span class="NamedControl">Data List</span> control provides two options for controlling when records are rendered visible on the page: <i>Visible Rows</i><span class="ControlName"> </span>and <i>Pagination</i>. A third option, <i>None</i>, will not invoke any virtualization for the data.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Virtualization Type</span><b>:</b> In order for the <span class="NamedControl">Data List </span>control to handle large numbers of records without affecting performance or using excessive memory, the <span class="NamedControl">Data List</span> control provides two options for controlling when records are rendered visible on the page: <i>Visible Rows</i><span class="ControlName"> </span>and <i>Pagination</i>. A third option, <i>None</i>, will not invoke any virtualization for the data.</p>
                 <ul>
                     <li> <i>Visible Rows</i>:The <span class="NamedControl">Data List</span> appears as if all of the records were being displayed on a single page, with a vertical scroll bar of the appropriate length. The records themselves, however, are not actually rendered on the page until the vertical scroll bar is moved to the record's location. Each record is rendered individually as its row "scrolls" into view and is discarded when the row scrolls out of view. This is the default selection.</li>
                     <li> <i>Pagination</i>: When using <i>Pagination</i>, the rows displayed on each page are only loaded into the <span class="NamedControl">Data List</span> when the page containing those rows is displayed, and are discarded when a different page is selected for view, rather than displaying it in a long, unbroken table. End users can elect to display 10, 20, or 50 records per page when <i>Pagination</i> is enabled. Though not the default option, and less resource intensive in terms of rendering records, this selection also adds additional pagination controls on the page.</li>
                     <li><i>None</i>: All records are rendered when the <span class="ControlName">Data List</span> is displayed. For a large dataset, this selection will use much more memory, since all records have to be retrieved and rendered when the control displays on the page. Thus, for data that contains more than 50 rows, it's best to use <i>Visible Rows</i> or <i>Pagination</i> to display the data, to minimize the resources needed to display it. Using this selection for large datasets eliminates the memory and resource savings provided by virtualization, and thus largely undercuts the control's purpose, which is to display large datasets with minimal resource usage.</li>
                 </ul>
-                <p><span class="ControlName">Width</span>:&#160;Sets the display width of the control on the form, in either percent or pixels. In most cases, a setting of 100% is the appropriate value for this property.</p>
-                <p><span class="ControlName">Height</span>: Sets the display width of the control on the form, in pixels. </p>
-                <p><span class="ControlName">Grouping</span>: Enables the grouping feature. Users can select a specific column to group all records, in alphabetical order, by the value in the selected column.</p>
-                <p><span class="ControlName">Sorting</span>: Enables the sorting feature, to allow users to sort the table data in ascending or descending order by clicking on the column header of the desired column they wish to sort.</p>
-                <p><span class="ControlName">Column Filtering</span>: Enables users to filter the contents of the list, by adding a text box and filtering criteria to the header of each column.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Width</span><b>:</b>&#160;Sets the display width of the control on the form, in either percent or pixels. In most cases, a setting of 100% is the appropriate value for this property.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Height</span><b>:</b> Sets the display width of the control on the form, in pixels. </p>
+                <p MadCap:conditions="General.All Hidden"><span class="ControlName" style="font-weight: bold;">Grouping</span><b>:</b> Enables the grouping feature. Users can select a specific column to group all records, in alphabetical order, by the value in the selected column.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Sorting</span><b>:</b> Enables the sorting feature, to allow users to sort the table data in ascending or descending order by clicking on the column header of the desired column they wish to sort.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Column Filtering</span><b>:</b> Enables users to filter the contents of the list, by adding a text box and filtering criteria to the header of each column.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/Datalist12.png" />
                 </p>
@@ -83,10 +83,12 @@
                         </tr>
                     </tbody>
                 </table>
-                <p><span class="ControlName">Static Header</span>: Fixes the position of the column headers, so that they don't scroll with the rest of the data when scrolling the list vertically.</p>
-                <p><span class="ControlName">Export to CSV</span>:&#160;Displays an CSV&#160;export icon that, when clicked, will export the list data to a CSV file.</p>
-                <p><span class="ControlName">Export to PDF</span>:&#160;Displays a PDF export icon that, when clicked, will export the list data to a PDF file.</p>
-                <p><span class="ControlName">Refresh</span>: This property, when clicked, will refresh the list data in accordance with the refresh interval set on the Business Value that provides the list data. This property is useful for list data that may change at short intervals.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Static Header</span><b>:</b> Fixes the position of the column headers, so that they don't scroll with the rest of the data when scrolling the list vertically.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Export to CSV</span><b>:</b>&#160;Displays an CSV&#160;export icon in the upper right corner of the control that, when clicked, will export the list data to a CSV file.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Export to PDF</span><b>:</b>&#160;Displays a PDF export icon in the upper right corner of the control that, when clicked, will export the list data to a PDF file.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Refresh</span><b>:</b> This property will display an icon in the upper right corner of the control that, when clicked, will refresh the list data.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Clear</span><b>:</b> This property will display an icon in the upper right corner of the control that, when clicked, will remove all filters and data selections from the list.</p>
+                <p><span class="ControlName" style="font-weight: bold;">Column Resize</span><b>:</b> This property will enable end users to resize the column widths for any column by dragging and dropping a column's borders.</p>
                 <h4>Configuring the List Data</h4>
                 <p>The Field Properties for the data list control are accessible from the <span class="UIElement">Form Controls </span>tab of the Form definition and, for appropriately licensed installations, from the Design Console of the Online Form Designer. One of the <span class="NamedControl">Data List</span> control's Field Properties, the <span class="ControlName">Default Value</span> property, <b style="font-style: italic;">must</b> be set to an appropriate <span class="ProcessDirectorObject">Content List</span> item, usually a Business Value.</p>
                 <p>

@@ -32,15 +32,14 @@
         <p>Migration to AES encryption occurs automatically for customers, by default, when installing v5.44.700 on a single-server installation. <span class="Emphasis">This migration may significantly increase the time needed to upgrade the system</span>, depending on how extensively your installation uses encrypted fields. It is possible to disable the encryption migration, and migrate manually at a later date. </p>
         <p>To disable the migration during upgrade, use the following procedure:</p>
         <ol>
-            <li>Upgrade the Custom Tasks.</li>
             <li>Edit the Custom Variables file to set the <a href="../DevelopersGuide/Customization File Administration.htm#fEnableEncryptionMigration">fEnableEncryptionMigration</a> custom variable to "false".</li>
             <li>Upgrade the server instance.</li>
+            <li>Upgrade the Custom Tasks.</li>
         </ol>
         <p>Migration to AES Encryption can later be done manually by navigating to the <span class="ControlName">Server Control</span> page of the <span class="ProcessDirectorObject">IT&#160;Admin</span> area's <span class="ProcessDirectorObject">Troubleshooting </span>section. In the list of action links on this page, click the link labeled, <span class="UIElement">Apply AES Encryption</span> for Process Director v6.0.100 and higher, or <span class="UIElement">Migrate to AES Encryption</span> for lower applicable versions. The migration will start and run in the background. Logs will indicate when the migration process started and stopped, what tables were modified, and the row count of modified fields. If, for any reason, the migration is stopped, you can simply restart it using the same action link.</p>
         <h4>Multi-Server Installations</h4>
         <p>For multi-instance or load-balanced installations that use more than one Process Director server, the following procedure is required:</p>
         <ol>
-            <li>Update the Custom Tasks on all servers.</li>
             <li>Stop all Process Director/web server instances.</li>
             <li>Upgrade Process Director on the primary system only.</li>
             <li>Start Process Director on the primary system and access a page or log in.</li>
@@ -50,6 +49,7 @@
         <ol MadCap:continue="true">
             <li>Paste those two values, at the same line location, in the  bpProperties.xml files for  all other systems, and save them.</li>
             <li>Upgrade and then start Process Director on the other systems, <span class="Emphasis">one system at a time</span>.</li>
+            <li>Update the Custom Tasks on all servers.</li>
         </ol>
         <p>Additional AES encryption configuration requirements for load-balanced servers are discussed in the <a href="../SystemAdministratorGuide/Load Balancing.htm#_Toc421094545">Load Balancing topic</a> of the System Administrator's guide.</p>
         <p class="Important">
