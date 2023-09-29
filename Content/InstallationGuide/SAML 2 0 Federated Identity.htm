@@ -51,7 +51,9 @@
             <li><code>https://HOSTNAME/login_saml.aspx?SAMLRESPONSE=1&amp;usertype=4&amp;reauth=1&amp;f=</code>
             </li>
         </ul>
-        <p>Additional information is configured to establish the trust relationship with the identity provider. This configuration specifies what element in the SAML assertion identifies the user, and how that user ID will be mapped to the Process Director users.</p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> The <code>usertype </code>URL parameter can be blank, but also accepts a value that corresponds to the correct authentication type for the user, as specified by the <a href="../Database Guide1/Table Definitions.htm#nAuthType">nAuditType enum</a> in the Process Director database, e.g., 1 for a Windows user, 4 for a SAML user, etc., depending on wether your system requires specific identification of user types.</p>
+        <p>Additional information is configured to establish the trust relationship with the identity provider. This configuration specifies what element in the SAML assertion identifies the user, and how that user ID will be mapped to the Process Director users. </p>
         <h2><a name="_Toc421172290"></a>User Mappings <a href="#_Toc421172290" class="anchor">#</a></h2>
         <p>When setting up SAML authentication, you'll establish an association between the identity provider and Process Director, forming a federation. When configuring the identity provider, you must determine the unique identifier that will be passed to Process Director as part of the assertion. This is what will uniquely identify the user to Process Director.</p>
         <p>This value must be unique for all users in Process Director. Process Director also must be able to determine if this user is held by that part of company's identity infrastructure (e.g. AD, LDAP server) synchronized to the server. If so, then all needed information about the user will already be known.</p>
