@@ -97,7 +97,12 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="DefaultPasswordEmail">&#160;</MadCap:keyword>This variable enables you to set your own .ascx file as the default password reminder email</p>
+                    <MadCap:keyword term="DefaultPasswordEmail">&#160;</MadCap:keyword>This variable enables you to set your own .ascx file as the default password reminder email. When constructing this email message, you'll want to create a link to the correct password change page for the user. Creating this link will require the use of a system variable formatter, PWD_GUID, which is a special formatter for use with password changes. This formatter returns the Password Change GUID for the user. This value is returned from the guidPwdChange field from the tblUser table in the Process Director database. This field value is saved to the database when the user requests a password reset and it is reset as soon as they log in. </p>
+                <p>To construct the URL for the passowrd change page in your custom email, you can have the URL dynamically constructed using the following syntax:</p>
+                <p><code>{INTERFACE_URL}user_password_reset.aspx?pwdguid={EMAIL_USER,format=PWD_GUID}</code>
+                </p>
+                <p>The Interface URL system variable will return the interface URL setting from your system to return the base URL for the Process Director server, followed by a slash. The Email User system variable, using the PWD_GUID formatter, will return the Password Change GUID that was set for the user when they asked for a password reset. </p>
+                <p>With this syntax, the requesting user will receive an email with the correct link to the password reset page for their specific password reset request.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Custom ASCX file to use as password reminder email</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.DefaultPasswordEmail = "<span class="CodeOption">~/custom/YourCustomPasswordEmail.ascx</span>";<br />}</p>
             </MadCap:dropDownBody>

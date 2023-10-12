@@ -12,5 +12,9 @@
         <p>The custom page must also add bp.AttemptRememberLogin to the custom login preinit, to see if there is a saved cookie.</p>
         <h2><a name="Managed"></a>Managed Users on Cloud Systems <a href="#Managed" class="anchor">#</a></h2>
         <p>As per ENG-9658, Managed support users will no longer be validated via IP address. "Medium" Password complexity is now required for any Managed Support User on any system. A BPLSupport user, where used on an installation, will have its own password, which must be shared securely.</p>
+        <h2><a name="PDFTron"></a>PDFTron and File Permissions <a href="#PDFTron" class="anchor">#</a></h2>
+        <p>Customers of CDM may run into an issue with PDFTron where they may be unable to open a document for review. This may be because the <code>\website\XODCache</code> folder has incorrect file permissions set.</p>
+        <p>This issue may appear in the logs with entries similar to those below:</p>
+        <p class="CodeBase">(0):ThreadStart_Context():0[5 15:13:38] PDFTron: Before ToXod()<br />(0):ThreadStart_Context():[5 15:13:38] ERROR: PDFTron: Exception during convert to XOD: Exception has been thrown by the target of an invocation.   Stacktrace:    at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)<br />at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)<br />at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)<br />at bpLogix.PDFDocument.ConvertToXOD(String tempFile, String oid, XODConversionMode mode)</p>
     </body>
 </html>
