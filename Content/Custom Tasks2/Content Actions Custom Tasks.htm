@@ -225,9 +225,9 @@
                 <MadCap:dropDownHotspot><a name="ExportFilesToFilesystem"></a><a href="#ExportFilesToFilesystem"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Export Files to <MadCap:keyword term="Filesystem" />Filesystem</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task enables a user to export objects from Process Director to outside file systems. In most cases, this Custom Task should be used instead of the older <span class="ProcessDirectorObject">Export Items</span> Custom Task.</p>
+                <p>This Custom Task enables a user to export objects from Process Director to either a Windows File System folder or to an accessible SFTP server. In most cases, this Custom Task should be used instead of the older <span class="ProcessDirectorObject">Export Items</span> Custom Task.</p>
                 <p class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important!" /> Security enhancements for Process Director v5.0 disable the use of System Variables to configure the <span class="ControlName">Destination Folder</span> property. Additionally, the requirement was imposed that all export paths must be explicitly listed in the Custom Variables file, through the use of the <a href="../DevelopersGuide/Customization File Administration.htm#AllowedExportLocations">AllowedExportLocations</a> Custom Variable.</p>
+                    <img src="../Resources/Images/i.png" alt="Important!" /> Security enhancements for Process Director v5.0 disable the use of System Variables to configure the <span class="ControlName">Destination Folder</span> property. Additionally, the requirement was imposed that all export paths to a Windows File System must be explicitly listed in the Custom Variables file, through the use of the <a href="../DevelopersGuide/Customization File Administration.htm#AllowedExportLocations">AllowedExportLocations</a> Custom Variable.</p>
                 <h4>Export Tab</h4>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/Content Actions Custom Tasks.jpg" style="visibility: visible;mso-wrap-style: square;width: 519px;height: 219px;" />
@@ -323,7 +323,7 @@
                                 <p>Available file systems</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>The file system in which to export the object. This should be a Datasource object that uses the Windows File System as the Datasource Type. For more information on Datasources, please see the Implementer's Reference Guide section entitled Datasource Objects.</p>
+                                <p>The file system in which to export the object. This should be a Datasource object that uses either the <a href="../ImplementersReference/Datasources File.htm#FileSystemDatasource">Windows File System</a> or the <a href="../ImplementersReference/Datasources File.htm#SFTP">SFTP (SSH&#160;Transfer)</a>  Datasource Types. </p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -345,7 +345,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row2">
-                                <p>If you select the "Do Not Use External Links (Ignore)" option, you can enter the file path for your export in the Destination Folder textbox. The location must be one specified by the <a href="../DevelopersGuide/Customization File Administration.htm#AllowedExportLocations">AllowedExportLocations</a> Custom Variable.</p>
+                                <p>If you select the "Do Not Use External Links (Ignore)" option, you can enter the file path for your export in the Destination Folder textbox. The location must be one specified by the <a href="../DevelopersGuide/Customization File Administration.htm#AllowedExportLocations">AllowedExportLocations</a> Custom Variable, if the export is set to use a Windows File System folder. For SFTP transfers, the folder path can be set arbitrarily.</p>
                             </td>
                         </tr>
                     </tbody>
@@ -469,7 +469,7 @@
                 <MadCap:dropDownHotspot><a name="ImportFilesFromFilesystem"></a><a href="#ImportFilesFromFilesystem"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Import files from <MadCap:keyword term="Filesystem" />Filesystem</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This Custom Task enables a user to import files from any accessible file system folder to Process Director. You can select an import folder on the file system and import all files in that folder, including any subfolders, into Process Director. Alternatively, you can specify filters to import only the desired files from the folder, such as limiting the import to files of a certain size or file type.</p>
+                <p>This Custom Task enables a user to import files from any accessible Windows File System folder or SFTP&#160;Server folder to Process Director. You can select an import folder on the file system and import all files in that folder, including any subfolders, into Process Director. Alternatively, you can specify filters to import only the desired files from the folder, such as limiting the import to files of a certain size or file type.</p>
                 <h4>Import/Destination Tabs</h4>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/ImportFilesFromFilesystem.png" />
@@ -510,7 +510,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>The file system Datasource from which you'd like to import items. This should be a Datasource object that uses the Windows File System as the Datasource Type. For more information, see the section of the Implementer's Reference entitled Datasource Objects.</p>
+                                <p>The file system Datasource from which you'd like to import items. This should be a Datasource object that uses either the <a href="../ImplementersReference/Datasources File.htm#FileSystemDatasource">Windows File System</a> or the <a href="../ImplementersReference/Datasources File.htm#SFTP">SFTP (SSH&#160;Transfer)</a>  Datasource Types.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">

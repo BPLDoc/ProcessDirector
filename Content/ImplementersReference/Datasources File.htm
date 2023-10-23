@@ -9,8 +9,10 @@
             <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Files;File Path" />Windows File System Datasources</h1>
         <p>Process Director can connect to your network's file system using any accessible UNC. The primary purpose of this Datasource is to enable the use of some of the <a href="../Custom Tasks2/Content Actions Custom Tasks.htm">Content Actions Custom Tasks</a>, specifically:</p>
         <ul>
-            <li>Import Files from Filesystem</li>
-            <li>Export Files to Filesystem</li>
+            <li><a href="../Custom Tasks2/Content Actions Custom Tasks.htm#ExportFilesToFilesystem">Export Files to Filesystem</a>
+            </li>
+            <li><a href="../Custom Tasks2/Content Actions Custom Tasks.htm#ImportFilesFromFilesystem">Import Files from Filesystem</a>
+            </li>
         </ul>
         <p>Each of these Content Actions Custom Tasks require a Windows File System Datasource to be configured prior to use.</p>
         <p>
@@ -26,8 +28,8 @@
             <li>If user credentials are used in the Datasource configuration, then the site will need to ensure the DefaultAppPool user has the security policy configured to allow impersonation of other users. The app pool user uses impersonation to connect as the user specified in the Datasource's configuration. Previous versions of IIS defaulted to Impersonation <b>ON</b> for users, but in IIS 7.5, the default was changed to Impersonation <b>OFF</b>.</li>
             <li>Path names may use spaces, e.g., "C:\Users\username\My Documents".</li>
         </ul>
-        <h2>SFTP&#160;(SSH&#160;File Transfer) Datasources</h2>
-        <p>In addition to the standard File System Datasource, users of Process Director v5.12 and higher can use Secure FTP to access and transfer files as well. This Datasource type will enable process director to access a remote file store via secure SSH file transfer.</p>
+        <h2><a name="SFTP"></a>SFTP&#160;(SSH&#160;File Transfer) Datasources <a href="#SFTP" class="anchor">#</a></h2>
+        <p>In addition to the standard File System Datasource, users of Process Director v5.12 and higher can use Secure FTP to access and transfer files as well. This Datasource type will enable process director to access a remote file store via secure SSH file transfer. In most cases, the file transfer will be done via the <a href="../Custom Tasks2/Content Actions Custom Tasks.htm#ExportFilesToFilesystem">Export Files to Filesystem</a> or <a href="../Custom Tasks2/Content Actions Custom Tasks.htm#ImportFilesFromFilesystem">Import Files from Filesystem</a> Custom Tasks. You must have this datasource configured prior to use by the Custom Tasks.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/SFTP.png" />
         </p>
