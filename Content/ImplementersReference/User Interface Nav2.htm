@@ -7,11 +7,20 @@
     <body>
         <h1>
             <MadCap:concept term="Implementation;User Interface" />
-            <MadCap:keyword term="User Interface;UI;Workspace Tabs;Navigation;Navigation Bar;Content List;Content List Objects" /><a name="_Toc421536072"></a>Process Director Navigation 2.0 User Interface</h1>
-        <p>Process Director’s user interface for v6.0.300 is very different from previous versions, and represents a fundamental change for administrators and process designers. At BP&#160;Logix, we've christened this new user interface "Navigator 2.0". </p>
+            <MadCap:keyword term="User Interface;UI;Workspace Tabs;Navigation;Navigation Bar;Content List;Content List Objects" /><a name="_Toc421536072"></a>Process Director Navigator User Interface</h1>
+        <p>Process Director’s user interface for v6.0.300 is very different from previous versions, and represents a fundamental change for administrators and process designers. At BP&#160;Logix, we've christened this new user interface "Navigator". </p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" title="Important" /> If you are using a version prior to v6.0.300, you can view the user interface documentation for your version of the product on the <a href="#" title="User Interface (Legacy)" alt="User Interface (Legacy)">User Interface (Legacy)</a> topic.</p>
         <h2><a name="Overview"></a>Overview <a href="#Overview" class="anchor">#</a></h2>
+        <p>The Navigator UI for Process Director consists of a<span class="ControlName"> Home Page </span>that opens by default, as well as significant changes to the UI features and navigation scheme.</p>
+        <h3>Home Page</h3>
+        <p>When Process Director is first opened, a Home page is displayed that provides access to many features that enables you to begin building Process Director objects quickly. Unlike previous versions of Process Director, the <span class="ProcessDirectorObject">Content List</span> does not serve as the main home page for administrators and designers. It is, instead, accessed via a menu item, as described below. Keep in mind that the Home Page you see on your installation may be slightly different, and may not display all of the elements we discuss in this section of the topic.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/nav23.jpg" />
+        </p>
+        <p>At the top of the home page, large panels provide <span class="UIElement">Create </span>links to enable you to quickly create a new Form, a new, blank application, or to create an application from an existing template contained in the <span class="ProcessDirectorObject">[Template Library]</span> folder of your installation. Additional <span class="UIElement">Learn More</span> links will, when clicked, provide a more detailed explanation of what these features do.</p>
+        <p>Below the large panels, a series of icons are displayed that link to the most recently-configured objects in the system. These links will immediately navigate you to these recent items and open them for configuration, without having to navigate through the Content List to find them.</p>
+        <h3>Navigation Scheme</h3>
         <p>Unlike the tabbed user interface for previous version of Process Director, v6.0.300 introduces a menu-based navigation scheme to provide quicker and easier access to the various features available in the product. The new menus are arrayed across the top of the page and are only visible to users with the appropriate permissions. To provide the fullest overview of the available menu items, we'll look at what a fully authorized system administrator sees.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/nav2.png" />
@@ -20,9 +29,9 @@
         <p>Immediately below the navigation bar, a Workspace bar shows the name of the currently displayed Workspace on the left side of the page. In the example shown above, we're viewing the <span class="ProcessDirectorObject">Admin Profile</span> Workspace. Immediately to the right of the Workspace name, any navigation buttons used in the Workspace will be arrayed from left to right. In this example, we have a single navigation button, which, when clicked, will take you to the Workspace <span class="UIElement">Home </span>page.</p>
         <p>Below the Workspace bar, the contents of the current folder are displayed. Clicking on any item in the contents pane will navigate to that item by opening it.</p>
         <p>Lets take a closer look at each item in this interface.</p>
-        <h2><a name="Navigation"></a>Navigation Menus <a href="#Navigation" class="anchor">#</a></h2>
-        <p>There are three possible navigation menus displayed in the navigation bar, <span class="UIElement">Content List</span>, <span class="UIElement">Workspaces</span>, and <span class="UIElement">Settings</span>. System Administrators will have access to all three of these menus. Normal end users will see only the Workspaces menu, and then, only if they are assigned to more than one workspace. Users assigned to a single Workspace, and with no access to the Content List, will not see any menu items in the navigation bar.</p>
-        <h3><a name="Content"></a>Content List Menu <a href="#Content" class="anchor">#</a></h3>
+        <h3><a name="Navigation"></a>Navigation Menus <a href="#Navigation" class="anchor">#</a></h3>
+        <p>There are four possible navigation menus displayed in the navigation bar, <span class="UIElement">Content List</span>, <span class="UIElement">Workspaces</span>, <span class="UIElement">Settings</span> ,and <span class="UIElement">User Profile</span>. System Administrators will have access to all of these menus. Normal end users will see only the <span class="UIElement">Workspaces </span>menu, if they are assigned to more than one workspace, and the <span class="UIElement">User Profile</span> menu.</p>
+        <h4>Content List Menu</h4>
         <p> The <span class="UIElement">Content List </span>menu is a single, clickable menu item that opens the folder navigation tree for the full Content List.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/nav21.png" />
@@ -66,6 +75,26 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/nav215.png" />
         </p>
+        <h4>Workspaces Menu</h4>
+        <p>The <span class="UIElement">Workspaces </span>Menu provides you with access to all of the workspaces for which you are a member.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/nav2.jpg" />
+        </p>
+        <p>Clicking on any <span class="UIElement">Workspaces </span>menu item will immediately open that workspace to replace the <span class="ProcessDirectorObject">Content List</span>. User who have access to only a single workspace will not be presented with this menu in the UI.</p>
+        <h4>Settings Menu</h4>
+        <p>The <span class="UIElement">Settings </span>menu appears only for users with administrative access to the <span class="ProcessDirectorObject">IT&#160;Admin </span>or <span class="ProcessDirectorObject">Metadata Administration</span> area of the Process Director installation. </p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/nav21.jpg" />
+        </p>
+        <p>Each menu item provides access to a specific section of the administrative portion of the installation. For the specifics of what each section of the IT&#160;Admin area contains, please refer to <a href="../SystemAdministratorGuide/IT Admin Navigation.htm">IT&#160;Admin Area topic</a>, or to the <a href="../SystemAdministratorGuide/Meta Data Administration.htm">Meta Data Administration</a> topic in the Administrator's Guide.</p>
+        <h4>User Profile Menu</h4>
+        <p>The <span class="UIElement">User Profile </span>menu appears at the upper right corner of the screen.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/nav22.jpg" />
+        </p>
+        <p>The<span class="UIElement"> User Profile</span> menu is denoted by one of two visual appearances. For users that do not have a profile image uploaded to their user profile, the menu will display as a generic user icon, as shown above. User with valid profile images will see their profile Image displayed as a circular icon of the same size as the generic icon.</p>
+        <p>For most users, the only two menu items displayed will be the <span class="UIElement">Profile </span>menu, which opens their <span class="ProcessDirectorObject">User Profile</span> page, and the <span class="UIElement">Logout </span>menu, which immediately logs them off of the system.</p>
+        <p>Users who have been granted impersonation ability will also see an <span class="UIElement">Impersonate User</span> menu item, which will open the <span class="ControlName">Impersonation </span>page to enable them to begin impersonating a different user. Form more information on impersonation, please see the <a href="../SystemAdministratorGuide/Impersonation.htm">Impersonation topic</a> of the Administrator's Guide.</p>
         <h2><a name="PD6"></a>Process Director v6.0 and Higher <a href="#PD6" class="anchor">#</a></h2>
         <p>The release of Process Director v6.0 introduced an updated look and feel for the <span class="ProcessDirectorObject">Content List</span>, as well as the display of Knowledge Views. While the functionality is largely unchanged, the UI presents it slightly differently.</p>
         <p>
