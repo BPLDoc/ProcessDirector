@@ -668,6 +668,17 @@
 				case "CTVSEARCHHTMLPAGE":
 				r("custom_tasks2/web_services_custom_tasks.htm#FindTextOnWebPage");
 				break;
+		//Other Features
+			case "CREATETMPL":
+				r("implementersreference/template_library.htm#Creating");
+				break;
+			case "CREATEOBJ":
+				r("implementersreference/managing_content_creating.htm");
+				break;
+			case "IMPORTPDZ":
+				r("implementersreference/importing_exporting_content.htm#ImportWizard");
+				break;
+
 
 		//Error =================================================================================================================================
 			default:
