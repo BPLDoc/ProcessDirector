@@ -10,7 +10,7 @@
         <p>With the implementation of Microsoft's move to <span class="KeyTerms">Modern Authentication</span>, using the Microsoft identity platform, logging into cloud-based versions of SharePoint is no longer possible by simply using a user name and password. Legacy installations that user older versions of SharePoint may still do so, but SharePoint has largely implemented an OAuth-based authentication scheme, with additional security provided by the use of encryption certificates. </p>
         <p>In Process Director v5.44.1000, Modern Authentication for SharePoint was implemented using the <span class="ProcessDirectorObject">SharePoint OAuth </span>Datasource, which only gives access to SharePoint at the Tenant (organizational) level. </p>
         <p>For Process Director v5.44.1103, The <span class="ProcessDirectorObject">SharePoint OAuth</span> Datasource was renamed to <span class="ProcessDirectorObject"><a href="#Tenant"><span class="ProcessDirectorObject">SharePoint OAuth (Tenant)</span></a></span>, while a new Datasource <span class="ProcessDirectorObject"><span href="#Site" class="ProcessDirectorObject"><a href="#Site"><span class="ProcessDirectorObject"><span href="#Site" class="ProcessDirectorObject">SharePoint OAuth (Site)</span></span>,</a></span></span> was added to give access to SharePoint at the Site level, rather than at the entire tenant. </p>
-        <p>The existing <span class="ProcessDirectorObject">SharePoint </span>Datasource, which uses the simple username/password authentication scheme, is still available for customers who are using older versions of SharePoint. This legacy authentication method should be relevant to only a very small minority of customers, and has been renamed to <span class="ProcessDirectorObject">SharePoint (Legacy)</span>.</p>
+        <p>The existing <span class="ProcessDirectorObject">SharePoint </span>Datasource, which uses the simple username/password authentication scheme, is still available for customers who are using older versions of SharePoint. This legacy authentication method should be relevant to only a very small minority of customers, and has been renamed to <span class="ProcessDirectorObject"><a href="#Legacy">SharePoint Legacy</a></span>.</p>
         <p class="Important">
             <MadCap:concept term="Datasources" />
             <img src="../Resources/Images/i.png" alt="Important" /> This update to the SharePoint Datasources will require updating the SharePoint Custom Tasks!</p>
@@ -141,6 +141,15 @@
         </MadCap:dropDown>
         <h2>Conclusion</h2>
         <p>Congratulations! Assuming that you've correctly followed the instructions above, you've now configured both SharePoint Online and Process Director. You can now use this Datasource and the SharePoint Custom Tasks in Process Director to integrate your SharePoint sites and data with Process Director.</p>
+        <h2><a name="Legacy"></a>Sharepoint Legacy Datasource <a href="#Legacy" class="anchor">#</a></h2>
+        <p>For connections to pre-OAuth versions of SharePoint, the SharePoint Legacy datasource type enables you to create a datasource connection to the SharePoint server.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/SharePoint3.png" />
+        </p>
+        <p>There are four properties to configure to create this datasource.</p>
+        <p>The <span class="ControlName">Sharepoint Site URL</span> property enables you to enter the fully qualified URL of the Sharepoint server to which you wish to connect.</p>
+        <p>The <span class="ControlName">User ID </span>must be the user ID for a valid SharePoint User, while the <span class="ControlName">Password </span>property will be the password for the specified user. The <span class="ControlName">Domain </span>property is the SharePoint domain that contains the specified user.</p>
+        <p>Once you've configured the datasource, you can click the <span class="UIElement">Test Connection</span> button and a message banner will appear, notifying you whether the connection was successful.</p>
         <h2>Other Datasource Types</h2>
         <p>To see more information about different <span class="ControlName">Datasource Type</span>s and their configuration, please refer top the following topics:</p>
         <ul>
