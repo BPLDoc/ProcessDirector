@@ -84,12 +84,73 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>The<span class="NamedControl"> Cancel Process</span> button <b style="font-style: italic;">immediately</b> cancels the operation of a Form or process. The cancellation can't be rescinded.</p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> There is no "Undo" feature for this action! BP&#160;Logix recommends this control be used only in Forms that are accessed by administrators, to be used for administrative purposes.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/eFormOnlineControlsActions7.png" />
                 </p>
-                <p>Additionally, you can delete the Timeline, Workflow, and/or Form instance after the cancellation is processed.</p>
-                <p class="Important">
-                    <img src="../Resources/Images/i.png" alt="Important" /> There is no "Undo" feature for this action!</p>
+                <p>Several properties will enable you to cancel or delete process and Form instances. These properties can be used alone or in conjunction with others. Once the button is invoked, the results are irrevocable. </p>
+                <p>BP&#160;Logix strongly suggests that this button be used <b style="font-style: italic;">only in Forms that are used by administrators for system management</b>. Extreme care must be taken to ensure that invoking this button does not cause unwanted effects, or place processes in an unrecoverable error state. <b style="font-style: italic;">Exhaustive testing should be performed in a development environment</b> before deploying any Form that uses the <span class="NamedControl">Cancel Button</span> to your production environment.</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>PROPERTY</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Name</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The name of the control</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Text</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Enables you to specify the text label that is displayed on the button.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Cancel Timeline?</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Cancels the running Process Timeline instance. If this control is displayed in a parent process, this will also cancel all associated subprocesses.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Delete Timeline?</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Cancels the running Process Timeline instance and then delete it from the system.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Cancel Workflow?</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Cancels the running Workflow instance. If this control is displayed in a parent process, this will also cancel all associated subprocesses.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Delete Workflow?</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2"> Cancels the running Workflow  instance and then delete it from the system.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Delete Form?</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Deletes the current Form instance from the system. Deleting the Form without deleting the associated process will create an orphaned process instance, which may place the process in an unrecoverable error state.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Delete Form References?</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Deletes all document attachments or other references for the current Form instance  from the system.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Cancel Parent Process?</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">If invoked in a subprocess, cancels the subprocess' parent process. If the subprocess was invoked synchronously, it will also cancel the running subprocess.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

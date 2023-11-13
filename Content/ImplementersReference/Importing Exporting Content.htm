@@ -65,12 +65,12 @@
         <p>The general rule, therefore, is that deleting object definition in the <span class="ProcessDirectorObject">Content List</span> of a Production system is an extraordinarily bad idea. If you do so, and eliminate vital historical data, then you have to try to restore your database which is a complicated and risky course of action.</p>
         <p>So, to avoid the massive headaches any deletion can cause, only Partition Administrators should be able to delete anything on Production. Moreover, no actual user should ever be given Partition Administrator privileges, in order to ensure that no user can accidentally delete anything. </p>
         <p>Instead, create a specific Partition Administrator account, and require administrative personnel to log out of their personal accounts and log into the Partition Administrator account before deleting anything. And even then, they should take extraordinary care before deleting an object. There are, in fact, a number of other security options you should consider as well, all of which can be found in the Securing Process Director section of the System Administrator's Guide.</p>
+        <h2><a name="_Toc421536092"></a><a name="ExpImp"></a>Exporting and Importing Objects <a href="#ExpImp" class="anchor">#</a></h2>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421536092"></a>Importing and Exporting From the Content List</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="Exporting"></a><a href="#Exporting"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a>Exporting Content List Objects</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <h4>Exporting Content List Objects</h4>
                 <p>Process Director allows groups of objects (folders, documents, process definitions, etc.) to be exported or imported as a single file. This is needed when copying a <span class="ProcessDirectorObject">Content List</span> object/folder/application from a test system to a production server or importing Custom Tasks in to your system. It can also be used to backup entire Process Timelines as you are working on them. To export objects, check off the box next to the names of the files you wish to export, and click the <span class="UIElement">Export</span> action button.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/Export.jpg" />
@@ -82,8 +82,46 @@
                 </p>
                 <p>When you click the <span class="UIElement">Export </span>button, a dialog box will appear than enable you to make changes to the export file name or format. Clicking the <span class="UIElement">OK </span>button will begin the file export, which, for most browsers, will automatically export the file to the default Downloads folder n your local machine.</p>
                 <p><span class="ProcessDirectorObject">Content List</span> items and Meta Data must be exported separately.</p>
-                <h4>Importing Content List Objects</h4>
-                <p>To import a file containing Content List objects, first navigate to the folder in the <span class="ProcessDirectorObject">Content List</span> where you want the imported item(s) to appear. Next, select Import Objects from the Create New dropdown located in the upper right portion of the Content List screen. Selecting this option will open an import dialog box.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ImportingHome"></a><a href="#ImportingHome"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a>Importing Content List Objects from the Home Page</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For users of Process Director v 6.0.300 and higher, Process Director objects can be imported onto the server directly from the <span class="ProcessDirectorObject">Home </span>page. A large panel at the top of the home page, labeled <span class="ControlName">Import</span>, displays an <span class="UIElement">Import </span>button.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/HomeImport.png" />
+                </p>
+                <p>When clicked, the Import button will open an import wizard that will guide you through the process of importing the PDZ file containing the <span class="ProcessDirectorObject">Content List</span> objects.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/HomeImport1.png" />
+                </p>
+                <p>Te begin the import click the <span class="UIElement">Upload File</span> button, which will open the Windows File &#160;Open dialog box. You can use this dialog to navigate to the location of your PDZ file, select it, then click the <span class="UIElement">Open </span>button to specify the file to import. Once the file is selected, it will be displayed in the wizard screen above the <span class="UIElement">Import File</span> Button.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/HomeImport2.png" />
+                </p>
+                <p>On the right side of the wizard, a list of folders will appear. Using this list navigate to the folder into which you wish to import the object. If the PDZ file contains a single object, the object will be imported into the selected location. For PDZ files that contain applications inside a single parent folder, the parent folder will be created as a subfolder of the selected <span class="ProcessDirectorObject">Content List</span> folder.</p>
+                <p>Once you select a folder, it will be highlighted on the tight, and the name of the selected folder will be displayed in the <span class="ControlName">Selected Folder</span> property displayed on the left.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/HomeImport3.png" />
+                </p>
+                <p>You can now click the <span class="UIElement">Import </span>button to import the PDZ file into the selected folder. a Progress icon will appear while the import process occurs. After a successful import, the Import Report will be displayed in the wizard to enable you to ensure the import ran correctly. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/HomeImport5.png" />
+                </p>
+                <p>After reviewing the Import report,  you can click the <span class="UIElement">Close </span>button to exit the wizard. Once the wizard exits, Process Director will automatically navigate you to the specified import location in the <span class="ProcessDirectorObject">Content List</span>.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/HomeImport6.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="ImportingFolder"></a><a href="#ImportingFolder"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a>Importing Content List Objects from inside a Folder)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To import a file containing <span class="ProcessDirectorObject">Content List</span> objects, first navigate to the folder in the <span class="ProcessDirectorObject">Content List</span> where you want the imported item(s) to appear. Next, select <span class="UIElement">Import Objects</span> from the <span class="UIElement">Create New</span> dropdown located in the upper right corner of the  screen. Selecting this option will open an import dialog box.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/Importdialog3.png" />
                 </p>
@@ -95,9 +133,10 @@
                 <p>You should peruse this report to ensure there are no warnings or errors for the import. If there are, you should correct the errors, then re-import the objects until the errors and/or warnings are resolved.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <h2><a name="Other"></a>Other Functions <a href="#Other" class="anchor">#</a></h2>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="_Toc421536093"></a>Copying Objects</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="_Toc421536093"></a>Copying Objects between Content List locations</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>To create a copy of a folder within the <span class="ProcessDirectorObject">Content List</span>, first export the folder using the process described above. Doing so will create an XML file containing the exported information.&#160; </p>

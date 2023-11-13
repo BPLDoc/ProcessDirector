@@ -619,11 +619,11 @@
                 <p>Additionally, this Custom Task can be bound to an Array on a form to launch a new process for each row in the array, via the <span class="UIElement">Array Binding</span> tab.</p>
                 <h4>Launch Data/New Form/Attachments Tabs</h4>
                 <p>
-                    <img src="../Resources/Images/Custom Tasks2/ProcessCT2.png" />
+                    <img src="../Resources/Images/Custom Tasks2/RunProcess.png" />
                 </p>
                 <h4>Array Binding Tab</h4>
                 <p>
-                    <img src="../Resources/Images/Custom Tasks2/ProcessCT3.png" />
+                    <img src="../Resources/Images/Custom Tasks2/RunProcess1.png" />
                 </p>
                 <h4>Advanced Tabs</h4>
                 <p>
@@ -666,7 +666,8 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>NEW FORM TAB</p>
+                                <p><b>NEW FORM TAB</b>
+                                </p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -677,8 +678,28 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Picker control to select the new form to attach to the process. Multiple forms can be added by clicking the Add Mapping button.</p>
+                                <p>Picker control to select the new form to attach to the process. </p>
                             </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Add Mapping</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This button will add a new Form control mapping row each time it is clicked. Each mapping row has a set of properties to enable you to transfer data from a control on the Course Form to the Destination Form used by the new process invoked by the Custom Task.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Destination Control</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">List of Form controls</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The destination control into which to place data copied from the Source form, which is usually the default Form for the calling process.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">	Source Control</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">List of Form controls</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The control on the source form from which you wish to copy data.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">	Source Value</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This property enables you to use an arbitrary value as the source value, instead of a <span class="ControlName">Source Control</span>. This property will accept any text input, including System Variables, to provide a source value to place into the selected destination Form control.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
@@ -693,13 +714,13 @@
                                 <p>None<br />Workflow References<br />Timeline References<br />Form References</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>The reference types for new attachments associated with this process.</p>
+                                <p>The reference types for the document attachments that are associated with the source Form or process.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Attach Items To</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Newly Launched Process<br />New Form</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This selection is available only when the Reference Type(s) field is set to a value other than "None". It enables you to attach items to either the new process or the new Form.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This selection is available only when the Reference Type(s) field is set to a value other than "None". It enables you to attach items to either the new process or the new Form that is invoked by the custom Task.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row2">
@@ -714,7 +735,7 @@
                                 <p>List of Form arrays</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>Launch a process for each row in an array</p>
+                                <p>When an array field is selected (assuming one exists in the Form) this Custom Task will launch a new process for each row in an array. This feature assumes that the corresponding controls in the Destination Form are NOT arrays controls. Essentially, this feature enables you to create a single Form/Process for each row of the array, which only contains data from 1 array row.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -729,64 +750,84 @@
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">[Select Form Control]</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">List of Form Fields in the Source Form</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A Form field to evaluate on the Source Form. This field will be evaluated for each specific row, if the field is an array row.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">[Select Operator]</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">List of Condition Operators</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This is the operator that will be used to evaluate the two sides of the condition.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Text Field</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This text field enables you to use arbitrary text, including System Variables, to compare with the Source Form control.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p style="font-weight: bold;">ADVANCED TABS</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Launch as Sub-Process of Current Process</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                        </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Launch Process as Current User (instead of Object Creator)</p>
+                                <p>Launch as Sub-Process of Current Process</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>&#160;</p>
+                                <p>This property will, when checked, invoke the new process as an asynchronous subprocess of the calling process. The Two process will be linked, as if they were a single process, but the the subprocess will run without requiring the calling process to pause while the subprocess runs. Unchecking this property will cause the invoked process to run completely independently of the invoking process.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Save current Form data before starting Process</p>
+                                <p>Launch Process as Current User (instead of Object Creator)</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Object Creator is a <a href="../ImplementersReference/Permissions Settings.htm#_Toc421536251">special permissions type</a>. When a user creates an object they are, by default, assigned the Object Creator permissions for the objects. This permission assignment is the default behavior. There are some advanced, but rare, permissions scenarios in which you may not want the invoking user to be assigned Object Creator permissions, as they may be more expansive than those available to the invoking user. In those scenarios, launching the Process as Current User will prevent the invoking user from being given the Object Creator permissions.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Save current Form data before starting Process</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>Saves the form data before the process is initiated. Using this option on a new Form instance that hasn't yet started a Process Timeline Instance will save the Form, but won't start the default Timeline Instance for that Form.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>After Process Starts</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>List of form handling options</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>Determines what should happen with the parent Form after the process started by the Custom Task is initiated.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>After Successful Launch</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>List of actions</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>Enables you to make changes to form fields to reflect the start of the process.</p>
                             </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Use a Custom Message on Task Success:</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This property, will, when checked, expose a text box to enable you to enter a custom message to be displayed with the process is successfully invoked, in lieu of the default message generated by Process Director.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
@@ -796,7 +837,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>Copies form data to the new form.</p>
+                                <p>Copies source Form field data to the destination Form, assuming the control names are the same in both Forms.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -812,7 +853,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>&#160;</p>
+                                <p>Sets the Destination Form as the Default for for the new Process. This is the default.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -823,7 +864,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Sets a group name for the new form.</p>
+                                <p>Sets a group name for the destination form.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -834,7 +875,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>&#160;</p>
+                                <p>After creation, the destination Form will be attached as a process attachment to the process that invokes the new process.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -845,7 +886,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Sets a group name for the new form.</p>
+                                <p>Sets a group name for the new form in the Parent Process, This Group name may be different than the Group name used in the new process..</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -856,7 +897,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>&#160;</p>
+                                <p>The Source form will, when this property is checked, be attached to the new process as a process attachment.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -867,7 +908,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Sets a group name for the source form.</p>
+                                <p>Sets a group name for the source form in the new process, which may be different that the Group name used in the calling process.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -878,7 +919,7 @@
                                 <p>All, Documents, Forms</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>Types of attachments</p>
+                                <p>Types of attachments to transfer from the invoking process to the new process.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -890,7 +931,7 @@
                                 <p>Specify</p>
                             </td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row2">
-                                <p>Group name for attachments, optionally limiting which are attached by group.</p>
+                                <p>Enables you to specify Group name for the attachments, optionally limiting which objects are attached to the new process.</p>
                             </td>
                         </tr>
                     </tbody>
