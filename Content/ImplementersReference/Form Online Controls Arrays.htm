@@ -11,7 +11,7 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/AdditionalControls8.png" />
         </p>
-        <p>When configuring a form, controls can be placed into a dynamic list, known as an array. An <span class="KeyTerms">array </span>consists of Form controls placed in a single table row, with array boundary controls at the beginning and end of the table row. At run-time, users can dynamically add or remove rows from the array. A control placed inside an array will always return the values entered into that field in a comma-separated list. For instance, a field inside an array that contains three rows might return the string "Value1,Value2,Value3" as the value of the array control. The value of a specific row in an array can also be retrieved as a single value through the use of the array row's index (<code>ROW_NUM</code>). Please see the <a href="../SystemVariablesReferenceGuide/Parameters.htm#FormFields">Parameters topic</a> of the system variables guide for more information on extractive an array row value using the <code>ROW_NUM</code> formatter.</p>
+        <p>When configuring a form, controls can be placed into a dynamic list, known as an array. An <span class="KeyTerms">array </span>consists of Form controls placed in a single table row, with array boundary controls at the beginning and end of the table row. At run-time, users can dynamically add or remove rows from the array. A control placed inside an array will always return the values entered into that field in a comma-separated list. For instance, a field inside an array that contains three rows might return the string "Value1,Value2,Value3" as the value of the array control. The value of a specific row in an array can also be retrieved as a single value through the use of the array row's index (<code>ROW_NUM</code>). Please see the <a href="../SystemVariablesReferenceGuide/Parameters.htm#FormFields">Parameters topic</a> of the system variables guide for more information on extracting an array row value using the <code>ROW_NUM</code> formatter.</p>
         <MadCap:dropDown MadCap:conditions="General.Not Printed">
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Video Example</MadCap:dropDownHotspot>
@@ -142,7 +142,36 @@
                 <p>The<span class="NamedControl"> Row Number</span> control simply displays the row number (starting with row #1).</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>Array Conditions and Validation</h2>
+        <h2><a name="Conditions"></a>Array Data, Conditions, and Validation <a href="#Conditions" class="anchor">#</a></h2>
+        <h3>Set Form Data</h3>
+        <p>When using Array Form fields in the <span class="UIElement">Set Form Data</span> tab of a Form Definition, an additional text box will be displayed to the right of the array field name to enable you to enter a specific row number. By default, this field is blank, and the field value will return all of the values in that array field as a comma-separated list.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/array.png" />
+        </p>
+        <p>You can specify a specific row to change by entering the row number in this text box, e.g.:</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/array1.png" />
+        </p>
+        <p>In the example above, the data would be set only in the second row of the array. Arrays rows are 1-based, which is to say that the first row of the array starts at the number 1.</p>
+        <h3>Conditions</h3>
+        <p>In the <span class="ProcessDirectorObject">Condition Builder</span>, using an array field will, by default, try to evaluate the entire contents of an array field, meaning the entire list of field values will be returned in a single string, as a comma-separated list. You can, however, evaluate a single array value by using a Form field System Variable with the syntax:</p>
+        <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, ROW_NUM=<span class="CodeOption">2</span>}</code>
+        </p>
+        <p>In this case, you won't be able to select the <span class="UIElement">Form Field</span> menu item of the <span class="ControlName">Choose System Variable</span> dialog box to specify the field. Instead, you'll need to use the <span class="UIElement">Value</span> &gt; <span class="UIElement">String </span>menu item, and inter the System Variable on the left side of the condition.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/array4.png">
+            </img>
+        </p>
+        <p>You can enter the System Variable as the string value and, at run-time, the system will use only the value from the specified row of the array to use in the comparison. The condition row in the <span class="ProcessDirectorObject">Condition Builder</span> will then appear similar to the example below.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/array2.png">
+            </img>
+        </p>
+        <p>Arrays can, of course, have any number of rows, so, if you use a specific row number, be aware that the specified row may not actually exist in the array. You can, however, always access the last row in an array using the System Variable syntax:</p>
+        <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, ROW_NUM={NUM_ROWS}}</code>
+        </p>
+        <p>The <code>{NUM_ROWS} </code>system variable always returns the number of rows in an array, and thus can always be used as a pointer to the last array row, irrespective of how many rows the array contains.</p>
+        <h3>Validation</h3>
         <p>Array fields can be used in validation conditions, but you should be aware that complex conditions may not return the results you expect, because Process Director will evaluate each element of a complex condition separately. For instance, let's say that you have two columns in an array that contain the following values.</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 20rem;" class="TableStyle-Simple" cellspacing="0">
             <col style="width: 10rem;" class="TableStyle-Simple-Column-Column1" />
