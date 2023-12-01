@@ -356,7 +356,15 @@
                     <MadCap:keyword term="DateTime" />DateTime System Variables</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>System variables that return a datetime will have the following options:</p>
+                <p>System variables that return a datetime value have the several modifiers that enable a specified time increment to be added or subtracted from any system variable that returns a date value. For example, let's say you use a system variable that returns a datetime value like:</p>
+                <p><code>{ACTIVITY_START_DATE:<span class="CodeOption">ActivityName</span>, BUSINESS_DAYS=10}</code>
+                </p>
+                <p>If the activity begins on December 1, 2023, this system variable will return a value of December 15, 2023, by adding 10 business days, as December 2-3 and December 9-10 are weekend days.</p>
+                <p>Similarly, you can use a negative value for the modifier to subtract time from a datetime value. For example:</p>
+                <p><code>{ACTIVITY_START_DATE:<span class="CodeOption">ActivityName</span>, BUSINESS_DAYS=-10}</code>
+                </p>
+                <p>In this case, for an activity that begins on December 1, 2023, the system variable would subtract 10 business days to return a value of November 17, 2023.</p>
+                <p>The following date modifiers are available to implement this function.</p>
                 <ul>
                     <li><b>YEARS: </b>adds a specified number of years to a DateTime or TimeSpan SysVar result.</li>
                     <li><b>MONTHS:</b> adds a specified number of months to a DateTime or TimeSpan SysVar result.</li>
@@ -364,8 +372,8 @@
                     <li><b>HOURS:</b> adds a specified number of hours to a DateTime or TimeSpan SysVar result.</li>
                     <li><b>MINUTES: </b>adds a specified number of minutes to a DateTime or TimeSpan SysVar result.</li>
                     <li><b>SECONDS:</b> adds a specified number of seconds to a DateTime or TimeSpan SysVar result.</li>
-                    <li><b>BUSINESS DAYS:</b> adds a specified number of business days to a DateTime or TimeSpan SysVar result, using the syntax BUSINESS_DAYS.</li>
-                    <li><b>BUSINESS HOURS: </b>adds a specified number of hours to a DateTime or TimeSpan SysVar result, using the syntax BUSINESS_HOURS. By default, business hours are from 8:00am to 6:00pm, but business hours can be configured in the vars.cs file via the <a href="../DevelopersGuide/Customization File Defaults.htm#BusinessHourStart" target="_blank">BusinessHourStart</a> and <a href="../DevelopersGuide/Customization File Defaults.htm#BusinessHourStop" target="_blank">BusinessHourStop</a> variables.</li>
+                    <li><b>BUSINESS_DAYS:</b> adds a specified number of business days to a DateTime or TimeSpan SysVar result.</li>
+                    <li><b>BUSINESS_HOURS: </b>adds a specified number of hours to a DateTime or TimeSpan SysVar result. By default, business hours are from 8:00am to 6:00pm, but business hours can be configured in the vars.cs file via the <a href="../DevelopersGuide/Customization File Defaults.htm#BusinessHourStart" target="_blank">BusinessHourStart</a> and <a href="../DevelopersGuide/Customization File Defaults.htm#BusinessHourStop" target="_blank">BusinessHourStop</a> variables.</li>
                     <li><b>FULLYEARS:</b>&#160;Adds the number of full, 365-day years  for a DateTime or Timestamp SysVar result.</li>
                     <li><b>FULLMONTHS:</b>&#160;Adds the number of full, 30.414-day months for a DateTime or Timestamp SysVar result.</li>
                     <li><b>FULLDAYS:</b>&#160;Adds the number of full, 24-hour days for a DateTime or Timestamp SysVar result.</li>
