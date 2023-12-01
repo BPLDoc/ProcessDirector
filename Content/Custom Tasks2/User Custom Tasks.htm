@@ -84,11 +84,17 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This Custom Task enables you to provision users by updating existing users or creating new users without having to access the IT&#160;Admin area.</p>
+                <p>For Process Director v6.0.11 or lower, the appropriate Custom Task should be version 2022.02.09, which appears like the example below.</p>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/PUserCT1.png" />
                 </p>
+                <p>For Process Director v6.1.0 or higher, this Custom Task enables the configuration of additional fields in version 2023.11.22.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/ProvisionUsers.png" />
+                </p>
+                <p>Previous versions of this custom task will work as designed in Process Director v6.1.0, but Custom Task version 2023.11.22 will not work properly with Process Director v6.0.11 or below.</p>
                 <h4>Configuration Options</h4>
-                <p>The Mappings tab of the configuration screen contains all configuration options.</p>
+                <p>The Mappings tab of the configuration screen contains all configuration options. The additional options for v2023.11.22 of the Custom Task are included below. Earlier versions of this Custom Task will have fewer fields to configure.</p>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
                     <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
                     <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
@@ -113,6 +119,16 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to update an existing user.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Force Password Change</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to require the user to change their password on first login.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Ignore Unmapped Fields.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to tell Process Director to ignore fields that are not confured for field mapping in the import.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">User ID of New User</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Dropdown list of Form fields<br />System Variable text box</td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to set the User ID of the user via form field or system variable.</td>
@@ -133,29 +149,71 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">By default, provisioning always enables newly provisioned users. When checked, however, this property enables you to set whether the user account can be set as enabled or disabled. You can specify a Form field that sets the user's disabled status for account creation via a dropdown control. Alternatively, an additional checkbox, Disable User, also appears to enable you explicitly disable the user on account creation.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">EXTERNAL ID</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">External ID for User	</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Dropdown list of Form fields<br />System Variable text box</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This property enables you to set the External ID (External GUID) of the user via form field or system variable.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This property enables you to set the External ID (External GUID) of the user via form field or system variable. The External ID is usually the ID of an external directory system, such as Active Directory or LDAP, by which the user is identified in that system.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">User's E-mail</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Dropdown list of Form fields<br />System Variable text box</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to set the email address of the user via form field or system variable.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to set the user's email address  via form field or system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">User's Title</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to set the user's title  via form field or system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">User's Description</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to set the user's description via form field or system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">User's Manager</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to set the user's email address via form field or system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">User's Office	</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to set the user's office via form field or system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">User's Legal Entity</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to set the user's legal entity via form field or system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">User's Department</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to set the user's department via form field or system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">User's Country	</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to set the user's country via form field or system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">User's Location	</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to set the user's location via form field or system variable.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">User's Phone Number</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Dropdown list of Form fields<br />System Variable text box</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to set the phone number of the user via form field or system variable.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Enables you to set the user's phone number  via form field or system variable.</p>
+                            </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">User's Company</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Dropdown list of Form fields<br />System Variable text box</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to set the company name of the user via form field or system variable.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to set the user's company name via form field or system variable.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">User's Password</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Dropdown list of Form fields<br />System Variable text box</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to set the users password via form field or system variable.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to set the user's password via form field or system variable.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Groups for User</td>
@@ -163,14 +221,29 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to assign the user to as group or groups via a form field or Group Picker control. If the user is already a group member of a group not specified in this list, the user will be removed from that group.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Custom String</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Also remove User from all other Groups</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to set the <span class="ControlName">Custom String</span> property of the user via form field or system variable.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to specify that the user will only be assigned membership to the Groups specified in the import, removing all other Group memberships.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Custom String 2</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row1">Enables you to set the <span class="ControlName">Custom String 2</span> property of the user via form field or system variable.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">User Custom String</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to set the user's <span class="ControlName">Custom String</span> property via form field or system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">User Custom String 2</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to set the user's <span class="ControlName">Custom String 2</span> property via form field or system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">User Custom Number	</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to set the user's <span class="ControlName">Custom Number</span> property via form field or system variable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">User Custom Date	</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">Dropdown list of Form fields<br />System Variable text box</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Enables you to set the user's <span class="ControlName">Custom Date</span> property via form field or system variable.</td>
                         </tr>
                     </tbody>
                 </table>
