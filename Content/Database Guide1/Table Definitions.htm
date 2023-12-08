@@ -8,7 +8,7 @@
         <h1>
             <MadCap:concept term="Database;Developer" /><a name="_Toc421178523"></a>
             <MadCap:keyword term="Database" />Table Definitions</h1>
-        <p>The table definitions below are current as of Process Director v6.0.3.</p>
+        <p>The table definitions below are current as of Process Director v6.1.0.</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Exercise extreme caution when accessing Process Director tables directly! Any changes you make to the schema of this database or any data stored in it can render your installation of Process Director non-functional. In such a case, a full restore from backup will be the only recovery method possible. BP&#160;Logix cannot be held responsible for any actions you might take to alter the Process Director database, or any of its stored data, without direct assistance from BP&#160;Logix personnel.</p>
         <h2><a name="Enumerators"></a>Enumerators <a href="#Enumerators" class="anchor">#</a></h2>
@@ -1082,6 +1082,43 @@ The table below lists the numeric values for each <span class="ControlName">nAut
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">56</td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row1">TaskUser</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="nDefaultPage"></a>
+                    <MadCap:keyword term="nDefaultPage" /><a href="#nDefaultPage"><img src="../Resources/Images/link.png" alt="Link" /></a>nDefaultPage</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The possible values for the <span class="ControlName">nDefaultPage </span>field are shown below.</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0" summary="nAuditType Enumeration">
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 6em;" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">&#160;&#160;nStatus</th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">0</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Unset</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">1</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Home</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">2</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Workspace</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">4</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Production</td>
                         </tr>
                     </tbody>
                 </table>
@@ -19814,6 +19851,8 @@ The table below lists the numeric values for each <span class="ControlName">nAut
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This table contains data about user accounts stored in Process Director.</p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" title="Important" alt="Important" /> BP&#160;Logix STRONGLY warns customers not to directly alter the data in this table. </p>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
                     <col style="width: 250px;" class="TableStyle-Simple-Column-Column1" />
                     <col style="width: 120px;" class="TableStyle-Simple-Column-Column1" />
@@ -20214,326 +20253,346 @@ The table below lists the numeric values for each <span class="ControlName">nAut
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">nDefaultPage</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Specifies the default home page for Administrative users, via the nDefaultPage enum.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>tDelegateStartTime</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>datetime</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>Datetime delegation starts.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>tDelegateEndTime</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>datetime</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>Datetime delegation ends.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>sCulture</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>varchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>64</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>User's Culture String.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>nTZOffset</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>int</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>Number of hours the user’s local time zone is offset from the Process Director server's time zone.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>sDomain</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>nvarchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>256</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>User’s domain.</p>
                             </td>
                         </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">sTimeZone</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">varchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">128</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">User's Time Zone.</td>
+                        </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">sTimeZone</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">varchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">128</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">User's Time Zone.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">fAutoDST</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">tinyint</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Flag to determine whether to automatically set Daylight Savings Time.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">fAutoDST</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">tinyint</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">nNumLogins</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Flag to determine whether to automatically set Daylight Savings Time.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The number of logins for the user.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">nNumLogins</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">nAvgLoginSecs</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">int</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The number of logins for the user.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The average number of seconds the user is logged in.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">nAvgLoginSecs</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">fDisableEmail</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">tinyint</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The average number of seconds the user is logged in.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Flag to disable the user's email notifications.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">fDisableEmail</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">tinyint</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Flag to disable the user's email notifications.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>sCustomString</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>nvarchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>1024</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Optional custom string to associate with the user.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">tCustomDate</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">datetime</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Optional custom date to associate with the user.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">nCustomNumber</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Optional custom number to associate with the user.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">tLastPwdChange</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">datetime</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Datetime the user last changed the password.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">nLoginAttempts</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Number of times the user has attempted to log in.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">fLockedOut</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">tinyint</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Flag that determines whether the user is locked out.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>sCustomString2</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>nvarchar</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>1024</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Optional custom string to associate with the user.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>sPhone</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>nvarchar</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>64</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Optional custom string to associate with the user.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">tCustomDate</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">datetime</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Optional custom date to associate with the user.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">nCustomNumber</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Optional custom number to associate with the user.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">tLastPwdChange</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">datetime</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Datetime the user last changed the password.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">nLoginAttempts</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Number of times the user has attempted to log in.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">fLockedOut</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">tinyint</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Flag that determines whether the user is locked out.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>sCustomString2</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>nvarchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>1024</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Optional custom string to associate with the user.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>sPhone</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>nvarchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>64</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>User’s phone number.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>sDescription</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>nvarchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>1024</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>User’s description.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>sTitle</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>nvarchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>256</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>User’s title.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>sOffice</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>nvarchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>256</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>User’s office.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>sCompany</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>nvarchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>256</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>User’s company.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>sDept</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>nvarchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>256</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>User’s department.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">nShowCloudLicense</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">int</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Cloud Licensing field.</td>
-                        </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">nShowCloudLicense</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">int</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Cloud Licensing field.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>fSysImpersonateAdmin</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>tinyint</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>Flag to determine if this user can impersonate other users.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>oManagerUID</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>varchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>36</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>The User UID of the user’s manager.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>sBusinessUnit</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>nvarchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>The user’s business unit.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>sLegalEntity</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>nvarchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>The user’s legal entity.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>oImpersonatedByUID</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>varchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>36</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>The User UID of a person currently impersonating this user.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>sCountry</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>nvarchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>256</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>User’s country.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>sCountry</p>
+                                <p>sLocation</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>nvarchar</p>
@@ -20542,95 +20601,82 @@ The table below lists the numeric values for each <span class="ControlName">nAut
                                 <p>256</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>User’s country.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>sLocation</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>nvarchar</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>256</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>User’s location.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">guidPwdChange</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">guidPwdChange</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>nvarchar</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>36</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Password Change GUID.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">sDesktopSave</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">nvarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">MAX</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Information to save to the desktop.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Password Change GUID.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">oShareTasksWithUIDs</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">sDesktopSave</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">nvarchar</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">MAX</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The list of User UIDs for user for whom this user is sharing tasks under Shared Delegation.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Information to save to the desktop.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">fDayPass</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">tinyint</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Flag to determine if the user is a Day Pass license user.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">oShareTasksWithUIDs</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">MAX</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The list of User UIDs for user for whom this user is sharing tasks under Shared Delegation.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">tDayPassAccess</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">datetime</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">DateTime the user last accessed the system as a Day Pass user.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">fMobileAppUser</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">tinyint</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Flag to determine if the user is a mobile application user.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">fAppenateAdmin</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">fDayPass</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">tinyint</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Flag to determine if the user is a mobile application administrator.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Flag to determine if the user is a Day Pass license user.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">sAppenateUID</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">varchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">256</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The User UID of the user context to use when accessing the mobile application.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">tDayPassAccess</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">datetime</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">DateTime the user last accessed the system as a Day Pass user.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">sPasswordAppenate</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">nvarchar</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">512</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Password for the mobile application.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">fMobileAppUser</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">tinyint</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Flag to determine if the user is a mobile application user.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">fSysDeveloperAdmin</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">fAppenateAdmin</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">tinyint</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Flag to specify if the user is a System Developer Admin.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Flag to determine if the user is a mobile application administrator.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">sPasswordSalt</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">nvarchar</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">36</td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row1">Encryption salt for passwords.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">sAppenateUID</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">varchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">256</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The User UID of the user context to use when accessing the mobile application.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">sPasswordAppenate</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">nvarchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">512</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Password for the mobile application.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">fSysDeveloperAdmin</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">tinyint</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Flag to specify if the user is a System Developer Admin.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">sPasswordSalt</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">nvarchar</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">36</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Encryption salt for passwords.</td>
                         </tr>
                     </tbody>
                 </table>
+                <p>&#160;</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
