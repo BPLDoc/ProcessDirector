@@ -459,11 +459,14 @@
 			case "CTADVANCEDRULEQUERYFROMDB":
 				r("custom_tasks2/database_connectors_custom.htm#AdvRuleQuery");
 				break;
-				case "CTRULEQUERYFROMDB":
+			case "CTRULEQUERYFROMDB":
 				r("custom_tasks2/database_connectors_custom.htm#RuleQuery");
 				break;
-				case "CTFILLDDOBJECTFROMBV":
+			case "CTFILLDDOBJECTFROMBV":
 				r("custom_tasks2/database_connectors_custom.htm#FillDrodownObjFromBV");
+				break;
+			case "CTCLONETABLEFROMDB":
+				r("custom_tasks2/database_connectors_custom.htm#CloneTableFromDB");
 				break;
 				
 		//Documents
