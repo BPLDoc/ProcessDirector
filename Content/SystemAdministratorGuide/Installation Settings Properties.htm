@@ -281,15 +281,13 @@
         </MadCap:dropDown>
         <h2><a name="oauth"></a>Microsoft OAuth for SMTP <a href="#oauth" class="anchor">#</a></h2>
         <p>To configure integration between Azure and Process Director, you'll first need to create and register an Azure Active Directory (AAD) Application, if you do not have one. Please see the <a href="Configuring Azure.htm">Configuring Azure for Process Director Integration</a> topic for instructions on how to create and register an AAD Application.</p>
-        <p>Once the AAD&#160;Application has been registered, you'll need to perform some additional configuration to the AAD&#160;Application's settings in Azure.</p>
+        <p>Once the AAD&#160;Application has been registered, you'll need to perform some additional configuration to the AAD&#160;Application's settings in Azure. Depending on your Azure installation, as well as your organization's policies, there are different configuration settings that you might implement to enable your AAD application to enable Process Director to use OAuth to send mail messages,</p>
         <ol>
-            <li>
-                <p>In the <span class="ControlName">Microsoft Graph </span>section of the <span class="UIElement">API&#160;Permissions</span> area, you'll need to set the <span class="ControlName">Delegated Microsoft Graph</span> property to <code>SMTP.AccessAsUser.All</code></p>
-            </li>
-            <li>
-                <p>In the <span class="UIElement">Authentication </span>area, you'll need to set the <span class="ControlName">Allow public client flows</span> property to: <code>Yes (On)</code></p>
-            </li>
+            <li>In the <span class="ControlName">Microsoft Graph </span>section of the <span class="UIElement">API&#160;Permissions</span> area, can set the following permissions: <code>Microsoft.Graph Delegated SMTP.Send</code> and <code>Delegated User.Read</code>. These settings may work best to enable email sending without expansive permissions.<ol style="list-style-type: lower-alpha;"><li>For more comprehensive email access, you can set <code>Microsoft.Graph Delegated IMAP.AccessAsUser.All</code>.</li><li>Unfortunately, there are many factors that might impact the AAD&#160;Application settings you'll need to use. Since that is so, you may wish to reference Microsoft's explanation of <a href="https://learn.microsoft.com/en-us/exchange/client-developer/legacy-protocols/how-to-authenticate-an-imap-pop-smtp-application-by-using-oauth" target="_blank" title="Authenticate an IMAP, POP or SMTP connection using OAuth" alt="Authenticate an IMAP, POP or SMTP connection using OAuth">SMTP&#160;OAuth implementation</a>.</li></ol></li>
+            <li>In the <span class="UIElement">Authentication </span>area, you'll need to set the <span class="ControlName">Allow public client flows</span> property to: <code>Yes (On)</code></li>
         </ol>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Information" alt="Information" /> For more information on authentication permissions, please refer to the <a href="https://learn.microsoft.com/en-us/graph/permissions-reference" title="Microsoft Graph PermissionsrReference" alt="Microsoft Graph PermissionsrReference" target="_blank">Microsoft Graph Permissions Reference</a> from Microsoft.</p>
         <p>Once configured, you'll need to get the following properties from the AAD Application's settings to transfer to the corresponding OAuth settings for the "Office365/Microsoft OAuth" <span class="ControlName">SMTP&#160;Authentication Type</span>:</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting_7a.png" />
