@@ -193,7 +193,7 @@
                 <p>
                     <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting_7a.png" />
                 </p>
-                <p>Please see the <a href="#oauth">Microsoft OAuth for SMTP</a> section at the bottom of this page for more information on the configuration and use of this <span class="ControlName">Authentication Type</span> and its associated properties.</p>
+                <p>Please see the <a href="SMTP OAuth.htm" title="Microsoft OAuth for SMTP" alt="Microsoft OAuth for SMTP">Microsoft OAuth for SMTP</a> topic for more information on the configuration and use of this <span class="ControlName">Authentication Type</span> and its associated properties.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -279,64 +279,5 @@
                 <p>Enables you to set the number of custom icons that you can use in the Process Director interface. The default setting is 0. If you create any custom icons, you must set this value to the exact number of custom icons that you have created. For information on creating custom icons, please see the <a href="Creating Custom Icons.htm">Creating Custom Icons</a> topic.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2><a name="oauth"></a>Microsoft OAuth for SMTP <a href="#oauth" class="anchor">#</a></h2>
-        <p>To configure integration between Azure and Process Director, you'll first need to create and register an Azure Active Directory (AAD) Application, if you do not have one. Please see the <a href="Configuring Azure.htm">Configuring Azure for Process Director Integration</a> topic for instructions on how to create and register an AAD Application.</p>
-        <p>Once the AAD&#160;Application has been registered, you'll need to perform some additional configuration to the AAD&#160;Application's settings in Azure. Depending on your Azure installation, as well as your organization's policies, there are different configuration settings that you might need to implement, in order to enable your AAD application to enable Process Director to use OAuth to send mail messages. <b>BP&#160;Logix cannot, therefore, definitively describe what settings might be required to make your Azure installation accept OAuth authentication, as we have no knowledge of, or access to, your Azure configuration.</b> We can, however, provide some of the most common configuration suggestions that have worked for our customers:</p>
-        <ol>
-            <li>In the <span class="ControlName">Microsoft Graph </span>section of the <span class="UIElement">API&#160;Permissions</span> area, can set the following permissions: <code>Microsoft.Graph Delegated SMTP.Send</code> and <code>Delegated User.Read</code>. These settings may work best to enable email sending without expansive permissions.<ol style="list-style-type: lower-alpha;"><li>For more comprehensive email access, you can set <code>Microsoft.Graph Delegated IMAP.AccessAsUser.All</code>.</li><li>Unfortunately, there are many factors that might impact the AAD&#160;Application settings you'll need to use. Since that is so, you may wish to reference Microsoft's explanation of <a href="https://learn.microsoft.com/en-us/exchange/client-developer/legacy-protocols/how-to-authenticate-an-imap-pop-smtp-application-by-using-oauth" target="_blank" title="Authenticate an IMAP, POP or SMTP connection using OAuth" alt="Authenticate an IMAP, POP or SMTP connection using OAuth">SMTP&#160;OAuth implementation</a>.</li></ol></li>
-            <li>In the <span class="UIElement">Authentication </span>area, you'll need to set the <span class="ControlName">Allow public client flows</span> property to: <code>Yes (On)</code></li>
-        </ol>
-        <p class="PDNote">
-            <img src="../Resources/Images/i2.png" title="Information" alt="Information" /> For more information on authentication permissions, please refer to the <a href="https://learn.microsoft.com/en-us/graph/permissions-reference" title="Microsoft Graph PermissionsrReference" alt="Microsoft Graph PermissionsrReference" target="_blank">Microsoft Graph Permissions Reference</a> from Microsoft. Please be aware that BP&#160;Logix has an extremely limited ability to assist you with troubleshooting your Azure installation or settings.</p>
-        <p>Once configured, you'll need to get the following properties from the AAD Application's settings to transfer to the corresponding OAuth settings for the "Office365/Microsoft OAuth" <span class="ControlName">SMTP&#160;Authentication Type</span>:</p>
-        <p>
-            <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting_7a.png" />
-        </p>
-        <ol>
-            <li>
-                <p><span class="ControlName">SMTP Tenant ID</span>
-                </p>
-                <ol style="list-style-type: lower-alpha;">
-                    <li>
-                        <p>The ID of the Azure Tenant in which the AAD Registered App resides (Creation of an AAD Registered App requires the existence of a Tenant)</p>
-                    </li>
-                    <li>
-                        <p>The Tenant ID is displayed as the <span class="ControlName">Directory (tenant) ID </span>property on the <span class="UIElement">Overview </span>page of your AAD&#160;Application in Azure, but this value will also be displayed following <code>login.microsoft.com/...</code> in the Endpoint URLs that the App references</p>
-                    </li>
-                </ol>
-            </li>
-            <li>
-                <p><span class="ControlName">SMTP Client ID</span>
-                </p>
-                <ol style="list-style-type: lower-alpha;">
-                    <li>
-                        <p>The ID of the AAD Registered App</p>
-                    </li>
-                    <li>
-                        <p>This value is displayed as the <span class="ControlName">Application (client) ID</span> property on the <span class="UIElement">Overview </span>page of your AAD Application.</p>
-                    </li>
-                </ol>
-            </li>
-            <li>
-                <p><span class="ControlName">SMTP Secret</span>
-                </p>
-                <ol style="list-style-type: lower-alpha;">
-                    <li>
-                        <p>The client secret or application password the administrator created to use with the AAD Registered App.</p>
-                    </li>
-                </ol>
-            </li>
-            <li>
-                <p><span class="ControlName">UserID</span>/<span class="ControlName">Password</span></p>
-                <ol style="list-style-type: lower-alpha;">
-                    <li>
-                        <p><b style="font-style: italic;">Some installations</b> may require that you provide a valid UserID and Password to connect to an email account on your system for sending mail messages, as part of the authentication.</p>
-                    </li>
-                </ol>
-            </li>
-        </ol>
-        <p>Some Azure configurations may also be configured to require a specific email address be used to send <b style="font-style: italic;">all</b> mails as the "From"&#160;email address. In that case, you will <i>at least</i> need to go to the <a href="Installation Settings Global Vars.htm"><span class="ProcessDirectorObject">Global Variables</span> page</a> and set the <span class="ControlName">Workflow From Email Address</span> property to the email address you've specified in Azure. You may also wish to set that email address for the <span class="ControlName">Registered Email</span> property on this page (<span class="ProcessDirectorObject">Properties</span>), as a backup to the <span class="ProcessDirectorObject">Global Variables</span> setting.</p>
-        <p class="Important">
-            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> Be advised that, with this configuration, ALL email addresses sent from the system MUST use the specified email address as the From address. This means that any custom email addresses you configure elsewhere, such as the "From Email" property of a Email Data control in an email template, <i>will not send email messages</i>.</p>
     </body>
 </html>

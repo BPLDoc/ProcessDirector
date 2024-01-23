@@ -7,12 +7,16 @@
         <h1>
             <MadCap:concept term="Implementation" />
             <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Business Value;Business Values;SharePoint" />Configuring Azure for Process Director Integration</h1>
-        <p>Microsoft Modern Authentication provides much more secure access to SharePoint, Email, and other Azure services from Process Director, but does require a more complex setup process. To set up Modern Authentication between Azure and Process Director, you must complete the following steps.</p>
+        <p class="PDNote" MadCap:conditions="General.Not Printed">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure OAuth configuration can be found here: <a href="https://doc.bplogix.com/PDFAzureOAuth.pdf" target="_blank" title="Configuring Azure OAuth (PDF Download)" alt="Configuring Azure OAuth (PDF Download)">Configuring Azure OAuth (PDF Download)</a></p>
+        <p>Microsoft Modern Authentication (an OAuth-based authentication system) provides much more secure access to SharePoint, SMTP email, and other Azure services from Process Director, but does require a complex setup process. To set up Modern Authentication between Azure and Process Director, you must complete the following steps.</p>
         <ol>
             <li><a href="#cert">Create a certificate</a> to authenticate Process Director with Azure.<ol style="list-style-type: lower-alpha;"><li>Using Microsoft’s certreq.exe, installed on all modern Windows OS versions.</li><li>Using PowerShell, also included with all  modern Windows OS versions.</li></ol></li>
             <li><a href="#azure">Add Process Director as a Registered Active Directory application</a> in the Azure Active Directory portal.<ol style="list-style-type: lower-alpha;"><li>Add the public key certificate to the Process Director application in Azure.</li><li>Configure the appropriate Azure settings.</li></ol></li>
         </ol>
         <p>In this topic, we'll address each of these required steps in detail. Additional information about this topic can also be obtained from <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" target="_blank">Microsoft's online documentation</a>.</p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> You cannot configure any OAuth settings for SharePoint Datasources or SMTP&#160;Email in Process Director until you have created and registered an Azure Active Directory Application in Azure by completing the steps described in this topic.</p>
         <h3><a name="cert"></a>Create a certificate to authenticate Process Director with Azure <a href="#cert" class="anchor">#</a></h3>
         <p>Microsoft prefers the use of certificates for authentication. Each certificate includes both the public and private keys used to encrypt data. The public key (in a CER file) is used by SharePoint Online to authenticate Process Director. The private key is packaged in a password-protected PFX file and is used by Process Director to authenticate with Azure Services. There are two methods that can be used on Windows-based systems to create a proper certificate.</p>
         <ul>
