@@ -13,7 +13,7 @@
         <h2><a name="Searching"></a>Searching Users <a href="#Searching" class="anchor">#</a></h2>
         <p>The <span class="ControlName">Users </span>page displays a list of users on the system. </p>
         <p>
-            <img src="../Resources/Images/SystemAdministratorGuide/Users.png" />
+            <img src="../Resources/Images/SystemAdministratorGuide/UserAdmin.png" />
         </p>
         <p>Systems with a large number of users, i.e., more than 100, will see a search box at the upper left corner of the page to search for specific users via User ID. For Process Director v5.44.800 and higher, the search box will, when a value is entered, search all user attributes that are displayed in the User List, such as Group names, to return the matching users, as an improvement to this search feature.</p>
         <h2><a name="AddingUsers"></a>Adding a New User <a href="#AddingUsers" class="anchor">#</a></h2>
@@ -21,12 +21,12 @@
         <p>For built-in users, a User ID and password must be added to the Process Director database before a login can occur. When a user is configured in the Process Director database, additional information such as the user’s email address and alias can be configured.</p>
         <p>On the <span class="ControlName">Users </span>page of the<span class="ControlName"><MadCap:keyword term="System Administration" /> <span class="ProcessDirectorObject">IT&#160;Admin</span> </span>area's <span class="ProcessDirectorObject">User Administration</span> section, click on the<span class="UIElement"> Create User</span> link. This will prompt you to enter a User ID for the new user. Please Note: This will create a built-in user, not a Windows user.</p>
         <p>
-            <img src="../Resources/Images/SystemAdministratorGuide/User Administration.jpg" style="visibility: visible;mso-wrap-style: square;" />
+            <img src="../Resources/Images/SystemAdministratorGuide/UserAdmin1.png" />
         </p>
         <h3>Create User Screen</h3>
         <p>This screen enables you to specify the new user to add to the Users list. </p>
         <p>
-            <img src="../Resources/Images/SystemAdministratorGuide/newuser.png" />
+            <img src="../Resources/Images/SystemAdministratorGuide/UserAdmin2.png" />
         </p>
         <p>Enter the user’s <span class="ControlName">User ID</span> and <span class="ControlName">Password</span>. You can force the user to change his password upon login. Click <span class="UIElement">OK</span> when done. After you create the user, you can click on the “Edit” link next to the user’s name and configure it further.</p>
         <p>The User ID will also serve as the user’s login user name for Process Director. BP Logix highly recommends that administrators ensure that User ID’s are unique to each user. This may not be possible, however, when using SAML authentication for existing users where duplicate user names exist. In this case the SAML authentication must send a unique GUID or identifier for the users. There is a variable in the custom vars file called <a href="../DevelopersGuide/Customization File SAML.htm#fAuthSAMLAllowDuplicateUserIDs">fAuthSAMLAllowDuplicateUserIDs</a> that must be set to “true” to allow this behavior.</p>
@@ -34,7 +34,7 @@
             <img src="../Resources/Images/i.png" alt="Important" /> In many cases, Process Director will return a comma-separated list of users. Since the users are identified by UserName, we strongly recommend that your users names do <b style="font-style: italic;">not</b> include commas as part of the user name.</p>
         <h2><a name="UserProperties"></a>User Properties <a href="#UserProperties" class="anchor">#</a></h2>
         <p>
-            <img src="../Resources/Images/Custom Tasks2/UserAdmin.png" />
+            <img src="../Resources/Images/SystemAdministratorGuide/UserAdmin3.png" />
         </p>
         <p> To set the user’s account properties, click on the <span class="UIElement">Edit </span>hotlink in the user's row of the user list. The<span class="ControlName"> Edit User</span> configuration will display, with the User ID and Password fields already configured. you may configure the remaining user properties.</p>
         <MadCap:dropDown>
@@ -64,14 +64,24 @@
                     </thead>
                     <tbody>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">User Disabled</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">User Account Locked</span>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Disables the user account, preventing the user from participating in any tasks, and deleting the user's participation from any existing tasks.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Prevents the user from logging in, but does not disable the user account. This setting may be automatically applied if the user fails to enter their login credentials properly after a specified number of tries. This setting applies primarily to Built-In users.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Disable Emails for this User	</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">User Disabled</span>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Prevents Process Director emails from being sent to the user.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Disables the user account, preventing the user from participating in any tasks, and deleting the user's participation from any existing tasks.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Disable Emails for this User	</span>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Prevents Process Director emails from being sent to the user.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Show Content List</span>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">For Process Director v6.1 and higher, this property gives users access to the new <span class="ProcessDirectorObject">Content List</span> menu. While the <span class="ProcessDirectorObject">Content List</span> menu is visible by default to system administrators, non-administrative users must have this property checked in order to see it.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">User Account Locked</span>
@@ -197,9 +207,9 @@
                 <MadCap:dropDownHotspot>Picture Image</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>A picture of each user can be uploaded to Process Director. The image will appear in the user information box for each user.</p>
+                <p>A picture of each user can be uploaded to Process Director. The image will appear in the user profile page for each user. It will also be displayed in the upper right corner of the page in Process Director v6.1, as the avatar for the User Profile menu.</p>
                 <p>
-                    <img src="../Resources/Images/Capture74.png" />
+                    <img src="../Resources/Images/SystemAdministratorGuide/UserAdmin4.png" />
                 </p>
                 <p> You may upload the image by clicking on the <span class="UIElement">Browse </span>button to find and select the image. Once the image is selected, clicking the <span class="UIElement">Upload </span>button will upload the signature image to Process Director. Acceptable image formats include GIF, JPG, and PNG images.</p>
             </MadCap:dropDownBody>
