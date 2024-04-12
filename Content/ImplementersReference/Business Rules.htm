@@ -128,21 +128,24 @@
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h3>Parameters</h3>
+        <h2><a name="Parms"></a>Custom Business Rule Parameters <a href="#Parms" class="anchor">#</a></h2>
         <p>
             <img src="../Resources/Images/ImplementersReference/BRParm.png" />
         </p>
-        <p>A Business Rule can accept one or more parameters that are passed to the Business Rule from a System Variable. While Business Rules already have access to Form data if the Business Rule is called in the context of a Form, the parameter will accept non-form data that is needed to properly evaluate the conditions. In such a case, the Business Rule can be called via a System variable, using the following syntax to both call the Business Rule and simultaneously pass the Parameter(s):</p>
-        <p><code>{RULE:BusinessRuleName,$<span class="CodeOption">ParameterName1</span>=<span class="CodeOption">ParameterValue1</span>,$<span class="CodeOption">ParameterName2</span>=<span class="CodeOption">ParameterValue2</span>}</code>
-        </p>
-        <p>The "$" signifier is required to specify the name of the Parameter(s).</p>
-        <p>You can add the parameter names to be used in the system variable by clicking the <span class="UIElement">Add Parameter </span>button in the <span class="ControlName">Parameters </span>section, then supplying the appropriate <span class="ControlName">Name </span>for each Parameter.</p>
+        <p>The Parameters section of the Business Rule definition enables you to create one or more custom parameters. When a custom parameter is configured, it's value can be passed to the Business Rule via a System Variable.</p>
         <p class="PDNote">
-            <img src="../Resources/Images/i2.png" alt="Note" /> Business Rule Parameters can only be used with System Variables.</p>
+            <img src="../Resources/Images/i2.png" alt="Note" /> Business Rule Parameters can ONLY be passed via System Variable. There is no method in the UI to pass a custom parameter to a Business Rule, as you would for a Business Value.</p>
+        <p>You can add the parameter names to be used in the system variable by clicking the <span class="UIElement">Add Parameter </span>button in the <span class="ControlName">Parameters </span>section, then supplying the appropriate <span class="ControlName">Name </span>for each Parameter.</p>
         <p>Parameters, once created, can be used in the conditions evaluated by the Business Rule, to return the appropriate values.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/BRParm1.png" />
         </p>
+        <p>In a Business Rule System Variable, you can use the following syntax to both call the Business Rule and simultaneously pass the Parameter(s):</p>
+        <p><code>{RULE:<span class="CodeOption">BusinessRuleName</span>,$<span class="CodeOption">ParameterName1</span>=<span class="CodeOption">ParameterValue1</span>,$<span class="CodeOption">ParameterName2</span>=<span class="CodeOption">ParameterValue2</span>}</code>
+        </p>
+        <p>The "$" signifier is required to specify the name of the Parameter(s).</p>
+        <p>Business Rules can be directly associated with a Process Director object, and parameters are not generally necessary for accessing data from the associated object. For example, if a Business Rule is associated with a Form definition, all the Form fields from the associated Form can be accessed from the Business Rule directly, without needing to use a custom parameter. The drawback to this is, of course, that the Business Rule can only be used in the context of a running instance of the associated Form.</p>
+        <p>On the other hand, if you do not want the Business Rule to be associated with a specific object, and want it to be globally accessible, you could create a custom parameter that could be passed to the Business Rule by any object. The custom parameter value could then be used in all of the Business Rule conditions, as the example screenshot above demonstrates. As long as the object can pass the appropriate parameter value to the Business Rule, any object in the system can call the Business rule to return the correct value via System Variable.</p>
         <h2>Global vs Local Business Rules</h2>
         <p>Business Rules are somewhat unique in that, unlike other objects, they can be used both locally and globally within Process Director. A local Business Rule can only be used in the context of a specific Form or Process Timeline. They cannot be called or return a useful value outside the context of a specific running application. For instance, a Business Rule that returns a value based on an evaluation of a specific Form control is almost always a local Business Rule. Indeed, in that case, the <span class="ControlName">Forms Associated with Business Rule</span> property will be set to create an explicit assositon between the Business Rule and a Specific Form definition.</p>
         <p>On the other hand, a global Business Rule can be called by any running application. None of the <span class="ControlName">Xxxxx Associated with Business Rule</span> properties on the <span class="UIElement">Properties </span>tab would be set, and the Business Rule would return a valid value no matter what object called it for an evaluation. For example, a Business Rule that returns a User or Group for task assignment in a Process Timeline activity would always return the same User or Group, no matter which Process Timeline prompts it. </p>
