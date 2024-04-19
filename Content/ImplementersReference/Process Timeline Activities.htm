@@ -11,7 +11,7 @@
         <p>A Process Timeline is made up of a series of activities. Each Activity in a Process Timeline identifies the task to be performed and the users, if any, that should perform the task.  Activities can be easily added, moved and deleted from a Process Timeline Definition.</p>
         <p>Each Timeline Activity defines a set of functions or actions that can be performed by that Activity. The function that the Activity will perform is determined by the <span class="ControlName">Activity Type</span> property that appears on the <span class="UIElement">Activity </span>tab for the Timeline Activity.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities1.png" />
+            <img src="../Resources/Images/ImplementersReference/TLProps.png" />
         </p>
         <p>Please refer to the <a href="Process Timeline Activity Types.htm">Process Timeline Activity Types</a> topic for specific information about specific Activity Type, and how to configure them.</p>
         <h2><a name="Common"></a>Common Activity Settings <a href="#Common" class="anchor">#</a></h2>
@@ -22,7 +22,7 @@
         <p>There are, however, several configuration tabs that are common to all Timeline activities.</p>
         <h3><a name="_Toc421536162"></a>Activity Tab <a href="#_Toc421536162" class="anchor">#</a></h3>
         <p>
-            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities.png" />
+            <img src="../Resources/Images/ImplementersReference/TLProps1.png" />
         </p>
         <p>The <span class="UIElement">Activity </span>tab enables you to specify the Activity's general settings, the most important of which is the <span class="ControlName">Activity Type</span>. </p>
         <MadCap:dropDown>
@@ -32,7 +32,7 @@
             <MadCap:dropDownBody>
                 <p>This dropdown contains type of Activity to be used for the current Activity. </p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities2.png" />
+                    <img src="../Resources/Images/ImplementersReference/TLProps.png" />
                 </p>
                 <p>The default <span class="ControlName">Activity Type</span> is the User Activity. With the User Activity selected, the second tab on the options dialog will be <span class="UIElement">Participants</span>. Selecting a different Activity Type will change the second tab to a different option setting, and some Activity Types will remove some of the tabs completely, as they contain inapplicable settings for that type of Activity.</p>
             </MadCap:dropDownBody>
@@ -74,13 +74,10 @@
         <h4>Subprocesses and End Process Activities</h4>
         <p>The Process activity type requires that a  Process Timeline definition be configured. The configured process will be started as a subprocess (child process) of the main (parent) process. You may copy objects from the parent process to the child process and vice versa.</p>
         <p>When a subprocess contains an End Process activity, it will return the name of the End Process step as a result for the parent Timeline Activity.</p>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities6.png" />
-        </p>
         <p>The End Process Activity in a Process Timeline stops the running of the Process Timeline immediately. As such, the End Process Activity can only run once in a Process Timeline. So, if you have parallel activities running in a Process Timeline, all of the parallel steps must complete before the End Process Activity is reached.&#160; Process Timelines with multiple End Process activities will need to have conditions set on each End Process Activity to ensure that only one of the End Process Activities runs. When the subprocess completes, the name of the End Process Activity that was run will be returned to the parent process as the result of the Process Activity that started the subprocess.</p>
         <h3><a name="_Toc421536167"></a>Start When Tab <a href="#_Toc421536167" class="anchor">#</a></h3>
         <p>
-            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities7.png" />
+            <img src="../Resources/Images/ImplementersReference/TLProps2.png" />
         </p>
         <p>The settings on this tab determine when the Activity will run by specifying its dependencies, i.e. what Activity or activities must complete before the Activity starts. The Activity’s start time can depend on the state of other activities, or some evaluable condition. Activity dependencies can be added via the <span class="UIElement">Add Dependency</span> button, and the dependence specified via a dropdown. Conditions that make the Activity eligible to start can be configured via the <span class="ProcessDirectorObject">Condition Builder</span> by clicking on the <span class="UIElement">Click to create condition...</span> link. </p>
         <p>Clicking the <span class="ControlName">Recurring Activity</span> check box makes an Activity a recurring Activity, and enables you to configure the time interval at which the Activity repeats. The Activity won't recur if the box is unchecked. This option is relevant primarily for activities in which you have set a Start When condition. When an Activity is set as a recurring Activity, the Activity, <i>once completed</i>, will automatically restart again at the time interval specified, until the Start When condition is no longer met. </p>
@@ -90,21 +87,23 @@
         <p>If an Activity has a start condition that isn't met and the <span class="ControlName">Activity Required to Complete Parent</span> checkbox is checked on the <span class="UIElement">Advanced Options </span>tab, the parent Activity will remain running indefinitely. The parent Activity can only be completed when this Activity completes.</p>
         <h3><a name="_Toc421536168"></a>Completed When Tab <a href="#_Toc421536168" class="anchor">#</a></h3>
         <p>
-            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities8.png" />
+            <img src="../Resources/Images/ImplementersReference/TLProps3.png" />
         </p>
         <p>This tab enables you to indicate when the Activity is considered complete. The dropdown determines whether the Activity is completed when all users have completed the Activity or when the first user has completed the Activity. Additionally, you can set conditions to complete the Activity independently, by clicking the <span class="UIElement">Click to create condition...</span> link, and using the <span class="ProcessDirectorObject">Condition Builder</span> to set the desired conditions. These conditions are known as Completed When conditions.</p>
         <p class="Important" style="text-align: center;">
-            <img src="../Resources/Images/i.png" alt="Important" /> By default, a User Activity completes when all users have completed the Activity manually. If you wish to set a Completed When condition, you <b>must</b> set the Completed When dropdown to "When Any Result Condition Is Met". Additionally, you <b>must</b> set a default result on the Results tab for the Activity to complete the Activity, and/or to prevent the Activity from going into an error state.<br /><img src="../Resources/Images/ImplementersReference/CompletedWhenCondition.png" /></p>
+            <img src="../Resources/Images/i.png" alt="Important" /> By default, a User Activity completes when all users have completed the Activity manually. If you wish to set a Completed When condition, you <b>must</b> set the Completed When dropdown to "When Any Result Condition Is Met". Additionally, you <b>must</b> set a default result on the Results tab for the Activity to complete the Activity, and/or to prevent the Activity from going into an error state.<br /><br /><img src="../Resources/Images/ImplementersReference/TLProps4.png" /></p>
         <p>Another option on the dropdown, "All Users Complete or Result Number Met", enables you to immediately end a task automatically—even if the task requires all users to complete—by specifying certain results to override that and force the Activity to be completed.  For example, you may have 3 results on an Activity and normally want all users to complete their task, however you may want one result to immediately end the Activity when a user selects it using the "Number of Users" set to 1.</p>
         <h3><a name="_Toc421536169"></a>Needed When Tab <a href="#_Toc421536169" class="anchor">#</a></h3>
         <p>
-            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities9.png" />
+            <img src="../Resources/Images/ImplementersReference/TLProps5.png" />
         </p>
         <p>In most cases, we expect every Activity in a Process Timeline to run every time it is eligible to do so, and in those cases, we would ignore this tab completely. There are, however, some cases when you do <b style="font-style: italic;">not</b> want an Activity to run unless a specific condition is met. This tab enables you to define conditions that specify when the Activity is needed. Once an Activity's dependence requirements have been met and the Activity is eligible to run, the system will evaluate any conditions on this tab. If the conditions aren't met, the Activity will be skipped, and the next Activity in the Process Timeline will be started. If the conditions are met, or there are no conditions configured on this tab, the Activity will run normally. The conditions on this tab are known as Needed When conditions. </p>
         <p>Conditions for enabling the Activity can be configured using the <span class="ProcessDirectorObject">Condition Builder</span> by clicking the <span class="UIElement">Click to create condition...</span> link.</p>
         <h3><a name="_Toc421536170"></a><a name="DueDate"></a>Due Date Tab <a href="#_Toc421536170" class="anchor">#</a></h3>
         <p>
-            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities10.png" />
+            <p>
+                <img src="../Resources/Images/ImplementersReference/TLProps6.png" />
+            </p>
         </p>
         <p>Each Activity in the Process Timeline can have unique time limit/due date options. The due date can be calculated in three ways. </p>
         <ol>
@@ -229,7 +228,7 @@
             <img src="../Resources/Images/i2.png" alt="Note" /> Process Director invokes all time related events like due dates <b style="font-style: italic;">only</b> when Activity is present on the system (e.g. a login occurs, or the Activity Check page runs). Please refer to the <a href="../SystemAdministratorGuide/Activity Check.htm">Activity checking topic</a> in the System Administrator's Guide.</p>
         <h3><a name="_Toc421536171"></a>Notifications Tab <a href="#_Toc421536171" class="anchor">#</a></h3>
         <p>
-            <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivities11.png" />
+            <img src="../Resources/Images/ImplementersReference/TLProps7.png" />
         </p>
         <p>Each Activity in the Process Timeline can have unique notification options. You can send single notifications when a specified event occurs, or you can send recurring notifications on a specified schedule. A default schedule is built into Process Director, but you can build a custom schedule in the Custom Variables file via the <a href="../DevelopersGuide/Customization File System.htm#TimelineReminderTimes">Project Reminder Times</a> Custom Variable. Process Director does not track the number of reminder or recurring messages that have been sent.</p>
         <MadCap:dropDown>
@@ -289,7 +288,7 @@
             <img src="../Resources/Images/i2.png" alt="Note" /> Process Director invokes all time related events like sheduled notifications <b style="font-style: italic;">only</b> when Activity is present on the system (e.g. a login occurs, or the Activity Check page runs). Please refer to the <a href="../SystemAdministratorGuide/Activity Check.htm">Activity checking topic</a> in the System Administrator's Guide.</p>
         <h3><a name="SetFormData"></a>Set Form Data Tab <a href="#SetFormData" class="anchor">#</a></h3>
         <p>
-            <img src="../Resources/Images/ImplementersReference/SFDTab.png" />
+            <img src="../Resources/Images/ImplementersReference/TLProps8.png" />
         </p>
         <p>This tab only appears on Timeline activities when you have used the <a href="Process Timeline Options.htm#Set">Set Form Data section</a> of the Timeline definition to create a Set Form Data action. Once you have done so, this tab will appear on all Timeline Activity types, enabling you to configure Set Form Data actions on any Activity. If you have not configured at least one Set Form Data action on the Timeline definition, this tab won't appear for any Timeline Activity.</p>
         <p>This tab is used to set data in the Process Timeline's default Form when the Activity begins or ends.</p>
