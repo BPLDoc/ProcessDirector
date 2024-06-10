@@ -19,7 +19,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/Datalist18.png" />
+                    <img src="../Resources/Images/SystemAdministratorGuide/DataList.png" />
                 </p>
                 <p>The <span class="NamedControl">Data List </span>control enables the display of table data of nearly any size for display on a Process Director Form. Prior to Process Director v6.0.100, the only method of displaying tabular data was through the use of <a href="Form Online Controls Arrays.htm">Array controls</a>. Array controls, however, can only display relatively large sets of tabular data when the array controls are disabled and displayed only as text. Otherwise, the use of a large number of active controls in a Form array uses excessive system resources, and will make the form nonfunctional after a certain number of fields.</p>
                 <p>The <span class="NamedControl">Data List </span>control, on the other hand, completely solves the issue of presenting and using large data sets on a Form. Data can be selected by cell or by row, and transferred from the <span class="NamedControl">Data List</span> cell or row to a separate set of Form fields (either regular or Array fields). For example, in the screen shot below, the <span class="NamedControl">Data List </span>is displaying a recordset containing 826 rows of data on a Form, with no perceptible loss of Form performance or resource usage.</p>
@@ -31,8 +31,7 @@
                 <p><span class="ControlName" style="font-weight: bold;">Selection Mode</span><b>:</b> This property enables you to specify the method, if any, that will be used to select data in the control. There are three selection options:</p>
                 <ul>
                     <li><i>No Selection</i>: No data will be selected. This is the default option.</li>
-                    <li><i>Cell Selection</i>: This option enables users to select one or more specific cells in the list, in order to extract their data. </li>
-                    <li style="font-style: normal;"><i>Row Selection</i>: This option will select one or more data rows, in order to extract data from all of the cells in the selected row(s).</li>
+                    <li style="font-style: normal;"><i>Row Selection</i>: This option will select one or more data rows, in order to extract data from all of the cells in the selected row(s). For Process Director v6.1.200 and higher, when this option is selected, a <span class="ControlName">Max Rows</span> property will appear to enable you to specify the maximum number of rows that can be selected from the list.</li>
                 </ul>
                 <p><span class="ControlName" style="font-weight: bold;">Virtualization Type</span><b>:</b> In order for the <span class="NamedControl">Data List </span>control to handle large numbers of records without affecting performance or using excessive memory, the <span class="NamedControl">Data List</span> control provides two options for controlling when records are rendered visible on the page: <i>Visible Rows</i><span class="ControlName"> </span>and <i>Pagination</i>. A third option, <i>None</i>, will not invoke any virtualization for the data.</p>
                 <ul>
@@ -134,7 +133,13 @@
             <img src="../Resources/Images/ImplementersReference/Datalist16.png" />
         </p>
         <p>As shown above, the four airports selected by the user have been added to the Form, using a set of array fields to store the selected row values.</p>
-        <p>This feature enables you to take any desired data from the <span class="UIElement">Data List</span> control and transfer it to Form fields for saving as Form data.</p>
+        <p>This feature enables you to take any desired data from the <span class="NamedControl">Data List</span> control and transfer it to Form fields for saving as Form data.</p>
+        <h3>Clear Selected</h3>
+        <p>For Process Director v 6.1.200 and higher, once multiple rows are selected in a <span class="NamedControl">Data List</span>, the selections can all be cleared by invoking a Set Form Data action to set the value of the Data List to an empty string.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/DataList1.png" />
+        </p>
+        <p>When items are selected in a <span class="NamedControl">Data List</span>, a value that's essentially a comma-separate list of selected rows is assigned to the control. Resetting this value to an empty string overwrites this list of selections, and all rows will be unchecked.</p>
         <h2>Documentation Samples</h2>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
