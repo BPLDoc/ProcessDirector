@@ -17,16 +17,16 @@
         </ul>
         <p>All of the completion links do essentially the same thing, that is, they direct the user to a task completion page, bypassing the original Form. They each have a slightly different implementation on the email template, however.</p>
         <p>The<span class="NamedControl"> Email Result Links</span> provide the user with a list of all of the possible results for a task, while the <span class="NamedControl">Email Completion Link</span> provides a result link for a single possible result. So, if you want the user to see all of the possible task results, you'd use the<span class="NamedControl"> Email Result Links</span>, while if you only want to show a result for one or two possible results, you'd configure an <span class="NamedControl">Email Completion Link</span> for each of the results you desire to show the user.</p>
-        <p>As an example, let's say that you have three possible results for a Process Timeline Activity: Approve, Reject, and Resubmit. For some users, you might want to show the <span class="NamedControl">Email Result Links</span> to display all of the possible results:</p>
+        <p>As an example, let's say that you have three possible results for a Process Timeline Activity: <b>Approve</b>, <b>Reject</b>, and <b>Resubmit</b>. For some users, you might want to show the <span class="NamedControl">Email Result Links</span> to display all of the possible results:</p>
         <p><code>{EMAIL_RESULT_LINKS, comments=1, confirm=1, separator=" | ", icon=1}</code>
         </p>
-        <p>In this example, the<span class="NamedControl"> Email Result Links</span> control tag is configured to require comments (comments=1), require a confirmation dialog for the result (confirm=1), insert a spaced bar character between each result (separator=" | "), and display the icons for each result that was configured in the Process Timeline Activity (icon=1).</p>
+        <p>In this example, the<span class="NamedControl"> Email Result Links</span> control tag is configured to require comments (<code>comments=1</code>), require a confirmation dialog for the result (<code>confirm=1</code>), insert a spaced bar character between each result (<code>separator=" | "</code>), and display the icons for each result that was configured in the Process Timeline Activity (<code>icon=1</code>).</p>
         <p>For another user, you might only wish to show the Approve or Resubmit results but not the Reject result:</p>
-        <p><code>{EmailCompleteLink, text=<span class="CodeOption">APPROVE</span>, comments=false, confirm=true, action=<span class="CodeOption">APPROVED</span>}</code>
+        <p><code>{EmailCompleteLink, text=<span class="CodeOption">Approve the Request</span>, comments=false, confirm=true, action=<span class="CodeOption">Approve</span>}</code>
         </p>
-        <p><code>{EmailCompleteLink, text=<span class="CodeOption">RESUBMIT</span>, comments=true, confirm=true, action=<span class="CodeOption">RESUBMIT</span>}</code>
+        <p><code>{EmailCompleteLink, text=<span class="CodeOption">Ask for Resubmission</span>, comments=true, confirm=true, action=<span class="CodeOption">Resubmit</span>}</code>
         </p>
-        <p>In this example, the <span class="NamedControl">Email Complete Links</span> are configured to specify the text to display for the result (text=APPROVE), require comments for the Resubmit result (comments=true), require a confirmation dialog for the results (confirm=true), and specifies the task result, or action, for each result (<code>action=RESUBMIT</code>).</p>
+        <p>In this example, the <span class="NamedControl">Email Complete Links</span> are configured to specify the text to display for the result (<code>text=Approve the Request</code>), require comments for the <b>Resubmit</b> result (<code>comments=true</code>), require a confirmation dialog for the results (<code>confirm=true</code>), and specifies the activity result you've configured on the <span class="UIElement">Results </span>tab of the Timeline Activity (<code>action=Resubmit</code>).</p>
         <p>The<span class="NamedControl"> Email Complete URL</span> control tag, at its simplest, provides a link to the task completion page.</p>
         <p><code>{EMAIL_COMPLETE_URL}</code>
         </p>
