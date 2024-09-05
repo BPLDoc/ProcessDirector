@@ -111,5 +111,12 @@
         <p>Where <code>&lt;servername&gt; </code>is the host where the product is installed.</p>
         <p>Your specific development environment will have documentation to process a WSDL files and calling web services. </p>
         <p>Windows Communication Foundation (WCF) can also be used to call any web service in Process Director. All Process Director web services have a Web Services Description Language (WSDL) interface, and any WCF client can consume the web service. Using WCF also allows you to call web services asynchronously.</p>
+        <h2>
+            <MadCap:keyword term="ServiceHandle" /><a name="Service"></a>Service Handle Method <a href="#Service" class="anchor">#</a></h2>
+        <p>For Process Director v6.1.300, The ServiceHandle method for web services was added to the  SDK, under the <code>BPLogix.WorkflowDirector.SDK</code> namespace, to enable the creation of custom web services.</p>
+        <p>This method can be called to perform some complex functions, such as exporting users from an on-premise Active Directory system to a Cloud installation of Process Director. The method can be called with the declaration synatax:</p>
+        <p class="CodeBase">public ServiceHandle(bpWebServiceInternal <span class="CodeOption">pService</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">pAPI</span>, <br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">method</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;string <span class="CodeOption">sourceFile</span>, <br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;int <span class="CodeOption">line</span>, <br /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;params object[] <span class="ProcessDirectorObject">pParams</span>)</p>
+        <p>Most of the parameters are not enforced if they use the sub-method <code>ServiceHandle.Create</code> instead of creating the ServiceHandle object manually.</p>
+        <p>This method is normally implemented as a web service via a custom ASCX control.</p>
     </body>
 </html>
