@@ -28,7 +28,7 @@
                 <MadCap:dropDownHotspot>Event Field</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>If checked off, this form field will trigger an event when interacted with. Events can be used to update the form by triggering Custom Tasks or custom form scripts.</p>
+                <p>If checked, this form field will trigger an event when the value of the field changes. Events can be used to update the form by triggering Custom Tasks or custom form scripts.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -39,6 +39,17 @@
                 <p>If checked, this field will synchronize values will all other form fields that have the same names but are on different forms with different definitions in the same Process.&#160; When the value of a synced form field is updated, the value will be synchronized with all other form fields with the same names in the Process, whether or not those form fields are also marked as synchronized. However, if a form field’s value is updated and that form field isn't marked as a synchronized field, it won't update the values of other fields with the same names in the process, even if those fields are marked as synchronized. </p>
                 <p>If a column in an array is marked as synchronized, the number of rows and the content of that column will be synced with all other arrays in the process containing a column of the same name. This means that adding and removing rows in an array with a synced column will also add and remove rows in other arrays in the process with columns of the same name. Because synchronized array fields are so powerful, caution is recommended when using synchronized fields with arrays. Instead, we recommend alternatives, like the Copy Form Data Custom Task.</p>
                 <p>Prior to Process Director v4.04, field synchronization would only occur on form submission, but not when the Form was saved via a <span class="UIElement">Save</span> button, and not submitted. From v4.04, synchronization will occur any time the Form is saved, even if the Form isn't submitted.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Encrypt</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If checked, the value of the Form field will be stored in an encrypted format that consists of a long string of letters and numbers generated through an encryption algorithm. For instance, if a field contains the value "cat", it might be stored in the Process Director database as:</p>
+                <p><code>~BXZf07ESalia7ugE3jkCyKelhidmimeL09Dpex1403sTmI=</code>
+                </p>
+                <p>When a Field is encrypted, displaying the Form instance will show the unencrypted value, so, in the example above, the Form field will display "cat" as its value when the Form is viewed. On the other hand, encryption will affect your ability to search on the value "cat" in a Knowledge View. Because Knowledge Views search at the database level, and the field value is stored in an encrypted format, a Knowledge View filter that looks for the value "cat" in an encrypted Form field will not return the correct result, because the encrypted value will neither contain nor equal the filter term "cat". So, <b>setting a Form field value as encrypted will largely eliminate your ability to return the desired value when using the encrypted field in a Knowledge View filter.</b></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

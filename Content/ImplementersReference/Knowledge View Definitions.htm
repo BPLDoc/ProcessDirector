@@ -617,7 +617,7 @@
         </MadCap:dropDown>
         <h3><a name="_Toc421536230"></a>Filter Tab <a href="#_Toc421536230" class="anchor">#</a></h3>
         <p>The <span class="UIElement">Filter </span>tab identifies filter criteria that enables you to restrict the records the Knowledge View returns to those that meet specific filter criteria. The primary use for the <span class="UIElement">Filter </span>tab is to create searches for specific data that may be contained in a large set of records. The filter criteria can include form field data, categories, attribute values, or various object properties (e.g. author, document type, published). The filter criteria can identify what document versions to display – the latest document version or only the published version.</p>
-        <p>The end user can optionally be given the ability to override any of the filter values. This allows the field name and the input box to be displayed on the running Knowledge View so the user can input the additional filter information.</p>
+        <p>The end user can optionally be given the ability to override any of the filter values. This capability enables the field name and the input box to be displayed on the running Knowledge View so the user can input the additional filter information.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/FilterKView.png" />
         </p>
@@ -650,6 +650,8 @@
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> Filters that use an encrypted Form field in the filter condition will NOT return the expected values! Knowledge View filters operate at the database level, and thus do not decrypt the field prior to filtering.</p>
         <h3><a name="ComplexFilters"></a>Complex Filter Considerations</h3>
         <p>In general, when creating filters, you should bear in mind the type of object the Knowledge View returns. For instance, if the Knowledge View returns Form instances, filters work best when filtering on Form data. Conversely, trying to filter Form instances based on data stored in other objects, like Process Timelines, may return unexpected results. For instance, if a Form is used in more than one Process Timeline, and you try to filter the Form instances based on Timeline data, Process Director will evaluate whether the <b>any</b> Timeline associated with the Form meets the filter criterion you've designated. In that case, the Knowledge View may return multiple rows that contain the same Form instance, because more than one process meets the criteria.</p>
         <p>For a Form associated with multiple processes, when the Form is returned by a Knowledge View, additional logic runs in the background of the Knowledge View to associate the Form with the process that started first, in addition to any running processes. This logic, when considering what to return in the Knowledge View, makes the following decisions about which Form to return in the Knowledge View:</p>
