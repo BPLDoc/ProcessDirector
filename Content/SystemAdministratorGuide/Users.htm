@@ -41,6 +41,14 @@
         <p>To set the user’s account properties, click on the <span class="UIElement">Edit </span>hotlink in the user's row of the user list. The<span class="ControlName"> Edit User</span> configuration will display, with the <span class="ControlName">User ID</span> and <span class="ControlName">User Name</span> fields already configured. You may configure the remaining user properties.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Email Address</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enter an email address that will be associated with the user in the <span class="ControlName">Email Address</span> field. You can change the password by checking the <span class="ControlName">Change Password</span> box; an input field will appear prompting for a new password. Click <span class="UIElement">OK </span>to save the configuration.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Multi-Factor Authentication (MFA) Properties</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -48,14 +56,6 @@
                 <p>The <span class="ControlName">Enable Multi-Factor Authentication (MFA)</span> property will, when checked, activate the use of MFA for the specified user account.</p>
                 <p>The <span class="UIElement">Reset Multi-Factor Authentication</span> button will  reset the existing MFA token sequence and require the user to create a new MFA token in their authenticator app.</p>
                 <p>Please see the <a href="User Multifactor.htm">Using Multi-Factor Authentication (MFA)</a> topic for more details on how MFA is implemented in Process Director.</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>Email Address</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>Enter an email address that will be associated with the user in the <span class="ControlName">Email Address</span> field. You can change the password by checking the <span class="ControlName">Change Password</span> box; an input field will appear prompting for a new password. Click <span class="UIElement">OK </span>to save the configuration.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -92,34 +92,29 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">Prevents Process Director emails from being sent to the user.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Show Content List</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Developer (Home Page/Content List)</span>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">For Process Director v6.1 and higher, this property gives users access to the new <span class="ProcessDirectorObject">Content List</span> menu. While the <span class="ProcessDirectorObject">Content List</span> menu is visible by default to system administrators, non-administrative users must have this property checked in order to see it.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">For Process Director v6.1 and higher, this property gives users access to the new <span class="ProcessDirectorObject">Content List</span> menu and Home Page. While the <span class="ProcessDirectorObject">Content List</span> menu is visible by default to system administrators, non-administrative users must have this property checked in order to see it. This property enables you to give developers/implementers access to the full UI, without providing any access to the IT&#160;Admin section of the installation.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">User Account Locked</span>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Locks the account, preventing the user from logging in. (This feature is implemented only for “built-in” user account authentication. It doesn't apply to LDAP, SAML, or Windows user accounts.)</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Force password change at next login</span><![CDATA[
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Force password change at next login</span><![CDATA[
 ]]></td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Force the user to change their password on the next login attempt.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Change Password</span>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When checked, a text box will appear that enables you to enter a new password for the user.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Force the user to change their password on the next login attempt.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Mobile App User</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Change Password</span>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This setting appears only for installations that are licensed for the <a href="../ImplementersReference/Mobile App.htm">Mobile Application Component</a>, with the appropriate <a href="../DevelopersGuide/Customization File Mobile.htm">mobile app custom variables</a> configured properly. Checking this property indicates that the user will be granted access to the Mobile Application. </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When checked, a text box will appear that enables you to enter a new password for the user.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1"><span class="ControlName">Mobile Admin User</span>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Mobile App User</span>
                             </td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row1">This setting appears only for installations that are licensed for the <a href="../ImplementersReference/Mobile App.htm">Mobile Application Component</a>, with the appropriate <a href="../DevelopersGuide/Customization File Mobile.htm">mobile app custom variables</a> configured properly. Checking this property indicates that the user will be granted access to the Mobile Server as an administrator.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This setting appears only for installations that are licensed for the <a href="../ImplementersReference/Mobile App.htm">Mobile Application Component</a>, with the appropriate <a href="../DevelopersGuide/Customization File Mobile.htm">mobile app custom variables</a> configured properly. Checking this property indicates that the user will be granted access to the Mobile Application. </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2"><span class="ControlName">Mobile Admin User</span>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">This setting appears only for installations that are licensed for the <a href="../ImplementersReference/Mobile App.htm">Mobile Application Component</a>, with the appropriate <a href="../DevelopersGuide/Customization File Mobile.htm">mobile app custom variables</a> configured properly. Checking this property indicates that the user will be granted access to the Mobile Server as an administrator.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -156,29 +151,29 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">This user type isn't technically a system administrator, and has no access to the <span class="ProcessDirectorObject">IT Admin</span> area of the installation. Users who are designated as system partition administrators, however, have full access to the <span class="ProcessDirectorObject">Content List</span> for the partitions to which they are a member, and have permission to create, edit, and delete all  objects, irrespective of the <span class="ProcessDirectorObject">Content List</span> permissions that have been set in that Partition.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">System Configuration Admin</span>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A subset of the System Administrator user with access only to the <span class="UIElement">Configuration </span>tab.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">System User Admin</span>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A subset of the System Administrator user, with access only to the<span class="UIElement"> User Administration </span>tab.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">System Install Admin</span>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A subset of the System Administrator user, with access only to the<span class="UIElement"> Installation Settings</span> tab.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">System Troubleshooting Admin</span>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A subset of the System Administrator user, with access only to the <span class="UIElement">Troubleshooting </span>tab.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">User Impersonation Ability</span>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">The ability for this user to impersonate other users.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">System Configuration Admin</span>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A subset of the System Administrator user with access only to the <span class="UIElement">Configuration </span>tab.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">System User Admin</span>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A subset of the System Administrator user, with access only to the<span class="UIElement"> User Administration </span>tab.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">System Install Admin</span>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A subset of the System Administrator user, with access only to the<span class="UIElement"> Installation Settings</span> tab.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">System Troubleshooting Admin</span>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A subset of the System Administrator user, with access only to the <span class="UIElement">Troubleshooting </span>tab.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyB-Column1-Row2"><span class="ControlName">Metadata Admin</span>
