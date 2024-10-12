@@ -104,11 +104,12 @@
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="OAuth"></a>OAuth Tab <a href="#OAuth" class="anchor">#</a></h2>
-        <p>Version 2.22 of the utility has an <span class="UIElement">OAuth </span>tab to configure OAuth authentication for mail services that use Microsoft's Modern Authentication system to access the service. The properties on this tab enable access to Azure, and are required <i>in addition</i> to the properties on the <span class="UIElement">Connection </span>tab. While the <span class="UIElement">Connection </span>properties enable connection to a specific email inbox, the <span class="UIElement">OAuth </span>properties grant access to Microsoft Azure services.</p>
+        <p>Version 2.22 of the utility has an <span class="UIElement">OAuth </span>tab to configure OAuth authentication for mail services that use Microsoft's Modern Authentication or Google OAuth systems to access the service. The properties on this tab enable access to Azure or Google, and are required <i>in addition</i> to the properties on the <span class="UIElement">Connection </span>tab. While the <span class="UIElement">Connection </span>properties enable connection to a specific email inbox, the <span class="UIElement">OAuth </span>properties grant access to OAuth-protected services.</p>
         <p>
-            <img src="../Resources/Images/SystemVariablesReferenceGuide/EmailImportOAuth.png" />
+            <img src="../Resources/Images/ImplementersReference/bpemailImport-Oauth.png" />
         </p>
-        <p>There are three fields that must be configured to enable OAuth authentication with the mail service. Use of OAuth from Microsoft with the E-mail Import Utility requires the existence of a properly configured Azure Active Directory (AAD) Registered App.  </p>
+        <h3>Microsoft Modern Authentication (MMA)</h3>
+        <p>For Microsoft/Azure MMA, There are three fields that must be configured to enable OAuth authentication with the mail service. Use of OAuth from Microsoft with the E-mail Import Utility requires the existence of a properly configured Azure Active Directory (AAD) Registered App.  </p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Creating the AAD Registered App and integrating it with OAuth will require in-depth knowledge of Azure. As such, assistance from your IT&#160;personnel may be required.</p>
         <p>Microsoft OAuth integration requires three pieces of data that correspond to the three properties that must be configured on the <span class="UIElement">OAuth </span>tab. These three properties must be obtained from Azure, and can be accessed only after creating the AAD Registered App for the OAuth connection.</p>
@@ -157,6 +158,27 @@
             <li>Organizations that use a hybrid Federated Identity environment must enable <a href="https://learn.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta" target="_blank">Azure Active Directory Pass-Through Authentication</a>. Otherwise, the utility will be unable to connect to the specified user accounts, and an error will be generated.</li>
         </ul>
         <p>A more detailed explanation of how OAuth works and is configured on Azure-based systems is available in the <a href="Datasources Sharepoint.htm">SharePoint OAuth Datasource topic</a>.</p>
+        <h3>Google OAuth</h3>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/bpemailimport-google.png" />
+        </p>
+        <p>For Google OAuth, v2.25 of the bpEmailImport utility enables connections to Google. Only two Properties are required to implement the OAuth authentication. Both of these properties are available in the Google Developer Console for your account, and can be copied from there to the corresponding properties in bpEmailImport.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Client ID</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The ID&#160;of the Google client application.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Client Secret</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Client Secret that's associated with the Client application.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
         <h2><a name="_Toc421536103"></a>Filtering Tab <a href="#_Toc421536103" class="anchor">#</a></h2>
         <p>
             <img src="../Resources/Images/ImplementersReference/bpEmailImport2.png" />
