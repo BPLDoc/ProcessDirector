@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="System Administration" />
+            <MadCap:concept term="System Administration" />Live Stats</h1>
+        <p>For Process Director v6.1.300 and higher, the <span class="ProcessDirectorObject">Troubleshooting </span>section of<span class="ProcessDirectorObject"> IT&#160;Admin</span> contains a <span class="ProcessDirectorObject">Live Stats</span> page that continually refreshes to display current performance statistics for the system.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/LiveStats.png" />
+        </p>
+        <p>There are some health check system events that run on a recurring basis to poll various performance counters. The results of this polling are displayed in a continuous scroll on this page. The three primary health check polls are:</p>
+        <ul>
+            <li>A ping to the SignalR service,</li>
+            <li>A <code>clientsubs </code>JavaScript poll, and,</li>
+            <li>A custom health check page, health_check.aspx.</li>
+        </ul>
+        <p>Examples of results from all three of these are shown in the example screenshot above. Each statistics block displays the length of time it takes for various processes to complete on the system. The time for completion is given in seconds. Ideally, completion should take only a decimal fraction of a second, e.g.:</p>
+        <p><code>Elapsed: 0.0008842</code>
+        </p>
+        <p>Often, the fractions  are presented in scientific notation, e.g.:</p>
+        <p><code>Global.asax.cs(379):Application_BeginRequest,5.4E-06</code>
+        </p>
+        <p>In the example above, the elapsed time would be 0.0000054 seconds.</p>
+        <p>At the top of the Live Stats page, there are three controls to manipulate the display of the performance statistics.</p>
+        <p><span class="UIElement">Auto-Scroll Enabled</span> is a switch control that's turned on by default. This setting enables the page to continually scroll as new statistics are reported. Because the reporting occurs frequently, you may wish to turn this switch off to stop the automatic scrolling, in order to concentrate on a specific section of the stats, without having the continuously scroll out of view. Turning this switch off does not stop the reporting from being presented on the page, it merely stops the automatic scrolling when new results are reported.</p>
+        <p>A <span class="UIElement">Pause </span>button, when clicked, will pause the reporting completely. When paused, this button will be replaced by a <span class="UIElement">Resume </span>button that can be clicked to resume the statistics reporting.</p>
+        <p>A <span class="UIElement">Clear </span>button erases all of the current statistics from the screen, and starts over with a blank page.</p>
+        <p>When this page is first opened, the reporting window will have no data initially. Statistics posting does not begin until the page is opened. It may take a few seconds for the first polling results are displayed.</p>
+        <p>When reporting performance issues via Tech Support, you may be asked to open this page, let it run for a few minutes, then copy and paste the results into a text file, which you can then attach to the support ticket.</p>
+        <h2>Troubleshooting Pages</h2>
+        <p>The <span class="ProcessDirectorObject">Troubleshooting </span>section's pages can be accessed via  Table of Contents displayed on the upper right section of this page, or by using one of the links below:</p>
+        <p><a href="Server Control.htm" style="font-weight: bold;">Server Control</a><b>:</b> A list of links that invoke various server actions.</p>
+        <p><a href="System Information.htm" style="font-weight: bold;">System Information</a><b>:</b> Provides a display of relevant server statistics.</p>
+        <p><a href="Impersonation.htm" style="font-weight: bold;">Impersonate</a><b>:</b>&#160;Enables you to impersonate other users.</p>
+        <p><a href="Audit Logs.htm" style="font-weight: bold;">Audit Logs</a><b>:</b> Enables access to the Audit logs saved in the Process Director Database, when this feature is configured for appropriately licensed installations.</p>
+        <p><a href="Logs.htm" style="font-weight: bold;">Logs</a><b>:</b> Enables access to the system logs.</p>
+        <p><a href="Log Alerts.htm" style="font-weight: bold;">Log Alerts</a><b>:</b>&#160;Enables you to set alerts for specific events that might occur in the log files.</p>
+        <p><a href="Run Email Tests.htm" style="font-weight: bold;">Run Email Tests</a><b>:</b>&#160;Enables sending test emails from the system.</p>
+        <p><b>Help:</b> From the <span class="ProcessDirectorObject">Troubleshooting </span>section, clicking the <span class="UIElement">Help </span>button will open a new browser tab that displays the documentation web site for  Process Director at <a href="https://doc.bplogix.com/" target="_blank">https://doc.bplogix.com</a>. There is no need for further documentation about this link.</p>
+    </body>
+</html>
