@@ -4,23 +4,30 @@
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h1>
+        <h1 MadCap:conditions="General.MS Oauth Skip">
             <MadCap:concept term="Forms;Online Form Designer;Implementation;Form Definition;Controls" />
             <MadCap:keyword term="Forms;Collaborative Document Authoring;Online Review Tool;Online Form Designer;Attachments;Annmotations;Comments;OnlyOffice;Editing;Collaborative Editing;Documents;Document editing;Edit Attachments" />Collaborative Document Authoring</h1>
-        <p>For users of Process Director v5.13 and higher, document attachments may be annotated using Collaborative Document Authoring. </p>
-        <p class="PDNote">
+        <p MadCap:conditions="General.MS Oauth Skip">For users of Process Director v5.13 and higher, document attachments may be annotated using Collaborative Document Authoring. </p>
+        <p class="PDNote" MadCap:conditions="General.MS Oauth Skip">
             <img src="../Resources/Images/i2.png" alt="Note">
             </img> Collaborative Document Authoring is a separately licensed component that  is only available for Cloud installations.</p>
-        <p>
+        <p MadCap:conditions="General.MS Oauth Skip">
             <img src="../Resources/Images/ImplementersReference/CollaborativeDocumentAuthoring.png" />
         </p>
-        <p>Please see the documentation for the <a href="Form Online Controls Attachments.htm#ShowAttachedObjects">ShowAttach control</a> to see how to enable Collaborative Document Authoring for attachments. </p>
-        <p>Collaborative Document Authoring is a cloud-based service, OnlyOffice, that opens a number of file formats in an online editor for collaborative authoring and editing, change tracking, etc. The documentation for the Document, Spreadsheet and Presentation editors is available at <a href="https://helpcenter.onlyoffice.com/ONLYOFFICE-Editors/index.aspx" target="_blank">the OnlyOffice documentation web site</a>.</p>
-        <p>The following file formats can be authored in the OnlyOffice editors:</p>
-        <ul>
-            <li>Document Editor: DOCX, TXT, ODT, or RTF files.</li>
-            <li>Spreadsheet Editor: XLSX, ODS, or CSV files.</li>
-            <li>Presentation Editor: PPTX or ODP files.</li>
+        <p MadCap:conditions="General.MS Oauth Skip">Please see the documentation for the <a href="Form Online Controls Attachments.htm#ShowAttachedObjects">ShowAttach control</a> to see how to enable Collaborative Document Authoring for attachments. </p>
+        <p MadCap:conditions="General.MS Oauth Skip">Collaborative Document Authoring is a cloud-based service, OnlyOffice, that opens a number of file formats in an online editor for collaborative authoring and editing, change tracking, etc. The documentation for the Document, Spreadsheet and Presentation editors is available at <a href="https://helpcenter.onlyoffice.com/ONLYOFFICE-Editors/index.aspx" target="_blank">the OnlyOffice documentation web site</a>.</p>
+        <p MadCap:conditions="General.MS Oauth Skip">The following file formats can be authored in the OnlyOffice editors:</p>
+        <ul MadCap:conditions="General.MS Oauth Skip">
+            <li MadCap:conditions="General.MS Oauth Skip">Document Editor: DOCX, TXT, ODT, or RTF files.</li>
+            <li MadCap:conditions="General.MS Oauth Skip">Spreadsheet Editor: XLSX, ODS, or CSV files.</li>
+            <li MadCap:conditions="General.MS Oauth Skip">Presentation Editor: PPTX or ODP files.</li>
         </ul>
+        <h2 MadCap:conditions="General.MS OAuth"><a name="Office365"></a>Office365 and CDA <a href="#Office365" title="O365 CDA" alt="O365 CDA" class="anchor">#</a></h2>
+        <p MadCap:conditions="General.MS OAuth">For Process Director v6.1.300 and higher, CDA can optionally be used in conjunction with Microsoft Office365, rather than the OnlyOffice service. Like the use of Azure/Exchange for SMTP through Microsoft, there is additional configuration required to use O365 as the editor for documents.</p>
+        <p MadCap:conditions="General.MS OAuth">First, you must set up the configuration in Azure to create an Azure AAD application, as described in the <a href="../SystemAdministratorGuide/Configuring Azure.htm" title="Configuring Azure for Process Director Integration" alt="Configuring Azure for Process Director Integration">Configuring Azure for Process Director Integration</a> topic of the System Administrator Guide. You only have to perform this configuration once, so, if you've already completed this process for your SMTP&#160;OAuth connection to Azure, you do not need to repeat it.</p>
+        <p MadCap:conditions="General.MS OAuth">Next, the <span class="ControlName">Properties </span>page of the <span class="ProcessDirectorObject">Installation Settings </span>section of the <span class="ProcessDirectorObject">IT&#160;Admin </span>area has <a href="../SystemAdministratorGuide/Installation Settings Properties.htm#Office365">several properties that must be configured</a>  to create the connection to both the O365 installation and the shared root folder in which document attachments will be stored. These properties also require supplying the OAuth settings for the Registered AAD Application in Azure.</p>
+        <p class="PDNote" MadCap:conditions="General.MS Oauth Skip">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note">
+            </img> A PDF file for end-to-end Azure OAuth configuration can be found here: <a href="https://doc.bplogix.com/PDFAzureOAuth.pdf" target="_blank" title="Configuring Azure OAuth (PDF Download)" alt="Configuring Azure OAuth (PDF Download)">Configuring Azure OAuth (PDF Download)</a></p>
     </body>
 </html>
