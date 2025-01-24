@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xml:lang="en-us" MadCap:conditions="General.MS OAuth" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Business Value;Business Values;SharePoint" />Configuring SAML&#160;Access for O365 CDA</h1>
+        <p class="PDNote" MadCap:conditions="General.Not Printed,General.MS Oauth Skip">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for both SMTP and O365 CDA can be found here: <a href="https://doc.bplogix.com/PDFAzureOAuth.pdf" target="_blank" title="Configuring Azure OAuth (PDF Download)" alt="Configuring Azure OAuth (PDF Download)">Configuring Azure OAuth (PDF Download)</a></p>
+        <p class="Important" MadCap:conditions="General.MS Oauth Skip">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> This topic discusses a product feature in active development, and is subject to change at any time.</p>
+        <p>There are several ways to register external applications for use in Azure; however, only Enterprise applications currently support SAML. Thus for this topic, we'll cover the creation of the Enterprise Application for configuring SAML with Process Director.</p>
+        <p>To begin creating the Enterprise application for SAML integration, first navigate to the <span class="ProcessDirectorObject">Microsoft Entra ID</span>&#160;page of your Azure portal.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/EntraIDPage.png" />
+        </p>
+        <p>From this page, use the navigation bar on the left side of the screen to navigate to the <span class="ProcessDirectorObject">Enterprise Applications</span> page.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/samlEnterpriseApp.png" />
+        </p>
+        <p>From the toolbar at the top of the page, select the <span class="UIElement">New application</span> button.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/samlnewapp.png" />
+        </p>
+        <p>Click the <span class="UIElement">Create your own application</span> button, then select the option labeled, <span class="ControlName">Integrate any other application you don't find in the gallery</span>.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/samlappcreation.png" />
+        </p>
+        <p>Once the application has been created, you'll need to select the application type. To do so, click the <span class="UIElement">Single sign-on</span> button from the navigation bar on the left side of the page, then click the <span class="UIElement">SAML </span>button that will appear in the main portion of the screen.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/samlappcreation2.png" />
+        </p>
+        <p>On the <span class="ProcessDirectorObject">SAML-based Sign-on</span> page, you'll need to add the appropriate identifying URLS to configure the linkage between Process Director's SAML-related pages and Azure/Entra.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/samlconfig.png" />
+        </p>
+        <p>First, you'll need to add the <span class="ControlName">Identifier (Identity ID)</span> URLs that specify where the SAML logins will originate in Process Director. There are three of them that must be configured, using your actual Process Director server domain in place of the <code>&lt;pdserver.domain&gt;</code> placeholder text:</p>
+        <ol>
+            <li><code>https://&lt;pdserver.domain&gt;/login_saml.aspx</code>
+            </li>
+            <li><code>https://&lt;pdserver.domain&gt;/login_saml.aspx?skipintegrated=1&amp;skipsaml=&amp;usertype=</code>
+            </li>
+            <li><code>https://&lt;pdserver.domain&gt;/login_saml.aspx?skipsaml=&amp;usertype=</code>
+            </li>
+        </ol>
+        <p>You'll then need to supply the <span class="ControlName">Reply URL (Assertion Consumer Service URL) </span>property to: <code>https://&lt;pdserver.domain&gt;/login_saml.aspx</code>.</p>
+        <p>Next, set the <span class="ControlName">Signon URL (Optional)</span> property to: <code>https://&lt;pdserver.domain&gt;/login_saml.aspx</code>.</p>
+        <p>Finally, set the <span class="ControlName">Logout Url (Optional)</span> property to: <code>https://&lt;pdserver.domain&gt;/logout.aspx</code>.</p>
+        <p>The remainder of the Azure default property settings can remain unchanged. Click the <span class="UIElement">Save </span>button to save your newly configured application. Keep the page open, however, as we'll want to test the configuration later.</p>
+        <p>With the application configured in Azure, you'll now need to make the appropriate changes to your Process Director installation to enable SAML sign on for Process Director. <b>For Cloud customers, this process will most likely be done by BP&#160;Logix personnel.</b> On-Premise customers, however, will have to perform this configuration in their Process Director installation. Please see the appropriate Process Director documentation for configuring <a href="../InstallationGuide/SAML 2 0 Federated Identity.htm" title="SAML 2.0 (Federated Identity) Support" alt="SAML 2.0 (Federated Identity) Support">SAML 2.0 (Federated Identity) Support</a> in the Installation Guide. This configuration will require setting several <a href="../DevelopersGuide/Customization File SAML.htm" title="SAML Custom Variables" alt="SAML Custom Variables">SAML Custom Variables</a> in your Custom Variables file.</p>
+        <p>Once SAML is correctly configured in Process Director, you can return to the Azure Application window. At the bottom of the configuration page, click the <span class="UIElement">Test </span>button. This button will verify that all your changes work by opening a pop-up browser window to perform the connection testing. It will even look up errors you may receive from Microsoft’s login server and provide you help with resolving them.</p>
+        <p>Once the testing is complete, and you've corrected any SAML configuration or connection errors that may appear, your Process Director server should be fully integrated with Azure for SAML authentication.</p>
+        <p>With the configuration completed, you'll then need to determine how existing users will be added to Process Director from your SAML system. There are two common methods for adding existing users:</p>
+        <ol>
+            <li>Direct import into Process Director via a CSV/Excel file.</li>
+            <li>Enabling Process Director to auto-create user accounts when the user first logs in via SAML.</li>
+        </ol>
+        <p>BP&#160;Logix personnel will work with you to determine the most appropriate method for your user provisioning, both initially and on an ongoing basis. There are, as always, pros and cons with both methods, so BP&#160;Logix will work with you to determine the user provisioning method that best meets your needs.</p>
+        <p>With SAML set up properly, you can move to the next step, which is to <a href="O365 CDA 2 Full Scope.htm">create and configure the "Full Scope" App Registration</a> in Azure.</p>
+        <h2 MadCap:conditions="General.MS Oauth Skip">Other O365 CDA Configuration Topics</h2>
+        <p MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA.htm">O365 CDA Overview</a>
+        </p>
+        <h4 MadCap:conditions="General.MS Oauth Skip">O365 CDA Configuration Process</h4>
+        <ul MadCap:conditions="General.MS Oauth Skip">
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 2 Full Scope.htm">Create and configure “Full Scope” App Registration for PD in Azure/Entra</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 3 Site.htm">Create and configure “Site” App Registration for PD in Azure/Entra</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 4 Site Registration.htm">Grant proper “Site” App Registration permission</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 5 Site Settings.htm">Securely exchange “Site” App Registration and related settings with Process Director</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 6 PD Config.htm">Configure Process Director to leverage the application registration</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 7 Sharepoint.htm">Configure SharePoint external sharing</a>.</li>
+        </ul>
+    </body>
+</html>

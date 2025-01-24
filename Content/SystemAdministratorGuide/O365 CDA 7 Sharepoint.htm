@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xml:lang="en-us" MadCap:conditions="General.MS OAuth" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Business Value;Business Values;SharePoint" />Configuring SharePoint for External Access</h1>
+        <p class="PDNote" MadCap:conditions="General.Not Printed,General.MS Oauth Skip">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for both SMTP and O365 CDA can be found here: <a href="https://doc.bplogix.com/PDFAzureOAuth.pdf" target="_blank" title="Configuring Azure OAuth (PDF Download)" alt="Configuring Azure OAuth (PDF Download)">Configuring Azure OAuth (PDF Download)</a></p>
+        <p class="Important" MadCap:conditions="General.MS Oauth Skip">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> This topic discusses a product feature in active development, and is subject to change at any time.</p>
+        <p>Once you've configured Azure/Entra, and transmitted the appropriate information to BP&#160;Logix, you may need to make some changes to your SharePoint installation to enable its access for CDA, as a final step in this process. For some customers, this won't be necessary, since every user who accesses the documents for CDA will be valid, authenticated users of your Azure/Entra tenant. In many cases, however, you'll need to provide access to the documents for review or editing by users outside of your organization. In that case, you'll need to provide those external users with access to your SharePoint installation, to enable them to participate.</p>
+        <p>To do so, you'll first need to go to <a href="http://admin.microsoft.com/" target="_blank">admin.microsoft.com</a> to access your <b>Microsoft 365 Admin Center</b>. Once the admin center main page opens, you'll need to click the <span class="UIElement">Show All</span> menu item that appears in the sidebar on the left side of the page. Clicking this item will expand the sidebar to show additional menu items.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/spshowall.png" style="border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;" />
+        </p>
+        <p>When the new menu items appear, you'll need to scroll down to the <span class="UIElement">Admin Centers</span> section, and select the <span class="UIElement">SharePoint </span>menu item. </p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/spmenu.png" style="border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;" />
+        </p>
+        <p>Clicking the <span class="UIElement">SharePoint </span>menu item will open a new browser tab to display the <b>SharePoint Admin Center</b>. On the left sidebar of the page, you'll need to click the <span class="UIElement">Sites </span>menu to expand it, then select the <span class="UIElement">Active Sites</span> menu item.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/spactivesites.png" style="border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;" />
+        </p>
+        <p>Clicking <span class="UIElement">Active Sites</span> will display the <span class="ProcessDirectorObject">Active Sites</span> page, listing all of your currently active SharePoint sites. Find the Web site in the list of sites, and click on it to select and expand it. When you do so, an informational pane for the selected site will appear on the right side of the page.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/spsiteselected.png" style="border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;" />
+        </p>
+        <p>In the informational pane, a series of tabs will be displayed, just below the header information and logo. You'll need to click the <span class="UIElement">Settings </span>tab to display its contents.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/spsitesettings.png" style="border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;" />
+        </p>
+        <p>In the <span class="UIElement">Settings </span>tab, select either <i>Anyone</i> or <i>New and existing guests</i> from the <span class="ControlName">External file sharing</span> property options. You must choose one of these options to enable external sharing to users from outside of your organization. There are different security implications for each item. <i>New and existing guests</i> is a more secure option that verifies external users by sending a one-time password (OTP) to their email address. While more secure, some organizations may find this too cumbersome for their use-case. The Anyone selection enables access to documents without the additional OTP verification. Irrespective of which option you choose, it will require specially crafted URLs to access individual documents. You'll need to refer to Microsoft’s SharePoint documentation for more information about that.</p>
+        <p>Once you've set the desired <span class="ControlName">External file sharing</span> property option, you can click the Save button to save it. Once saved, the appropriate external users will be able to access the documents they need to access when participating in the editing/collaboration process.</p>
+        <p>This step, combined with the changes made you to your Process Director installation, should fully enable O365 for use with the product's CDA feature.</p>
+        <h2 MadCap:conditions="General.MS Oauth Skip">Other O365 CDA Configuration Topics</h2>
+        <p MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA.htm">O365 CDA Overview</a>
+        </p>
+        <h4 MadCap:conditions="General.MS Oauth Skip">O365 CDA Configuration Process</h4>
+        <ul MadCap:conditions="General.MS Oauth Skip">
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 1 SAML.htm">Configure SAML access for PD in Azure</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 2 Full Scope.htm">Create and configure “Full Scope” App Registration for PD in Azure/Entra</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 3 Site.htm">Create and configure “Site” App Registration for PD in Azure/Entra</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 4 Site Registration.htm">Grant proper “Site” App Registration permission</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 5 Site Settings.htm">Securely exchange “Site” App Registration and related settings with Process Director</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 6 PD Config.htm">Configure Process Director to leverage the application registration</a>.</li>
+        </ul>
+    </body>
+</html>

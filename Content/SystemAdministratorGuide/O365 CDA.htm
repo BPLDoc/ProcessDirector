@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xml:lang="en-us" MadCap:conditions="General.MS OAuth" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Business Value;Business Values;SharePoint" />Configuring Azure for Office365 and Collaborative Document Authoring (CDA)</h1>
+        <p class="PDNote" MadCap:conditions="General.Not Printed">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for both SMTP and O365 CDA can be found here: <a href="https://doc.bplogix.com/PDFAzureOAuth.pdf" target="_blank" title="Configuring Azure OAuth (PDF Download)" alt="Configuring Azure OAuth (PDF Download)">Configuring Azure OAuth (PDF Download)</a></p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> This topic discusses a product feature in active development, and is subject to change at any time.</p>
+        <p>For Process Director v6.1.300 and higher, Collaborative Document Authoring (CDA), can be implemented using the online version of Microsoft Office365 (O365). Setting up O365 CDA is a relatively complex process. This process will require setup within your Azure/Entra instance, and will, in most cases, also require some assistance from BP&#160;Logix. BP Logix recommends that read this guide thoroughly before executing the steps provided. Key information can be overlooked if you're not careful.</p>
+        <p>In order to provide optimal security, confining Process Director to a single SharePoint site, you'll need to create two different application registrations in Microsoft Entra. The first “Full Scope” registration is used only during initial configuration. The second “Site” registration is configured through the “Full Scope” registration and is the application registration that Process Director will utilize, once configured.</p>
+        <p>There are several steps to the process of configuration, each of which are linked to a documentation topic below, in the order in which they must be completed. In each topic, we'll specifically designate which steps you must perform as part of your Azure/Entra configuration, and which steps BP&#160;Logix must perform to complete the configuration in Process Director. Configuring O365 CDA requires that the steps, in order, that must be completed.</p>
+        <ol>
+            <li><a href="O365 CDA 1 SAML.htm">Configure SAML access for PD in Azure</a>.</li>
+            <li><a href="O365 CDA 2 Full Scope.htm">Create and configure “Full Scope” App Registration for PD in Azure/Entra</a>.</li>
+            <li><a href="O365 CDA 3 Site.htm">Create and configure “Site” App Registration for PD in Azure/Entra</a>.</li>
+            <li><a href="O365 CDA 4 Site Registration.htm">Grant proper “Site” App Registration permission</a>.</li>
+            <li><a href="O365 CDA 5 Site Settings.htm">Securely exchange “Site” App Registration and related settings with Process Director</a>.</li>
+            <li><a href="O365 CDA 6 PD Config.htm">Configure Process Director to leverage the application registration</a>.</li>
+            <li><a href="O365 CDA 7 Sharepoint.htm">Configure SharePoint external sharing</a>.</li>
+        </ol>
+        <h2 MadCap:conditions="General.MS Oauth Skip">Conclusion</h2>
+        <p MadCap:conditions="General.MS Oauth Skip">Congratulations! Assuming that you've correctly followed the instructions provided in the topics listed above, you've now configured an Azure/Entra, and SharePoint integration with O365 CDA.</p>
+    </body>
+</html>
