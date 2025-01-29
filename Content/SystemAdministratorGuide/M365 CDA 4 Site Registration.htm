@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xml:lang="en-us" MadCap:conditions="General.MS OAuth" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
     <head>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
@@ -8,22 +8,21 @@
             <MadCap:concept term="Implementation" />
             <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Business Value;Business Values;SharePoint" />Granting “Site” App Registration Permissions</h1>
         <p class="PDNote" MadCap:conditions="General.Not Printed,General.MS Oauth Skip">
-            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for both SMTP and O365 CDA can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure OAuth (PDF Download)" alt="Configuring Azure OAuth (PDF Download)">Configuring Azure OAuth (PDF Download)</a></p>
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for both SMTP and M365 CDA can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure For Process Director (PDF Download)" alt="Configuring Azure For Process Director (PDF Download)">Configuring Azure For Process Director (PDF Download)</a></p>
         <p class="Important" MadCap:conditions="General.MS Oauth Skip">
             <img src="../Resources/Images/i.png" title="Important" alt="Important" /> This topic discusses a product feature in active development, and is subject to change at any time.</p>
         <p>BP Logix will provide you with a set of Powershell scripts for applying the appropriate permissions to your "Site" level App Registration. These scripts have no additional external dependency; however, prior to running them, you should run the following PowerShell cmdlet:</p>
         <p><code>Set-ExecutionPolicy -ExecutionPolicy Bypass</code> </p>
         <p>Once executed, it should ensure that the scripts provided by BP&#160;Logix won’t be blocked from running.</p>
         <p>Once you've done so, locate the folder into which you extracted the PowerShell scripts provided to you by BP Logix. Start PowerShell in that folder location.</p>
-        <p>First you must obtain a bearer token from the “Full Scope” App Registration you configured earlier. To obtain the bearer toke, run the PowerShell command below. For each parameter in the command, use the "Full Scope" value you obtained earlier (<span class="ControlName">Full Scope Tenant ID</span>, <span class="ControlName">Full Scope Client ID</span>, and <span class="ControlName">Full Scope Client Secret</span>). </p>
+        <p>First you must obtain a bearer token from the “Full Scope” App Registration you configured earlier. To obtain the bearer token, run the PowerShell command below. For each parameter in the command, use the "Full Scope" value you obtained earlier (<span class="ControlName">Full Scope Tenant ID</span>, <span class="ControlName">Full Scope Client ID</span>, and <span class="ControlName">Full Scope Client Secret</span>). </p>
         <p class="CodeBase">.\get-access-token.ps1 -tenantId <span class="CodeOption">&lt;Full Scope Tenant ID&gt;</span> -clientId <span class="CodeOption">&lt;Full Scope Client ID&gt;</span> -clientSecret <span class="CodeOption">&lt;Full Scope Client Secret&gt;</span></p>
         <p>You'll need to replace the text in angled brackets with the actual values from your "Full Scope" App Registration, e.g.:</p>
         <p class="CodeBase">.\get-access-token.ps1 -tenantId deadbeef-deed-feed-f00d-0123456789ab -clientId 87654321-deed-feed-f00d-0123456789ab -clientSecret dI8AQ~EKNqYwcXf0CJ_lFBJvR6xnDWOZDM4Qbao7</p>
         <p>Once you’ve run the script successfully, you’ll have a file named "bearer.txt" in the current folder. The script will also output the bearer token to the console, though it will be truncated, due to its length.</p>
         <p>Next you’ll need to obtain the Site ID for the SharePoint site you wish to use with Process Director. Process Director uses a specific path within the site to avoid conflicts with other files, documents, and folders that may be in use.</p>
-        <p>Using a browser of your choice, login and access the SharePoint site you wish to use.</p>
-        <p>In that same browser, without logging out of SharePoint/Entra, navigate to:</p>
-        <p> <code>https://&lt;tenant-name&gt;.sharepoint.com/sites/&lt;site-name&gt;/_api/site/id</code></p>
+        <p>Using a browser of your choice, login and access the SharePoint site you wish to use. In that same browser, without logging out of SharePoint/Entra, navigate to:</p>
+        <p> <code>https://<span class="CodeOption">&lt;tenantname&gt;</span>.sharepoint.com/sites/<span class="CodeOption">&lt;sitename&gt;</span>/api/site/id</code></p>
         <p>Once that page loads, it will display some XML values, as shown below.</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/sitexml.png" />
@@ -36,18 +35,18 @@
             <img src="../Resources/Images/SystemAdministratorGuide/consolepermsset.png" />
         </p>
         <p>The console messages should indicate that the appropriate roles/permissions were granted to the specified "Site" App Registration.</p>
-        <p>With this complete, you can now <a href="O365 CDA 6 PD Config.htm">securely transmit the configuration information BP&#160;Logix needs</a> to configure your system (or, in the case of on-premise platform customers, configure your system).</p>
-        <h2 MadCap:conditions="General.MS Oauth Skip">Other O365 CDA Configuration Topics</h2>
-        <p MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA.htm">O365 CDA Overview</a>
+        <p>With this complete, you can now <a href="M365 CDA 6 PD Config.htm">securely transmit the configuration information BP&#160;Logix needs</a> to configure your system.</p>
+        <h2 MadCap:conditions="General.MS Oauth Skip">Other M365 CDA Configuration Topics</h2>
+        <p MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA.htm">M365 CDA Overview</a>
         </p>
-        <h4 MadCap:conditions="General.MS Oauth Skip">O365 CDA Configuration Process</h4>
+        <h4 MadCap:conditions="General.MS Oauth Skip">M365 CDA Configuration Process</h4>
         <ul MadCap:conditions="General.MS Oauth Skip">
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 1 SAML.htm">Configure SAML access for PD in Azure</a>.</li>
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 2 Full Scope.htm">Create and configure “Full Scope” App Registration for PD in Azure/Entra</a>.</li>
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 3 Site.htm">Create and configure “Site” App Registration for PD in Azure/Entra</a>.</li>
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 5 Site Settings.htm">Securely exchange “Site” App Registration and related settings with Process Director</a>.</li>
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 6 PD Config.htm">Configure Process Director to leverage the application registration</a>.</li>
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 7 Sharepoint.htm">Configure SharePoint external sharing</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 1 SAML.htm">Configure SAML access for PD in Azure</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 2 Full Scope.htm">Create and configure “Full Scope” App Registration for PD in Azure/Entra</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 3 Site.htm">Create and configure “Site” App Registration for PD in Azure/Entra</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 5 Site Settings.htm">Securely exchange “Site” App Registration and related settings with Process Director</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 6 PD Config.htm">Configure Process Director to leverage the application registration</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 7 Sharepoint.htm">Configure SharePoint external sharing</a>.</li>
         </ul>
     </body>
 </html>

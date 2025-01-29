@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xml:lang="en-us" MadCap:conditions="General.MS OAuth" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
     <head>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
@@ -8,10 +8,10 @@
             <MadCap:concept term="Implementation" />
             <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Business Value;Business Values;SharePoint" />Configuring "Full Scope” App Registration</h1>
         <p class="PDNote" MadCap:conditions="General.Not Printed,General.MS Oauth Skip">
-            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for both SMTP and O365 CDA can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure OAuth (PDF Download)" alt="Configuring Azure OAuth (PDF Download)">Configuring Azure OAuth (PDF Download)</a></p>
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for both SMTP and M365 CDA can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure For Process Director (PDF Download)" alt="Configuring Azure For Process Director (PDF Download)">Configuring Azure For Process Director (PDF Download)</a></p>
         <p class="Important" MadCap:conditions="General.Not Printed,General.MS Oauth Skip">
             <img src="../Resources/Images/i.png" title="Important" alt="Important" /> This topic discusses a product feature in active development, and is subject to change at any time.</p>
-        <p>When fully configured, O365 CDA will access a single, specified SharePoint site. In order to create this configuration, you'll need to provide a mechanism to isolate that site. A "Full Scope" application registration in Azure provides this isolation mechanism, which we'll use to create the site-level application later.</p>
+        <p>When fully configured, M365 CDA will access a single, specified SharePoint site. In order to create this configuration, you'll need to provide a mechanism to isolate that site. A "Full Scope" application registration in Azure provides this isolation mechanism, which we'll use to create the site-level application later.</p>
         <p> The official Azure/Entra proprietary term for creating the entity we're about to configure is <i>Application (App)</i><i> Registration</i>, and that's the term we'll use in this documentation. Your personnel who have IT/IS specialties may refer to this Azure/Entra entity by different names. Most commonly, the generic term <i>Service Principal</i> is likely familiar, since it's a generic term that can be used for other cloud providers like AWS and Google Cloud, and is the term commonly used in Internet Security.</p>
         <p>To create the "Full Scope" App Registration, first navigate to the <span class="ProcessDirectorObject">Microsoft Entra ID</span> page of your Azure installation.</p>
         <p>
@@ -30,31 +30,31 @@
             <img src="../Resources/Images/SystemAdministratorGuide/faappoverview.png" />
         </p>
         <p>Next, you'll need to click the <span class="UIElement">API&#160;Permissions </span>menu item from the left sidebar of the page to open the <span class="ProcessDirectorObject">API&#160;Permissions </span>page. You'll need to edit some of the default permissions for this application.</p>
-        <p>If the <code>user.read</code> permission is shown, you'll need to delete it.</p>
-        <p>Next, you'll need to click the <span class="UIElement">Add a permission</span> button to open its dialog box. Select <span class="UIElement">Microsoft Graph</span>, then <span class="UIElement">Application Permissions</span>. Once in the Application Permissions section, you'll need to ad the <code>Sites.FullControl.All</code> permission to the application.</p>
+        <p>If the <code>User.Read</code> permission is shown, you'll need to delete it.</p>
+        <p>Next, you'll need to click the <span class="UIElement">Add a permission</span> button to open its dialog box. Select <span class="UIElement">Microsoft Graph</span>, then <span class="UIElement">Application Permissions</span>. Once in the Application Permissions section, you'll need to add the <code>Sites.FullControl.All</code> permission to the application.</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/fsapiperms.png" />
         </p>
         <p>Once you've done so, click the <span class="UIElement">Add Permissions</span> button at the bottom of the page. Once you do, you'll need to click the <span class="UIElement">Grant admin consent for &lt;Enterprise name&gt;</span> button to confirm the change.</p>
-        <p>Now that the permissions have been changed, you'll need to create the <span class="ControlName">Client Secret</span> property for the new application. To do so, click the <span class="UIElement">Certificates &amp;&#160;secrets</span> navigation menu item on the left sidebar of the page. When the page open, click the <span class="UIElement">New Client Secret</span> button to create a new client secret. You'll need to provide a <span class="ControlName">Name </span>for the new item. Once you do so, click the <span class="UIElement">Add </span>button.</p>
+        <p>Now that the permissions have been changed, you'll need to create the <span class="ControlName">Client Secret</span> property for the new application. To do so, click the <span class="UIElement">Certificates &amp;&#160;secrets</span> navigation menu item on the left sidebar of the page. When the page opens, click the <span class="UIElement">New Client Secret</span> button to create a new client secret. You'll need to provide a <span class="ControlName">Name </span>for the new item. Once you do so, click the <span class="UIElement">Add </span>button.</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" title="Important" alt="Important" /> Once you click the <span style="font-weight: bold; font-style: italic;">Add</span> button, you are presented with the secret <i>once and only once</i>. Do not navigate away or refresh the page.</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/addfsclientsecret.png" />
         </p>
-        <p>Click the<span class="ControlName"> Copy to clipboard </span>icon and then paste the secret into a secure document or file. Keep the file secret, and store it in a safe and secure place, preferably one that is backed up securely. Losing this value will make it impossible to use the "Full Scope" app to create the site isolation for the O365 CDA integration.</p>
-        <p>Keep the values for the <span class="ControlName">Client Secret</span> as well as the <span class="ControlName">Client ID</span> and <span class="ControlName">Tenant ID</span> properties for the “Full Scope” App Registration on hand. We'll need them to  <a href="O365 CDA 3 Site.htm">create and configure the "site" level App Registration</a>, which is the next step in the process.</p>
-        <h2 MadCap:conditions="General.MS Oauth Skip">Other O365 CDA Configuration Topics</h2>
-        <p MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA.htm">O365 CDA Overview</a>
+        <p>Click the<span class="ControlName"> Copy to clipboard </span>icon and then paste the secret into a secure document or file. Keep the file secret, and store it in a safe and secure place, preferably one that is backed up securely. Losing this value will make it impossible to use the "Full Scope" app to create the site isolation for the M365 CDA integration.</p>
+        <p>Keep the values for the <span class="ControlName">Client Secret</span> as well as the <span class="ControlName">Client ID</span> and <span class="ControlName">Tenant ID</span> properties for the “Full Scope” App Registration on hand. We'll need them to  <a href="M365 CDA 3 Site.htm">create and configure the "site" level App Registration</a>, which is the next step in the process.</p>
+        <h2 MadCap:conditions="General.MS Oauth Skip">Other M365 CDA Configuration Topics</h2>
+        <p MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA.htm">M365 CDA Overview</a>
         </p>
-        <h4 MadCap:conditions="General.MS Oauth Skip">O365 CDA Configuration Process</h4>
+        <h4 MadCap:conditions="General.MS Oauth Skip">M365 CDA Configuration Process</h4>
         <ul MadCap:conditions="General.MS Oauth Skip">
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 1 SAML.htm">Configure SAML access for PD in Azure</a>.</li>
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 3 Site.htm">Create and configure “Site” App Registration for PD in Azure/Entra</a>.</li>
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 4 Site Registration.htm">Grant proper “Site” App Registration permission</a>.</li>
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 5 Site Settings.htm">Securely exchange “Site” App Registration and related settings with Process Director</a>.</li>
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 6 PD Config.htm">Configure Process Director to leverage the application registration</a>.</li>
-            <li MadCap:conditions="General.MS Oauth Skip"><a href="O365 CDA 7 Sharepoint.htm">Configure SharePoint external sharing</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 1 SAML.htm">Configure SAML access for PD in Azure</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 3 Site.htm">Create and configure “Site” App Registration for PD in Azure/Entra</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 4 Site Registration.htm">Grant proper “Site” App Registration permission</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 5 Site Settings.htm">Securely exchange “Site” App Registration and related settings with Process Director</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 6 PD Config.htm">Configure Process Director to leverage the application registration</a>.</li>
+            <li MadCap:conditions="General.MS Oauth Skip"><a href="M365 CDA 7 Sharepoint.htm">Configure SharePoint external sharing</a>.</li>
         </ul>
     </body>
 </html>

@@ -221,7 +221,7 @@
                 <p MadCap:conditions="General.MS Oauth Skip">Enables you to set a host name or IP address for the SMTP Host. By default it will use the local SMTP server. Setting this property also allows you to set the SMTP Port, SMTP UserID, and SMTP Password, and SSL Required properties.</p>
                 <p MadCap:conditions="General.MS Oauth Skip">You do have some different options for sending mail from the system.</p>
                 <ol>
-                    <li MadCap:conditions="General.MS Oauth Skip">Using “relay” through your existing mail server (e.g. Exchange, O365, etc.)<ul MadCap:conditions="General.MS Oauth Skip"><li MadCap:conditions="General.MS Oauth Skip">This method requires that your mail server enables relay. This can be controlled by IP address and/or the use of credentials to connect to your SMTP mail server.</li><li MadCap:conditions="General.MS Oauth Skip">If your mail server can't return quickly from a large number of mail request, this could slow the end user experience in Process Director when the completion of a form results in process emails being sent out. To work around this, you can use option #3. This will perform a store and forward that won't be delayed with slowdowns in the email server responding.</li></ul></li>
+                    <li MadCap:conditions="General.MS Oauth Skip">Using “relay” through your existing mail server (e.g. Azure/Exchange, etc.)<ul MadCap:conditions="General.MS Oauth Skip"><li MadCap:conditions="General.MS Oauth Skip">This method requires that your mail server enables relay. This can be controlled by IP address and/or the use of credentials to connect to your SMTP mail server.</li><li MadCap:conditions="General.MS Oauth Skip">If your mail server can't return quickly from a large number of mail request, this could slow the end user experience in Process Director when the completion of a form results in process emails being sent out. To work around this, you can use option #3. This will perform a store and forward that won't be delayed with slowdowns in the email server responding.</li></ul></li>
                     <li MadCap:conditions="General.MS Oauth Skip">Using the local IIS SMTP server to send the emails directly to the recipients<ul MadCap:conditions="General.MS Oauth Skip"><li MadCap:conditions="General.MS Oauth Skip">This method will send emails from the local SMTP server. It may be necessary to setup a DNS SPF, DKIM or reverse DNS record for this server so recipients don't flag these emails as SPAM.</li></ul></li>
                     <li MadCap:conditions="General.MS Oauth Skip">Using the local IIS SMTP server to relay through your mail server using the “Smart Host” configuration.<ul MadCap:conditions="General.MS Oauth Skip"><li MadCap:conditions="General.MS Oauth Skip">This method requires that your mail server enables relay from this IP address. It will forward all emails through your mail server using a store/forward technique, allowing retries.</li></ul></li>
                     <li MadCap:conditions="General.MS Oauth Skip">	Relaying through a mail provider (e.g. SMTP.com)<ul MadCap:conditions="General.MS Oauth Skip"><li MadCap:conditions="General.MS Oauth Skip">This method requires that a provider be created and that recipients will allow emails sent from this domain to be received.</li></ul></li>
@@ -294,14 +294,14 @@
                 <p MadCap:conditions="General.MS Oauth Skip">Enables you to set the number of custom icons that you can use in the Process Director interface. The default setting is 0. If you create any custom icons, you must set this value to the exact number of custom icons that you have created. For information on creating custom icons, please see the <a href="Creating Custom Icons.htm">Creating Custom Icons</a> topic.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2 MadCap:conditions="General.MS OAuth"><a name="Office365"></a>O365 CDA Installation Settings <a href="#Office365" title="O365 for CDA" alt="O365 for CDA" class="anchor">#</a></h2>
-        <p MadCap:conditions="General.MS OAuth">For Process Director v6.1.300 and higher, the product supports the use of Office365 for CDA. All prior versions can use only the third-party document editing service provided by OnlyOffice. The implementation of O365 for CDA requires several properties be configured on the <span class="ProcessDirectorObject">Installation Settings</span> &gt; <span class="ControlName">Properties </span>page.</p>
+        <h2 MadCap:conditions="General.MS OAuth"><a name="Office365"></a>Microsoft 365 CDA Installation Settings <a href="#Office365" title="O365 for CDA" alt="O365 for CDA" class="anchor">#</a></h2>
+        <p MadCap:conditions="General.MS OAuth">For Process Director v6.1.300 and higher, the product supports the use of Microsoft 365 for CDA. All prior versions can use only the third-party document editing service provided by OnlyOffice. The implementation of M365 for CDA requires several properties be configured on the <span class="ProcessDirectorObject">Installation Settings</span> &gt; <span class="ControlName">Properties </span>page.</p>
         <MadCap:dropDown MadCap:conditions="General.MS OAuth">
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>SharePoint CDA Site URL</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>The URL of the SharePoint/O365 site that hosts the office installation.</p>
+                <p>The URL of the SharePoint/M365 site that hosts the office installation.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown MadCap:conditions="General.MS OAuth">
@@ -338,7 +338,7 @@
                         <p>The ID of the Application in SharePoint.</p>
                     </li>
                     <li>
-                        <p>This value is displayed as the <span class="ControlName">Application (client) ID</span> property on the <span class="UIElement">Overview </span>page of your application.</p>
+                        <p>This value is displayed as the <span class="ControlName">Application (client) ID</span> property on the <span class="UIElement">Overview </span>page of your application from the "Site" application registration.</p>
                     </li>
                 </ol>
             </MadCap:dropDownBody>
@@ -356,7 +356,7 @@
                 <MadCap:dropDownHotspot>SharePoint CDA Advanced options (optional)</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>A comma-separated list of options to pass to your O365 system.</p>
+                <p>A  list of options to pass to your M365 system, using JSON format.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>
