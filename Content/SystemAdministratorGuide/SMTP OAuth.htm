@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xml:lang="en-us" MadCap:conditions="General.MS OAuth" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
     <head>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
@@ -7,13 +7,12 @@
         <h1>
             <MadCap:keyword term="System Administration" />
             <MadCap:concept term="System Administration" />Microsoft OAuth for SMTP</h1>
-        <p class="PDNote" MadCap:conditions="General.MS Oauth Skip">
-            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure OAuth configuration can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure OAuth (PDF Download)" alt="Configuring Azure OAuth (PDF Download)">Configuring Azure OAuth (PDF Download)</a></p>
-        <p>To configure integration between Azure and Process Director, you'll first need to create and register an Azure Active Directory (AAD) Application, if you do not have one. Please see the <a href="Configuring Azure SMTP.htm">Configuring Azure for Process Director Integration</a> topic for instructions on how to create and register an AAD Application.</p>
-        <p>Once the AAD&#160;Application has been registered, you'll need to perform some additional configuration to the AAD&#160;Application's settings in Azure. </p>
+        <p class="PDNote" MadCap:conditions="General.Not Printed,General.MS Oauth Skip">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for all Process Director features can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure For Process Director (PDF Download)" alt="Configuring Azure For Process Director (PDF Download)">Configuring Azure For Process Director (PDF Download)</a></p>
+        <p>To configure integration between Azure and Process Director, you'll first need to create an Registered Application for Process Director, if you do not have one. Once the Registered Application has been created, you'll need to perform some additional configuration to the Registered Application's settings in Azure. </p>
         <p>First, in the <span class="UIElement">Authentication </span>area, you'll need to set the <span class="ControlName">Allow public client flows</span> property to: <code>Yes (On)</code></p>
-        <p>Unfortunately, there are many factors that might impact the remaining AAD&#160;Application settings you'll need to use. Since that is so, you may wish to reference Microsoft's explanation of <a href="https://learn.microsoft.com/en-us/exchange/client-developer/legacy-protocols/how-to-authenticate-an-imap-pop-smtp-application-by-using-oauth#add-the-pop-imap-or-smtp-permissions-to-your-aad-application" target="_blank" title="Authenticate an IMAP, POP or SMTP connection using OAuth" alt="Authenticate an IMAP, POP or SMTP connection using OAuth">SMTP&#160;OAuth implementation</a>.</p>
-        <p>Depending on your Azure installation, as well as your organization's policies, there are different configuration settings that you might need to implement, in order to enable your AAD application to enable Process Director to use OAuth to send mail messages. <b>BP&#160;Logix cannot, therefore, definitively describe what settings might be required to make your Azure installation accept OAuth authentication, as we have no knowledge of, or access to, your Azure configuration.</b> </p>
+        <p>Unfortunately, there are many factors that might impact the remaining Registered Application settings you'll need to use. Since that is so, you may wish to reference Microsoft's explanation of <a href="https://learn.microsoft.com/en-us/exchange/client-developer/legacy-protocols/how-to-authenticate-an-imap-pop-smtp-application-by-using-oauth#add-the-pop-imap-or-smtp-permissions-to-your-aad-application" target="_blank" title="Authenticate an IMAP, POP or SMTP connection using OAuth" alt="Authenticate an IMAP, POP or SMTP connection using OAuth">SMTP&#160;OAuth implementation</a>.</p>
+        <p>Depending on your Azure installation, as well as your organization's policies, there are different configuration settings that you might need to implement, in order to enable your Registered Application to enable Process Director to use OAuth to send mail messages. <b>BP&#160;Logix cannot, therefore, definitively describe what settings might be required to make your Azure installation accept OAuth authentication, as we have no knowledge of, or access to, your Azure configuration.</b> </p>
         <p class="Important">
             <img src="../Resources/Images/i.png" title="Important" alt="Important" /> We strongly recommend that you refer to the Microsoft documentation topic on this subject: <a href="https://learn.microsoft.com/en-us/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365#configure-a-tls-certificate-based-connector-to-relay-email-through-microsoft-365-or-office-365" target="_blank" title="How to set up a multifunction device or application to send emails using Microsoft 365 or Office 365" alt="How to set up a multifunction device or application to send emails using Microsoft 365 or Office 365">How to set up a multifunction device or application to send emails using Microsoft 365 or Office 365</a>.</p>
         <p>We can provide some common configuration suggestions that have worked for our customers in the past, though <b style="font-style: italic;">we cannot guarantee that these settings will work with your specific Azure configuration</b>. </p>
@@ -26,7 +25,7 @@
         <p>If no combination of the settings above work for you, you may need to contact your Microsoft Azure technical support representative to assist you with configuring the correct AAD App permissions for your installation.</p>
         <p class="PDNote">
             <img src="../Resources/Images/i2.png" title="Information" alt="Information" /> For more information on authentication permissions, please refer to the <a href="https://learn.microsoft.com/en-us/graph/permissions-reference" title="Microsoft Graph PermissionsrReference" alt="Microsoft Graph PermissionsrReference" target="_blank">Microsoft Graph Permissions Reference</a> from Microsoft. Please be aware that BP&#160;Logix has an extremely limited ability to assist you with troubleshooting your Azure installation or settings.</p>
-        <p>Once configured, you'll need to get the following properties from the AAD Application's settings to transfer to the corresponding OAuth settings for the "Office365/Microsoft OAuth" <span class="ControlName">SMTP&#160;Authentication Type</span>, which is found on the <a href="Installation Settings Properties.htm"><span class="ProcessDirectorObject">Properties </span>page</a> of the <span class="ProcessDirectorObject">Installation Settings</span> section of the <span class="ProcessDirectorObject">IT&#160;Admin</span> area.:</p>
+        <p>Once configured, you'll need to get the following properties from the Registered Application's settings to transfer to the corresponding OAuth settings for the "Office365/Microsoft OAuth" <span class="ControlName">SMTP&#160;Authentication Type</span>, which is found on the <a href="Installation Settings Properties.htm"><span class="ProcessDirectorObject">Properties </span>page</a> of the <span class="ProcessDirectorObject">Installation Settings</span> section of the <span class="ProcessDirectorObject">IT&#160;Admin</span> area.:</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting_7a.png" />
         </p>
@@ -36,10 +35,10 @@
                 </p>
                 <ol style="list-style-type: lower-alpha;">
                     <li>
-                        <p>The ID of the Azure Tenant in which the AAD Registered App resides (Creation of an AAD Registered App requires the existence of a Tenant)</p>
+                        <p>The ID of the Azure Tenant in which the Registered Application resides (Creation of a Registered App requires the existence of a Tenant)</p>
                     </li>
                     <li>
-                        <p>The Tenant ID is displayed as the <span class="ControlName">Directory (tenant) ID </span>property on the <span class="UIElement">Overview </span>page of your AAD&#160;Application in Azure, but this value will also be displayed following <code>login.microsoft.com/...</code> in the Endpoint URLs that the App references</p>
+                        <p>The Tenant ID is displayed as the <span class="ControlName">Directory (tenant) ID </span>property on the <span class="UIElement">Overview </span>page of your Registered Application in Azure, but this value will also be displayed following <code>login.microsoft.com/...</code> in the Endpoint URLs that the App references</p>
                     </li>
                 </ol>
             </li>
@@ -48,10 +47,10 @@
                 </p>
                 <ol style="list-style-type: lower-alpha;">
                     <li>
-                        <p>The ID of the AAD Registered App</p>
+                        <p>The ID of the Registered Application</p>
                     </li>
                     <li>
-                        <p>This value is displayed as the <span class="ControlName">Application (client) ID</span> property on the <span class="UIElement">Overview </span>page of your AAD Application.</p>
+                        <p>This value is displayed as the <span class="ControlName">Application (client) ID</span> property on the <span class="UIElement">Overview </span>page of your Registered Application.</p>
                     </li>
                 </ol>
             </li>
@@ -60,7 +59,7 @@
                 </p>
                 <ol style="list-style-type: lower-alpha;">
                     <li>
-                        <p>The client secret or application password the administrator created to use with the AAD Registered App.</p>
+                        <p>The client secret or application password the administrator created to use with the Registered Application.</p>
                     </li>
                 </ol>
             </li>

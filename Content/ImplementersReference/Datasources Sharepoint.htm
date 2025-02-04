@@ -7,6 +7,8 @@
         <h1>
             <MadCap:concept term="Implementation" />
             <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Business Value;Business Values;SharePoint" />SharePoint Data Sources</h1>
+        <p class="PDNote" MadCap:conditions="General.Not Printed,General.MS Oauth Skip">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for all Process Director features can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure For Process Director (PDF Download)" alt="Configuring Azure For Process Director (PDF Download)">Configuring Azure For Process Director (PDF Download)</a></p>
         <p>The purpose of the SharePoint data source is to connect to a SharePoint List to retrieve documents or data.<b> This datasource is a core feature of the product, and is </b><b style="font-style: italic;"><b>not</b></b><b> related to the use of the </b><a href="Form Attachments Authoring.htm#Office365" style="font-weight: bold;">Collaborative Document Authoring (CDA) feature with Microsoft 365 (M365)</a><b> in any way.</b> CDA for M365 is a separately licensed feature, with its own setup and configuration process.</p>
         <p>With the implementation of Microsoft's move to <span class="KeyTerms">Modern Authentication</span>, using the Microsoft identity platform, logging into cloud-based versions of SharePoint is no longer possible by simply using a user name and password. Legacy installations that user older versions of SharePoint may still do so, but SharePoint has largely implemented an OAuth-based authentication scheme, with additional security provided by the use of encryption certificates. </p>
         <p>In Process Director v5.44.1000, Modern Authentication for SharePoint was implemented using the <span class="ProcessDirectorObject">SharePoint OAuth </span>Datasource, which only gives access to SharePoint at the Tenant (organizational) level. </p>
@@ -16,16 +18,16 @@
             <MadCap:concept term="Datasources" />
             <img src="../Resources/Images/i.png" alt="Important" /> This update to the SharePoint Datasources will require updating the SharePoint Custom Tasks!</p>
         <h2><a name="Tenant"></a>Configuring a SharePoint OAuth (Tenant) Datasource <a href="#Tenant" class="anchor">#</a></h2>
-        <p class="PDNote" MadCap:conditions="General.Not Printed">
-            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure OAuth configuration can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure OAuth (PDF Download)" alt="Configuring Azure OAuth (PDF Download)">Configuring Azure OAuth (PDF Download)</a></p>
-        <p>Modern Authentication provides much more secure access to SharePoint, but does require a more complex setup process. To set up Modern Authentication between SharePoint and Process Director, you must first create and register an Azure Active Directory (AAD) application. The System Administrator's Guide has instructions for creating the AAD application in the <a href="../SystemAdministratorGuide/Configuring Azure SMTP.htm">Configuring Azure for Process Director Integration</a> topic.</p>
-        <p>Once you've created the AAD&#160;Application, you can begin the process for configuring SharePoint Online.</p>
+        <p>Modern Authentication provides much more secure access to SharePoint, but does require a more complex setup process for Tenant-based SharePoint installations. </p>
+        <h2>Create the Registered Application for the Tenant</h2>
+        <p>To set up Modern Authentication between SharePoint and Process Director, you must first create a Registered Application in Microsoft Entra. Please see the <a href="Datasources SharePoint Tenant.htm">Tenant-Based SharePoint Configuration</a> topic for instructions on how to complete this task.</p>
+        <p>Once you've created the Registered Application, you can begin the process for configuring SharePoint Online, as described below.</p>
         <h2><a name="Configure"></a>Configure SharePoint Online permissions <a href="#Configure" class="anchor">#</a></h2>
-        <p>To configure the AAD application to use SharePoint with Process Director, you'll need to perform the following configuration steps:</p>
+        <p>To configure the application to use SharePoint with Process Director, you'll need to perform the following configuration steps:</p>
         <ol>
             <li>If you have access to multiple tenants, use the Directories + subscriptions filter in the top menu to switch to the tenant in which you want to register the application.</li>
             <li>Search for and select <span class="ControlName">Azure Active Directory</span>.</li>
-            <li>Under <span class="UIElement">Manage</span>, select<span class="UIElement"> App registrations</span>, then select your Process Director application In this example, we'll use “Test SharePoint OAuth” as the AAD Application name, though, of course, the name you use may vary.</li>
+            <li>Under <span class="UIElement">Manage</span>, select<span class="UIElement"> App registrations</span>, then select your Process Director application In this example, we'll use “Test SharePoint OAuth” as the Registered Application name, though, of course, the name you use may vary.</li>
             <li>Click <span class="UIElement">API permissions</span>.</li>
             <li>Click <span class="UIElement">Add a permission</span> and add all permissions displayed below to the <span class="ControlName">SharePoint </span>section of the <span class="UIElement">API&#160;Permissions </span>area:<img src="../Resources/Images/cert7.png" /><br /></li>
         </ol>
@@ -142,8 +144,7 @@
                 <p>A successful test means that your Datasource is correctly configured and is connecting to the SharePoint site correctly.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h2>Conclusion</h2>
-        <p>Congratulations! Assuming that you've correctly followed the instructions above, you've now configured both SharePoint Online and Process Director. You can now use this Datasource and the SharePoint Custom Tasks in Process Director to integrate your SharePoint sites and data with Process Director.</p>
+        <p>Assuming that you've correctly followed the instructions above, you've now configured both SharePoint Online and Process Director. You can now use this Datasource and the SharePoint Custom Tasks in Process Director to integrate your SharePoint sites and data with Process Director.</p>
         <h2 MadCap:conditions="General.MS Oauth Skip"><a name="Legacy"></a>Sharepoint Legacy Datasource <a href="#Legacy" class="anchor">#</a></h2>
         <p MadCap:conditions="General.MS Oauth Skip">For connections to pre-OAuth versions of SharePoint, the SharePoint Legacy datasource type enables you to create a datasource connection to the SharePoint server.</p>
         <p MadCap:conditions="General.MS Oauth Skip">

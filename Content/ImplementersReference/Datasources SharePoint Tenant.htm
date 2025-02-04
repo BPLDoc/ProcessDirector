@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xml:lang="en-us" MadCap:conditions="General.MS OAuth" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
     <head>
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
@@ -6,13 +6,13 @@
     <body>
         <h1>
             <MadCap:concept term="Implementation" />
-            <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Business Value;Business Values;SharePoint" />Configuring Azure for Process Director Integration</h1>
-        <p class="PDNote" MadCap:conditions="General.Not Printed">
-            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure OAuth configuration can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure OAuth (PDF Download)" alt="Configuring Azure OAuth (PDF Download)">Configuring Azure OAuth (PDF Download)</a></p>
-        <p>Microsoft Modern Authentication (an OAuth-based authentication system) provides much more secure access to SharePoint, SMTP email, and other Azure services from Process Director, but does require a complex setup process. To set up Modern Authentication between Azure and Process Director, you must complete the following steps.</p>
+            <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Business Value;Business Values;SharePoint" />Tenant-Based SharePoint Configuration</h1>
+        <p class="PDNote" MadCap:conditions="General.Not Printed,General.MS Oauth Skip">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for all Process Director features can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure For Process Director (PDF Download)" alt="Configuring Azure For Process Director (PDF Download)">Configuring Azure For Process Director (PDF Download)</a></p>
+        <p>Tenant-based SharePoint installations have a complex and more cumbersome access model than Site-based installations. Tenant-based installations, therefore, require a different process to set up and configure:</p>
         <ol>
             <li><a href="#cert">Create a certificate</a> to authenticate Process Director with Azure.<ol style="list-style-type: lower-alpha;"><li>Using Microsoft’s certreq.exe, installed on all modern Windows OS versions.</li><li>Using PowerShell, also included with all  modern Windows OS versions.</li></ol></li>
-            <li><a href="#azure">Add Process Director as a Registered Active Directory application</a> in the Azure Active Directory portal.<ol style="list-style-type: lower-alpha;"><li>Add the public key certificate to the Process Director application in Azure.</li><li>Configure the appropriate Azure settings.</li></ol></li>
+            <li><a href="#azure">Add Process Director as a Registered Application</a> in Azure.<ol style="list-style-type: lower-alpha;"><li>Add the public key certificate to the Process Director application in Azure.</li><li>Configure the appropriate Azure settings.</li></ol></li>
         </ol>
         <p>In this topic, we'll address each of these required steps in detail. Additional information about this topic can also be obtained from <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app" target="_blank">Microsoft's online documentation</a>.</p>
         <p class="Important">
@@ -135,10 +135,6 @@
         </MadCap:dropDown>
         <p>Your AAD&#160;Application should now be properly registered and secured with a certificate.</p>
         <h2>Conclusion</h2>
-        <p>Congratulations! Assuming that you've correctly followed the instructions above, you've now configured an Azure Integration with Process Director. To complete the integration, you'll need to perform some additional, specialized configuration in Azure, depending on whether you're trying to:</p>
-        <ul>
-            <li> <a href="../ImplementersReference/Datasources Sharepoint.htm">Create a Sharepoint data source</a> or </li>
-            <li><a href="Installation Settings Properties.htm#oauth">Set up&#160;SMTP&#160;email access on the <span class="ControlName">Properties </span>page</a> of the<span class="ProcessDirectorObject"> IT&#160;Admin</span> area's <span class="ProcessDirectorObject">Installation Settings</span> section, using the  "Office365/Microsoft OAuth" <span class="ControlName">SMTP&#160;Authentication Type</span>.</li>
-        </ul>
+        <p>Congratulations! Assuming that you've correctly followed the instructions above, you've now configured an Azure Integration with Process Director. To complete the integration, you'll need to perform some additional, specialized configuration in Azure, which is covered in the <a href="Datasources Sharepoint.htm">Create a Sharepoint data source</a> topic. </p>
     </body>
 </html>

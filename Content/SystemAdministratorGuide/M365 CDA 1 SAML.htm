@@ -8,7 +8,7 @@
             <MadCap:concept term="Implementation" />
             <MadCap:keyword term="Datasources;Data;External Data;Database;Connection;DB;Connector;Data Source;Business Value;Business Values;SharePoint" />Configuring SAML&#160;Access for M365 CDA</h1>
         <p class="PDNote" MadCap:conditions="General.Not Printed,General.MS Oauth Skip">
-            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for both SMTP and M365 CDA can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure For Process Director (PDF Download)" alt="Configuring Azure For Process Director (PDF Download)">Configuring Azure For Process Director (PDF Download)</a></p>
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for all Process Director features can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure For Process Director (PDF Download)" alt="Configuring Azure For Process Director (PDF Download)">Configuring Azure For Process Director (PDF Download)</a></p>
         <p class="Important" MadCap:conditions="General.MS Oauth Skip">
             <img src="../Resources/Images/i.png" title="Important" alt="Important" /> This topic discusses a product feature in active development, and is subject to change at any time.</p>
         <p>There are several ways to register external applications for use in Azure; however, only Enterprise applications currently support SAML. Thus for this topic, we'll cover the creation of the Enterprise Application for configuring SAML with Process Director.</p>
@@ -45,9 +45,12 @@
             <li><code>https://&lt;pdserver.domain&gt;/login_saml.aspx?skipsaml=&amp;usertype=</code>
             </li>
         </ol>
-        <p>You'll then need to supply the <span class="ControlName">Reply URL (Assertion Consumer Service URL) </span>property to: <code>https://&lt;pdserver.domain&gt;/login_saml.aspx</code>.</p>
-        <p>Next, set the <span class="ControlName">Signon URL (Optional)</span> property to: <code>https://&lt;pdserver.domain&gt;/login_saml.aspx</code>.</p>
-        <p>Finally, set the <span class="ControlName">Logout Url (Optional)</span> property to: <code>https://&lt;pdserver.domain&gt;/logout.aspx</code>.</p>
+        <p>You'll then need to set the <span class="ControlName">Reply URL (Assertion Consumer Service URL) </span>property to: </p>
+        <p><code>https://&lt;pdserver.domain&gt;/login_saml.aspx</code>.</p>
+        <p>Next, set the <span class="ControlName">Signon URL (Optional)</span> property to: </p>
+        <p><code>https://&lt;pdserver.domain&gt;/login_saml.aspx</code>.</p>
+        <p>Finally, set the <span class="ControlName">Logout Url (Optional)</span> property to: </p>
+        <p><code>https://&lt;pdserver.domain&gt;/logout.aspx</code>.</p>
         <p>The remainder of the Azure default property settings can remain unchanged. Click the <span class="UIElement">Save </span>button to save your newly configured application. Keep the page open, however, as we'll want to test the configuration later.</p>
         <p>With the application configured in Azure, you'll now need to make the appropriate changes to your Process Director installation to enable SAML sign on for Process Director. <b>For Cloud customers, this process will most likely be done by BP&#160;Logix personnel.</b> On-Premise customers, however, will have to perform this configuration in their Process Director installation. Please see the appropriate Process Director documentation for configuring <a href="../InstallationGuide/SAML 2 0 Federated Identity.htm" title="SAML 2.0 (Federated Identity) Support" alt="SAML 2.0 (Federated Identity) Support">SAML 2.0 (Federated Identity) Support</a> in the Installation Guide. This configuration will require setting several <a href="../DevelopersGuide/Customization File SAML.htm" title="SAML Custom Variables" alt="SAML Custom Variables">SAML Custom Variables</a> in your Custom Variables file.</p>
         <p>Once SAML is correctly configured in Process Director, you can return to the Azure Application window. At the bottom of the configuration page, click the <span class="UIElement">Test </span>button. This button will verify that all your changes work by opening a pop-up browser window to perform the connection testing. It will even look up errors you may receive from Microsoft’s login server and provide you help with resolving them.</p>
