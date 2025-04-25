@@ -154,8 +154,14 @@
         </p>
         <p>In the example above, the data would be set only in the second row of the array. Arrays rows are 1-based, which is to say that the first row of the array starts at the number 1.</p>
         <h3>Conditions</h3>
-        <p>In the <span class="ProcessDirectorObject">Condition Builder</span>, using an array field will, by default, try to evaluate the entire contents of an array field, meaning the entire list of field values will be returned in a single string, as a comma-separated list. You can, however, evaluate a single array value by using a Form field System Variable with the syntax:</p>
+        <p>In the <span class="ProcessDirectorObject">Condition Builder</span>, using an array field will, by default, try to evaluate the entire contents of an array field, meaning the entire list of field values will be returned in a single string, as a comma-separated list. You can, however, evaluate a single array value by using a Form field System Variable the contains the <code>ROW_NUM</code> modifier, which returns the value from a specific row in the Array:</p>
         <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, ROW_NUM=<span class="CodeOption">2</span>}</code>
+        </p>
+        <p>With this syntax, the System Variable will only return the value from the field in the second row of the array. There's also an alternative syntax to declaring the row number that's a little more convenient:</p>
+        <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>:<span class="CodeOption">2</span>}</code>
+        </p>
+        <p>Indeed, you can use the existing syntax shortcut for Form field System Variables, omitting the FORM element:</p>
+        <p><code>{:<span class="CodeOption">SomeFieldName</span>:<span class="CodeOption">2</span>}</code>
         </p>
         <p>In this case, you won't be able to select the <span class="UIElement">Form Field</span> menu item of the <span class="ControlName">Choose System Variable</span> dialog box to specify the field. Instead, you'll need to use the <span class="UIElement">Value</span> &gt; <span class="UIElement">String </span>menu item, and inter the System Variable on the left side of the condition.</p>
         <p>
@@ -167,10 +173,15 @@
             <img src="../Resources/Images/ImplementersReference/array2.png">
             </img>
         </p>
-        <p>Arrays can, of course, have any number of rows, so, if you use a specific row number, be aware that the specified row may not actually exist in the array. You can, however, always access the last row in an array using the System Variable syntax:</p>
-        <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, ROW_NUM={NUM_ROWS}}</code>
+        <p>Arrays can, of course, have any number of rows, so, if you use a specific row number, be aware that the specified row may not actually exist in the array. </p>
+        <p>While not a data entry control itself, the <span class="NamedControl">Array Start </span>control has a value that is automatically set to the number of rows contained in the Array. You can, therefore, always access the last row in an array using the Form Field System Variable of the Array Start control to call its value:</p>
+        <p><code>{FORM:<span class="CodeOption">SomeFieldName</span>, ROW_NUM={:<span class="CodeOption">ArrayStart</span>}}</code>
         </p>
-        <p>The <code>{NUM_ROWS} </code>system variable always returns the number of rows in an array, and thus can always be used as a pointer to the last array row, irrespective of how many rows the array contains.</p>
+        <p><code>{:<span class="CodeOption">SomeFieldName</span>, ROW_NUM={:<span class="CodeOption">ArrayStart</span>}}</code>
+        </p>
+        <p><code>{:<span class="CodeOption">SomeFieldName</span>:{:<span class="CodeOption">ArrayStart</span>}}</code>
+        </p>
+        <p>The <span class="NamedControl">Array Start </span>control's System Variable always returns the number of rows in an array, and thus can always be used as a pointer to the last array row, irrespective of how many rows the array contains.</p>
         <h3>Validation</h3>
         <p>Array fields can be used in validation conditions, but you should be aware that complex conditions may not return the results you expect, because Process Director will evaluate each element of a complex condition separately. For instance, let's say that you have two columns in an array that contain the following values.</p>
         <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 20rem;" class="TableStyle-Simple" cellspacing="0">

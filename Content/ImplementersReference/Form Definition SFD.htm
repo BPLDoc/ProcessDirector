@@ -21,13 +21,15 @@
             <MadCap:dropDownBody>
                 <ol>
                     <li>Find the section that corresponds to the event you wish to configure. For this example, we will use the ServiceLevel field from our sample form, above.</li>
-                    <li>Click the<span class="UIElement"> Add Condition</span> button. A new mapping section for the condition will appear in the tab. You may optionally add a condition by clicking on the <span class="UIElement">Click to create condition</span>  link, then using the <span class="ControlName">Condition Builder</span> to define the condition. If you don't define a condition, the Set Form Data action will occur every time the event fires.</li>
+                    <li>Click the<span class="UIElement"> Add Condition</span> button. A new mapping section for the condition will appear in the tab. You may optionally add a condition by clicking on the <span class="UIElement">Click to create condition</span>  link, then using the <span class="ControlName">Condition Builder</span> to define the condition. If you don't define a condition, the Set Form Data action will occur every time the event fires. </li>
                     <li>Click the<span class="UIElement"> Add Form Field</span> button. A new mapping row will appear in the condition section. </li>
                     <li>In the <span class="ControlName">Form Field</span> dropdown, select the Form field whose data will be set.</li>
                     <li>Repeat steps 3 and 4 as desired.</li>
                     <li>Select the new value for the Form control by using the <span class="ControlName">Value </span><span class="NamedControl">Object Picker</span> control.</li>
                     <li>Each row can be ordered in the list of mapping rows by clicking one of the arrow icons to move the row up or down. The row can be deleted by clicking the red "X" icon. Similarly, if you have multiple conditions for an event, the conditions can be ordered as well, so the condition evaluations will occur in the order you desire. Items can only be ordered inside their container section.</li>
                 </ol>
+                <h5>Condition Evaluations</h5>
+                <p>When multiple fields are associated with a single condition they appear in a group under the condition for visual convenience in the UI. When the Set form data action is invoked, <b>the condition will be evaluated independently for every field</b>, in order, from top to bottom in the group. Process Director doesn't evaluate the condition once, then set all of the field values based on a single, initial evaluation, but evaluates the condition separately for each listed field, in the order in which they appear in the condition's grouping.</p>
                 <h5>Working with Arrays and Business Values</h5>
                 <p>When using the<span class="UIElement"> Set Form Data</span> tab to assign form field values from a Business Value. Process Director will automatically group all field changes from a single Business Value into a single row.</p>
                 <p>
