@@ -69,7 +69,7 @@
             <MadCap:dropDownBody>
                 <p>This Custom Task will show an Alert Box on a form, and enables you to configure several advanced options for the appearance and function of the Alert Box.</p>
                 <p>
-                    <img src="../Resources/Images/Custom Tasks2/AdvAlert.png" />
+                    <img src="../Resources/Images/Custom Tasks2/AdvShowAlertCT.jpg" />
                 </p>
                 <h4>Configuration Options</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
@@ -114,6 +114,16 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">The Icon to display on the Alert Box. You can select a standard item from the Dropdown control, or use the Text box to supply an icon via the <code>{ICON}</code> system variable.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Custom Alert Icon Primary</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">For v2025.04.29 and higher of the Custom Task, this property enables you to use the <span class="ProcessDirectorObject">Icon Picker</span> to select an icon and it's color to display as the primary icon for the alert box, when checked. An additional property, <span class="ControlName">Icon Size (px)</span>, will also appear to enable you to specify the size, in pixels, at which the icon will display.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Custom Alert Icon Secondary</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">For v2025.04.29 and higher of the Custom Task, this property enables you to use the <span class="ProcessDirectorObject">Icon Picker</span> to select an icon and it's color to display as the primary icon for the alert box, when checked. An additional property, <span class="ControlName">Icon Size (px)</span>, will also appear to enable you to specify the size, in pixels, at which the icon will display.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">Footer Text</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Text to display in the footer of the Alert Box. </td>
@@ -129,87 +139,97 @@
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">Determines the Alert Box resizing mode. "Grow by Row" extends the Alert box to the full horizontal width of the screen, "Grow by Column" to the full vertical width, and "Full Screen" covers the entire display.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Show Confirm Button</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Auto close pop-up in (milliseconds)</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When checked, will display a confirmation button in the Alert Box.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">For v2025.04.29 and higher of the Custom Task, this property enables you to enter the number of milliseconds to display the alert box, after which it will close. For example, setting the property to <code>5000 </code>will display the alert box for five seconds.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Confirm Button Text</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Show Confirm Button</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The caption to display on the confirmation button.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When checked, will display a confirmation button in the Alert Box.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Color</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Confirm Button Text</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Sets the background color of the confirmation button, using an HTML&#160;named color or hexadecimal decimal value. e.g., <code>blue</code> or <code>#082f4d</code>.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The caption to display on the confirmation button.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Form button to click after Confirm</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">(List of Form Controls)</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A Form <span class="NamedControl">Button </span>control to automatically click after clicking the confirmation button. The Form <span class="NamedControl">Button </span>must be visible.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Color</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Sets the background color of the confirmation button, using an HTML&#160;named color or hexadecimal decimal value. e.g., <code>blue</code> or <code>#082f4d</code>.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Show Cancel Button</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When checked, will display a cancel button in the Alert Box.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Form button to click after Confirm</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">(List of Form Controls)</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A Form <span class="NamedControl">Button </span>control to automatically click after clicking the confirmation button. The Form <span class="NamedControl">Button </span>must be visible.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">	Cancel Button Text</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Show Cancel Button</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The caption to display on the cancel button.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When checked, will display a cancel button in the Alert Box.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Cancel Button Color</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">	Cancel Button Text</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Sets the background color of the cancel button, using an HTML&#160;named color or hexadecimal value. e.g., <code>blue</code> or <code>#082f4d</code>.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The caption to display on the cancel button.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Reverse Confirm and Cancel button display order</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Cancel Button Color</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">By default, the confirmation button appears on the left, and the cancel button on the right. Setting this property to checked will reverse that order.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Sets the background color of the cancel button, using an HTML&#160;named color or hexadecimal value. e.g., <code>blue</code> or <code>#082f4d</code>.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Image URL</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Reverse Confirm and Cancel button display order</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The URL&#160;of an image to display in the Alert Box. The image will display between the Icon and the Alert Caption.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">By default, the confirmation button appears on the left, and the cancel button on the right. Setting this property to checked will reverse that order.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Image Height/Width</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Image URL</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The URL&#160;of an image to display in the Alert Box. The image will display between the Icon and the Alert Caption.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Image Height/Width</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>The height and width of the image, in pixels, to display. Leaving these setting blank will automatically resize the image to display it with the original aspect ratio. </p>
                                 <p class="PDNote">
                                     <img src="../Resources/Images/i2.png" alt="Note" /> Setting these values manually may change the aspect ratio of the image, making it display in an unexpected manner.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Close form when alert closes</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Close form when alert closes</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>When checked, the Form instance will close automatically after the Alert Box closes. </p>
                                 <p class="PDNote">
                                     <img src="../Resources/Images/i2.png" alt="Note" /> If this property is checked, the properties below won't be visible, as the remaining properties can only function if the Form remains open.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Input Type</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">None (default)<br />Alert Text:<br />Email<br />Password<br />Number<br />Telephone<br />Text Area<br />Checkbox</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The property, when set to other than "None" will display an input control of the selected type in the Alter box, below the Alert Text. The selected<span class="ControlName"> Input Type</span> will also validate user entry to conform properly to the <span class="ControlName">Input Type</span> selected, e.g., selecting "Email" will require the input to be entered in a valid email address format.</td>
-                        </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Input field empty text</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Sets the text to display as Empty Text in the Alert Box input field when no value is set, i.e., when the user will supply a value. If the selected<span class="ControlName"> Input Type</span> is a checkbox, this property will be used as the display text for the Checkbox.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Input Type</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">None (default)<br />Alert Text:<br />Email<br />Password<br />Number<br />Telephone<br />Text Area<br />Checkbox</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The property, when set to other than "None" will display an input control of the selected type in the Alter box, below the Alert Text. The selected<span class="ControlName"> Input Type</span> will also validate user entry to conform properly to the <span class="ControlName">Input Type</span> selected, e.g., selecting "Email" will require the input to be entered in a valid email address format.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Input field initial value</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Input field empty text</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Sets the initial value of the Alert Box input field. If a value is set, the Empty Text won't display.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Sets the text to display as Empty Text in the Alert Box input field when no value is set, i.e., when the user will supply a value. If the selected<span class="ControlName"> Input Type</span> is a checkbox, this property will be used as the display text for the Checkbox.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Input target control for input</td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">(List of Form Controls)</td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row1">Enables you to select a form field into which the value of the Alert Box input field will be copied after the Alert Box is closed.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Input field initial value</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Sets the initial value of the Alert Box input field. If a value is set, the Empty Text won't display.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Input target control for input</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">(List of Form Controls)</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to select a form field into which the value of the Alert Box input field will be copied after the Alert Box is closed.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Test Alert</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">For v2025.04.29 and higher of the Custom Task, this button, when clicked, will display a preview of the alert box as it is currently configured.</td>
                         </tr>
                     </tbody>
                 </table>
