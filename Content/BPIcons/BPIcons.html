@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BP Logix Icons Reference Guide</title>
+    <style>
+        /* Font face declarations based on your folder structure */
+        @font-face {
+            font-family: 'glyphicons';
+            src: url('fonts/glyphicons-regular.eot');
+            src: url('fonts/glyphicons-regular.eot?#iefix') format('embedded-opentype'),
+                 url('fonts/glyphicons-regular.woff2') format('woff2'),
+                 url('fonts/glyphicons-regular.woff') format('woff'),
+                 url('fonts/glyphicons-regular.ttf') format('truetype'),
+                 url('fonts/glyphicons-regular.svg#glyphicons-regular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'FontAwesome';
+            src: url('fonts/fontawesome-webfont.eot');
+            src: url('fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+                 url('fonts/fontawesome-webfont.woff2') format('woff2'),
+                 url('fonts/fontawesome-webfont.woff') format('woff'),
+                 url('fonts/fontawesome-webfont.ttf') format('truetype'),
+                 url('fonts/fontawesome-webfont.svg#fontawesome-webfont') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url('fonts/material-icons-regular.eot');
+            src: local('Material Icons'),
+                 local('MaterialIcons-Regular'),
+                 url('fonts/material-icons-regular.eot?#iefix') format('embedded-opentype'),
+                 url('fonts/material-icons-regular.woff2') format('woff2'),
+                 url('fonts/material-icons-regular.woff') format('woff'),
+                 url('fonts/material-icons-regular.ttf') format('truetype');
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    text-align: center;
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .icon-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .icon-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .icon-display {
+            font-size: 36px;
+            margin: 10px 0;
+            color: #4a5568;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-class {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #2563eb;
+            word-break: break-all;
+            margin: 5px 0;
+        }
+
+        .icon-number {
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .icon-unicode {
+            font-size: 11px;
+            color: #999;
+            font-family: 'Courier New', monospace;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            display: block;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            border-color: #2563eb;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 10px;
+        }
+
+        .tab-button {
+            padding: 10px 30px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .tab-button.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* BP Glyph Icons - matching your C# implementation */
+        .gbobjecticon {
+            display: inline-block;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .glyphicons {
+            font-family: 'glyphicons' !important;
+        }
+
+        /* BP Font Awesome Icons - matching your C# implementation */
+        .fa {
+            font-family: 'FontAwesome' !important;
+        }
+
+        /* Material Icons */
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .info-note {
+            background: #e3f2fd;
+            border: 1px solid #1976d2;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            color: #1976d2;
+        }
+
+        .code-example {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* Icon content definitions will be added dynamically */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p><img src="../Web/download/images/BPLLogo.png" width="300" height="80" alt=""/></p>
+      <h1> Icons Reference Guide</h1>
+        <div class="info-note" style="text-align:justify"><p><strong>Note: </strong> Icon numbers are 4-digit numbers. The first number specifies the icon's category, and will be a "1" for the Glyph icons and a "2" for the FontAwesome icons. The last three numbers are the actual icon number for each category. Each icon example below will display:<br />
+            1. The Icon number that appears in the product.<br />
+            2. The CSS class for the icon.<br />
+            3. The Unicode character for the icon.<br />
+            4. The SDK code example for calling the icon.</p>
+            <p>To search for an icon, use its last three digits for the icon number, and omit the leading "1" or "2".</p>
+        </div>
+      <input type="text" class="search-box" id="searchBox" placeholder="Search icons by number or class name...">
+        
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('glyph')">Glyph Icons</button>
+            <button class="tab-button" onclick="showTab('fontawesome')">Font Awesome Icons</button>
+        </div>
+
+        <div id="glyph" class="tab-content active">
+            <h2>BP Glyph Icons (800 icons)</h2>
+            <p style="text-align: center; color: #666;">Using class: <code>gbobjecticon glyphicons bpglyph-{number}</code></p>
+            <div class="icon-grid" id="glyphGrid"></div>
+        </div>
+
+        <div id="fontawesome" class="tab-content">
+            <h2>BP Font Awesome Icons (737 icons)</h2>
+            <p style="text-align: center; color: #666;">Using class: <code>gbobjecticon fa bpfai-{number}</code></p>
+            <div class="icon-grid" id="fontawesomeGrid"></div>
+        </div>
+    </div>
+
+    <script>
+        // Generate BP Glyph icons
+        function generateGlyphIcons() {
+            const grid = document.getElementById('glyphGrid');
+            const style = document.createElement('style');
+            let styleContent = '';
+            let gridContent = '';
+
+            for (let i = 1; i <= 800; i++) {
+                const unicode = '\\E' + String(i).padStart(3, '0');
+                const className = `bpglyph-${i}`;
+                
+                // Add CSS rule
+                styleContent += `.${className}:before{content:"${unicode}"}\n`;
+                
+                // Create icon item
+                gridContent += `
+                    <div class="icon-item" data-search="${className} ${i}">
+                        <div class="icon-display">
+                            <span class="gbobjecticon glyphicons ${className}"></span>
+                        </div>
+                        <div class="icon-number">Icon #${i + 1000}</div>
+                        <div class="icon-class">CSS Class: ${className}</div>
+                        <div class="icon-unicode">Unicode: ${unicode}</div>
+                        <div class="code-example">SDK Sample:<br/>GetIconHTML(p_ih, ${i + 1000})</div>
+                    </div>
+                `;
+            }
+
+            style.textContent = styleContent;
+            document.head.appendChild(style);
+            grid.innerHTML = gridContent;
+        }
+
+        // Generate BP Font Awesome icons
+        function generateFontAwesomeIcons() {
+            const grid = document.getElementById('fontawesomeGrid');
+            const style = document.createElement('style');
+            let styleContent = '';
+            let gridContent = '';
+
+            // Special handling for font awesome unicode values
+            const faUnicodes = [];
+            
+            // Generate unicode values (f000 to f2E0)
+            for (let i = 0; i <= 736; i++) {
+                let hex = i.toString(16).toUpperCase();
+                if (hex.length === 1) hex = '00' + hex;
+                else if (hex.length === 2) hex = '0' + hex;
+                faUnicodes.push('\\f' + hex);
+            }
+
+            for (let i = 0; i <= 736; i++) {
+                const className = `bpfai-${i}`;
+                const unicode = faUnicodes[i];
+                
+                // Add CSS rule
+                styleContent += `.${className}:before{content:"${unicode}"}\n`;
+                
+                // Create icon item
+                gridContent += `
+                    <div class="icon-item" data-search="${className} ${i}">
+                        <div class="icon-display">
+                            <span class="gbobjecticon fa ${className}"></span>
+                        </div>
+                        <div class="icon-number">Icon #${i + 2000}</div>
+                        <div class="icon-class">CSS Class: ${className}</div>
+                        <div class="icon-unicode">Unicode: ${unicode}</div>
+                        <div class="code-example">SDK Sample:<br/>GetIconHTML(p_ih, ${i + 2000})</div>
+                    </div>
+                `;
+            }
+
+            style.textContent = styleContent;
+            document.head.appendChild(style);
+            grid.innerHTML = gridContent;
+        }
+
+        // Tab switching
+        function showTab(tabName) {
+            // Update button states
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update content visibility
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+
+            // Clear search when switching tabs
+            document.getElementById('searchBox').value = '';
+            filterIcons('');
+        }
+
+        // Search functionality
+        function filterIcons(searchTerm) {
+            const activeTab = document.querySelector('.tab-content.active');
+            const items = activeTab.querySelectorAll('.icon-item');
+            
+            items.forEach(item => {
+                const searchData = item.getAttribute('data-search').toLowerCase();
+                if (searchData.includes(searchTerm.toLowerCase())) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            generateGlyphIcons();
+            generateFontAwesomeIcons();
+
+            // Search box event listener
+            document.getElementById('searchBox').addEventListener('input', function(e) {
+                filterIcons(e.target.value);
+            });
+        });
+
+        // Add a test function to verify fonts are loaded
+        function testFonts() {
+            console.log('Testing font loading...');
+            const testElement = document.createElement('span');
+            testElement.style.fontFamily = 'glyphicons';
+            testElement.textContent = 'test';
+            document.body.appendChild(testElement);
+            const width = testElement.offsetWidth;
+            document.body.removeChild(testElement);
+            console.log('Glyphicons font test width:', width);
+        }
+
+        // Run font test after page load
+        window.addEventListener('load', testFonts);
+    </script>
+</body>
+</html>
