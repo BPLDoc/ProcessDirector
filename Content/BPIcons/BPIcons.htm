@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BP Logix Icons Reference Guide</title>
+    <title>Process Director Icons Reference Guide</title>
     <style>
         /* Font face declarations based on your folder structure */
+        @font-face {
+            font-family: 'Noto Sans';
+            src: url('fonts/NotoSans-Regular.ttf');
+        }
+
+        @font-face 
+        {
+            font-family: 'Source Code Pro Medium';
+            src: url('fonts/SourceCodePro-Medium.ttf');
+        }
+
+        
         @font-face {
             font-family: 'glyphicons';
             src: url('fonts/glyphicons-regular.eot');
@@ -44,33 +56,37 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Noto Sans', sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: white;
+        }
+        code {
+            font-family: 'Source Code Pro Medium', monospace;
+            font-size: 16px;
         }
 
         .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            font-family: "Noto Sans", sans-serif;
+            text-align: center;
         }
 
         h1, h2 {
-            color: #333;
+            color: #528bbc;
             text-align: center;
         }
 
         .icon-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 15px;
             margin-bottom: 50px;
         }
 
         .icon-item {
-            background: white;
+            background: #f1f1f1;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 15px;
@@ -86,7 +102,7 @@
         .icon-display {
             font-size: 36px;
             margin: 10px 0;
-            color: #4a5568;
+            color: #082f4d;
             height: 50px;
             display: flex;
             align-items: center;
@@ -94,23 +110,23 @@
         }
 
         .icon-class {
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            color: #2563eb;
+            font-family: 'Source Code Pro Medium', monospace;
+            font-size: 14px;
+            color: #082f4d;
             word-break: break-all;
             margin: 5px 0;
         }
 
         .icon-number {
-            font-size: 14px;
-            color: #666;
+            font-size: 18px;
+            color: #082f4d;
             font-weight: bold;
         }
 
         .icon-unicode {
-            font-size: 11px;
-            color: #999;
-            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #082f4d;
+            font-family: 'Source Code Pro Medium', monospace;
         }
 
         .search-box {
@@ -118,16 +134,17 @@
             max-width: 500px;
             margin: 20px auto;
             display: block;
-            padding: 12px 20px;
+            padding: 14px 20px;
             font-size: 16px;
             border: 2px solid #ddd;
             border-radius: 25px;
             outline: none;
             transition: border-color 0.3s;
+            color: #082f4d;
         }
 
         .search-box:focus {
-            border-color: #2563eb;
+            border-color: #082f4d;
         }
 
         .tabs {
@@ -145,12 +162,14 @@
             cursor: pointer;
             font-size: 16px;
             transition: all 0.3s;
+            font-weight:bold;
+            color: #528bbc;
         }
 
         .tab-button.active {
-            background: #2563eb;
+            background: #528bbc;
             color: white;
-            border-color: #2563eb;
+            border-color: #528bbc;
         }
 
         .tab-content {
@@ -161,7 +180,7 @@
             display: block;
         }
 
-        /* BP Glyph Icons - matching your C# implementation */
+        /* Glyph Icons - matching your C# implementation */
         .gbobjecticon {
             display: inline-block;
             font-style: normal;
@@ -175,7 +194,15 @@
             font-family: 'glyphicons' !important;
         }
 
-        /* BP Font Awesome Icons - matching your C# implementation */
+        .label {
+            font-family: 'Noto Sans' !important;
+            font-size: 14px;
+            color: #082f4d;
+            font-weight: bold;
+        }
+
+
+        /* BP FontAwesome Icons - matching your C# implementation */
         .fa {
             font-family: 'FontAwesome' !important;
         }
@@ -198,13 +225,13 @@
         }
 
         .info-note {
-            background: #e3f2fd;
-            border: 1px solid #1976d2;
-            border-radius: 4px;
+            background: #d0dfed;
+            border: 3px solid #528bbc;
+            border-radius: 15px;
             padding: 15px;
             margin: 20px auto;
             max-width: 800px;
-            color: #1976d2;
+            color: #082f4d;
         }
 
         .code-example {
@@ -212,8 +239,7 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             padding: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
+            font-size: 14px;
             margin-top: 5px;
         }
 
@@ -223,7 +249,7 @@
 <body>
     <div class="container">
         <p><img src="BPLLogo.png" width="300" height="80" alt=""/></p>
-      <h1> Icons Reference Guide</h1>
+      <h1>Process Director Icons Reference Guide</h1>
         <div class="info-note" style="text-align:justify"><p><strong>Note: </strong> Icon numbers are 4-digit numbers. The first number specifies the icon's category, and will be a "1" for the Glyph icons and a "2" for the FontAwesome icons. The last three numbers are the actual icon number for each category. Each icon example below will display:<br />
             1. The Icon number that appears in the product.<br />
             2. The CSS class for the icon.<br />
@@ -237,24 +263,24 @@
         
         <div class="tabs">
             <button class="tab-button active" onclick="showTab('glyph')">Glyph Icons</button>
-            <button class="tab-button" onclick="showTab('fontawesome')">Font Awesome Icons</button>
+            <button class="tab-button" onclick="showTab('fontawesome')">FontAwesome Icons</button>
         </div>
 
         <div id="glyph" class="tab-content active">
-            <h2>BP Glyph Icons (800 icons)</h2>
-            <p style="text-align: center; color: #666;">Using class: <code>gbobjecticon glyphicons bpglyph-{number}</code></p>
+            <h2>Glyph Icons (800 icons)</h2>
+            <p style="text-align: center; "><strong>Using class: </strong><code><span style="color:#082f4d;">gbobjecticon glyphicons bpglyph-</span><span style="color:blue;"><em>N</em></span></code></p>
             <div class="icon-grid" id="glyphGrid"></div>
         </div>
 
         <div id="fontawesome" class="tab-content">
-            <h2>BP Font Awesome Icons (737 icons)</h2>
-            <p style="text-align: center; color: #666;">Using class: <code>gbobjecticon fa bpfai-{number}</code></p>
+            <h2>FontAwesome Icons (737 icons)</h2>
+            <p style="text-align: center; "><strong>Using class: </strong><code><span style="color:#082f4d;">gbobjecticon fa bpfai-</span><span style="color:blue;"><em>N</em></span></code></p>
             <div class="icon-grid" id="fontawesomeGrid"></div>
         </div>
     </div>
 
     <script>
-        // Generate BP Glyph icons
+        // Generate Glyph icons
         function generateGlyphIcons() {
             const grid = document.getElementById('glyphGrid');
             const style = document.createElement('style');
@@ -275,9 +301,9 @@
                             <span class="gbobjecticon glyphicons ${className}"></span>
                         </div>
                         <div class="icon-number">Icon #${i + 1000}</div>
-                        <div class="icon-class">CSS Class: ${className}</div>
-                        <div class="icon-unicode">Unicode: ${unicode}</div>
-                        <div class="code-example">SDK Sample:<br/>GetIconHTML(p_ih, ${i + 1000})</div>
+                        <div><span class="label">CSS Class: </span><span class="icon-class">${className}</span></div>
+                        <div><span class="label">Unicode: </span><span class="icon-class">${unicode}</div>
+                        <div><span class="label">SDK Code Sample:</span><br/><span class="icon-class">GetIconHTML(p_ih, ${i + 1000})</span></div>
                     </div>
                 `;
             }
@@ -287,14 +313,14 @@
             grid.innerHTML = gridContent;
         }
 
-        // Generate BP Font Awesome icons
+        // Generate BP FontAwesome icons
         function generateFontAwesomeIcons() {
             const grid = document.getElementById('fontawesomeGrid');
             const style = document.createElement('style');
             let styleContent = '';
             let gridContent = '';
 
-            // Special handling for font awesome unicode values
+            // Special handling for FontAwesome unicode values
             const faUnicodes = [];
             
             // Generate unicode values (f000 to f2E0)
@@ -319,9 +345,9 @@
                             <span class="gbobjecticon fa ${className}"></span>
                         </div>
                         <div class="icon-number">Icon #${i + 2000}</div>
-                        <div class="icon-class">CSS Class: ${className}</div>
-                        <div class="icon-unicode">Unicode: ${unicode}</div>
-                        <div class="code-example">SDK Sample:<br/>GetIconHTML(p_ih, ${i + 2000})</div>
+                        <div><span class="label">CSS Class: </span><span class="icon-class">${className}</span></div>
+                        <div><span class="label">Unicode: </span><span class="icon-class">${unicode}</div>
+                        <div><span class="label">SDK Code Sample:</span><br/><span class="icon-class">GetIconHTML(p_ih, ${i + 2000})</span></div>
                     </div>
                 `;
             }
