@@ -163,9 +163,14 @@
                 <p>The <span class="ControlName">DropDown Prompt</span> is the text that is shown before an option has been selected in the dropdown, e.g., “&lt;Select User&gt;”.</p>
                 <p>The control won't list users who are members of groups specified in the <span class="ControlName">Ignore users in group</span> property, if configured.</p>
                 <p>The control will only list users returned by the Business Rule specified in the <span class="ControlName">Only users in rule</span> property, if configured.</p>
-                <p><span class="NamedControl">User Picker</span> controls display the names of users, but the actual value stored in the <span class="NamedControl">User Picker</span> is the UID of the user, which is the GUID value that is used as the primary identifier for the user in Process Director. When setting the value of the <span class="NamedControl">User Picker</span> via a Set Form Data action, you should use the UID or the UserID as the value to set the field value. </p>
-                <p class="PDNote">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> For users of Process Director v5.31 and higher, you can set the field's default value by using the UserID. Previous versions <i>require</i> the UID to be set as the value.</p>
+                <h4>Setting Control Values</h4>
+                <p><span class="NamedControl">User Picker</span> controls display the name of the user(s), but the actual value stored in the <span class="NamedControl">User Picker</span> is the UID of the user, which is the GUID value that is used as the primary identifier for the user in Process Director. When setting the value of the <span class="NamedControl">User Picker</span> via a Set Form Data action, you should use the UID to set the field value. For example, you can set the value of a user picker to the current user with the System Variable syntax:</p>
+                <p><code>{CURR_USER, format=UID}</code>
+                </p>
+                <p>For users of Process Director v5.31 and higher, you can also set the field's default value by using the UserID format. Previous versions require the UID to be set as the value. BP&#160;Logix still recommends the use of the UID format, however, since, on some systems, the UserID may not be a unique value, and may return an unexpected value.</p>
+                <p>The value of a <span class="NamedControl">User Picker</span> can be set via system variable. For example, assuming that you configure each user profile to specify each user's manager in the system, you can set the value of a <span class="NamedControl">User Picker</span> to the manager of the Form Submit User with the syntax:</p>
+                <p><code>{FORM_SUBMIT_USER, ShowManager=1, format=UID}</code>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
