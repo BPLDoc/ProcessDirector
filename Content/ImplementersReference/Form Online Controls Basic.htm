@@ -11,7 +11,7 @@
         <p>
             <img src="../Resources/Images/Training/Core/BasicControls.png" />
         </p>
-        <p>The first seven tool icons  Form Controls toolbar displays the most commonly-used controls for the Online Form Designer. </p>
+        <p>The first eight tool icons  Form Controls toolbar displays the most commonly-used controls for the Online Form Designer. The <a href="#Journal">Journal control</a> was added to this toolbar in v6.1.003. Prior versions of the product display only the seven other tools.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="InputControl"></a><a href="#InputControl"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
@@ -370,6 +370,67 @@
                 </table>
                 <p>The default appearance for a switch is an appearance similar to the switches used in iOS.</p>
                 <p>If the <span class="ControlName">Vertical </span>property is selected, the iOS, Light, and<span class="ControlName"> </span>Flat <span class="ControlName">Switch Type</span> will display as a vertical, rather than a horizontal, <span class="NamedControl">Switch</span>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Journal"></a>
+                    <MadCap:keyword term="Activity Log;Journal;Journal Control;Comments;Form Comments;Milestones" /><a href="#Journal" title="Journal" alt="Journal"><img src="../Resources/Images/link.png" alt="Link" /></a>Journal</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> For Process Director v6.1.003, the Journal control was added to the basic controls toolbar.</p>
+                <p>The <span class="NamedControl">Journal</span> control enables you to display threaded comments from users. This control should replace the <span class="NamedControl">CommentLog </span>control on most forms, and provides a better view of user comments, because comment threading is built into the control, unlike the <span class="NamedControl">Comment Log</span>. </p>
+                <p>In addition to serving as a comment log, the <span class="NamedControl">Journal </span>control has the equally important feature of being able to display all Milestones configured in the <span class="UIElement">Milestones </span>tab of the Timeline, Form, and Folder Definitions. Milestones drive collaboration through the <span class="NamedControl">Journal </span>control, because the <span class="NamedControl">Journal </span>provides a semantic history of cases, processes, and more, which are derived from the Milestones that occur.</p>
+                <p>For more information about Milestone events, see the <a href="User Interface Legacy.htm#Milestone">Milestones</a> topic.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Journal1.png" />
+                </p>
+                <p>The following properties are available:</p>
+                <p>The <span class="ControlName">Name </span>property specifies the name of the control.</p>
+                <p>The <span class="ControlName">Title </span>property specifies the text that will appear in the title bar of the <span class="NamedControl">Journal </span>control when it is displayed on the form at run time. If you leave this property blank, the default title will be "Journal".</p>
+                <p>The <span class="ControlName">Scope </span>property enables you to determine at what level to capture events. By default, the scope is limited to just Activity log events that are specified in the Form definition. You can change the scope to the following settings.</p>
+                <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 10rem;" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">SCOPE</th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">DESCRIPTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Limit to Case</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Only show events from objects that are part of the current Case.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Limit to Form</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Only show events that are specified in the current Form definition.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Limit to Process</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Only show events from objects that are part of the current Process.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">No Limit</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Show any events from any object. This setting uses the widest possible scope, and will show any matching events.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>The<span class="ControlName"> Milestone Groups</span> property enables you to optionally display selected Milestones, in addition to, or in lieu of, user comments. To select the Milestone Groups you'd like to display, click the <span class="UIElement">Choose Milestone Groups </span>button to open the Milestone chooser dialog, and select the desired Milestone Groups to display in the log.</p>
+                <p>The size of the control's appearance at run time is set using the <span class="ControlName">Width </span>and <span class="ControlName">Height </span>properties, both of which specify the size in pixels or percentages. As a best practice, you should set the <span class="ControlName">Width </span>to "100%" to fill the horizontal area of the viewport automatically, for accessibility purposes. The <span class="ControlName">Height</span>, on the other hand, should be set in Pixels, which will display the height of the control at a fixed size.</p>
+                <p>The <span class="ControlName">Refresh Interval </span>determines the amount of time, in seconds, between each time the log is refreshed. Leaving this property blank will ensure that the log doesn't refresh automatically.</p>
+                <p>The <span class="ControlName">Allow/View User Comments</span> is turned on by default, so that you can use the <span class="NamedControl">Journal </span>as a comment log. Unchecking this property will disable user comments. For Process Director v5.26 and higher, the data entry text box on the <span class="NamedControl">Journal </span>control is resizable at run-time, within its parent container, which won't resize.</p>
+                <p>The <span class="ControlName">User Comment Group Name</span> property enables you to specify a group with which to associate comments. Using this property, you can place multiple <span class="NamedControl">Journal </span>controls on a case or a form and each <span class="NamedControl">Journal </span>control can have its own user comments. For Process Director v6.1.300 and higher, this property supports the use of System Variables to specify the Comment Group name.</p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> Journal controls always have a value. The visual display of the Journal control is governed by internal HTML text, so even blank Journal controls have content, even though it's hidden HTML. Since this control always have a value, marking it as required will NOT force a user to make a Journal comment.</p>
+                <h3 MadCap:conditions="General.Not Printed">Video Example</h3>
+                <p MadCap:conditions="General.Not Printed">In actual use on a form, the control will appear similar to this:</p>
+                <p MadCap:conditions="General.Not Printed">
+                    <object MadCap:HTML5Video="true" title="The Journal Control" MadCap:Param_autoplay="false" src="../Resources/Multimedia/Journal2.mp4" MadCap:Param_controls="true" MadCap:Param_muted="true" MadCap:Param_loop="true" style="width: 100%;height: auto;border-left-style: solid;border-left-width: 1px;border-left-color: #082f4d;border-right-style: solid;border-right-width: 1px;border-right-color: #082f4d;border-top-style: solid;border-top-width: 1px;border-top-color: #082f4d;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #082f4d;">
+                    </object>
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2>Other Control Tools</h2>

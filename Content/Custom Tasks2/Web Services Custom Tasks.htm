@@ -4007,5 +4007,244 @@
                 <p>If you request the results to be returned in JSON format AND have mapped to individual form fields, <b>an XPATH expression is still required</b> when defining the mapping between the results and form field (Typically JSONPath expressions are used with JSON). Further, depending on the JSON string, a double slash may be required in the expression when specifying the JSON identifier, because the JSON string might have translated into an empty root XML node, which would require the double slash. So, if a JSON query with a single slash doesn’t work when you think it should, try prefixing the query with a double slash ("//").”</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="JSON"></a><a href="#JSON"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a> JSON to CSV from a REST call</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Created in June 2025, with an initial version of 2025.06.20, this Custom Task makes a REST&#160;call to a JSON&#160;endpoint, then converts the JSON result to a CSV file stored in the <span class="ProcessDirectorObject">Content List</span>. When converting the JSON result, the CT first does an intermediate conversion from JSON to XML. To convert the XML data to CSV, the <span class="ControlName">Result Mapping</span> section of the configuration screen uses the XPath expression for the converted XML to specify the data to be converted into data columns in the CSV file. <b style="font-style: italic;">It will not parse the JSONPath expression of the source JSON result.</b></p>
+                <p>After configuring the <span class="ControlName">Rest URL</span> and <span class="ControlName">Method </span>properties, you can click the <span class="UIElement">Test REST Call</span> button. This button will invoke the REST&#160;CALL, and fill in the <span class="ControlName">JSON</span>, <span class="ControlName">XML</span>, and <span class="ControlName">CSV </span>results in the <span class="ControlName">Test Results</span> section at the bottom of the configuration screen. The <span class="ControlName">CSV </span>property will be blank until you provide the column mapping and XPath expressions in the <span class="ControlName">Result Mapping</span> section to map the XML data to the CSV file's columns. The <span class="ControlName">XML </span>property will show the converted XML data, however, as long as the REST call returns the appropriate JSON. You can use the XML data displayed in the <span class="ControlName">XML </span>property to create the XPath expressions that will then convert the XML data into CSV.</p>
+                <h4>Standard Tabs</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/JSON2CSV.jpg" />
+                </p>
+                <h4>Credentials Tab</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/JSON2CSV1.jpg" />
+                </p>
+                <h4>Advanced Tabs</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/JSON2CSV2.jpg" />
+                </p>
+                <h4>Configuration</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3" style="background-color: #528bbc;"><b style="color: #ffffff;">REQUEST API SETUP SECTION</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p style="font-weight: bold;">REST URL Tab</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>REST URL</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The URL of the REST Service, including the parameters</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Method</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">GET<br />POST<br />PUT<br />PATCH<br />DELETE</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The Web method to use to call the REST&#160;service.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Test REST&#160;Call</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Button</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When clicked, this button will invoke the REST&#160;CALL, and fill in the <span class="ControlName">JSON</span>, <span class="ControlName">XML</span>, and <span class="ControlName">CSV </span>results in the <span class="ControlName">Test Results</span> section at the bottom of the configuration screen.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3"><b>Credentials Tab</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Select Data Source or Input credentials manually</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">List of Compliance Datasources</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to select a compliance data source from which the username and password credentials will be supplied.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Username</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When manually inputting credentials, the user name for the REST data source.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Password</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When manually inputting credentials, the password for the REST data source.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3"><b>Advanced Tab</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Content Type</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>MIME type of the Rest call.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Accept Header</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This property enables you to set the "Accept" header of the HTTP Request.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Timeout</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The number of seconds to wait before the REST&#160;call times out.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Retry Attempts</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Number of retries to attempt</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This field is designed to prevent an issue that may occur when REST POST calls to update data fails <i>without an underlying fault in the Payload or service</i>. This property implements a retry mechanism that often resolves the issue, and eliminates the need for an administrator to re-run the Timeline Activity/Form event that invokes the Custom Task.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Use Insecure versions of TLS?</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">By default, Process Director won't use TLS 1.0 for the transport layer for security reasons. Checking this option will enables the use of TLS 1.0 if desired.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Base64 Encode</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When selected, will encode attachments using Base64 encoding.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Headers</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>You can add additional HTTP headers to the call by clicking the Add Row button to create key/value pairs.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3" style="background-color: #528bbc;color: #ffffff;"><b>RESULT MAPPING SECTION</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p style="font-weight: bold;">Results Tab</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>CSV&#160;Header</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The name to use as the column header in the exported CSV file.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>XPath Expression</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The XPath expression to use to retrieve the data from the intermediate XML conversion that's performed when the Custom Task is invoked.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Add Mapping</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This button will, when clicked, add additional mapping rows for additional CSV columns.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p style="font-weight: bold;">Advanced Tab</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Default XPath namespace</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Global</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The default namespace is generally correct.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3" style="background-color: #528bbc;color: #ffffff;"><b>EXPORT&#160;DETAILS&#160;SECTION</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3"><b>Destination Tab</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Destination Folder</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Folder picker</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to select the folder in which to store the exported CSV file.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">File Name</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The File Name of the exported CSV file. You do not need to supply the file extension, as it will be added automatically.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3" style="font-weight: bold;">Advanced Tab</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Group Name</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The Group Name for the exported CSV&#160;file.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Success Message</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">A success message to display when the file is exported.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3" style="background-color: #528bbc;color: #ffffff;font-weight: bold;">TEST&#160;RESULTS SECTION</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">JSON</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The original JSON returned by the REST&#160;call</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This field is filled automatically when the <span class="UIElement">Test REST&#160;Call </span>button is clicked.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">XML</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The XML result for the intermediate JSON&#160;conversion.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This field is filled automatically when the <span class="UIElement">Test REST&#160;Call </span>button is clicked.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">CSV</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">The CSV&#160;text that will be exported to the file.</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">This field is filled automatically when the <span class="UIElement">Test REST&#160;Call </span>button is clicked. This field will be blank until you supply the appropriate column mappings in the <span class="ControlName">Result Mapping</span> section of the configuration screen.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
     </body>
 </html>
