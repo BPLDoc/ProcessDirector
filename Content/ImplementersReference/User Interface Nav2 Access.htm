@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Access Levels</h1>
+        <p>Prior versions of Process Director had two major levels of access to the UI. System Administrators, or partial administrators, had access to all or part of the <span class="ProcessDirectorObject">IT Admin</span> area. All other users, including implementers, had access to the same end user UI. Access to the <span class="ProcessDirectorObject">Content List </span>for implementers usually required the creation of a developer or implementer workspace, which gave them access to it.</p>
+        <p>With the v6.1 UI, an additional access level was added for implementers, to provide more granular control over who can access the <span class="ProcessDirectorObject">Content List</span>. This new level is called <span class="KeyTerms">Developer </span>access, which enables access to the <span class="ProcessDirectorObject">Content List</span> and <span class="ProcessDirectorObject">Home Page</span> without assigning additional administrative privileges (such as making implementers Partition Admins) or permissions. So, for Process Director v6.1.X and higher, UI Access is granted to the following user classes:</p>
+        <ul>
+            <li><b>End User:</b> These users can see only the <span class="UIElement">Workspace </span>and <span class="UIElement">User Profile</span> menus. They have no access to the <span class="UIElement">Home</span>, <span class="UIElement">Content List</span>, or <span class="UIElement">Settings </span>menus. They can only access objects that are included in one of their Workspaces.</li>
+            <li><b>Developer:</b> These users are granted access to the <span class="UIElement">Home </span>and<span class="UIElement"> Content List </span>menus. This access enables implementers to access the <span class="ProcessDirectorObject">Content List</span> and perform the design/development work that they are assigned.</li>
+            <li><b>Administrator:</b> A user who is designated as a System Administrator, or given a limited administrative role, such as a Configuration or Troubleshooting Administrator, will have access to the <span class="UIElement">Settings </span>menu, and the menu items—and only the menu items—that are relevant to the administrative role that they’ve been assigned.</li>
+        </ul>
+        <h2>UI&#160;Appearance</h2>
+        <p>By default, all users are given end user access to the system, which enables them to access only the workspaces to which they’ve been assigned. Without specific configuration to provide additional access to other portions of the UI, all users, by default, see only the simplest version of it.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/UIAccess01.png" />
+        </p>
+        <p>End users have access to their workspaces, but they cannot see the Home Page, the Content List, or access any of the administrative portions of the UI. Additionally, the contents of the User Profile menu are also limited.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/UIAccess02.png" />
+        </p>
+        <p>The same user, however, if granted Developer Access, can see a more expanded set of menus.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/UIAccess03.png" />
+        </p>
+        <p>With Developer Access the same user now has access to the Home Page, as well as the full Content List, though this access can be limited by permissions to see or modify specific folders or objects.</p>
+        <p>Of course, Administrators have access to the entire UI.</p>
+        <h2>Granting Developer Access</h2>
+        <p>Granting Developer access can be done in two different ways, by group, or by individual user. BP Logix recommends that access be granted by group, since this is the easiest way to administer access over time.</p>
+        <h3>Group Access</h3>
+        <p>A new property exists on the Edit Group page to grant Developer Access to all members of a specified Group. This property is labeled <span class="ControlName">Developer (Content List/Home Page)</span>.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/UIAccess04.png" />
+        </p>
+        <p>When checked, this property gives access to the <span class="ProcessDirectorObject">Home Page</span> and <span class="ProcessDirectorObject">Content List</span> to all group members. As group members are added to, or removed from, this group, their access to the developer content will update automatically.</p>
+        <h3>User Access</h3>
+        <p>Developer access can also be granted via the <span class="ProcessDirectorObject">Edit User </span>page in the <span class="ProcessDirectorObject">User Administration</span> area. The same property, <span class="ControlName">Developer (Content List/Home Page)</span>, is available for each user.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/UIAccess05.png" />
+        </p>
+        <p>This property works just like its Group counterpart but requires that you manage Developer access at the individual level, which, over time, can be an additional administrative burden when compared to Group-level management.</p>
+        <h2>System Privileges for Developer Access</h2>
+        <p>Granting Developer access does not change the user’s object permissions in the <span class="ProcessDirectorObject">Content List</span> or otherwise elevate the user’s system privileges. The objects they can access in the <span class="ProcessDirectorObject">Content List</span> are still limited by the permissions on each object. This enables you to grant different implementers access to different portions of the <span class="ProcessDirectorObject">Content List</span>.</p>
+        <p>You may also wish to grant the user additional privileges, such as the ability to impersonate other users. This is a separate privilege that can be granted by checking the <span class="ControlName">User Impersonation Ability </span>property for the user account. Users with impersonation ability can access that feature directly from the<span class="UIElement"> User Profile</span> menu.</p>
+        <p>Just as with administrators, users with Developer access can open their <span class="ProcessDirectorObject">User Profile</span> to select whether they wish to see the <span class="ProcessDirectorObject">Home Page</span>, or their active Workspace when logging into the system.</p>
+        <h2>System Administrator Access</h2>
+        <p>Administrators have access to all or part of the <span class="UIElement">Settings </span>menu in the UI. The process of designating administrators has not changed. The various levels of administrative access are still controlled at the user level, by selecting the appropriate property to grant privileges in the user's account page in the <span class="ProcessDirectorObject">User Administration</span> section of the<span class="ProcessDirectorObject"> IT&#160;Admin </span>area.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/UIAccess06.png" />
+        </p>
+        <p>Once exception to administrative access, however, is if a user is granted <span class="ControlName">System Partition Admin</span> privileges <b style="font-style: italic;">only</b>. In that case, theuser will see the same UI as those users who’ve been given Developer access. But, unlike users with Developer Access, System Partition Administrators have full control over the <span class="ProcessDirectorObject">Content List</span> for any partition of which they are a member. They are not limited in any way by object permissions and can make any change they desire to any <span class="ProcessDirectorObject">Content List</span> object. While they cannot access the <span class="UIElement">Settings </span>menu, or any portion of the <span class="ProcessDirectorObject">IT Admin</span> area, they do have full administrative control over the <span class="ProcessDirectorObject">Content List</span>.</p>
+        <p>The remaining administrative settings will grant access to the <span class="UIElement">Settings </span>menu, and any of the menu items that are relevant to their level of administrative access.</p>
+    </body>
+</html>
