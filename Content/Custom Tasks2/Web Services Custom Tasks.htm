@@ -4009,7 +4009,7 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="JSON"></a><a href="#JSON"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a> JSON to CSV from a REST call</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="JSON"></a><a href="#JSON"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a> JSON to CSV from a REST Call</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Created in June 2025, with an initial version of 2025.06.20, this Custom Task makes a REST&#160;call to a JSON&#160;endpoint, then converts the JSON result to a CSV file stored in the <span class="ProcessDirectorObject">Content List</span>. When converting the JSON result, the CT first does an intermediate conversion from JSON to XML. To convert the XML data to CSV, the <span class="ControlName">Result Mapping</span> section of the configuration screen uses the XPath expression for the converted XML to specify the data to be converted into data columns in the CSV file. <b style="font-style: italic;">It will not parse the JSONPath expression of the source JSON result.</b></p>
@@ -4024,7 +4024,7 @@
                 </p>
                 <h4>Advanced Tabs</h4>
                 <p>
-                    <img src="../Resources/Images/Custom Tasks2/JSON2CSV2.jpg" />
+                    <img src="../Resources/Images/Custom Tasks2/JSONtoCSV.png" />
                 </p>
                 <h4>Configuration</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
@@ -4173,25 +4173,37 @@
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Add Mapping</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This button will, when clicked, add additional mapping rows for additional CSV columns.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Result Type</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Value<br />Array Value<br />Outer XML<br />Inner XML</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This field enables you to select whether you wish to return the value or the raw XML for the data. For version 2025.07.30, an additional option that specifies is the field returns an array of values was added. If this option is selected, the array values will be separated by the character specified in the <span class="ControlName">In-Cell Separator for Array Values</span> property on the <span class="UIElement">Advanced </span>tab of this section.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Add Mapping</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This button will, when clicked, add additional mapping rows for additional CSV columns.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p style="font-weight: bold;">Advanced Tab</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>Default XPath namespace</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>Global</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>The default namespace is generally correct.</p>
                             </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">In-Cell Separator for Array Values</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This property specifies the character to use as a separator for the values returned from an array. The default character is the semicolon (;).</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3" style="background-color: #528bbc;color: #ffffff;"><b>EXPORT&#160;DETAILS&#160;SECTION</b>

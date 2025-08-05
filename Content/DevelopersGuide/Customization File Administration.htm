@@ -765,5 +765,16 @@
                 <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// ****************************************<br />&#160;&#160;&#160;&#160;// SET THE TEST USER FOR TEST MODE<br />&#160;&#160;&#160;&#160;// Turn test mode on</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fTestMode = <span class="CodeOption">true</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Specify user to use for test emails</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.TestUserEmails = User.GetUserByUserID(bp, "<span class="CodeOption">my_test_id</span>");<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="UseAutoSignatures"></a><a href="#TestUserEmails"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>UseAutoSignatures</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="TestUserEmails">&#160;</MadCap:keyword>This variable, when set to "true", will automatically generate signature images on Routing Slips for users who do not have a Signature Image uploaded in their <a href="../SystemAdministratorGuide/Users.htm#UserProperties">User Properties</a>. The default value for this variable is "false".</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void PreSetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Auto-generate missing signature images</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.UseAutoSignatures = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
     </body>
 </html>
