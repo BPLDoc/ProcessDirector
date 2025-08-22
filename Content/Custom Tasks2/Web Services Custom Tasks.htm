@@ -4012,11 +4012,11 @@
                 <MadCap:dropDownHotspot><a name="JSON"></a><a href="#JSON"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a> JSON to CSV from a REST Call</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>Created in June 2025, with an initial version of 2025.06.20, this Custom Task makes a REST&#160;call to a JSON&#160;endpoint, then converts the JSON result to a CSV file stored in the <span class="ProcessDirectorObject">Content List</span>. When converting the JSON result, the CT first does an intermediate conversion from JSON to XML. To convert the XML data to CSV, the <span class="ControlName">Result Mapping</span> section of the configuration screen uses the XPath expression for the converted XML to specify the data to be converted into data columns in the CSV file. <b style="font-style: italic;">It will not parse the JSONPath expression of the source JSON result.</b></p>
-                <p>After configuring the <span class="ControlName">Rest URL</span> and <span class="ControlName">Method </span>properties, you can click the <span class="UIElement">Test REST Call</span> button. This button will invoke the REST&#160;CALL, and fill in the <span class="ControlName">JSON</span>, <span class="ControlName">XML</span>, and <span class="ControlName">CSV </span>results in the <span class="ControlName">Test Results</span> section at the bottom of the configuration screen. The <span class="ControlName">CSV </span>property will be blank until you provide the column mapping and XPath expressions in the <span class="ControlName">Result Mapping</span> section to map the XML data to the CSV file's columns. The <span class="ControlName">XML </span>property will show the converted XML data, however, as long as the REST call returns the appropriate JSON. You can use the XML data displayed in the <span class="ControlName">XML </span>property to create the XPath expressions that will then convert the XML data into CSV.</p>
+                <p>This Custom Task makes a REST&#160;call to a specified endpoint, then converts the XML/JSON data to a CSV file stored in the <span class="ProcessDirectorObject">Content List</span>. </p>
+                <p>After configuring the <span class="ControlName">Rest URL</span> and <span class="ControlName">Method </span>properties, you can click the <span class="UIElement">Test REST Call</span> button. This button will invoke the REST&#160;CALL, and fill in the <span class="ControlName">JSON</span>/<span class="ControlName">XML</span>, and <span class="ControlName">CSV </span>results fields in the <span class="ControlName">Test Results</span> section at the bottom of the configuration screen. The <span class="ControlName">CSV </span>property will be blank until you provide the column mapping and XPath/JSONPath expressions in the <span class="ControlName">Result Mapping</span> section to map the REST data to the CSV file's columns. </p>
                 <h4>Standard Tabs</h4>
                 <p>
-                    <img src="../Resources/Images/Custom Tasks2/JSON2CSV.jpg" />
+                    <img src="../Resources/Images/Custom Tasks2/JSONtoCSV2.png" />
                 </p>
                 <h4>Credentials Tab</h4>
                 <p>
@@ -4146,38 +4146,36 @@
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p style="font-weight: bold;">Results Tab</p>
-                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Select Query Type</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">XPath<br />JSONPath</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to select if the REST call will return XML or JSON data, to determine whether the REST data will be parsed using XPath or JSONPath.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>CSV&#160;Header</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>The name to use as the column header in the exported CSV file.</p>
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p style="font-weight: bold;">Results Tab</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>XPath Expression</p>
+                                <p>CSV&#160;Header</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>The XPath expression to use to retrieve the data from the intermediate XML conversion that's performed when the Custom Task is invoked.</p>
+                                <p>The name to use as the column header in the exported CSV file.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Result Type</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Value<br />Array Value<br />Outer XML<br />Inner XML</p>
+                                <p>XPath/JSONPath Expression</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This field enables you to select whether you wish to return the value or the raw XML for the data. For version 2025.07.30, an additional option that specifies is the field returns an array of values was added. If this option is selected, the array values will be separated by the character specified in the <span class="ControlName">In-Cell Separator for Array Values</span> property on the <span class="UIElement">Advanced </span>tab of this section.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The XPath or JSONPath expression to use to parse the REST data.</p>
+                            </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Add Mapping</td>
@@ -4197,7 +4195,7 @@
                                 <p>Global</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>The default namespace is generally correct.</p>
+                                <p>Appears for XPath calls. The default namespace is generally correct.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -4241,12 +4239,12 @@
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">JSON</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The original JSON returned by the REST&#160;call</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">The JSON data returned by the REST&#160;call</td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">This field is filled automatically when the <span class="UIElement">Test REST&#160;Call </span>button is clicked.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">XML</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The XML result for the intermediate JSON&#160;conversion.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">The XML data returned by the REST call.</td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">This field is filled automatically when the <span class="UIElement">Test REST&#160;Call </span>button is clicked.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
