@@ -46,6 +46,7 @@
         <p>You can select a data source from a SQL database, a Knowledge View, a set of Form Instances, or a REST web service to provide the Business Value. In most cases, you'll choose a single data source, but you can have multiple values extracted from both a SQL and a Knowledge View data source.</p>
         <h4>SQL Data Source Tab</h4>
         <p>The <span class="UIElement">SQL Data Source </span>tab enables you to select a SQL&#160;Data Source, and provide a SQL&#160;Command for returning data from a SQL database. The Business Value supports most SQL data types (Char, Varchar, Nvarchar, Integer, Double, Short, Byte), and converts the value to a string for the remaining data types.</p>
+        <h5>v6.1.499 and Below</h5>
         <p>
             <img src="../Resources/Images/ImplementersReference/BusinessValue2.png" />
         </p>
@@ -117,6 +118,111 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>For Process Director v5.44.703 and higher, this button will automatically add every column returned by the SQL statement as a Business Value property in the <span class="ControlName">Properties </span>section of the page. This feature eliminates the need to manually create each property.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h5>v6.1.500 and Higher</h5>
+        <p>For Process Director v6.1.500 and higher, the <span class="UIElement">SQL&#160;Data Source</span> tab uses Microsoft's Monaco Editor (specifically for SQL syntax) to create, format, validate, and test SQL statements. This SQL&#160;editor replaces the plain input box and drodown controls used in previous versions. The editor enables a more full-featured editing experience for SQL&#160;Business Values. The Monaco Editor supports essential features such as syntax highlighting, line numbering, auto-completion, comment handling, and formatting support. The Monaco editor is the code editor used for SQL and other programming languages in Microsoft's free Visual Studio Code text editor.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Monaco1.png" />
+        </p>
+        <p>The left pane of the Monaco editor contains the code window into which you can place your SQL statement, while the right pane displays a Treeview of all the table that are accessible from the SQL&#160;data source you configure. In the example above, the Training Datasource enables access to two tables from the internal User Database. Between the two panes, and along the bottom of both panes, resizable borders enable you to click and drag to change the relative widths of the two panes, or to change the vertical height of the editor, respectively.</p>
+        <p>In the right pane, <span class="UIElement">Expand All</span> and <span class="UIElement">Collapse All</span> buttons enable you to show or hide all of the elements in the table treeview.</p>
+        <p>The Monaco editor adds Intellisense to code writing. For example, typing in "<code>sel</code>" will display the Intellisense menu that contains the <code>SELECT </code>command.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Monaco3.png" />
+        </p>
+        <p>When selecting fields, you can expand the treeview to select the fields by clicking on them in the treeview. When you do so, they are automatically added to the SQL&#160;statement, along with necessary punctuation like commas.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Monaco4.png" />
+        </p>
+        <p>Once you've finished writing your SQL statement, the Format button will apply syntax formatting to your SQL statement automatically, changing this:</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Monaco5.png" />
+        </p>
+        <p>To this:</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Monaco6.png" />
+        </p>
+        <p>In addition, since the Monaco editor knows what tables and fields are available, error checking is automatically applied. For example, if you enter the incorrect table name, the automatic error checking will display errors in your SQL statement, with error messages that appear whenever you mouse over the error markers.</p>
+        <p>
+            <img src="../Resources/Images/ImplementersReference/Monaco7.png" />
+        </p>
+        <p>The Monaco editor should make creating SQL Business Values much more convenient.</p>
+        <p>Most of the properties available on this tab are the same as those in previous versions. Some new properties have been added, and some have been removed, as the user interface has changes to make them unnecessary.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Please Choose Data Source</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>A <span class="NamedControl">Content Picker </span>control that enables you to pick the Datasource from which the data will be extracted.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Test Connection Button</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking this button will attempt to connect to the selected Datasource to confirm that the connection to the Datasource works.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Database Schema</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Once a valid Datasource has been selected, a list of database tables associated with the Datasource will fill the Treeview in the right pane of the Monaco Editor. If youclick the "+" icon for a table in the Treeview, a list of table columns will appear below the table name.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Monaco8.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SQL&#160;Command</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Enter the SQL command that will select the data to be set as the Business Value.</p>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" alt="Important" /> While the system will accept any valid SQL&#160;command, BP&#160;Logix <b style="font-style: italic;">very strongly recommends</b> hat you limit the use of Business Values to SELECT commands. Updating, deleting, and inserting data should be done separately, through the appropriate Custom Task/Datasource.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Test Query Button</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking this button will run the SQL query in the <span class="ControlName">SQL&#160;Command</span> property against the database to confirm that the query works properly.</p>
+                <p>For Process Director v5.44.703 and higher, the <span class="UIElement">Test Query</span> button will display up to 100 rows of sample data from a SQL Datasource in the Business Value definition. The data will be displayed in a<span class="ControlName"> SQL&#160;Test Results</span> section on the page. This section is hidden until the <span class="UIElement">Test Query</span> button is clicked.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Monaco9.png" />
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Format</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This button, when clicked, will reformat your SQL statement into the recommended formatting for SQL statements.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Add Columns as Properties Button</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For Process Director v5.44.703 and higher, this button will automatically add every column returned by the SQL statement as a Business Value property in the <span class="ControlName">Properties </span>section of the page. This feature eliminates the need to manually create each property.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Clear All Properties</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Clicking this button will remove all of the Business Value properties that have been configured, after you confirm this option via a dialog box.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Monaco12.png" />
+                </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h4>Knowledge View Data Source Tab</h4>
