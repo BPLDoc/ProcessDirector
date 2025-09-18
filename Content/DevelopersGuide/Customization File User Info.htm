@@ -6,11 +6,10 @@
     <body>
         <h1>
             <MadCap:concept term="Developer;Users" />
-            <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword><a name="_Toc421270092"></a>User Info SlideOut Custom Variables</h1>
-        <p>The User Info Slideout is a control that appears when you click the upper left corner of the Process Director screen. It contains a variety of information about the logged-in user, and can include the Name, email address, image, and other items that can be customized by using the custom variables in this section of the documentation.</p>
-        <p>
-            <img src="../Resources/Images/DevelopersGuide/userinfobox.png" alt="User Information Box" />
-        </p>
+            <MadCap:keyword term="CUSTOMIZATION FILE">&#160;</MadCap:keyword><a name="_Toc421270092"></a>User Profile Custom Variables</h1>
+        <p>The<span class="ProcessDirectorObject"> User Profile </span>page enables users to edit the profile elements that System Administrators have allowed them to access. It contains a variety of information about the current user, and can include their name, email address, image, and other properties. </p>
+        <p>Prior to Process Director v6.X, these properties were accessed by the <span class="UIElement">User Info Slideout</span> panel. In v6.X, the <span class="UIElement">User Info Slideout</span> was replaced by the <span class="ProcessDirectorObject">User Profile</span> page. This page can be opened by clicking the <span class="UIElement">User Profile</span> menu item, which appears in the user menu that opens when you click the user's profile image in the upper right corner of the screen. </p>
+        <p>The properties accessible for users to edit can be managed by using the Custom Variables listed below.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>
@@ -31,17 +30,6 @@
                     <MadCap:keyword term="fTurnOffUserProfileTimeZone">&#160;</MadCap:keyword>By default, users are allowed to control the time zone setting in their user profile. Setting this variable to “true” disables this ability.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent users from setting time zones</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fTurnOffUserProfileTimeZone= <span class="CodeOption">true</span>;<br />}</p>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="UserInfoShowSignOut"></a><a href="#UserInfoShowSignOut"><img src="../Resources/Images/link.png" /></a>UserInfoShowSignOut</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>
-                    <MadCap:keyword term="UserInfoShowSignOut">&#160;</MadCap:keyword>Setting this system variable to true enables you to show the <span class="UIElement">Sign Out</span> button on the user info slide panel.</p>
-                <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Hide the user info slideout</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.UserInfoShowSignOut = <span class="CodeOption">false</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -77,15 +65,28 @@
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Prevent users from disabling email</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fTurnOffUserProfileEmail= <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <h3>User Info Slideout Properties (Deprecated)</h3>
+        <p>These variables, while still operational if the v5 UI is active, have no affect in the UI for Process Director v6.1 and higher, as the <span class="UIElement">User Info Slideout</span> panel has been removed.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="UserInfoShowSignOut"></a><a href="#UserInfoShowSignOut"><img src="../Resources/Images/link.png" /></a>UserInfoShowSignOut</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>
+                    <MadCap:keyword term="UserInfoShowSignOut">&#160;</MadCap:keyword>Setting this system variable to true enables you to show the <span class="UIElement">Sign Out</span> button on the <span class="UIElement">User Info Slideout</span> panel.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Hide the user info slideout</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.UserInfoShowSignOut = <span class="CodeOption">false</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>UserInfoSlideOut</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="UserInfoSlideOut">&#160;</MadCap:keyword>This system variable determines what information will be displayed in the user info slide panel.&#160; The system variable can contain HTML and system variables.</p>
+                    <MadCap:keyword term="UserInfoSlideOut">&#160;</MadCap:keyword>This system variable enables you to display additional information in the User Info Slideout by adding the appropriate HTML and system variables in a text string.</p>
                 <h5>Example</h5>
-                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Format the user info slideout</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.UserInfoSlideOut = “<span class="CodeOption">&lt;span style=’font-weight:bold;’&gt;<br />&#160;&#160;&#160;&#160;&#160;{Curr_User,format=name}&lt;/span&gt;&lt;br/&gt;{Curr_User,format=email}<br />&#160;&#160;&#160;&#160;&#160;&lt;br/&gt;&lt;br/&gt;{server_name}</span>”;<br />}</p>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Format the user info slideout</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.UserInfoSlideOut = "<span class="CodeOption">&lt;span style='font-weight:bold;'&gt;<br />&#160;&#160;&#160;&#160;&#160;{Curr_User,format=name}&lt;/span&gt;&lt;br/&gt;{Curr_User,format=email}<br />&#160;&#160;&#160;&#160;&#160;&lt;br/&gt;&lt;br/&gt;{server_name}</span>";<br />}</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

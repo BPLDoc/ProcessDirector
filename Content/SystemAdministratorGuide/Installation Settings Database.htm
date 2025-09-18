@@ -9,8 +9,23 @@
             <MadCap:concept term="System Administration" />Database Settings</h1>
         <p>The <span class="ControlName">Database Settings</span> page allows you to set the database connection string and database client provider.&#160; Once you have entered your connection strings, ensure that you saved your settings. You may also test the connection by clicking the <span class="UIElement">Test Database Connect </span>button. This will return a valid statement or return an error. The <span class="UIElement">Verify Process Director Database Schema</span> button will run a test on the database to ensure that the data schema for the Process Director database you've selected is compatible with the version of Process Director you have installed.</p>
         <p>For Process Director v6.0.100 and higher, the header text, <span class="ControlName">Database Connection Page</span>, has been changed to <span class="ControlName">Database Settings</span>, to match the page name specified on the navigation button.</p>
+        <p>For Process Director v6.1.500 and higher, two different database strings will be used for access to the Process Director database.</p>
+        <p>The <span class="ControlName">Database Connection String</span> will provide full access to the database, and will be used for important system operations. Operations that would use this connection string would be:</p>
+        <ul>
+            <li>Operations performed automatically on startup in dbUpgrade.cs (product schema changes).</li>
+            <li>Creation of tables from CSV/XLS data using existing product functionality.</li>
+        </ul>
+        <p>The <span class="ControlName">Database Cache Connection String</span> provide less-privileged access to the database, and is used for routine operations performed by users, such as:</p>
+        <ul>
+            <li>Storing/retrieving form instance data.</li>
+            <li>Saving form templates from the Online Form Designer.</li>
+            <li>Data sources using the Internal DB or Internal User DB.</li>
+            <li>Business value configuration</li>
+            <li>Configuring objects where you can configure some or all of the SQL used.</li>
+        </ul>
+        <p>This change was made to improve database security, and to ensure that routine operations are performed in a more restrictive environment to prevent unauthorized changes to the database schema, etc.</p>
         <p>
-            <img src="../Resources/Images/SystemAdministratorGuide/DBProps.png" />
+            <img src="../Resources/Images/SystemAdministratorGuide/DatabaseSettings.png" />
         </p>
         <p class="PDNote">
             <img src="../Resources/Images/i2.png" alt="Note" /> As a security enhancement to Process Director v6.0 and higher, passwords in connection strings and password fields are obfuscated by default, and will not display unless the "Eye" icon adjacent to the field is clicked, which will show the password in clear text.</p>
