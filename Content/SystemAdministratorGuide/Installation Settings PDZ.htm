@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="System Administration" />
+            <MadCap:concept term="System Administration" />PDZ&#160;Certificates</h1>
+        <p>For Process Director v6.1.600 and higher, <span class="ProcessDirectorObject">Content List</span> objects that are exported to PDZ files can be digitally signed via the use of certificates. These certificates are managed from the <span class="ProcessDirectorObject">PDZ&#160;Certificates</span> page. This page enables the use of a private certificate to perform digital signing of all PDZ files exported from the system, and one or more public certificates which are used to verify the authenticity of PDZ files when they are imported into the system.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/PDZCert.png" />
+        </p>
+        <p>To create a private certificate in Process Director, clicking the <span class="UIElement">Generate Certificate</span> action link will automatically create the certificate that will be used for exporting all PDZ files from the system. </p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/PDZCert1.png" />
+        </p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> You can only have one active private certificate per server at any given time.</p>
+        <p>When exporting a PDZ&#160;file, the usual intent is to import it to another system, e.g., exporting a PDZ file from a development system to  a production system. Since the same certificate must be used to verify a signed  PDZ, the public certificate from one system can be downloaded and imported to another system. In the <span class="ControlName">Actions </span>column for each certificate on the system, an action link labeled, <span class="UIElement">Download Public Certificate (.cer)</span>, will, when clicked, download the public certificate file to your local computer. While the private certificate will be used on the source system to sign the PDZ on&#160;export, the public certificate is used on a target system to verify the PDZ&#160;on import.</p>
+        <p>On the <span class="ProcessDirectorObject">PDZ Certificates</span> Page pf the target server, you can click the <span class="UIElement">Import Public Certificate</span> link to navigate to the location of the downloaded public certificate, then upload it to the target server. Once both installations have the same certificate configured, PDZ files can be freely exported and imported between servers.</p>
+        <p>While you may only generate one private certificate at a time inside Process Director, you can upload multiple public certificates to the system. For instance, while a Development server will only have its specific private certificate for signing , you would need to import the public certificates from both your Production and Staging servers to enable PDZ files from those servers to be imported into your Development server. So, each server in your Prod/Stage/Dev environment will have one private key for signing, and public keys from the other two installations in the environment for verification. As long as there is a valid public key on the system, PDZ files can be seamlessly imported into the system.</p>
+        <p> In the <span class="ControlName">Actions </span>column for each certificate on the system, an action link labeled, <span class="UIElement">Delete</span>, will, when clicked, delete the selected certificate from the server. This is useful for removing/replacing expired certificates, to ensure that only current, active certificates remain in use. Expired certificates cannot be used for importing or exporting objects. Attempting to use them will result in a security error.</p>
+        <p>Once you have configured the public and private certificates for your Process Director installations, you can choose whether to use a certificate when exporting <span class="ProcessDirectorObject">Content List </span>objects to PDZ. There are no UI changes to the import process. As long as the appropriate public certificate exists on the target server, imported PDZ files will be verified automatically on import. </p>
+        <p>For information on how to configure a certificate during a PDZ export, please see the <a href="../ImplementersReference/Importing Exporting Content.htm#ExpImp">Exporting and Importing Objects topic</a> of the implementer's reference.</p>
+    </body>
+</html>
