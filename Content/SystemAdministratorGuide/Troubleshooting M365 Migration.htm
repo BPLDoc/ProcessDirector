@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:keyword term="System Administration" />
+            <MadCap:concept term="System Administration" /><a name="_Toc421094531"></a>Microsoft 365 (M365) Migration</h1>
+        <p>For Process Director v6.1.500 and higher, documents used with the Collaborative Documents Authoring (CDA) feature can be transferred from storage in process Director, into the M365 installation your organization has created in Azure. This feature enables you to transfer existing documents that were initially used for CDA in Process Director for editing via the OnlyOffice service, which was the only available option for CDA in previous versions of the product. Once transferred, the documents will be stored in your M365 installation, and must be edited via M365.</p>
+        <p>Similarly, you can transfer documents from M365 to Process Director as well, if you wish to stop storing and editing them in your M365 system.</p>
+        <p>In Process Director v6.1.500 and higher, a new property for the <span class="NamedControl"><a href="../ImplementersReference/Form Online Controls Attachments.htm#AttachObjects"><span class="NamedControl">Attach Objects</span> control</a></span>, <span class="ControlName">Enable Microsoft 365 CDA</span>, will, when checked, mark a new or existing document to use M365 for collaborative authoring. New documents will be added to M365 on creation, once your <a href="M365 CDA.htm">connection to M365</a> is complete, but existing documents will need to be migrated to M365. Existing documents will only be eligible for migration to M365 after checking the <span class="ControlName">Enable Microsoft 365 CDA</span> property for the <span class="NamedControl">Attach Objects</span> control used on the Form definition. Once the desired Form definitions are edited, you can navigate to the <span class="ProcessDirectorObject">Microsoft 365 Migration</span> page to perform the migration.</p>
+        <h2>Migrating Documents</h2>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/M365 Migration.png" />
+        </p>
+        <p>The operation of the <span class="ProcessDirectorObject">Microsoft 365 Migration</span> page is simple. By default, the migration process is set to migrate from your local system to the M365 system you've configured. On the right side of the page, the dropdown menu will display the <span class="UIElement">Local to M365</span> option. </p>
+        <p>You have the choice of performing an automatic migration of all specified documents on the system, or performing a manual migration of documents from a single object definition. Irrespective of which method you use, the documents will be completely removed from Process Director, and stored ONLY in M365.</p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> Once the migration begins, the system will be unavailable to ALL users until the migration process completes. Migration can be a lengthy process, depending on how many instances and documents exist. BP&#160;Logix recommends running or testing the migration only outside of normal business hours.</p>
+        <p>Additionally, you can test the migration by checking the <span class="ControlName">Enable Test Mode</span> check box. The system will perform all of the normal migration actions, but will not actually transfer the documents. Since the test mode will perform all migration actions short of actually transferring the documents, this test process may also be lengthy, and will also prevent any users from accessing the system while it runs.</p>
+        <h4>Automatic Migration</h4>
+        <p>You can immediately start the document migration by clicking the <span class="UIElement">Start Migration </span>button. A confirmation dialog box will appear to enable you to confirm that you wish to start the migration.</p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/M365 Migration1.png" />
+        </p>
+        <p>You can, of course, cancel the migration at this point by clicking the <span class="UIElement">Cancel </span>button. Clicking the <span class="UIElement">Proceed </span>button will begin the migration. </p>
+        <p>As the confirmation dialog box note, documents transferred to M365 cannot be removed from the M365 system. Once a document is sent to M365, it can only be removed by an administrator, in the M365 system itself. Process Director will not remove any documents from M365.</p>
+        <p>The migration process will review the Form Definitions on your system, looking for any Attach Object control that have the <span class="ControlName">Enable Microsoft 365 CDA</span> property checked. When found, it will transfer document attachments in all instances of that Form/Process definition from local storage, and place them in M365. </p>
+        <p>Once the migration is complete, all of the documents will only be editable via M365.</p>
+        <h4>Manual Migration</h4>
+        <p>Clicking the <span class="UIElement">Manual Migration</span> button will open a confirmation dialog box. To proceed with the migration, you must specify the Object ID of one or more Form definitions in this dialog box. </p>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/M365 Migration2.png" />
+        </p>
+        <p>In the<span class="ControlName"> Object IDs</span> field, you can enter the Object ID for a single definition, or add multiple Object IDs, separated by a comma. Once you supply the Object ID(s), you can click the <span class="UIElement">Proceed </span>button to begin the migration. As always, you can also click <span class="UIElement">Cancel </span>to escape the migration.</p>
+        <p>Once again, the process may be lengthy, as, as with the automatic migration, no users can access the system until the migration is complete.</p>
+        <h2>Migrating from M365 to Local</h2>
+        <p>
+            <img src="../Resources/Images/SystemAdministratorGuide/M365 Migration3.png" />
+        </p>
+        <p>You can perform a reverse migration from M365 back to local storage, by setting the migration menu to <span class="UIElement">M365 to Local</span>. You should be aware, however, that, while the documents will be moved back into the local document storage, they will NOT be removed from M365.</p>
+        <p>As with migrating to M365, you have the option of doing a mass import, or importing only documents for specific Object IDs. You will also need to open each of the object definitions containing the <span class="NamedControl">Attach Object</span> controls and uncheck the <span class="ControlName">Enable Microsoft 365 CDA</span> property. Once you've done so, the document attachments will no longer be editable in M365, and will revert to the OnlyOffice service for CDA editing and authoring.</p>
+        <p>Again, the system will be unavailable to all users during the migration, so BP Logix strongly recommends conducting migration outside of normal business hours.</p>
+    </body>
+</html>
