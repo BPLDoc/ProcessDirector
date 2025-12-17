@@ -10,6 +10,294 @@
             <MadCap:concept term="Custom Tasks;Web Services" /><a name="_Toc421015724"></a>Web Services Custom Tasks</h1>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="APICallFromBV"></a><a href="#APICallFromBV"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a>API Call from Business Value</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This custom Task, added as v2025.11.14, will send Business Value results as JSON data to a REST endpoint or to invoke a SOAP Web Service method. </p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> This Custom Task supersedes the previous Custom Task named REST&#160;Call from Business Value. It maintains the functionality of the previous Custom Task, while adding the ability to make SOAP calls.</p>
+                <h4>Default Sections/Tabs</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/APICallFromBV4.png" />
+                </p>
+                <h4>API&#160;Settings for SOAP</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/APICallFromBV5.png" />
+                </p>
+                <h4>Credentials Tab</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/APICallFromBV1.png" />
+                </p>
+                <h4>Body Tab</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/APICallFromBV2.png" />
+                </p>
+                <h4>Advanced Tab</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/APICallFromBV3.png" />
+                </p>
+                <h4>Configuration Options</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Select Business Value</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Content Picker</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Enables you to select the business value to use to pass data to the API call.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3" style="background-color: #528bbc;"><b style="color: #ffffff;">Parameters Section</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Parameter</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">If the Business Value requires one or more parameters, this section will automatically populate with a list of parameters. Each parameter will include configuration fields to enable you to decide what values to pass as the parameter.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Set From String Value<br />Set from Form Field</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Radio buttons to determine if you wish to set the parameter via a string (which includes System Variables, or from a form field on the container Form.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Form Control Dropdown</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Enables you to select a Form field when the <span class="ControlName">Set from Form Field</span> option is selected.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Text Box</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Enables you to enter the desired text or system variable when the <span class="ControlName">Set from String Value</span> option is selected.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3" style="background-color: #528bbc;"><b style="color: #ffffff;">API&#160;Settings Section</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3"><b>URL&#160;Tab</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Use SOAP instead of REST</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This property, when checked, indicates the API call will be made to a SOAP web service. When checked, the <span class="UIElement">Credentials </span>tab will be hidden. Checking this field will alter the property values that appear in this tab, to reflect the appropriate REST or SOAP properties.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">REST&#160;URL/Service URL</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The URL&#160;of the API&#160;to call. </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Method</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">GET<br />POST<br />PUT<br />PATCH<br />DELETE</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">For REST API&#160;calls, property specifies the REST&#160;method to use for the API call.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">WEB&#160;Service Protocol</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">SOAP<br />SOAP 1.2</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">For Web Service calls, the SOAP protocol to use.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Web Service Method</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Dropdown of existing Web Service Methods</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">For Web Service calls, the available methods in the web service. To retrieve the list of available methods, you must first configure the <span class="ControlName">Service URL</span> and <span class="ControlName">WEB&#160;Service Protocol</span> properties, then click the <span class="UIElement">Connect to Service</span> button to retrieve the list of methods and fill the dropdown control for this property.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3" style="font-weight: bold;">Credentials Tab (REST&#160;only)</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Data Source</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Dropdown of existing Compliance Datasources</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The compliance datasource containing the login credentials for the REST service, if applicable.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Username</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The user name to use when supplying credentials manually. This will expose the login credentials to any user with access to this object in design view.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Password</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The password to use when supplying credentials manually. This will expose the login credentials to any user with access to this object in design view.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3"><b>Body Tab</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3">This tab enables mapping for form fields or system values to the API call. Initially this tab will display only the <span class="UIElement">Add Mapping</span> button, which will add a new field mapping row each time it is clicked. Each field mapping row will display the following properties:</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Source Text</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">A text value (including System Variables) to map to a Business Value Property.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Select Property</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">List of properties in the configured Business Value</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The Business Value property to which to map the <span class="ControlName">Text</span>.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Use Static Value</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When checked, this property will replace the <span class="ControlName">Select Property </span>field with an empty text box.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Mapped Text</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When the <span class="ControlName">Use Static Value </span>property is checked, this property will enable you to specify a System Variable to which to map the text.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Data Type</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">string<br />boolean<br />number<br />decimal</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This dropdown control enables you to specify the data type of the mapped value.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3" style="font-weight: bold;">Advanced Tab</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Use Custom Body Template</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When checked, the <span class="ControlName">Custom Body Template</span> field will be displayed to enable you to provide template-based body generation for the SOAP envelope or REST payload. </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Custom Body Template</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>A&#160;large text box into which you can construct the body template for the SOAP envelope or REST payload</p>
+                                <p>A list of available Business Value properties and their template syntax will also appear, along with template syntax examples.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Content Type</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The content type declaration for the API call.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Accept Header</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The value of the accept header for the API call.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Timeout</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The number of seconds to wait before the API call times out.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Retry Attempts</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">1-10</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The number of times to retry the API call if a timeout occurs, to a maximum of 10 retries.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Headers</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Initially empty, clicking the Add Row button will enable you to add additional headers for the API call, such as the API Key, etc. Each header row will contain properties to create a Name/Value pair.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Name</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The name of the additional header.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Value</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The value of the additional header.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3" style="font-weight: bold;background-color: #528bbc;color: #ffffff;">Callback Options Section</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3">Use this section to specify which Form instance should be updated after each successful call (if any).
+</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Property of Form Instance</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">List of Business Value Properties</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The Business Value property that contains the Form instance ID to update.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Form Field to Update</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The name of the Form field to update.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Value to set</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The value to place in the specified Form field.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Field is inside Array</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When checked, this property indicates the Form field to update is contained inside an array.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Property</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">List of Business Value properties</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When the <span class="ControlName">Field is inside Array</span> property is checked, this dropdown enables you to select the Business Value Property that specifies the Array row number of the field to update.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3" style="font-weight: bold;background-color: #528bbc;color: #ffffff;">Notification Options Section</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3">This section enables you to configure brief email notifications to be sent when the API call is made.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Send notifications of HTTP call failures via e-mail messages</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When checked, the system will send notifications for all API call failures, to include all retry attempts. This may substantially increase the number of notifications sent.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">From</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The From email address for the email notification.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">To</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The email address to which to send the email notification.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Subject</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The subject line of the email notification.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Add Property</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When clicked, this button will add a new property row to this section, to enable you to append the values of Business Value Properties to the body of the email notification.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">Property</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">List of Business Value properties.</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">Enables you to select the Business Value property to append to the email notification.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="AzureSMS"></a><a href="#AzureSMS"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Azure SMS</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -22,7 +310,7 @@
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/AzureSMS1.jpg" />
                 </p>
-                <p>Configuration Options</p>
+                <h4>Configuration Options</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
                     <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
                     <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
@@ -109,183 +397,6 @@
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">Source Phone Number (SMS "From")</td>
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row1">The phone number from which the SMS message should be sent, e.g., a valid mobile number for a mobile device to which return messages can be routed. Azure Communication Services provides several methods for provisioning a phone number, including through the Communication Services Portal.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="FillDropdownFromWebService"></a><a href="#FillDropdownFromWebService"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill DropDown from Web Service</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody>
-                <p>This Custom Form Task will automatically fill a dropdown field on the Form with results from a web service call. Choose the Form dropdown field and the output parameter(s) that should be used to fill the dropdown. This Custom Task should be mapped to the [Form Displayed] event to ensure the dropdown values are always populated.</p>
-                <p class="PDNote">
-                    <img src="../Resources/Images/i2.png" alt="Note" /> This Custom Task doesn't support WCF web services.</p>
-                <p>
-                    <img src="../Resources/Images/Custom Tasks2/WSCT.png" />
-                </p>
-                <h4>Configuration Options</h4>
-                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
-                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
-                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
-                    <col class="TableStyle-Simple-Column-Column1" />
-                    <thead>
-                        <tr class="TableStyle-Simple-Head-Header1">
-                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
-                                <p>OPTION</p>
-                            </th>
-                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
-                                <p>ATTRIBUTES</p>
-                            </th>
-                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
-                                <p>DESCRIPTION</p>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Web Service URL</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>The URL of the web service from which the data is to be retrieved.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Web Service Protocol</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>SOAP, SOAP 1.2</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>The communications protocol to use for the web service. If you're having compilation trouble, perhaps the WSDL only supports a certain Web Service protocol, which you can change here.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Web Method</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>List of Web Service Methods</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>This is the list of web service methods that are available through the selected Web Service URL. Different web services will expose different methods.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Call Result for Dropdown Text</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>List of table fields</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>The Call Result that will be displayed as the text in the dropdown control.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Call Result for Dropdown Value</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>List of table fields</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>The Call Result that will be used as the value of the dropdown control.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Input Parameters</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Click the Add Input button to add parameters for the web service call.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>If Previous Value not in List</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Leave value alone, Clear the value in the form, Add the value to the dropdown</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>How the dropdown value will be altered if the previous value isn't in the list of data returned from SharePoint.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Call method only when Dropdown isn't set</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>This prevents the call from being re-run if the dropdown has already been populated.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Call method only under this condition</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>Enables you to set a condition for running the call that populates the dropdown.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Test Method Call</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>This will run a test call to retrieve the data.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Dropdown to Fill</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>List of Form fields</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>The name of the dropdown control that will be filled with Salesforce data.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Add empty entry to Dropdown with this text</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Text value for null entries.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
-                                <p>Fill Only When Other Control Changes</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
-                                <p>List of Form fields</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
-                                <p>Prevents the query from running unless this field changes. This is often used for a field whose value will be used as a filter to limit the data that is returned.</p>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -515,31 +626,16 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="FillFieldsFromREST"></a><a href="#FillFieldsFromREST"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill Fields from REST</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="FillDropdownFromWebService"></a><a href="#FillDropdownFromWebService"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill DropDown from Web Service</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p class="Important">
-                    <img src="../Resources/Images/i.png" title="Important" alt="Important" /> This Custom Task has largely been deprecated by the use of Business Values to return data from a REST service and fill fields via the Set Form Data tab of a Form definition.</p>
-                <p>This Custom Form Task can fill multiple fields on a Form with values from a REST Web Service call. Choose the Form fields and the queries (in XPath) that correspond to data with which to fill the Form fields, or choose to put all of the data into a single Form field. You can also pass data in the URL to the REST Service.</p>
-                <p>For v2022.03.31 and higher of this Custom Task, the Custom Task can be called even if there is no form instance to use. This can be useful in rare contexts, such as trying to call the build_form_cache.aspx page, which doesn't require any form data to be sent or returned.</p>
-                <h4>Standard Tabs</h4>
+                <p>This Custom Form Task will automatically fill a dropdown field on the Form with results from a web service call. Choose the Form dropdown field and the output parameter(s) that should be used to fill the dropdown. This Custom Task should be mapped to the [Form Displayed] event to ensure the dropdown values are always populated.</p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" alt="Note" /> This Custom Task doesn't support WCF web services.</p>
                 <p>
-                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST.png" />
+                    <img src="../Resources/Images/Custom Tasks2/WSCT.png" />
                 </p>
-                <h4>Credentials Tab</h4>
-                <p>
-                    <img src="../Resources/Images/Custom Tasks2/FFFromRest3.png" />
-                </p>
-                <h4>Body Tab</h4>
-                <p>When using rest call <i>with <b>any</b> method other than GET</i>, a <span class="UIElement">Body </span>tab will appear automatically in the UI.</p>
-                <p>
-                    <img src="../Resources/Images/Custom Tasks2/FFFromRest1.png" />
-                </p>
-                <h4>Advanced tabs</h4>
-                <p>
-                    <img src="../Resources/Images/HowDoI/FillFromREST.jpg" />
-                </p>
-                <h4>Configuration Data</h4>
+                <h4>Configuration Options</h4>
                 <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
                     <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
                     <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
@@ -559,236 +655,150 @@
                     </thead>
                     <tbody>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p style="font-weight: bold;">REST URL TAB</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>REST URL</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>The URL of the REST Service, including the parameters</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Method</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">GET<br />POST<br />PUT<br />PATCH<br />DELETE</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The Web method to use to call the REST&#160;service.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p style="font-weight: bold;">RESULTS TAB</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Result Mapping Dropdown</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Map results to Form Fields<br />Place all data from REST call into a single field<br />Dump Data from REST call into an attachment<br />Dump Result Field from REST call into an Attachment</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>See the Result Tab Options section below for a detailed explanation of each option.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Success Message</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>A text message to display when the REST&#160;call completes successfully.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3"><b>BODY&#160;TAB</b>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Body</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The body of the web request. This can contain JSON, XML, or any other text format accepted by the REST service. Using this field with attachments (multipart web request) will result in this field representing one of the multiple parts of the Request Content. Due to System Variable parsing logic, to use curly braces in the Body (e.g., JSON data), ensure that any curly brace that is <b style="font-style: italic;">NOT</b> part of a System Variable is followed by a new line.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Name</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The value for the Content-Disposition header's "name" parameter.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Reference Type(s)</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Process References<br />Form References</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The type of attachment to include in the REST&#160;call for multipart web requests. Additional reference types may be added by clicking the <span class="UIElement">Add Row</span> button; however, if you use a System Variable to specify the attachment in the <span class="ControlName">Body</span>, you should <b style="font-style: italic;">not</b> use the Add Row button to add additional attachments.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p style="font-weight: bold;">CREDENTIALS TAB</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Data&#160;Source</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">List of Compliance Datasources.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">You can select a Compliance Datasource to provide the credentials. Otherwise, you can supply the credentials manually using the fields below.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Username</p>
+                                <p>Web Service URL</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>Login information with appropriate credentials to access the REST Service.</p>
+                                <p>The URL of the web service from which the data is to be retrieved.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Password</p>
+                                <p>Web Service Protocol</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
+                                <p>SOAP, SOAP 1.2</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Login information with appropriate credentials to access the REST Service.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p style="font-weight: bold;">ADVANCED TABS</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Content Type</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>MIME type of the Rest call.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Accept Header</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This property enables you to set the "Accept" header of the HTTP Request.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Timeout</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The number of seconds to wait before the REST&#160;call times out.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Retry Attempts</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Number of retries to attempt</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Added in v2023.01.26 this field is designed to prevent an issue that may occur when REST POST calls to update data fails <i>without an underlying fault in the Payload or service</i>. This property implements a retry mechanism that often resolves the issue, and eliminates the need for an administrator to re-run the Timeline Activity/Form event that invokes the Custom Task.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Use Insecure versions of TLS?</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">By default, Process Director won't use TLS 1.0 for the transport layer for security reasons. Checking this option will enables the use of TLS 1.0 if desired.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Base64 Encode</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When selected, will encode attachments using Base64 encoding.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Headers</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>You can add additional HTTP headers to the call by clicking the Add Row button to create key/value pairs.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Format of Result data</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">XML<br />JSON</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Specifies the format of the result data for multipart web requests.</td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Fill array with REST service results</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>This option switches between two modes of this Custom Task's execution. When clear, this indicates to make a REST call for each row in an existing array (expecting one value for each field from the call). When set, this indicates to fill an array with the results of the REST call (expecting multiple values for each field from the call).</p>
+                                <p>The communications protocol to use for the web service. If you're having compilation trouble, perhaps the WSDL only supports a certain Web Service protocol, which you can change here.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>With multiple results, fill field(s) with only the first result</p>
+                                <p>Web Method</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>List of Web Service Methods</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>This is the list of web service methods that are available through the selected Web Service URL. Different web services will expose different methods.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Call Result for Dropdown Text</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>List of table fields</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The Call Result that will be displayed as the text in the dropdown control.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Call Result for Dropdown Value</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>List of table fields</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The Call Result that will be used as the value of the dropdown control.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Input Parameters</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Click the Add Input button to add parameters for the web service call.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>If Previous Value not in List</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Leave value alone, Clear the value in the form, Add the value to the dropdown</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>How the dropdown value will be altered if the previous value isn't in the list of data returned from SharePoint.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Call method only when Dropdown isn't set</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>This prevents the call from being re-run if the dropdown has already been populated.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Call method only under this condition</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>&#160;</p>
+                                <p>Enables you to set a condition for running the call that populates the dropdown.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Do not enter into an error state if REST call fails</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Checking this option will ensure that, if the REST&#160;call fails, the error won't be returned to the form. This is useful when you are using parameters, and a user passes a bad parameter from the form. In that case, you may wish to return nothing and leave the form fields blank, rather than display an error message to the user.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Test Method Call</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>This will run a test call to retrieve the data.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Dropdown to Fill</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>List of Form fields</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>The name of the dropdown control that will be filled with Salesforce data.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Add empty entry to Dropdown with this text</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Text value for null entries.</p>
+                            </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">
-                                <p>Default XPath namespace</p>
+                                <p>Fill Only When Other Control Changes</p>
                             </td>
                             <td class="TableStyle-Simple-BodyB-Column1-Row1">
-                                <p>Global</p>
+                                <p>List of Form fields</p>
                             </td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row1">
-                                <p>The default namespace is generally correct.</p>
+                                <p>Prevents the query from running unless this field changes. This is often used for a field whose value will be used as a filter to limit the data that is returned.</p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <h3>Result Tab Options</h3>
-                <h4>Map results to Form Fields</h4>
-                <p>
-                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST1.png" />
-                </p>
-                <p>When this option is selected, the following properties can be configured:</p>
-                <p><b>Form Field:</b>&#160;The Form field into which to place data from a REST field.</p>
-                <p><b>XPath Expression:</b>&#160;The XPath expression that specifies the location of a REST field in the XML&#160;DOM.</p>
-                <p><b>Value Dropdown:</b>&#160;The data to place in the field. By default, this is the REST&#160;field value, but you can choose to use the Inner or Outer XML from the REST return XML.</p>
-                <p>Additional Form fields can be added by clicking the <span class="UIElement">Add Mapping</span> button to add a new field.</p>
-                <h4>Place all data from REST call into a single field</h4>
-                <p>
-                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST2.png" />
-                </p>
-                <p>When this option is selected, the following properties can be configured:</p>
-                <p><b>Form Field:</b>&#160;The Form field into which the entire REST response will be placed.</p>
-                <h4>Dump Data from REST call into an attachment</h4>
-                <p>
-                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST3.png" />
-                </p>
-                <p>When this option is selected, the following properties can be configured:</p>
-                <p><b>Attach Objects to:</b>&#160;This property enables you to create either a Form or a Process Attachment from the REST&#160;response.</p>
-                <p><b>Name:</b>&#160;The Name of the attachment file.</p>
-                <p><b>Group Name:</b>&#160;The desired attachment Group name for the attachment file.</p>
-                <h4>Dump Result Field from REST call into an Attachment</h4>
-                <p>
-                    <img src="../Resources/Images/Custom Tasks2/FFFromRest4.png" />
-                </p>
-                <p><b>Attach Objects to:</b>&#160;This property enables you to create either a Form or a Process Attachment from the REST&#160;response.</p>
-                <p><b>Results Field (XPATH&#160;Expression):</b> The XPATH to the results field. This value can be placed in the Inner or Outer XML, or as a Value by selecting the appropriate value from the dropdown control associated with this property.</p>
-                <p><b>Name:</b>&#160;The Name of the attachment file.</p>
-                <p><b>Group Name:</b>&#160;The desired attachment Group name for the attachment file.</p>
-                <h3>Additional Notes:</h3>
-                <p>If URL parameters are being used in the REST call to pass in form field data, the system variables need to use the '&amp;' encode type. e.g., {&amp;FORM:formfield}.</p>
-                <p>If you request the results to be returned in JSON format AND have mapped to individual form fields, <b>an XPATH expression is still required</b> when defining the mapping between the results and form field (Typically JSONPath expressions are used with JSON). Further, depending on the JSON string, a double slash may be required in the expression when specifying the JSON identifier, because the JSON string might have translated into an empty root XML node, which would require the double slash. So, if a JSON query with a single slash doesn’t work when you think it should, try prefixing the query with a double slash ("//").”</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -3709,6 +3719,284 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="FillFieldsFromREST"></a><a href="#FillFieldsFromREST"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill Fields from REST</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p class="Important">
+                    <img src="../Resources/Images/i.png" title="Important" alt="Important" /> This Custom Task has largely been deprecated by the use of Business Values to return data from a REST service and fill fields via the Set Form Data tab of a Form definition.</p>
+                <p>This Custom Form Task can fill multiple fields on a Form with values from a REST Web Service call. Choose the Form fields and the queries (in XPath) that correspond to data with which to fill the Form fields, or choose to put all of the data into a single Form field. You can also pass data in the URL to the REST Service.</p>
+                <p>For v2022.03.31 and higher of this Custom Task, the Custom Task can be called even if there is no form instance to use. This can be useful in rare contexts, such as trying to call the build_form_cache.aspx page, which doesn't require any form data to be sent or returned.</p>
+                <h4>Standard Tabs</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST.png" />
+                </p>
+                <h4>Credentials Tab</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FFFromRest3.png" />
+                </p>
+                <h4>Body Tab</h4>
+                <p>When using rest call <i>with <b>any</b> method other than GET</i>, a <span class="UIElement">Body </span>tab will appear automatically in the UI.</p>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FFFromRest1.png" />
+                </p>
+                <h4>Advanced tabs</h4>
+                <p>
+                    <img src="../Resources/Images/HowDoI/FillFromREST.jpg" />
+                </p>
+                <h4>Configuration Data</h4>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 15rem;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" style="width: 15rem;" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>OPTION</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                                <p>ATTRIBUTES</p>
+                            </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                                <p>DESCRIPTION</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p style="font-weight: bold;">REST URL TAB</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>REST URL</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>The URL of the REST Service, including the parameters</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Method</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">GET<br />POST<br />PUT<br />PATCH<br />DELETE</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The Web method to use to call the REST&#160;service.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p style="font-weight: bold;">RESULTS TAB</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Result Mapping Dropdown</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Map results to Form Fields<br />Place all data from REST call into a single field<br />Dump Data from REST call into an attachment<br />Dump Result Field from REST call into an Attachment</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>See the Result Tab Options section below for a detailed explanation of each option.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Success Message</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>A text message to display when the REST&#160;call completes successfully.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3"><b>BODY&#160;TAB</b>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Body</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The body of the web request. This can contain JSON, XML, or any other text format accepted by the REST service. Using this field with attachments (multipart web request) will result in this field representing one of the multiple parts of the Request Content. Due to System Variable parsing logic, to use curly braces in the Body (e.g., JSON data), ensure that any curly brace that is <b style="font-style: italic;">NOT</b> part of a System Variable is followed by a new line.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Name</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The value for the Content-Disposition header's "name" parameter.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Reference Type(s)</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Process References<br />Form References</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The type of attachment to include in the REST&#160;call for multipart web requests. Additional reference types may be added by clicking the <span class="UIElement">Add Row</span> button; however, if you use a System Variable to specify the attachment in the <span class="ControlName">Body</span>, you should <b style="font-style: italic;">not</b> use the Add Row button to add additional attachments.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p style="font-weight: bold;">CREDENTIALS TAB</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Data&#160;Source</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">List of Compliance Datasources.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">You can select a Compliance Datasource to provide the credentials. Otherwise, you can supply the credentials manually using the fields below.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Username</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>Login information with appropriate credentials to access the REST Service.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Password</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Login information with appropriate credentials to access the REST Service.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p style="font-weight: bold;">ADVANCED TABS</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Content Type</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>MIME type of the Rest call.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Accept Header</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This property enables you to set the "Accept" header of the HTTP Request.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Timeout</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The number of seconds to wait before the REST&#160;call times out.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Retry Attempts</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Number of retries to attempt</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Added in v2023.01.26 this field is designed to prevent an issue that may occur when REST POST calls to update data fails <i>without an underlying fault in the Payload or service</i>. This property implements a retry mechanism that often resolves the issue, and eliminates the need for an administrator to re-run the Timeline Activity/Form event that invokes the Custom Task.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Use Insecure versions of TLS?</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">By default, Process Director won't use TLS 1.0 for the transport layer for security reasons. Checking this option will enables the use of TLS 1.0 if desired.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Base64 Encode</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When selected, will encode attachments using Base64 encoding.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Headers</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>You can add additional HTTP headers to the call by clicking the Add Row button to create key/value pairs.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Format of Result data</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">XML<br />JSON</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Specifies the format of the result data for multipart web requests.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Fill array with REST service results</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>This option switches between two modes of this Custom Task's execution. When clear, this indicates to make a REST call for each row in an existing array (expecting one value for each field from the call). When set, this indicates to fill an array with the results of the REST call (expecting multiple values for each field from the call).</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>With multiple results, fill field(s) with only the first result</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Do not enter into an error state if REST call fails</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Checking this option will ensure that, if the REST&#160;call fails, the error won't be returned to the form. This is useful when you are using parameters, and a user passes a bad parameter from the form. In that case, you may wish to return nothing and leave the form fields blank, rather than display an error message to the user.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Default XPath namespace</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">
+                                <p>Global</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">
+                                <p>The default namespace is generally correct.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Result Tab Options</h3>
+                <h4>Map results to Form Fields</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST1.png" />
+                </p>
+                <p>When this option is selected, the following properties can be configured:</p>
+                <p><b>Form Field:</b>&#160;The Form field into which to place data from a REST field.</p>
+                <p><b>XPath Expression:</b>&#160;The XPath expression that specifies the location of a REST field in the XML&#160;DOM.</p>
+                <p><b>Value Dropdown:</b>&#160;The data to place in the field. By default, this is the REST&#160;field value, but you can choose to use the Inner or Outer XML from the REST return XML.</p>
+                <p>Additional Form fields can be added by clicking the <span class="UIElement">Add Mapping</span> button to add a new field.</p>
+                <h4>Place all data from REST call into a single field</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST2.png" />
+                </p>
+                <p>When this option is selected, the following properties can be configured:</p>
+                <p><b>Form Field:</b>&#160;The Form field into which the entire REST response will be placed.</p>
+                <h4>Dump Data from REST call into an attachment</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST3.png" />
+                </p>
+                <p>When this option is selected, the following properties can be configured:</p>
+                <p><b>Attach Objects to:</b>&#160;This property enables you to create either a Form or a Process Attachment from the REST&#160;response.</p>
+                <p><b>Name:</b>&#160;The Name of the attachment file.</p>
+                <p><b>Group Name:</b>&#160;The desired attachment Group name for the attachment file.</p>
+                <h4>Dump Result Field from REST call into an Attachment</h4>
+                <p>
+                    <img src="../Resources/Images/Custom Tasks2/FFFromRest4.png" />
+                </p>
+                <p><b>Attach Objects to:</b>&#160;This property enables you to create either a Form or a Process Attachment from the REST&#160;response.</p>
+                <p><b>Results Field (XPATH&#160;Expression):</b> The XPATH to the results field. This value can be placed in the Inner or Outer XML, or as a Value by selecting the appropriate value from the dropdown control associated with this property.</p>
+                <p><b>Name:</b>&#160;The Name of the attachment file.</p>
+                <p><b>Group Name:</b>&#160;The desired attachment Group name for the attachment file.</p>
+                <h3>Additional Notes:</h3>
+                <p>If URL parameters are being used in the REST call to pass in form field data, the system variables need to use the '&amp;' encode type. e.g., {&amp;FORM:formfield}.</p>
+                <p>If you request the results to be returned in JSON format AND have mapped to individual form fields, <b>an XPATH expression is still required</b> when defining the mapping between the results and form field (Typically JSONPath expressions are used with JSON). Further, depending on the JSON string, a double slash may be required in the expression when specifying the JSON identifier, because the JSON string might have translated into an empty root XML node, which would require the double slash. So, if a JSON query with a single slash doesn’t work when you think it should, try prefixing the query with a double slash ("//").”</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="FillFieldsFromWebService"></a><a href="#FillFieldsFromWebService"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Fill Fields from Web Service</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
@@ -4254,6 +4542,22 @@
                         </tr>
                     </tbody>
                 </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Prism"></a><a href="#Prism"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a>Prism HR&#160;User Query</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Task was created specifically for Prism HR as part of the Covid-19 Vaccine Tracker application. It is not applicable for general customer use. This Custom Task remains in the Custom Tasks package for backwards compatibility.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="RESTCallFromBV"></a><a href="#RESTCallFromBV"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a>REST Call from Business Value</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This Custom Task has been superseded by the <span href="#APICallFromBV" class="ProcessDirectorObject" style="text-decoration: underline;">API&#160;Call from Business Value</span> Custom Task, which retains the functionality of this Custom Task, while adding the ability to make API calls to legacy SOAP Web Services. Please refer to the documentation for that Custom Task for configuration information for making REST&#160;calls. This Custom Task remains in the Custom Tasks package for backwards compatibility.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>
