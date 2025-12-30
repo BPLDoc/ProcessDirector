@@ -8,7 +8,7 @@
         <h1>
             <MadCap:concept term="Database;Developer" /><a name="_Toc421178523"></a>
             <MadCap:keyword term="Database;Tables" />Table Definitions</h1>
-        <p>The table definitions below are current as of Process Director v6.1.354. Some tables and fields will not exist, or will not have the same field types, in earlier versions of the product.</p>
+        <p>The table definitions below are current as of Process Director v6.1.500. Some tables and fields will not exist, or will not have the same field types, in earlier versions of the product.</p>
         <p class="Important">
             <img src="../Resources/Images/i.png" alt="Important" /> Exercise extreme caution when accessing Process Director tables directly! Any changes you make to the schema of this database or any data stored in it can render your installation of Process Director non-functional. In such a case, a full restore from backup will be the only recovery method possible. BP&#160;Logix cannot be held responsible for any actions you might take to alter the Process Director database, or any of its stored data, without direct assistance from BP&#160;Logix personnel.</p>
         <MadCap:dropDown>
@@ -5348,6 +5348,75 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="tblDocumentEmbedding"></a><a href="#tblDocumentEmbedding"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a>
+                    <MadCap:keyword term="tblDocumentEmbedding" />tblDocumentEmbedding</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This table stores embedding information for Document attachments.</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 250px;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 120px;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 80px;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">COLUMN NAME
+                    </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">DATATYPE
+                    </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">LENGTH
+                    </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">DESCRIPTION
+                    </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>oEID </p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>varchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>36</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p><span class="Emphasis">Primary Key.</span> Document Embedding ID.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>oDID </p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>varchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>36</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Document ID of the document.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">bObjectData </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">varbinary</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">max</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The embedding data for the document.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">tCreate </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">datetime</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row2">Date/Time that the embedding was created.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="tblDocumentLink"></a><a href="#tblDocumentLink"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>
                     <MadCap:keyword term="tblDocumentLink" />tblDocumentLink</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
@@ -5382,7 +5451,7 @@
                                 <p>36</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p><span class="Emphasis">Primary Key.</span> Document Link’s ID.</p>
+                                <p><span class="Emphasis">Primary Key.</span> Document Link ID.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -5470,6 +5539,81 @@
                             <td class="TableStyle-Simple-BodyB-Column1-Row2">varchar</td>
                             <td class="TableStyle-Simple-BodyB-Column1-Row2">36</td>
                             <td class="TableStyle-Simple-BodyA-Column1-Row2">The Activity Instance ID of the activity running when the document was accessed.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="tblDocumentSimilarity"></a><a href="#tblDocumentSimilarity"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a>
+                    <MadCap:keyword term="tblDocumentSimilarity" />tblDocumentSimilarity</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This table stores information about how similar two documents are. A comparison is made between one "source" document and another "target" document.</p>
+                <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+                    <col style="width: 250px;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 120px;" class="TableStyle-Simple-Column-Column1" />
+                    <col style="width: 80px;" class="TableStyle-Simple-Column-Column1" />
+                    <col class="TableStyle-Simple-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-Simple-Head-Header1">
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">COLUMN NAME
+                    </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">DATATYPE
+                    </th>
+                            <th class="TableStyle-Simple-HeadE-Column1-Header1">LENGTH
+                    </th>
+                            <th class="TableStyle-Simple-HeadD-Column1-Header1">DESCRIPTION
+                    </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>oDSID</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>varchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>36</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                                <p><span class="Emphasis">Primary Key.</span> Document Similarity ID.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>oDIDSource</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>varchar</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>36</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Document ID of the source document.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">oDIDTarget </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">varchar</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">36</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Document ID of the target document.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">nSimilarity </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">decimal</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">18, 4</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The similarity score. This is a numeric value that varies between -1 and 1. Documents are considered too similar if the score is around 0.85</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">tCreate </td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">datetime</td>
+                            <td class="TableStyle-Simple-BodyB-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyA-Column1-Row1">Date/Time that the comparison was invoked.</td>
                         </tr>
                     </tbody>
                 </table>
