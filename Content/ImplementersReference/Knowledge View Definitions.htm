@@ -528,7 +528,7 @@
         <p>For Process Director v6.1.400 and higher, columns can be ordered by dragging and dropping the column, using the Drag-and-Drop icon (<img src="../Resources/Images/ImplementersReference/KViewColumnsTab2.jpg" />) located on the far right side of each row.</p>
         <p>The sort order can be configured in the Knowledge View; however the end user can override this be clicking on the column names in the Knowledge View's display. The sort order is <span class="Emphasis">not </span>used when exporting the results to a CSV or an Excel Report, it is only used when the results are displayed in the browser.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/KViewColumnsTab1.jpg" />
+            <img src="../Resources/Images/ImplementersReference/KViewColumnsTab.png" />
         </p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -568,7 +568,7 @@
                 </p>
                 <p>If the Knowledge View returns data from two different Form definitions, you can mix the use of the Form Field Picker and FORM system variables. Process Director will correctly parse the system variables to return the appropriate data.</p>
                 <p>
-                    <img src="../Resources/Images/ImplementersReference/KviewDef1.png" />
+                    <img src="../Resources/Images/ImplementersReference/KViewColumnsTab4.png" />
                 </p>
                 <p>This behavior can be turned off using the <a href="../DevelopersGuide/Customization File Misc.htm#fEnableMultFormFieldsInCols">fEnableMultFormFieldsInCols</a> custom variable.</p>
                 <p class="Important">
@@ -590,6 +590,7 @@
                 <p>In addition to checking the checkbox for the <span class="ControlName">Allow In-Place Editing</span> property, the <span class="UIElement">Options </span>tab must be configured to ensure that the <span class="ControlName">Allow These Actions on Objects</span> section has the <span class="ControlName">Properties </span>box checked, as well as the <span class="ControlName">Children </span>box checked in the <span class="ControlName">Display Action Icons</span> for section.</p>
                 <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> For some versions later than v5.44.500 but earlier than v6.0.0 (Beta), issues with in-Place Editing could cause this feature to operate incorrectly. BP&#160;Logix recommends an upgrade to v6.0.1 or higher to fully implement this feature.</p>
+                <p>For Process Director v6.1.500, a feature was introduced to enable you to show some columns only when a row is expanded. In-place editing did not work with the initial release of this feature. For v6.1.600, this feature was enhanced to enable in-place editing for fields contained in the expanded portion of the row.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -619,7 +620,31 @@
                 <p>For Process Director v5.1 and higher, Knowledge Views will <span class="Emphasis">not </span>evaluate columns that are configured to display in a different output format than the current display, in order to reduce resource usage. For instance, columns that are only displayed in an export won't be evaluated when the Knowledge View is displayed in the desktop browser. For legacy applications that use Knowledge View Scripts, upgrading to this or later versions will affect those scripts. To accommodate this behavior, you'll need to add a column with the type "Script" that will always be evaluated and sent to a script regardless of the destination output.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <h3><a name="_Toc421536230"></a>Filter Tab <a href="#_Toc421536230" class="anchor">#</a></h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Show On Expand</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For Process Director v6.1.500 and higher, Knowledge View rows can be configured to be expandable to show additional fields after the row is expandanded. The <span class="ControlName">Show on Expand</span> property column enables you to select fields that will only be displayed when the row is expanded. If you do not select any fields in this column, the Knowledge View will display normally. Once any field is selected, that field will not be visible when the Knowledge View first runs. The initial display of the knowledge view will show only the unselected rows, but will display an expansion icon on the far left side of the row.</p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> When you use this property, only the unexpanded row data will be retrieved when the Knowledge View initially runs. The expanded data will only be retrieved after you expand the row.</p>
+                <p>In the example below, a Knowledge View has been configured to show several columns only when the row is expanded.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/KViewColumnsTab1.png" />
+                </p>
+                <p>At run time, the Knowledge view will display as shown below.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/KViewColumnsTab2.png" />
+                </p>
+                <p>When the expansion icon is clicked, the row will expand to display the specified data.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/KViewColumnsTab3.png" />
+                </p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> Using this property will affect the operation of the CSV export feature. Only data in the unexpanded portion of each row will be exported. Data in the expansion portion of the row is not exportable.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3><a name="_Toc421536230"></a><a name="Filter"></a>Filter Tab <a href="#_Toc421536230" class="anchor">#</a></h3>
         <p>The <span class="UIElement">Filter </span>tab identifies filter criteria that enables you to restrict the records the Knowledge View returns to those that meet specific filter criteria. The primary use for the <span class="UIElement">Filter </span>tab is to create searches for specific data that may be contained in a large set of records. The filter criteria can include form field data, categories, attribute values, or various object properties (e.g. author, document type, published). The filter criteria can identify what document versions to display – the latest document version or only the published version.</p>
         <p>The end user can optionally be given the ability to override any of the filter values. This capability enables the field name and the input box to be displayed on the running Knowledge View so the user can input the additional filter information.</p>
         <p>
@@ -656,6 +681,15 @@
         </MadCap:dropDown>
         <p class="Important">
             <img src="../Resources/Images/i.png" title="Important" alt="Important" /> Filters that use an encrypted Form field in the filter condition will NOT return the expected values! Knowledge View filters operate at the database level, and thus do not decrypt the field prior to filtering.</p>
+        <p>For Process Director v6.1.600 and higher, additional filter conditions are available in the <span class="ProcessDirectorObject">Condition Builder</span> for folder path comparisons: </p>
+        <ul>
+            <li><i>Equal</i>, <i>NotEqual</i>, <i>Contains</i>, and <i>DoesNotContain</i> operators to FOLDER_PATH system variable for Knowledge View filters (previously only supported <i>In</i>/<i>NotIn</i>). </li>
+            <li><i>Equal</i>/<i>NotEqual</i>/<i>In</i>/<i>NotIn</i> match exact folder paths.</li>
+            <li><i>Contains</i>/<i>DoesNotContain</i> performs case-insensitive partial matching on the full folder path. Invalid paths return no results for positive operators and all results for negative operators. </li>
+        </ul>
+        <p>In addition to these operators, <i>Value</i> &gt; <i>String</i> has been added as a possible selection for the left side of the filter condition.</p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> Use of these filters may result in performance degradation when evaluating folders containing a large number of objects.</p>
         <h3><a name="ComplexFilters"></a>Complex Filter Considerations</h3>
         <p>In general, when creating filters, you should bear in mind the type of object the Knowledge View returns. For instance, if the Knowledge View returns Form instances, filters work best when filtering on Form data. Conversely, trying to filter Form instances based on data stored in other objects, like Process Timelines, may return unexpected results. For instance, if a Form is used in more than one Process Timeline, and you try to filter the Form instances based on Timeline data, Process Director will evaluate whether the <b>any</b> Timeline associated with the Form meets the filter criterion you've designated. In that case, the Knowledge View may return multiple rows that contain the same Form instance, because more than one process meets the criteria.</p>
         <p>For a Form associated with multiple processes, when the Form is returned by a Knowledge View, additional logic runs in the background of the Knowledge View to associate the Form with the process that started first, in addition to any running processes. This logic, when considering what to return in the Knowledge View, makes the following decisions about which Form to return in the Knowledge View:</p>

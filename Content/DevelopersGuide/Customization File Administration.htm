@@ -25,6 +25,58 @@
                 </ul>
                 <p>For Process Director v5.39 and below, the default timings for TimerSecondsCheckWfAdvance and TimerSecondsCheckProjAdvance are set to 2 hours. This was changed in newer versions as the shorter time limits could use excessive system resources on very active systems.</p>
                 <p>Additionally, the <b>fDisableUserPrediction</b> Custom Variable will, when set to "false", enable more accurate prediction of activity times based on each specific user that has been assigned to an activity. <i>This setting will consume more system resources when being used</i>, so the default value for this variable is "true".  When set to "true", prediction will still occur, but with less predictive accuracy.</p>
+                <h4>Why You Should Set These Variables Explicitly</h4>
+                <p>While Process Director does have default values of 6 hours for <code>TimerSecondsCheckProjAdvance </code>and 1 hour for <code>TimerSecondsCheckProjReminders</code>, you should set these values explicitly in your system. </p>
+                <h5><b>1. Avoid Unexpected Behavior After Upgrades</b>
+                </h5>
+                <p>If you upgrade from v5.39 or earlier to v5.40+, Process Director will automatically shift from checking every 2 hours to checking every 6 hours. In the future, it's possible that BP&#160;Logix will change these default values again. This means:</p>
+                <ul>
+                    <li>Time-based activity advances may change.</li>
+                    <li>Processes that rely on timely advancement may miss business windows.</li>
+                    <li>Users may report that processes are slower than before.</li>
+                </ul>
+                <p>Setting these values explicitly means that internal changes to the product defaults for different releases will not change your system's timings for executing your processes.</p>
+                <h5>2. Match Your Business Requirements</h5>
+                <p>Different organizations have different timing needs:</p>
+                <ul>
+                    <li><b>High-urgency processes:</b> May need checking more frequently than every 6 hours.</li>
+                    <li><b>Standard processes:</b> May be fine with 6 hours.</li>
+                    <li><b>Low-priority processes:</b> Could use longer intervals to reduce server load.</li>
+                </ul>
+                <p>By setting these values explicitly in your vars.ascx.cs file, you ensure that your timing intervals match your actual business needs rather than relying on version-dependent defaults. </p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> You should understand that shorter times will increase server load, so you must balance the need for faster processing with the need to keep your server load stable and predictable. Additionally, as the number of running processes increase on your system, the server load will also increase with shortened time intervals.</p>
+                <h5>3. Predictable System Resource Usage</h5>
+                <p>Shorter intervals mean more frequent database queries and processing:</p>
+                <ul>
+                    <li>More frequent checking (e.g., every hour) = More system resources, faster response times.</li>
+                    <li>Less frequent checking (e.g., every 6 hours) = Fewer system resources, longer delays.</li>
+                </ul>
+                <p>By setting explicit values, you can balance responsiveness against server load based on your specific environment.</p>
+                <h4>Testing Your Configuration</h4>
+                <p>After setting these values:</p>
+                <ol>
+                    <li>Restart IIS to apply the changes.</li>
+                    <li>Monitor the Activity Check page (Administration → Troubleshooting → Activity Check) to confirm timing.</li>
+                    <li>Test a Process Timeline with a time-based delay to verify advancement happens as expected.</li>
+                </ol>
+                <h4>Additional Considerations</h4>
+                <h5>Performance Impact:</h5>
+                <p>Shorter intervals = more frequent processing = higher database/CPU load. If you have thousands of active Process Timeline instances, shorter intervals can significantly impact server performance. Monitor your server resources after changing these settings from the default timings.</p>
+                <h5>Business Requirements:</h5>
+                <ul>
+                    <li>Consider your SLAs for process completion times.</li>
+                    <li>Account for off-hours processing (do processes need to advance at 2 AM?).</li>
+                    <li>Balance responsiveness against system load.</li>
+                </ul>
+                <h4>Summary</h4>
+                <p>Setting these timer variables explicitly in your vars.ascx.cs file ensures:</p>
+                <ul>
+                    <li>Consistent behavior across Process Director versions.</li>
+                    <li>Predictable timing that matches your business needs.</li>
+                    <li>Controlled system resource usage.</li>
+                    <li>No surprises after upgrades.</li>
+                </ul>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Default to 6 hours between checking projects for advance<br />&#160;&#160;&#160;&#160;// AND prediction calculations (e.g. completed/start when<br />&#160;&#160;&#160;&#160;// conditions, due dates, etc.)</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.TimerSecondsCheckProjAdvance = <span class="CodeOption">60 * 60 * 6</span>;<br /><br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// default to 1 hour between checking projects for email reminders</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.TimerSecondsCheckProjReminders = <span class="CodeOption">60 * 60 * 1</span>;<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Less accurate user predictions for task completion,<br />&#160;&#160;&#160;&#160;// but fewer system resources used</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fDisableUserPrediction = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>

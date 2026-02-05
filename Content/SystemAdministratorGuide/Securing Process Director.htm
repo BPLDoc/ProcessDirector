@@ -126,6 +126,21 @@
                 <p>Documentation: <a href="../DevelopersGuide/Customization File Administration.htm#fTestMode">fTestMode</a></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <h4>Administration Variables</h4>
+        <p>While these variables aren't specifically security-related, you should set them explicitly on your system to ensure the server load and process behaviors don't change when upgrading to newer versions of the product.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Activity Checking Custom Variables</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Process Director uses background timer processes to check Process Timelines and Workflows for time-based operations:</p>
+                <ul>
+                    <li><b>TimerSecondsCheckProjAdvance</b> - Checks Process Timelines to advance activities when their start conditions are met or when delays expire.</li>
+                    <li><b>TimerSecondsCheckProjReminders</b> - Checks Process Timelines to send scheduled reminder emails.</li>
+                </ul>
+                <p>BP&#160;Logix recommends that you set these variables explicitly, even if only to set them to the default values. Please see the <a href="../DevelopersGuide/Customization File Administration.htm#Activity">Activity Checking Custom Variables topic</a> for more a detailed explanation of this recommendation.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
         <h2><a name="_Toc421094551"></a>User Settings <a href="#_Toc421094551" class="anchor">#</a></h2>
         <p>Users can be given administrative privileges in the <span class="ProcessDirectorObject">User Administration</span> section of the <span class="ProcessDirectorObject">IT Admin</span> area. There are some privileges that are very sensitive, and so should be used very sparingly, and only with an understanding of the capabilities these settings will give the user. Also, remember that these privileges can be given indirectly by granting them to a group to which the user is also a member.</p>
         <p>On production systems, the best practice is to give no administrative rights to any “normal” user. Instead, build in a privileged user identity for each administrator, to which they should explicitly log in for the purpose of executing administrative tasks, and for no other reason.</p>

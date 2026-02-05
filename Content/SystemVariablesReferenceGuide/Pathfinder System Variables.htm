@@ -11,24 +11,35 @@
         <p>Process Director v6.1.600 and higher uses an AI feature known as <span class="ProcessDirectorObject">Pathfinder</span>, which has unique System Variables that work only with the feature when it is activated. These System Variables have no value outside the context of a running <span class="ProcessDirectorObject">Pathfinder </span>implementation.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="DocumentSimilarity"></a>
-                    <MadCap:keyword term="Document Similarity" /><a href="#DocumentSimilarity"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Document Similarity</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot>
+                    <a name="DocumentSimilarity">
+                    </a>
+                    <MadCap:keyword term="Document Similarity" />
+                    <a href="#DocumentSimilarity">
+                        <img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" />
+                    </a>Document Similarity</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This system variable returns a list of duplicate documents that have been uploaded to <span class="ProcessDirectorObject">Pathfinder </span>in IntAIk mode. It references only duplicate IntAIk documents. Documents are compared for similarity and are given a similarity score. Documents with a sufficiently high similarity score will be returned as duplicates.</p>
+                <p>This system variable returns a list of duplicate documents that have been uploaded to <span class="ProcessDirectorObject">Pathfinder </span>in Intake mode. It references only duplicate Intake documents. Documents are compared for similarity and are given a similarity score. Documents with a sufficiently high similarity score will be returned as duplicates.</p>
                 <h3>Returns</h3>
                 <p>A comma-separated list of Document IDs, or a count of duplicate documents.</p>
                 <h3>SysVar Tag</h3>
-                <p><code>{DOCUMENT_SIMILARITY, id=<span class="CodeOption">DocumentId</span>, format=<span class="CodeOption">Count</span>|<span class="CodeOption">Value</span>, index=<span class="CodeOption">N</span>}</code>
+                <p>
+                    <code>{DOCUMENT_SIMILARITY, id=<span class="CodeOption">DocumentId</span>, format=<span class="CodeOption">Count</span>|<span class="CodeOption">Value</span>, index=<span class="CodeOption">N</span>}</code>
                 </p>
                 <h3>Modifiers</h3>
-                <p style="font-weight: normal;"><b>id (Required):</b> The Document ID of a document for which you wish to find duplicates.</p>
-                <p><b>format (Optional):</b> The format of the information you want returned. If this formatter is omitted, the system variable returns a comma-separated string of Document IDs, using the default option. The available options for this formatter are</p>
+                <p style="font-weight: normal;">
+                    <b>id (Required):</b> The Document ID of a document for which you wish to find duplicates.</p>
+                <p>
+                    <b>format (Optional):</b> The format of the information you want returned. If this formatter is omitted, the system variable returns a comma-separated string of Document IDs, using the default option. The available options for this formatter are</p>
                 <ul>
-                    <li><b>value:</b> Returns the ID of the document specified by INDEX. This is the default option.</li>
-                    <li><b>count:</b> returns the total number of duplicate documents.</li>
+                    <li>
+                        <b>value:</b> Returns the ID of the document specified by INDEX. This is the default option.</li>
+                    <li>
+                        <b>count:</b> returns the total number of duplicate documents.</li>
                 </ul>
-                <p><b>index (Optional):</b> An integer value to specify the 1-based index of a document in the list of documents returned. This property is valid only when using the <code>format=value</code> formatter. To return the second document in a list of documents they syntax for this modifier would be <code>index=2</code>.</p>
+                <p>
+                    <b>index (Optional):</b> An integer value to specify the 1-based index of a document in the list of documents returned. This property is valid only when using the <code>format=value</code> formatter. To return the second document in a list of documents they syntax for this modifier would be <code>index=2</code>.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
     </body>
