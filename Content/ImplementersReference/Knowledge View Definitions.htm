@@ -528,7 +528,7 @@
         <p>For Process Director v6.1.400 and higher, columns can be ordered by dragging and dropping the column, using the Drag-and-Drop icon (<img src="../Resources/Images/ImplementersReference/KViewColumnsTab2.jpg" />) located on the far right side of each row.</p>
         <p>The sort order can be configured in the Knowledge View; however the end user can override this be clicking on the column names in the Knowledge View's display. The sort order is <span class="Emphasis">not </span>used when exporting the results to a CSV or an Excel Report, it is only used when the results are displayed in the browser.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/KViewColumnsTab.png" />
+            <img src="../Resources/Images/ImplementersReference/KViewColumnsTab5.png" />
         </p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -540,10 +540,21 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SQL&#160;ORDER&#160;BY Column</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For Process Director v6.1.600 and higher, this column enables you to specify the order in which SQL will retrieve records for the Knowledge View. In previous versions of the product, data was returned in the order in which records were encountered in the database. All sorting took place in the browser after the records were returned. For Knowledge Views that returned more records than the limit for display in the knowledge view, this resulted in records being returned on a random basis, until the limit of Knowledge View rows had been reached.</p>
+                <p>This property enables the records to be sorted in the database prior to being returned. This helps ensure that records are returned in a specific order, to help ensure that all relevant records are returned first, rather than the records being returned on a random basis. </p>
+                <p>Once the records have been returned, the <span class="ControlName">Default column sort order</span> property will resort them in the browser in the specified order when displayed. The <span class="ControlName">SQL&#160;ORDER&#160;BY Column</span> property, therefore, only affects the order in which the database returns records, but not the order in which they will be displayed to the user.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Default column sort order</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This defines the default sort order of the data displayed in the list. The columns that are configured will appear in this dropdown list of possible fields to sort on. The user can override the sorting by clicking on a column.</p>
+                <p>This defines the default sort order of the data displayed in the list. This sorting occurs only after the relevant data has been returned by the database, and occurs in the client browser. The columns that are configured will appear in this dropdown list of possible fields to sort on. The user can override the sorting by clicking on a column.</p>
+                <p>For Process Director v6.1.600 and higher, the <span class="ControlName">SQL&#160;ORDER&#160;BY Column</span> property enables you to specify the order in which records will be retrieved by the database. The <span class="ControlName">Default column sort order</span> will still govern the sort order of the records when the Knowledge View is displayed.</p>
                 <p>The sort order isn't used when exporting the results to a CSV or an Excel Report.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
