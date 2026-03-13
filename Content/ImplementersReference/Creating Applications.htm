@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title>Creating Applications in Process Director</title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Creating Applications In Process Director</h1>
+        <p>
+			This topic describes how to create a basic Process Director application from scratch inside the <span class="ProcessDirectorObject">Content List</span>.
+</p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" />An easier approach is to create an application template in the [Template Library] folder and use it to generate a new application stub. This eliminates the need to repeatedly create the same basic objects for each new application.
+			</p>
+        <h2>
+			Procedure
+		</h2>
+        <ol>
+            <li>
+                <p>
+					In the <span class="ProcessDirectorObject">Content List</span>, create a parent folder for the application.
+				</p>
+                <ul>
+                    <li>
+						Place all application objects in this folder. This makes exporting and importing the application between environments (for example, DEV to PROD) much simpler.
+					</li>
+                    <li>
+						If necessary, set the folder's permissions. Otherwise, the folder inherits permissions from the <span class="ProcessDirectorObject">Content List</span>.
+					</li>
+                </ul>
+            </li>
+            <li>
+                <p>
+					Create any subfolders you need for supporting objects such as Knowledge Views and Business Rules.
+				</p>
+            </li>
+            <li>
+                <p>
+					Create a new Process Timeline definition. No configuration is needed at this stage—you'll return to it after creating the Form definition.
+				</p>
+            </li>
+            <li>
+                <p>
+					Create the main Form definition for the application.
+				</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>
+						When the Form is created, the Online Form Designer (OFD) opens automatically. You can also access it later from the <span class="UIElement">Edit </span>tab of the Form definition.
+					</li>
+                    <li>
+						Create the desired layout and add the Form controls you need.
+					</li>
+                    <li>
+						Save and close the OFD to return to the Form definition's
+						<span class="UIElement">Properties </span>tab.
+					</li>
+                    <li>
+                        <p>
+							In the <span class="ControlName">Options </span>section of the
+							<span class="UIElement">Properties
+</span>							tab, configure the following properties:
+						</p>
+                        <ul>
+                            <li><span class="ControlName">Automatically start this process after Form is submitted</span>: Set to the Process Timeline you created in step 3.
+							</li>
+                            <li><span class="ControlName">Timelines Associated with Form</span>: Set to the same Process Timeline.
+							</li>
+                        </ul>
+                    </li>
+                    <li>
+						Save and close the Form definition.
+					</li>
+                </ol>
+            </li>
+            <li>
+                <p>
+					Create an Email Template Form definition.
+				</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>
+						In the
+						<span class="ControlName">Create Form</span>
+						dialog, expand the <span class="ControlName">Options</span>
+						section and select the <span class="ControlName">Email Template</span>						property before clicking the <span class="UIElement">OK</span> button. This creates a special Form type used to generate the email notifications your application will send.
+					</li>
+                    <li>
+						When the OFD opens, save and close it, then click the <span class="UIElement">OK</span> menu button to save and close the Form definition. You'll configure the email template in a later step.
+					</li>
+                </ol>
+            </li>
+            <li>
+                <p>
+					Re-open the Process Timeline you created in step 3 and complete its configuration.
+				</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>
+                        <p>
+							In the <span class="ControlName">Options </span>							section, set the following properties:
+						</p>
+                        <ul>
+                            <li><span class="ControlName">Form for Timeline</span>: Set to the main Form definition you created in step 4.
+							</li>
+                            <li><span class="ControlName">Default Email Template in this Timeline</span>: Set to the Email Template Form definition you created in step 5.
+							</li>
+                        </ul>
+                    </li>
+                    <li>
+						Click the <span class="UIElement">Create Activity </span>action link 				to add the activities your process requires. Configure each activity's type-specific settings and the <span class="UIElement">Start When </span>tab's conditions to control the flow between activities.
+					</li>
+                    <li>
+						Click the <span class="UIElement">OK </span>menu button to save and close the Process Timeline.
+					</li>
+                </ol>
+            </li>
+            <li>
+                <p>
+					Configure the Email Template.
+				</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>
+						Open the Email Template Form definition and click the <span class="UIElement">Edit</span> tab to open the OFD.
+					</li>
+                    <li>
+						Add an <span class="NamedControl">Email&#160;Data</span> control to define the notification.
+					</li>
+                    <li>
+                        <p>
+							To send different notifications to different users, place each notification inside an <span class="NamedControl">Embedded Section</span> control with its own <span class="NamedControl">Email Data</span> control.
+						</p>
+                        <p class="PDNote">
+								Each Embedded Section must have mutually exclusive Visibility conditions so that only one notification and EmailData control is active when the Email Template is invoked.
+							</p>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <p>
+					Create any additional supporting objects your application requires, such as Knowledge Views and Business Rules. As a best practice, place these objects in the appropriate subfolders within your application folder to maintain a logical organization.
+				</p>
+            </li>
+        </ol>
+        <h2>
+			Global Objects
+		</h2>
+        <p>
+			Some objects—such as Dropdown Content List objects and Business Rules used across multiple applications—are global in scope. Store global objects at the root level of the partition in folders with bracketed names, for example, <span class="UIElement">[Dropdowns]</span> or <span class="UIElement">[Business Values]</span>. Keeping global objects in consistent, well-known <span class="UIElement">Content List</span> locations ensures they are easy to find and accessible to all applications across all systems.
+		</p>
+        <h2>
+			Exporting Applications
+		</h2>
+        <p>
+			Always export the entire parent application folder rather than individual objects when moving an application between systems. This ensures all dependencies are included.
+		</p>
+    </body>
+</html>
