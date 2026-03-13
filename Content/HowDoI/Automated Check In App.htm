@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title>Sample Topic Title</title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Creating an Automated Check-In Application</h1>
+        <p>
+			While <span class="KeyTerms">automation</span> is commonly used to manage the flow
+			of an existing process, Process Director can also use automation to initiate new
+			processes based on data conditions. This topic describes how to build an automated
+			check-in application that uses <span class="KeyTerms">Goals</span> and
+			<span class="KeyTerms">Knowledge Views</span> to detect overdue items and
+			automatically notify the responsible users.
+		</p>
+        <h2>Application Overview</h2>
+        <p>
+			The sample application manages a book checkout and check-in system. The workflow
+			operates as follows:
+		</p>
+        <ol>
+            <li>
+				A user checks out a book using a checkout Form. The checkout Process Timeline
+				sends a notification and ends — no long-running process remains open while the
+				book is checked out.
+			</li>
+            <li>
+				A Goal runs on a schedule and queries a Knowledge View to determine whether
+				any books are overdue.
+			</li>
+            <li>
+				If overdue books are found, the Goal triggers a second Knowledge View, which
+				starts a new check-in Process Timeline for each overdue item.
+			</li>
+            <li>
+				The check-in Process Timeline notifies the user who checked out the book and
+				assigns them a task to return it.
+			</li>
+        </ol>
+        <p>
+			The application consists of two components: the Book Checkout process, which
+			serves as the data source, and the Automated Check-In application, which handles
+			overdue detection and notification.
+		</p>
+        <h2>Book Checkout Process</h2>
+        <p>
+			The Book Checkout process is the starting point for the application. It captures
+			the checkout data that the automated check-in system will later query.
+		</p>
+        <h3>Book Checkout Form</h3>
+        <p>Create a Form definition with the following fields:</p>
+        <ul>
+            <li><span class="ControlName">Book Title</span>: The title of the checked-out book.
+			</li>
+            <li><span class="ControlName">Checkout Date</span>: The date the book was checked
+				out, used to calculate when it is due.
+			</li>
+            <li><span class="ControlName">Checked Out By</span>: The user who checked out
+				the book.
+			</li>
+        </ul>
+        <p>The Form also requires the following tracking fields:</p>
+        <ul>
+            <li><span class="ControlName">Checked In</span>: A checkbox indicating the book
+				has been returned. The user unchecks this field to complete the check-in.
+			</li>
+            <li><span class="ControlName">Check-In Prompted</span>: A checkbox indicating
+				the user has already been notified about the overdue book. This prevents the
+				automated process from sending duplicate notifications on subsequent Goal runs.
+			</li>
+        </ul>
+        <h3>Checkout Process Timeline</h3>
+        <p>
+			Create a Process Timeline for the checkout process. The timeline only needs to
+			send a checkout notification — it does not need to remain open after the
+			notification is sent. The timeline must have a definite end; do not use a long
+			wait task to hold the process open until the due date.
+		</p>
+        <h3>Checkout Notification</h3>
+        <p>
+			Create an Email Template Form definition for the checkout notification and
+			configure it to send an appropriate checkout confirmation to the user.
+		</p>
+        <h2>Automated Check-In Application</h2>
+        <p>
+			Build the objects in the order listed below, as each depends on the ones that
+			precede it.
+		</p>
+        <h3>Check-In Notification</h3>
+        <p>
+			Create an Email Template Form definition for the check-in notification. Build it
+			first so that it is available when you configure the check-in Process Timeline.
+		</p>
+        <h3>Notify Book Due Process Timeline</h3>
+        <p>
+			Create a Process Timeline to govern the check-in process. This timeline will be
+			started by a Knowledge View for each overdue item it finds. In the
+			<span class="ControlName">Options</span> section, configure the following
+			properties:
+		</p>
+        <ul>
+            <li><span class="ControlName">Form for Timeline</span>: Leave blank. The Knowledge
+				View that starts this timeline will supply the Form. Attaching a Form here
+				would cause the timeline to open a new, blank Form instance instead of using
+				the original checkout Form.
+			</li>
+            <li><span class="ControlName">Default Email Template in this Timeline</span>: Set
+				to the <span class="ProcessDirectorObject">Check-In Notification</span> Email
+				Template.
+			</li>
+        </ul>
+        <p>Add the following three activities to the timeline:</p>
+        <h4>Set Original Form as Default</h4>
+        <p>
+			Create a <span class="NamedControl">Form Actions</span> activity to set the
+			original checkout Form as the default Form for the new process. Configure the
+			following properties:
+		</p>
+        <ul>
+            <li><span class="ControlName">Form Definition</span>: Set to the
+				<span class="ProcessDirectorObject">Book Checkout Form</span>.
+			</li>
+            <li><span class="ControlName">Set this as the default form for the process</span>:
+				Checked.
+			</li>
+            <li><span class="ControlName">Add New Form Instance</span>: Set to
+				<span class="ControlName">Only if the Form does not already exist in the
+				package</span>.
+			</li>
+        </ul>
+        <h4>Set Check-In Prompted</h4>
+        <p>
+			Create a <span class="NamedControl">Set Form Data</span> Custom Task activity to
+			check the <span class="ControlName">Check-In Prompted</span> checkbox on the
+			checkout Form. This updates the tracking field so that the Goal does not
+			re-prompt the same user on subsequent runs.
+		</p>
+        <h4>Check Book In</h4>
+        <p>
+			Create a User activity assigned to the person who checked out the book, using
+			task assignment via Form field. The user completes the check-in by unchecking
+			the <span class="ControlName">Checked Out</span> checkbox on the Form.
+		</p>
+        <h3>Prompt Book Check-In Knowledge View</h3>
+        <p>
+			Create a Knowledge View that will start the
+			<span class="ProcessDirectorObject">Notify Book Due</span> Process Timeline for
+			each overdue item. This Knowledge View will be triggered by the Goal. Configure
+			the tabs in the following order:
+		</p>
+        <h4>Configure Tab</h4>
+        <p>
+			Set <span class="ControlName">Knowledge View Results</span> to
+			<span class="ControlName">Run a Process</span>, then click
+			<span class="UIElement">Update</span> to make the correct properties available
+			on the <span class="UIElement">Properties</span> tab.
+		</p>
+        <h4>Properties Tab</h4>
+        <ul>
+            <li><span class="ControlName">Forms Associated with Knowledge View</span>: Set to
+				the <span class="ProcessDirectorObject">Book Checkout Form</span>.
+			</li>
+            <li><span class="ControlName">Select process to run on each object</span>: Set to
+				the <span class="ProcessDirectorObject">Notify Book Due</span> Process Timeline.
+			</li>
+        </ul>
+        <h4>Options Tab</h4>
+        <p>Deselect all options except <span class="ControlName">Form Instances</span>.</p>
+        <h4>Filter Tab</h4>
+        <p>Configure the following filter conditions:</p>
+        <ul>
+            <li><span class="ControlName">Checked Out</span> is checked, <b>AND</b></li>
+            <li><span class="ControlName">Checkout Date</span> is 365 or more days ago, <b>AND</b></li>
+            <li><span class="ControlName">Check-In Prompted</span> is not checked.</li>
+        </ul>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" alt="Note" /> The
+			<span class="ControlName">Check-In Prompted</span> filter ensures that the Goal
+			does not start a new Process Timeline for users who have already been notified.
+			Because a user task is assigned to the lendee, there is no need to start a
+			second process for the same checkout.
+		</p>
+        <h3>Books Due Knowledge View</h3>
+        <p>
+			Create a second Knowledge View to serve as the data source for the Business Value
+			that the Goal will evaluate. This Knowledge View returns the full set of overdue
+			checkouts so the Goal can determine whether any action is required.
+		</p>
+        <h4>Properties Tab</h4>
+        <p>
+			Set <span class="ControlName">Forms Associated with Knowledge View</span> to the
+			<span class="ProcessDirectorObject">Book Checkout Form</span>.
+		</p>
+        <h4>Configure Tab</h4>
+        <p>Accept the defaults.</p>
+        <h4>Options Tab</h4>
+        <p>Deselect all options except <span class="ControlName">Form Instances</span>.</p>
+        <h4>Columns Tab</h4>
+        <p>
+			Add only the <span class="ControlName">Name</span> column. The Goal only needs
+			to know whether the Knowledge View returns one or more records, so minimizing
+			the columns reduces unnecessary data retrieval.
+		</p>
+        <h4>Filter Tab</h4>
+        <p>Configure the following filter conditions:</p>
+        <ul>
+            <li><span class="ControlName">Checked Out</span> is checked, <b>AND</b></li>
+            <li><span class="ControlName">Checkout Date</span> is 365 or more days ago.</li>
+        </ul>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" alt="Note" /> Do not add the
+			<span class="ControlName">Check-In Prompted</span> filter to this Knowledge View.
+			The Goal must count all overdue checkouts — including those already prompted —
+			to accurately determine whether books are still checked out. Excluding
+			already-prompted checkouts would cause the Goal to report an incorrect result.
+		</p>
+        <h3>Due Date Check Business Value</h3>
+        <p>
+			Create a Business Value to count the number of records returned by the
+			<span class="ProcessDirectorObject">Books Due</span> Knowledge View. Configure
+			the following properties:
+		</p>
+        <ul>
+            <li><span class="ControlName">Knowledge View Data Source</span>: Set to the
+				<span class="ProcessDirectorObject">Books Due</span> Knowledge View.
+			</li>
+            <li><span class="ControlName">Execution Context</span>: Set to a user with
+				permission to run the Knowledge View.
+			</li>
+            <li><span class="ControlName">Property Name</span>: <code>Books</code></li>
+            <li><span class="ControlName">Property Type</span>: Set to
+				<span class="ControlName">Number of Knowledge View Rows</span>.
+			</li>
+        </ul>
+        <h3>Books Due Goal</h3>
+        <p>
+			Create a Goal to evaluate the Business Value and trigger the check-in process
+			when overdue books are found. Set <span class="ControlName">Execute Actions
+			when</span> to <span class="ControlName">Conditions are met</span>, then
+			configure the following two conditions:
+		</p>
+        <h4>First Condition: Books Due</h4>
+        <ul>
+            <li><span class="ControlName">Condition</span>: <code>Due Date Check.Books &gt; 0</code></li>
+            <li><span class="ControlName">Result</span>: <code>Books Due</code></li>
+            <li><span class="ControlName">Action</span>: <span class="ControlName">Run Knowledge View</span></li>
+            <li><span class="ControlName">Knowledge View</span>: Set to the
+				<span class="ProcessDirectorObject">Prompt Book Check-In</span> Knowledge View.
+			</li>
+        </ul>
+        <h4>Second Condition: Nothing Due</h4>
+        <ul>
+            <li><span class="ControlName">Condition</span>: <code>Due Date Check.Books = 0</code></li>
+            <li><span class="ControlName">Result</span>: <code>Nothing Due</code></li>
+            <li><span class="ControlName">Action</span>: <span class="ControlName">Set Result Only</span></li>
+        </ul>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" alt="Note" /> The two conditions are
+			mutually exclusive — the <code>Books</code> value is either greater than zero
+			or equal to zero — so only one will ever evaluate to true at a time. In
+			production, configure a schedule on the Goal to run it automatically at your
+			desired interval.
+		</p>
+        <h2>Testing the Application</h2>
+        <ol>
+            <li>
+				Open several existing checkout Form instances and check the
+				<span class="ControlName">Checked Out</span> checkbox to simulate overdue
+				checkouts.
+			</li>
+            <li>
+				Manually execute the <span class="ProcessDirectorObject">Books Due</span>
+				Goal. The result should be <code>Books Due</code>, and check-in tasks should
+				be assigned to the appropriate users.
+			</li>
+            <li>
+				Check one book in and execute the Goal again. The result should still be
+				<code>Books Due</code>, but no new task should be assigned for the
+				already-processed checkout.
+			</li>
+            <li>
+				Check in all remaining books and execute the Goal a final time. The result
+				should be <code>Nothing Due</code>.
+			</li>
+        </ol>
+    </body>
+</html>
