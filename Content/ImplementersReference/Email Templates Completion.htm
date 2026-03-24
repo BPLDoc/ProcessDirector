@@ -39,6 +39,8 @@
         </p>
         <p>Using any of the three completion links work best if the process participant doesn’t need to edit any information on the Form, and the only action is to provide a result. If you do wish the user to go to the Form to edit or add information, then you can't use the result links.</p>
         <h3><a name="Offline"></a>Offline Completion <a href="#Offline" class="anchor">#</a></h3>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A longer and more detailed walkthrough is available in the <a href="../HowDoI/Email Task Completion.htm">Offline Task Completion via Email</a> How Do I...? topic.</p>
         <p>Allowing a task to be completed from email is called offline completion. Offline completion enables processes to parse an email message, and, based on the contents of the email, complete a task. Offline email completion requires several specific configuration elements:</p>
         <ol>
             <li>A properly configured Timeline Activity.</li>
@@ -100,7 +102,7 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/EmailCompletion6.png" />
         </p>
-        <p>In this example, the <span class="ProcessDirectorObject">Email Action</span> process Timeline that we configured in Step 3 will be invoked every time an email message is imported (or uploaded) to the <span class="ProcessDirectorObject">Emails </span>folder. </p>
+        <p>In this example, the <span class="ProcessDirectorObject">Email Action</span> Process Timeline that we configured in Step 3 will be invoked every time an email message is imported (or uploaded) to the <span class="ProcessDirectorObject">Emails </span>folder. </p>
         <h4>5. Importing the Email Messages</h4>
         <p>Offline completion generally uses the <a href="Using the bpImportEmail Utility.htm">bpImportEmail utility</a> to retrieve emails from the email inbox on a scheduled basis, and import them into the specified folder for automatic parsing. You should know, however, that you can also manually upload email messages into the folder as well, if needed. Irrespective of how the email message is placed in the folder, the<span class="ProcessDirectorObject"> Email Action</span> Process Timeline will run for each email message when it's placed there.</p>
         <p>Keep in mind that scheduling the email import imposes some delay on the processing of the email message, since the email message will be stored in the <span class="ControlName">Reply To</span> inbox until the next scheduled run of the bpEmailImport utility. For example, if you run bpEmailImport every 8 hours, there will be a delay of up to 8 hours before the email message is imported into the folder and parsed.</p>

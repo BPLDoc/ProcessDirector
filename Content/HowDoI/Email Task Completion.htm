@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+    </head>
+    <body>
+        <h1>Offline Task Completion via Email</h1>
+        <p><span class="KeyTerms">Task completion via email</span> allows Process Director users to approve or deny process tasks by replying to a notification email, without needing to log in to Process Director or open the associated form. This is particularly useful for users with intermittent connectivity — such as field inspectors or mobile workers — and for C-suite approvers who need a streamlined way to act on routine approvals.</p>
+        <p class="PDNote"><b><img src="../Resources/Images/i2.png" title="Note" alt="Note" /> Note: </b>Email completion is available to both cloud and on-premise customers. Cloud customers benefit because it removes the need to log in; on-premise customers benefit because it allows approvals from outside the corporate firewall.</p>
+        <p>Setting up email task completion requires configuring five components:</p>
+        <ol>
+            <li>A <b>Form</b> with a <span class="NamedControl">Signature Comments</span> control</li>
+            <li>A <b>Process Timeline</b> with result strings and the email completion flag enabled on each applicable activity</li>
+            <li>An <b>Email Template</b> containing the Email Task ID system variable</li>
+            <li>A <b>Content List folder</b> to receive incoming emails</li>
+            <li>An <b>Email Import Timeline</b> containing the <span class="ProcessDirectorObject">Email Action</span> custom task, triggered automatically by the folder</li>
+        </ol>
+        <h3>Overview: How It Works</h3>
+        <p>When email task completion is configured, the following sequence occurs:</p>
+        <ol>
+            <li>A process starts and a task is assigned to a user.</li>
+            <li>Process Director sends the user a notification email generated from your Email Template. This email includes a unique <span class="KeyTerms">Email Task ID</span> that identifies the specific task instance.</li>
+            <li>The user replies to the email, typing their result (e.g., <span class="CodeOption">approve</span> or <span class="CodeOption">deny</span>) on the first line, and any comments on the second line.</li>
+            <li>The reply email is delivered to a designated email inbox.</li>
+            <li>The <span class="ProcessDirectorObject">BP Email Import</span> utility retrieves emails from that inbox and imports them into a designated Content List folder in Process Director.</li>
+            <li>When a new email appears in that folder, Process Director automatically starts the Email Import Timeline.</li>
+            <li>The <span class="ProcessDirectorObject">Email Action</span> custom task parses the email, matches the reply text against the configured result strings, and completes the task accordingly.</li>
+            <li>The user receives a success or failure notification email.</li>
+        </ol>
+        <h3>Step 1: Configure the Form</h3>
+        <p>The form itself requires no special configuration for email completion to work. Your form should be built as it normally would be for any process. However, there is one strong recommendation:</p>
+        <p><b>Add a <span class="NamedControl">Signature Comments</span> control to the form.</b> This is where Process Director will place any comments the user includes in their email reply. Without a <span class="NamedControl">Signature Comments</span> control, comments sent in the reply cannot be captured.</p>
+        <p class="Tip"><b>Tip: </b>If your process allows a task to be denied, require the <span class="NamedControl">Signature Comments</span> control when the denial result is selected. This ensures that users who deny a request via email must also provide a justification. The requirement is configured on the result itself in the Process Timeline (see Step 2).</p>
+        <p>Because the user may not open the form at all when completing via email, your email template (not the form) will carry all of the information the user needs to make a decision. Keep this in mind when designing your email template — it will need to include considerably more content than a standard notification email. See Step 3 for details.</p>
+        <h3>Step 2: Configure the Process Timeline</h3>
+        <p>The Process Timeline requires two specific configurations on each user activity that will support email completion.</p>
+        <h4>2a. Add Optional Strings for Email Complete (Results Tab)</h4>
+        <p>On the <span class="UIElement">Results</span> tab for each applicable activity result, populate the <span class="ControlName">Optional Strings for Email Complete</span> field. This is a comma-separated list of text strings that Process Director will accept as a match for that result when parsing an email reply.</p>
+        <p>For example, for an <span class="CodeOption">Approve</span> result, you might configure:</p>
+        <p><code>approve, aprov, aprove, yes, yep, yeah, sure, ok</code>
+        </p>
+        <p>For a <span class="CodeOption">Deny</span> result, you might configure:</p>
+        <p><code>deny, no, nope, -</code>
+        </p>
+        <p>Keep the following in mind when choosing your strings:</p>
+        <ul>
+            <li><b>String matching is substring-based.</b> If <span class="CodeOption">approve</span> is in your success strings, then a reply containing the word "approved" will also match, because "approve" is found within "approved." Plan your strings accordingly.</li>
+            <li><b>Avoid overlapping strings between results.</b> Using <span class="CodeOption">approve</span> as a success string and <span class="CodeOption">disapprove</span> as a failure string will cause problems — "disapprove" contains "approve," so it may match the success result. Use clearly distinct terms, such as <span class="CodeOption">approve</span> and <span class="CodeOption">deny</span>, rather than <span class="CodeOption">approve</span> and <span class="CodeOption">disapprove</span>.</li>
+            <li><b>Anticipate misspellings.</b> Users are typing freeform text, not clicking a button. Adding common variants and misspellings to the string list reduces the chance of a reply failing to match.</li>
+        </ul>
+        <p class="Tip"><b>Tip: </b>If your process has a result that requires <span class="NamedControl">Signature Comments</span>, enable the <span class="ControlName">Require Signature Comments</span> option on that result. This will cause the task to fail completion if the user sends a reply without including comments on line 2.</p>
+        <h4>2b. Enable "Allow Task to Be Completed from Email" (Advanced Options Tab)</h4>
+        <p>On the <span class="UIElement">Advanced Options</span> tab for each applicable activity, check the <span class="ControlName">Allow task to be completed from email</span> checkbox.</p>
+        <p class="Warning"><b>Warning: </b>This setting must be enabled on every individual activity for which you want to support email completion. There is no global setting. If the checkbox is not enabled on an activity, that task cannot be completed via email, even if all other components are correctly configured.</p>
+        <p>This setting also enables generation of the Email Task ID — the unique identifier that is embedded in the outgoing notification email and used to match the user's reply to the correct task instance. Without this flag enabled, no Email Task ID will be generated, and the <span class="ProcessDirectorObject">Email Action</span> custom task will have nothing to match against.</p>
+        <p class="Tip"><b>Tip: </b>Because this setting is per-activity, you can selectively enable email completion for some activities (such as a senior executive approval step) while leaving it disabled for others (such as steps where careful form review is required).</p>
+        <h4>2c. Link the Form and Email Template</h4>
+        <p>In the Process Timeline's <span class="UIElement">Options</span>, set:</p>
+        <ul>
+            <li><span class="ControlName">Automatically start this process</span> — link to your form, so that when the form is submitted, the timeline starts.</li>
+            <li><span class="ControlName">Default Email Template</span> — link to the Email Template you create in Step 3.</li>
+        </ul>
+        <h3>Step 3: Configure the Email Template</h3>
+        <p>The Email Template is the notification email that Process Director sends to the assigned user. For email task completion, this template must do two things:</p>
+        <ol>
+            <li><b>Include the Email Task ID system variable.</b> This is non-negotiable. Without it, Process Director has no way to associate the user's reply with the correct task instance, and completion via email will not work.</li>
+            <li><b>Provide the user with all information they need to make a decision.</b> Because the user may never open the form, the email must carry all relevant context — requester name, nature of the request, any supporting details — using form field system variables.</li>
+        </ol>
+        <h4>Adding the Email Task ID</h4>
+        <p>Place the Email Task ID system variable in a footer section at the bottom of the email template, below the main message body. Add a clear label warning users not to edit or delete the section. The system variable will render as a GUID at runtime.</p>
+        <p class="Warning"><b>Warning: </b>If the Email Task ID system variable is absent from the email template, task completion via email will fail completely. Every notification email for tasks that support email completion must include this variable.</p>
+        <h4>Adding Clear Reply Instructions</h4>
+        <p>Include explicit instructions near the top of the email, prominently formatted. At minimum, tell the user:</p>
+        <ul>
+            <li>What text to type on the first line of their reply (e.g., <span class="CodeOption">approve</span> or <span class="CodeOption">deny</span>)</li>
+            <li>That any comments should go on the second line</li>
+        </ul>
+        <p>Example instruction text:</p>
+        <blockquote>
+            <p>To complete this task, reply to this email.</p>
+            <ul>
+                <li>On the <b>first line</b>, type your response: <span class="CodeOption">approve</span> or <span class="CodeOption">deny</span></li>
+                <li>On the <b>second line</b>, add any comments you wish to include</li>
+            </ul>
+        </blockquote>
+        <p class="Tip"><b>Tip: </b>Consider adding an <span class="NamedControl">Email Data</span> control to set the <span class="ControlName">From</span> address on the notification email to a monitored reply-to address that routes into the designated import mailbox. This ensures replies go to the correct destination.</p>
+        <h4>Content Recommendations</h4>
+        <p>Since approvers may complete the task without ever viewing the form, the email template should include all information needed for an informed decision. Use form field system variables to populate relevant fields such as requester name, submission date, and any key request details.</p>
+        <p>A standard notification email that simply says "you have a task — click here" is not sufficient for email completion processes.</p>
+        <h3>Step 4: Create the Emails Folder</h3>
+        <p>Create a dedicated Content List folder to serve as the landing zone for imported emails. This folder will be monitored by Process Director and will automatically trigger the Email Import Timeline whenever a new email is added to it.</p>
+        <p>Give the folder a clear name (e.g., <span class="ProcessDirectorObject">Emails</span>) and configure the following folder property:</p>
+        <ul>
+            <li><span class="ControlName">Automatically start this process when objects are created in this folder</span> — set this to your Email Import Timeline (created in Step 5).</li>
+        </ul>
+        <p>This folder-level trigger is what connects the email import mechanism to the <span class="ProcessDirectorObject">Email Action</span> custom task. Any email placed in this folder — whether imported automatically via <span class="ProcessDirectorObject">BP Email Import</span> or uploaded manually — will initiate processing.</p>
+        <h3>Step 5: Configure the Email Import Timeline</h3>
+        <p>Create a new Process Timeline to serve as the email processing pipeline. This timeline does not need to be complex. It requires a single activity of type <b>Custom Task</b>, configured to use the <span class="ProcessDirectorObject">Email Action</span> custom task.</p>
+        <h4>5a. Create the Timeline and Activity</h4>
+        <p>Create a new Process Timeline. Add one activity and set its type to <b>Custom Task</b>. In the custom task selector, locate and select the <span class="ProcessDirectorObject">Email Action</span> custom task (found under <span class="UIElement">Content Actions</span>).</p>
+        <p>Set the <span class="ControlName">Container Form</span> on the activity to your process form. While the container form is not strictly required for basic result and comment mapping, it is a best practice.</p>
+        <h4>5b. Configure the Email Action Custom Task</h4>
+        <p>Click <span class="UIElement">Configure</span> on the <span class="ProcessDirectorObject">Email Action</span> custom task to open its configuration interface. The key settings are:</p>
+        <p><b>Result extraction method</b>
+        </p>
+        <p>Set the result extraction method to <span class="ControlName">Line</span> and configure:</p>
+        <ul>
+            <li><span class="ControlName">Result from line:</span> <span class="CodeOption">1</span></li>
+            <li><span class="ControlName">Comments from line:</span> <span class="CodeOption">2</span></li>
+        </ul>
+        <p>This tells the custom task to read the first line of the reply body as the result string, and the second line as the comment text. The <span class="ControlName">Line</span> method is strongly recommended for human-facing processes because it is the simplest and most reliable for end users — they only need to type one word on the first line and any comment on the second.</p>
+        <p class="PDNote"><b><img src="../Resources/Images/i2.png" title="Note" alt="Note" /> Note: </b>Other extraction methods are available — <span class="ControlName">Keyword</span> (looks for a labeled prefix like <code>result:</code>) and <span class="ControlName">Value</span> (scans the body for a matching string). These are better suited to programmatic or automated reply scenarios. For human users, the <span class="ControlName">Line</span> method minimizes the chance of user error.</p>
+        <p><b>Sender verification (optional)</b>
+        </p>
+        <p>There is an option to require that the reply email come from the same address to which the notification was originally sent. If enabled, replies forwarded to a different address (e.g., a personal email account) and replied to from there will be rejected. This is a security option — evaluate whether it is appropriate for your use case before enabling it.</p>
+        <p><b>Attach email to the process</b>
+        </p>
+        <p>Enable the option to attach the email to the process. This stores a copy of the reply email as a timeline item, providing an auditable record of who approved or denied the request and what they said.</p>
+        <p class="Tip"><b>Tip: </b>For regulated industries (finance, life sciences, etc.), retaining the reply email as part of the process record may be required for compliance purposes.</p>
+        <p><b>Attach email attachments to the process (optional)</b>
+        </p>
+        <p>If users may include attachments in their replies, enable the option to attach those as well. Assign a <span class="ControlName">Group Name</span> (e.g., <span class="CodeOption">Emails</span> or <span class="CodeOption">Attachments</span>) to each attachment type. Group names allow you to display emails and attachments separately using <span class="NamedControl">Show Attach</span> controls on your form, or together if the same group name is used for both.</p>
+        <p><b>Success and failure messages</b>
+        </p>
+        <p>Configure the subject line and body text for the success notification (sent when the task is completed successfully) and the failure notification (sent when the reply cannot be matched to a valid result, or when required comments are missing). Make these messages informative so users understand whether their reply was accepted and, if not, what they need to do differently.</p>
+        <h3>Step 6: Configure BP Email Import</h3>
+        <p>In production, incoming reply emails will be retrieved from your designated email inbox by the <span class="ProcessDirectorObject">BP Email Import</span> utility and automatically placed into the Emails folder in Process Director.</p>
+        <h4>Installing BP Email Import</h4>
+        <p>Download the <span class="ProcessDirectorObject">BP Email Import</span> utility from the BP Logix support site under <b>BPLogix Utilities</b>. The download is a zip archive containing three sub-archives: <b>BP Email Import</b>, <b>BP Import</b>, and <b>BP Util</b>. Extract all archives. The executable is <code>bpemailimport.exe</code>, located in the BP Email Import folder.</p>
+        <h4>Configuring BP Email Import</h4>
+        <p>Open <code>bpemailimport.exe</code> and configure the following:</p>
+        <ul>
+            <li><b>Process Director credentials</b> — provide a user ID and password for a Process Director account with permission to import objects. Consider creating a dedicated service account for this purpose.</li>
+            <li><b>Mail server settings</b> — enter the mail server address and select the protocol (POP3 or IMAP). For Microsoft 365 or Google Workspace inboxes, OAuth authentication tokens are required.</li>
+            <li><b>Target folder</b> — specify the Content List folder in Process Director where imported emails should be placed (the Emails folder created in Step 4).</li>
+        </ul>
+        <h4>Scheduling BP Email Import</h4>
+        <p>Once configured, export the settings to a batch file and use <b>Windows Task Scheduler</b> on any machine with network access to Process Director to run <span class="ProcessDirectorObject">BP Email Import</span> on a recurring schedule. <span class="ProcessDirectorObject">BP Email Import</span> can be run from any machine — it does not need to be installed on the Process Director server itself.</p>
+        <h3>Testing Your Configuration</h3>
+        <p>Before deploying to production, test the complete end-to-end flow. At a minimum, test the following scenarios:</p>
+        <ul>
+            <li><b>Successful approval</b> — reply with a valid approval string on line 1, no comments. Verify the task completes with the correct result.</li>
+            <li><b>Successful denial with comments</b> — reply with a valid denial string on line 1 and a comment on line 2. Verify the task completes, the result is correct, and the comment appears in the <span class="NamedControl">Signature Comments</span> field.</li>
+            <li><b>Denial without required comments</b> — if signature comments are required for denial, reply with a denial string but no comment. Verify that the task does <span class="Emphasis">not</span> complete and that the user receives a failure notification.</li>
+            <li><b>Unrecognized reply string</b> — reply with a string not in any result's optional strings list (e.g., <span class="CodeOption">disapprove</span> when only <span class="CodeOption">approve</span> and <span class="CodeOption">deny</span> are configured). Verify the system behavior — depending on your string configuration, this may match an existing result unexpectedly.</li>
+            <li><b>Correct TLID matching</b> — if you restart an activity or have multiple active tasks, verify that replies are matched to the correct task instance via the Email Task ID.</li>
+        </ul>
+        <p class="Warning"><b>Warning: </b>String matching is substring-based. A reply of <span class="CodeOption">disapprove</span> will match against the string <span class="CodeOption">approve</span> if <span class="CodeOption">approve</span> is in your success strings list. Always test your string configuration carefully with realistic user inputs before going live.</p>
+        <p class="Tip"><b>Tip: </b>When testing, keep careful track of which email corresponds to which task instance. Each time an activity is restarted, a new Email Task ID (TLID) is generated, and previously saved reply emails will no longer match the active task.</p>
+        <h3>End-User Training</h3>
+        <p>Email task completion imposes an additional training requirement beyond a normal form-based process. Users completing tasks by email must understand:</p>
+        <ul>
+            <li>That they need to reply to the specific notification email (not forward it, unless sender verification is disabled)</li>
+            <li>What text to type on the first line of their reply</li>
+            <li>That comments, if required, must go on the second line</li>
+            <li>That missing or incorrect replies will result in a failure notification, and they will need to reply again</li>
+        </ul>
+        <p>Consider providing users with a short reference guide or including detailed instructions directly in the email template.</p>
+    </body>
+</html>

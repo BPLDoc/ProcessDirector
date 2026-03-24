@@ -221,7 +221,13 @@
         </p>
         <h2><a name="AES"></a>
             <MadCap:keyword term="AES;Encryption" />AES&#160;Encryption for Process Director v5.44.700 and Higher <a href="#AES" class="anchor">#</a></h2>
-        <p>Process Director v5.44.700 and higher implements AES encryption. This encryption change provides higher security, but it does affect the migration process the first time--and ONLY the first time--you install v5.44.700 or higher from v5.44.600 or lower (except for load-balanced installations). Upgrading from v5.44.700 to any higher version will require no special action for most customers.</p>
+        <p>Process Director v5.44.700 and higher implements AES encryption. AES-256 encryption applies to <b style="font-style: italic;">all</b> sensitive data at rest, such as User passwords, connection strings, configuration secrets, OAuth authentication secrets, and any form fields marked as encrypted.</p>
+        <p>User passwords implement some additional encryption practices and procedures for password resets.</p>
+        <ul>
+            <li>User passwords are stored as one-way salted hashes (SHA-512) and the hash is then encrypted at rest using AES-256 (CBC mode)</li>
+            <li>2. Password resets use a secure token-based system (GUID generated and emailed, cleared after use).</li>
+        </ul>
+        <p>This encryption change to AES provides higher security, but it does affect the migration process the first time--and ONLY the first time--you install v5.44.700 or higher from v5.44.600 or lower (except for load-balanced installations). Upgrading from v5.44.700 to any higher version will require no special action for most customers.</p>
         <p>Please refer to the <a href="../InstallationGuide/Reinstall Upgrades.htm#_Toc421172276">Upgrading to a Newer Version section</a> of the Reinstall/Upgrades/Moving Hosts topic of the Installation guide, which covers the upgrade process for most customers.</p>
         <p>
             <MadCap:concept term="System Administration" />Customers who manage a load-balanced installation are subject to some additional considerations, which are documented in the <a href="Load Balancing.htm#_Toc421094545">Installation Settings section</a> of the Load Balancing, Standby, and Rendering Options topic of the System Administration Guide.</p>
