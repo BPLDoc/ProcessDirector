@@ -9,7 +9,7 @@
             <MadCap:concept term="System Administration" />Microsoft OAuth for SMTP</h1>
         <p class="PDNote" MadCap:conditions="General.Not Printed,General.MS Oauth Skip">
             <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> A PDF file for end-to-end Azure/Entra configuration for all Process Director features can be found here: <a href="https://doc.bplogix.com/PDFAzureConfig.pdf" target="_blank" title="Configuring Azure For Process Director (PDF Download)" alt="Configuring Azure For Process Director (PDF Download)">Configuring Azure For Process Director (PDF Download)</a></p>
-        <p>To configure integration between Azure and Process Director, you'll first need to create an Registered Application for Process Director, if you do not have one. Once the Registered Application has been created, you'll need to perform some additional configuration to the Registered Application's settings in Azure. </p>
+        <p>Microsoft refers to their implementation of OAuth authentication as Microsoft Modern Authentication (MMA). To configure MMA integration between Azure and Process Director, you'll first need to create an Registered Application for Process Director in Azure, if you do not have one already. Once the Registered Application has been created, you'll need to perform some additional configuration to the Registered Application's settings in Azure. </p>
         <p>First, in the <span class="UIElement">Authentication </span>area, you'll need to set the <span class="ControlName">Allow public client flows</span> property to: <code>Yes (On)</code></p>
         <p>Unfortunately, there are many factors that might impact the remaining Registered Application settings you'll need to use. Since that is so, you may wish to reference Microsoft's explanation of <a href="https://learn.microsoft.com/en-us/exchange/client-developer/legacy-protocols/how-to-authenticate-an-imap-pop-smtp-application-by-using-oauth#add-the-pop-imap-or-smtp-permissions-to-your-aad-application" target="_blank" title="Authenticate an IMAP, POP or SMTP connection using OAuth" alt="Authenticate an IMAP, POP or SMTP connection using OAuth">SMTP&#160;OAuth implementation</a>.</p>
         <p>Depending on your Azure installation, as well as your organization's policies, there are different configuration settings that you might need to implement, in order to enable your Registered Application to enable Process Director to use OAuth to send mail messages. <b>BP&#160;Logix cannot, therefore, definitively describe what settings might be required to make your Azure installation accept OAuth authentication, as we have no knowledge of, or access to, your Azure configuration.</b> </p>
@@ -25,10 +25,16 @@
         <p>If no combination of the settings above work for you, you may need to contact your Microsoft Azure technical support representative to assist you with configuring the correct AAD App permissions for your installation.</p>
         <p class="PDNote">
             <img src="../Resources/Images/i2.png" title="Information" alt="Information" /> For more information on authentication permissions, please refer to the <a href="https://learn.microsoft.com/en-us/graph/permissions-reference" title="Microsoft Graph PermissionsrReference" alt="Microsoft Graph PermissionsrReference" target="_blank">Microsoft Graph Permissions Reference</a> from Microsoft. Please be aware that BP&#160;Logix has an extremely limited ability to assist you with troubleshooting your Azure installation or settings.</p>
-        <p>Once configured, you'll need to get the following properties from the Registered Application's settings to transfer to the corresponding OAuth settings for the "Office365/Microsoft OAuth" <span class="ControlName">SMTP&#160;Authentication Type</span>, which is found on the <a href="Installation Settings Properties.htm"><span class="ProcessDirectorObject">Properties </span>page</a> of the <span class="ProcessDirectorObject">Installation Settings</span> section of the <span class="ProcessDirectorObject">IT&#160;Admin</span> area.:</p>
+        <p>Once You've completed the configuration in Azure, you'll need to return to Process Director to configure the appropriate settings on the <a href="Installation Settings Properties.htm"><span class="ProcessDirectorObject">Properties </span>page</a> of the <span class="ProcessDirectorObject">Installation Settings</span> section of the <span class="ProcessDirectorObject">IT&#160;Admin</span> area:</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting_7a.png" />
         </p>
+        <p>You'll first need to set the <span class="ControlName">SMTP Authentication Type</span> property to either the <i>Office365/Microsoft OAuth</i> or <i>Microsoft Graph API</i> option. Each option uses a different Microsoft authentication service.</p>
+        <ul>
+            <li>The <i>Office365/Microsoft OAuth</i> <span class="ControlName">Authentication Type</span> uses the OAuth Microsoft (ROPC) service to provide authentication. This service is <b style="font-style: italic;">not</b> compatible with the requirement to use Multi-Factor Authentication (MFA) for SMTP&#160;access. To implement MFA with email, you must select the <i>Microsoft Graph API</i> option.</li>
+            <li>The <i>Microsoft Graph API</i> <span class="ControlName">Authentication Type</span> is required for organizations that enforce MFA to access email. It can, however, be used instead of the <i>Office365/Microsoft OAuth</i> option for all MMA authentication. This option uses the Microsoft Graph API to implement the Client Credentials Flow authentication service. This option does not require user credentials. It authenticates as the application itself using a Tenant ID, Client ID, and Client Secret from an Azure AD app registration. Large attachments (over 3MB) are automatically handled via a draft message with chunked upload sessions, supporting attachments up to 150MB.</li>
+        </ul>
+        <p style="font-style: normal;">With either of these two options, you'll need to configure the MMA OAuth properties that will be displayed after you select the <span class="ControlName"> SMTP&#160;Authentication Type</span>.</p>
         <ol>
             <li>
                 <p><span class="ControlName">SMTP Tenant ID</span>
@@ -64,10 +70,10 @@
                 </ol>
             </li>
             <li>
-                <p><span class="ControlName">UserID</span>/<span class="ControlName">Password</span></p>
+                <p><span class="ControlName">SMTP UserID</span>/<span class="ControlName">SMTP Password</span></p>
                 <ol style="list-style-type: lower-alpha;">
                     <li>
-                        <p>Some installations may require that you provide a valid <span class="ControlName">UserID</span> and <span class="ControlName">Password </span>to connect to an email account on your system for sending mail messages, as part of the authentication.</p>
+                        <p>Some installations using <i>Office365/Microsoft OAuth</i> option may require that you provide a valid UserID and Password to connect to an email account on your system for sending mail messages, as part of the authentication. These properties will not appear for the <i>Microsoft Graph API</i> option.</p>
                     </li>
                 </ol>
             </li>

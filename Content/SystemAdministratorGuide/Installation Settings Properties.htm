@@ -189,7 +189,16 @@
                 <MadCap:dropDownHotspot>SMTP Authentication Type</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p MadCap:conditions="General.MS Oauth Skip">For Process Director v5.44.1103, this property enables an OAuth-based connection to Azure services by setting this property to "Office365/Microsoft OAuth". When set to this authentication type, three additional settings will appear:</p>
+                <p MadCap:conditions="General.MS Oauth Skip">Depending on your product version there are up to four available options for this property setting. If you are not using SMTP email relay to automatically relay mail to your email server, and require authentication with the server prior to sending mail, you must select one of the available authentication options.</p>
+                <ol>
+                    <li><b>Standard Authentication (No Oauth):</b> For systems that use standard user authentication via a user name and password.</li>
+                    <li><b>Office365/Microsoft OAuth:</b> For Process Director v5.44.1103 and higher, this option enables an OAuth-based connection to Azure services using the OAuth Microsoft (ROPC) service. </li>
+                    <li><b>Google OAuth:</b> For Process Director v6.1.300 and higher, this option enables connection to Google mail servers with Google's OAuth authentication service.</li>
+                    <li><b>Microsoft Graph API:</b> For Process Director v6.1.506 and higher, this option adds an SMTP authentication type that enables email functionality for customers whose Microsoft/Entra ID tenants enforce Multi-Factor Authentication (MFA) for email access.</li>
+                </ol>
+                <p MadCap:conditions="General.MS Oauth Skip">When set to any authentication type other that <i>Standard Authentication (No OAuth)</i>,  additional property settings will be available, depending on the <span class="ControlName">Authentication Type</span> selected. For some authentication types, the <span class="ControlName">SMTP UserID</span> and <span class="ControlName">SMTP Password</span> properties will be inapplicable, and will not be displayed.</p>
+                <h5 MadCap:conditions="General.MS Oauth Skip">Office365/Microsoft OAuth and Microsoft Graph API</h5>
+                <p MadCap:conditions="General.MS Oauth Skip">Both of these authentication types use Microsoft Modern Authentication (MMA), which is Microsoft's implementation of OAuth authentication. MMA requires you to configure three additional properties:</p>
                 <ul>
                     <li MadCap:conditions="General.MS Oauth Skip"><span class="ControlName">SMTP&#160;Tenant ID</span>
                     </li>
@@ -201,12 +210,12 @@
                 <p MadCap:conditions="General.MS Oauth Skip">
                     <img src="../Resources/Images/SystemAdministratorGuide/Troubleshooting_7a.png" MadCap:conditions="General.MS Oauth Skip" />
                 </p>
-                <p MadCap:conditions="General.MS Oauth Skip">Please see the <a href="SMTP OAuth.htm" title="Microsoft OAuth for SMTP" alt="Microsoft OAuth for SMTP">Microsoft OAuth for SMTP</a> topic for more information on the configuration and use of this <span class="ControlName">Authentication Type</span> and its associated properties.</p>
-                <p MadCap:conditions="General.MS Oauth Skip">For Process Director v6.1.300 and higher, Google OAuth has been added as an <span class="ControlName">Authentication Type</span>.</p>
+                <p MadCap:conditions="General.MS Oauth Skip">Please see the <a href="SMTP OAuth.htm" title="Microsoft OAuth for SMTP" alt="Microsoft OAuth for SMTP">Microsoft OAuth for SMTP</a> topic for more information on the configuration and use of these <span class="ControlName">Authentication Type</span> options, and their associated properties.</p>
+                <h5 MadCap:conditions="General.MS Oauth Skip">Google OAuth</h5>
                 <p MadCap:conditions="General.MS Oauth Skip">
                     <img src="../Resources/Images/SystemAdministratorGuide/googleoauth.png" MadCap:conditions="General.MS Oauth Skip" />
                 </p>
-                <p MadCap:conditions="General.MS Oauth Skip">The Google OAuth authentication requires two properties.</p>
+                <p MadCap:conditions="General.MS Oauth Skip">Google OAuth authentication requires two additional properties.</p>
                 <ul MadCap:conditions="General.MS Oauth Skip">
                     <li MadCap:conditions="General.MS Oauth Skip"><span class="ControlName">SMTP&#160;JSON</span>: This property consists of a JSON snippet, provided by your Google Console. The JSON must be pasted into this property, and will be used to send the appropriate JSON authentication data to Google.</li>
                     <li MadCap:conditions="General.MS Oauth Skip"><span class="ControlName">SMTP&#160;UserID</span>: This property is the Google UserID, usually an email address, to log into the specific inbox that will be used to send messages via Google.</li>
