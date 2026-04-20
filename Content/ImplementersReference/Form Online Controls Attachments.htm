@@ -132,20 +132,24 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:concept term="Online Form Designer" />A <span class="NamedControl">Show Attached Objects</span> field appears like this in the edit mode of the Online Form Designer.</p>
+                    <MadCap:concept term="Online Form Designer" />A <span class="NamedControl">Show Attached Objects</span> field appears like this in the edit mode of the Online Form Designer. At run-time, the control will appear similar to this example when using the default configuration settings.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/The radio button input controls_96.jpg" style="visibility: visible;mso-wrap-style: square;" />
                 </p>
-                <p>This control displays the document attachments that you uploaded via the <span class="NamedControl">Attach </span>control described above. The <span class="ControlName">Properties </span>dialog for the <span class="NamedControl">Show Attached Objects </span>control has two configuration tabs.</p>
+                <p>Process Director v6.1.600 and higher enables you to provide an updated UI for this control, via some additional properties added to the <span class="UIElement">Attach Properties</span> tab to control the appearance of the control at run time.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ShowAttach1.png" />
+                </p>
+                <p>This control displays the document attachments that you uploaded via the <span class="NamedControl">Attach </span>control described above. The properties displayed in the <span class="ProcessDirectorObject">Design Console</span> for the <span class="NamedControl">Show Attached Objects </span>control has two configuration tabs.</p>
                 <h3>Attach Tab</h3>
                 <p>The primary properties to configure are found on the <span class="UIElement">Attach </span>tab.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/ShowAttach.png" />
+                </p>
                 <p>You <b style="font-style: italic;">must</b> ensure that the<span class="ControlName"> Attach Type</span>, <span class="ControlName">Object Type</span> and <span class="ControlName">Group Name</span> properties are the same properties you configured for the <span class="NamedControl">ShowAttach </span>control, if you want to show the specific documents that were uploaded via that <span class="NamedControl">Attach </span>control. For the <span class="NamedControl">Object Type </span>option, however, you have an option to show <i>All</i> attachments, in addition to Form or Process attachments specifically.</p>
                 <p>Setting the <span class="ControlName">Group Name</span> property to <code>""</code> will only display attachments that have no<span class="ControlName"> Group Name</span> associated with the attachment, while leaving it blank will show all attachments of that<span class="ControlName"> Attach Type</span> and <span class="ControlName">Object Type</span>. An additional <span class="ControlName">Object Type</span>, "Case", is available to display objects that are attached to the Case instance.</p>
                 <p>For Process Director v5.26 and higher, you can also use the percent sign (%) as a wildcard character to match a partial <span class="ControlName">Group Name.</span> For example, if you have two groups named "Final Drafts" and Final Documents", setting the <span class="ControlName">Group Name</span> to "Final%" will return attachments in both groups. This functionality can be disabled using the <a href="../DevelopersGuide/Customization File Administration.htm#fEnableOldShowAttach">fEnableOldShowAttach</a> custom variable.</p>
                 <p>For Process Director v5.31 and higher, specific Group Names can be excluded from display by using the "!" character with the group name, e.g., "!MyGroup" will exclude items from the group named "MyGroup".</p>
-                <p>
-                    <img src="../Resources/Images/ImplementersReference/ShowAttach.png" />
-                </p>
                 <p class="PDNote">
                     <img src="../Resources/Images/i2.png" alt="Note" /> As a best practice, you should <b>always</b> apply Group Names for attachments, even if you only have a single attachment control, or a just a single document to attach. This will make your life much easier if you later want to export just certain documents, or access just certain types of forms in a process.<br /></p>
                 <p>Additional configurable properties on the <span class="UIElement">Attach </span>tab are the <span class="ControlName">Sort By </span>property, which will sort the display of attachments by Name or Date. The <span class="ControlName">Sort Type </span>will sort in Ascending or Descending order. The text values that are valid for these properties are:</p>
@@ -302,7 +306,7 @@ any configuration settings you configure in the Online Form Designer as part of 
         </ul>
         <p>In this example, there are three different types of documents that need to be attached to the process or Form. While a single set of <span class="NamedControl">Attach Objects</span> and <span class="NamedControl">Show Attached Objects</span> controls will allow everyone to upload their documents, they would all be collected in a single set of attachments. The <span class="ControlName">Group Name</span> property enables you to place three sets of attachment controls on the Form, each with a different group name, so that each set of people can upload documents into a Form section that is specific to their group. The first set of <span class="NamedControl">Attach Objects</span> and <span class="NamedControl">Show Attached Objects</span> controls might have the <span class="ControlName">Group Name</span> "SupportingDocs", the second set would have the<span class="ControlName">Group Name</span> "QA", and the third set might have the <span class="ControlName">Group Name</span> "Compliance". With this configuration, you can allow each group of people to upload documents only to the Group that is relevant to them, while disabling or hiding the other attachment groups, as desired, when the Form is being edited. As long as an <span class="NamedControl">Attach Objects</span> control and a <span class="NamedControl">Show Attached Objects</span> control share the same <span class="ControlName">Group Name</span>, Process Director will organize the attachments properly by group.</p>
         <p>
-            <img src="../Resources/Images/ImplementersReference/GroupNamesExample.png" />
+            <img src="../Resources/Images/ImplementersReference/ShowAttach2.png" />
         </p>
         <h2>Other Control Tools</h2>
         <p>You can view the documentation for all tools available in the Online Form Designer by using the Table of Contents on the upper right corner of the page, or by clicking one of the links below.</p>
