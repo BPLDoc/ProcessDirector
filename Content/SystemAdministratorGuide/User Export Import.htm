@@ -9,9 +9,11 @@
             <MadCap:concept term="System Administration" />
             <MadCap:keyword term="Export Users;Import Users" />
             <MadCap:concept term="Users" />Exporting/Importing Users</h1>
-        <p>Users can be exported or imported between systems using Excel files (.XLS, .XLSX or .CSV). </p>
+        <p>Ideally, Process Director users on each installation should be synchronized via Active Directory/Entra or some other LDAP system, to ensure that the same users are available on all systems. Thus, when you assign a user to a task on your development system, the same user will be available, and assigned to the task automatically, when the application is imported into your production system. Similarly, when users are removed from your directory service, they are disabled automatically in Process Director on the next synchronization. Using a directory service is usually the most efficient method of managing users on multiple systems, especially for on-premises installations.</p>
+        <p>Customers on Cloud-based installations, however, may not wish to synchronize their user directories directly with the Process Director. Also, for systems with a smaller number of users, you might not want or need the overhead of synchronizing with a directory service. In that case, you might manually create the users on one system, then export the user list to other systems. In that case, Process Director enables you to export any number of users between systems, so you can pick one user, a small number of users, or all of them. Users can be exported or imported between systems using Excel files (.XLS, .XLSX or .CSV). </p>
         <h2><a name="Exporting"></a>Exporting Users <a href="#Exporting" class="anchor">#</a></h2>
-        <p>To export users, select one or more users from the User List, then click on the <span class="UIElement">Export Users</span> action link. An export box will appear that enables you to specify the name of the Excel file to which the list of selected users will be exported. A default name will be provided, but you can edit the default, at your discretion. </p>
+        <p>To export users, select one or more users from the User List, or select all users for the export. The users page shows a list of 100 users in the User List by default, so keep in mind that, if you have more than 100 users and you're trying to choose specific users to export, you won't see all of the users on your system.</p>
+        <p>Once the users are selected, click on the <span class="UIElement">Export Users</span> action link. An export box will appear that enables you to specify the name of the Excel file to which the list of selected users will be exported. A default name will be provided, but you can edit the default, at your discretion. </p>
         <p>
             <img src="../Resources/Images/ImplementersReference/ExportUsers.png" />
         </p>
@@ -374,7 +376,7 @@
             <li>UserName</li>
             <li>EmailAddress</li>
         </ul>
-        <p>When using an Excel file for the import, the user data must be on a worksheet named "Users".</p>
+        <p>When using an Excel file for the import, the user data is usually on a worksheet named "Users". The <span class="ControlName">Sheet Name </span>property defaults to "Users" because, when you export users from Process Director, the system creates the "Users" worksheet automatically. If you are using a different sheet name, you'll need to change this property.</p>
         <p>To import the file into the target system, navigate to the <span class="ControlName">Users </span>page again. Once there, click the <span class="UIElement">Import Users </span>action link. You'll be prompted for the Excel or CSV file to import. </p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/userimport.png" />
@@ -386,5 +388,7 @@
         </ul>
         <p>The first option will automatically create and groups in  the “Groups” column if they don't exist. The default is to add users to groups that exist, but not to create the groups.  The second option will remove a user from an group that isn't listed in their “Groups” column.</p>
         <p>Once you have selected the import file and set the desired properties for the import, click the <span class="UIElement">OK </span>button to begin the import. All of the users in the import file will be imported to the target system.</p>
+        <h2>Group Exports</h2>
+        <p>Navigating to the <span class="ProcessDirectorObject">Groups </span>page of the <span class="ProcessDirectorObject">User Administration</span> section enables you to export and import groups in Excel format, as well. This feature only exports or imports a simple list of groups, however. It does not provide any options for changing or updating any group memberships. Only the user import enables you to create or delete  group memberships. </p>
     </body>
 </html>

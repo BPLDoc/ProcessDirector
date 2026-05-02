@@ -8,7 +8,7 @@
         <h1>
             <MadCap:concept term="Implementation" />
             <MadCap:keyword term="bpImportEmail;Utilities;bpEmailImport;Import Emails;Email Import;Scheduled Import;Import Mail;Email Messages;OAuth Mail;Microsoft Mail" /><a name="_Toc421536101"></a>Using the&#160; bpEmailImport Utility</h1>
-        <p>The bpEmailImport utility (bpEmailImport.exe) allows you to send formatted emails to a process either on a schedule or any time an email is received. Using bpEmailImport.exe, you can set the conditions and format under which you'd like to import the emails. </p>
+        <p>The bpEmailImport utility (bpEmailImport.exe) enables you to send formatted emails to a process either on a schedule or any time an email is received. Using bpEmailImport.exe, you can set the conditions and format under which you'd like to import the emails. This utility is useful when you wish to parse email replies to complete task assignments. Appropriately licensed installations of Process Director enable you to perform offline task completion. When a task notification is sent to a user, replies to the task notification email can be imported, and then used to look for the appropriate response string in the email.</p>
         <p>The executable file, bpEmailImport.exe, is located in the c:\Program Files\BP Logix\Process Director\ directory by default. You can copy this utility to any computer that has Internet Explorer 6 or higher installed. </p>
         <p> Cloud installation customers can download the utility from the Downloads section of the <a href="https://bplogix.zendesk.com/hc/en-us/sections/4408576448283-Process-Director-Software-and-Downloads" target="_blank">BP&#160;Logix support site</a>.</p>
         <h2><a name="_Toc421536102"></a>Connection Tab <a href="#_Toc421536102" class="anchor">#</a></h2>
@@ -310,6 +310,7 @@
         <h2><a name="Scheduling"></a>Scheduling Imports <a href="#Scheduling" class="anchor">#</a></h2>
         <p>Using the Windows Scheduler, you can run the Email Import utility via a command line argument, e.g., </p>
         <p class="CodeBase">bpEmailImport.exe -w "http://<span class="CodeOption">ServerName.com</span>/" -s "mail.MailServer.com" -u "user1" -p "" -i "Test Partition"  --delete</p>
+        <p>In order for this command to run properly, the BPImport utility must reside on the remote computer that runs the Windows Scheduler command. This computer must also have access to the file system location you have configured, in order to run properly.</p>
         <p>The Email Import utility can be called by using a number of command line switches, which are described below. While in the command line interface, you can also see the full list of available switches by invoking the "/?" help switch, e.g., <code>bpEmailImport /?</code></p>
         <p>The available command line switches correspond to the properties that are accessible in the GUI, as described above.</p>
         <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">

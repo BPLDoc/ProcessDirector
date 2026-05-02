@@ -17,6 +17,7 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/Environment.png" />
         </p>
+        <p>Some Cloud customers may only have two environments, a Development/Staging system where both development and QA testing takes place, and a Production environment where the real-word operations occur.</p>
         <h2><a name="Folders"></a>Content List Folders <a href="#Folders" class="anchor">#</a></h2>
         <p>In Process Director, Content List Folders have two purposes. </p>
         <p>First, they make it easier to establish permissions that allow different classes of users to access different <span class="ProcessDirectorObject">Content List</span> objects. The best practice is to set permissions only on folders, and not on individual Forms, Knowledge Views, Business Rules, etc. Permissions are inherited from parent objects, and when new child objects are created, they automatically have the same set of permissions as the folder in which they are contained. (If you change permissions on the folder, however, the permissions on objects within the folder won't be changed unless you click one of the <span class="UIElement">“Replicate Current Permissions...</span> buttons.) </p>
@@ -107,7 +108,7 @@
                 <p>
                     <img src="../Resources/Images/ImplementersReference/HomeImport3.png" />
                 </p>
-                <p>You can now click the <span class="UIElement">Import </span>button to import the PDZ file into the selected folder. a Progress icon will appear while the import process occurs. After a successful import, the Import Report will be displayed in the wizard to enable you to ensure the import ran correctly. </p>
+                <p>You can now click the <span class="UIElement">Import </span>button to import the PDZ file into the selected folder. a Progress icon will appear while the import process occurs. After a successful import, the Import Report will be displayed in the wizard to enable you to ensure the import ran correctly. This import report may contain warning messages in gray banners, or error messages in yellow banners.</p>
                 <p>
                     <img src="../Resources/Images/ImplementersReference/HomeImport5.png" />
                 </p>
@@ -246,5 +247,31 @@
             <li><b>Workspaces:</b> Workspaces are usually configured with specific groups or users assigned to them. Similarly, a Workspace may display an application Dashboard or Knowledge View, or have navigation buttons that reference application Forms. Importing Workspaces before importing the required objects will result in an import warning. The Workspace will be imported, but any missing users or groups or application objects will be removed from the Workspace.</li>
         </ol>
         <p>Remember, failing to import objects in the proper order will result in import errors that will necessitate re-importing the objects.</p>
+        <h2>Managing Non-Importing Objects</h2>
+        <p>Objects like Forms and Process Timelines are routinely imported into production from development or staging systems. Other objects, however, should not be considered routinely importable. Forms and Process Timelines usually have the same configuration on all systems, which makes them easy to import and export between systems. Some objects, however, might need to be configured quite differently on different installations.</p>
+        <p>As an example, let's take a look at a Datasource object. On a development or staging system, a datasource might be configured to connect to a test database that is populated with non-sensitive sample data. On a production system, however, the same datasource needs to be configured to connect to the database that stores production data.</p>
+        <p>On each server, therefore, you would have a Datasource with the same name, and which resides in the same location in the <span class="ProcessDirectorObject">Content List</span>, but each of the Datasource objects might be configured differently. Importing the same Datasource from a different server would overwrite the Datasource's proper configuration.</p>
+        <p>It's best to treat any object as non-importable if its configuration on a production system will differ from development or staging systems.</p>
+        <p>The first time you create a non-importing object on a development system, you might, for convenience, export it to staging or production initially. After the import, though, you would need to configure the object properly on each server onto which you import it. Once you have changed the configuration, any further changes to the object should be made manually on each server.</p>
+        <h3>Global Objects</h3>
+        <p>Non-importable objects also tend to be, though are not always, objects that are universally accessible. To return to the example of a Datasource object, each system should only have a single Datasource object that connects to a specific data store. Every Business Value or Custom task that needs to access that specific data store should access the same Datasource object. This datasource, therefore, is a global object that might be used across many applications. Moreover, by only having one global Datasource for each data store, any change you make to the Datasource is immediately reflected across all applications, making management much easier.</p>
+        <p>Another example might be a Goal. On a development system, a Goal may be configured to run evaluations on a very short time scale for testing purposes. On a production system, however, that Goal may only be evaluated once each day, week or month. Goals are global objects by design, because each Goal sets a universal system state when it is evaluated. So, you would usually not need to have two goals that make the same evaluation.</p>
+        <p>Similarly, some Business Rules might be global. Most of the time, a Business Rule makes an evaluation of some specific form or timeline data to return a value. This could be considered a "local" Business Rule, because it can't be used outside the context of the specific application in which it is used. On the other hand, a Business Rule might evaluate a Goal result, or a Business Value, and be used in many different applications, because the evaluation it makes is not specific to a Form or Process Timeline, allowing it to be run in any context.</p>
+        <p>Unlike non-importing objects, global objects may have the same configuration in production as they do on the staging or development servers. In those cases, importing them is not really an issue, but it might be wise to treat them in the same way you treat non-importing objects, in terms of how they are organized in the content list. Custom Tasks are an example of universal objects that you want to import when BP Logix updates the custom tasks. They are universal, but <b style="font-style: italic;">not</b> non-importing, because you import them on a recurring basis, as updates are made available.</p>
+        <h3>Organization for Non-Importing/Global Objects</h3>
+        <p>Universal and non-importing objects should be organized into folders at the root level of the partition. These folders, and their contents, should be the same on each system. This rule means that if you have a Datasource named "ERP Data" located in a root folder named <span class="ProcessDirectorObject">[Datasources]</span> on your development server, it should also be placed in the same location on the production server. When you import any objects that use the datasource, Process Director will, during the import process, expect to find <span class="ProcessDirectorObject">/[Datasources]/ERP Data</span> in the <span class="ProcessDirectorObject">Content List</span>. If it does not, the system will generate an import error.</p>
+        <p>The most common example of this organizational method can be seen by looking at the <span class="ProcessDirectorObject">[Custom Tasks]</span> folder. The majority of Process Director applications use at least one Custom Task, either in a Form on in a Process Timeline. Because the Custom Tasks have the same name, and are found in the same folder location on every server, importing applications that reference Custom Tasks are generally trouble free.</p>
+        <p>To emulate this practice, you might want to consider following the organizational method that we use at BP Logix, and creating the following root folders, complete with the square brackets in the name:</p>
+        <p><span class="ProcessDirectorObject">[Custom Tasks]</span>
+        </p>
+        <p><span class="ProcessDirectorObject">[Data Sources]</span>
+        </p>
+        <p><span class="ProcessDirectorObject">[Goals]</span>
+        </p>
+        <p><span class="ProcessDirectorObject">[Business Rules]</span>
+        </p>
+        <p><span class="ProcessDirectorObject">[Business Values]</span>
+        </p>
+        <p>Using the square brackets as part of the name means that they will be organized together in the <span class="ProcessDirectorObject">Content List</span>, in both the tree view and folder view. Moreover, they can be shown or hidden in the content list by clicking the <span class="ControlName">Show/Hide System Folders </span>icon at the top of the <span class="ProcessDirectorObject">Content List</span>. Organizing objects this way in the <span class="ProcessDirectorObject">Content List</span> makes them easy to find, both for the import process, and for your implementers when they need to make configuration changes. And of course, they can be hidden from the <span class="ProcessDirectorObject">Content List</span> when convenient.</p>
     </body>
 </html>

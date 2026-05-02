@@ -25,6 +25,13 @@
                 <MadCap:dropDownHotspot>Form Fields Enabled/Disabled</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
+                <p>Any time you create a Process Director Form, you should think carefully about when controls should be enabled or disabled, or when they should be shown or hidden. Most of the time, most controls will need to be disabled after the initial user fills out the form. Or, perhaps the form might contain controls that only managers can see, and which should be hidden from other users. In general, you should ask yourself some questions about visibility and enabling scenarios:</p>
+                <ul>
+                    <li>What fields should be edited by the initial user?</li>
+                    <li>What fields should be edited at later stages of the process?</li>
+                    <li>What fields should be shown or hidden based on the user?</li>
+                    <li>What fields should be shown or hidden based on the process?</li>
+                </ul>
                 <p>You have the option to determine the default setting for whether form fields are enabled or disabled, using this dropdown control. The control offers four settings:</p>
                 <ul>
                     <li><b>Form Fields are enabled by default:</b>	All form fields are enabled by default.</li>
@@ -33,6 +40,7 @@
                     <li><b>Form Fields are disabled only when...:</b>	All form fields are disabled only when a user-defined condition applies. Selecting this option enables you to define a condition or set of conditions that, when true, disable the form fields.</li>
                 </ul>
                 <p>These form level-settings can be overridden in the properties for individual controls. For example, if you select "Form Fields are disabled by default", but set an individual control to be enabled, the control setting will override the Form option setting you choose here. The general rule to remember when setting an enabling option is that the setting at the lowest level always wins.</p>
+                <p>One of the settings in the dropdown is <i>Form Fields are enabled Only when</i>, and this setting enables you to set a condition. BP&#160;Logix recommends that you use this option and set this condition to <code>New Form Instance = Yes</code>. This setting enables the Form to be editable prior to its initial submission, but not editable afterward. You can then protect the information originally submitted, while enabling the specific fields that you want approvers or reviewers to edit during the process.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

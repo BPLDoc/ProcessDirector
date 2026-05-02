@@ -9,6 +9,7 @@
             <MadCap:concept term="Implementation;Process Timelines;System Administration" />
             <MadCap:keyword term="Processes;Process Timelines;Process Timeline Activities;Timeline Activities;Timeline Activity;Configure Activity;Activity Configuration;Timeline Configuration;Configure Timeline;Activity Types;Activity Settings;Activity Tabs;Timeline Instance;Process Instance;Manage Instance;Process In Error;Instance Properties;Administer timeline;Edit Instance;Running Timeline;Activity Instance" /><a name="_Toc421536185"></a>Managing Process Timeline Instances</h1>
         <p>When a Process Timeline process is started, a Process Timeline instance is created. This instance is what is routed to the participants of the Process Timeline. The Process Timeline instance contains the <span class="NamedControl">Routing Slip</span>, the Process Timeline objects (documents, Forms, etc.), optional references, and administrative controls. The Process Timeline instance can be viewed by authorized users for running and completed Process Timelines. </p>
+        <p>Any Forms that are associated with the Process Timeline will also have a new instance created. The Form instance may be the Form that was submitted to start the Process Timeline, or the Form defined in the Process Timeline definition as the form for the Process Timeline. Any other Form used or created while the Process Timeline instance is running, will also have new instances created.</p>
         <h2><a name="Routing"></a>Routing Slip <a href="#Routing" class="anchor">#</a></h2>
         <p>Authorized users have access to the <span class="NamedControl">Routing Slip</span> in the Process Timeline instance by clicking on the <span class="UIElement">Timeline Status</span> Tab. This tab displays a <span class="NamedControl">Routing Slip</span> that shows the progress of the route. It displays all users that are participating in this Process Timeline and how far it has progressed in the routing process, including all iterations of an Activity.</p>
         <p>
@@ -25,7 +26,8 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/Timeline1.jpg" />
         </p>
-        <p>The Process Timeline administration page displays information about the state of the running Process Timeline instance. It can tell you when tasks are expected to complete, and indicates if that means they’ll be late. It can compare the configured run time of an Activity to its actual and predicted run times. To view analyses of average Process Timeline performance, go to the Analyze Timeline page on the Process Timeline definition.</p>
+        <p>The Process Timeline administration page displays information about the state of the running Process Timeline instance. It can tell you when tasks are expected to complete, and indicates if that means they’ll be late. It can compare the configured run time of an Activity to its actual and predicted run times. To view analyses of average Process Timeline performance, go select the <span class="UIElement">Analyze Timeline</span> menu item from the <span class="UIElement">OK </span>menu that appears in the top right corner of the page.</p>
+        <p>For each activity line in the Gantt chart, a  timeline bar appears that displays the overall status of the activity. Hovering your mouse above the timeline bar for an activity will display a pop-up screen that displays pertinent information about the activity.</p>
         <p>The triangles represent due dates. They can be dragged along the Process Timeline to change the configured due date for a single Process Timeline instance.</p>
         <p>The green bar indicates the current date and time, juxtaposed onto the configured dates and times for the Process Timeline.</p>
         <p>Green arrows will appear to the left of activities that are currently running.</p>
@@ -43,6 +45,7 @@
             <img src="../Resources/Images/ImplementersReference/Timeline3.jpg" />
         </p>
         <p>In the <span class="UIElement">Timeline Instance Activity Properties</span> tab, you can access the full range of Activity and user properties by checking the box next to the Activity's user name in the Participants column of the Activity's <span class="NamedControl">Routing Slip</span>.</p>
+        <p>You can also alter the information that appears in the Routing Slip by checking or unchecking the property checkboxes in the <span class="ControlName">Routing Slip Options</span> section of the page. </p>
         <p>
             <img src="../Resources/Images/ImplementersReference/ManagingTimelines2.png" />
         </p>
@@ -223,7 +226,11 @@
             <img src="../Resources/Images/Training/Advanced/TimelineInstances2.png" />
         </p>
         <h2><a name="Error"></a>Processes in Error <a href="#Error" class="anchor">#</a></h2>
-        <p>It's not always easy for an administrator to determine if any running processes are in an error state. You can, however, easily create a Knowledge View to return only processes that are in an error state. In the example below, you can access a software simulation that walks through the process of creating a Processes In Error Knowledge View. You can run this Knowledge View at any time to see all of the errant processes on your system.</p>
+        <p>Process Timeline instances can go into an error state. There may be many reasons for this, but the primary cause of errors in a Process Timeline instance is a configuration error by the designer. It's not always easy for an administrator to determine if any running processes are in an error state. You can, however, easily create a Knowledge View to return only processes that are in an error state. In the example below, you can access a software simulation that walks through the process of creating a<span class="ProcessDirectorObject"> Processes In Error</span> Knowledge View. You can run this Knowledge View at any time to see all of the errant processes on your system.</p>
+        <p>The simulation below provides a step-by-step walkthrough for creating a <span class="ProcessDirectorObject">Processes in Error</span> Knowledge View that, on the <span class="UIElement">Configure </span>tab, returns only Process Timeline instances. On the <span class="UIElement">Columns</span> tab, you can configure any columns that you find useful, but be sure to keep the <span class="ControlName">Name</span> as the first column. Finally, on the <span class="UIElement">Filter</span>, tab you can set the filter to <code>Processes in Error = true</code>.</p>
+        <p>With this simple configuration, running the Knowledge View will always return all the Timeline instances that have been placed in an error state.</p>
+        <p>You can run the Knowledge View manually, but an even better idea might be to set up a Goal to check the Knowledge View to see how many processes are in error. If there are any, the Goal can start a notification process to inform you. The Goal could be run on a scheduled basis to automatically inform you of processes in error.</p>
+        <p>You could then open the Knowledge View when you receive such a notification, and use it to open each Process Timeline instance for troubleshooting.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Use the Simulator<MadCap:keyword term="Sim;Simulation;Simulator;Software Simulation;Instructions;Example;Examples;Sample;Samples" /></MadCap:dropDownHotspot>

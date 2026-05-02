@@ -229,6 +229,8 @@
                 <p>This option gives you the ability to Show or Hide a form control including the sections and collapsible sections. You may also Show or Hide based on a condition using the <span class="ProcessDirectorObject">Condition Builder</span>.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <p>When configuring a field to be disabled or hidden, it's important to remember that in Process Director, enabling and visibility settings are inherited automatically. In other words, if a container control, like a <span class="NamedControl">Section</span>, is disabled, all controls inside that <span class="NamedControl">Section</span> will also be disabled. But, if you explicitly set the enabled setting of a child control differently than the setting on the parent container, <b>the setting at the lowest level wins</b>. So, if the <span class="NamedControl">Section</span> is disabled, but a control inside the <span class="NamedControl">Section </span>is enabled, the control will be enabled.</p>
+        <p>But this is <b>not</b> true for visibility settings. When a parent control is set as hidden, a child control can't be shown. If a parent control is hidden, Process Director will not paint either the parent or any child controls onto the form. Alternatively, though, if a parent control is visible, a child control can be hidden. In that case, the setting at the lowest level, the control, is applied.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Set Required Options</MadCap:dropDownHotspot>

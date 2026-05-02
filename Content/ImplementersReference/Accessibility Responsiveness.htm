@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Accessibility" />
+            <MadCap:concept term="Implementation" />
+            <MadCap:keyword term="Accessibility;WCAG;Section 508;Accessibility Canada;ECN 301 549;Accessible;Disability;Assistive Devices;Americans With Disabilities Act;Handicapped;Responsive;Responsiveness" />Accessibility and Responsive Design</h1>
+        <p>n Process Director, responsive design is an approach to creating Forms that ensures the information displayed on the Form is rendered in a manner that makes the Form usable on a variety of devices and screen sizes. A Form that is properly responsive will enable users to view the form legibly, no matter what device or screen size they are using.</p>
+        <p>Process Director will automatically implement some features of responsive design, just as it does for accessibility. But, like accessibility, the Form designer is also responsible for implementing responsive features, as well.</p>
+        <p>Responsive design is primarily implemented through the use of Cascading Style Sheet (CSS) styles, either by setting the Style property of controls on the form, or by creating CSS classes, and applying those classes to the form control.  For the most part, Form designers do not need to have extensive knowledge of CSS, but there are a few key style commands that you should know to implement responsive design elements, in addition to those that are built into Process Director.</p>
+        <h2>Applying Styles</h2>
+        <p>In Process Director, responsive CSS styles can be applied in three different ways.</p>
+        <p>Most Form controls have a <span class="ControlName">Style </span>property into which you can add short CSS style commands. Appling styles at the control level in this way usually overrides the styles set for that control in the general Process Director style sheet.</p>
+        <p>On the <span class="UIElement">Properties </span>tab of the Form definition, the <span class="ControlName">Default Styles</span> section contains a property named <span class="ControlName">Additional Body CSS Styling</span>. This property enables you to add a custom CSS style sheet to the form. Form controls can then apply the styles named in that stylesheet by typing a style name in the <span class="ControlName">CSS Class</span> property of the Form control.</p>
+        <p>You can create a custom CSS stylesheet and upload it into the <code>/custom</code> folder of your Process Director installation. On the <span class="ProcessDirectorObject">Properties </span>page of the <span class="ProcessDirectorObject">IT Admin</span> area's <span class="ProcessDirectorObject">Installation Settings</span> section, the <span class="ControlName">CSS </span>property enables you to specify the URL of the CSS stylesheet. Once you do so, that CSS stylesheet becomes universally available for use in any form. Setting the <span class="ControlName">CSS Class</span> property to one of the named styles in the CSS file will apply that style to the control.</p>
+        <p>For Cloud customers who don't have direct access to their installation's folder structure, BP&#160;Logix will upload the custom CSS stylesheet for you via a technical support request.</p>
+        <h2>Brief CSS&#160;Primer</h2>
+        <p>CSS describes how HTML elements are to be displayed on screen. Every object on a form, whether it is text, a form control, or any other object, can have a CSS style applied to it. CSS can be a complex subject as there are many different CSS style elements, and different objects may have different styles that are applicable to them. While we can't teach you the details of CSS in this lesson, we can give you a quick overview of how CSS styles work.</p>
+        <p>CSS styles have a specific syntax. A CSS command consists of a style attribute, a colon, the style setting for that attribute, ended with a semicolon. For example, if you want to create a boldface style, the style attribute is named font-weight, and the setting would be bold.  This would be written in a stylesheet as:</p>
+        <p class="CodeBase">font-weight:bold;</p>
+        <p>Any text to which this style is applied will appear as boldface text. For instance, if you type this command into the <span class="ControlName">Style </span>property of a <span class="NamedControl">Label </span>control, the control's text would appear in boldface when the form runs.</p>
+        <p>If you wanted this style to be applied in many different places, you might want to create a CSS stylesheet in the <span class="ControlName">Additional Body CSS Styling</span> property of the Form definition. To create a CSS style in a stylesheet, the style needs a name. To do this, we have to add some additional syntax to our boldface setting. The style name would come first, with the style setting for that style name encased in curly brackets, like this: </p>
+        <p class="CodeBase">SomeStyleName {<br />&#160;&#160;&#160;&#160;attribute:setting;<br />}</p>
+        <p>The name can be an HTML element, in which case, the style will automatically be applied to every instance of that HTML element on the form. For instance, if I want all of the Level 1 headings on a page to be boldfaced, I would need to use the "h1" HTML element as the name for my style:</p>
+        <p class="CodeBase">h1 {<br />&#160;&#160;&#160;&#160;font-weight:bold;<br />}</p>
+        <p>The name can also be a CSS class, which is a style name you create to apply to different controls or HTML elements, as desired. You can name a class anything you'd like, but you cannot use spaces in the name, and the name must start with a period. So, for example, you could create a CSS style called "boldtext", with the following syntax:</p>
+        <p class="CodeBase">.boldface {<br />&#160;&#160;&#160;&#160;font-weight:bold;<br />}</p>
+        <p>You could then set the <span class="ControlName">CSS Class</span> property of a <span class="NamedControl">Label </span>control to <code>boldface</code>, and the style would be applied to the control when the form runs.</p>
+        <p>A CSS class can have more than one attribute set. For example, if you wanted the text to be both boldface and colored red, you might create the following class:</p>
+        <p class="CodeBase">.redbold {<br />&#160;&#160;&#160;&#160;font-weight:bold;<br />&#160;&#160;&#160;&#160;color:red;<br />}</p>
+        <p>Note that, for readability purposes, we've set each attribute on its own line, as we have done for the last curly bracket. We've also indented the attributes. Adding the extra lines and spaces helps us to read the style setting more easily, but doesn't have any effect on how the styles work.</p>
+        <p>The W3C offers <a href="https://www.w3schools.com/css/" target="_blank">free and extensive training</a> on CSS syntax and practices.</p>
+        <h2>Table Refactoring</h2>
+        <p>For Subscription and Cloud licenses of Process Director, some key elements of responsive design are built into the product. Process Director implements automatic table refactoring, which means that, at small screen sizes, Process Director reformats tables with multiple columns into a single column at smaller screen sizes. For example, a table that has four columns when viewed on a desktop computer will, when viewed on a phone, be presented in a single column.</p>
+        <p>Since most form designers use tables to configure the layout of the form, this means that, in most cases, Process Director will automatically implement a responsive view of the form's layout without any additional configuration by the Form designer.</p>
+        <p>This automatic table refactoring will solve most of the responsive design issues faced by Form designers. You can simply create a form layout using tables and know that, on smaller screen sizes, the form will be displayed properly to the users.</p>
+    </body>
+</html>
