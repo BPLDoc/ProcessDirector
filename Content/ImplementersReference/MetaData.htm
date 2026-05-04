@@ -63,7 +63,8 @@ Use of Meta Data should be planned and implemented with an eye firmly set on the
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2><a name="Replication"></a>Meta Data Replication <a href="#Replication" class="anchor">#</a></h2>
-        <p>When using object and folder assignment, editing or adding Meta Data to the object/folder definition does not affect the Meta Data of existing objects. To apply Meta Data changes to existing child objects, there are two replication buttons on the <span class="UIElement">Meta Data</span> tab. </p>
+        <p>When using object and folder assignment, editing or adding Meta Data to the object/folder definition does not affect the Meta Data of existing objects. If you change the folder's metadata after objects have been created inside the folder, the object metadata will not be updated. Inheritance won't replace or overwrite the categories configured for an existing object definition or subfolder. If new instances of the existing objects are created, the new folder metadata will be added to the metadata that was configured in the existing objects. Additionally, if an existing object already has the same attributes as the parent folder, the object's attributes won't be overwritten by changing the parent folder's attributes.</p>
+        <p> To apply Meta Data changes to existing child objects, there are two replication buttons on the <span class="UIElement">Meta Data</span> tab. </p>
         <ul>
             <li><span class="UIElement" style="font-weight: bold;">Add Meta Data to All Child Items</span> – This button will <b>add</b> the folders categories and attributes to all objects below this folder. It won't overwrite any existing categories or attributes already assigned to those objects.</li>
             <li><span class="UIElement" style="font-weight: bold;">Replace Meta Data for All Child Items</span> – This button will <b>remove</b> the categories and attributes for all objects beneath this folder and <b>replace</b> them with the object's current settings.</li>
@@ -86,5 +87,6 @@ Use of Meta Data should be planned and implemented with an eye firmly set on the
             <li>The Export takes the entire category tree and all selected categories in other tree branches.</li>
             <li>The import can only be performed at the root level of the Meta Data Admin, and the path can't change, so if you export something and import it to another system, the parent path will be exactly the same, starting at the root.</li>
         </ul>
+        <p>If you import a category with the same name as an existing one, any new subcategories or attributes in the import file will be imported into the existing category. If an existing metadata element is not included in the import file, it won't be overwritten. If the import file encounters an existing element that is not included in the import file, the Import Report will show a warning message to that effect.</p>
     </body>
 </html>

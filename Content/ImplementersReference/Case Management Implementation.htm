@@ -42,11 +42,10 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/CaseDahshboard21.png" />
         </p>
-        <p>When you are in Case context, the <span class="ControlName">User Profile</span> box automatically updates to track the case that you're in. When you've completed your work on the case, simply click the <span class="UIElement">Leave Case </span> button to exit the Case context.</p>
-        <p>
-            <img src="../Resources/Images/ImplementersReference/CaseUserProfile.png" />
-        </p>
+        <p>When you are in Case context, the <span class="ControlName">User Profile</span> box automatically updates to track the case that you're in. </p>
+        <p>Once opened, the Case dashboard will remain open until you manually close it. To close out of this case, click on the <span class="UIElement">Open Cases</span> menu. The <span class="UIElement">Open Cases</span> menu will appear in every Workspace when you have one or more cases open. This feature enables you to easily navigate between open cases by clicking the menu item for the desired case. Each case listed in this menu will also have an<span class="UIElement"> X</span> icon displayed besides the case name. You can close an open case by clicking on its <span class="UIElement">X</span> icon.</p>
         <p>Additional buttons can be added to the Case dashboard, such as buttons to open Forms, or display other related Knowledge Views.</p>
+        <p>A Case definition can have more than one Case Dashboard, for applications where you might wish different case workers, such as managers, to see different data than regular workers.</p>
         <p>To learn more about creating and configuring Dashboards, please see the <a href="Dashboards.htm">Dashboards</a> topic.</p>
         <h2><a name="eForms"></a>Forms <a href="#eForms" class="anchor">#</a></h2>
         <p>With the Case Management feature, Form definitions have a property located in the <span class="ControlName">Options </span>section of the <span class="UIElement">Form Options</span> tab, called, <span class="ControlName">Automatically create an instance of this Case (optional)</span>. When you set a Case definition for this property, the Form, when submitted, will create a new Case instance. All subsequent processes, Forms, etc. that are created in the context of the case will be linked to the Case instance.</p>
@@ -57,6 +56,7 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/CaseDef2.png" />
         </p>
+        <p>It is possible to have fields on more than one form associated with a Case Property. As a best practice, however, a Case Property should only be associated with a single field on a single form, unless a compelling reason exists to use other forms to overwrite the case data.</p>
         <p>The Auto Claim Form for our sample auto claims application uses case properties extensively. In our sample application, policyholder information containing the customer's contact and vehicle information are extracted from an external data source, and filled into the form automatically when the user enters a policy number.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/claimeform.png" />
@@ -71,6 +71,7 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/Adjustersreportyescontext.png" />
         </p>
+        <p>When using a Knowledge View to select the Case instance manually, you'll need to configure the Knowledge View to attach via link when ans item is clicked. On the <span class="UIElement">Configure </span>tab if the Knowledge View, the <span class="ControlName">Perform this action when entry clicked</span> property must be set to <i>Attach Link</i>. This setting creates the link, rather than opening the Knowledge View in a separate window. This setting is required for the link to work properly and create the correct Case Context.</p>
         <p>The choice of how to set the case context for the Form—whether by opening the Form from the Case Dashboard, or by allowing users to manually select the Case—is really an issue of how you want to design how users will interact with the case. Process Director supports both methods.</p>
         <p>When assigning a form instance to a case instance using the <span class="NamedControl">AttachKView </span>control, you can switch the form instance to a different case instance by selecting a different case instance from the picker.</p>
         <p>In addition, you can set Case properties manually, or from a Form field, using the <a href="../Custom Tasks2/Case Custom Tasks.htm#SetCaseProperty">Set Case Property</a> Custom Task. Additionally, you can add a form instance to a case via configuration on the Form Definition, through a Case Custom Task, etc. If a form instance is being added to a case, Process Director will check all the form fields on the definition for that form instance and see if any form fields are configured to set case properties, and if so, set the case property with the new form's data.</p>

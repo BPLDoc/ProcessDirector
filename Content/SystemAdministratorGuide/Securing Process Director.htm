@@ -60,6 +60,7 @@
         <h2><a name="_Toc421094550"></a>Custom Variable Settings <a href="#_Toc421094550" class="anchor">#</a></h2>
         <p> When using Cloud installations or on-Premise installations with the Compliance Edition, Process Director will keep an external audit trail of all activity. There are configuration options that should understand so that the settings you are using are implemented by design, rather than simply using the product defaults. </p>
         <p>These values are configured in the /custom/vars.cs.asmx file in the PreSetSystemVars() function. Detailed information on how to set custom variables, with the appropriate syntax, are available in the Developer's Guide.</p>
+        <p>Cloud customers who have licensed access to their custom variables file can modify settings in the file via secure FTP. Other cloud customers can submit a support ticket to BP Logix to make any desired changes to the custom variables file.</p>
         <h4>Auditing Variables</h4>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -122,7 +123,7 @@
                 <MadCap:dropDownHotspot>fTestMode</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This variable sets the Process Director installation to Test Mode when set to "True", and will allow a user to login as any other user without a password. The default value for this variable is "False". Ensure that this custom variable is always set to "False" in your production system. The variable should also be set to "False" on your development and test systems, except for those times when it is explicitly needed, after which, it should be set back to "False".</p>
+                <p>This variable sets the Process Director installation to Test Mode when set to "True", and will allow a user to login as any other user without a password. In this mode, Windows Integrated authentication is disabled. The default value for this variable is "False". Ensure that this custom variable is always set to "False" in your production system. The variable should also be set to "False" on your development and test systems, except for those times when it is explicitly needed, after which, it should be set back to "False".</p>
                 <p>Documentation: <a href="../DevelopersGuide/Customization File Administration.htm#fTestMode">fTestMode</a></p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
@@ -233,7 +234,8 @@
         </ol>
         <p>Your production system shouldn't grant delete permission to any users. Instead, have a limited set of partition administrator users, as partition administrators can perform functions in the <span class="ProcessDirectorObject">Content List</span> regardless of its configured permissions. Users should only login with these partition administrator user IDs when performing specific administrative functions, like deleting objects or importing XML files from a non-production system.</p>
         <h2><a name="_Toc421094556"></a>Data Encryption <a href="#_Toc421094556" class="anchor">#</a></h2>
-        <p>When using Cloud installations or on-Premise installations with the Compliance Edition, you have the option to encrypt fields using th<span class="ControlName">e Form Field Properties</span> settings of a control, which is located in the <span class="UIElement">Form Controls</span> tab of every Form definition. Simply select the <span class="ControlName">Encrypt </span>check box.</p>
+        <p>Process Director supports the use of Transparent Data Encryption (TDE) in Microsoft SQL Server to encrypt all data in the Process Director database. BP Logix recommends the use of this SQL Server option as the most effective method for encrypting data at rest.</p>
+        <p>When using Cloud installations or on-Premise installations with the Compliance Edition, you have the option to encrypt fields using th<span class="ControlName">e Form Field Properties</span> settings of a control, which is located in the <span class="UIElement">Form Controls</span> tab of every Form definition. Simply select the <span class="ControlName">Encrypt </span>check box. This option enables you to encrypt individual field values for installations that do not implement TDE.</p>
         <p>
             <img src="../Resources/Images/SystemAdministratorGuide/encrypt.png" />
         </p>

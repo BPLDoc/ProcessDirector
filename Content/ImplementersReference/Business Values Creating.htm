@@ -299,7 +299,16 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/RESTBusinessValues.png" />
         </p>
-        <p>The <span class="UIElement">Rest Data Source</span> tab enables you to type a URL for a REST data source into the <span class="ControlName">REST&#160;URL</span> text box.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>REST&#160;URL</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The <span class="UIElement">Rest Data Source</span> tab enables you to type a URL for a REST data source into the <span class="ControlName">REST&#160;URL</span> text box. Commonly, a REST service uses URL parameters to filter the data returned. You can incorporate a Business Value Parameter in the REST URL. This property will accept the System Variable for a parameter—or any other evaluable system variable—as part of the URL. For example, you can pass a Zip Code value from a form to a Business Value parameter, then use the parameter in the REST URL: `</p>
+                <p><code>http://myweatherservice.org/weather?zip={PARAM:Zip}</code>`</p>
+                <p>In this example, the Business Value has a Parameter named Zip that will pass the value of a Zip code into the URL. At run-time, the system will parse the PARAM system variable and replace it with the appropriate value.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot>Parse REST&#160;Response As</MadCap:dropDownHotspot>
@@ -313,7 +322,7 @@
                 <MadCap:dropDownHotspot>Please Choose Compliance (Credentials) Data Source</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This property enables you to select a Compliance Datasource that contains the credentials needed to authenticate with the REST service that supplies the data.</p>
+                <p>This property enables you to select a Compliance Datasource that contains the credentials needed to authenticate with the REST service that supplies the data. Using the Compliance Datasource enables you to store the login information separately from the Business Value, to provide increased security, and prevent unauthorized people from viewing the login information. Moreover, if the login information changes, you can edit the Compliance Datasource, which automatically updated all of the objects that might use it. BP Logix recommends the use of the Compliance Datasource to store login credentials, where possible.</p>
                 <p class="Important">
                     <img src="../Resources/Images/i.png" alt="Important" /> This property name was changed to "Compliance" from "Credentials" in v5.44.1000.</p>
             </MadCap:dropDownBody>
@@ -324,6 +333,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>Users of Process Director v4.42 and higher also have an <span class="UIElement">Add HTTP&#160;Header </span>button that, when clicked, will add one or more rows of <span class="ControlName">Name</span>/<span class="ControlName">Value </span>pairs that will be sent via HTTP&#160;header to the REST&#160;service. </p>
+                <p>Parameters can also be used when the REST service requires filters to be passed via the request's HTTP header. You can click the Add HTTP Header button to add a header row to the Business Value. For instance, using the same example we used above for the <span class="ControlName">REST&#160;URL</span> property, you can place the name of the header, <code>zip</code>, in the Name column of the HTTP header, then add the System Variable for the 'Zip' parameter in the Value column (<code>{PARAM:Zip}</code>). When the Business Value is called, the value of the 'Zip' parameter will be sent as part of the REST Request.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

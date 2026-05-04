@@ -40,7 +40,16 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/ProcessTimelineActivityTypes2.png" />
         </p>
-        <p>When multiple users are assigned to a task,  a Subtask can be created for each user. You must have a form field that specifies the name of each desired subtask. </p>
+        <p>By default, this property is set to choose the <i>Timeline Initiator</i>, which is the user who prompted the Process Timeline to begin. There are several other options available to choose:</p>
+        <ul>
+            <li>The <i>Groups</i> participant type will select all members of a Process Director User Group for Task assignment. BP Logix recommends that the Group participant type be selected whenever possible. </li>
+            <li>The <i>Business Rule</i> participant type will assign Users that are returned by a Business Rule. Unlike Groups, Business Rules reside in the <span class="ProcessDirectorObject">Content List</span>, and can be edited by anyone with access to them. So, while not as secure as Groups, assignment by Business Rule is more flexible, and enables complex assignment scenarios.</li>
+            <li>The <i>System Variable</i> participant type uses a System Variable that returns a User or Group to assign a Task. </li>
+            <li>The <i>From Form Field</i> participant type enables you to specify the task assignee from a <span class="NamedControl">User Picker</span> Form field. </li>
+            <li>The <i>Users</i> participant type enables you to select specific users as Task assignees. This participant type is not recommended for activities that have multiple assignees, or where a single user might participate in many processes.</li>
+        </ul>
+        <p>For more complex user assignment scenarios, the<span class="UIElement"> Add Participant </span>button enables you to add as many participants as you need to an activity. It also enables you to choose different participant types for each assignee.  As a practical matter, there is no upper limit to the number of Users assigned a Task, though, in most cases, the number of people assigned to a Task is relatively small.</p>
+        <p>When multiple users are assigned to a task,  a <span class="ControlName">Subtask </span>can be created for each user. You must have a form field that specifies the name of each desired subtask. </p>
         <p>
             <img src="../Resources/Images/ImplementersReference/TLProps24.png" />
         </p>
@@ -59,7 +68,7 @@
         <p>
             <img src="../Resources/Images/ImplementersReference/TLProps26.png" />
         </p>
-        <p>A user Activity in the Process Timeline can have results assigned to it. Multiple results can be added to an Activity by clicking on the Add Result Button.&#160; Each result will have its own properties, which are presented in a tabbed interface.</p>
+        <p>A user Activity in the Process Timeline can have results assigned to it. Multiple results can be added to an Activity by clicking on the <span class="UIElement">Add Result</span> button.&#160; Each result will have its own properties, which are presented in a tabbed interface.</p>
         <p>The results will be used as the Activity result for the task, which will appear in the <span class="NamedControl">Routing Slip</span> and in the Timeline Administration screen.</p>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
@@ -77,8 +86,18 @@
                 <p>A brief text description of the result.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <p><span class="KeyTerms">Result handling </span>is the methodology used to respond to one or more Activity Results. We may need to do different things when different results are selected. Result handling defines how our application will respond to this selection. By default, when a user selects a result button, the activity completes, the result is recorded, and Process Director moves on to the next activity. </p>
+        <p>Let's take an example of an approval activity that has three configured results, and look at what result handling might be needed for each result: </p>
+        <ul>
+            <li><b><i>Approve</i>:</b> No handling needed. Move to the next eligible activity. </li>
+            <li><i style="font-weight: bold;">Resubmit</i><b>:</b> Send back to the submitter for changes. </li>
+            <li><i style="font-weight: bold;">Deny</i><b>:</b> End the Process Timeline. </li>
+        </ul>
+        <p>For each result, we need the application to do something completely different, but we need to implement result handling for the <i>Resubmit</i> and <i>Deny</i> results.</p>
+        <p>For most use cases, BP Logix recommends that approval activities all be placed inside a Parent activity with appropriate Looping conditions. Encapsulating the approval activities inside a Loop offers the easiest and most efficient method for configuring approval activities and handling disparate results.</p>
         <h3><a name="_Toc421536165"></a>Conditions Tab <a href="#_Toc421536165" class="anchor">#</a></h3>
-        <p>This is one of the two tabs displayed for each result's configuration settings. The <span class="UIElement">Conditions </span>Tab includes the following controls.</p>
+        <p>This is one of the two tabs displayed for each result's configuration settings. </p>
+        <p>The <span class="UIElement">Conditions </span>Tab includes the following controls.</p>
         <p>
             <img src="../Resources/Images/ImplementersReference/ResultsContitionsTab.png" alt="Conditions Tab" />
         </p>
@@ -132,6 +151,25 @@
                 <p>This is a check box that, when checked, designates the result as the default result for the Timeline Activity. When setting a Completed When condition, you <b>must</b> specify a default result, or the Activity will either not end as expected, or will go into an error state.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <h4>Conditional Termination</h4>
+        <p><span class="KeyTerms">Conditional termination</span> is the methodology for ending an activity when specific conditions apply. There are three primary methods for applying conditional termination.</p>
+        <h5>Consensus Results</h5>
+        <p>Consensus results are only applicable to Timeline Activities that have more than one user assigned. On the <span class="UIElement">Results </span>tab of a user activity, each <span class="ControlName">Result </span>has two properties that enable you to specify that the activity will end when either a percentage or number of users select a specific result: <span class="ControlName">%/# of participants that choose this result</span>.</p>
+        <p>When a Task is assigned to multiple users, you can use one of these properties to specify that this result will be selected if the configured percentage or number of participants, respectively, chooses that result.</p>
+        <p>For example, if we have an activity that has 5 users as participants, we can set the <span class="ControlName"># of participants that choose this result</span> property to '3'. If we do, then when the activity runs, if three of the participants choose this result, the activity will complete, and the result will be recorded as the activity result. If the other two participants haven't yet completed the task, they'll be marked as not needed.</p>
+        <p>So, if we had two results, <i>Approve</i> and <i>Deny</i>, we might implement a more sophisticated set of conditions. We could set <i>Approve</i> as the result if three participants select it but set <i>Deny</i> as the result if only one participant selects it.</p>
+        <p>Obviously, setting this property requires some thought. If you have four results, and five participants are assigned the task when the activity runs, none of the results might have three of the participants select it. In that case, the activity will still end, but the result will be a list of all results selected by the participants.</p>
+        <p>When implementing consensus results, it's best to ensure that, irrespective of the results chosen by the participants, a definitive result is recorded for the activity.</p>
+        <h5>Conditional Results</h5>
+        <p>The <span class="ControlName">Activity result condition met when</span> property enables you to specify a condition that, when met, will set the configured result as the result for the activity.</p>
+        <p>Once the specified condition is met, the activity result is set, irrespective of the Task completion status of any participants. It's important to remember, however, that setting this property does not end the activity when the result is set. All participants in the Task will still be active, and, unless you end the activity, they can still participate and change the activity result. Your result will still be recorded when the condition is met, but activity participants can select their own results, which might be different.</p>
+        <p>For activities with a single user as a participant, an activity ends and the result is set at the same time the user selects a result button. But that's not true for activities with multiple participants. Each participant may select a different result, but the activity does not end until all participants have completed their Tasks. Similarly, setting a conditional result simply adds an additional result to the activity without completing it. By default, the activity won't complete until the user Tasks have been completed, so some additional configuration is required.</p>
+        <p>To complete the activity when a conditional result is set, you must also go to the<span class="UIElement"> Completed When</span> tab and set the <span class="ControlName">Completed When</span> dropdown to <i>When any Result Condition is Met</i>. With this property configured, the activity will end when the conditional result is set. All active participants will be marked as <i>Not Needed</i>, and their tasks will be completed automatically.</p>
+        <h5>Completed When Conditions</h5>
+        <p>You can set a condition on the <span class="UIElement">Completed When</span> tab to complete an activity when a specified condition set evaluates as true. This condition is set using the <span class="ControlName">When conditions met</span> property. Once a condition has been specified, you'll need to set the set the <span class="ControlName">Completed When </span>dropdown to <i>All Users Complete or Result Condition Met</i>, to ensure the activity ends when the Completed When condition is true. Once again, some additional configuration is needed to supply a result when this configuration is implemented.</p>
+        <p>While setting a result does not end an activity automatically, an activity cannot end until a result has been set. If you set a Completed When condition to end an activity, then you must also configure a default result for the activity. Each result configured on the <span class="UIElement">Results </span>tab has a <span class="ControlName">Default Result </span>property. You must set one, and only one, result as the <span class="ControlName">Default Result</span> for the activity. Process Director must be able to identify a single result as the default to apply to the activity, or the activity cannot be completed. If you implement a Completed When condition without setting a <span class="ControlName">Default Result</span>, or if you select more than one result as the <span class="ControlName">Default Result</span>, then the activity will fall into an error state when the Completed When condition runs.</p>
+        <p>To resolve this error state administratively, you must open the Process Timeline definition to provide the proper <span class="ControlName">Default Result </span>configuration. You can then open the properties for the Timeline instance that's in the error state and navigate to its <span class="UIElement">Administration/Timeline</span> tab. You'll need to restart the activity that's in an error state, then click the <span class="UIElement">Refresh </span>button to prompt a reevaluation of the condition, which should set the appropriate<span class="ControlName"> Default Result </span>and end the activity.</p>
+        <p>While the activity is in an error state, remember that the activity is still running, and the task assignments for the activity are still active. The error state only prevents the activity from completing. It does not prevent any action from the activity participants. A participating user can still complete their task by selecting a result, which would complete the activity. Of course, the result the user selects may not be the result you that desire as the <span class="ControlName">Default Result</span>. Only administrative action can ensure the correct configuration and clear the error state.</p>
         <h3><a name="_Toc421536166"></a>Options Tab</h3>
         <p>This is one of the two tabs displayed for each results configuration settings. The Options Tab includes the following controls.</p>
         <p>
@@ -143,6 +181,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This is a numeric value that determines the order in which the Activity result button will appear on a Form. You may order the Activity results in any order you desire. If you don't order the buttons manually, they'll be displayed in the order in which the result was created. In older versions of Process Director, Process Timeline Activity results were specified using a comma-separated list. The display of the buttons on the form for each result followed the order in which they were listed. Now, when migrating from an older release to this one, the display order of the results will be automatically preserved. To modify the order, adjust the "Button Order on Form" property of each result in the Activity Results tab.</p>
+                <p>It's a best practice to have a specific button order that you always use. For instance, at BP&#160;Logix, we always want our most positive result to appear first and the most negative result to appear last. Having a consistent button order across all of your forms provides a consistent user interface for your users.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -420,7 +459,7 @@
                                 <p>All in series</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Each user will be assigned the task individually, and each user must complete the assigned action before the task is assigned to the next user. The process will continue until all users have completed their actions.</p>
+                                <p>Each user will be assigned the task individually, and each user must complete the assigned action before the task is assigned to the next user. The process will continue until all users have completed their actions. This method is known as serial assignment.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -449,6 +488,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <p>When using serial assignment (<i>All in Series</i>), you may wish to control the order in which participants are assigned, which will affect the method you use when selecting task assignees. First, you can assign multiple users via a Business Rule, and the users will be assigned in the order, from top to bottom, in which they appear in the Business Rule's <span class="UIElement">Values </span>tab.  This method is probably the best one to implement, when you need to control the order of Task assignment to users. Next, you could configure the <span class="UIElement">Participants </span>tab of the User Activity to include multiple users. Again, users will be assigned from top to bottom, in the order they appear on the <span class="UIElement">Participants </span>tab. Finally, you could also assign users via a Form field. For example, if your Form has an array of User Pickers, users would, again, be assigned in the order in which they appear, from top to bottom, in the array."</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -510,6 +550,13 @@
                 <MadCap:dropDownHotspot>Restart Users</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
+                <p>Once an activity starts, it can be restarted, either automatically, or via administrative action. Some scenarios that would result in an activity restarting might be: </p>
+                <ul>
+                    <li>The activity is part of a Parent activity that implements an iterating loop.</li>
+                    <li>The activity must restart when a condition has been met. </li>
+                    <li>An administrator manually restarts an activity. </li>
+                </ul>
+                <p>There are several factors that might force us to consider carefully how we want Task assignments to work when an activity restarts, including: Some activities may run for weeks or months. If an activity restarts six months after it initially ran, some or all of the original users might not even be available for assignment. We might want to exclude users who previously performed the task. We might want to assign the task both to all users who performed the task previously, and also any new users who have been configured to participate since the activity previously ran.</p>
                 <p>This option determines how participants are assigned to the Activity when it must be restarted, which is particularly relevant when an implementer changes the participants assigned to an Activity in the Process Timeline definition. An existing instance may have been created when different participants were configured to participate in the task. This option enables you to determine how to handle user assignments when the configured users have changed.</p>
                 <p>It is also important to note that the term "restart" is used for both:</p>
                 <ul>
@@ -574,6 +621,15 @@
                         </tr>
                     </tbody>
                 </table>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Restart All Users When </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property enables us to specify a condition set that, when met, will automatically prompt a restart of the activity. For instance, you might need to restart the activity based on some change to external data, some change to data on the Form, or because a specified amount of time has passed since the activity started. Clicking the action link labeled, <span class="UIElement">Click to create condition</span>, invokes the <span class="ProcessDirectorObject">Condition Builder</span>. </p>
+                <p>Keep in mind that any condition you build will, when met, automatically restart the activity. It doesn't matter if the activity is currently running, and users haven't yet completed it. If the condition set is met, all currently running activity users will be marked as <i>Not Needed</i>, the currently running activity will be completed, and the activity will restart, using the <span class="ControlName">Restart Users</span> setting you've selected. You should only configure this property for the relatively rare scenarios where you want to prompt an automatic restart.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>

@@ -9,7 +9,11 @@
             <MadCap:concept term="Email Templates" />
             <MadCap:keyword term="Stream Actions;Scheduled Actions;Import Data;Automatic Form Creation;Automate Process;External Data;Automated Processes;Scheduled Import" />Stream Actions Object</h1>
         <p>Users of Process Director v5.26 and higher have access to the Stream Actions object. This object will read a recordset stream from a Datasource, and enable you to submit a form instance for each record in the stream. Stream Actions can be scheduled and run on a recurring basis to import data on any desired schedule.</p>
+        <p>While Process Director enables Knowledge Views to run a new process instance for each row in the Knowledge View's results, this feature has a limitation. It can only be implemented when the data is reportable by a Knowledge View. Data from outside of Process Director cannot be returned via a Knowledge View, which limits the data that can be accessed and used to prompt a process instance.</p>
+        <p>The Stream Action, on the other hand, can access any data from any accessible Datasource and return that data as a recordset stream. Data from each record in the stream can be extracted, placed into a new form instance, and automatically submitted. In general, the Stream Action is used to process external data, while the Knowledge View is used to access internal Process Director data.</p>
+        <p>The Knowledge View begins a Timeline instance for each record. The Process Timeline may or may not have a Form associated with it and may or may not use any of the Knowledge View's data. Conversely, the Stream Action directly maps the data from each record to a new form instance, which is then automatically submitted. If you want a process to run, you must specify the process in the Form definition's <span class="ControlName">Automatically start this process after Form is submitted</span> property. The Stream Action is specifically designed to transfer data from a recordset into a series of Form instances by mapping data from the stream into Form fields.</p>
         <p>A common use case for the Stream&#160;Actions Object would be to import data from an Excel spreadsheet, external data source, or Business Value, then create a new form instance for each row in the recordset, fill out fields on the form instance, then submit it to begin a process for each record.</p>
+        <p>The Stream Action requires a Form to operate, along with a Datasource object that enables you to retrieve the data you want. Without a Datasource object, you won't be able to access your data. Without a Form, you won't be able to map your data to any Form fields. Additionally, while a Stream Action can use a manually written SQL statement to retrieve the data from a data source, a Business Value is commonly used to return the data. These objects must all exist before you can configure the Stream Action, so it's best to create them prior to creating the Stream Action.</p>
         <h2><a name="Properties"></a>Properties Tab <a href="#Properties" class="anchor">#</a></h2>
         <p>The <span class="UIElement">Properties </span>tab provides the basic object configuration settings.</p>
         <p>
@@ -40,7 +44,9 @@
                 </MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>For Stream Actions that you wish to schedule, you can activate or deactivate the Stream Actions object from running by selecting the appropriate radio button.</p>
+                <p>For Stream Actions that you wish to schedule, you can activate or deactivate the Stream Actions object from running by selecting the appropriate radio button. This property has two options, <i>Active</i> and <i>NOT Active,</i> with <i>NOT Active</i> being the default setting. A Stream Action that is set to <i>NOT Active</i> won't invoke the scheduler and can only be run manually. </p>
+                <p>If the Stream Action will be run on a scheduled basis, this property must be set to <i>Active</i> for the scheduler to run the Stream Action. Additionally, if the <span class="UIElement">Schedule </span>tab is not configured with a valid schedule, setting this property to <i>Active</i> will have no effect. In order to run a Stream Action on a scheduled basis, this property must be set to <i>Active</i>, and a valid schedule for running the Stream Action must be configured via the <span class="UIElement">Schedule </span>tab. </p>
+                <p>Irrespective of how this property is configured, a stream action can always be run manually, at any time.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -51,6 +57,7 @@
                 <p>Enables you to set the category in which this Stream Actions Object will appear in the dropdown selector of the <span class="ControlName">Choose System Variables</span> dialog box.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <p>Below the <span class="ControlName">Stream action is currently... </span>property you'll see a message that says: "The Stream Action has never been run." This message will display until the Stream Action has run, after which it will be replaced with the date and time of the Stream Action's last iteration.</p>
         <h2><a name="Data"></a>Data Set Tab <a href="#Data" class="anchor">#</a></h2>
         <p>The <span class="UIElement">Data Set </span>tab enables you to configure the data source you wish to use for this Stream Actions object. The configuration properties available on this tab will depend on the <span class="ControlName">Data Set Type </span>you select to use. You can select either a Business Value as a data source, which is the most common user case, but you can also configure a SQL data source directly as well.</p>
         <p>
@@ -95,7 +102,7 @@
                 </MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
-                <p>This property invokes the <span class="ProcessDirectorObject">Condition Builder</span> to enable you to set whatever conditions you desire to determine whether the stream for each record should run.</p>
+                <p>This property enables you to create a condition set to use to determine whether the stream action should run when prompted. When the Stream Action is prompted, either manually or by the scheduler, any conditions set here will be evaluated. If the conditions are met, the Stream action will run. If not, the Stream Action will be skipped until the next evaluation.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -128,7 +135,23 @@
                 </p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <p>An <span class="UIElement">Add Field Mapping </span>button enables you to add as many <span class="ControlName">Form Field</span>/<span class="ControlName">Value </span>rows as necessary. Additionally, Up (<img src="../Resources/Images/ImplementersReference/StreamActions5.png" />), Down(<img src="../Resources/Images/ImplementersReference/StreamActions6.png" />), and Delete (<img src="../Resources/Images/ImplementersReference/StreamActions7.png" />) buttons on each row enable you to order or delete rows.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Add Field Mapping button</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>An <span class="UIElement">Add Field Mapping </span>button enables you to add as many <span class="ControlName">Form Field</span>/<span class="ControlName">Value </span>rows as necessary. Additionally, Up (<img src="../Resources/Images/ImplementersReference/StreamActions5.png" />), Down(<img src="../Resources/Images/ImplementersReference/StreamActions6.png" />), and Delete (<img src="../Resources/Images/ImplementersReference/StreamActions7.png" />) buttons on each row enable you to order or delete rows.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Distinct DataSet&#160;Column</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property enables you to type in the name of a column to display only distinct rows. In any data table, some columns may have many duplicates of a value, and you might wish only to display one record where the value of this column is the same. Typing the column name here is just like using the <code>SELECT DISTINCT</code> command in SQL. After the value is encountered once, all successive rows containing the same value will be ignored. </p>
+                <p>This property is very useful for recordsets that may have repeating row data, for which you do not wish to include duplicate records. In most cases, setting this property is unnecessary, since your data source, whether it's a Business Value or manually-written SQL statement, will use the <code>SELECT DISTINCT</code> command, removing the repeated rows from the original source data prior to evaluation by the Stream Action.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
         <h2><a name="Schedule"></a>Schedule Tab <a href="#Schedule" class="anchor">#</a></h2>
         <p>The <span class="UIElement">Schedule </span>table enables you to create the schedule you'd like to use to import the Stream data on a periodic basis.</p>
         <p>

@@ -274,13 +274,19 @@
             <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="ManipulateArrayData"></a><a href="#ManipulateArrayData"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>Manipulate Array Data</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
-            <p>This Custom Task will perform a variety of useful operations with Form arrays:</p>
-            <ul>
-                <li>Sort data in arrays.</li>
-                <li>Remove duplicate rows in an array.</li>
-                <li>Remove array rows based on conditions</li>
-                <li>Copy data in an array to fields in another array.</li>
-            </ul>
+            <p>This Custom Task enables you to perform four different operations: copy a value from a Form control and place it in an Array; sort data in an Array by sorting on any number of columns; remove rows from an Array based on one or more conditions; and copy the data from an Array to a different Array, either in whole or in part, based on conditions. When invoked on a Form, the Custom Task assumes the Form will be used as the Container Form — the Form that contains the Array. When invoked from a Process Timeline as a Custom Task activity type, the Custom Task tab contains a Set Container Form property that you must configure. This Custom Task cannot be configured in a Process Timeline without a Container Form set.</p>
+            <p><b>Sorting:</b> You can add one or more columns on which to sort the Array. Unlike the Sort Array control, this function is not limited to only three columns. If you need to sort by more than three columns, you must use the Custom Task. Otherwise, the Sort Array button is the simpler option. All columns will be sorted in the same order.</p>
+            <p><b>Removal:</b> The<span class="ControlName"> Remove Array Row If </span>property has five options: </p>
+            <ol>
+                <li><i>Do not Remove Array Rows</i> — default, prevents removal; </li>
+                <li><i>The Row is an Exact Duplicate of a Previous Row</i> — keeps first occurrence, removes subsequent duplicates; </li>
+                <li><i>Sorted Columns in the Row Match a Previous Row</i> — after sorting, removes rows with duplicate sorted-column values; </li>
+                <li><i>Specified Columns in the Row Match a Previous Row</i> — removes rows with matching values in specified columns, regardless of sort order; </li>
+                <li><i>The Row Matches the Following Conditions</i> — removes rows matching one or more specified conditions. </li>
+            </ol>
+            <p>For options (4) and (5), an <span class="UIElement">Add Column</span> or <span class="UIElement">Add Condition</span> button appears. When multiple conditions are specified, radio buttons enable you to choose whether a row must meet ALL or ANY of the conditions.</p>
+            <p><b>Copy Array Data From Form Control:</b> The<span class="ControlName"> Copy Data From Control </span>property selects a field on the Form. If a non-Array field is chosen, it adds or overwrites a single row. If an Array field is chosen, it copies all rows. The <span class="ControlName">Copy To Array Column</span> property specifies the destination column. The <span class="ControlName">Copy Data to Array By</span> property has three options: <i>Appending</i> (adds new rows at the bottom), <i>Prepending</i> (adds new rows at the top, moving existing rows down), or <i>Overwriting</i> (overwrites existing rows starting from row 1).</p>
+            <p><b>Copying:</b> The <span class="ControlName">Array to Copy To </span>property specifies the destination Array. <span class="UIElement">Add Column</span> rows map <span class="ControlName">Source Column </span>to <span class="ControlName">Destination Column</span> for each field to copy. A <span class="ControlName">Clear rows in destination Array before copying?</span> checkbox deletes existing destination data before copying. An <span class="UIElement">Add Condition </span>button enables you to specify conditions determining whether each source row should be copied. If more than one condition is specified, radio buttons enable you to choose ALL or ANY matching logic.</p>
             <MadCap:dropDownBody>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/ManipulateArray.png" />

@@ -55,6 +55,7 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>This Custom Form Task will convert Forms, document attachments, and other objects to PDF Documents. The PDF output can produce a PDF document for each specified object, or merge all converted objects into a single PDF file, and enable you to set the sort order in which the documents will appear in the merged PDF.</p>
+                <p>This Custom Task generates only a visual conversion of the objects, which is to say, it won't enable you to change or transfer any data between objects. Process Director &gt; Form fields, for example, will appear in the PDF as they currently appear on the Form.  A primary use case for this Custom Task is to create archivable PDF files, either to  fulfill the requirements of document retention policies, or to provide an archived  backup of objects that you wish to delete from Process Director, usually for technical  reasons, such as reclaiming extra database space.</p>
                 <h4>Item Details/Output Object Options Tabs</h4>
                 <p>
                     <img src="../Resources/Images/Custom Tasks2/ConvertToPDF.png" />
@@ -154,7 +155,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Convert only a group of objects.</p>
+                                <p>Convert only a group of objects. If you have multiple attachment groups, this property enables you to choose only objects from a specific group, or, if desired, you can add a comma-separated list of  group names, to return attachments from the listed groups. For instance, if your Form had a group name of "Form", and document attachments were in a group named "Convert", then to convert both the Form and attachments, this  property would need to be set to the comma-separated list of "Form, Convert", to ensure that both the Form and attachments were converted.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
@@ -187,7 +188,7 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>Assign a name to group objects.</p>
+                                <p>This property enables you to specify the attachment group to apply to the PDF attachment that will be created. This should match the Group Name set on the Show Attached Objects control where the PDF will be displayed after conversion.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -209,7 +210,8 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>Give the merged objects a name.</p>
+                                <p>Give the merged objects a name. It's important to remember that this property will accept system variables as part of  the file name. For example, if you have a "RequestNumber" field on a Form that generates  a unique request number, you might want to include it in the Merged Object Name field,  which might result in a file name like:</p>
+                                <p> <code>Request Number {:RequestNumber}.pdf</code></p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -677,7 +679,10 @@
                                 <p>Coordinates (all units in Points), Field in PDF.</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>You can set the signature's location and size in the document by setting the Left, Top, Height, and Width properties. A simpler, yet equally effective method, is to place a field in the PDF document to contain the signature.</p>
+                                <p>You can set the signature's location and size in the document by setting the <span class="ControlName">Left</span>, <span class="ControlName">Top</span>, <span class="ControlName">Height</span>, and <span class="ControlName">Width </span>properties. </p>
+                                <p>Unless you're a typography expert, you probably don't know what a "point" is, or how large a measurement it represents for the <span class="ControlName">Top </span>and <span class="ControlName">Left </span>properties. As a result, determining where the signature will appear and how large it will be requires testing. This process will probably take several repetitions of Form submissions to get right in a real-world scenario.</p>
+                                <p>Changing the <span class="ControlName">Width </span>and <span class="ControlName">Height </span>properties is also a little tricky because there's no  mechanism to automatically maintain the aspect ratio of the image. So, as a general rule, the aspect ratio of your setting should be 1:3, which means the <span class="ControlName">Width </span>should be three times the <span class="ControlName">Height </span>to maintain the proper aspect ratio.</p>
+                                <p>A simpler, yet equally effective method, is to place a field in the PDF document to contain the signature.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
@@ -856,7 +861,8 @@
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>&#160;</p>
+                                <p>We don't need to map each field if the fields in both the Process Director and PDF forms have the exact same names.This property will perform the mapping automatically at run time.</p>
+                                <p>Unfortunately, in most cases you won't be able to use this option, because unless you've specifically configured the Form and/or PDF fields to match each other, the field names will usually be completely different. This is especially true for government-created PDF forms, where fields may have unusual naming conventions.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
