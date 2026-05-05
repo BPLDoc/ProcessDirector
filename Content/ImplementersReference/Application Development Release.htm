@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Implementation;Application Development" /><a name="_Toc421536329"></a>
+            <MadCap:keyword term="Best Practices;Implementation;Guidelines;Application Development" />The Release Stage</h1>
+        <p>Once testing is complete, and the application has been finalized, you are ready to release the application into production.</p>
+        <p>Since the application on the Development and Staging systems should be identical, you can export the application directly from the Development Server to the Production Server.</p>
+        <p>When creating a new application, there may be other Process Director objects, like Workspaces and Meta Data categories, created as part of the application, which makes the import more complex.</p>
+        <p>To perform complex import operations like these, the Process Director objects should be imported in the following order.</p>
+        <ul>
+            <li><b>Partition Meta Data:</b> Meta data can be applied to any Process Director object, which means it sits at the highest level of the hierarchy.</li>
+            <li><b>Users/Groups:</b> Any new users or groups that have been created on the source system, and that are used in the application, must be imported. Exports of groups and users are, unlike other objects, exported and imported as Excel files rather than PDZ files.</li>
+            <li><b>Global Content List Objects:</b> If you have created additional business values, datasource objects, or business rules that reside in "global" content list folders, import them to the appropriate place in the Content List before importing the application.</li>
+            <li><b>Application Content List Objects:</b> Once the higher-level objects have been imported, you can now import the PDZ file containing the application folder and all its contents.</li>
+            <li><b>Workspaces:</b> Workspaces are usually configured with specific groups or users assigned to them. Similarly, a Workspace may display an application dashboard or knowledge view, or have navigation buttons that reference application forms. Importing Workspaces before importing the required objects will result in an import warning. The Workspace will be imported, but any missing users, groups, or application objects will be removed from the Workspace.</li>
+        </ul>
+        <p>Failing to import objects in the proper order will result in import errors that will necessitate re-importing the objects.</p>
+        <h3>Versioning</h3>
+        <p>Process Director implements versioning for all objects, and each version consists of a complete snapshot of the object. Each version can be downloaded, deleted, or applied to the object to replace the current version. While any object can be versioned, BP Logix recommends creating versions at the application folder level to create a snapshot of the entire application, rather than versioning each object individually.</p>
+        <p>Once the application has been imported into the Production Server, you should open the properties of the application folder and create an initial version of the folder, which will create a version snapshot of the entire application.</p>
+        <p>You should create a new application version every time you import the application, in order to maintain a full version history with all application changes over time.</p>
+        <h3>Permissions</h3>
+        <p>Your Production Server should already have a <a href="Permissions Methodology.htm">permissions methodology</a> imposed, so importing the new folder should automatically inherit the proper permissions for all content list objects.</p>
+        <p>Additional objects that exist outside of the <span class="ProcessDirectorObject">Content List</span>, such as Workspaces, will need to be configured to add the proper users and groups for the workspace. Users of the new application will not be able to access it until the appropriate Workspace links have been made available to them.</p>
+        <p>You may wish to use a regular user account or impersonate a user who will have access to the new application. Ensure that the user can access and run the application. If so, the application is now live in your production system, and the application development cycle is now complete.</p>
+    </body>
+</html>
