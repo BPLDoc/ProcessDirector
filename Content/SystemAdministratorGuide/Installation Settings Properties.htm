@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
     <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" />
         <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -397,5 +398,95 @@
                 <p>The password needed to access the uploaded certificate.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
+        <h2><a name="DNS"></a>Requirements for using the BP&#160;Logix Default SMTP Configuration</h2>
+        <p>In most cases Cloud customers configure their outgoing SMTP configuration to send email from within their own domains, using their own mail servers. For these customers, emails can continue to be sent from your domain without any additional configuration.</p>
+        <p>Customers can, however, elect to use the default SMTP&#160;host provided by BP&#160;Logix. In this configuration, Process Director uses SMTP.com to send outbound email. If you wish to use your own domain's email addresses, rather than a bplogix.com email address, <b style="font-style: italic;">you must create additional DNS records in your domain to add SPF and DKIM records before you can send mail from the system</b>.</p>
+        <p>As part of global efforts to combat spam, many email systems have implemented stricter security to ensure emails aren't being "spoofed" which is to say, emails from one domain giving the appearance of being sent from a different domain. Spoofing is often used to disguise the actual source of a malicious email message, by using email addresses from a trusted domain, to make them look like authentic messages from a trusted email address.</p>
+        <p>To ensure that emails sent via SMTP.com can use your domain addresses, and be considered as legitimate email messages, you will need to add two DNS records to your domain's DNS settings: an SPF record and a DKIM record.</p>
+        <ul>
+            <li>The <b>SPF record</b> tells receiving mail servers that Process Director (via SMTP.com) is authorized to send emails on behalf of your domain.</li>
+            <li>The <b>DKIM record</b> adds a digital signature to your outgoing emails, helping verify authenticity and improve email deliverability.</li>
+        </ul>
+        <p>Please work with your DNS provider or IT team to add the DNS records below to the domain from which you wish to send emails.</p>
+        <h4>SPF&#160;Record</h4>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 183px;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">FIELD</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">VALUE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Record Type</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1"><code>TXT</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row2">Content / Value</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row2"><code>v=spf1 include:_spf.smtp.com ~all</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>DKIM&#160;Record (Standard)</h4>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 183px;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">FIELD</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">VALUE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Record Type</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1"><code>CNAME</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Host Name</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2"><code>smtpkey._domainkey.yourdomain.com</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">Content / Value</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1"><code>smtpcustomer._domainkey.smtpsend.com</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>DKIM&#160;Record (GoDaddy)</h4>
+        <p>If your domain is hosted on GoDaddy, use the following DKIM configuration instead of the standard one above.</p>
+        <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/Simple.css');" class="TableStyle-Simple" cellspacing="0">
+            <col class="TableStyle-Simple-Column-Column1" style="width: 183px;" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">FIELD</th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">VALUE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Record Type</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1"><code>CNAME</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Host Name</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2"><code>smtpmail._domainkey</code> (your domain is assumed)</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">Content / Value</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1"><code>smtpcustomer._domainkey.smtpsend.com</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Without creating the appropriate SPF and DKIM records, your outgoing email messages will be rejected.</p>
     </body>
 </html>

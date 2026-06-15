@@ -656,6 +656,7 @@
                 <p>Once a document or document is selected, you can ask <span class="ProcessDirectorObject">Approvia AI </span>to create a PLS in the chat box at the bottom of the <span class="ProcessDirectorObject">Approvia AI </span>window.</p>
                 <p>In <i>Intake</i> mode, you'll only be allowed to select a single document. Once selected, the PLS will be generated for that document, and the fields you specified on the <span class="UIElement">Mapping </span>tab will be automatically filled by the data extracted by <span class="ProcessDirectorObject">Approvia AI</span>. Because <i>Intake</i> mode is designed to extract document data for use on the Form, it can't use multiple attachments—similar information might be available on more than one attachment, and <span class="ProcessDirectorObject">Approvia AI </span>wouldn't know which information to extract. <i>Summary</i> mode can summarize multiple documents into a single PLS, but can't transfer document data to Form controls. <i>Intake</i> mode can transfer document data to Form controls, but can't summarize multiple documents.</p>
                 <p>You can, however, use multiple<span class="ProcessDirectorObject"> Approvia AI</span> controls on the same Form. You simply have to assign each control to a different <span class="ControlName">Source Group</span>. You could therefore have an one control configured for <i>Summary</i> mode with the <span class="ControlName">Source Group</span> property left blank (so it summarizes all document attachments), and place another control configured for <i>Intake</i> mode pointed to a <span class="ControlName">Source Group</span> with only one document attachment, using that document for the intake process.</p>
+                <p>For Process Director v6.1.200 and higher, responses from the <span class="NamedControl">Approvia AI </span>control will invoke an event postback to the Form, to enable the Form to capture event-based changes, such as the addition of summary files.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <MadCap:dropDown>
@@ -673,6 +674,39 @@
                 <p>The<span class="ControlName"> CSS&#160;Class</span> property enables you to specify a CSS class to use for the icon if you've implemented a custom style sheet.</p>
                 <p>The <span class="ControlName">Size </span>property will specify the size, in pixels, to display the icon. Icons are square, so a single number will specify  both the horizontal and vertical dimensions of the icon.</p>
                 <p>The <span class="ControlName">Tooltip </span>property specifies the tooltip text to display when the user mouses over the icon.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="Stepper"></a><a href="#Stepper"><img src="../Resources/Images/link.png" title="Link" alt="Link" /></a>
+                    <MadCap:keyword term="Stepper" />Stepper</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>For Process Director v6.1.200 and higher, the <span class="NamedControl">Stepper</span> control enables you to add and configure a progress bar to a Form that displays the progress steps you want to configure. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Stepper3.png" />
+                </p>
+                <p>This control enables you to define the steps to track and when the progress is complete. There are two tabs to configure this control.</p>
+                <h4>General Tab</h4>
+                <p>This tab enables you to configure the general look and feel of the control at runtime.</p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Stepper.png" />
+                </p>
+                <p>The <span class="ControlName">Name </span>property is the standard one for all Form controls.</p>
+                <p>The <span class="ControlName">Width </span>property enables you to specify a number, in percent or pixels for the horizontal width of the control, while the <span class="ControlName">Height </span>performs the same function for the control's height.</p>
+                <p>There are two types of progress icons that appear for this control, each configured in their own section. The <span class="ControlName">Not Started</span> section configures the properties for steps that have no yet been started, and the <span class="ControlName">Highlighted/Done</span> section defines the look of steps that are currently running or are complete. In both sections, the <span class="ControlName">Icon color</span> property enables you to set the color of the step's icon, the <span class="ControlName">Label color</span> property specifies the text color of the step's label, and the <span class="ControlName">Step color</span> specifies the background color of the step.</p>
+                <p>The <span class="ControlName">Stepper Complete Condition</span> is a <span class="ProcessDirectorObject">Condition Builder</span> link that enables you to specify the condition set that defines when the Stepper should stop tracking progress.</p>
+                <h4>Steps Tab</h4>
+                <p>This tab enables you to define the steps to track in the control. </p>
+                <p>
+                    <img src="../Resources/Images/ImplementersReference/Stepper1.png" />
+                </p>
+                <p>You can create as many steps as are needed by clicking the <span class="UIElement">Add Step</span> button.</p>
+                <p>For each step, the top of the step row contains icons (<img src="../Resources/Images/ImplementersReference/Stepper2.png" />) that enable you to move the step up or down in the lest, or to delete the step.</p>
+                <p>The<span class="ControlName"> Icon Number</span> property enables you to select the icon to display for the step.</p>
+                <p>The <span class="ControlName">Label </span>property enables you to configure the text that will appear for the step at run time.</p>
+                <p>The <span class="ControlName">Tooltip </span>property enables you to add additional text to appear in a mouseover tool tip when the mouse is hovered over the step.</p>
+                <p>The <span class="ControlName">Active step condition</span> property is a <span class="ProcessDirectorObject">Condition Builder</span> link that enables you to create a condition set that defines when the step should appear as the active step on the form.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h2>Other Control Tools</h2>
