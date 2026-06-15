@@ -119,9 +119,13 @@
             <img src="../Resources/Images/ImplementersReference/bpEmailImport5.png" />
         </p>
         <h3>Microsoft Modern Authentication (MMA)</h3>
-        <p>For MicrosoftOAuth and the Microsoft Graph API, There are three fields that must be configured to enable OAuth authentication with the mail service. Use of OAuth from Microsoft with the E-mail Import Utility requires the existence of a properly configured Azure Active Directory (AAD) Registered App.  </p>
+        <p>The utility supports two distinct Microsoft authentication paths, selected by the <span class="ControlName">Server Protocol</span> chosen on the <span class="UIElement">Connection </span>tab. Both require a properly configured Azure Active Directory (AAD) Registered App, and both use the <span class="ControlName">Tenant</span>, <span class="ControlName">Client ID</span>, and <span class="ControlName">Client Secret</span> properties on the <span class="UIElement">OAuth </span>tab, but each requires a <i>different</i> set of Azure API permissions. Configuring the permission set for the wrong path is a common cause of authentication failures.</p>
+        <ul>
+            <li><span class="Emphasis">OAuth Microsoft (IMAP/POP3)</span>: Authenticates as a signed-in user. Not compatible with tenants that enforce Multi-Factor Authentication (MFA) for mailbox access.</li>
+            <li><span class="Emphasis">Microsoft Graph API</span>: Authenticates as the application itself using the Client Credentials flow, with no user password. Compatible with MFA-enforced tenants. Recommended for new deployments.</li>
+        </ul>
         <p class="Important">
-            <img src="../Resources/Images/i.png" alt="Important" /> Creating the AAD Registered App and integrating it with OAuth will require in-depth knowledge of Azure. As such, assistance from your IT&#160;personnel may be required.</p>
+            <img src="../Resources/Images/i.png" alt="Important" /> Creating the AAD Registered App and integrating it with OAuth will require in-depth knowledge of Azure. As such, assistance from your IT&#160;personnel may be required. Because the exact configuration depends on your tenant's own policies, to which BP&#160;Logix has no access, the permission sets below reflect the settings that resolve most configurations rather than a guarantee for every environment. For permission details specific to your tenant, refer to Microsoft's <a href="https://learn.microsoft.com/en-us/graph/permissions-reference" target="_blank">Microsoft Graph permissions reference</a>.</p>
         <p>Microsoft OAuth/Graph API integration requires three pieces of data that correspond to the three properties that must be configured on the <span class="UIElement">OAuth </span>tab. These three properties must be obtained from Azure, and can be accessed only after creating the AAD Registered App for the OAuth connection.</p>
         <p>The <span class="ControlName">Tenant</span>, <span class="ControlName">Client ID</span> and <span class="ControlName">Client Secret </span>properties are obtained as follows:</p>
         <MadCap:dropDown>
@@ -156,18 +160,31 @@
                 </ul>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
-        <p>Additionally, the AAD Registered App requires the following settings:</p>
+        <p>Additionally, the AAD Registered App requires the following settings, which differ depending on which path you are using.</p>
+        <h4>OAuth Microsoft (IMAP/POP3) Path</h4>
+        <p>Use this path when the <span class="ControlName">Server Protocol</span> is set to <i>IMAP</i> or <i>POP3</i> and authentication uses Microsoft OAuth. The AAD Registered App requires the following settings:</p>
         <h5>API Permissions</h5>
         <ul>
-            <li>Delegated Microsoft Graph permission IMAP.AccessAsUser.All</li>
+            <li>Delegated Microsoft Graph permission<code> IMAP.AccessAsUser.All</code></li>
             <li>The administrator must grant consent to this permission after its addition</li>
         </ul>
         <h5>Authentication Settings</h5>
         <ul>
-            <li>Allow public client flows: Yes (on)</li>
+            <li>Allow public client flows: <code>Yes </code>(on)</li>
             <li>Organizations that use a hybrid Federated Identity environment must enable <a href="https://learn.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta" target="_blank">Azure Active Directory Pass-Through Authentication</a>. Otherwise, the utility will be unable to connect to the specified user accounts, and an error will be generated.</li>
         </ul>
-        <p>A more detailed explanation of how OAuth works and is configured on Azure-based systems is available in the <a href="Datasources Sharepoint.htm">SharePoint OAuth Datasource topic</a>.</p>
+        <h4>Microsoft Graph API Path</h4>
+        <p>Use this path when the <span class="ControlName">Server Protocol</span> is set to <i>Microsoft Graph API</i>. This path authenticates as the application using the Client Credentials flow, so it requires <i>application</i> permissions rather than the delegated permission used by the IMAP/POP3 path. The AAD Registered App requires the following settings:</p>
+        <h5>API Permissions</h5>
+        <ul>
+            <li>Application Microsoft Graph permission <code>Mail.Read</code>: Required for listing and downloading messages from the mailbox.</li>
+            <li>Application Microsoft Graph permission <code>Mail.ReadWrite</code>: Required only if the post-process option deletes or moves messages after import. Omit it if messages are left on the server and tracked with a history file.</li>
+            <li>The administrator must grant admin consent for these permissions after their addition. Until consent is granted, the permission remains inactive and Microsoft Graph returns an "Access Denied" error.</li>
+        </ul>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> The Graph API path does not use the Allow public client flows setting. On this path, the <span class="ControlName">User</span> field on the <span class="UIElement">Connection </span>tab is used as the mailbox address (UPN) to monitor, and the <span class="ControlName">Password</span> field does not apply, since authentication is performed using the Client Secret. The monitored mailbox must be hosted in Exchange Online; Microsoft Graph cannot access on-premises Exchange mailboxes.</p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> Some tenants restrict which mailboxes an application can access using an Exchange application access policy or application RBAC. If yours does, confirm that the monitored mailbox is within the configured scope. A tenant-wide consent paired with an out-of-scope mailbox produces an "Access Denied" error even when <code>Mail.Read</code> is correctly granted.</p>
         <h3>Google OAuth</h3>
         <p>
             <img src="../Resources/Images/ImplementersReference/bpEmailImport6.png" />
