@@ -3728,7 +3728,7 @@
                 <p>For v2022.03.31 and higher of this Custom Task, the Custom Task can be called even if there is no form instance to use. This can be useful in rare contexts, such as trying to call the build_form_cache.aspx page, which doesn't require any form data to be sent or returned.</p>
                 <h4>Standard Tabs</h4>
                 <p>
-                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromREST.png" />
+                    <img src="../Resources/Images/Custom Tasks2/FillFieldsFromRest4.png" />
                 </p>
                 <h4>Credentials Tab</h4>
                 <p>
@@ -3800,6 +3800,28 @@
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Response is a tabular result set</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Added in v2026.06.17, this property, when checked, parses the response as JSON and maps by column name instead of
+XPath, with configurable column names and rows JSONPath fields, plus a "skip rows where all mapped values are null"
+option. It handles Snowflake SQL API-style responses (column metadata and positional row arrays with null padding). When checked, additional tabular result properties will appear.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Column Names</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The JSONPath expression that identifies column names for a tabular result set.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Rows Path</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The JSONPath expression that identifies the rows from a tabular result set.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Skip rows where all mapped values are null</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This property, when checks, will force the Custom Task to skip empty rows in a tabular result set when returning the row values.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>Success Message</p>
                             </td>
@@ -3811,37 +3833,54 @@
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3"><b>BODY&#160;TAB</b>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Response</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Clicking the <span class="UIElement">Test REST Call</span> button now discovers and suggests rows/columns paths from the live response for tabular result sets, with a per-column preview,
+displayed in this text box.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3"><b>BODY&#160;TAB</b>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Body</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The body of the web request. This can contain JSON, XML, or any other text format accepted by the REST service. Using this field with attachments (multipart web request) will result in this field representing one of the multiple parts of the Request Content. Due to System Variable parsing logic, to use curly braces in the Body (e.g., JSON data), ensure that any curly brace that is <b style="font-style: italic;">NOT</b> part of a System Variable is followed by a new line.</td>
-                        </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Name</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Body</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The value for the Content-Disposition header's "name" parameter.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The body of the web request. This can contain JSON, XML, or any other text format accepted by the REST service. Using this field with attachments (multipart web request) will result in this field representing one of the multiple parts of the Request Content. Due to System Variable parsing logic, to use curly braces in the Body (e.g., JSON data), ensure that any curly brace that is <b style="font-style: italic;">NOT</b> part of a System Variable is followed by a new line.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Reference Type(s)</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Process References<br />Form References</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The type of attachment to include in the REST&#160;call for multipart web requests. Additional reference types may be added by clicking the <span class="UIElement">Add Row</span> button; however, if you use a System Variable to specify the attachment in the <span class="ControlName">Body</span>, you should <b style="font-style: italic;">not</b> use the Add Row button to add additional attachments.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Name</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The value for the Content-Disposition header's "name" parameter.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Reference Type(s)</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Process References<br />Form References</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The type of attachment to include in the REST&#160;call for multipart web requests. Additional reference types may be added by clicking the <span class="UIElement">Add Row</span> button; however, if you use a System Variable to specify the attachment in the <span class="ControlName">Body</span>, you should <b style="font-style: italic;">not</b> use the Add Row button to add additional attachments.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p style="font-weight: bold;">CREDENTIALS TAB</p>
                             </td>
                         </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Data&#160;Source</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">List of Compliance Datasources.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">You can select a Compliance Datasource to provide the credentials. Otherwise, you can supply the credentials manually using the fields below.</td>
+                        </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Data&#160;Source</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">List of Compliance Datasources.</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">You can select a Compliance Datasource to provide the credentials. Otherwise, you can supply the credentials manually using the fields below.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>Username</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Login information with appropriate credentials to access the REST Service.</p>
+                            </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Username</p>
+                                <p>Password</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
@@ -3851,51 +3890,45 @@
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Password</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Login information with appropriate credentials to access the REST Service.</p>
-                            </td>
-                        </tr>
-                        <tr class="TableStyle-Simple-Body-Row1">
-                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td colspan="3" class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p style="font-weight: bold;">ADVANCED TABS</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>Content Type</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>MIME type of the Rest call.</p>
                             </td>
                         </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Accept Header</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This property enables you to set the "Accept" header of the HTTP Request.</td>
+                        </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Accept Header</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Timeout</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">This property enables you to set the "Accept" header of the HTTP Request.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">The number of seconds to wait before the REST&#160;call times out.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Timeout</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">The number of seconds to wait before the REST&#160;call times out.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Retry Attempts</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Number of retries to attempt</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">Added in v2023.01.26 this field is designed to prevent an issue that may occur when REST POST calls to update data fails <i>without an underlying fault in the Payload or service</i>. This property implements a retry mechanism that often resolves the issue, and eliminates the need for an administrator to re-run the Timeline Activity/Form event that invokes the Custom Task.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Retry Attempts</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Number of retries to attempt</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">Added in v2023.01.26 this field is designed to prevent an issue that may occur when REST POST calls to update data fails <i>without an underlying fault in the Payload or service</i>. This property implements a retry mechanism that often resolves the issue, and eliminates the need for an administrator to re-run the Timeline Activity/Form event that invokes the Custom Task.</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Use Insecure versions of TLS?</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">By default, Process Director won't use TLS 1.0 for the transport layer for security reasons. Checking this option will enables the use of TLS 1.0 if desired.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Use Insecure versions of TLS?</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Forward PD&#160;session information</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">By default, Process Director won't use TLS 1.0 for the transport layer for security reasons. Checking this option will enables the use of TLS 1.0 if desired.</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When selected, information from the current Process Director session will be forwarded to the API as part of the REST call.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Base64 Encode</td>
