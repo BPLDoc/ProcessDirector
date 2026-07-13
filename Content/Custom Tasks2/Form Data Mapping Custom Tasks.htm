@@ -17,7 +17,7 @@
                 <p>This Custom Task enables you to create a new instance of a specified Form, then copy data to it from a different Form instance. This Custom Task <i>always</i> creates a new Form instance before copying the data, and does not copy data between two existing form instances.</p>
                 <p>When invoked on a Form, the Custom Task assumes the Form will be used as the <span class="KeyTerms">Container Form</span>, which is to say the Form that contains the original data to be copied. When invoked from a Process Timeline as a Custom Task activity, the <span class="UIElement">Custom Task</span> tab of the activity will contain a property named <span class="ControlName">Set Container Form</span>. This property enables you to choose the Form that will be used as the Container Form for the Custom Task. This Custom Task cannot be configured without a Container Form set.</p>
                 <p>
-                    <img src="../Resources/Images/Custom Tasks2/CopyFormCT.png" />
+                    <img src="../Resources/Images/Custom Tasks2/CopyFormData.png" />
                 </p>
                 <p>The<span class="ControlName"> Form to create </span>property enables you to select the form template into which you wish to copy the data. When the Custom Task runs, a new instance of the selected Form will be created to receive the data. </p>
                 <p>To select the fields into which you want to copy the data, click on the <span class="UIElement">Add Mapping</span> button to create a new mapping row for each field you wish to copy. For each mapping row, select destination and source Form fields. Alternatively, you can tell the Custom Task to map to all Forms except ones that you specify. This setting will automatically copy data from the source form to the corresponding fields in the destination form, excluding the fields you specify.</p>
@@ -42,32 +42,41 @@
                     </thead>
                     <tbody>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Form to Create</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>Select the form to which the data should be copied from the picker control.</p>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3" style="background-color: #528bbc;font-weight: bold;"><span style="color: #ffffff;">Recipient Form</span>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Add new Instance as</p>
+                                <p>Form to Create</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Child under Form Definition ONLY<br />Form Reference<br />Workflow Reference<br />Timeline Reference</p>
+                                <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Select the form to which the data should be copied from the picker control.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Add new Instance as</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Child under Form Definition ONLY<br />Form Reference<br />Workflow Reference<br />Timeline Reference</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>The object reference to which to attach the new form.</p>
                             </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Set Form Version to 0</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">This setting, when checked, will set the form version to 0, i.e., treats the form as an unsubmitted form.</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">Save new forms after they are created</td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>This prevents the new version from being treated like a new form instance, meaning that it will immediately show up in Knowledge Views, etc.</p>
+                                <p>This setting, when checked, prevents the new version from being treated like a new form instance, meaning that it will immediately show up in Knowledge Views, etc.</p>
                                 <p class="Important">
                                     <img src="../Resources/Images/i.png" alt="Important" /> Default values won't be set for the fields of the new form instance when this option is checked.</p>
                             </td>
@@ -106,64 +115,86 @@
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" style="background-color: #528bbc;color: #ffffff;font-weight: bold;" colspan="3">Attachments to Copy</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>Attachment Type(s)</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>Workflow References<br />Timeline References<br />Form References</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>Attachments to copy to the new form instance.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Attachment Data Type</td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">All<br />Documents<br />Forms</td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">They type of object to attach to the new Form.</td>
-                        </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Attachment Data Type</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">All<br />Documents<br />Forms</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">They type of object to attach to the new Form.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>Attachment Group</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>All<br />Objects with no Group only<br />Specify</p>
                             </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
                                 <p>Group name of the attachments. Selecting "Specify" will enable you to add the desired group name in the text box.</p>
                             </td>
                         </tr>
-                        <tr class="TableStyle-Simple-Body-Row2">
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Add as pending process objects</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>&#160;</p>
-                            </td>
-                            <td class="TableStyle-Simple-BodyD-Column1-Row2">
-                                <p>Add the attachments as pending process references instead of form references.</p>
-                            </td>
-                        </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
-                                <p>Map to ONLY the following fields</p>
+                                <p>Add as pending process objects</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row1">
-                                <p>Restrict form field mapping to the field mappings you add by clicking the Add mapping button.</p>
+                                <p>When checked, adds the attachments as pending process references instead of form references.</p>
                             </td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">Copy Attachments as Independent Objects</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row2">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2">When checked, this setting creates new, independent copies of the attachments, each having new Object IDs, instead of including the original attachment as a shared reference.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1" colspan="3" style="background-color: #528bbc;color: #ffffff;font-weight: bold;">Mapping Configuration</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
-                                <p>Map to ALL fields EXCEPT the following fields</p>
+                                <p>Map to ONLY the following fields</p>
                             </td>
                             <td class="TableStyle-Simple-BodyE-Column1-Row2">
                                 <p>&#160;</p>
                             </td>
                             <td class="TableStyle-Simple-BodyD-Column1-Row2">
+                                <p>Restrict form field mapping to the field mappings you add by clicking the Add mapping button.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>Map to ALL fields EXCEPT the following fields</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">
+                                <p>&#160;</p>
+                            </td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">
                                 <p>Restrict form field mapping to <b>exclude</b> the field mappings you add by clicking the Add mapping button.</p>
                             </td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3" style="background-color: #528bbc;color: #ffffff;font-weight: bold;">Misc</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row1">
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">Resolve row-aware system variables per array row</td>
+                            <td class="TableStyle-Simple-BodyE-Column1-Row1">&#160;</td>
+                            <td class="TableStyle-Simple-BodyD-Column1-Row1">When checked, Row-aware System Variables like <code>{ROW_NUM}</code> will be evaluated on each row instead of once for the entire column. This setting is unchecked by default to preserve the original behavior of this evaluation.</td>
+                        </tr>
+                        <tr class="TableStyle-Simple-Body-Row2">
+                            <td class="TableStyle-Simple-BodyD-Column1-Row2" colspan="3" style="background-color: #528bbc;color: #ffffff;font-weight: bold;">Miscellaneous Options</td>
                         </tr>
                         <tr class="TableStyle-Simple-Body-Row1">
                             <td class="TableStyle-Simple-BodyE-Column1-Row1">
