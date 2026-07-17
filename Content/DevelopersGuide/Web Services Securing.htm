@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../Resources/TableStyles/Simple.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/MainStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>
+            <MadCap:concept term="Developer;Web Services" />
+            <MadCap:keyword term="Web Services">&#160;</MadCap:keyword>Securing Web Services</h1>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> The <code>Enforce*</code> helper methods described in this topic require Process Director 6.2.100 or later. A manual workaround for earlier versions is provided at the end of this topic.</p>
+        <h2>Purpose</h2>
+        <p>This topic documents the supported, recommended way to protect a <b>custom web service</b> (a SOAP <code>.asmx</code> service built on the Process Director SDK base class <code>bpWebService</code>) with the same source-IP restriction that Process Director enforces for its built-in web services. It formalizes the approach that links custom web service IP restrictions to Process Director's core configuration.</p>
+        <p>It is written to be followed end to end by a developer who can write C# but is not assumed to be a Process Director administrator.</p>
+        <h2>Overview</h2>
+        <p>Process Director's built-in web services (for example, <code>wsAdmin</code> and <code>wsContent</code>) automatically enforce two checks on every call:</p>
+        <ol>
+            <li>Web services enabled: the global <span class="ControlName">Web Service Enabled</span> setting.</li>
+            <li>Source-IP allowlist: the caller's IP must match the configured <span class="ControlName">Web Service Restrictions</span> allowlist.</li>
+        </ol>
+        <p>For <b>custom</b> web services, these checks are intentionally skipped. Internally, the request pipeline guards them with a <code>!CustomService</code> condition, so a custom endpoint will run for any caller who knows its URL—even from an IP outside the allowlist. This is by design (it avoids breaking existing customer integrations), but it means the developer of a custom web service is responsible for opting in to these protections.</p>
+        <p>This topic covers how to go about implementing source-IP restriction. See the <b>Authentication Scope</b> section at the end for what it deliberately does not cover.</p>
+        <h3>Step 1: Configure the Restriction in Process Director</h3>
+        <p>Both checks read directly from the standard Process Director configuration, so you configure them once in the admin UI and every opted-in custom service inherits them.</p>
+        <p><b>Where:</b> <span class="ControlName">Administration &gt; Installation Settings &gt; Properties</span> tab (the <span class="ProcessDirectorObject">Process Director Properties</span> screen, <code>admin/properties.aspx</code>). You must be a System Administrator to access this page.</p>
+        <p>On that screen, set the following fields (the italic text is the help shown on-screen next to each field):</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 14rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>FIELD ON SCREEN</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>PURPOSE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>ON-SCREEN HELP</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1"><span class="ControlName">Web Service Enabled</span>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Master switch for all web service APIs.</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">"Set to true to enable web service calls for the Process Director APIs."</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2"><span class="ControlName">Require authentication</span>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Requires SOAP-header authentication (see the Authentication Scope section below).</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Governs built-in services.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1"><span class="ControlName">Web Service Restrictions</span>
+                    </td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">The source-IP allowlist.</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">"Optional comma-separated list of the only IP addresses that web services are allowed from."</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>After editing, save the Properties screen. The new values apply to subsequent web service calls; if a change doesn't appear to take effect, recycle the IIS application pool (or restart the Process Director site).</p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> "Optional" is a trap. If <code style="color: #ffffff;">Web Service Restrictions</code> is left empty, there is no IP restriction at all—every IP is allowed. Calling <code style="color: #ffffff;">EnforceIPRestriction()</code> in your code does nothing useful until this field is populated. Always confirm it is set in production.</p>
+        <h4>What You Can Type into "Web Service Restrictions"</h4>
+        <p>The field is a comma-separated list. Each entry must be one of these three forms (matching is IPv4 only):</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 14rem;" class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 14rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>FORM</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>EXAMPLE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>WHAT IT ALLOWS</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Exact IP</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>203.0.113.5</code>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Only that single host.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">CIDR block</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2"><code>203.0.113.0/24</code>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">The whole <code>203.0.113.x</code> subnet.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1"><code>0</code>-octet wildcard</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1"><code>203.0.113.0</code>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">The whole <code>203.0.113.x</code> range—a <code>0</code> in any octet means "match anything here."</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>A combined example: <code>203.0.113.5, 198.51.100.0/24, 10.20.0.0</code></p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> Two surprises worth memorizing are described in the two points below.</p>
+        <ol>
+            <li><code>*</code> does not work. <code>203.0.113.*</code> is not recognized and will silently match nothing. Use a <code>0</code> octet (<code>203.0.113.0</code>) or CIDR (<code>203.0.113.0/24</code>) instead.</li>
+            <li><code>0</code> is a wildcard, not a host. <code>203.0.113.0</code> does not mean "the .0 host"—it opens the entire <code>203.0.113.x</code> subnet. To allow a single host, use its exact address.</li>
+        </ol>
+        <p><b>Not supported:</b> asterisk wildcards (<code>*</code>), ranges (<code>a-b</code>), hostnames (including <code>localhost</code>), and IPv6 addresses.</p>
+        <h4>Local Requests Are Always Allowed</h4>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> The IP check governs remote callers only. A call originating from the Process Director server itself—the same machine,<span style="color: #ffffff;"> </span><code style="color: #ffffff;">127.0.0.1</code>, or any IP in the system's local IPs list—is always allowed, regardless of the Web Service Restrictions setting (and regardless of <code style="color: #ffffff;">EnforceIPRestriction()</code>). Consequently, you cannot test the restriction from the server; a call run on the PD box will always succeed. Always test rejection from a different machine (see Step 4).</p>
+        <h4>If You Are Behind a Load Balancer or Reverse Proxy</h4>
+        <p>This is the most common source of "it rejects everything" or "it's not actually restricting." Process Director evaluates the IP it sees on the incoming request:</p>
+        <ul>
+            <li>By default, that is the IP of whatever connects to PD directly—which, behind a load balancer or proxy, is the load balancer's IP, not the end client's.</li>
+            <li>Process Director honors the <code>X-Forwarded-For</code> header only if the proxy is configured in PD's settings. When it is, PD uses the last address in <code>X-Forwarded-For</code>.</li>
+        </ul>
+        <p>So you must do one of the following:</p>
+        <ul>
+            <li>Add the load balancer's IP to <span class="ControlName">Web Service Restrictions</span>, or</li>
+            <li>Configure the proxy in PD so the real client IP is evaluated, then allowlist the client IPs.</li>
+        </ul>
+        <p>When in doubt, use the verification step below to discover exactly which IP PD is seeing.</p>
+        <h3>Step 2: Build the Custom Web Service</h3>
+        <p>A custom web service is a single <code>.asmx</code> text file whose class inherits from the SDK base class <code>bpWebService</code>. You write the C# inline in the <code>.asmx</code> file—there is no separate project to compile; IIS compiles it on the first request.</p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> Don't write yours like the built-in services. If you open a shipped service such as <code>wsUser.asmx</code>, it's a one-line file pointing at a class that is precompiled into the product assembly. Do not copy that form. Your custom service keeps its C# inline, as shown below.</p>
+        <h4>2a. Name It Once: Three Places That Must Match</h4>
+        <p>Choose one name for your service (for example, <code>wsTestService</code>) and use it in three places that must stay in sync:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 14rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 18rem;" class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>WHERE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>MUST BE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>EXAMPLE</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">The file name</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>&lt;name&gt;.asmx</code>
+                    </td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1"><code>wsTestService.asmx</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">The directive's <code>Class="…"</code></td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">The C# class name you declare below, exactly.</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2"><code>Class="wsTestService"</code>
+                    </td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">The class declaration</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1"><code>public class &lt;name&gt; : bpWebService</code>
+                    </td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1"><code>public class wsTestService : bpWebService</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> Most common mistake: <code style="color: #ffffff;">Class="…"</code> is a C# class name, not a URL or a folder path. It must match the <code><span style="color: #ffffff;">public class …</span></code><span style="color: #ffffff;"> </span>you declare, character for character. If they differ, the service returns HTTP 500 on the very first call. Do not put a dotted namespace path here (for example, <code style="color: #ffffff;">Company.Web.wsTestService</code>) unless your class is actually declared inside that C# namespace.</p>
+        <p>This is different from the <code>[WebService(Namespace = "http://…")]</code> attribute below it: that one is the service's XML/SOAP namespace—a URI used in the WSDL—and stays a URL.</p>
+        <p>The file name drives the URL. <code>wsTestService.asmx</code> is called at <code>{your PD base URL}/Services/wsTestService.asmx</code>, regardless of the class name.</p>
+        <h4>2b. Start with a Minimal Service That Just Responds</h4>
+        <p>Get a service running before adding any logic. This is the smallest service that works:</p>
+        <p class="CodeBase">&lt;%@ WebService Language="C#" Class="wsTestService" %&gt;<br /><br />using System.Web.Services;<br />using BPLogix.WorkflowDirector.SDK;&#160;&#160;&#160;<span class="CodeComment">// bpWebService base class</span><br /><br />[WebService(Namespace = "http://www.bplogix.com/custom")]&#160;&#160;&#160;<span class="CodeComment">// XML/SOAP namespace (a URI) - NOT your C# class name</span><br />public class wsTestService : bpWebService<br />{<br />&#160;&#160;&#160;&#160;[WebMethod]<br />&#160;&#160;&#160;&#160;public string Hello() =&gt; "Custom web service is running.";<br />}</p>
+        <p>Deploy it by placing the <code>.asmx</code> file in the <code>Services</code> folder of the Process Director web application (no build step—IIS compiles it on first request). Then confirm it responds with a browser GET (works from localhost):</p>
+        <p class="CodeBase">{your PD base URL}/Services/wsTestService.asmx/Hello</p>
+        <p>You should get back <code>&lt;string …&gt;Custom web service is running.&lt;/string&gt;</code>. If you get HTTP 500 instead, re-check the three names in the table above—they almost certainly don't match.</p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> To see all operations or build a client, open the service's help page at <code>{your PD base URL}/Services/wsTestService.asmx</code> to list its methods, or fetch the WSDL at <code>…/wsTestService.asmx?WSDL</code> to generate a SOAP client (Postman, SoapUI, <code>svcutil</code>, and so on).</p>
+        <h4>2c. Add SDK Logic and Release the Database Handle</h4>
+        <p>Once it responds, add real logic. Any method that uses the SDK or database should call <code>bpClose()</code> before returning, so the database handle is released immediately instead of waiting for garbage collection:</p>
+        <p class="CodeBase">[WebMethod]<br />public string GetEmailForUserID(string UserID)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// `bp` is provided by the bpWebService base class<br />&#160;&#160;&#160;&#160;</span>var user = User.GetUserByUserID(bp, UserID);&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;bpClose();&#160;&#160;<span class="CodeComment">// release the DB handle</span><br />&#160;&#160;&#160;&#160;return user?.Email;<br />}</p>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> Security enforcement is intentionally not shown here. Get the service working first, then add the IP restriction in Step 3.</p>
+        <h3>Step 3: Add the Enforcement Call to Every Web Method</h3>
+        <p>As of version 6.2.100, the SDK base class <code>bpWebService</code> exposes three opt-in enforcement helpers. Call the one you need as the first line of each web method, before any business logic:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 20rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <col style="width: 16rem;" class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>METHOD</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>WHAT IT ENFORCES</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>ON FAILURE</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>EnforceIPRestriction()</code>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Caller's IP is in the <span class="ControlName">Web Service Restrictions</span> allowlist.</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Throws <code>SoapException</code> (<code>ServerFaultCode</code>).</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2"><code>EnforceWebServicesEnabled()</code>
+                    </td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Web services are globally enabled.</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Throws <code>SoapException</code> (<code>ServerFaultCode</code>).</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1"><code>EnforceWebServiceRestrictions()</code>
+                    </td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">Both of the above, in order.</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">Throws <code>SoapException</code> on first failure.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Taking the <code>GetEmailForUserID</code> method from Step 2c, add the enforcement call as its first line:</p>
+        <p class="CodeBase">[WebMethod]<br />public string GetEmailForUserID(string UserID)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// Enforce the source-IP allowlist BEFORE any logic.</span><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// If the caller's IP is not permitted, this throws a SOAP fault <br />&#160;&#160;&#160;&#160;// and the method stops here.</span><br />&#160;&#160;&#160;&#160;EnforceIPRestriction();<br /><br />&#160;&#160;&#160;&#160;var user = User.GetUserByUserID(bp, UserID);<br />&#160;&#160;&#160;&#160;bpClose();<br />&#160;&#160;&#160;&#160;return user?.Email;<br />}</p>
+        <p>For the common need—IP restriction only—<code>EnforceIPRestriction()</code> is sufficient. If you also want calls rejected when web services are globally disabled, use <code>EnforceWebServiceRestrictions()</code> instead (it runs both checks):</p>
+        <p class="CodeBase">[WebMethod]<br />public string GetEmailForUserID(string UserID)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">// web-services-enabled check + source-IP allowlist check</span><br />&#160;&#160;&#160;&#160;EnforceWebServiceRestrictions();<br />&#160;&#160;&#160;&#160;var user = User.GetUserByUserID(bp, UserID);<br />&#160;&#160;&#160;&#160;bpClose();<br />&#160;&#160;&#160;&#160;return user?.Email;<br />}</p>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> Enforcement is per web method. There is no global switch for custom services. Every<span style="color: #ffffff;"> </span><code style="color: #ffffff;">[WebMethod]</code> you want protected needs its own enforcement call—a method without one is an open endpoint.</p>
+        <h3>Step 4: Verify It Works (and Find the IP to Allowlist)</h3>
+        <p class="Important">
+            <img src="../Resources/Images/i.png" title="Important" alt="Important" /> Test from a different machine. Calls from the Process Director server itself are always allowed (see "Local Requests Are Always Allowed" in Step 1), so a rejection test run on the server will never fail. Use a separate client machine whose IP is not in Web Service Restrictions.</p>
+        <ol>
+            <li>Confirm <span class="ControlName">Web Service Restrictions</span> is populated and the web method calls <code>EnforceIPRestriction()</code>.</li>
+            <li>From the non-allowlisted machine, call the method—for example, via a browser or SOAP client:
+                <p class="CodeBase">{your PD base URL}/Services/wsTestService.asmx/GetEmailForUserID?UserID=test</p></li>
+            <li>The call is rejected with a SOAP fault whose message is:
+                <p class="CodeBase">BP_WS_INVALID_IP: Web service request rejected. Web service calls are not allowed from your IP Address: &lt;the IP PD saw&gt;</p></li>
+            <li>The IP shown in that message is exactly what you add to <span class="ControlName">Web Service Restrictions</span> to permit that host—and it tells you immediately whether PD is seeing the real client or a load balancer (see the load-balancer note in Step 1).</li>
+            <li>Add the intended IP(s), save, retry from an allowed host, and confirm the call now succeeds.</li>
+        </ol>
+        <p class="PDNote">
+            <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> To check your version, note that the <code>Enforce*</code> helpers exist only in Process Director 6.2.100 and later. The product version is shown in the admin UI; if you're on an earlier build, use the workaround below.</p>
+        <h3>Troubleshooting</h3>
+        <table style="mc-table-style: url('../Resources/TableStyles/Simple.css');width: 100%;" class="TableStyle-Simple" cellspacing="0">
+            <col style="width: 16rem;" class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <col class="TableStyle-Simple-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-Simple-Head-Header1">
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>SYMPTOM</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadE-Column1-Header1">
+                        <p>LIKELY CAUSE</p>
+                    </th>
+                    <th class="TableStyle-Simple-HeadD-Column1-Header1">
+                        <p>FIX</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">HTTP 500 on the very first call.</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1"><code>Class="…"</code> in the directive doesn't match your <code>public class …</code>.</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Make the file name, <code>Class=</code>, and class declaration all match (Step 2a).</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Calls succeed even from outside the allowlist.</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">(a) Web Service Restrictions is empty; (b) the method has no <code>EnforceIPRestriction()</code> call; (c) you're testing from the PD server (local bypass).</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Populate the allowlist; add the enforcement call; test from a different machine.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Every call is rejected, even ones that should be allowed.</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row1">Behind a load balancer, PD sees the LB's IP, not the client's; or a hostname, <code>*</code>, or range was entered in the list.</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row1">Allowlist the LB IP or configure the proxy (Step 1); use only exact IP, CIDR, or <code>0</code>-octet forms.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row2">
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2"><code>localhost</code> (or another hostname) in the list does nothing.</td>
+                    <td class="TableStyle-Simple-BodyE-Column1-Row2">Hostnames aren't supported—IPv4 only.</td>
+                    <td class="TableStyle-Simple-BodyD-Column1-Row2">Use the numeric IP; calls from the server are treated as local anyway.</td>
+                </tr>
+                <tr class="TableStyle-Simple-Body-Row1">
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">GET test returns an error about the method or parameters.</td>
+                    <td class="TableStyle-Simple-BodyB-Column1-Row1">HTTP GET only supports simple-type parameters.</td>
+                    <td class="TableStyle-Simple-BodyA-Column1-Row1">Call via SOAP (Postman/SoapUI) using <code>…/wsTestService.asmx?WSDL</code>.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Compatibility with Earlier Versions (Manual Workaround)</h3>
+        <p>On versions prior to 6.2.100, the <code>Enforce*</code> helpers are not available, but the underlying predicate methods (<code>WebServiceValidSourceIP()</code> and <code>WebServicesEnabled()</code>) are public on the SDK base class. Guard each method manually:</p>
+        <p class="CodeBase">[WebMethod]<br />public string GetData(string id)<br />{<br />&#160;&#160;&#160;&#160;if (!WebServiceValidSourceIP())<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;throw new SoapException("Caller IP not permitted", SoapException.ServerFaultCode);<br /><br />&#160;&#160;&#160;&#160;<span class="CodeComment">// optional: also require web services to be globally enabled</span><br />&#160;&#160;&#160;&#160;if (!WebServicesEnabled())<br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;throw new SoapException("Web services are disabled", SoapException.ServerFaultCode);<br /><br />&#160;&#160;&#160;&#160;return DoWork(id);<br />}</p>
+        <p>The <code>Enforce*</code> helpers simply package this exact pattern (matching the framework's own error messages and fault codes), so migrating to them later is a drop-in simplification.</p>
+        <h3>Authentication Scope: What This Does Not Cover</h3>
+        <p>The source-IP restriction limits where calls originate, not who makes them.</p>
+        <ul>
+            <li>Process Director's built-in <span class="ControlName">Require authentication</span> setting (SOAP-header token authentication) governs the built-in services. Custom services do not currently have an exposed SDK helper to enforce SOAP-header authentication—the 6.2.100 helpers cover the enable and IP-restriction checks only.</li>
+            <li>Where a use case requires IP restriction only, IP restriction alone is sufficient and full authentication is not required.</li>
+            <li>If a custom service performs sensitive operations, treat IP restriction as a network control and plan for an additional authentication layer; exposing SOAP-header authentication to custom services is a possible future enhancement.</li>
+        </ul>
+        <h3>Quick Checklist</h3>
+        <ul>
+            <li><span class="ControlName">Web Service Enabled</span> = true (Installation Settings &gt; Properties).</li>
+            <li><span class="ControlName">Web Service Restrictions</span> is populated (empty = no restriction).</li>
+            <li>Allowlist entries use exact IP, CIDR, or <code>0</code>-octet wildcard—not <code>*</code>, ranges, hostnames, or IPv6.</li>
+            <li>Settings saved on the Properties screen (recycle the app pool if a change doesn't take effect).</li>
+            <li>Behind a load balancer: either the LB IP is allowlisted, or the proxy is configured so the real client IP is seen.</li>
+            <li>Custom service inherits <code>bpWebService</code>, names match (file, <code>Class=</code>, and class), and is deployed under <code>/Services/</code>.</li>
+            <li>Every <code>[WebMethod]</code> calls <code>EnforceIPRestriction()</code> (or <code>EnforceWebServiceRestrictions()</code>) as its first line.</li>
+            <li><code>bpClose()</code> is called after SDK or database use.</li>
+            <li>Verified by calling from a non-local machine and confirming the <code>BP_WS_INVALID_IP</code> SOAP fault.</li>
+        </ul>
+    </body>
+</html>
