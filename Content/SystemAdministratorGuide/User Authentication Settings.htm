@@ -8,7 +8,7 @@
             <MadCap:concept term="System Administration" />
             <MadCap:keyword term="Authentication Settings" /><a name="_Toc421094517"></a>Authentication Settings</h1>
         <p>
-            <img src="../Resources/Images/SystemAdministratorGuide/uauth.png" />
+            <img src="../Resources/Images/SystemAdministratorGuide/User Authentication Settings.png" />
         </p>
         <p>The <span class="ControlName">Authentication Settings</span> page enables you to determine the authentication methods available to users. As a default, Built-In authentication is automatically enabled. Other Authentication settings can be configured so that NTLM, Single-Sign-On, etc., are enabled.</p>
         <MadCap:dropDown>
@@ -113,6 +113,56 @@
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>The URL&#160;of the external login page.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2><a name="Anonymous"></a>Anonymous User OTP Settings <a href="#Anonymous" class="anchor">#</a></h2>
+        <p>Process Director v6.1`.200 and higher implements a feature that enables you to send a One-Time Password (OTP) to authenticate anonymous users when they're assigned a task. On the implementation side, a new property on the <a href="../ImplementersReference/Process Timeline User Activity.htm#Advanced">Advanced Options tab</a> of a user activity, <span class="ControlName">Require anonymous users to verify their email address with a one-time code</span>, turns on the OTP authentication for a user activity task assignment to an anonymous user. Several new settings have been added to this page to govern the operation of OTPs sent to anonymous users.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Anonymous Verification Code Lifetime (seconds)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property specifies the number of seconds that the OTP will remain valid before expiring. The default value is <code>600</code>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Anonymous Verification Session Lifetime (seconds)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property specifies the number of seconds an anonymous browser session remains valid before the user must verify again. The default value is <code>1800</code>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Anonymous Verification Maximum Attempts</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property specifies the maximum number of incorrect validation attempts before the verification challenge is locked. The default value is <code>5</code>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Anonymous Verification Resend Cooldown (seconds)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property specifies the minimum number of seconds that must elapse before sending an additional verification code email. The default value is <code>60</code>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Anonymous Verification Lockout Duration (seconds)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property specifies the number of seconds the verification challenge remains locked after too many failed verification attempts. The default value is <code>900</code>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Anonymous Verification Maximum Sends Per Hour</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This property specifies the maximum number of times per hour a verification code can be sent to the same email/IP address. The default value is <code>10</code>.</p>
             </MadCap:dropDownBody>
         </MadCap:dropDown>
         <h3><a name="_Toc421094518"></a>Authentication Types</h3>
