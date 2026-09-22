@@ -120,11 +120,14 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot><a name="fListenToEmailSetting"></a><a href="#fPDFCreateOtherAsAttachments"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fListenToEmailSetting</MadCap:dropDownHotspot>
+                <MadCap:dropDownHotspot><a name="fListenToEmailSetting"></a><a href="#fListenToEmailSetting"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fListenToEmailSetting</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
                 <p>
-                    <MadCap:keyword term="fListenToEmailSetting" />This variable when set to true, will force the activity/step to use the "participants when activity starts" checkbox to determine if an email should be sent. Previously an email was unconditionally sent when a user was added/reassigned in a running step/activity by an administrator. The default value for this variable is false.</p>
+                    <MadCap:keyword term="fListenToEmailSetting" />This variable when set to true, will force the activity/step to use the "participants when activity starts" checkbox to determine if an email should be sent. Previously an email was unconditionally sent when a user was added/reassigned in a running step/activity by an administrator. </p>
+                <p>When set to 'false', administrative assignments always send a task assignment email, regardless of whether notification is enabled on the activity or step. When set to 'true', the notification setting on the activity or step is honored in every case, and no email is sent when it is turned off. The default value of this flag is 'false'.</p>
+                <p>Administrative assignment covers adding a user to a running task, reassigning a task from one user to another, and the additions made by fStartUsersAddedToGroup. The variable applies to both Timeline activities and Workflow steps.</p>
+                <p>Enable this only when you want the activity and step notification settings to be authoritative everywhere. Because it is not scoped to a single assignment type, turning it on also stops the automatic email that an administrator would normally expect when manually adding or reassigning a task.</p>
                 <h5>Example</h5>
                 <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;<span class="CodeComment">//Use the task's email setting for administrative task change notifications</span><br />&#160;&#160;&#160;&#160;<span class="CodeVariable">bp</span>.Vars.fListenToEmailSetting = <span class="CodeOption">true</span>;<br />}</p>
             </MadCap:dropDownBody>

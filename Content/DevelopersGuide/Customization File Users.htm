@@ -91,6 +91,29 @@
         </MadCap:dropDown>
         <MadCap:dropDown>
             <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot><a name="fStartUsersAddedToGroup"></a><a href="#fStartUsersAddedToGroup"><img src="../Resources/Images/link.png" title="fStartUsersAddedToGroup" alt="fStartUsersAddedToGroup" /></a>fStartUsersAddedToGroup</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>This flag variable determines whether users are added to already-running Timeline activities and Workflow steps when they join a group that is assigned as a participant on that activity or step. If set to "true", Process Director searches for running instances whose participant list is defined by the group, and adds the new member to each one. If set to "false", the user only appears in instances that start after they join the group. The default value of this flag is "false".</p>
+                <p class="PDNote">
+                    <img src="../Resources/Images/i2.png" title="Note" alt="Note" /> The group membership change can come from any source. An Active Directory synchronization, an administrator editing the group in the Users and Groups page, and an SDK call all trigger the same behavior.</p>
+                <p>Two behaviors of this variable are worth understanding before enabling it.</p>
+                <p><b>Task notifications are sent regardless of the activity setting.</b> A user added to a running activity this way receives a task assignment email even when the activity or step has its notification setting turned off. Process Director treats the addition as an administrative task assignment, and that path sends the notification without consulting the per-activity setting. Setting <a href="Customization File Misc.htm#fListenToEmailSetting">fListenToEmailSetting</a> suppresses this. See the entry for that variable, including its wider effects.</p>
+                <p><b>Turning this on does not affect existing group members.</b> The flag acts only when a membership is added. Users who are already in the group when the flag is enabled are not added to anything that is already running. Only memberships created afterward trigger the behavior.</p>
+                <p><b>This variable governs additions only.</b> Removing a user from a group has no effect on activities or steps that are already running. A user who leaves a group keeps any task they already hold, and will not be assigned tasks in instances that start afterward.</p>
+                <p>Customers running an Active Directory synchronization sometimes attribute task cancellations to group removal. The two are unrelated.</p>
+                <p>Task cancellation is a consequence of <i>disabling</i> a user, not of removing them from a group. When a user is disabled, Process Director cancels every active Workflow step and Timeline activity assigned to that user. An AD Sync that no longer matches a user will disable them, and their tasks are canceled at that point.</p>
+                <p>If a later synchronization re-enables those users, and fStartUsersAddedToGroup is set, they are added back into the running activities, and each addition generates a task assignment notification as described above.</p>
+                <p>Group membership changes and user disabling are separate things, and it is worth being explicit about which one does what, because they are easy to conflate.</p>
+                <p>Removing a user from a group does not cancel or remove any task the user already holds. It only changes which future instances they are assigned to.</p>
+                <p>Disabling a user does cancel their tasks. When a user is disabled, Process Director cancels every active Workflow step and Timeline activity assigned to them. An Active Directory synchronization that no longer matches a user will disable that user, and their tasks are canceled at that point. So a synchronization can appear to cancel tasks, but the cause is the disabling, not the group change.</p>
+                <p>Two settings limit how many users a single synchronization can disable, and both are worth reviewing on any profile where this matters: <a href="Customization File Active Directory.htm#nMaxUsersToDisableOnSync">nMaxUsersToDisableOnSync</a> and <a href="Customization File Active Directory.htm#nMaxPercentUsersToDisableOnSync">nMaxPercentUsersToDisableOnSync</a>.</p>
+                <h5>Example</h5>
+                <p class="CodeBase">public override void SetSystemVars(BPLogix.WorkflowDirector.SDK.bp <span class="CodeVariable">bp</span>)<br />{<br />&#160;&#160;&#160;&#160;bp.Vars.fStartUsersAddedToGroup = <span class="CodeOption">true</span>;<br />}</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
                 <MadCap:dropDownHotspot><a name="fTurnOnDelegationGroups"></a><a href="#fTurnOnDelegationGroups"><img src="../Resources/Images/link.png" alt="Link" MadCap:conditions="General.Not Printed" /></a>fTurnOnDelegationGroups</MadCap:dropDownHotspot>
             </MadCap:dropDownHead>
             <MadCap:dropDownBody>
